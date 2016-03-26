@@ -1,9 +1,0 @@
-﻿  stdafx.cpp
-  LoginInfoDlg.cpp
-  SmartClientDemo.cpp
-  SmartClientDemoDlg.cpp
-SmartClientDemoDlg.cpp(962): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-SmartClientDemoDlg.cpp(968): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-  Generating code
-  Finished generating code
-  SmartClientDemo.vcxproj -> D:\Personal\SourceCode\Windows播放器\20151225\SmartSDKDemo2\SmartClientDemo\Release\SmartClientDemo.exe
