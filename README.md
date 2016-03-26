@@ -30,6 +30,41 @@
 <img src="http://daniulive.com:8080/files/image/IOSPublisher.JPG" width="800" alt="iOS采集，跨平台播放" />
 
 
+## 使用说明 ##
+
+1. 推流:
+
+1.1 Windows端推流：
+
+选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，进入系统后，左侧系推流端，右侧是播放端，推流依次点击:
+
+1. Open;
+2. Login（输入用户名、密码)，如需Windows端推流测试，请联系QQ 89030985，或加入QQ群 499687479 和群主联系;
+3. 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://daniulive.com:1935/hls/streamdaniulive;
+4. 点击PushStream，完成Windows推流。
+
+PushStream，如推流成功的话，会显示推流地址，如本URL对应的链接为：
+rtmp://daniulive.com:1935/hls/streamdaniulive.
+
+1.2 Android端推流：
+
+安装SmartPublisher， 进入系统后，会自动生成urlID, 如 rtmp://daniulive.com:1935/hls/stream123456, 对应的urlID即为 123456（stream后的数字），点击“开始推流”，推流过程中，可点击右上角“切换前后摄像头”图标；来切换视角进行采集；
+
+2 播放：
+
+2.1 Windows播放：
+选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，右侧输入框输入 rtmp://daniulive.com:1935/hls/stream123456;， 然后依次点击 PlayerOpen-->StartPlay即可。
+
+2.2 SmartPlayer.apk(android)
+进入系统后，点击“输入urlID”，在弹出的对话框输入"123456"(也就是分配的账号)，点击开始播放即可，停止的话，点击停止播放即可。
+
+2.3 Web播放
+
+http://daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
+
+在输入框中，清除老的url，输入推流的url，如 rtmp://daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
+
+
 ## 获取更多信息 ##
 
 QQ群(大牛直播技术交流群)：499687479
