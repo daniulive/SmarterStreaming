@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+     <android.view.SurfaceView
+        android:id="@+id/surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/button_switchCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:onClick="changeButtonColor"
+                android:src="@drawable/ic_camera_switch"
+                android:text="@string/switchCameraText"
+                android:tint="#83FF23" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/adcontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <Spinner
+	        android:id="@+id/serverSelctor"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" />
+            
+            <Spinner
+	        android:id="@+id/resolutionSelctor"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button_start_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 开始推流 " />
+      
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txtCurURL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="false"
+                android:text="@string/publisherURL"
+                tools:context=".CameraPublishActivity" />
+
+            <TextView
+                android:id="@+id/txtCopyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="false"
+                android:text="@string/copyright"
+                tools:context=".CameraPublishActivity" />
+        </LinearLayout>
+        <!--  -->
+    </LinearLayout>
+
+</RelativeLayout>
