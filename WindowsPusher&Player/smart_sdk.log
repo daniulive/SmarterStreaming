@@ -1,0 +1,507 @@
+
+
+
+SmartLog, Version 1.0
+Copyright (C) 2015 倪彦杰。保留所有权利。
+
+
+
+
+
+SmartClientSDK, Version 1.0
+Copyright (C) 2015 倪彦杰。保留所有权利。
+
+
+
+
+
+SmartPlayerSDK, Version 1.0
+Copyright (C) 2015 倪彦杰,赵新生。保留所有权利。
+
+
+
+
+
+SmartRenderSDK, Version 1.0
+Copyright (C) 2015 倪彦杰。保留所有权利。
+
+
+03-26 23:04:42.760 [00001684] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:11:51.621 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.631 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.641 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.651 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.661 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.676 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.686 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.696 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.706 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.716 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.726 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.736 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.746 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.756 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.767 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.777 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.787 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.797 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.807 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.819 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.829 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.839 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.849 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.859 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.869 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.879 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.889 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.899 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.909 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.919 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:11:51.929 [00001684] <warn>  [SP] AudioOutput still running
+03-26 23:13:30.324 [00002ac0] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:13:37.128 [00002ac0] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:13:55.151 [00001e1c] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:14:18.239 [00001e1c] <error> [SP] StartRtmp failed.
+03-26 23:14:18.239 [00001e1c] <error> [SP] playing call player_.StartPlay failed retryCount=1
+03-26 23:19:57.976 [00001e1c] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:20:04.835 [00001e1c] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:20:11.874 [00001e1c] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:22:36.746 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:22:44.184 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:22:51.261 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:22:58.311 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:05.364 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:12.441 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:19.482 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:26.519 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:33.564 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:40.657 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:47.733 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:23:54.766 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:01.984 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:08.819 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:15.709 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:22.807 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:29.876 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:37.250 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:44.349 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:51.387 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:24:58.219 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:05.296 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:12.343 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:19.686 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:26.836 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:34.053 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:41.148 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:48.314 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:25:55.412 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:02.444 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:09.510 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:16.353 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:23.749 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:30.795 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:37.855 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:45.235 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:52.310 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:26:59.132 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:06.198 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:13.249 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:20.323 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:27.655 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:34.455 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:41.538 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:48.580 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:27:55.651 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:02.698 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:09.769 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:16.831 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:23.885 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:30.974 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:38.004 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:45.651 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:52.688 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:28:59.736 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:06.809 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:13.846 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:20.908 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:27.933 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:34.761 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:42.213 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:49.257 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:29:56.309 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:03.357 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:10.395 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:17.433 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:24.276 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:31.310 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:38.358 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:45.409 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:52.217 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:30:59.295 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:06.345 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:13.380 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:20.452 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:27.539 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:34.349 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:41.378 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:48.455 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:31:55.500 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:02.537 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:09.598 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:16.682 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:24.348 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:34.405 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:41.494 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:48.537 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:32:55.582 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:02.680 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:09.743 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:16.827 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:23.867 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:30.739 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:38.197 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:45.250 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:52.304 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:33:59.370 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:06.735 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:13.817 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:20.888 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:27.935 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:34.985 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:42.068 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:48.877 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:34:55.679 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:02.745 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:10.220 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:17.274 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:24.415 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:31.475 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:38.514 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:45.553 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:52.618 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:35:59.646 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:06.698 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:13.553 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:20.361 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:27.434 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:34.540 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:41.579 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:48.661 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:36:55.456 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:02.506 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:09.548 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:16.588 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:23.650 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:30.699 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:37.731 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:44.782 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:51.590 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:37:58.708 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:05.809 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:12.864 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:19.929 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:27.009 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:33.821 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:40.863 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:48.192 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:38:55.250 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:02.307 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:09.370 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:16.619 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:23.427 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:30.634 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:37.667 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:44.560 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:51.622 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:39:58.692 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:05.719 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:12.774 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:19.807 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:26.894 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:33.722 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:40.765 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:47.833 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:40:54.678 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:01.721 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:08.768 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:15.813 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:22.879 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:29.695 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:36.740 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:43.770 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:50.795 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:41:58.303 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:05.397 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:12.437 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:19.474 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:26.317 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:33.389 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:40.424 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:47.487 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:42:54.556 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:01.610 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:08.697 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:16.358 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:23.414 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:30.223 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:37.296 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:44.345 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:51.381 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:43:58.564 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:04.927 [00001ac4] <error> [SP] StartRtmp failed.
+03-26 23:44:04.927 [00001ac4] <error> [SP] playing call player_.StartPlay failed retryCount=1
+03-26 23:44:11.670 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:18.749 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:25.821 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:32.870 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:40.552 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:47.355 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:44:54.394 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:01.461 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:08.552 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:15.627 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:22.666 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:29.469 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:36.509 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:43.580 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:50.630 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:45:57.686 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:04.733 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:11.818 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:19.171 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:26.196 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:33.247 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:40.302 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:47.344 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:46:54.387 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:01.861 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:08.934 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:15.995 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:23.042 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:30.094 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:37.523 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:44.360 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:51.473 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:47:58.555 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:05.375 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:12.456 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:19.530 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:26.665 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:33.725 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:40.794 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:47.846 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:48:54.938 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:01.998 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:09.075 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:16.131 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:23.170 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:30.207 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:37.353 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:44.438 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:51.499 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:49:58.530 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:05.581 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:12.664 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:20.178 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:27.083 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:34.139 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:41.238 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:48.293 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:50:55.357 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:02.163 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:09.228 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:16.304 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:23.345 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:30.384 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:37.424 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:44.473 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:51.543 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:51:58.396 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:05.442 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:12.503 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:19.554 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:26.640 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:33.440 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:40.480 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:47.527 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:52:54.560 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:01.632 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:08.711 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:15.790 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:22.846 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:29.922 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:36.983 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:44.028 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:51.085 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:53:58.172 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:05.207 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:12.258 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:19.312 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:26.601 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:33.665 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:40.754 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:47.813 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:54:54.890 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:02.226 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:09.265 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:16.519 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:23.575 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:30.607 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:37.664 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:44.735 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:51.771 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:55:58.833 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:05.871 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:12.909 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:19.952 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:26.979 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:34.024 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:41.801 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:48.836 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:56:55.860 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:02.890 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:09.955 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:17.037 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:24.084 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:30.880 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:37.990 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:45.031 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:52.787 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:57:59.838 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:06.896 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:13.700 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:20.751 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:28.234 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:35.287 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:42.336 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:49.387 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:58:56.469 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:03.560 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:10.645 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:17.689 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:24.760 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:31.795 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:39.232 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:46.342 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-26 23:59:53.143 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:00.210 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:07.271 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:14.593 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:21.661 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:28.719 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:35.764 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:42.807 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:50.229 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:00:57.280 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:04.376 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:11.458 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:18.532 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:25.572 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:32.643 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:39.704 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:46.525 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:01:53.577 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:00.618 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:07.685 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:14.838 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:22.246 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:29.282 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:36.334 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:43.386 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:50.188 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:02:57.220 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:04.358 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:11.397 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:18.461 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:25.268 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:32.342 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:39.416 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:46.808 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:03:53.624 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:00.673 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:07.762 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:14.823 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:21.919 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:28.966 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:36.012 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:42.839 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:49.896 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:04:57.402 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:04.468 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:11.521 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:18.595 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:25.451 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:32.487 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:39.304 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:46.377 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:05:53.171 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:00.222 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:07.297 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:14.090 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:21.157 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:28.230 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:35.625 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:42.452 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:49.500 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:06:56.546 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:03.350 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:10.394 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:17.476 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:24.539 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:31.601 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:38.402 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:45.479 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:52.559 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:07:59.362 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:06.389 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:13.468 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:20.504 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:27.308 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:34.418 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:41.491 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:48.553 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:08:55.352 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:02.386 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:09.453 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:16.511 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:23.591 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:30.700 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:38.259 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:45.327 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:52.399 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:09:59.456 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:06.505 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:12.895 [00001ac4] <error> [SP] StartRtmp failed.
+03-27 00:10:12.895 [00001ac4] <error> [SP] playing call player_.StartPlay failed retryCount=1
+03-27 00:10:19.394 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:26.653 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:33.738 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:40.786 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:47.848 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:10:54.882 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:02.507 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:09.575 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:16.632 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:23.683 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:30.745 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:37.791 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:44.841 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:51.939 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:11:58.752 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:05.805 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:13.356 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:20.666 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:27.710 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:34.812 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:41.868 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:48.961 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:12:56.013 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:03.080 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:09.885 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:16.964 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:24.024 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:31.108 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:38.152 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:45.240 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:52.047 [00001ac4] <error> [SP] SmartPlayer player_.isConnected is false
+03-27 00:13:52.501 [00002658] <warn>  [SC] hanging_get_ socket state is not closed, it will call close
