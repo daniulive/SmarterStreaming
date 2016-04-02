@@ -40,6 +40,8 @@
 
 ## RTMP摄像机对接 ##
 <img src="http://daniulive.com:8080/files/image/windowscameradis.jpg" width="800" alt="RTMP摄像机播放" />
+<img src="http://daniulive.com:8080/files/image/windowscamera2.jpg" width="800" alt="RTMP摄像机播放" />
+<img src="http://daniulive.com:8080/files/image/androidcameradis.jpg" width="600" alt="RTMP摄像机播放" />
 
 ## 使用说明 ##
 
