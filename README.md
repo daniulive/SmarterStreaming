@@ -20,12 +20,14 @@
 8. 公网环境下，毫秒级延迟，支持云服务部署、各类厂商的CDN产品对接。
 
 **[基于RTMP安防摄像机平台对接]**
+
 高稳定性、超低延迟的跨平台（Windows/android/iOS）综合视频监控系统对接；
 
 **[多对一实时通讯]**
+
 适用于应急指挥、公安巡检等，以移动单兵设备为采集载体，实时上传音视频数据到指挥中心，并实现指挥中心对现场的实时指导。
 
-你可以用网页进行播放测试：<a href="http://daniulive.com:8080/files/SmartPlayer/SmartPlayer.html" target="_blank">http://daniulive.com:8080/files/SmartPlayer/SmartPlayer.html</a>
+您可以用网页进行播放测试：<a href="http://daniulive.com:8080/files/SmartPlayer/SmartPlayer.html" target="_blank">http://daniulive.com:8080/files/SmartPlayer/SmartPlayer.html</a>
 
 **SmarterStreaming SDK库个人使用免费，企业及商用需要经过授权**；
 
@@ -36,6 +38,7 @@
 
 <img src="http://daniulive.com:8080/files/image/IOSPublisher.JPG" width="800" alt="iOS采集，跨平台播放" />
 
+## RTMP摄像机对接 ##
 <img src="http://daniulive.com:8080/files/image/windowscameradis.jpg" width="800" alt="RTMP摄像机播放" />
 
 ## 使用说明 ##
