@@ -4,10 +4,12 @@
 <img src="http://daniulive.com:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
 
 **[一对一实时音视频互动]**
+
 1. 基于P2P或流媒体转发的一对一音视频互动产品；
 2. 以秀场、在线教育、远程诊疗为核心的跨平台音视频实时互动。
 
 **[一对多，多对多直播、互动]**
+
 1. Windows端实时采集(支持屏幕采集和摄像头采集)；
 2. Windows端实时播放（支持同时直播多画面，支持CS架构播放和无需安装第三方插件的浏览器端播放）；
 3. Android端实时采集（支持多分辨率采集、采集过程中，前后摄像头切换）；
