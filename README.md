@@ -39,8 +39,14 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 <img src="http://daniulive.com:8080/files/image/IOSPublisher.JPG" width="800" alt="iOS采集，跨平台播放" />
 
 ## RTMP摄像机对接 ##
+1. Windows播放端：
 <img src="http://daniulive.com:8080/files/image/windowscameradisplayer.JPG" width="800" alt="RTMP摄像机播放" />
-<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="600" alt="移动端播放RTMP摄像机数据" />
+
+2. Android播放端：
+<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="800" alt="android端播放RTMP摄像机数据" />
+
+3. iOS播放端：
+<img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="800" alt="iOS端播放RTMP摄像机数据" />
 
 ## 使用说明 ##
 
