@@ -41,6 +41,8 @@ import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
 
 import java.nio.ByteBuffer;
+import java.util.List;
+
 import android.util.Log;
 
 
@@ -309,6 +311,51 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	finish();
     	System.exit(0);
     }
+	
+	private void SetCameraFPS(Camera.Parameters parameters)
+	{
+		if ( parameters == null )
+			return;
+		
+		int[] findRange = null;
+		
+		int defFPS = 20*1000;
+		
+		List<int[]> fpsList = parameters.getSupportedPreviewFpsRange();
+		if ( fpsList != null && fpsList.size() > 0 )
+		{
+			for ( int i = 0; i < fpsList.size(); ++i )
+			{
+				int[] range = fpsList.get(i);
+				if ( range != null 
+						&& Camera.Parameters.PREVIEW_FPS_MIN_INDEX <  range.length 
+						 && Camera.Parameters.PREVIEW_FPS_MAX_INDEX < range.length )
+				{
+					
+						Log.i(TAG, "Camera index:" + i + " support min fps:" + range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX]);
+						
+						Log.i(TAG, "Camera index:" + i + " support max fps:" + range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);	
+						
+						if ( findRange == null )
+						{
+							if ( defFPS <= range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX] )
+							{
+								findRange = range;
+								
+								Log.i(TAG, "Camera found appropriate fps, min fps:" + range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX]
+										+ " ,max fps:" + range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
+							}
+						}
+				}
+			}
+		}
+		
+		if ( findRange != null  )
+		{
+			parameters.setPreviewFpsRange(findRange[Camera.Parameters.PREVIEW_FPS_MIN_INDEX], findRange[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
+		}
+
+	}
 
 	private void initCamera(SurfaceHolder holder)//it will call when surfaceChanged
 	{  
@@ -325,11 +372,13 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			e.printStackTrace();
 			return;
 		}
-	
+			
 		parameters.setPreviewSize(videoWidth, videoHight);
 		parameters.setPictureFormat(PixelFormat.JPEG); 
 		parameters.setPreviewFormat(PixelFormat.YCbCr_420_SP); 
 		
+		SetCameraFPS(parameters);
+	
 		// 横竖屏镜头自动调整
         if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
             parameters.set("orientation", "portrait"); //
