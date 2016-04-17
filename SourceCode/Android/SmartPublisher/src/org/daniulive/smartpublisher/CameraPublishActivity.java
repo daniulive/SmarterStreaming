@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
+import android.content.Intent;
 
 import java.nio.ByteBuffer;
 import java.util.List;
@@ -55,6 +56,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private Spinner serverSelector;
 	private Spinner resolutionSelector;
+	private Spinner recoderSelector;
+	private Button  btnRecoderMgr;
 	private ImageView imgSwitchCamera;
 	private Button btnStartStop;
 	
@@ -87,6 +90,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private ByteBuffer videoByteBuffer = null;
 	
 	private int frameCount = 0;
+	
+	private String recDir = "/sdcard/daniulive/rec";
+	
+	private boolean is_need_local_recoder = false;
 	
     static {
         System.load("libSmartPublisher.so");
@@ -156,6 +163,43 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				
 			}
 		});
+        
+        
+        recoderSelector = (Spinner)findViewById(R.id.recoder_selctor);
+        
+        final String []recoderSel = new String[]{"本地不录像", "本地录像"};
+        ArrayAdapter<String> adapterRecoder = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, recoderSel);
+        
+        adapterRecoder.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        recoderSelector.setAdapter(adapterRecoder);
+        
+        recoderSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+						
+				Log.i(TAG, "Currently choosing: " + recoderSel[position]);
+				
+				if ( 1 == position )
+				{
+					is_need_local_recoder = true;
+				}
+				else
+				{
+					is_need_local_recoder = false;
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				
+			}
+		});
+        
+        btnRecoderMgr = (Button)findViewById(R.id.button_recoder_manage);
+        btnRecoderMgr.setOnClickListener(new ButtonRecoderMangerListener());
         
         textCurURL = (TextView)findViewById(R.id.txtCurURL);
         textCurURL.setText(printText);
@@ -253,6 +297,72 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
     
+    void ConfigRecoder()
+    {
+    	if ( libPublisher != null )
+    	{
+    		if ( is_need_local_recoder )
+    		{
+    			if ( recDir != null && !recDir.isEmpty() )
+        		{
+        			int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
+            		if ( 0 == ret )
+            		{
+            			if ( 0 != libPublisher.SmartPublisherSetRecoderDirectory(recDir) )
+            			{
+            				Log.e(TAG, "Set recoder dir failed , path:" + recDir);
+            				return;
+            			}
+            			
+            			if ( 0 != libPublisher.SmartPublisherSetRecoder(1) )
+            			{
+            				Log.e(TAG, "SmartPublisherSetRecoder failed.");
+            				return;
+            			}
+            			
+            			if ( 0 != libPublisher.SmartPublisherSetRecoderFileMaxSize(200) )
+            			{
+            				Log.e(TAG, "SmartPublisherSetRecoderFileMaxSize failed.");
+            				return;
+            			}
+            		
+            		}
+            		else
+            		{
+            			Log.e(TAG, "Create recoder dir failed, path:" + recDir);
+            		}
+        		}
+    		}
+    		else
+    		{
+    			if ( 0 != libPublisher.SmartPublisherSetRecoder(0) )
+    			{
+    				Log.e(TAG, "SmartPublisherSetRecoder failed.");
+    				return;
+    			}
+    		}
+    		
+    	}
+    }
+    
+    class ButtonRecoderMangerListener implements OnClickListener
+    {
+    	public  void onClick(View v)
+    	{
+    		if (mCamera != null )
+    		{
+    			mCamera.stopPreview();
+    			mCamera.release();
+    			mCamera = null;
+    		}
+    		
+    	      Intent intent = new Intent();
+              intent.setClass(CameraPublishActivity.this, RecoderManager.class);
+              intent.putExtra("RecoderDir", recDir);
+              startActivity(intent);
+    	}
+    }
+    
     class ButtonStartListener implements OnClickListener
     {
         public void onClick(View v)
@@ -260,8 +370,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	if (isStart)
         	{
         		stop();
+        		btnRecoderMgr.setEnabled(true);
         		return;
         	}
+        	
         	isStart = true;
         	btnStartStop.setText(" 停止推流 ");
         	Log.i(TAG, "onClick start..");        
@@ -276,10 +388,16 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			     textCurURL = (TextView)findViewById(R.id.txtCurURL);
 			     textCurURL.setText(printText);
 				
+			    ConfigRecoder(); 
+			     
             	int isStarted = libPublisher.SmartPublisherStartPublish(publishURL);
             	if(isStarted != 0)
             	{
             		Log.e(TAG, "Failed to publish stream..");
+            	}
+            	else
+            	{
+            		btnRecoderMgr.setEnabled(false);
             	}
 			}
 			
@@ -307,6 +425,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	@Override
     protected  void onDestroy(){
     	Log.i(TAG, "activity destory!");
+    	
+    	if ( isStart )
+    	{
+    		isStart = false;
+    		StopPublish();
+    		Log.i(TAG, "onDestroy StopPublish");
+    	}
+    	
     	super.onDestroy();
     	finish();
     	System.exit(0);
