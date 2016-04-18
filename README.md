@@ -56,7 +56,7 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 **1. 推流:**
 
-1.1 Windows端推流：
+**1.1 Windows端推流：**
 
 选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”（如需推送桌面，请使用SmartClientDeskDemo.exe，默认会采集PC屏幕左上角一块区域），进入系统后，左侧系推流端，右侧是播放端，推流依次点击:
 
@@ -68,19 +68,19 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 PushStream，如推流成功的话，会显示推流地址，如本URL对应的链接为：
 rtmp://daniulive.com:1935/hls/streamdaniulive.
 
-1.2 Android端推流：
+**1.2 Android端推流：**
 
 安装SmartPublisher， 进入系统后，会自动生成urlID, 如 rtmp://daniulive.com:1935/hls/stream123456, 对应的urlID即为 123456（stream后的数字），点击“开始推流”，推流过程中，可点击右上角“切换前后摄像头”图标；来切换视角进行采集；
 
-1.3 移动端边推送边录像：
+**1.3 移动端边推送边录像：**
 以Android推流端为例，“开始推流”之前，选择“本地录像”，然后点推流，推流结束后，会自动在本地录制推流音视频（mp4文件），并可到“录像管理”页面，查看本地录制文件，单击文件名，即可完成本地文件播放。
 
 **2 播放：**
 
-2.1 Windows播放：
+**2.1 Windows播放：**
 选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，右侧输入框输入 rtmp://daniulive.com:1935/hls/stream123456;， 然后依次点击 PlayerOpen-->StartPlay即可。
 
-2.2 SmartPlayer.apk(android)
+**2.2 SmartPlayer.apk(android为例)**
 进入系统后，点击“输入urlID”，在弹出的对话框输入"123456"(也就是分配的账号)，点击开始播放即可，停止的话，点击停止播放即可。
 
 2.3 Web播放
