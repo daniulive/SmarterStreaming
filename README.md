@@ -17,7 +17,8 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 5. iOS推流：iOS端实时采集（支持多分辨率采集、采集过程中，前后摄像头切换）；
 6. iOS播放器：iOS端实时播放（支持超低延迟播放多路直播视频）；
 7. 支持微信公众账号集成（RTMP输入，HLS播放）；
-8. 公网环境下，**毫秒级延迟**，支持云服务部署、各类厂商的CDN产品对接。
+8. 公网环境下，**毫秒级延迟**，支持云服务部署、各类厂商的CDN产品对接；
+9. 支持边推送边录像（如执法记录或移动单兵场景），网络中断仍可继续录制，结束后可本地回放，并可对接第三方云服务，把录像数据保存到云端服务器。
 
 **[基于RTMP安防摄像机平台对接]**
 
@@ -47,6 +48,9 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 3. iOS播放端：
 <img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="800" alt="iOS端播放RTMP摄像机数据" />
+
+4. 边推送边录像：
+<img src="http://daniulive.com:8080/files/image/localrecorder.JPG" width="800" alt="边推送边录像" />
 
 ## 使用说明 ##
 
