@@ -2,19 +2,18 @@
  * CameraPublishActivity.java
  * CameraPublishActivity
  * 
+ * Github: https://github.com/daniulive/SmarterStreaming
+ * 
  * Created by DaniuLive on 2015/09/20.
  * Copyright © 2014~2016 DaniuLive. All rights reserved.
  */
 
 package org.daniulive.smartpublisher;
 
-import java.io.IOException;
+import com.voiceengine.NTAudioRecord;	//for audio capture..
 
-import com.voiceengine.NTAudioRecord;
-
-import android.annotation.SuppressLint; //new api
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
 import android.graphics.PixelFormat;
@@ -27,6 +26,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
+import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,29 +34,28 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
 import android.content.Intent;
-
-import java.nio.ByteBuffer;
 import java.util.List;
-
-import android.util.Log;
+import java.io.IOException;
 
 
 @SuppressWarnings("deprecation")
 public class CameraPublishActivity extends Activity implements Callback, PreviewCallback 
 {
 	private static String TAG = "SmartPublisher";
+	
+	NTAudioRecord audioRecord_ = null;	//for audio capture
+	
 	private TextView textCurURL = null;
 	private SmartPublisherJni libPublisher = null;
 	
 	private Spinner serverSelector;
 	private Spinner resolutionSelector;
-	private Spinner recoderSelector;
+	private Spinner recorderSelector;
 	private Button  btnRecoderMgr;
 	private ImageView imgSwitchCamera;
 	private Button btnStartStop;
@@ -65,11 +64,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private SurfaceHolder mSurfaceHolder = null;  
     
     private Camera mCamera = null;  
-	private Context context;
 	private AutoFocusCallback myAutoFocusCallback = null;
 	
 	private boolean mPreviewRunning = false; 
-	NTAudioRecord audioRecord_ = null;
+
 	private boolean isStart = false;
 	
 	private String publishURL;
@@ -83,32 +81,26 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private static final int PORTRAIT = 1;	//竖屏
 	private static final int LANDSCAPE = 2;	//横屏
 	private int currentOrigentation = PORTRAIT;
-	    
-	private int videoWidth = 640;
-	private int videoHight = 480;
 	
-	private ByteBuffer videoByteBuffer = null;
+	private int curCameraIndex = -1;
+
+	private int videoWidth = 800;
+	private int videoHight = 480;
 	
 	private int frameCount = 0;
 	
-	private String recDir = "/sdcard/daniulive/rec";
+	private String recDir = "/sdcard/daniulive/rec";	//for recorder path
 	
-	private boolean is_need_local_recoder = false;
+	private boolean is_need_local_recorder = false;		// do not enable recorder in default
 	
     static {
         System.load("libSmartPublisher.so");
     }
-    
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) 
     {
         Log.i(TAG, "onCreate..");
-
-        //publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));   
-        //printText = printText + publishURL;
-        
-       // Log.i(TAG, printText);
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -165,16 +157,17 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		});
         
         
-        recoderSelector = (Spinner)findViewById(R.id.recoder_selctor);
+        //Recorder related settings
+        recorderSelector = (Spinner)findViewById(R.id.recoder_selctor);
         
         final String []recoderSel = new String[]{"本地不录像", "本地录像"};
         ArrayAdapter<String> adapterRecoder = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, recoderSel);
         
         adapterRecoder.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        recoderSelector.setAdapter(adapterRecoder);
+        recorderSelector.setAdapter(adapterRecoder);
         
-        recoderSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+        recorderSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
@@ -184,11 +177,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				
 				if ( 1 == position )
 				{
-					is_need_local_recoder = true;
+					is_need_local_recorder = true;
 				}
 				else
 				{
-					is_need_local_recoder = false;
+					is_need_local_recorder = false;
 				}
 			}
 
@@ -200,6 +193,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         
         btnRecoderMgr = (Button)findViewById(R.id.button_recoder_manage);
         btnRecoderMgr.setOnClickListener(new ButtonRecoderMangerListener());
+        //end
         
         textCurURL = (TextView)findViewById(R.id.txtCurURL);
         textCurURL.setText(printText);
@@ -242,7 +236,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         {    
         	Log.i(TAG, "Switch camera..");
         	 try {
-                 changeCamera();
+                 switchCamera();
              } catch (IOException e) {
                  // TODO Auto-generated catch block
                  e.printStackTrace();
@@ -256,7 +250,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	
     	switch(position) {
         case 0:
-        	videoWidth = 640;
+        	videoWidth = 800;
     		videoHight = 480;
             break;
         case 1:
@@ -272,14 +266,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		videoHight = 720;
             break;
         default:
-        	videoWidth = 640;
+        	videoWidth = 800;
     		videoHight = 480;
     	}
     	   	
     	mCamera.stopPreview();   
         initCamera(mSurfaceHolder);
-        
-        libPublisher.SmartPublisherInit(videoWidth, videoHight);
     }
     
     void CheckInitAudioRecorder()
@@ -287,7 +279,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	if ( audioRecord_ == null )
 		{
 			audioRecord_ = new NTAudioRecord(this, 1);
-			
 		}
 			
         if(audioRecord_ != null)
@@ -297,11 +288,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
     
-    void ConfigRecoder()
+    //Configure recorder related function.
+    void ConfigRecorderFuntion()
     {
     	if ( libPublisher != null )
     	{
-    		if ( is_need_local_recoder )
+    		if ( is_need_local_recorder )
     		{
     			if ( recDir != null && !recDir.isEmpty() )
         		{
@@ -357,7 +349,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		}
     		
     	      Intent intent = new Intent();
-              intent.setClass(CameraPublishActivity.this, RecoderManager.class);
+              intent.setClass(CameraPublishActivity.this, RecorderManager.class);
               intent.putExtra("RecoderDir", recDir);
               startActivity(intent);
     	}
@@ -380,16 +372,21 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             
 			if(libPublisher!=null)
 			{
-				 publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));   
-			     printText = "URL:" + publishURL;
+			    publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));   
+   
+			    printText = "URL:" + publishURL;
 			        
-			     Log.i(TAG, printText);
+			    Log.i(TAG, printText);
 			     
-			     textCurURL = (TextView)findViewById(R.id.txtCurURL);
-			     textCurURL.setText(printText);
+			    textCurURL = (TextView)findViewById(R.id.txtCurURL);
+			    textCurURL.setText(printText);
 				
-			    ConfigRecoder(); 
-			     
+			    ConfigRecorderFuntion(); 
+			    
+			    Log.i(TAG, "videoWidth: "+ videoWidth + " videoHight: " + videoHight);
+			    
+			    libPublisher.SmartPublisherInit(videoWidth, videoHight);
+			    
             	int isStarted = libPublisher.SmartPublisherStartPublish(publishURL);
             	if(isStarted != 0)
             	{
@@ -483,7 +480,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
 	}
 
-	private void initCamera(SurfaceHolder holder)//it will call when surfaceChanged
+	/*it will call when surfaceChanged*/
+	private void initCamera(SurfaceHolder holder)
 	{  
 		Log.i(TAG, "initCamera..");
 	
@@ -504,21 +502,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		parameters.setPreviewFormat(PixelFormat.YCbCr_420_SP); 
 		
 		SetCameraFPS(parameters);
-	
-		// 横竖屏镜头自动调整
-        if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            parameters.set("orientation", "portrait"); //
-            mCamera.setDisplayOrientation(90); // 在2.2以上可以使用
-        } else// 如果是横屏
-        {
-            parameters.set("orientation", "landscape");
-            mCamera.setDisplayOrientation(0); // 在2.2以上可以使用
-        }		
 		
+		setCameraDisplayOrientation(this, curCameraIndex, mCamera);
+        
 		mCamera.setParameters(parameters); 
-
+		
 		int bufferSize = (((videoWidth|0xf)+1) * videoHight * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat())) / 8;
-		//bufferSize += bufferSize / 20;
 		
 		mCamera.addCallbackBuffer(new byte[bufferSize]);
 		
@@ -543,11 +532,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		Log.i(TAG, "surfaceCreated..");
 		try {
 			
-	        int CammeraIndex=FindBackCamera();
+	        int CammeraIndex=findBackCamera();
 	        Log.i(TAG, "BackCamera: " + CammeraIndex);
 	       
 	        if(CammeraIndex==-1){  
-	            CammeraIndex=FindFrontCamera();
+	            CammeraIndex=findFrontCamera();
 	            currentCameraType = FRONT;
 	            imgSwitchCamera.setEnabled(false);
 	            if(CammeraIndex == -1)
@@ -582,22 +571,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		// TODO Auto-generated method stub
 		Log.i(TAG, "Surface Destroyed"); 
-		/*
-		if (mCamera != null) {  
-            mCamera.setPreviewCallback(null);  
-            mCamera.stopPreview();  
-            mPreviewRunning = false;  
-            mCamera.release();  
-            mCamera = null;  
-        }  
-		
-		if(audioRecord_ != null)
-        {
-			Log.i(TAG, "surfaceDestroyed, call StopRecording.."); 
-        	audioRecord_.StopRecording();
-        	audioRecord_ = null;
-        }
-        */
 	}
 	
 	public void onConfigurationChanged(Configuration newConfig) {  
@@ -617,8 +590,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
 	@Override
 	public void onPreviewFrame(byte[] data, Camera camera) {
-		// forward image data to JNI
-		
 		frameCount++;
 		if ( frameCount % 3000 == 0 )
 		{
@@ -631,18 +602,16 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			Parameters params = camera.getParameters();
 			Size size = params.getPreviewSize();
 			int bufferSize = (((size.width|0x1f)+1) * size.height * ImageFormat.getBitsPerPixel(params.getPreviewFormat())) / 8;
-			//bufferSize += bufferSize / 20;
 			camera.addCallbackBuffer(new byte[bufferSize]);
 		} 
-		else {
+		else 
+		{
 			if(isStart)
 			{
 				libPublisher.SmartPublisherOnCaptureVideoData(data, data.length, currentCameraType, currentOrigentation);	
 			}
 			camera.addCallbackBuffer(data);
 		}
-		
-		
 	} 
 	
     @SuppressLint("NewApi")
@@ -662,17 +631,19 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 backIndex = cameraIndex;
             }
         }
-        
+
         currentCameraType = type;
         if(type == FRONT && frontIndex != -1){
+        	curCameraIndex = frontIndex;
             return Camera.open(frontIndex);
         }else if(type == BACK && backIndex != -1){
+        	curCameraIndex = backIndex;
             return Camera.open(backIndex);
         }
         return null;
     }
 	
-	 private void changeCamera() throws IOException{
+	 private void switchCamera() throws IOException{
 		 	mCamera.stopPreview();
 		 	mCamera.release();
 	        if(currentCameraType == FRONT){
@@ -699,8 +670,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			 libPublisher.SmartPublisherStopPublish();
 		 }
 	 }
-	 
-	private int FindFrontCamera(){	
+	
+	//Check if it has front camera
+	private int findFrontCamera(){	
         int cameraCount = 0;
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         cameraCount = Camera.getNumberOfCameras(); 
@@ -713,7 +685,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     	return -1;
     }
-    private int FindBackCamera(){
+	
+	//Check if it has back camera
+    private int findBackCamera(){
         int cameraCount = 0;
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         cameraCount = Camera.getNumberOfCameras();
@@ -726,4 +700,38 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     	return -1;
     }
+    
+    private void setCameraDisplayOrientation (Activity activity, int cameraId, android.hardware.Camera camera) {  
+        android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();  
+        android.hardware.Camera.getCameraInfo (cameraId , info);  
+        int rotation = activity.getWindowManager ().getDefaultDisplay ().getRotation ();  
+        int degrees = 0;  
+        switch (rotation) {  
+            case Surface.ROTATION_0:  
+                degrees = 0;  
+                break;  
+            case Surface.ROTATION_90:  
+                degrees = 90;  
+                break;  
+            case Surface.ROTATION_180:  
+                degrees = 180;  
+                break;  
+            case Surface.ROTATION_270:  
+                degrees = 270;  
+                break;  
+        }  
+        int result;  
+        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {  
+            result = (info.orientation + degrees) % 360;  
+            result = (360 - result) % 360;  
+        } else {  
+            // back-facing  
+            result = ( info.orientation - degrees + 360) % 360;  
+        }  
+        
+    	Log.i(TAG, "curDegree: "+ result); 
+    	
+        camera.setDisplayOrientation (result);  
+    }  
+
 }

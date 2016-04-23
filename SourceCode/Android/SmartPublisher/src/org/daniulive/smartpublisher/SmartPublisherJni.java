@@ -2,12 +2,13 @@
  * SmartPublisherJni.java
  * SmartPublisherJni
  * 
+ * Github: https://github.com/daniulive/SmarterStreaming
+ * 
  * Created by DaniuLive on 2015/09/20.
  * Copyright 漏 2014~2016 DaniuLive. All rights reserved.
  */
-package org.daniulive.smartpublisher;
 
-import java.nio.ByteBuffer;
+package org.daniulive.smartpublisher;
 
 public class SmartPublisherJni {
 	
@@ -23,28 +24,35 @@ public class SmartPublisherJni {
     /**
      * Create file directory
      * 
+     * The interface is only used for recording the stream data to local side.
+     * 
      * @param path,  E.g: /sdcard/daniulive/rec
      * @return {0} if successful
      */
     public native int SmartPublisherCreateFileDirectory(String path);
     
     /**
-     * 设置是否录像
-     * @param isRecoder, 1:表示录像， 0：表示不录像. 默认不录像. 如果设置为1,在调用SmartPublisherStartPublish之前必须调用SmartPublisherSetRecoderDirectory, 设置一个有效的目录
+     * Set if recorder the stream to local file.
+     * 
+     * @param isRecorder: (0: do not recorder; 1: recorder)
+     * @param If set isRecorder with 1: Please make sure before call "SmartPublisherStartPublish", set a valid path via "SmartPublisherCreateFileDirectory".
+     * 
      * @return {0} if successful
      */
-    public native int SmartPublisherSetRecoder(int isRecoder);
+    public native int SmartPublisherSetRecoder(int isRecorder);
     
     /**
-     * 设置录像目录
-     * @param path, 录像文件存放目录，这个目录必须已经存在，如果不存在，则设置失败
+     * Set recorder directory.
+     * @param path: the directory of recorder file, NOTE make sure the path should be existed, or else the setting failed.
+     * 
      * @return {0} if successful
      */
     public native int SmartPublisherSetRecoderDirectory(String path);
     
     /**
-     * 设置单个录像文件最大文件大小。
-     *@param size, 单位是MB，最小5MB，最大500MB，如果超过范围则设置失败，默认是200MB
+     * Set the size of every recorded file. 
+     * 
+     * @param size: (MB), (5M~500M), if not in this range, set default size with 200MB.
      * @return {0} if successful
      */
     public native int SmartPublisherSetRecoderFileMaxSize(int size);
