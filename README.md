@@ -84,7 +84,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.2 SmartPlayer.apk(android为例)**
 
-进入系统后，点击“输入urlID”，在弹出的对话框输入"123456"(也就是分配的账号)，点击开始播放即可，停止的话，点击停止播放即可。
+进入系统后，点击“输入urlID”，在弹出的对话框输入url中，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击开始播放即可，停止的话，点击停止播放即可。
 
 **2.3 Web播放**
 
