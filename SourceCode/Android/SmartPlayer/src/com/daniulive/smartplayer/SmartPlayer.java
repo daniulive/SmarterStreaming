@@ -146,6 +146,7 @@ public class SmartPlayer extends Activity {
         txtCopyright.setText("Copyright 2014~2016 www.daniulive.com v1.0.16.0326");
         copyRightLinearLayout.addView(txtCopyright, 0);
         
+        
         /* PopInput button */
         btnPopInputText = new Button(this);
         btnPopInputText.setText("输入urlID");
@@ -158,6 +159,7 @@ public class SmartPlayer extends Activity {
         btnStartStopPlayback.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnStartStopPlayback, 1);
  
+       
         outLinearLayout.addView(lLinearLayout, 0);
         outLinearLayout.addView(copyRightLinearLayout, 1);
         fFrameLayout.addView(outLinearLayout, 1);
@@ -207,7 +209,10 @@ public class SmartPlayer extends Activity {
             	  {
             		  Log.i(TAG, "Start playback stream++");
  	              	  sufaceHandle =  SmartPlayerJni.SmartPlayerSetSurface(sSurfaceView); 
+            		  //sufaceHandle =  SmartPlayerJni.SmartPlayerSetSurface(null); 
  	            	
+ 	              	  SmartPlayerJni.SmartPlayerSetAudioOutputType(sufaceHandle, 0);
+ 	              	  
  	              	  if(playbackUrl == null){
  	              		 Log.e(TAG, "playback URL with NULL..."); 
  	              		 return;
@@ -234,6 +239,11 @@ public class SmartPlayer extends Activity {
     	
         if(sSurfaceView == null)
         {
+        	 /*
+             *  useOpenGLES2:
+             *  If with true: Check if system supports openGLES, if supported, it will choose openGLES.
+             *  If with false: it will set with default surfaceView;	
+             */
         	sSurfaceView = NTRenderer.CreateRenderer(this, true);
         }
         

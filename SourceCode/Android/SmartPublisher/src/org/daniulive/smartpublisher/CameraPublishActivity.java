@@ -300,19 +300,19 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         			int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
             		if ( 0 == ret )
             		{
-            			if ( 0 != libPublisher.SmartPublisherSetRecoderDirectory(recDir) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorderDirectory(recDir) )
             			{
             				Log.e(TAG, "Set recoder dir failed , path:" + recDir);
             				return;
             			}
             			
-            			if ( 0 != libPublisher.SmartPublisherSetRecoder(1) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorder(1) )
             			{
             				Log.e(TAG, "SmartPublisherSetRecoder failed.");
             				return;
             			}
             			
-            			if ( 0 != libPublisher.SmartPublisherSetRecoderFileMaxSize(200) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(200) )
             			{
             				Log.e(TAG, "SmartPublisherSetRecoderFileMaxSize failed.");
             				return;
@@ -327,7 +327,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		}
     		else
     		{
-    			if ( 0 != libPublisher.SmartPublisherSetRecoder(0) )
+    			if ( 0 != libPublisher.SmartPublisherSetRecorder(0) )
     			{
     				Log.e(TAG, "SmartPublisherSetRecoder failed.");
     				return;

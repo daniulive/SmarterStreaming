@@ -39,7 +39,7 @@ public class SmartPublisherJni {
      * 
      * @return {0} if successful
      */
-    public native int SmartPublisherSetRecoder(int isRecorder);
+    public native int SmartPublisherSetRecorder(int isRecorder);
     
     /**
      * Set recorder directory.
@@ -47,7 +47,7 @@ public class SmartPublisherJni {
      * 
      * @return {0} if successful
      */
-    public native int SmartPublisherSetRecoderDirectory(String path);
+    public native int SmartPublisherSetRecorderDirectory(String path);
     
     /**
      * Set the size of every recorded file. 
@@ -55,7 +55,7 @@ public class SmartPublisherJni {
      * @param size: (MB), (5M~500M), if not in this range, set default size with 200MB.
      * @return {0} if successful
      */
-    public native int SmartPublisherSetRecoderFileMaxSize(int size);
+    public native int SmartPublisherSetRecorderFileMaxSize(int size);
     
     
 	/**
