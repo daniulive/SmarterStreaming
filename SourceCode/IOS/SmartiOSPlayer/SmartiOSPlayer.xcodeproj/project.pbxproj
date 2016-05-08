@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		582F76391CD716F1002E8F64 /* btn_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76321CD716F1002E8F64 /* btn_selected@2x.png */; };
+		582F763A1CD716F1002E8F64 /* btn_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76331CD716F1002E8F64 /* btn_selected@3x.png */; };
+		582F763B1CD716F1002E8F64 /* btn_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76341CD716F1002E8F64 /* btn_unselected@2x.png */; };
+		582F763C1CD716F1002E8F64 /* btn_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76351CD716F1002E8F64 /* btn_unselected@3x.png */; };
+		582F763E1CD716F1002E8F64 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 582F76381CD716F1002E8F64 /* SettingView.m */; };
+		582F76401CD742AB002E8F64 /* start_playback.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F763F1CD742AB002E8F64 /* start_playback.png */; };
+		582FB8D21C885FD100CD6B44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 582FB8D11C885FD100CD6B44 /* main.m */; };
+		582FB8D51C885FD100CD6B44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 582FB8D41C885FD100CD6B44 /* AppDelegate.m */; };
+		582FB8D81C885FD100CD6B44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582FB8D71C885FD100CD6B44 /* ViewController.m */; };
+		582FB8DB1C885FD100CD6B44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582FB8D91C885FD100CD6B44 /* Main.storyboard */; };
+		582FB8DD1C885FD100CD6B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582FB8DC1C885FD100CD6B44 /* Assets.xcassets */; };
+		582FB8E01C885FD100CD6B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582FB8DE1C885FD100CD6B44 /* LaunchScreen.storyboard */; };
+		582FB8EE1C8869D800CD6B44 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8ED1C8869D800CD6B44 /* libiconv.tbd */; };
+		582FB8F01C8869FD00CD6B44 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */; };
+		582FB8F21C886A1600CD6B44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F11C886A1600CD6B44 /* UIKit.framework */; };
+		582FB8F41C886A2000CD6B44 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F31C886A2000CD6B44 /* GLKit.framework */; };
+		582FB8F61C886A2E00CD6B44 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F51C886A2E00CD6B44 /* OpenGLES.framework */; };
+		582FB8F81C886A3900CD6B44 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F71C886A3900CD6B44 /* AVFoundation.framework */; };
+		582FB8FA1C886A4500CD6B44 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F91C886A4500CD6B44 /* QuartzCore.framework */; };
+		582FB8FC1C886A5200CD6B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8FB1C886A5200CD6B44 /* AudioToolbox.framework */; };
+		582FB8FE1C886CE900CD6B44 /* libSmartPlayerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8FD1C886CE900CD6B44 /* libSmartPlayerSDK.a */; };
+		582FB9001C886D4F00CD6B44 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8FF1C886D4F00CD6B44 /* libbz2.1.0.tbd */; };
+		582FB9011C886D9000CD6B44 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8EB1C8869CB00CD6B44 /* libz.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		582F76321CD716F1002E8F64 /* btn_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_selected@2x.png"; sourceTree = "<group>"; };
+		582F76331CD716F1002E8F64 /* btn_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_selected@3x.png"; sourceTree = "<group>"; };
+		582F76341CD716F1002E8F64 /* btn_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@2x.png"; sourceTree = "<group>"; };
+		582F76351CD716F1002E8F64 /* btn_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@3x.png"; sourceTree = "<group>"; };
+		582F76371CD716F1002E8F64 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		582F76381CD716F1002E8F64 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		582F763F1CD742AB002E8F64 /* start_playback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_playback.png; sourceTree = "<group>"; };
+		582FB8CD1C885FD100CD6B44 /* SmartiOSPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartiOSPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		582FB8D11C885FD100CD6B44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		582FB8D31C885FD100CD6B44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		582FB8D41C885FD100CD6B44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		582FB8D61C885FD100CD6B44 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		582FB8D71C885FD100CD6B44 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		582FB8DA1C885FD100CD6B44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		582FB8DC1C885FD100CD6B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		582FB8DF1C885FD100CD6B44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		582FB8E11C885FD100CD6B44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		582FB8E71C88699A00CD6B44 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		582FB8EB1C8869CB00CD6B44 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		582FB8ED1C8869D800CD6B44 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		582FB8F11C886A1600CD6B44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		582FB8F31C886A2000CD6B44 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		582FB8F51C886A2E00CD6B44 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		582FB8F71C886A3900CD6B44 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		582FB8F91C886A4500CD6B44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		582FB8FB1C886A5200CD6B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		582FB8FD1C886CE900CD6B44 /* libSmartPlayerSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSmartPlayerSDK.a; path = SmartiOSPlayer/libSmartPlayerSDK.a; sourceTree = "<group>"; };
+		582FB8FF1C886D4F00CD6B44 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
+		58E3A61A1CA01EA900B4E78E /* SmartPlayerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartPlayerSDK.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		582FB8CA1C885FD100CD6B44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582FB9011C886D9000CD6B44 /* libz.tbd in Frameworks */,
+				582FB9001C886D4F00CD6B44 /* libbz2.1.0.tbd in Frameworks */,
+				582FB8FE1C886CE900CD6B44 /* libSmartPlayerSDK.a in Frameworks */,
+				582FB8FC1C886A5200CD6B44 /* AudioToolbox.framework in Frameworks */,
+				582FB8FA1C886A4500CD6B44 /* QuartzCore.framework in Frameworks */,
+				582FB8F81C886A3900CD6B44 /* AVFoundation.framework in Frameworks */,
+				582FB8F61C886A2E00CD6B44 /* OpenGLES.framework in Frameworks */,
+				582FB8F41C886A2000CD6B44 /* GLKit.framework in Frameworks */,
+				582FB8F21C886A1600CD6B44 /* UIKit.framework in Frameworks */,
+				582FB8F01C8869FD00CD6B44 /* libstdc++.tbd in Frameworks */,
+				582FB8EE1C8869D800CD6B44 /* libiconv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		582F76311CD716F1002E8F64 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				582F763F1CD742AB002E8F64 /* start_playback.png */,
+				582F76321CD716F1002E8F64 /* btn_selected@2x.png */,
+				582F76331CD716F1002E8F64 /* btn_selected@3x.png */,
+				582F76341CD716F1002E8F64 /* btn_unselected@2x.png */,
+				582F76351CD716F1002E8F64 /* btn_unselected@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		582FB8C41C885FD000CD6B44 = {
+			isa = PBXGroup;
+			children = (
+				582FB8FF1C886D4F00CD6B44 /* libbz2.1.0.tbd */,
+				582FB8FD1C886CE900CD6B44 /* libSmartPlayerSDK.a */,
+				582FB8FB1C886A5200CD6B44 /* AudioToolbox.framework */,
+				582FB8F91C886A4500CD6B44 /* QuartzCore.framework */,
+				582FB8F71C886A3900CD6B44 /* AVFoundation.framework */,
+				582FB8F51C886A2E00CD6B44 /* OpenGLES.framework */,
+				582FB8F31C886A2000CD6B44 /* GLKit.framework */,
+				582FB8F11C886A1600CD6B44 /* UIKit.framework */,
+				582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */,
+				582FB8ED1C8869D800CD6B44 /* libiconv.tbd */,
+				582FB8EB1C8869CB00CD6B44 /* libz.tbd */,
+				582FB8E71C88699A00CD6B44 /* libstdc++.6.tbd */,
+				582FB8CF1C885FD100CD6B44 /* SmartiOSPlayer */,
+				582FB8CE1C885FD100CD6B44 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		582FB8CE1C885FD100CD6B44 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				582FB8CD1C885FD100CD6B44 /* SmartiOSPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		582FB8CF1C885FD100CD6B44 /* SmartiOSPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				582F76311CD716F1002E8F64 /* images */,
+				582F76371CD716F1002E8F64 /* SettingView.h */,
+				582F76381CD716F1002E8F64 /* SettingView.m */,
+				58E3A61A1CA01EA900B4E78E /* SmartPlayerSDK.h */,
+				582FB8D31C885FD100CD6B44 /* AppDelegate.h */,
+				582FB8D41C885FD100CD6B44 /* AppDelegate.m */,
+				582FB8D61C885FD100CD6B44 /* ViewController.h */,
+				582FB8D71C885FD100CD6B44 /* ViewController.m */,
+				582FB8D91C885FD100CD6B44 /* Main.storyboard */,
+				582FB8DC1C885FD100CD6B44 /* Assets.xcassets */,
+				582FB8DE1C885FD100CD6B44 /* LaunchScreen.storyboard */,
+				582FB8E11C885FD100CD6B44 /* Info.plist */,
+				582FB8D01C885FD100CD6B44 /* Supporting Files */,
+			);
+			path = SmartiOSPlayer;
+			sourceTree = "<group>";
+		};
+		582FB8D01C885FD100CD6B44 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				582FB8D11C885FD100CD6B44 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		582FB8CC1C885FD100CD6B44 /* SmartiOSPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 582FB8E41C885FD100CD6B44 /* Build configuration list for PBXNativeTarget "SmartiOSPlayer" */;
+			buildPhases = (
+				582FB8C91C885FD100CD6B44 /* Sources */,
+				582FB8CA1C885FD100CD6B44 /* Frameworks */,
+				582FB8CB1C885FD100CD6B44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartiOSPlayer;
+			productName = SmartiOSPlayer;
+			productReference = 582FB8CD1C885FD100CD6B44 /* SmartiOSPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		582FB8C51C885FD100CD6B44 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = daniulive;
+				TargetAttributes = {
+					582FB8CC1C885FD100CD6B44 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 582FB8C81C885FD100CD6B44 /* Build configuration list for PBXProject "SmartiOSPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 582FB8C41C885FD000CD6B44;
+			productRefGroup = 582FB8CE1C885FD100CD6B44 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				582FB8CC1C885FD100CD6B44 /* SmartiOSPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		582FB8CB1C885FD100CD6B44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582F76391CD716F1002E8F64 /* btn_selected@2x.png in Resources */,
+				582F76401CD742AB002E8F64 /* start_playback.png in Resources */,
+				582F763B1CD716F1002E8F64 /* btn_unselected@2x.png in Resources */,
+				582FB8E01C885FD100CD6B44 /* LaunchScreen.storyboard in Resources */,
+				582F763A1CD716F1002E8F64 /* btn_selected@3x.png in Resources */,
+				582F763C1CD716F1002E8F64 /* btn_unselected@3x.png in Resources */,
+				582FB8DD1C885FD100CD6B44 /* Assets.xcassets in Resources */,
+				582FB8DB1C885FD100CD6B44 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		582FB8C91C885FD100CD6B44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582FB8D81C885FD100CD6B44 /* ViewController.m in Sources */,
+				582F763E1CD716F1002E8F64 /* SettingView.m in Sources */,
+				582FB8D51C885FD100CD6B44 /* AppDelegate.m in Sources */,
+				582FB8D21C885FD100CD6B44 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		582FB8D91C885FD100CD6B44 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				582FB8DA1C885FD100CD6B44 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		582FB8DE1C885FD100CD6B44 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				582FB8DF1C885FD100CD6B44 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		582FB8E21C885FD100CD6B44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 arm64";
+			};
+			name = Debug;
+		};
+		582FB8E31C885FD100CD6B44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 arm64";
+			};
+			name = Release;
+		};
+		582FB8E51C885FD100CD6B44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				INFOPLIST_FILE = SmartiOSPlayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartiOSPlayer",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPlayer;
+				PRODUCT_NAME = SmartiOSPlayer;
+				VALID_ARCHS = "armv7 arm64";
+			};
+			name = Debug;
+		};
+		582FB8E61C885FD100CD6B44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				INFOPLIST_FILE = SmartiOSPlayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartiOSPlayer",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPlayer;
+				PRODUCT_NAME = SmartiOSPlayer;
+				VALID_ARCHS = "armv7 arm64";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		582FB8C81C885FD100CD6B44 /* Build configuration list for PBXProject "SmartiOSPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				582FB8E21C885FD100CD6B44 /* Debug */,
+				582FB8E31C885FD100CD6B44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		582FB8E41C885FD100CD6B44 /* Build configuration list for PBXNativeTarget "SmartiOSPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				582FB8E51C885FD100CD6B44 /* Debug */,
+				582FB8E61C885FD100CD6B44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 582FB8C51C885FD100CD6B44 /* Project object */;
+}
