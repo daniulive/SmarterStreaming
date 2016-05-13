@@ -95,8 +95,6 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 6. 停止推流，点击“停止”；
 7. 点击“返回”按钮，返回到主页面，可重新选择分辨率。
 
-安装SmartPublisher， 进入系统后，会自动生成urlID, 如 rtmp://daniulive.com:1935/hls/stream123456, 对应的urlID即为 123456（stream后的数字），点击“开始推流”，推流过程中，可点击右上角“切换前后摄像头”图标；来切换视角进行采集；
-
 **2 播放：**
 
 **2.1 Windows端播放：**
