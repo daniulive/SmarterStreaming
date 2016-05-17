@@ -1,6 +1,6 @@
 # SmarterStreaming
 
-SmarterStreaming, which is an excellence cross-platform Live Streaming publisher/playback SDK, based on RTMP protocol, developed by daniulive.
+SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP protocol, developed by daniulive.
 
 Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
 
