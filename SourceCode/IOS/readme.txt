@@ -1,2 +1,4 @@
-1¡¢±àÒëÊ±ÕÒ²»µ½ libSmartPlayerSDK.a Ê±£¬ÇëÏÈµ½ SmartiOSPlayer/SmartiOSPlayer Ä¿Â¼, ½âÑ¹libSmartPlayerSDK.zip.
-2¡¢±àÒëÊ±ÕÒ²»µ½ libSmartPublisherSDK.a Ê±£¬ÇëÏÈµ½ SmartiOSPublisher/SmartiOSPublisher/libs Ä¿Â¼, ½âÑ¹libSmartPublisherSDK.zip.
+1. ç¼–è¯‘æ—¶æ‰¾ä¸åˆ° libSmartPlayerSDK.a æ—¶ï¼Œè¯·å…ˆåˆ° SmartiOSPlayer/SmartiOSPlayer ç›®å½•, è§£å‹libSmartPlayerSDK.zip.
+2. ç¼–è¯‘æ—¶æ‰¾ä¸åˆ° libSmartPublisherSDK.a æ—¶ï¼Œè¯·å…ˆåˆ° SmartiOSPublisher/SmartiOSPublisher/libs ç›®å½•, è§£å‹libSmartPublisherSDK.zip.
+
+iOS éœ€çœŸæœºè°ƒè¯•ã€‚
