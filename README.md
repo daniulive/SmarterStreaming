@@ -8,7 +8,7 @@ For commercial support, please contact 89030985@qq.com.
 
 <img src="http://daniulive.com:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
 
-SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台视频采集、直播SDK（支持私有协议和RTMP推流，如windows推流/android推流/iOS推流/windows播放/android播放/iOS播放），公网毫秒级延迟，也许是国内最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
+SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台视频采集、直播SDK（支持私有协议和RTMP推流，如windows推流/android推流/iOS推流/windows播放器/android播放器/iOS播放器），公网毫秒级延迟，也许是国内最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
 
 **[一对一实时音视频互动]**
 
@@ -56,13 +56,13 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 <img src="http://daniulive.com:8080/files/image/IOSPublisher.JPG" width="800" alt="iOS采集，跨平台播放" />
 
 ## RTMP摄像机对接 ##
-**1. Windows播放端：**
+**1. Windows播放器：**
 <img src="http://daniulive.com:8080/files/image/windowscameradisplayer.JPG" width="800" alt="RTMP摄像机播放" />
 
-**2. Android播放端：**
+**2. Android播放器：**
 <img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="800" alt="android端播放RTMP摄像机数据" />
 
-**3. iOS播放端：**
+**3. iOS播放器：**
 <img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="800" alt="iOS端播放RTMP摄像机数据" />
 
 **4. 边推送边录像：**
@@ -72,7 +72,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 **1. 推流:**
 
-**1.1 Windows端推流：**
+**1.1 Windows推流：**
 
 选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”（如需推送桌面，请使用SmartClientDeskDemo.exe，默认会采集PC屏幕左上角一块区域），进入系统后，左侧系推流端，右侧是播放端，推流依次点击:
 
@@ -84,7 +84,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 PushStream，如推流成功的话，会显示推流地址，如本URL对应的链接为：
 rtmp://daniulive.com:1935/hls/streamdaniulive.
 
-**1.2 Android端推流：**
+**1.2 Android推流：**
 
 安装SmartPublisher， 进入系统后，会自动生成urlID, 如 rtmp://daniulive.com:1935/hls/stream123456, 对应的urlID即为 123456（stream后的数字），点击“开始推流”，推流过程中，可点击右上角“切换前后摄像头”图标；来切换视角进行采集；
 
@@ -92,7 +92,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 以Android推流端为例，“开始推流”之前，选择“本地录像”，然后点推流，推流结束后，会自动在本地录制推流音视频（mp4文件），并可到“录像管理”页面，查看本地录制文件，单击文件名，即可完成本地文件播放。
 
-**1.4 iOS端推流：**
+**1.4 iOS推流：**
 
 1. 安装SmartPublisher.ipa
 2. 进入主页面，选择推流分辨率（流畅 标清 高清）；
@@ -104,19 +104,19 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2 播放：**
 
-**2.1 Windows端播放：**
+**2.1 Windows播放器：**
 
 选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，右侧输入框输入 rtmp://daniulive.com:1935/hls/stream123456;， 然后依次点击 PlayerOpen-->StartPlay即可。
 
-**2.2 android端播放**
+**2.2 android播放器**
 
 进入系统后，点击“输入urlID”，在弹出的对话框输入url中，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击开始播放即可，停止的话，点击停止播放即可。
 
-**2.3 iOS端播放**
+**2.3 iOS播放器**
 
 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放。
 
-**2.4 Web播放**
+**2.4 Web播放器**
 
 http://daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
