@@ -59,7 +59,12 @@
     NSString* sdkVersion = [_player SmartPlayerGetSDKVersionID];
     NSLog(@"sdk version:%@",sdkVersion);
     
-    [_player SmartPlayerInitPlayer];
+    NSInteger initRet = [_player SmartPlayerInitPlayer];
+    if ( initRet != DANIULIVE_RETURN_OK )
+    {
+        NSLog(@"SmartPlayerSDK call SmartPlayerInitPlayer failed, ret=%ld", (long)initRet);
+        return;
+    }
     
     _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:0 width:screenWidth height:screenHeight]);
     
