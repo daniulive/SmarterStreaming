@@ -1,64 +1,96 @@
+/*
+ * SmartPlayerJni.java
+ * SmartPlayerJni
+ * 
+ * Github: https://github.com/daniulive/SmarterStreaming
+ * 
+ * Created by DaniuLive on 2015/09/26.
+ * Copyright 漏 2014~2016 DaniuLive. All rights reserved.
+ */
+
 package com.daniulive.smartplayer;
+
+import com.eventhandle.SmartEventCallback;
 
 public class SmartPlayerJni {	
 	 /**
-	 * Initialized with width and height.
+	 * Initialize Player.
 	 *
 	 * @param ctx: get by this.getApplicationContext()
-	 * @param width
-	 * @param height
 	 *
 	 * <pre>This function must be called firstly.</pre>
 	 *
-	 * @return {0} if successful
+	 * @return player handle if successful, if return 0, which means init failed. 
 	 */
 	 
-	 public static native int SmartPlayerInit(Object ctx, int width, int height);
+	 public native long SmartPlayerInit(Object ctx);
 	  	
+	 /**
+	  * Set callback event
+	  * 
+	  * @param callback function
+	  * 
+	  * @return {0} if successful
+	  */
+	 public native int SetSmartPlayerEventCallback(long handle, SmartEventCallback callback);
+	 
 	 /**
 	 * Set Surface view.
 	 *
-	 * @param glSurface: surface view, 如果不设置glSurface的话，将只播放音频
+	 * @param handle: return value from SmartPlayerInit()
 	 *
-	 * @return player handle if successful
+	 * @param glSurface: surface view
+	 * 
+	 * <pre> NOTE: if not set or set glSurface with null, it will playback audio only. </pre> 
+	 *
+	 * @return {0} if successful
 	 */
-	 public static native long SmartPlayerSetSurface(Object glSurface);
-	 
-	 
+	 public native int SmartPlayerSetSurface(long handle, Object glSurface);
+	
+
 	 /**
 	  * Set AudioOutput Type
-	  * @param handle: return value from SmartPlayerSetSurface()
-	  * @param use_audiotrack: use_audiotrack 设置为0,将自动选择输出设备, 设置为1的话，将使用AudioTrack.
-	  * @return
+	  * 
+	  * @param handle: return value from SmartPlayerInit()
+	  * 
+	  * @param use_audiotrack: 
+	  * 
+	  * <pre> NOTE: if use_audiotrack with 0: it will use auto-select output devices; if with 1: will use audiotrack mode. </pre> 
+	  * 
+	 * @return {0} if successful
 	  */
-	 public static native int SmartPlayerSetAudioOutputType(long handle, int use_audiotrack);	
+	 public native int SmartPlayerSetAudioOutputType(long handle, int use_audiotrack);	
 	  	  	
 	 /**
 	 * Set playback orientation.
 	 *
-	 * @param handle: return value from SmartPlayerSetSurface()
+	 * @param handle: return value from SmartPlayerInit()
+	 * 
 	 * @param surOrg: current orientation,  PORTRAIT 1, LANDSCAPE with 2
 	 *
 	 * @return {0} if successful
 	 */
-	 public static native int SmartPlayerSetOrientation(long handle, int surOrg);
+	 public native int SmartPlayerSetOrientation(long handle, int surOrg);
 		  	
 	 /**
 	 * Start playback stream
 	 *
-	 * @param handle: return value from SmartPlayerSetSurface()
+	 * @param handle: return value from SmartPlayerInit()
+	 * 
 	 * @param uri: playback uri
 	 *
 	 * @return {0} if successful
 	 */
-	 public static native int SmartPlayerStartPlayback(long handle, String uri);
+	 public native int SmartPlayerStartPlayback(long handle, String uri);
 		  	
 	 /**
-	 * Close the player instance.
+	 * Close player instance.
 	 *
-	 * @param handle: return value from SmartPlayerSetSurface()
+	 * @param handle: return value from SmartPlayerInit()
+	 * 
+	 * <pre> NOTE: it could not use player handle after call this function. </pre> 
 	 *
 	 * @return {0} if successful
 	 */
-	 public static native int SmartPlayerClose(long handle);
+	 public native int SmartPlayerClose(long handle);
 }

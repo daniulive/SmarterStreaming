@@ -8,7 +8,9 @@
  * Copyright © 2014~2016 DaniuLive. All rights reserved.
  */
 
-package org.daniulive.smartpublisher;
+package com.daniulive.smartpublisher;
+
+import org.daniulive.smartpublisher.R;
 
 import android.app.Activity;
 import android.content.Intent;

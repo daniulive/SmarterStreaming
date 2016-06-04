@@ -8,7 +8,7 @@
  * Copyright © 2014~2016 DaniuLive. All rights reserved.
  */
 
-package org.daniulive.smartpublisher;
+package com.daniulive.smartpublisher;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,14 +19,18 @@ import android.content.Intent;
 import android.widget.Button;
 
 import java.io.File;
+
 import android.widget.ListView;
 
 import java.util.ArrayList;  
 
 import android.widget.AdapterView;
 import android.widget.SimpleAdapter;
+
 import java.util.Map;  
 import java.util.HashMap;
+
+import org.daniulive.smartpublisher.R;
 
 import  android.widget.AdapterView.OnItemClickListener;
 

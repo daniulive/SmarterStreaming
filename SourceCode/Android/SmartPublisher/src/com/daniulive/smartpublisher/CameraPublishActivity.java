@@ -8,8 +8,9 @@
  * Copyright © 2014~2016 DaniuLive. All rights reserved.
  */
 
-package org.daniulive.smartpublisher;
+package com.daniulive.smartpublisher;
 
+import com.eventhandle.SmartEventCallback;
 import com.voiceengine.NTAudioRecord;	//for audio capture..
 
 import android.annotation.SuppressLint;
@@ -38,9 +39,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
+import android.content.Context;
 import android.content.Intent;
+
 import java.util.List;
 import java.io.IOException;
+
+import org.daniulive.smartpublisher.R;
 
 
 @SuppressWarnings("deprecation")
@@ -51,6 +56,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	NTAudioRecord audioRecord_ = null;	//for audio capture
 	
 	private TextView textCurURL = null;
+	
 	private SmartPublisherJni libPublisher = null;
 	
 	private Spinner serverSelector;
@@ -74,14 +80,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	final private String baseURL = "rtmp://daniulive.com:1935/hls/stream";
 	
 	private String printText = "URL:";
-	
+	private String txt = "当前状态";
+		
 	private static final int FRONT = 1;		//前置摄像头标记
 	private static final int BACK = 2;		//后置摄像头标记
 	private int currentCameraType = BACK;	//当前打开的摄像头标记
 	private static final int PORTRAIT = 1;	//竖屏
 	private static final int LANDSCAPE = 2;	//横屏
 	private int currentOrigentation = PORTRAIT;
-	
 	private int curCameraIndex = -1;
 
 	private int videoWidth = 800;
@@ -93,6 +99,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private boolean is_need_local_recorder = false;		// do not enable recorder in default
 	
+    private Context myContext; 
+	
+    private int isAudioOnly = 0;	//if set with 1, it will publish audio only.
+    
     static {
         System.load("libSmartPublisher.so");
     }
@@ -104,6 +114,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        myContext = this.getApplicationContext();
+        
         serverSelector = (Spinner)findViewById(R.id.serverSelctor);
         final String []servers = new String[]{"电信", "移动", "CDN"};
         ArrayAdapter<String> adapterServer = new ArrayAdapter<String>(this,
@@ -147,7 +160,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				Log.i(TAG, "Currently choosing: " + resolutionSel[position]);
 				
 				SwitchResolution(position);
-				
+		
 			}
 
 			@Override
@@ -192,7 +205,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		});
         
         btnRecoderMgr = (Button)findViewById(R.id.button_recoder_manage);
-        btnRecoderMgr.setOnClickListener(new ButtonRecoderMangerListener());
+        btnRecoderMgr.setOnClickListener(new ButtonRecorderMangerListener());
         //end
         
         textCurURL = (TextView)findViewById(R.id.txtCurURL);
@@ -337,7 +350,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	}
     }
     
-    class ButtonRecoderMangerListener implements OnClickListener
+    class ButtonRecorderMangerListener implements OnClickListener
     {
     	public  void onClick(View v)
     	{
@@ -353,6 +366,46 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
               intent.putExtra("RecoderDir", recDir);
               startActivity(intent);
     	}
+    }
+    
+    class EventHande implements SmartEventCallback
+    {
+    	 @Override
+    	 public void onCallback(int code, long param1, long param2, String param3, String param4, Object param5){
+             switch (code) {
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_STARTED:
+                	 txt = "开始。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTING:
+                	 txt = "连接中。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTION_FAILED:
+                	 txt = "连接失败。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTED:
+                	 txt = "连接成功。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_DISCONNECTED:
+                	 txt = "连接断开。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_STOP:
+                	 txt =  "关闭。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_RECORDER_START_NEW_FILE:
+                	 Log.i(TAG, "开始一个新的录像文件 : " + param3);
+                	 txt = "开始一个新的录像文件。。";
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_ONE_RECORDER_FILE_FINISHED:
+                	 Log.i(TAG, "已生成一个录像文件 : " + param3);
+                	 txt = "已生成一个录像文件。。";
+                     break;
+             }
+             
+             String str = "当前回调状态：" + txt;
+                          
+             Log.i(TAG, str);
+             
+         }
     }
     
     class ButtonStartListener implements OnClickListener
@@ -372,8 +425,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             
 			if(libPublisher!=null)
 			{
-			    publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));   
-   
+			    publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));  	
+			    
 			    printText = "URL:" + publishURL;
 			        
 			    Log.i(TAG, printText);
@@ -384,10 +437,19 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    ConfigRecorderFuntion(); 
 			    
 			    Log.i(TAG, "videoWidth: "+ videoWidth + " videoHight: " + videoHight);
+			    			    
+			    libPublisher.SmartPublisherInit(myContext, isAudioOnly, videoWidth, videoHight);
 			    
-			    libPublisher.SmartPublisherInit(videoWidth, videoHight);
+			    libPublisher.SetSmartPublisherEventCallback(new EventHande()); 
 			    
-            	int isStarted = libPublisher.SmartPublisherStartPublish(publishURL);
+			    // IF not set url or url is empty, it will not publish stream
+			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
+			    if ( libPublisher.SmartPublisherSetURL(publishURL) != 0 )
+			    {
+			    	Log.e(TAG, "Failed to set publish stream URL..");
+			    }
+			    
+            	int isStarted = libPublisher.SmartPublisherStart();
             	if(isStarted != 0)
             	{
             		Log.e(TAG, "Failed to publish stream..");
@@ -578,11 +640,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             super.onConfigurationChanged(newConfig);  
         	Log.i(TAG, "onConfigurationChanged, start:" + isStart);
             if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) { 
-            	if(!isStart)
-            		currentOrigentation = LANDSCAPE;
+            	if(!isStart) {
+				}
             } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            	if(!isStart)
-            		currentOrigentation = PORTRAIT;
+            	if(!isStart) {
+				}
             }  
         } catch (Exception ex) {  
         }  
@@ -667,7 +729,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
          
 		 if ( libPublisher != null )
 		 {
-			 libPublisher.SmartPublisherStopPublish();
+			 libPublisher.SmartPublisherStop();
 		 }
 	 }
 	
