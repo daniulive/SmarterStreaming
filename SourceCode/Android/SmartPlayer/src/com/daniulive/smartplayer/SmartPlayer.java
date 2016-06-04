@@ -18,17 +18,20 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.eventhandle.SmartEventCallback;
 import com.videoengine.*;
 
 public class SmartPlayer extends Activity {
 	    
     private SurfaceView sSurfaceView = null;   
 	
-	private long sufaceHandle = 0;
+	private long playerHandle = 0;
 	
 	private static final int PORTRAIT = 1;		//竖屏
 	private static final int LANDSCAPE = 2;		//横屏
 	private static final String TAG = "SmartPlayer";
+	
+	private SmartPlayerJni libPlayer = null;
 	
 	private int currentOrigentation = PORTRAIT;
 	
@@ -55,18 +58,10 @@ public class SmartPlayer extends Activity {
         
       Log.i(TAG, "Run into OnCreate++");
       
-      int screenWidth = getWindowManager().getDefaultDisplay().getWidth();  
-      int screenHeight = getWindowManager().getDefaultDisplay().getHeight();  
-      
-      Log.i(TAG, "screenWidth: " + screenWidth + ", screenHeight: " + screenHeight);
-      
+      libPlayer = new SmartPlayerJni();
+         
       myContext = this.getApplicationContext();
-	    
-	  int iInitRet = SmartPlayerJni.SmartPlayerInit(myContext, screenWidth, screenHeight); 
-	    
-	  if(iInitRet != 0)
-	   	return;
-	    
+
 	  boolean bViewCreated = CreateView();
 	    
 	   if(bViewCreated){
@@ -200,40 +195,90 @@ public class SmartPlayer extends Activity {
                 	  Log.i(TAG, "Stop playback stream++");
             		  btnStartStopPlayback.setText("开始播放 ");
             		  btnPopInputText.setEnabled(true);
-            		  SmartPlayerJni.SmartPlayerClose(sufaceHandle);	
-                      sufaceHandle = 0;
+            		  libPlayer.SmartPlayerClose(playerHandle);	
+            		  playerHandle = 0;
             		  isPlaybackViewStarted = false;
                       Log.i(TAG, "Stop playback stream--");
             	  }
             	  else
             	  {
             		  Log.i(TAG, "Start playback stream++");
- 	              	  sufaceHandle =  SmartPlayerJni.SmartPlayerSetSurface(sSurfaceView); 
-            		  //sufaceHandle =  SmartPlayerJni.SmartPlayerSetSurface(null); 
- 	            	
- 	              	  SmartPlayerJni.SmartPlayerSetAudioOutputType(sufaceHandle, 0);
- 	              	  
- 	              	  if(playbackUrl == null){
- 	              		 Log.e(TAG, "playback URL with NULL..."); 
- 	              		 return;
- 	              	  }
- 	              	  
- 	              	  int iPlaybackRet = SmartPlayerJni.SmartPlayerStartPlayback(sufaceHandle, playbackUrl);
- 	                  if(iPlaybackRet != 0)
- 	                  {
- 	                	 Log.e(TAG, "StartPlayback strem failed.."); 
- 	                	 return;
- 	                  }
-   	
-            		  btnStartStopPlayback.setText("停止播放 ");
- 	                  btnPopInputText.setEnabled(false);
- 	              	  isPlaybackViewStarted = true;
- 	              	  Log.i(TAG, "Start playback stream--");
-            	  }
-              	}
+            		  
+            		  playerHandle = libPlayer.SmartPlayerInit(myContext);
+            	      
+            	      if(playerHandle == 0)
+            	      {
+            	    	  Log.e(TAG, "surfaceHandle with nil..");
+            	    	  return;
+            	      }
+            		  
+					  libPlayer.SetSmartPlayerEventCallback(playerHandle, new EventHande());
+					              	      
+            	      libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView); 	//if set the second param with null, it means it will playback audio only..
+            		  
+            	      //libPlayer.SmartPlayerSetSurface(surfaceHandle, null);    
+ 	              	 
+            	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
+
+         	      
+	              	  if(playbackUrl == null){
+	              		 Log.e(TAG, "playback URL with NULL..."); 
+	              		 return;
+	              	  }
+	              	  
+	              	  int iPlaybackRet = libPlayer.SmartPlayerStartPlayback(playerHandle, playbackUrl);
+	              	  
+	              	  //int iPlaybackRet = libPlayer.SmartPlayerStartPlayback(surfaceHandle, strAudioOnlyURL);
+	              	  
+	                  if(iPlaybackRet != 0)
+	                  {
+	                	 Log.e(TAG, "StartPlayback strem failed.."); 
+	                	 return;
+	                  }
+	
+	        		  btnStartStopPlayback.setText("停止播放 ");
+	                  btnPopInputText.setEnabled(false);
+	              	  isPlaybackViewStarted = true;
+	              	  Log.i(TAG, "Start playback stream--");
+	        	  }
+	          	}
               });
 	}
 	
+    
+    class EventHande implements SmartEventCallback
+    {
+    	 @Override
+    	 public void onCallback(int code, long param1, long param2, String param3, String param4, Object param5){
+             switch (code) {
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_STARTED:
+                     Log.i(TAG, "开始。。");
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_CONNECTING:
+                     Log.i(TAG, "连接中。。");
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_CONNECTION_FAILED:
+                     Log.i(TAG, "连接失败。。");
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_CONNECTED:
+                     Log.i(TAG, "连接成功。。");
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_DISCONNECTED:
+                     Log.i(TAG, "连接断开。。");
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_STOP:
+                     Log.i(TAG, "关闭。。");
+                     break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_RESOLUTION_INFO:
+                	 Log.i(TAG, "分辨率信息: width: " + param1 + ", height: " + param2);
+                	 break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_NO_MEDIADATA_RECEIVED:
+                	 Log.i(TAG, "收不到媒体数据，可能是url错误。。");
+             }
+            // Log.i(TAG, "onCallback end..");
+    	 }
+    }
+    
     /* Create rendering */
     private boolean CreateView() {
     	
@@ -294,7 +339,7 @@ public class SmartPlayer extends Activity {
             if(!isPlaybackViewStarted)
             	return;
             
-            SmartPlayerJni.SmartPlayerSetOrientation(sufaceHandle, currentOrigentation);
+            libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
 
             Log.i(TAG, "Run out of onConfigurationChanged--");
     }
@@ -304,10 +349,10 @@ public class SmartPlayer extends Activity {
 	{
 		Log.i(TAG, "Run into activity destory++");   	
     	
-		if(sufaceHandle!=0)
+		if(playerHandle!=0)
 		{
-			SmartPlayerJni.SmartPlayerClose(sufaceHandle);	
-			sufaceHandle = 0;
+			libPlayer.SmartPlayerClose(playerHandle);	
+			playerHandle = 0;
 		}
 		super.onDestroy();
     	finish();

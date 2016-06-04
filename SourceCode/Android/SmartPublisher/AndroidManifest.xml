@@ -26,7 +26,7 @@
         android:theme="@style/AppTheme" 
         android:largeHeap="true">
         <activity
-            android:name="org.daniulive.smartpublisher.CameraPublishActivity"
+            android:name="com.daniulive.smartpublisher.CameraPublishActivity"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize|keyboardHidden" >
 
@@ -38,14 +38,14 @@
         </activity>
         
           <activity
-            android:name="org.daniulive.smartpublisher.RecorderManager"
+            android:name="com.daniulive.smartpublisher.RecorderManager"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize|keyboardHidden" >
 
         </activity>
         
         <activity
-            android:name="org.daniulive.smartpublisher.RecorderPlayback"
+            android:name="com.daniulive.smartpublisher.RecorderPlayback"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize|keyboardHidden"
              android:screenOrientation="portrait"
