@@ -8,7 +8,7 @@ For commercial support, please contact 89030985@qq.com.
 
 <img src="http://218.25.89.108:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
 
-SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台视频采集、直播SDK（支持私有协议和RTMP推流，如windows推流/android推流/iOS推流/windows播放器/android播放器/iOS播放器），公网毫秒级延迟，也许是国内最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
+SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台视频采集、直播SDK（支持私有协议/RTMP推流播放/纯音频推流播放/边推流边录像，如windows推流/android推流/iOS推流/windows播放器/android播放器/iOS播放器），公网毫秒级延迟，也许是国内最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
 
 **[SmarterStreaming SDK调用说明]**
 
@@ -48,8 +48,9 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 1. 高并发，分布式部署，支持rtmp摄像机和采集设备完美对接，提供代建服务器或整套软硬件服务器方案；
 2. 高性能的流媒体服务器，标准rtmp输入，多种方式流输出（rtmp/hls），并同步保存采集端数据；
-3. 点播服务器：满足录像文件点播需求；
-4. 数据库服务器：媒体数据管理等。
+3. 支持鉴权认证、各种信息展示；
+4. 点播服务器：满足录像文件点播需求；
+5. 数据库服务器：媒体数据管理等。
 
 **SmarterStreaming SDK库可供个人学习之用，企业及商用需要经过授权**；
 
@@ -61,17 +62,32 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 <img src="http://daniulive.com:8080/files/image/IOSPublisher.JPG" width="800" alt="iOS采集，跨平台播放" />
 
 ## RTMP摄像机对接 ##
+
 **1. Windows播放器：**
-<img src="http://daniulive.com:8080/files/image/windowscameradisplayer.JPG" width="800" alt="RTMP摄像机播放" />
+
+<img src="http://daniulive.com:8080/files/image/windowscameradisplayer.JPG" width="600" alt="RTMP摄像机播放" />
 
 **2. Android播放器：**
-<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="800" alt="android端播放RTMP摄像机数据" />
+
+<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="600" alt="android端播放RTMP摄像机数据" />
 
 **3. iOS播放器：**
-<img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="800" alt="iOS端播放RTMP摄像机数据" />
 
-**4. 边推送边录像：**
-<img src="http://daniulive.com:8080/files/image/localrecorder.JPG" width="800" alt="边推送边录像" />
+<img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="600" alt="iOS端播放RTMP摄像机数据" />
+
+## android推流端/iOS推流端 ##
+
+**1. android边推送边录像(支持纯音频推送和播放)：**
+
+<img src="http://daniulive.com:8080/files/image/localrecorder.JPG" width="600" alt="android边推送边录像" />
+
+**2. iOS边推送边录像(支持纯音频推送和播放)：**
+
+<img src="http://daniulive.com:8080/files/image/iOSPublisher_Recorder.JPG" width="600" alt="iOS边推送边录像" />
+
+**3. iOS录像管理：**
+
+<img src="http://daniulive.com:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
 
 ## 使用说明 ##
 
@@ -93,19 +109,29 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 安装SmartPublisher， 进入系统后，会自动生成urlID, 如 rtmp://daniulive.com:1935/hls/stream123456, 对应的urlID即为 123456（stream后的数字），点击“开始推流”，推流过程中，可点击右上角“切换前后摄像头”图标；来切换视角进行采集；
 
-**1.3 移动端边推送边录像：**
+**1.3 Android端边推流边录像：**
 
-以Android推流端为例，“开始推流”之前，选择“本地录像”，然后点推流，推流结束后，会自动在本地录制推流音视频（mp4文件），并可到“录像管理”页面，查看本地录制文件，单击文件名，即可完成本地文件播放。
+1. [录像相关]“开始推流”之前，选择“本地录像”；
+2. [录像相关]点击“开始推流”，推流结束后，会自动在本地录制推流音视频（mp4文件）；
+3. [录像相关]进入“录像管理”页面，查看本地录制文件，单击文件名，即可完成本地文件播放。
 
 **1.4 iOS推流：**
 
 1. 安装SmartPublisher.ipa
 2. 进入主页面，选择推流分辨率（流畅 标清 高清）；
-3. 进入推流页面；
-4. 点击“推流”，会自动生成推流地址，如“rtmp://daniulive.com:1935/hls/stream888888”；
-5. 推流过程中，可以点击按钮“前置”、“后置”切换前后置摄像头；
-6. 停止推流，点击“停止”；
-7. 点击“返回”按钮，返回到主页面，可重新选择分辨率。
+3. 设置推送音视频还是纯音频（音视频 纯音频）；
+4. [录像相关]设置推流过程中，是否录像（不录像 边推边录）；
+5. 进入推流页面；
+6. 点击“推流”，会自动生成推流地址，如“rtmp://daniulive.com:1935/hls/stream888888”；
+7. 推流过程中，可以点击按钮“前置”、“后置”切换前后置摄像头；
+8. 停止推流，点击“停止”；
+9. 点击“返回”按钮，返回到主页面，可重新选择分辨率。
+ 
+**1.5 iOS端边推流边录像：** 
+1. [录像相关]设置推流过程中，是否录像（不录像 边推边录）；
+2. [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
+3. [录像相关]点击“删除全部文件”，可删除本地录制的所有文件；
+4. [录像相关]回放过程中，点击“暂停”，进入播放暂停状态，点击“恢复”继续播放；
 
 **2 播放：**
 
@@ -120,6 +146,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 **2.3 iOS播放器**
 
 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放。
+如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态。
 
 **2.4 Web播放器**
 
