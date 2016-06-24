@@ -13,9 +13,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "SmartPublisherSDK.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<SmartPublisherDelegate>
 
-- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality;
+- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality isAudioOnly:(Boolean)isAudioOnly isRecorder:(Boolean)isRecorder;
 
 @end
 

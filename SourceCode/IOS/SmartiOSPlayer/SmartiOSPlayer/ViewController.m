@@ -8,7 +8,6 @@
 //  Copyright © 2016年 daniulive. All rights reserved.
 
 #import "ViewController.h"
-#import "SmartPlayerSDK.h"
 #import "SettingView.h"
 
 @interface ViewController ()
@@ -18,14 +17,56 @@
 @implementation ViewController
 {
     NSString        *_streamUrl;
+    Boolean         is_half_screen_;
     SmartPlayerSDK  * _player;
     UIView          * _glView;
     NSString        *copyRights;
     UILabel         *textModeLabel;             //文字提示
     UIButton        *backSettingsButton;        //返回按钮
+    Boolean         is_audio_only_;
 }
 
-- (instancetype)initParameter:(NSString*)url
+- (NSInteger) handleSmartPlayerEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
+{
+    if (nID == EVENT_DANIULIVE_ERC_PLAYER_STARTED) {
+        NSLog(@"[event]开始播放..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_CONNECTING)
+    {
+        NSLog(@"[event]连接中..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_CONNECTION_FAILED)
+    {
+        NSLog(@"[event]连接失败..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_CONNECTED)
+    {
+        NSLog(@"[event]已连接..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_DISCONNECTED)
+    {
+        NSLog(@"[event]断开连接..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_STOP)
+    {
+        NSLog(@"[event]停止播放..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_RESOLUTION_INFO)
+    {
+        NSLog(@"[event]视频解码分辨率信息..width:%llu, height:%llu", param1, param2);
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_NO_MEDIADATA_RECEIVED)
+    {
+        NSLog(@"[event]收不到RTMP数据..");
+    }
+    else
+        NSLog(@"[event]nID:%lx", (long)nID);
+    
+    return 0;
+}
+
+
+- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly
 {
     self = [super init];
     if (!self) {
@@ -33,6 +74,8 @@
     }
     else if(self) {
         _streamUrl = url;
+        is_half_screen_ = isHalfScreenVal;
+        is_audio_only_ = isAudioOnly;
     }
     
     return self;
@@ -40,10 +83,15 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.0502";
+    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.0610";
     //当前屏幕宽高
     NSInteger screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     NSInteger screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
+    
+    NSInteger playerHeight = screenHeight;
+    
+    if ( is_half_screen_ )
+        playerHeight = screenWidth*3/4;
     
     NSLog(@"screenWidth:%ld, screenHeight:%ld",(long)screenWidth, (long)screenHeight);
     
@@ -56,6 +104,11 @@
         return;
     }
     
+    if (_player.delegate == nil)
+    {
+        _player.delegate = self;
+    }
+    
     NSString* sdkVersion = [_player SmartPlayerGetSDKVersionID];
     NSLog(@"sdk version:%@",sdkVersion);
     
@@ -66,16 +119,22 @@
         return;
     }
     
-    _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:0 width:screenWidth height:screenHeight]);
-    
-    if (_glView == nil ) {
-        NSLog(@"createPlayView failed..");
-        return;
+    if (is_audio_only_) {
+        [_player SmartPlayerSetPlayView:nil];
     }
-    
-    [self.view addSubview:_glView];
-    
-    [_player SmartPlayerSetPlayView:(__bridge void *)(_glView)];
+    else
+    {
+        _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:0 width:screenWidth height:playerHeight]);
+        
+        if (_glView == nil ) {
+            NSLog(@"createPlayView failed..");
+            return;
+        }
+        
+        [self.view addSubview:_glView];
+        
+        [_player SmartPlayerSetPlayView:(__bridge void *)(_glView)];
+    }
     
     if (_streamUrl.length == 0) {
         NSLog(@"_streamUrl with nil..");
@@ -134,10 +193,12 @@
         _player = nil;
     }
     
-    if (_glView != nil) {
-        [_glView removeFromSuperview];
-        [SmartPlayerSDK SmartPlayeReleasePlayView:(__bridge void *)(_glView)];
-        _glView = nil;
+    if (!is_audio_only_) {
+        if (_glView != nil) {
+            [_glView removeFromSuperview];
+            [SmartPlayerSDK SmartPlayeReleasePlayView:(__bridge void *)(_glView)];
+            _glView = nil;
+        }
     }
     
     //返回设置分辨率页面

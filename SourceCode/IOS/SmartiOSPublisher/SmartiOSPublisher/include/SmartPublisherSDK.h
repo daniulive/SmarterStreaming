@@ -12,6 +12,11 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import "nt_event_define.h"
+
+//设置协议
+@protocol SmartPublisherDelegate;
+
 /**
  *  错误返回值
  */
@@ -41,13 +46,44 @@ typedef enum DNCameraPosition{
 
 @interface SmartPublisherSDK : NSObject
 
+//Event callback
+@property(atomic, assign) id<SmartPublisherDelegate> delegate;
+
 /**
  * 初始化Publisher
  * <pre>此接口请第一个调用</pre>
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherInit;
+- (NSInteger)SmartPublisherInit:(Boolean)isAudioOnly;
+
+/**
+ * 录像相关：
+ *
+ * 是否边推流边本地存储
+ * <pre>isRecorder: (0: 不录像；1: 录像)</pre>
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetRecorder:(Boolean)isRecorder;
+
+/**
+ * 录像相关：
+ *
+ * <pre>path: 录像文件存放目录</pre>
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetRecorderDirectory:(NSString*)path;
+
+/**
+ * 录像相关：
+ *
+ * <pre>size: 每个录像文件的大小 (5~500M), 默认200M</pre>
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetRecorderFileMaxSize:(NSInteger)size;
 
 /**
  * 设置video preview
@@ -99,7 +135,16 @@ typedef enum DNCameraPosition{
 /**
  *  获取当前sdk的版本号
  */
--(NSString*) getSDKVersionID;
+-(NSString*) SmartPublisherGetSDKVersionID;
 
+@end
+
+@protocol SmartPublisherDelegate <NSObject>
+
+/**
+ * Event callback handling.
+ */
+
+- (NSInteger) handleSmartPublisherEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
 
 @end
