@@ -12,7 +12,7 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 **[SmarterStreaming SDK调用说明]**
 
-[点击查看](http://daniulive.com:8080/files/SDK/SmarterStreamingSDK调用说明.pdf)
+[点击查看](http://daniulive.com:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
 
 **[一对一实时音视频互动]**
 
