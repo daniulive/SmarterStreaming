@@ -12,7 +12,7 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 **[SmarterStreaming SDK调用说明]**
 
-[点击查看](http://daniulive.com:8080/files/SDK/SmarterStreamingSDK调用说明.pdf)
+[点击查看](http://daniulive.com:8080/files/SDK/SmarterStreamingSDK调用说明1.1.pdf)
 
 **[一对一实时音视频互动]**
 
@@ -70,8 +70,14 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 **3. iOS播放器：**
 <img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="800" alt="iOS端播放RTMP摄像机数据" />
 
-**4. 边推送边录像：**
-<img src="http://daniulive.com:8080/files/image/localrecorder.JPG" width="800" alt="边推送边录像" />
+**4. android边推送边录像(支持纯音频推送和播放)：**
+<img src="http://daniulive.com:8080/files/image/localrecorder.JPG" width="800" alt="android边推送边录像" />
+
+**5. iOS边推送边录像(支持纯音频推送和播放)：**
+<img src="http://daniulive.com:8080/files/image/iOSPublisher_Recorder.JPG" width="800" alt="iOS边推送边录像" />
+
+**6. iOS边录像管理：**
+<img src="http://daniulive.com:8080/files/image/iOS_recorder.JPG" width="800" alt="iOS边录像管理" />
 
 ## 使用说明 ##
 
