@@ -2,13 +2,15 @@
 //  SmartPlayerSDK.h
 //  SmartPlayerSDK
 //
-//  GitHub: https://github.com/daniulive/SmarterStreaming
-//
-//  Created by DaniuLive on 2016/01/03.
-//  Copyright © 2016年 DaniuLive. All rights reserved.
+//  Created by daniuLive on 2016/01/03.
+//  Copyright © 2016年 daniuLive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "nt_event_define.h"
+
+//设置协议
+@protocol SmartPlayerDelegate;
 
 /**
  *  错误返回值
@@ -21,6 +23,8 @@ typedef enum DNErrorCode{
 
 @interface SmartPlayerSDK : NSObject
 
+//Event callback
+@property(atomic, assign) id<SmartPlayerDelegate> delegate;
 
 /**
  * 初始化，创建player实例
@@ -91,5 +95,14 @@ typedef enum DNErrorCode{
  */
 -(NSString*) SmartPlayerGetSDKVersionID;
 
+@end
+
+@protocol SmartPlayerDelegate <NSObject>
+
+/**
+ * Event callback handling.
+ */
+
+- (NSInteger) handleSmartPlayerEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
 
 @end

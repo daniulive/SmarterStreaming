@@ -14,11 +14,10 @@
 
 @interface ViewController () <UITableViewDelegate, UINavigationControllerDelegate>
 
-//相机预览视图
+//预览视图
 @property (nonatomic, strong) UIView *localPreview;
 
-
-//直播SDK API
+//推流SDK API
 @property (nonatomic,strong) SmartPublisherSDK *mediaCapture;
 
 - (void)swapCameraBtnPressed:(id)sender;
@@ -36,11 +35,52 @@
     NSInteger   randNumber;
     DNVideoStreamingQuality videoQuality;   //分辨率选择
     NSString    *copyRights;
+    Boolean     is_audio_only;              //如果为true，则只推送音频
+    Boolean     is_recorder;                //默认不录像，如果设为true，则录像
 }
 
 @synthesize localPreview;
 
-- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality
+- (NSInteger) handleSmartPublisherEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
+{
+    if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_STARTED) {
+        NSLog(@"[event]开始推流..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTING)
+    {
+        NSLog(@"[event]连接中..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTION_FAILED)
+    {
+        NSLog(@"[event]连接失败..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTED)
+    {
+        NSLog(@"[event]已连接..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_DISCONNECTED)
+    {
+        NSLog(@"[event]断开连接..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_STOP)
+    {
+        NSLog(@"[event]停止推流..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_RECORDER_START_NEW_FILE)
+    {
+        NSLog(@"[event]录像写入新文件..文件名: %@", param3);
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_ONE_RECORDER_FILE_FINISHED)
+    {
+        NSLog(@"[event]一个录像文件完成..文件名: %@", param3);
+    }
+    else
+        NSLog(@"[event]nID:%lx", (long)nID);
+    
+    return 0;
+}
+
+- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality isAudioOnly:(Boolean)isAudioOnly isRecorder:(Boolean)isRecorder
 {
     self = [super init];
     if (!self) {
@@ -48,16 +88,18 @@
     }
     else if(self) {
         videoQuality = streamQuality;
+        is_audio_only = isAudioOnly;
+        is_recorder   = isRecorder;
     }
     
-    NSLog(@"[initParameter]videoQuality: %u",videoQuality);
+    NSLog(@"[initParameter]videoQuality: %u, is_audio_only: %d, is_recorder: %d",videoQuality, is_audio_only, is_recorder);
     
     return self;
 }
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.0505";
+    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.0623";
     //当前屏幕宽高
     CGFloat screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     CGFloat screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
@@ -71,32 +113,86 @@
         return;
     }
     
-    if([_mediaCapture SmartPublisherInit] != DANIULIVE_RETURN_OK){
+    if(_mediaCapture.delegate == nil)
+    {
+        _mediaCapture.delegate = self;
+    }
+    
+    if([_mediaCapture SmartPublisherInit:is_audio_only] != DANIULIVE_RETURN_OK){
         NSLog(@"Call SmartPublisherInit failed..");
         //[_mediaCapture release];
         _mediaCapture = nil;
         return;
     }
     
-    self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-    
-    if([_mediaCapture SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK){
-        NSLog(@"Call SmartPublisherSetVideoPreview failed..");
-        [_mediaCapture SmartPublisherUnInit];
-        //[_mediaCapture release];
+    //录像控制
+    if([_mediaCapture SmartPublisherSetRecorder:is_recorder] != DANIULIVE_RETURN_OK){
+        NSLog(@"Call SmartPublisherSetRecorder failed..");
         _mediaCapture = nil;
         return;
     }
+    
+    if (is_recorder)
+    {
+        //设置录像目录
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *recorderDir = [paths objectAtIndex:0];
+        
+        if([_mediaCapture SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK){
+            NSLog(@"Call SmartPublisherInit failed..");
+            _mediaCapture = nil;
+            return;
+        }
+        
+        //每个录像文件大小
+        NSInteger size = 200;
+        if([_mediaCapture SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK){
+            NSLog(@"Call SmartPublisherInit failed..");
+            _mediaCapture = nil;
+            return;
+        }
+    }
+    
+    if(!is_audio_only)
+    {
+        self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+        
+        if([_mediaCapture SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK){
+            NSLog(@"Call SmartPublisherSetVideoPreview failed..");
+            [_mediaCapture SmartPublisherUnInit];
+            _mediaCapture = nil;
+            return;
+        }
+    }
+    else
+    {
+        self.localPreview = nil;
+        
+        if([_mediaCapture SmartPublisherSetVideoPreview:nil] != DANIULIVE_RETURN_OK){
+            NSLog(@"Call SmartPublisherSetVideoPreview failed..");
+            [_mediaCapture SmartPublisherUnInit];
+            _mediaCapture = nil;
+            return;
+        }
 
+    }
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+    
+    NSLog(@" docDir: %@", docDir);
+    
     if([_mediaCapture SmartPublisherStartCapture:videoQuality] != DANIULIVE_RETURN_OK){
         NSLog(@"Call SmartPublisherStartCapture failed..");
         [_mediaCapture SmartPublisherUnInit];
-        //[_mediaCapture release];
         _mediaCapture = nil;
         return;
     }
     
-    [self.view addSubview:self.localPreview];
+    if (!is_audio_only)
+    {
+        [self.view addSubview:self.localPreview];
+    }
     
     swapCamerasButton = [UIButton buttonWithType:UIButtonTypeCustom];
     swapCamerasButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 60, 60);
@@ -176,7 +272,7 @@
         return;
     }
 
-    NSString* sdkVersion = [_mediaCapture getSDKVersionID];
+    NSString* sdkVersion = [_mediaCapture SmartPublisherGetSDKVersionID];
     NSLog(@"sdk version:%@",sdkVersion);
 }
 
@@ -276,7 +372,7 @@
             NSLog(@"Call SmartPublisherStartPublish failed..ret:%ld", (long)ret);
             
             if (ret == DANIULIVE_RETURN_SDK_EXPIRED) {
-                textModeLabel.text = @"推流失败，返回 DANIULIVE_RETURN_SDK_EXPIRED，请联系daniulive（QQ：413229569）授权";
+                textModeLabel.text = @"推流失败，返回 DANIULIVE_RETURN_SDK_EXPIRED，请联系daniulive（QQ：89030985 or 2679481035）授权";
             }
             else
             {
@@ -311,7 +407,7 @@
     {
         [_mediaCapture SmartPublisherStopCaputure];
         [_mediaCapture SmartPublisherUnInit];
-        //[_mediaCapture release];
+        _mediaCapture.delegate = nil;
         _mediaCapture = nil;
     }
     
