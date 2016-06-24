@@ -64,23 +64,29 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 ## RTMP摄像机对接 ##
 
 **1. Windows播放器：**
+
 <img src="http://daniulive.com:8080/files/image/windowscameradisplayer.JPG" width="600" alt="RTMP摄像机播放" />
 
 **2. Android播放器：**
+
 <img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="600" alt="android端播放RTMP摄像机数据" />
 
 **3. iOS播放器：**
+
 <img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="600" alt="iOS端播放RTMP摄像机数据" />
 
 ## android推流端/iOS推流端 ##
 
 **1. android边推送边录像(支持纯音频推送和播放)：**
+
 <img src="http://daniulive.com:8080/files/image/localrecorder.JPG" width="600" alt="android边推送边录像" />
 
 **2. iOS边推送边录像(支持纯音频推送和播放)：**
+
 <img src="http://daniulive.com:8080/files/image/iOSPublisher_Recorder.JPG" width="600" alt="iOS边推送边录像" />
 
 **3. iOS录像管理：**
+
 <img src="http://daniulive.com:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
 
 ## 使用说明 ##
@@ -103,9 +109,11 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 安装SmartPublisher， 进入系统后，会自动生成urlID, 如 rtmp://daniulive.com:1935/hls/stream123456, 对应的urlID即为 123456（stream后的数字），点击“开始推流”，推流过程中，可点击右上角“切换前后摄像头”图标；来切换视角进行采集；
 
-**1.3 移动端边推送边录像：**
+**1.3 Android端边推流边录像：**
 
-以Android推流端为例，“开始推流”之前，选择“本地录像”，然后点推流，推流结束后，会自动在本地录制推流音视频（mp4文件），并可到“录像管理”页面，查看本地录制文件，单击文件名，即可完成本地文件播放。
+1. [录像相关]“开始推流”之前，选择“本地录像”；
+2. [录像相关]点击“开始推流”，推流结束后，会自动在本地录制推流音视频（mp4文件）；
+3. [录像相关]进入“录像管理”页面，查看本地录制文件，单击文件名，即可完成本地文件播放。
 
 **1.4 iOS推流：**
 
@@ -118,9 +126,12 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 7. 推流过程中，可以点击按钮“前置”、“后置”切换前后置摄像头；
 8. 停止推流，点击“停止”；
 9. 点击“返回”按钮，返回到主页面，可重新选择分辨率。
-10. [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
-11. [录像相关]点击“删除全部文件”，可删除本地录制的所有文件；
-12. [录像相关]回放过程中，点击“暂停”，进入播放暂停状态，点击“恢复”继续播放；
+ 
+**1.5 iOS端边推流边录像：** 
+1. [录像相关]设置推流过程中，是否录像（不录像 边推边录）；
+2. [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
+3. [录像相关]点击“删除全部文件”，可删除本地录制的所有文件；
+4. [录像相关]回放过程中，点击“暂停”，进入播放暂停状态，点击“恢复”继续播放；
 
 **2 播放：**
 
