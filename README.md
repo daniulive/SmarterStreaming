@@ -156,16 +156,16 @@ http://daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 **[上层源码目录]**
 
-1. android SmartPublisher
+1. android推流 SmartPublisher
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPublisher
 
-2. android SmartPlayer:
+2. android播放器 SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPlayer
 
-3. iOS SmartPublisher:
+3. iOS推流 SmartPublisher:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisher
 
-4. iOS SmartPlayer:
+4. iOS播放器 SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayer
 
 **[iOS编译注意事项]**
