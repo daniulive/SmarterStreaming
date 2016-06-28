@@ -154,6 +154,27 @@ http://daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 在输入框中，清除老的url，输入推流的url，如 rtmp://daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
 
+**[上层源码目录]**
+
+1. android SmartPublisher
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPublisher
+
+2. android SmartPlayer:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPlayer
+
+3. iOS SmartPublisher
+
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisher
+
+4. iOS SmartPlayer
+
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayer
+
+**[iOS编译注意事项]**
+
+1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
+2. 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
+3. iOS 需真机调试。
 
 ## 获取更多信息 ##
 
