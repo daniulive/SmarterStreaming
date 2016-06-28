@@ -83,11 +83,11 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 **2. iOS边推送边录像(支持纯音频推送和播放)：**
 
-<img src="http://daniulive.com:8080/files/image/iOSPublisher_Recorder.JPG" width="600" height="800" alt="iOS边推送边录像" />
+<img src="http://daniulive.com:8080/files/image/iOSPublisher_Recorder.png" width="600" alt="iOS边推送边录像" />
 
 **3. iOS录像管理：**
 
-<img src="http://daniulive.com:8080/files/image/iOS_recorder.JPG" width="600" height="800" alt="iOS录像管理" />
+<img src="http://daniulive.com:8080/files/image/iOS_recorder.png" width="600" alt="iOS录像管理" />
 
 ## 使用说明 ##
 
