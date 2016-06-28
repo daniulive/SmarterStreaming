@@ -162,12 +162,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/Sma
 2. android SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPlayer
 
-3. iOS SmartPublisher
-
+3. iOS SmartPublisher:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisher
 
-4. iOS SmartPlayer
-
+4. iOS SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayer
 
 **[iOS编译注意事项]**
