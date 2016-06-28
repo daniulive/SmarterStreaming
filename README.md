@@ -69,7 +69,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 **2. Android播放器：**
 
-<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="600" alt="android端播放RTMP摄像机数据" />
+<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="800" alt="android端播放RTMP摄像机数据" />
 
 **3. iOS播放器：**
 
