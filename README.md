@@ -58,7 +58,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 <img src="http://daniulive.com:8080/files/image/AndroidPublisher.JPG" width="800" alt="Android采集，跨平台播放" />
 
-<img src="http://daniulive.com:8080/files/image/IOSPublisher.JPG" width="800" alt="iOS采集，跨平台播放" />
+<img src="http://daniulive.com:8080/files/image/IOSPublisher.png" width="800" alt="iOS采集，跨平台播放" />
 
 ## RTMP摄像机对接 ##
 
