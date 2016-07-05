@@ -24,14 +24,17 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性好的SDK，适用于秀场直播、在线教育、应急指挥、可视化购物、远程专家指挥系统、企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播等场景。
 
 1. windows推流
+
  a)摄像头采集；
  b)屏幕采集。
 
 2. windows播放器
+
  a)基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe）；
  b)基于flash控件开发的web播放器。
 
 3. android推流/iOS推流
+
  a)多分辨率选择；
  b)支持横竖屏推送；
  c)音视频推送或纯音频推送；
@@ -43,11 +46,13 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
  i)支持各个厂家CDN完美对接。
 
 4. android播放器/iOS播放器
+
  a)超低延迟播放rtmp直播流；
  b)完美支持多实例播放（同时播放多路）；
  c)支持自定义播放布局。
 
 5. 微信播放
+
  a)支持android设备rtmp/hls播放；
  b)支持iOS设备hls播放；
  c)支持公众号集成。
