@@ -26,7 +26,6 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 1. windows推流
 
  a)摄像头采集；
- 
  b)屏幕采集。
 
 2. windows播放器
