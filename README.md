@@ -14,6 +14,8 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 [点击查看](http://daniulive.com:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
 
+**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(大牛直播技术交流群)：499687479 查看群共享文件**
+
 **[一对一实时音视频互动]**
 
 1. 基于P2P或流媒体转发的一对一音视频互动产品；
