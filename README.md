@@ -231,6 +231,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 商务合作：QQ：89030985 
 技术支持：QQ: 2679481035
 
-QQ群(大牛直播技术交流群)：499687479
+QQ群(大牛直播技术交流群1)：499687479
 
 <img src="http://daniulive.com:8080/files/image/erweima.png" width="302" alt="QQ交流群" />
+
+QQ群(大牛直播技术交流群2 精英群)：294891451
+
+<img src="http://daniulive.com:8080/files/image/erweima2.png" width="302" alt="QQ交流群" />
