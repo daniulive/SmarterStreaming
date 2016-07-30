@@ -10,11 +10,13 @@
 
 package com.daniulive.smartpublisher;
 
+import com.daniulive.smartpublisher.SmartPublisherJni.WATERMARK;
 import com.eventhandle.SmartEventCallback;
 import com.voiceengine.NTAudioRecord;	//for audio capture..
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
 import android.graphics.PixelFormat;
@@ -41,9 +43,18 @@ import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import java.io.ByteArrayOutputStream;
 
+import java.util.Arrays;
 import java.util.List;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+
+
+
 
 import org.daniulive.smartpublisher.R;
 
@@ -59,9 +70,33 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private SmartPublisherJni libPublisher = null;
 	
-	private Spinner serverSelector;
+	/* 推送类型选择
+	 * 0: 音视频
+	 * 1: 纯音频
+	 * 2: 纯视频
+	 * */
+	private Spinner pushTypeSelector;
+	private int pushType = 0;
+	
+	/* 水印类型选择
+	 * 0: 图片水印
+	 * 1: 全部水印
+	 * 2: 文字水印
+	 * 3: 不加水印
+	 * */
+	private Spinner watermarkSelctor;
+	private int watemarkType = 0;
+	
+	/* 推流分辨率选择
+	 * 0: 640*480
+	 * 1: 320*240
+	 * 2: 176*144
+	 * 3: 1280*720
+	 * */
 	private Spinner resolutionSelector;
+
 	private Spinner recorderSelector;
+	
 	private Button  btnRecoderMgr;
 	private ImageView imgSwitchCamera;
 	private Button btnStartStop;
@@ -76,9 +111,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
 	private boolean isStart = false;
 	
+	final private String logoPath = "/sdcard/daniulivelogo.png";
+	private boolean isWritelogoFileSuccess = false;
+	
 	private String publishURL;
 	final private String baseURL = "rtmp://daniulive.com:1935/hls/stream";
-	
+
 	private String printText = "URL:";
 	private String txt = "当前状态";
 		
@@ -90,7 +128,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private int currentOrigentation = PORTRAIT;
 	private int curCameraIndex = -1;
 
-	private int videoWidth = 800;
+	private int videoWidth = 640;
 	private int videoHight = 480;
 	
 	private int frameCount = 0;
@@ -100,13 +138,26 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private boolean is_need_local_recorder = false;		// do not enable recorder in default
 	
     private Context myContext; 
-	
-    private int isAudioOnly = 0;	//if set with 1, it will publish audio only.
     
     static {
         System.load("libSmartPublisher.so");
     }
-	
+    
+    private byte[] ReadAssetFileDataToByte(InputStream in) throws IOException
+    {
+        ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
+        int c = 0;
+        
+        while ( (c = in.read()) != -1 )
+        {
+            bytestream.write(c);
+        }
+       
+        byte bytedata[] = bytestream.toByteArray();
+        bytestream.close();
+        return bytedata;
+    }
+    
 	@Override
     public void onCreate(Bundle savedInstanceState) 
     {
@@ -117,19 +168,56 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
         myContext = this.getApplicationContext();
         
-        serverSelector = (Spinner)findViewById(R.id.serverSelctor);
-        final String []servers = new String[]{"电信", "移动", "CDN"};
-        ArrayAdapter<String> adapterServer = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, servers);
-        adapterServer.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        serverSelector.setAdapter(adapterServer);
+        try 
+        {
+        	
+         InputStream logo_input_stream = getClass().getResourceAsStream("/assets/logo.png");	
+         
+         byte[] logo_data = ReadAssetFileDataToByte(logo_input_stream);
+        
+         if ( logo_data != null )
+         {
+        	 try {  
+                 FileOutputStream out = new FileOutputStream(logoPath);
+                 out.write(logo_data);
+                 out.close();                   
+                 isWritelogoFileSuccess = true;
+             } catch (Exception e) 
+        	 {  
+                 e.printStackTrace();  
+                 Log.e(TAG, "write logo file to /sdcard/ failed");
+             }
+         }
+              
+        } catch(Exception e)
+        {
+        	  e.printStackTrace();  
+              Log.e(TAG, "write logo file to /sdcard/ failed");
+        }
+          
+        //push type, audio/video/audio&video
+        pushTypeSelector = (Spinner)findViewById(R.id.pushTypeSelctor);
+        final String []types = new String[]{"音视频", "纯音频", "纯视频"};
+        ArrayAdapter<String> adapterType = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, types);
+        adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pushTypeSelector.setAdapter(adapterType);
 
-        serverSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+        pushTypeSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				Log.i(TAG, "Currently choosing: " + servers[position]);
+				
+				if(isStart)
+				{
+					Log.e(TAG, "Could not switch push type during publishing..");
+					return;
+				}
+				
+				pushType = position;
+				
+				Log.i(TAG, "[推送类型]Currently choosing: " + types[position] + ", pushType: " + pushType);
 			}
 
 			@Override
@@ -137,6 +225,42 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				
 			}
 		});
+        //end
+        
+        //水印
+        watermarkSelctor = (Spinner)findViewById(R.id.watermarkSelctor);
+        
+        final String []watermarks = new String[]{"图片水印", "全部水印", "文字水印", "不加水印"};
+        
+        ArrayAdapter<String> adapterWatermark = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, watermarks);
+        
+        adapterWatermark.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        watermarkSelctor.setAdapter(adapterWatermark);
+
+        watermarkSelctor.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				if(isStart)
+				{
+					Log.e(TAG, "Could not switch water type during publishing..");
+					return;
+				}
+				
+				watemarkType = position;
+				
+				Log.i(TAG, "[水印类型]Currently choosing: " + watermarks[position] + ", watemarkType: " + watemarkType);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				
+			}
+		});
+        //end
         
         resolutionSelector = (Spinner)findViewById(R.id.resolutionSelctor);
         final String []resolutionSel = new String[]{"高分辨率", "中分辨率", "低分辨率", "超高分辨率"};
@@ -157,7 +281,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 					return;
 				}
 				
-				Log.i(TAG, "Currently choosing: " + resolutionSel[position]);
+				Log.i(TAG, "[推送分辨率]Currently choosing: " + resolutionSel[position]);
 				
 				SwitchResolution(position);
 		
@@ -263,7 +387,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	
     	switch(position) {
         case 0:
-        	videoWidth = 800;
+        	videoWidth = 640;
     		videoHight = 480;
             break;
         case 1:
@@ -279,7 +403,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		videoHight = 720;
             break;
         default:
-        	videoWidth = 800;
+        	videoWidth = 640;
     		videoHight = 480;
     	}
     	   	
@@ -426,7 +550,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			if(libPublisher!=null)
 			{
 			    publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));  	
-			    
+			    				
 			    printText = "URL:" + publishURL;
 			        
 			    Log.i(TAG, printText);
@@ -436,11 +560,38 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				
 			    ConfigRecorderFuntion(); 
 			    
-			    Log.i(TAG, "videoWidth: "+ videoWidth + " videoHight: " + videoHight);
+			    Log.i(TAG, "videoWidth: "+ videoWidth + " videoHight: " + videoHight + " pushType:" + pushType);
 			    			    
-			    libPublisher.SmartPublisherInit(myContext, isAudioOnly, videoWidth, videoHight);
+			    libPublisher.SmartPublisherInit(myContext, pushType, videoWidth, videoHight);
 			    
 			    libPublisher.SetSmartPublisherEventCallback(new EventHande()); 
+			    
+			    //如果想和时间显示在同一行，请去掉'\n'
+			    String watermarkText = "大牛直播(daniulive)\n\n";
+			    
+			    String path =logoPath;
+			    
+			    if(watemarkType == 0)
+			    {
+			    	if ( isWritelogoFileSuccess )
+			    		libPublisher.SmartPublisherSetPictureWatermark(path, WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160, 160, 10, 10);
+			    }
+			    else if(watemarkType == 1)
+			    {
+			    	if ( isWritelogoFileSuccess )
+			    		libPublisher.SmartPublisherSetPictureWatermark(path, WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160, 160, 10, 10);
+				    
+			    	libPublisher.SmartPublisherSetFontWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
+			    }
+			    else if(watemarkType == 2)
+			    {
+				    libPublisher.SmartPublisherSetFontWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
+			    }
+			    else
+			    {
+			    	Log.i(TAG, "no watermark settings..");
+			    }
+			    //end
 			    
 			    // IF not set url or url is empty, it will not publish stream
 			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
@@ -460,8 +611,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             	}
 			}
 			
-			CheckInitAudioRecorder();
- 
+			if(pushType == 0 || pushType ==1)
+			{
+				CheckInitAudioRecorder();	//enable pure video publisher..
+			}
         }
     };
     
@@ -794,6 +947,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	Log.i(TAG, "curDegree: "+ result); 
     	
         camera.setDisplayOrientation (result);  
-    }  
-
+    }
+   
 }
