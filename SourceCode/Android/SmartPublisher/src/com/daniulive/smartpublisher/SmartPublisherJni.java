@@ -14,12 +14,22 @@ import com.eventhandle.SmartEventCallback;
 
 public class SmartPublisherJni {
 	
+	static class WATERMARK {
+	   	public static final int WATERMARK_FONTSIZE_MEDIUM 			= 0;
+	   	public static final int WATERMARK_FONTSIZE_SMALL 			= 1;
+	   	public static final int WATERMARK_FONTSIZE_BIG	 			= 2;
+	   	
+	   	public static final int WATERMARK_POSITION_TOPLEFT 			= 0;
+	   	public static final int WATERMARK_POSITION_TOPRIGHT			= 1;
+	   	public static final int WATERMARK_POSITION_BOTTOMLEFT		= 2;
+	   	public static final int WATERMARK_POSITION_BOTTOMRIGHT 		= 3;
+	}
 	/**
 	 * Initialized publisher.
 	 *
 	 * @param ctx: get by this.getApplicationContext()
 	 * 
-	 * @param isAudioOnly: if with 0: it means publish audio and video; if with 1, it means audio only.
+	 * @param isAudioOnly: if with 0: it means publish audio and video; if with 1, it means audio only
 	 * 
 	 * @param width: capture width; height: capture height.
 	 *
@@ -37,7 +47,39 @@ public class SmartPublisherJni {
 	 * @return {0} if successful
 	  */
     public native int SetSmartPublisherEventCallback(SmartEventCallback callback);
+    
+    /**
+     * Set Font water-mark
+     * 
+     * @param fontSize: it should be "MEDIUM", "SMALL", "BIG"
+     * 
+     * @param waterPostion: it should be "TOPLEFT", "TOPRIGHT", "BOTTOMLEFT", "BOTTOMRIGHT".
+     * 
+     * @param xPading, yPading: the distance of the original picture.
+     * 
+     * <pre> The interface is only used for setting font water-mark when publishing stream. </pre>  
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetFontWatermark(String waterText, int isAppendTime, int fontSize, int waterPostion, int xPading, int yPading);
 	
+    /**
+     * Set picture water-mark
+     * 
+     * @param picPath: the picture working path, e.g: /sdcard/logo.png
+     * 
+     * @param waterPostion: it should be "TOPLEFT", "TOPRIGHT", "BOTTOMLEFT", "BOTTOMRIGHT".
+     * 
+     * @param picWidth, picHeight: picture width & height
+     * 
+     * @param xPading, yPading: the distance of the original picture.
+     * 
+     * <pre> The interface is only used for setting picture(logo) water-mark when publishing stream, with "*.png" format </pre>  
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetPictureWatermark(String picPath, int waterPostion, int picWidth, int picHeight, int xPading, int yPading);
+    
     /**
      * Set if recorder the stream to local file.
      * 

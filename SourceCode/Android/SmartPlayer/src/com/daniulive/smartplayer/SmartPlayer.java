@@ -1,3 +1,13 @@
+/*
+ * SmartPlayer.java
+ * SmartPlayer
+ * 
+ * Github: https://github.com/daniulive/SmarterStreaming
+ * 
+ * Created by DaniuLive on 2015/09/26.
+ * Copyright © 2014~2016 DaniuLive. All rights reserved.
+ */
+
 package com.daniulive.smartplayer;
 
 import android.app.Activity;  
@@ -52,8 +62,7 @@ public class SmartPlayer extends Activity {
 		System.loadLibrary("SmartPlayer");
 	}
   
-    @SuppressWarnings("deprecation")
-	@Override protected void onCreate(Bundle icicle) {  
+    @Override protected void onCreate(Bundle icicle) {  
         super.onCreate(icicle);  
         
       Log.i(TAG, "Run into OnCreate++");
@@ -81,6 +90,7 @@ public class SmartPlayer extends Activity {
     	
     	btnStartStopPlayback.setEnabled(true);
     	String baseURL = "rtmp://daniulive.com:1935/hls/stream";
+
     	playbackUrl = baseURL + id;
     }
     
@@ -216,20 +226,17 @@ public class SmartPlayer extends Activity {
 					              	      
             	      libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView); 	//if set the second param with null, it means it will playback audio only..
             		  
-            	      //libPlayer.SmartPlayerSetSurface(surfaceHandle, null);    
+            	      //libPlayer.SmartPlayerSetSurface(playerHandle, null);    
  	              	 
             	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
 
-         	      
 	              	  if(playbackUrl == null){
 	              		 Log.e(TAG, "playback URL with NULL..."); 
 	              		 return;
 	              	  }
 	              	  
 	              	  int iPlaybackRet = libPlayer.SmartPlayerStartPlayback(playerHandle, playbackUrl);
-	              	  
-	              	  //int iPlaybackRet = libPlayer.SmartPlayerStartPlayback(surfaceHandle, strAudioOnlyURL);
-	              	  
+	              	  	              	  
 	                  if(iPlaybackRet != 0)
 	                  {
 	                	 Log.e(TAG, "StartPlayback strem failed.."); 
@@ -275,7 +282,6 @@ public class SmartPlayer extends Activity {
                  case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_NO_MEDIADATA_RECEIVED:
                 	 Log.i(TAG, "收不到媒体数据，可能是url错误。。");
              }
-            // Log.i(TAG, "onCallback end..");
     	 }
     }
     
