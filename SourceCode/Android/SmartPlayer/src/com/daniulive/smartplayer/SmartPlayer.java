@@ -50,8 +50,10 @@ public class SmartPlayer extends Activity {
 	private String playbackUrl = null;
 	
 	Button btnPopInputText;
+	Button btnPopInputUrl;
     Button btnStartStopPlayback;
     TextView txtCopyright;
+    TextView txtQQQun;
     
     LinearLayout lLayout = null;
     FrameLayout fFrameLayout = null;
@@ -94,6 +96,32 @@ public class SmartPlayer extends Activity {
     	playbackUrl = baseURL + id;
     }
     
+    private void SaveInputUrl(String url)
+    {
+    	playbackUrl = "";
+    	
+    	if ( url == null )
+    		return;
+    	
+    	// rtmp:/
+    	if ( url.length() < 8 )
+    	{
+    		Log.e(TAG, "Input full url error:" + url);
+    		return;
+    	}
+    	
+    	if ( !url.startsWith("rtmp://") )
+    	{
+    	    Log.e(TAG, "Input full url error:" + url);
+    		return;
+    	}
+    		
+    	btnStartStopPlayback.setEnabled(true);
+    	playbackUrl = url;
+    	
+    	 Log.i(TAG, "Input full url:" + url);
+    }
+    
     /* Popup InputID dialog */
     private void PopDialog(){
     	final EditText inputID = new EditText(this);
@@ -110,6 +138,25 @@ public class SmartPlayer extends Activity {
                     }
                 });
         builder.show();
+    }
+    
+    
+    private void PopFullUrlDialog(){
+    	final EditText inputUrlTxt = new EditText(this);
+    	inputUrlTxt.setFocusable(true);
+    	inputUrlTxt.setText("rtmp://daniulive.com:1935/hls/stream");
+
+        AlertDialog.Builder builderUrl = new AlertDialog.Builder(this);
+        builderUrl.setTitle("如 rtmp://daniulive.com:1935/hls/stream123456").setView(inputUrlTxt).setNegativeButton(
+                "取消", null);
+        builderUrl.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        String fullUrl = inputUrlTxt.getText().toString();
+                        SaveInputUrl(fullUrl);
+                    }
+                });
+        builderUrl.show();
     }
     
     /* Generate basic layout */
@@ -143,14 +190,18 @@ public class SmartPlayer extends Activity {
         LinearLayout copyRightLinearLayout = new LinearLayout(this);
         copyRightLinearLayout.setOrientation(LinearLayout.VERTICAL);
         RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        rl.topMargin = getWindowManager().getDefaultDisplay().getHeight()-150;
+        rl.topMargin = getWindowManager().getDefaultDisplay().getHeight()-190;
         copyRightLinearLayout.setLayoutParams(rl);
  
         txtCopyright=new TextView(this);
         txtCopyright.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         txtCopyright.setText("Copyright 2014~2016 www.daniulive.com v1.0.16.0326");
         copyRightLinearLayout.addView(txtCopyright, 0);
-        
+        		
+        txtQQQun=new TextView(this);
+        txtQQQun.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        txtQQQun.setText("QQ群:294891451,  499687479");
+        copyRightLinearLayout.addView(txtQQQun, 1);
         
         /* PopInput button */
         btnPopInputText = new Button(this);
@@ -158,11 +209,16 @@ public class SmartPlayer extends Activity {
         btnPopInputText.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnPopInputText, 0);
         
+        btnPopInputUrl = new Button(this);
+        btnPopInputUrl.setText("输入完整url");
+        btnPopInputUrl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        lLinearLayout.addView(btnPopInputUrl, 1);
+        
         /* Start playback stream button */
         btnStartStopPlayback = new Button(this);
         btnStartStopPlayback.setText("开始播放 ");
         btnStartStopPlayback.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnStartStopPlayback, 1);
+        lLinearLayout.addView(btnStartStopPlayback, 2);
  
        
         outLinearLayout.addView(lLinearLayout, 0);
@@ -174,11 +230,13 @@ public class SmartPlayer extends Activity {
         if(isPlaybackViewStarted)
         {
         	btnPopInputText.setEnabled(false);
+        	btnPopInputUrl.setEnabled(false);
         	btnStartStopPlayback.setText("停止播放 ");
         }
         else
         {
         	btnPopInputText.setEnabled(true);
+        	btnPopInputUrl.setEnabled(true);
         	btnStartStopPlayback.setText("开始播放 ");
         }
         
@@ -194,6 +252,13 @@ public class SmartPlayer extends Activity {
             	  Log.i(TAG, "Run out from input playback ID--");
               	}
               });  
+        
+        
+        btnPopInputUrl.setOnClickListener(new Button.OnClickListener() { 
+        	 public void onClick(View v) { 
+        		 PopFullUrlDialog();
+        	 }
+        });
 
         btnStartStopPlayback.setOnClickListener(new Button.OnClickListener() {  
         	  
@@ -205,6 +270,7 @@ public class SmartPlayer extends Activity {
                 	  Log.i(TAG, "Stop playback stream++");
             		  btnStartStopPlayback.setText("开始播放 ");
             		  btnPopInputText.setEnabled(true);
+            		  btnPopInputUrl.setEnabled(true);
             		  libPlayer.SmartPlayerClose(playerHandle);	
             		  playerHandle = 0;
             		  isPlaybackViewStarted = false;
@@ -226,10 +292,10 @@ public class SmartPlayer extends Activity {
 					              	      
             	      libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView); 	//if set the second param with null, it means it will playback audio only..
             		  
-            	      //libPlayer.SmartPlayerSetSurface(playerHandle, null);    
+            	     // libPlayer.SmartPlayerSetSurface(playerHandle, null);    
  	              	 
             	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
-
+     
 	              	  if(playbackUrl == null){
 	              		 Log.e(TAG, "playback URL with NULL..."); 
 	              		 return;
@@ -245,6 +311,7 @@ public class SmartPlayer extends Activity {
 	
 	        		  btnStartStopPlayback.setText("停止播放 ");
 	                  btnPopInputText.setEnabled(false);
+	                  btnPopInputUrl.setEnabled(false);
 	              	  isPlaybackViewStarted = true;
 	              	  Log.i(TAG, "Start playback stream--");
 	        	  }

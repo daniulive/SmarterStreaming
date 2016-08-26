@@ -29,7 +29,9 @@ public class SmartPublisherJni {
 	 *
 	 * @param ctx: get by this.getApplicationContext()
 	 * 
-	 * @param isAudioOnly: if with 0: it means publish audio and video; if with 1, it means audio only
+	 * @param audio_opt: if with 0: it does not publish audio; if with 1, it publish audio
+	 * 
+	 * @param video_opt: if with 0: it does not publish video; if with 1, it publish video
 	 * 
 	 * @param width: capture width; height: capture height.
 	 *
@@ -37,7 +39,8 @@ public class SmartPublisherJni {
 	 *
 	 * @return {0} if successful
 	 */
-    public native int SmartPublisherInit(Object ctx, int isAudioOnly, int width, int height);
+    public native int SmartPublisherInit(Object ctx, int audio_opt, int video_opt,  int width, int height);
+    
 	
 	 /**
 	  * Set callback event
@@ -158,4 +161,6 @@ public class SmartPublisherJni {
 	 * @return {0} if successful
 	 */
     public native int SmartPublisherStop();
+    
+   
 }

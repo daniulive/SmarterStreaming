@@ -16,6 +16,7 @@ import com.voiceengine.NTAudioRecord;	//for audio capture..
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
@@ -37,21 +38,25 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import java.io.ByteArrayOutputStream;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+
 
 
 
@@ -99,6 +104,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private Button  btnRecoderMgr;
 	private ImageView imgSwitchCamera;
+	private Button btnInputPushUrl;
 	private Button btnStartStop;
 	
 	private SurfaceView mSurfaceView = null;  
@@ -116,6 +122,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private String publishURL;
 	final private String baseURL = "rtmp://daniulive.com:1935/hls/stream";
+	private String inputPushURL ="";
 
 	private String printText = "URL:";
 	private String txt = "当前状态";
@@ -335,6 +342,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         textCurURL = (TextView)findViewById(R.id.txtCurURL);
         textCurURL.setText(printText);
         
+        btnInputPushUrl =(Button)findViewById(R.id.button_input_push_url);
+        btnInputPushUrl.setOnClickListener(new ButtonInputPushUrlListener());
+        
         btnStartStop = (Button)findViewById(R.id.button_start_stop);
         btnStartStop.setOnClickListener(new ButtonStartListener());
         imgSwitchCamera = (ImageView)findViewById(R.id.button_switchCamera);
@@ -532,6 +542,59 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
          }
     }
     
+    private void SaveInputUrl(String url)
+    {
+    	inputPushURL = "";
+    	
+    	if ( url == null )
+    		return;
+    	
+    	// rtmp://
+    	if ( url.length() < 8 )
+    	{
+    		Log.e(TAG, "Input publish url error:" + url);
+    		return;
+    	}
+    	
+    	if ( !url.startsWith("rtmp://") )
+    	{
+    	    Log.e(TAG, "Input publish url error:" + url);
+    		return;
+    	}
+    		
+    	inputPushURL = url;
+    	
+    	Log.i(TAG, "Input publish url:" + url);
+    }
+    
+    private void PopInputUrlDialog(){
+    	final EditText inputUrlTxt = new EditText(this);
+    	inputUrlTxt.setFocusable(true);
+    	inputUrlTxt.setText(baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000)));
+
+        AlertDialog.Builder builderUrl = new AlertDialog.Builder(this);
+        builderUrl.setTitle("如 rtmp://daniulive.com:1935/hls/stream123456").setView(inputUrlTxt).setNegativeButton(
+                "取消", null);
+        
+        builderUrl.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        String fullPushUrl = inputUrlTxt.getText().toString();
+                        SaveInputUrl(fullPushUrl);
+                    }
+                });
+        
+        builderUrl.show();
+    }
+    
+    class ButtonInputPushUrlListener implements OnClickListener
+    {
+    	 public void onClick(View v)
+    	 {
+    		 PopInputUrlDialog();
+    	 }
+    }
+    
     class ButtonStartListener implements OnClickListener
     {
         public void onClick(View v)
@@ -549,8 +612,18 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             
 			if(libPublisher!=null)
 			{
-			    publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000));  	
-			    				
+				if ( inputPushURL != null && inputPushURL.length() > 1 )
+				{
+					publishURL = inputPushURL;
+					Log.i(TAG, "start, input publish url:" + publishURL);
+				}
+				else
+				{
+					publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000)); 
+					Log.i(TAG, "start, generate random url:" + publishURL);
+					
+				}
+				
 			    printText = "URL:" + publishURL;
 			        
 			    Log.i(TAG, printText);
@@ -561,9 +634,22 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    ConfigRecorderFuntion(); 
 			    
 			    Log.i(TAG, "videoWidth: "+ videoWidth + " videoHight: " + videoHight + " pushType:" + pushType);
-			    			    
-			    libPublisher.SmartPublisherInit(myContext, pushType, videoWidth, videoHight);
+			    		
+			    int audio_opt = 1;
+			    int video_opt = 1;
 			    
+			    if ( pushType == 1 )
+			    {
+			    	video_opt = 0;
+			    } 
+			    else if (pushType == 2 )
+			    {
+			    	audio_opt = 0;
+			    }    
+			    
+			    
+			    libPublisher.SmartPublisherInit(myContext, audio_opt, video_opt, videoWidth, videoHight);
+			   			    
 			    libPublisher.SetSmartPublisherEventCallback(new EventHande()); 
 			    
 			    //如果想和时间显示在同一行，请去掉'\n'
@@ -794,9 +880,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	Log.i(TAG, "onConfigurationChanged, start:" + isStart);
             if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) { 
             	if(!isStart) {
+            		currentOrigentation = LANDSCAPE;
 				}
             } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             	if(!isStart) {
+            		currentOrigentation = PORTRAIT;
 				}
             }  
         } catch (Exception ex) {  
