@@ -15,7 +15,8 @@
 
 @interface ViewController : UIViewController<SmartPublisherDelegate>
 
-- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality isAudioOnly:(Boolean)isAudioOnly isRecorder:(Boolean)isRecorder;
+- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality isAudioOnly:(Boolean)isAudioOnly
+                   isRecorder:(Boolean)isRecorder isBeauty:(Boolean)isBeauty;
 
 @end
 

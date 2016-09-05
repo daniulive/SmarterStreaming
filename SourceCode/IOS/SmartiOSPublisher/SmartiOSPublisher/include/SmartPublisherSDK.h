@@ -18,6 +18,27 @@
 @protocol SmartPublisherDelegate;
 
 /**
+ *  美颜类型
+ */
+typedef NS_ENUM(NSInteger, DN_BEAUTY_TYPE) {
+    DN_BEAUTY_NONE = 0,
+    DN_BEAUTY_INTERNAL_BEAUTY = 1,
+    DN_BEAUTY_ADDITIONAL_BEAUTY = 2
+};
+
+/**
+ *  美颜选择
+ */
+typedef NS_ENUM(NSInteger, DN_FILTER_TYPE) {
+    DN_FILTER_NONE = 0,
+    DN_FILTER_TYPE_BEAUTY = 1,
+    DN_FILTER_TYPE_SEPIA = 2,
+    DN_FILTER_TYPE_SKETCH = 3,
+    DN_FILTER_TYPE_BRIGHT = 4,
+    DN_FILTER_TYPE_BRIGHT_BEAUTY = 5
+};
+
+/**
  *  错误返回值
  */
 typedef enum DNErrorCode{
@@ -58,6 +79,44 @@ typedef enum DNCameraPosition{
 - (NSInteger)SmartPublisherInit:(Boolean)isAudioOnly;
 
 /**
+ * 美颜效果设置
+ * <pre>Init后调用</pre>
+ */
+-(NSInteger)SmartPublisherSetBeautyFilterType:(DN_FILTER_TYPE)filterType;
+
+/**
+ * 美颜相关：
+ *
+ * 是否从美颜接口拿video数据, 默认是false
+ * <pre>beautyTpye: (0:不使用美颜; 1:内部实现美颜; 2:第三方美颜接口给数据)</pre>
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetBeauty:(DN_BEAUTY_TYPE)beautyTpye;
+
+/**
+ * 美颜相关：
+ *
+ * 设置采集分辨率
+ *
+ * <pre>width: 宽， height: 高)</pre>
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetBeautyResolution:(NSInteger)width height:(NSInteger)height;
+
+/**
+ * 美颜相关：
+ *
+ * 传递YUV数据
+ *
+ * <pre>yData: Y平面， uData: U平面 vData: V平面</pre>
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetBeautyYuvData:(unsigned char*)yData uData:(unsigned char*)uData vData:(unsigned char*)vData yStride:(NSInteger)yStride uStride:(NSInteger)uStride vStride:(NSInteger)vStride;
+
+/**
  * 录像相关：
  *
  * 是否边推流边本地存储
@@ -86,7 +145,7 @@ typedef enum DNCameraPosition{
 - (NSInteger)SmartPublisherSetRecorderFileMaxSize:(NSInteger)size;
 
 /**
- * 设置video preview
+ * 设置video preview, 如果是纯音频或者美颜模式，还是需要调用，传nil就可以
  */
 -(NSInteger)SmartPublisherSetVideoPreview:(UIView*)preview;
 
