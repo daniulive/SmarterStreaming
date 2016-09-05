@@ -91,7 +91,7 @@
     self.urlID.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.urlID addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
     self.urlID.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    //[self.urlID setText:[NSString stringWithFormat:@"audio"]];
+    //[self.urlID setText:[NSString stringWithFormat:@"hks"]];
     
     //直播视频质量
     self.daniuServerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
