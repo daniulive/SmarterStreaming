@@ -138,7 +138,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 **3. iOS录像管理：**
 
-<img src="http://daniulive.com:8080/files/image/iOS_recorder.jpg" width="600" alt="iOS录像管理" />
+<img src="http://daniulive.com:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
 
 ## SmarterStreamServer url鉴权demo ##
 
