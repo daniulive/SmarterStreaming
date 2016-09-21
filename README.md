@@ -104,7 +104,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 **SmarterStreaming SDK库可供个人学习之用，企业及商用需要经过授权**；
 
 ## 公网环境下推流、直播效果展示 ##
-<img src="http://daniulive.com:8080/files/image/WindowsPublisher.JPG" width="800" alt="Windows采集，跨平台播放" />
+<img src="http://daniulive.com:8080/files/image/windows_publisher.JPG" width="800" alt="Windows采集，跨平台播放" />
 
 <img src="http://daniulive.com:8080/files/image/AndroidPublisher.JPG" width="800" alt="Android采集，跨平台播放" />
 
