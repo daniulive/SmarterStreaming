@@ -128,7 +128,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 **1. android边推送边录像(支持纯音频推送和播放)：**
 
-<img src="http://daniulive.com:8080/files/image/android_publisher.png" width="600" alt="android边推送边录像" />
+<img src="http://daniulive.com:8080/files/image/android_publisher.JPG" width="600" alt="android边推送边录像" />
 
 <img src="http://daniulive.com:8080/files/image/watermark.jpg" width="600" height="750" alt="windows播放水印推流" />
 
