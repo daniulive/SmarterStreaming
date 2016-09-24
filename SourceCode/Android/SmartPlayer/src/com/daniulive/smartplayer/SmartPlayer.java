@@ -190,7 +190,7 @@ public class SmartPlayer extends Activity {
         LinearLayout copyRightLinearLayout = new LinearLayout(this);
         copyRightLinearLayout.setOrientation(LinearLayout.VERTICAL);
         RelativeLayout.LayoutParams rl = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        rl.topMargin = getWindowManager().getDefaultDisplay().getHeight()-190;
+        rl.topMargin = getWindowManager().getDefaultDisplay().getHeight()-270;
         copyRightLinearLayout.setLayoutParams(rl);
  
         txtCopyright=new TextView(this);

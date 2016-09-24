@@ -60,11 +60,23 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
                
-                <Button
-                android:id="@+id/button_recoder_manage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 录像管理 " />
+            <Button
+            android:id="@+id/button_recoder_manage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 录像管理 " />
+            
+            <Button
+            android:id="@+id/button_mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 静音" />
+            
+            <Button
+            android:id="@+id/button_hwencoder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 硬编" />
             
             </LinearLayout>
             
