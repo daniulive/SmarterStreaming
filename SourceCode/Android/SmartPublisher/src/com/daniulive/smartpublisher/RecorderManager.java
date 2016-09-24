@@ -30,8 +30,6 @@ import android.widget.SimpleAdapter;
 import java.util.Map;  
 import java.util.HashMap;
 
-import org.daniulive.smartpublisher.R;
-
 import  android.widget.AdapterView.OnItemClickListener;
 
 public class RecorderManager extends Activity {

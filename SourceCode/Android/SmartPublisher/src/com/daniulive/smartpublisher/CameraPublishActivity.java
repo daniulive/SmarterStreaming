@@ -17,7 +17,6 @@ import com.voiceengine.NTAudioRecord;	//for audio capture..
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
 import android.graphics.PixelFormat;
@@ -34,6 +33,7 @@ import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -46,23 +46,11 @@ import android.hardware.Camera.AutoFocusCallback;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
-
 import java.io.ByteArrayOutputStream;
-import java.util.Arrays;
 import java.util.List;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-
-
-
-
-
-import org.daniulive.smartpublisher.R;
-
 
 @SuppressWarnings("deprecation")
 public class CameraPublishActivity extends Activity implements Callback, PreviewCallback 
@@ -103,6 +91,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private Spinner recorderSelector;
 	
 	private Button  btnRecoderMgr;
+	private Button  btnMute;
+	private Button	btnHWencoder;
 	private ImageView imgSwitchCamera;
 	private Button btnInputPushUrl;
 	private Button btnStartStop;
@@ -144,6 +134,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private boolean is_need_local_recorder = false;		// do not enable recorder in default
 	
+	private boolean is_mute = false;
+	
+	private boolean is_hardware_encoder = false;
+	
     private Context myContext; 
     
     static {
@@ -171,6 +165,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         Log.i(TAG, "onCreate..");
         
         super.onCreate(savedInstanceState);
+        
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); 	//屏幕常亮
+        
         setContentView(R.layout.activity_main);
 
         myContext = this.getApplicationContext();
@@ -338,6 +335,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         btnRecoderMgr = (Button)findViewById(R.id.button_recoder_manage);
         btnRecoderMgr.setOnClickListener(new ButtonRecorderMangerListener());
         //end
+       
+        btnMute = (Button)findViewById(R.id.button_mute);
+        btnMute.setOnClickListener(new ButtonMuteListener());
+        
+        btnHWencoder = (Button)findViewById(R.id.button_hwencoder);
+        btnHWencoder.setOnClickListener(new ButtonHardwareEncoderListener());
         
         textCurURL = (TextView)findViewById(R.id.txtCurURL);
         textCurURL.setText(printText);
@@ -354,14 +357,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         mSurfaceHolder = mSurfaceView.getHolder();  
         mSurfaceHolder.addCallback(this);  
         mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS); 
-       
-        
-        mSurfaceView.getHolder().setKeepScreenOn(true); // 保持屏幕高亮 
         
         //自动聚焦变量回调       
         myAutoFocusCallback = new AutoFocusCallback() 
 		{  
-  
             public void onAutoFocus(boolean success, Camera camera) {  
                 if(success)//success表示对焦成功  
                 {  
@@ -480,7 +479,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     				return;
     			}
     		}
-    		
     	}
     }
     
@@ -499,6 +497,35 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
               intent.setClass(CameraPublishActivity.this, RecorderManager.class);
               intent.putExtra("RecoderDir", recDir);
               startActivity(intent);
+    	}
+    }
+    
+    class ButtonMuteListener  implements OnClickListener
+    {
+    	public void onClick(View v)
+    	{
+    		is_mute = !is_mute;
+    		
+    		if ( is_mute )
+    			btnMute.setText("取消静音");
+    		else
+    			btnMute.setText("静音");
+    		
+    		if ( libPublisher != null )
+    			libPublisher.SmartPublisherSetMute(is_mute?1:0);
+    	}
+    }
+    
+    class ButtonHardwareEncoderListener  implements OnClickListener
+    {
+    	public void onClick(View v)
+    	{
+    		is_hardware_encoder = !is_hardware_encoder;
+    		
+    		if ( is_hardware_encoder )
+    			btnHWencoder.setText("软编码");
+    		else
+    			btnHWencoder.setText("硬编码");
     	}
     }
     
@@ -647,9 +674,22 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    	audio_opt = 0;
 			    }    
 			    
-			    
 			    libPublisher.SmartPublisherInit(myContext, audio_opt, video_opt, videoWidth, videoHight);
-			   			    
+			   	
+			    if(is_hardware_encoder)
+			    {
+				    int hwHWKbps = setHardwareEncoderKbps(videoWidth, videoHight);
+				    
+			        Log.i(TAG, "hwHWKbps: " + hwHWKbps); 
+				    
+					int isSupportHWEncoder = libPublisher.SetSmartPublisherVideoHWEncoder(hwHWKbps);
+			        
+					if(isSupportHWEncoder == 0)
+					{
+				        Log.i(TAG, "Great, it supports hardware encoder!"); 
+					}
+			    }
+			    
 			    libPublisher.SetSmartPublisherEventCallback(new EventHande()); 
 			    
 			    //如果想和时间显示在同一行，请去掉'\n'
@@ -678,6 +718,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    	Log.i(TAG, "no watermark settings..");
 			    }
 			    //end
+			    
 			    
 			    // IF not set url or url is empty, it will not publish stream
 			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
@@ -755,21 +796,20 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 						&& Camera.Parameters.PREVIEW_FPS_MIN_INDEX <  range.length 
 						 && Camera.Parameters.PREVIEW_FPS_MAX_INDEX < range.length )
 				{
+					Log.i(TAG, "Camera index:" + i + " support min fps:" + range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX]);
 					
-						Log.i(TAG, "Camera index:" + i + " support min fps:" + range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX]);
+					Log.i(TAG, "Camera index:" + i + " support max fps:" + range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);	
 						
-						Log.i(TAG, "Camera index:" + i + " support max fps:" + range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);	
-						
-						if ( findRange == null )
+					if ( findRange == null )
+					{
+						if ( defFPS <= range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX] )
 						{
-							if ( defFPS <= range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX] )
-							{
-								findRange = range;
-								
-								Log.i(TAG, "Camera found appropriate fps, min fps:" + range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX]
-										+ " ,max fps:" + range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
-							}
+							findRange = range;
+							
+							Log.i(TAG, "Camera found appropriate fps, min fps:" + range[Camera.Parameters.PREVIEW_FPS_MIN_INDEX]
+									+ " ,max fps:" + range[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
 						}
+					}
 				}
 			}
 		}
@@ -778,7 +818,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		{
 			parameters.setPreviewFpsRange(findRange[Camera.Parameters.PREVIEW_FPS_MIN_INDEX], findRange[Camera.Parameters.PREVIEW_FPS_MAX_INDEX]);
 		}
-
 	}
 
 	/*it will call when surfaceChanged*/
@@ -956,7 +995,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	        }
 	        
 	        initCamera(mSurfaceHolder);
-	      
 	    }
 	 
 	 private void StopPublish()
@@ -1035,6 +1073,30 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	Log.i(TAG, "curDegree: "+ result); 
     	
         camera.setDisplayOrientation (result);  
+    }
+    
+    private int setHardwareEncoderKbps(int width, int height)
+    {
+    	int hwEncoderKpbs = 0;
+    	
+    	switch(width) {
+        case 176:
+        	hwEncoderKpbs = 300;
+            break;
+        case 320:
+        	hwEncoderKpbs = 500;
+            break;
+        case 640:
+        	hwEncoderKpbs = 1000;
+            break;
+        case 1280:
+        	hwEncoderKpbs = 1700;
+            break;
+        default:
+        	hwEncoderKpbs = 1000;
+    	}
+    	
+    	return hwEncoderKpbs;
     }
    
 }

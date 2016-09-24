@@ -24,14 +24,15 @@ public class SmartPublisherJni {
 	   	public static final int WATERMARK_POSITION_BOTTOMLEFT		= 2;
 	   	public static final int WATERMARK_POSITION_BOTTOMRIGHT 		= 3;
 	}
+	
 	/**
 	 * Initialized publisher.
 	 *
 	 * @param ctx: get by this.getApplicationContext()
 	 * 
-	 * @param audio_opt: if with 0: it does not publish audio; if with 1, it publish audio
+	 * @param audio_opt: if with 0: it does not publish audio; if with 1, it publish audio; if with 2, it publish external encoded audio, only support aac.
 	 * 
-	 * @param video_opt: if with 0: it does not publish video; if with 1, it publish video
+	 * @param video_opt: if with 0: it does not publish video; if with 1, it publish video; if with 2, it publish external encoded video, only support h264, data:0000000167....
 	 * 
 	 * @param width: capture width; height: capture height.
 	 *
@@ -41,7 +42,6 @@ public class SmartPublisherJni {
 	 */
     public native int SmartPublisherInit(Object ctx, int audio_opt, int video_opt,  int width, int height);
     
-	
 	 /**
 	  * Set callback event
 	  * 
@@ -50,6 +50,15 @@ public class SmartPublisherJni {
 	 * @return {0} if successful
 	  */
     public native int SetSmartPublisherEventCallback(SmartEventCallback callback);
+    
+	 /**
+	  * Set Video HW Encoder, if support HW encoder, it will return 0
+	  * 
+	  * @param kbps: the kbps of different resolution(25 fps).
+	  * 
+	  * @return {0} if successful
+	  */
+   public native int SetSmartPublisherVideoHWEncoder(int kbps);
     
     /**
      * Set Font water-mark
@@ -83,6 +92,16 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetPictureWatermark(String picPath, int waterPostion, int picWidth, int picHeight, int xPading, int yPading);
     
+    
+    /**
+     * Set mute or not during publish stream
+     * 
+     * @param isMute: if with 1:mute, if with 0: does not mute
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetMute(int isMute);
+    
     /**
      * Set if recorder the stream to local file.
      * 
@@ -97,9 +116,9 @@ public class SmartPublisherJni {
     /**
      * Create file directory
      * 
-     * <pre> The interface is only used for recording the stream data to local side. </pre> 
-     * 
      * @param path,  E.g: /sdcard/daniulive/rec
+     * 
+     * <pre> The interface is only used for recording the stream data to local side. </pre> 
      * 
      * @return {0} if successful
      */
@@ -126,7 +145,8 @@ public class SmartPublisherJni {
     public native int SmartPublisherSetRecorderFileMaxSize(int size);
     
     /**
-	* set publish stream url.
+	* Set publish stream url.
+	* 
 	* if not set url or url is empty, it will not publish stream
 	*
 	* @param url: publish url.
@@ -136,15 +156,14 @@ public class SmartPublisherJni {
     public native int SmartPublisherSetURL(String url);
     
 	/**
-	* 
-	* start
+	* Start publish stream
 	*
 	* @return {0} if successful
 	*/
     public native int SmartPublisherStart();
 	
 	/**
-	* set live video data.
+	* Set live video data(no encoded data).
 	*
 	* @param cameraType: CAMERA_FACING_BACK with 0, CAMERA_FACING_FRONT with 1
 	* 
@@ -154,9 +173,60 @@ public class SmartPublisherJni {
 	*/
     public native int SmartPublisherOnCaptureVideoData(byte[] data, int len, int cameraType, int curOrg);
 	
+	/**
+	* Set encoded video data.
+	*
+	* @param buffer: encoded video data
+	* 
+	* @param len: data length
+	* 
+	* @param isKeyFrame: if with key frame, please set 1, otherwise, set 0.
+	* 
+	* @param timeStamp: video timestamp
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherOnReceivingVideoEncodedData(byte[] buffer, int len, int isKeyFrame, long timeStamp);
+    
+
+	/**
+	* set audio specific configure.
+	*
+	* @param buffer: audio specific settings.
+	* 
+	* For example:
+	* 
+	* sample rate with 44100, channel: 2, profile: LC
+	* 
+	* audioConfig set as below:
+	* 
+	*	byte[] audioConfig = new byte[2];
+	*	audioConfig[0] = 0x12;
+	*	audioConfig[1] = 0x10;
+	* 
+	* @param len: buffer length
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherSetAudioSpecificConfig(byte[] buffer, int len);
     
 	/**
-	 * Stop
+	* Set encoded audio data.
+	*
+	* @param data: encoded audio data
+	* 
+	* @param len: data length
+	* 
+	* @param isKeyFrame: 1
+	* 
+	* @param timeStamp: audio timestamp
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherOnReceivingAACData(byte[] buffer, int len, int isKeyFrame, long timeStamp);
+    
+	/**
+	 * Stop publish stream
 	 *
 	 * @return {0} if successful
 	 */

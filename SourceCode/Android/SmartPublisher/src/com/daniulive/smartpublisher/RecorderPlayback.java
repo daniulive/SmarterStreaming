@@ -10,8 +10,6 @@
 
 package com.daniulive.smartpublisher;
 
-import org.daniulive.smartpublisher.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
