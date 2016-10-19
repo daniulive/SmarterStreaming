@@ -24,6 +24,7 @@
     UILabel         *textModeLabel;             //文字提示
     UIButton        *backSettingsButton;        //返回按钮
     Boolean         is_audio_only_;
+    Boolean         is_rtsp_tcp_mode_;          //仅用于rtsp流，设置TCP传输模式
 }
 
 - (NSInteger) handleSmartPlayerEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
@@ -66,7 +67,7 @@
 }
 
 
-- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly
+- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly isRTSPTcpMode:(Boolean)isRTSPTcpMode
 {
     self = [super init];
     if (!self) {
@@ -76,6 +77,7 @@
         _streamUrl = url;
         is_half_screen_ = isHalfScreenVal;
         is_audio_only_ = isAudioOnly;
+        is_rtsp_tcp_mode_ = isRTSPTcpMode;
     }
     
     return self;
@@ -83,7 +85,7 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.0610";
+    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1018";
     //当前屏幕宽高
     NSInteger screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     NSInteger screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
@@ -107,6 +109,7 @@
     if (_player.delegate == nil)
     {
         _player.delegate = self;
+        NSLog(@"SmartPlayerSDK _player.delegate:%@", _player);
     }
     
     NSString* sdkVersion = [_player SmartPlayerGetSDKVersionID];
@@ -141,9 +144,13 @@
         return;
     }
     
+    [_player SmartPlayerSetBuffer:200];
+    
     NSLog(@"playback URL: %@", _streamUrl);
     
     [_player SmartPlayerSetPlayURL:_streamUrl];
+    
+    [_player SmartPlayerSetRTSPTcpMode:is_rtsp_tcp_mode_];
     
     [_player SmartPlayerStart];
     

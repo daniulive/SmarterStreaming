@@ -87,8 +87,10 @@ typedef enum DNCameraPosition{
 /**
  * 美颜相关：
  *
- * 是否从美颜接口拿video数据, 默认是false
+ * 是否使用美颜
  * <pre>beautyTpye: (0:不使用美颜; 1:内部实现美颜; 2:第三方美颜接口给数据)</pre>
+ *
+ * <pre>beautyTpye为2时，调用SmartPublisherSetBeautyResolution和SmartPublisherSetBeautyYuvData给数据</pre>
  *
  * @return {0} if successful
  */
@@ -115,6 +117,40 @@ typedef enum DNCameraPosition{
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherSetBeautyYuvData:(unsigned char*)yData uData:(unsigned char*)uData vData:(unsigned char*)vData yStride:(NSInteger)yStride uStride:(NSInteger)uStride vStride:(NSInteger)vStride;
+
+
+/**
+ * 美颜相关：
+ *
+ * 传递BGRA数据
+ *
+ * <pre>data: bgra data</pre>
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetBeautyBGRAData:(unsigned char*)data stride:(NSInteger)stride;
+
+
+/**
+ * 美颜相关：
+ *
+ * 传递ARGB数据
+ *
+ * <pre>data: argb data</pre>
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetBeautyARGBData:(unsigned char*)data stride:(NSInteger)stride;
+
+
+/**
+ * 设置是否静音
+ *
+ * <pre>isMute: (0: 不静音；1: 静音)</pre>
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetMute:(Boolean)isMute;
 
 /**
  * 录像相关：

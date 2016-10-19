@@ -30,6 +30,7 @@
     UIButton    *medResolution;
     UIButton    *beautyButton;              //美颜设置
     UIButton    *swapCamerasButton;         //前后摄像头切换
+    UIButton    *muteButton;                //静音控制
     UIButton    *publisherButton;           //推流控制
     UIButton    *backSettingsButton;        //返回到设置分辨率页面
     UILabel     *textModeLabel;             //文字提示
@@ -40,6 +41,7 @@
     Boolean     is_recorder;                //默认不录像，如果设为true，则录像
     Boolean     is_beauty;                  //是否美颜，默认美颜
     DN_FILTER_TYPE  filter_type;            //美颜类型
+    Boolean     is_mute;                    // 是否静音
 }
 
 @synthesize localPreview;
@@ -95,6 +97,7 @@
         is_audio_only = isAudioOnly;
         is_recorder   = isRecorder;
         is_beauty = isBeauty;
+        is_mute = false;
     }
     
     NSLog(@"[initParameter]videoQuality: %u, is_audio_only: %d, is_recorder: %d",videoQuality, is_audio_only, is_recorder);
@@ -218,6 +221,22 @@
     
     CGFloat lineWidth = swapCamerasButton.frame.size.width * 0.12f;
     
+    //muteButton
+    muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    muteButton.frame = CGRectMake(45, self.view.frame.size.height - 400, 120, 60);
+    muteButton.center = CGPointMake(self.view.frame.size.width / 6, muteButton.frame.origin.y + muteButton.frame.size.height / 2);
+    
+    muteButton.layer.cornerRadius = muteButton.frame.size.width / 2;
+    muteButton.layer.borderColor = [UIColor greenColor].CGColor;
+    muteButton.layer.borderWidth = lineWidth;
+    
+    [muteButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [muteButton setTitle:@"静音" forState:UIControlStateNormal];
+    
+    [muteButton addTarget:self action:@selector(MuteBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:muteButton];
+    
+    
     //美颜设置
     beautyButton = [UIButton buttonWithType:UIButtonTypeCustom];
     beautyButton.frame = CGRectMake(45, self.view.frame.size.height - 320, 60, 60);
@@ -315,10 +334,31 @@
     NSLog(@"sdk version:%@",sdkVersion);
 }
 
+
+- (void)MuteBtn:(id)sender {
+    if ( _mediaCapture != nil )
+    {
+        is_mute = !is_mute;
+        
+        if ( is_mute )
+        {
+            [muteButton setTitle:@"取消静音" forState:UIControlStateNormal];
+        }
+        else
+        {
+             [muteButton setTitle:@"静音" forState:UIControlStateNormal];
+        }
+        
+        [_mediaCapture SmartPublisherSetMute:is_mute];
+    }
+}
+
 - (void)beautySettingsBtn:(id)sender {
 
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"不用美颜" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"请选择以下5种美颜效果" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
 
+ //       UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"不用美颜" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
+    
     actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
     [actionSheet showInView:self.view];
     

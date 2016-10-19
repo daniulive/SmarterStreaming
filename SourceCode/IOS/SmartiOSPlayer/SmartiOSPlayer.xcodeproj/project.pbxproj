@@ -212,6 +212,7 @@
 				TargetAttributes = {
 					582FB8CC1C885FD100CD6B44 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = WHT83EA5Y4;
 					};
 				};
 			};
@@ -381,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yan jie ni (L58GFJB3ZD)";
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
 				INFOPLIST_FILE = SmartiOSPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -391,6 +393,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPlayer;
 				PRODUCT_NAME = SmartiOSPlayer;
+				PROVISIONING_PROFILE = "4bd92b2d-9d06-40a4-a59e-7076737aafe7";
+				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
@@ -402,6 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yan jie ni (L58GFJB3ZD)";
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
 				INFOPLIST_FILE = SmartiOSPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -412,6 +417,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPlayer;
 				PRODUCT_NAME = SmartiOSPlayer;
+				PROVISIONING_PROFILE = "4bd92b2d-9d06-40a4-a59e-7076737aafe7";
+				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;

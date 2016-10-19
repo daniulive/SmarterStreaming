@@ -121,7 +121,7 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播推流端V1.0.06.08.24"];
+    [self.navigationItem setTitle:@"大牛直播推流端V1.0.06.09.28"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
 
