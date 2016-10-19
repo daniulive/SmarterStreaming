@@ -2,6 +2,8 @@
 //  SmartPlayerSDK.h
 //  SmartPlayerSDK
 //
+//  GitHub: https://github.com/daniulive/SmarterStreaming
+//
 //  Created by daniuLive on 2016/01/03.
 //  Copyright © 2016年 daniuLive. All rights reserved.
 //
@@ -56,6 +58,27 @@ typedef enum DNErrorCode{
  * @return {0} if successful
  */
 - (NSInteger) SmartPlayerSetPlayView:(void*) playView;
+
+
+/**
+ * 设置player buffer
+ *
+ * @param buffer: Unit is millisecond, range is 200-5000 ms
+ *
+ * @return {0} if successful
+ */
+- (NSInteger) SmartPlayerSetBuffer:(NSInteger) buffer;
+
+/**
+ * 此接口仅用于播放RTSP流时有效
+ *
+ * RTSP播放，默认采用UDP
+ *
+ * @param isUsingTCP: 设置为true, 走TCP模式，false为UDP模式
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetRTSPTcpMode:(Boolean)isUsingTCP;
 
 /**
  * 设置播放URL

@@ -18,6 +18,7 @@
 {
     NSString *baseURL;
     Boolean is_audio_only_;
+    Boolean is_rtsp_tcp_mode_;
 }
 
 @property (nonatomic, strong) UINavigationBar *nvgBar;
@@ -26,11 +27,17 @@
 @property (nonatomic, strong) UIButton *cdnServerBtn;
 @property (nonatomic, strong) UIButton *audioOnlyBtn;
 
+@property (nonatomic, strong) UIButton *udpBtn;
+@property (nonatomic, strong) UIButton *tcpBtn;
+
 @property (nonatomic, strong) UIButton *interPlaybackView;
 
 @property (nonatomic, strong) UILabel *cdnServerLable;
 @property (nonatomic, strong) UILabel *daniuServerLable;
 @property (nonatomic, strong) UILabel *audioOnlyLable;
+
+@property (nonatomic, strong) UILabel *udpLable;
+@property (nonatomic, strong) UILabel *tcpLable;
 
 @property (nonatomic, strong) UITextField *urlID;
 
@@ -41,8 +48,8 @@
 @implementation SettingView
 
 @synthesize nvgBar;
-@synthesize cdnServerBtn;
 @synthesize daniuServerBtn;
+@synthesize cdnServerBtn;
 @synthesize cdnServerLable;
 @synthesize daniuServerLable;
 @synthesize interPlaybackView;
@@ -72,7 +79,7 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播播放端V1.0.06.06.10"];
+    [self.navigationItem setTitle:@"大牛直播播放端V1.0.06.10.19"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     
@@ -92,6 +99,7 @@
     [self.urlID addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
     self.urlID.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     //[self.urlID setText:[NSString stringWithFormat:@"hks"]];
+    //[self.urlID setText:[NSString stringWithFormat:@"rtsp"]];
     
     //直播视频质量
     self.daniuServerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -127,10 +135,34 @@
     self.audioOnlyLable.lineBreakMode = NSLineBreakByCharWrapping;
     self.audioOnlyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
     
+    //RTSP only: 设置UDP或TCP传输
+    self.udpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.udpBtn.tag = 1;
+    self.udpBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80+80, 20, 20);
+    [self.udpBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
+    [self.udpBtn addTarget:self action:@selector(transModeButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    
+    self.udpLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80+80, 90, 20)];
+    self.udpLable.text = @"UDP(RTSP)";
+    self.udpLable.lineBreakMode = NSLineBreakByCharWrapping;
+    self.udpLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    
+    self.tcpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.tcpBtn.tag = 2;
+    
+    self.tcpBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80+80, 20, 20);
+    [self.tcpBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+    [self.tcpBtn addTarget:self action:@selector(transModeButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    
+    self.tcpLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80, 90, 20)];
+    self.tcpLable.text = @"TCP(RTSP)";
+    self.tcpLable.lineBreakMode = NSLineBreakByCharWrapping;
+    self.tcpLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    
     //进入播放页面
     self.interPlaybackView = [UIButton buttonWithType:UIButtonTypeCustom];
     self.interPlaybackView.tag = 4;
-    self.interPlaybackView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+20, buttonWidth, kBtnHeight);
+    self.interPlaybackView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+80+20, buttonWidth, kBtnHeight);
     [self.interPlaybackView setTitle:@"进入播放页面" forState:UIControlStateNormal];
     [self.interPlaybackView setBackgroundImage:[UIImage imageNamed:@"start_playback"] forState:UIControlStateNormal];
     self.interPlaybackView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -140,10 +172,18 @@
     [self.view addSubview:self.daniuServerBtn];
     [self.view addSubview:self.cdnServerBtn];
     [self.view addSubview:self.audioOnlyBtn];
+    
+    [self.view addSubview:self.udpBtn];
+    [self.view addSubview:self.tcpBtn];
+    
     [self.view addSubview:self.interPlaybackView];
     [self.view addSubview:self.daniuServerLable];
     [self.view addSubview:self.cdnServerLable];
     [self.view addSubview:self.audioOnlyLable];
+    
+    [self.view addSubview:self.udpLable];
+    [self.view addSubview:self.tcpLable];
+    
     [self.view addSubview:self.urlID];
 }
 
@@ -203,6 +243,33 @@
     }
 }
 
+- (void)transModeButtonClicked:(id)sender {
+    
+    UIButton *functionSelBtn = (UIButton *)sender;
+    
+    switch (functionSelBtn.tag) {
+        case 1: {
+            [self.udpBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
+            [self.tcpBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+            
+            is_rtsp_tcp_mode_ = false;
+            break;
+        }
+        case 2: {
+            
+            [self.tcpBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
+            [self.udpBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+            
+            is_rtsp_tcp_mode_ = true;
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
+
 #pragma mark - textField method
 - (void)textFieldDone:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -229,12 +296,22 @@
     if ( [inputVal isEqualToString:@"hks" ] )
     {
         is_half_screen = TRUE;
+        
         playbackURL = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    }
+    else if( [inputVal isEqualToString:@"rtsp" ] )
+    {
+        is_half_screen = TRUE;
+        
+        playbackURL = @"rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
+    
+        //playbackURL = @"rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
     }
     
     NSLog(@"pass playbackURL:%@", playbackURL);
     
-    ViewController * coreView =[[ViewController alloc] initParameter:playbackURL isHalfScreen:is_half_screen isAudioOnly:is_audio_only_];
+    ViewController * coreView =[[ViewController alloc] initParameter:playbackURL isHalfScreen:is_half_screen
+                                                         isAudioOnly:is_audio_only_ isRTSPTcpMode:is_rtsp_tcp_mode_];
     [self presentViewController:coreView animated:YES completion:nil];
 }
 
