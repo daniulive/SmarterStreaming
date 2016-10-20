@@ -8,13 +8,23 @@ For commercial support, please contact 89030985@qq.com.
 
 <img src="http://218.25.89.108:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
 
-SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台视频采集、直播SDK（支持私有协议/RTMP推流播放/纯音频推流播放/边推流边录像，如windows推流/android推流/iOS推流/windows播放器/android播放器/iOS播放器），公网毫秒级延迟，也许是国内最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
+SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台视频采集、直播SDK（支持私有协议/RTMP推流播放/纯音频推流播放/边推流边录像，如windows推流/android推流/iOS推流/windows播放器/android播放器/iOS播放器，**支持RTMP/RTSP播放**），**公网毫秒级延迟**，也许是国内最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
+
+**LATEST UPDATE**
+
+我们非常期待市面上能有一个高稳定、低延迟、支持多实例、适合直播的rtsp播放器，为此，我们 android播放器、iOS播放器友好的支持了rtsp协议，欢迎大家试用：
+a) 真正超低延迟；
+b) 真正意义的断线重连；
+c) 视频支持H.264，音频支持AAC/G.711；
+d) 支持TCP/UDP传输模式设置；
+e) 除了多了TCP/UDP设置接口，调用方式和之前rtmp播放器完全一致；
+f) 支持同时播放多路stream（可同时播放rtsp、rtmp流）。
 
 **[SmarterStreaming SDK调用说明]**
 
 [点击查看](http://daniulive.com:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
 
-**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群: 499687479**)查看群共享文件
+**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群: 499687479**)查看群共享文件。
 
 **[一对一实时音视频互动]**
 
@@ -45,7 +55,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
  
  c)**音视频**推送、**纯音频**推送、**纯视频**推送；
  
- d)支持边采集、边录像；
+ d)支持**边采集、边录像**；
  
  e)网络中断，本地录像继续，保证数据的完整性；
  
@@ -53,7 +63,7 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
  
  g)采集过程中，前后摄像头切换；
  
- h)支持编码前、编码后音视频数据接口，轻松对接第三方美颜、AR、VR；
+ h)提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
  
  i)iOS自带美颜功能；
  
@@ -67,13 +77,19 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 4. **android播放器/iOS播放器**
 
- a)超低延迟播放rtmp直播流；
+ a)超低延迟的rtmp播放器；
  
- b)完美支持多实例播放（同时播放多路）；
+ b)超低延迟的rtsp播放器；
  
- c)支持自定义播放布局;
+ c)完美支持多实例播放（同时播放多路stream，可同时支持rtmp、rtsp stream播放）；
  
- d)音视频多种render机制。
+ d)支持RTSP TCP/UDP模式切换；
+ 
+ e)支持播放端，buffer设置；
+ 
+ f)支持自定义播放布局;
+ 
+ g)音视频多种render机制。
 
 5. **微信播放**
 
@@ -90,9 +106,9 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
 
 8. 支持跨平台**纯音频推送**、**纯音频播放**、**纯音频实时存储**。
 
-**[基于RTMP安防摄像机、编码器、智能眼镜平台对接]**
+**[基于RTMP、RTSP安防摄像机、编码器、智能眼镜平台对接]**
 
-高稳定性、超低延迟的跨平台（Windows/android/iOS）综合视频监控系统对接。
+无论rtsp、rtmp，我们提供高稳定性、超低延迟的跨平台（Windows/android/iOS）综合视频监控系统对接。
 
 **[多对一实时通讯]**
 
@@ -212,12 +228,16 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.2 android播放器**
 
-进入系统后，点击“输入urlID”，在弹出的对话框输入url中，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击开始播放即可，停止的话，点击停止播放即可。
+1. 输入urlID：支持daniulive的推送播放（“rtmp://daniulive.com:1935/hls/stream”），在弹出的对话框输入url中，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击开始播放即可，
+2. 输入完整url：自定义url播放，输入全的播放url，比如" rtmp://live.hkstv.hk.lxdns.com/live/hks".
+完成url输入后，点击“开始播放”即可，需停止播放，请点击"停止播放"。
 
 **2.3 iOS播放器**
 
 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放。
 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态。
+如需测试rtsp url，请编译工程，设置全的url即可。
+rtsp模式下，支持TCP/UDP模式切换。
 
 **2.4 Web播放器**
 
