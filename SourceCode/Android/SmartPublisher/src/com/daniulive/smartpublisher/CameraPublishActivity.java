@@ -986,6 +986,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     }
 	
 	 private void switchCamera() throws IOException{
+		 	mCamera.setPreviewCallback(null);
 		 	mCamera.stopPreview();
 		 	mCamera.release();
 	        if(currentCameraType == FRONT){

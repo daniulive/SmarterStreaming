@@ -172,6 +172,25 @@ public class SmartPublisherJni {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherOnCaptureVideoData(byte[] data, int len, int cameraType, int curOrg);
+    
+    
+    /**
+	* Set live video data(no encoded data).
+	*
+	* @param data: I420 data
+	* 
+	* @param len: I420 data length
+	* 
+	* @param yStride: y stride
+	* 
+	* @param uStride: u stride
+	* 
+	* @param vStride: v stride
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherOnCaptureVideoI420Data(byte[] data, int len, int yStride, int uStride, int vStride);
+    
 	
 	/**
 	* Set encoded video data.

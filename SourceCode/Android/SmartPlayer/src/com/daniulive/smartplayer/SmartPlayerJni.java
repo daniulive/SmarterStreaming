@@ -60,6 +60,31 @@ public class SmartPlayerJni {
 	 * @return {0} if successful
 	  */
 	 public native int SmartPlayerSetAudioOutputType(long handle, int use_audiotrack);	
+	 
+	 
+	 /**
+	  * Set buffer
+	  * 
+	  * @param handle: return value from SmartPlayerInit()
+	  * 
+	  * @param buffer: 
+	  * 
+	  * <pre> NOTE: Unit is millisecond, range is 200-5000 ms </pre> 
+	  * 
+	 * @return {0} if successful
+	  */
+	 public native int SmartPlayerSetBuffer(long handle, int buffer);	
+	 
+	 /**
+	  * It's only used when playback RTSP stream
+	  *
+	  * Default with UDP mode
+	  *
+	  * @param isUsingTCP: if with 1, it will via TCP mode, while 0 with UDP mode
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPlayerSetRTSPTcpMode(long handle, int isUsingTCP);
 	  	  	
 	 /**
 	 * Set playback orientation.
