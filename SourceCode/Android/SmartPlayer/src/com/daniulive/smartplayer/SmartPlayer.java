@@ -295,7 +295,18 @@ public class SmartPlayer extends Activity {
             	     // libPlayer.SmartPlayerSetSurface(playerHandle, null);    
  	              	 
             	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
+            	      
+            	      libPlayer.SmartPlayerSetBuffer(playerHandle, 200);
+            	      
+            	      //It only used when playback RTSP stream..
+            	     // libPlayer.SmartPlayerSetRTSPTcpMode(playerHandle, 1);
      
+            	      //playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+            	    	
+            	      //playbackUrl = "rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
+            	        
+            	      //playbackUrl = "rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
+            	      
 	              	  if(playbackUrl == null){
 	              		 Log.e(TAG, "playback URL with NULL..."); 
 	              		 return;
