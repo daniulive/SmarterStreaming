@@ -24,7 +24,9 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
  
  e)除了多了TCP/UDP设置接口，调用方式和之前rtmp播放器完全一致；
  
- f)支持同时播放多路stream（可同时播放rtsp、rtmp流）。
+ f)支持同时播放多路stream（可同时播放rtsp、rtmp流）；
+ 
+ g)支持播放过程中，实时静音/取消静音。
 
 **[SmarterStreaming SDK调用说明]**
 
@@ -95,7 +97,9 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
  
  f)支持自定义播放布局;
  
- g)音视频多种render机制。
+ g)音视频多种render机制;
+ 
+ h)支持播放过程中，实时静音/取消静音。
 
 5. **微信播放**
 
@@ -240,10 +244,12 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.3 iOS播放器**
 
-进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放。
-如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态。
-如需测试rtsp url，请编译工程，设置全的url即可。
-rtsp模式下，支持TCP/UDP模式切换。
+1. 安装SmartPlayer.ipa；
+2. [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+3. [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
+4. [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
+5. [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
+6. [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音。
 
 **2.4 Web播放器**
 
