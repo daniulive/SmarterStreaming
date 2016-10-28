@@ -93,13 +93,13 @@ SmarterStreaming也许是国内为数不多不依赖开源框架、可扩展性�
  
  d)支持RTSP TCP/UDP模式切换；
  
- e)支持播放端，buffer设置；
+ e)支持播放端，buffer设置；
  
  f)支持自定义播放布局;
  
  g)音视频多种render机制;
  
- h)支持播放过程中，实时静音/取消静音。
+ h)支持播放过程中，**实时静音/取消静音**。
 
 5. **微信播放**
 
@@ -212,7 +212,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 1. 安装SmartPublisher；
 2. [分辨率] 可选择高、中、低、超高分辨率；
-3. [推流类型] 可选择推“纯音频”、“音视频”；
+3. [推流类型] 可选择推“纯音频”、“音视频”、“纯视频”；
 4. [美颜] iOS推送端支持推送过程中，美颜设置，也可选择不美颜；
 5. [录像] 可选择“边推边录”或不录像，如选择“边推边录”，支持边推流边录像；
 6. [进入推流页面] 1~5步骤完成后，可进入推流页面；
@@ -234,13 +234,18 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.1 Windows播放器：**
 
-选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，右侧输入框输入 rtmp://daniulive.com:1935/hls/stream123456;， 然后依次点击 PlayerOpen-->StartPlay即可。
+选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，右侧输入框输入 “rtmp://daniulive.com:1935/hls/stream123456” 或 “rtmp://live.hkstv.hk.lxdns.com/live/hks”（第三方url）， 然后依次点击 PlayerOpen-->StartPlay即可。
 
 **2.2 android播放器**
 
-1. 输入urlID：支持daniulive的推送播放（“rtmp://daniulive.com:1935/hls/stream”），在弹出的对话框输入url中，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击开始播放即可，
-2. 输入完整url：自定义url播放，输入全的播放url，比如" rtmp://live.hkstv.hk.lxdns.com/live/hks".
-完成url输入后，点击“开始播放”即可，需停止播放，请点击"停止播放"。
+1. 安装SmartPlayer.apk；
+2. [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+3. [纯音频url] 如需播放纯音频，编译工程，SmartPlayerSetSurface第二个参数设置为null；
+4. [输入完整url] 如需测试自己服务器或者公网rtsp/rtmp的url，点击“输入完整url”，比如“rtmp://live.hkstv.hk.lxdns.com/live/hks”，在弹出框输入想播放的url；
+5. [开始播放/停止播放] 输入播放url后，可以点击开始播放，如需停止，点击停止播放按钮即可；
+6. [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
+7. [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音。
+
 
 **2.3 iOS播放器**
 
@@ -249,7 +254,8 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 3. [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
 4. [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
 5. [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
-6. [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音。
+6. [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
+7. [返回] 播放另外一个url，点击返回按钮，到上级页面。
 
 **2.4 Web播放器**
 
