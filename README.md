@@ -36,7 +36,7 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 **[美颜、萌颜]**
 
-鉴于用户强烈的美颜、萌颜个性化需求，我们和visionin（视诀科技）合作，推出美颜、萌颜版SDK（如需测试，请在推流端美颜选项选择“外置美颜”），支持数百种道具选择（各种贴图、胡子、眼镜...）。
+鉴于用户强烈的美颜、萌颜个性化需求，我们和visionin（[视诀科技](http://www.visualogies.com/)）合作，推出美颜、萌颜版SDK（如需测试，请在推流端美颜选项选择“外置美颜”），支持数百种道具选择（各种贴图、胡子、眼镜...）。
 
 [点击下载iOS定制版](http://daniulive.com:8080/files/daniulive/Daniulive_iOS_%E5%A4%96%E7%BD%AE%E7%BE%8E%E9%A2%9C_2016-11-01.zip)
 
