@@ -14,20 +14,32 @@
 
 #import "nt_event_define.h"
 
-//设置协议
+//设置delegate
 @protocol SmartPublisherDelegate;
+
+/**
+ *  SDK错误返回值
+ */
+typedef enum DNErrorCode{
+    DANIULIVE_RETURN_OK = 0,        //!< 返回OK
+    DANIULIVE_RETURN_ERROR,         //!< 返回错误
+    DANIULIVE_RETURN_SDK_EXPIRED    //!< SDK过期，需重重新授权
+}DNErrorCode;
 
 /**
  *  美颜类型
  */
 typedef NS_ENUM(NSInteger, DN_BEAUTY_TYPE) {
-    DN_BEAUTY_NONE = 0,
-    DN_BEAUTY_INTERNAL_BEAUTY = 1,
-    DN_BEAUTY_ADDITIONAL_BEAUTY = 2
+    DN_BEAUTY_NONE = 0,             //!< 不加美颜
+    DN_BEAUTY_INTERNAL_BEAUTY = 1,  //!< 内部daniulive基础美颜
+    DN_BEAUTY_ADDITIONAL_BEAUTY = 2 //!< 第三方美颜或外部采集的YUV/RGB对接
 };
 
 /**
  *  美颜选择
+ *
+ *  此类型仅用于设置daniulive基础美颜
+ *
  */
 typedef NS_ENUM(NSInteger, DN_FILTER_TYPE) {
     DN_FILTER_NONE = 0,
@@ -39,16 +51,9 @@ typedef NS_ENUM(NSInteger, DN_FILTER_TYPE) {
 };
 
 /**
- *  错误返回值
- */
-typedef enum DNErrorCode{
-    DANIULIVE_RETURN_OK = 0,        //!< 返回OK
-    DANIULIVE_RETURN_ERROR,         //!< 返回错误
-    DANIULIVE_RETURN_SDK_EXPIRED    //!< SDK过期
-}DNErrorCode;
-
-/**
  *  推流分辨率选择
+ *
+ *  此类型仅用于daniulive做视频采集时使用，如视频数据来自美颜或第三方接口，无需使用
  */
 typedef enum DNVideoStreamingQuality{
     DN_VIDEO_QUALITY_LOW,           //!< 视频分辨率：低清.
@@ -62,7 +67,6 @@ typedef enum DNVideoStreamingQuality{
 typedef enum DNCameraPosition{
     DN_CAMERA_POSITION_BACK,         //!< 后置摄像头.
     DN_CAMERA_POSITION_FRONT         //!< 前置摄像头.
-    
 } DNCameraPosition;
 
 @interface SmartPublisherSDK : NSObject
@@ -72,32 +76,55 @@ typedef enum DNCameraPosition{
 
 /**
  * 初始化Publisher
+ *
  * <pre>此接口请第一个调用</pre>
+ *
+ * audio_opt和video_opt组合推送类型，如 audio_opt为1，video_opt为1，则代表推送音频和视频
+ *
+ * @param audio_opt:
+ if with 0: 不推送音频
+ if with 1: 推送音频
+ if with 2: 推送外部编码后音频(目前仅支持AAC)
+ *
+ * @param video_opt:
+ if with 0: 不推送视频
+ if with 1: 推送视频
+ if with 2: 推送外部编码后视频(目前仅支持H.264),数据格式: 0000000167....
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherInit:(Boolean)isAudioOnly;
+- (NSInteger)SmartPublisherInit:(NSInteger)audio_opt video_opt:(NSInteger)video_opt;
 
 /**
- * 美颜效果设置
- * <pre>Init后调用</pre>
- */
--(NSInteger)SmartPublisherSetBeautyFilterType:(DN_FILTER_TYPE)filterType;
-
-/**
- * 美颜相关：
+ * 美颜相关
  *
  * 是否使用美颜
- * <pre>beautyTpye: (0:不使用美颜; 1:内部实现美颜; 2:第三方美颜接口给数据)</pre>
  *
- * <pre>beautyTpye为2时，调用SmartPublisherSetBeautyResolution和SmartPublisherSetBeautyYuvData给数据</pre>
+ * beautyTpye:
+ DN_BEAUTY_NONE = 0,             //!< 不加美颜
+ DN_BEAUTY_INTERNAL_BEAUTY = 1,  //!< 内部daniulive基础美颜
+ DN_BEAUTY_ADDITIONAL_BEAUTY = 2 //!< 第三方美颜对接
+ *
+ * <pre>beautyTpye为2(DN_BEAUTY_ADDITIONAL_BEAUTY)时，调用SmartPublisherSetExternalResolution和SmartPublisherSetExternalYuvData给数据</pre>
  *
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherSetBeauty:(DN_BEAUTY_TYPE)beautyTpye;
 
 /**
- * 美颜相关：
+ * 设置美颜类型
+ *
+ * daniulive基础美颜效果设置
+ *
+ * <pre>Init后调用</pre>
+ *
+ * <NOTE> 此接口仅在使用daniulive基础美颜(DN_BEAUTY_INTERNAL_BEAUTY)时设置
+ */
+-(NSInteger)SmartPublisherSetBeautyFilterType:(DN_FILTER_TYPE)filterType;
+
+
+/**
+ * 美颜或外部视频采集时使用
  *
  * 设置采集分辨率
  *
@@ -105,10 +132,10 @@ typedef enum DNCameraPosition{
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherSetBeautyResolution:(NSInteger)width height:(NSInteger)height;
+- (NSInteger)SmartPublisherSetExternalResolution:(NSInteger)width height:(NSInteger)height;
 
 /**
- * 美颜相关：
+ * 美颜或外部视频采集时使用
  *
  * 传递YUV数据
  *
@@ -116,11 +143,11 @@ typedef enum DNCameraPosition{
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherSetBeautyYuvData:(unsigned char*)yData uData:(unsigned char*)uData vData:(unsigned char*)vData yStride:(NSInteger)yStride uStride:(NSInteger)uStride vStride:(NSInteger)vStride;
+- (NSInteger)SmartPublisherSetExternalYuvData:(unsigned char*)yData uData:(unsigned char*)uData vData:(unsigned char*)vData yStride:(NSInteger)yStride uStride:(NSInteger)uStride vStride:(NSInteger)vStride;
 
 
 /**
- * 美颜相关：
+ * 美颜或外部视频采集时使用
  *
  * 传递BGRA数据
  *
@@ -128,11 +155,11 @@ typedef enum DNCameraPosition{
  *
  * @return {0} if successful
  */
--(NSInteger)SmartPublisherSetBeautyBGRAData:(unsigned char*)data stride:(NSInteger)stride;
+-(NSInteger)SmartPublisherSetExternalBGRAData:(unsigned char*)data stride:(NSInteger)stride;
 
 
 /**
- * 美颜相关：
+ * 美颜或外部视频采集时使用
  *
  * 传递ARGB数据
  *
@@ -140,8 +167,58 @@ typedef enum DNCameraPosition{
  *
  * @return {0} if successful
  */
--(NSInteger)SmartPublisherSetBeautyARGBData:(unsigned char*)data stride:(NSInteger)stride;
+-(NSInteger)SmartPublisherSetExternalARGBData:(unsigned char*)data stride:(NSInteger)stride;
 
+/**
+ * 设置编码后视频数据(H.264)
+ *
+ * @param buffer: encoded video data
+ *
+ * @param len: data length
+ *
+ * @param isKeyFrame: if with key frame, please set 1, otherwise, set 0.
+ *
+ * @param timeStamp: video timestamp
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherOnReceivingVideoEncodedData:(unsigned char*)buffer len:(NSInteger)len isKeyFrame:(NSInteger)isKeyFrame timeStamp:(unsigned long long)timeStamp;
+
+/**
+ * 设置 audio specific configure.
+ *
+ * @param buffer: audio specific settings.
+ *
+ * For example:
+ *
+ * sample rate with 44100, channel: 2, profile: LC
+ *
+ * audioConfig set as below:
+ *
+ *	byte[] audioConfig = new byte[2];
+ *	audioConfig[0] = 0x12;
+ *	audioConfig[1] = 0x10;
+ *
+ * @param len: buffer length
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherSetAudioSpecificConfig:(unsigned char*)buffer len:(NSInteger)len;
+
+/**
+ * 设置编码后视频数据(AAC)
+ *
+ * @param data: encoded audio data
+ *
+ * @param len: data length
+ *
+ * @param isKeyFrame: 1
+ *
+ * @param timeStamp: audio timestamp
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherOnReceivingAACData:(unsigned char*)buffer len:(NSInteger)len isKeyFrame:(NSInteger)isKeyFrame timeStamp:(unsigned long long)timeStamp;
 
 /**
  * 设置是否静音
@@ -181,19 +258,31 @@ typedef enum DNCameraPosition{
 - (NSInteger)SmartPublisherSetRecorderFileMaxSize:(NSInteger)size;
 
 /**
- * 设置video preview, 如果是纯音频或者美颜模式，还是需要调用，传nil就可以
+ * 设置video preview
+ *
+ * 此接口仅当用daniulive采集视频数据时设置，若视频来自外部美颜（DN_BEAUTY_ADDITIONAL_BEAUTY）或外部第三方数据，无需调用
+ *
+ * @return {0} if successful
  */
 -(NSInteger)SmartPublisherSetVideoPreview:(UIView*)preview;
 
 /**
  * 开始采集音视频数据
+ *
  * <pre>resolution：采集分辨率</pre>
+ *
+ * @return {0} if successful
  */
 -(NSInteger)SmartPublisherStartCapture:(DNVideoStreamingQuality)resolution;
 
 /**
  * 切换前后置摄像头
+ *
+ * 此接口仅当用daniulive采集视频数据时设置
+ *
  * <pre>必须在SmartPublisherStartCapture之后调用</pre>
+ *
+ * @return {0} if successful
  */
 -(NSInteger)SmartPublisherSwitchCamera;
 

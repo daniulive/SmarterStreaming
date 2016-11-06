@@ -10,6 +10,10 @@
 #import "ViewController.h"
 #import "SettingView.h"
 
+#define kBtnHeight     50
+#define kHorMargin     10
+#define kVerMargin     80
+
 @interface ViewController ()
 
 @end
@@ -22,9 +26,18 @@
     UIView          * _glView;
     NSString        *copyRights;
     UILabel         *textModeLabel;             //文字提示
-    UIButton        *backSettingsButton;        //返回按钮
     Boolean         is_audio_only_;
+    Boolean         is_hardware_decoder_;       //默认软解码
     Boolean         is_rtsp_tcp_mode_;          //仅用于rtsp流，设置TCP传输模式
+    NSInteger       screenWidth;
+    NSInteger       screenHeight;
+    NSInteger       playerHeight;
+    Boolean         is_mute;                    //静音接口
+    
+    UIButton        *backSettingsButton;        //返回按钮
+    UILabel         *backSettingLable;          //返回按钮 lable
+    UIButton        *muteButton;                //静音 取消静音
+    
 }
 
 - (NSInteger) handleSmartPlayerEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
@@ -67,7 +80,8 @@
 }
 
 
-- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly isRTSPTcpMode:(Boolean)isRTSPTcpMode
+- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly
+                isHWDecoder:(Boolean)isHWDecoder isRTSPTcpMode:(Boolean)isRTSPTcpMode
 {
     self = [super init];
     if (!self) {
@@ -77,6 +91,7 @@
         _streamUrl = url;
         is_half_screen_ = isHalfScreenVal;
         is_audio_only_ = isAudioOnly;
+        is_hardware_decoder_ = isHWDecoder;
         is_rtsp_tcp_mode_ = isRTSPTcpMode;
     }
     
@@ -86,11 +101,16 @@
 - (void)loadView
 {
     copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1018";
-    //当前屏幕宽高
-    NSInteger screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
-    NSInteger screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
     
-    NSInteger playerHeight = screenHeight;
+    is_mute = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
+  
+    //当前屏幕宽高
+    screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
+    screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
+    
+    playerHeight = screenHeight;
     
     if ( is_half_screen_ )
         playerHeight = screenWidth*3/4;
@@ -122,6 +142,15 @@
         return;
     }
     
+    NSInteger videoDecoderMode = 0;
+    
+    if (is_hardware_decoder_)
+    {
+        videoDecoderMode = 1;
+    }
+    
+    [_player SmartPlayerSetVideoDecoderMode:videoDecoderMode];
+    
     if (is_audio_only_) {
         [_player SmartPlayerSetPlayView:nil];
     }
@@ -144,7 +173,9 @@
         return;
     }
     
-    [_player SmartPlayerSetBuffer:200];
+    NSInteger bufferTime = 200;
+    
+    [_player SmartPlayerSetBuffer:bufferTime];
     
     NSLog(@"playback URL: %@", _streamUrl);
     
@@ -153,14 +184,30 @@
     [_player SmartPlayerSetRTSPTcpMode:is_rtsp_tcp_mode_];
     
     [_player SmartPlayerStart];
+
+    CGFloat lineWidth = muteButton.frame.size.width * 0.12f;
     
+    //muteButton
+    muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    muteButton.frame = CGRectMake(45, playerHeight - 200, 120, 80);
+    muteButton.center = CGPointMake(self.view.frame.size.width / 6, muteButton.frame.origin.y + muteButton.frame.size.height / 2);
+    
+    muteButton.layer.cornerRadius = muteButton.frame.size.width / 2;
+    muteButton.layer.borderColor = [UIColor greenColor].CGColor;
+    muteButton.layer.borderWidth = lineWidth;
+    
+    [muteButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [muteButton setTitle:@"静音" forState:UIControlStateNormal];
+    
+    [muteButton addTarget:self action:@selector(MuteBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:muteButton];
+    
+    //muteButton
     backSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backSettingsButton.frame = CGRectMake(45, self.view.frame.size.height - 80, 60, 60);
-    backSettingsButton.center = CGPointMake(self.view.frame.size.width / 2, backSettingsButton.frame.origin.y + backSettingsButton.frame.size.height / 2);
+    backSettingsButton.frame = CGRectMake(45, playerHeight - 80, 120, 80);
+    backSettingsButton.center = CGPointMake(self.view.frame.size.width / 6, backSettingsButton.frame.origin.y + backSettingsButton.frame.size.height / 2);
     
-    CGFloat lineWidth = backSettingsButton.frame.size.width * 0.12f;
-    
-    backSettingsButton.layer.cornerRadius = backSettingsButton.frame.size.width / 2;
+    backSettingsButton.layer.cornerRadius = muteButton.frame.size.width / 2;
     backSettingsButton.layer.borderColor = [UIColor greenColor].CGColor;
     backSettingsButton.layer.borderWidth = lineWidth;
     
@@ -169,7 +216,7 @@
     
     [backSettingsButton addTarget:self action:@selector(backSettingsBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backSettingsButton];
-    
+     
     // 创建文字提示 UILable
     textModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
     // 设置UILabel的背景色
@@ -187,9 +234,26 @@
     
 }
 
+- (void)MuteBtn:(id)sender {
+    if ( _player != nil )
+    {
+        is_mute = !is_mute;
+        
+        if ( is_mute )
+        {
+            [muteButton setTitle:@"取消静音" forState:UIControlStateNormal];
+        }
+        else
+        {
+            [muteButton setTitle:@"静音" forState:UIControlStateNormal];
+        }
+        
+        [_player SmartPlayerSetMute:is_mute];
+    }
+}
+
 - (void)backSettingsBtn:(UIButton *)button
 {
-    
     NSLog(@"Run into backSettingsBtn..");
     
     if (_player != nil)
@@ -222,6 +286,49 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)orientChange:(NSNotification *)noti
+{
+    
+    UIDeviceOrientation  orient = [UIDevice currentDevice].orientation;
+    
+    NSLog(@"[orgientChange] orient:%ld" ,(long)orient);
+    
+    Boolean isPortrait = false;
+    
+    switch (orient)
+    {
+        case UIDeviceOrientationPortrait:
+            isPortrait = true;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            isPortrait = false;
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            isPortrait = false;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            isPortrait = false;
+            break;
+            
+        default:
+            break;
+    }
+    
+    CGRect f = _glView.frame;
+    
+    if (isPortrait) {
+        f.size.width = screenWidth;
+        f.size.height = playerHeight;
+    }
+    else
+    {
+        f.size.width = screenHeight;
+        f.size.height = screenWidth;
+    }
+    
+    _glView.frame = f;
 }
 
 @end

@@ -21,7 +21,8 @@
 @interface SettingView ()
 {
     DNVideoStreamingQuality streamQuality;
-    Boolean                 is_audio_only_;
+    NSInteger               audio_opt_;
+    NSInteger               video_opt_;
     Boolean                 is_recorder_;
     Boolean                 is_beauty_;
 }
@@ -35,6 +36,7 @@
 
 @property (nonatomic, strong) UIButton *avBtn;
 @property (nonatomic, strong) UIButton *audioBtn;
+@property (nonatomic, strong) UIButton *videoBtn;
 
 @property (nonatomic, strong) UIButton *recorderBtn;
 @property (nonatomic, strong) UIButton *noRecorderBtn;
@@ -51,6 +53,7 @@
 
 @property (nonatomic, strong) UILabel *avLable;
 @property (nonatomic, strong) UILabel *audioLable;
+@property (nonatomic, strong) UILabel *videoLable;
 
 @property (nonatomic, strong) UILabel *recorderLable;
 @property (nonatomic, strong) UILabel *noRecorderLable;
@@ -72,6 +75,7 @@
 @synthesize highQualityBtn;
 @synthesize avBtn;
 @synthesize audioBtn;
+@synthesize videoBtn;
 @synthesize recorderBtn;
 @synthesize noRecorderBtn;
 @synthesize beautyBtn;
@@ -81,6 +85,7 @@
 @synthesize highQualityLable;
 @synthesize avLable;
 @synthesize audioLable;
+@synthesize videoLable;
 @synthesize recorderLable;
 @synthesize noRecorderLable;
 @synthesize beautyLable;
@@ -107,7 +112,8 @@
     //默认标清分辨率
     streamQuality = DN_VIDEO_QUALITY_MEDIUM;
     //默认采集音视频
-    is_audio_only_= false;
+    audio_opt_ = 1;
+    video_opt_ = 1;
     //默认不录像
     is_recorder_  = false;
     //默认美颜
@@ -179,6 +185,16 @@
     self.audioLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80, 60, 20)];
     self.audioLable.text = @"纯音频";
     self.audioLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    
+    self.videoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.videoBtn.tag = 3;
+    
+    self.videoBtn.frame = CGRectMake(screenWidth-kHorMargin-buttonSpace-60, kVerMargin+kBtnHeight+80, 20, 20);
+    [self.videoBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+    [self.videoBtn addTarget:self action:@selector(pushTypeButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    self.videoLable = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-kHorMargin-buttonSpace-40, kVerMargin+kBtnHeight+80, 60, 20)];
+    self.videoLable.text = @"纯视频";
+    self.videoLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
 
     //是否录像
     self.noRecorderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -247,6 +263,7 @@
     
     [self.view addSubview:self.avBtn];
     [self.view addSubview:self.audioBtn];
+    [self.view addSubview:self.videoBtn];
     
     [self.view addSubview:self.noRecorderBtn];
     [self.view addSubview:self.recorderBtn];
@@ -262,6 +279,7 @@
     
     [self.view addSubview:self.avLable];
     [self.view addSubview:self.audioLable];
+    [self.view addSubview:self.videoLable];
     
     [self.view addSubview:self.noRecorderLable];
     [self.view addSubview:self.recorderLable];
@@ -327,13 +345,25 @@
         case 1: {
             [self.avBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
             [self.audioBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            is_audio_only_ = false;
+            [self.videoBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+            audio_opt_ = 1;
+            video_opt_ = 1;
             break;
         }
         case 2: {
             [self.avBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
             [self.audioBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            is_audio_only_ = true;
+            [self.videoBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+            audio_opt_ = 1;
+            video_opt_ = 0;
+            break;
+        }
+        case 3: {
+            [self.avBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+            [self.audioBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+            [self.videoBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
+            audio_opt_ = 0;
+            video_opt_ = 1;
             break;
         }
         default:
@@ -386,7 +416,7 @@
 }
 
 - (void)interPublisherViewBtnPressed:(id)sender {
-    ViewController * coreView =[[ViewController alloc] initParameter:streamQuality isAudioOnly:is_audio_only_ isRecorder:is_recorder_ isBeauty:is_beauty_];
+    ViewController * coreView =[[ViewController alloc] initParameter:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isRecorder:is_recorder_ isBeauty:is_beauty_];
     [self presentViewController:coreView animated:YES completion:nil];
 }
 

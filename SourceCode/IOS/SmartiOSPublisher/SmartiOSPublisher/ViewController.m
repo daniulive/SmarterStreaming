@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UIView *localPreview;
 
 //推流SDK API
-@property (nonatomic,strong) SmartPublisherSDK *mediaCapture;
+@property (nonatomic,strong) SmartPublisherSDK *smart_publisher_sdk;
 
 - (void)swapCameraBtnPressed:(id)sender;
 
@@ -37,7 +37,8 @@
     NSInteger   randNumber;
     DNVideoStreamingQuality videoQuality;   //分辨率选择
     NSString    *copyRights;
-    Boolean     is_audio_only;              //如果为true，则只推送音频
+    NSInteger   audio_opt_;                 //audio选项 0 1 2
+    NSInteger   video_opt_;                 //video选项 0 1 2
     Boolean     is_recorder;                //默认不录像，如果设为true，则录像
     Boolean     is_beauty;                  //是否美颜，默认美颜
     DN_FILTER_TYPE  filter_type;            //美颜类型
@@ -85,7 +86,7 @@
     return 0;
 }
 
-- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality isAudioOnly:(Boolean)isAudioOnly
+- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality audioOpt:(NSInteger)audioOpt videoOpt:(NSInteger)videoOpt
                    isRecorder:(Boolean)isRecorder isBeauty:(Boolean)isBeauty
 {
     self = [super init];
@@ -94,48 +95,51 @@
     }
     else if(self) {
         videoQuality = streamQuality;
-        is_audio_only = isAudioOnly;
+        audio_opt_  = audioOpt;
+        video_opt_  = videoOpt;
         is_recorder   = isRecorder;
         is_beauty = isBeauty;
         is_mute = false;
     }
     
-    NSLog(@"[initParameter]videoQuality: %u, is_audio_only: %d, is_recorder: %d",videoQuality, is_audio_only, is_recorder);
+    NSLog(@"[initParameter]videoQuality: %u, audio_opt: %ld, video_opt: %ld, is_recorder: %d",videoQuality, (long)audio_opt_, (long)video_opt_, is_recorder);
     
     return self;
 }
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.0824";
+    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1022";
     //当前屏幕宽高
     CGFloat screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     CGFloat screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     
-    _mediaCapture = [[SmartPublisherSDK alloc] init];
+    _smart_publisher_sdk = [[SmartPublisherSDK alloc] init];
     
-    if (_mediaCapture ==nil ) {
+    if (_smart_publisher_sdk == nil ) {
         NSLog(@"_mediaCapture with nil..");
         return;
     }
     
-    if(_mediaCapture.delegate == nil)
+    if(_smart_publisher_sdk.delegate == nil)
     {
-        _mediaCapture.delegate = self;
+        _smart_publisher_sdk.delegate = self;
     }
     
-    if([_mediaCapture SmartPublisherInit:is_audio_only] != DANIULIVE_RETURN_OK){
+    if([_smart_publisher_sdk SmartPublisherInit:audio_opt_ video_opt:video_opt_] != DANIULIVE_RETURN_OK)
+    {
         NSLog(@"Call SmartPublisherInit failed..");
         
-        _mediaCapture = nil;
+        _smart_publisher_sdk = nil;
         return;
     }
     
     DN_BEAUTY_TYPE beauty_type;
     
-    if (is_beauty) {
+    if (is_beauty)
+    {
         beauty_type = DN_BEAUTY_INTERNAL_BEAUTY;
     }
     else
@@ -143,17 +147,19 @@
         beauty_type = DN_BEAUTY_NONE;
     }
     
-    if([_mediaCapture SmartPublisherSetBeauty:beauty_type] != DANIULIVE_RETURN_OK){
+    if([_smart_publisher_sdk SmartPublisherSetBeauty:beauty_type] != DANIULIVE_RETURN_OK)
+    {
         NSLog(@"Call SmartPublisherSetBeauty failed..");
 
-        _mediaCapture = nil;
+        _smart_publisher_sdk = nil;
         return;
     }
     
     //录像控制
-    if([_mediaCapture SmartPublisherSetRecorder:is_recorder] != DANIULIVE_RETURN_OK){
+    if([_smart_publisher_sdk SmartPublisherSetRecorder:is_recorder] != DANIULIVE_RETURN_OK)
+    {
         NSLog(@"Call SmartPublisherSetRecorder failed..");
-        _mediaCapture = nil;
+        _smart_publisher_sdk = nil;
         return;
     }
     
@@ -163,29 +169,32 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *recorderDir = [paths objectAtIndex:0];
         
-        if([_mediaCapture SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK){
+        if([_smart_publisher_sdk SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK)
+        {
             NSLog(@"Call SmartPublisherInit failed..");
-            _mediaCapture = nil;
+            _smart_publisher_sdk = nil;
             return;
         }
         
         //每个录像文件大小
         NSInteger size = 200;
-        if([_mediaCapture SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK){
+        if([_smart_publisher_sdk SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK)
+        {
             NSLog(@"Call SmartPublisherInit failed..");
-            _mediaCapture = nil;
+            _smart_publisher_sdk = nil;
             return;
         }
     }
     
-    if(!is_audio_only)
+    if(video_opt_ == 1)
     {
         self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
         
-        if([_mediaCapture SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK){
+        if([_smart_publisher_sdk SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK)
+        {
             NSLog(@"Call SmartPublisherSetVideoPreview failed..");
-            [_mediaCapture SmartPublisherUnInit];
-            _mediaCapture = nil;
+            [_smart_publisher_sdk SmartPublisherUnInit];
+            _smart_publisher_sdk = nil;
             return;
         }
     }
@@ -193,13 +202,13 @@
     {
         self.localPreview = nil;
         
-        if([_mediaCapture SmartPublisherSetVideoPreview:nil] != DANIULIVE_RETURN_OK){
+        if([_smart_publisher_sdk SmartPublisherSetVideoPreview:nil] != DANIULIVE_RETURN_OK)
+        {
             NSLog(@"Call SmartPublisherSetVideoPreview failed..");
-            [_mediaCapture SmartPublisherUnInit];
-            _mediaCapture = nil;
+            [_smart_publisher_sdk SmartPublisherUnInit];
+            _smart_publisher_sdk = nil;
             return;
         }
-
     }
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -207,14 +216,15 @@
     
     NSLog(@" docDir: %@", docDir);
     
-    if([_mediaCapture SmartPublisherStartCapture:videoQuality] != DANIULIVE_RETURN_OK){
+    if([_smart_publisher_sdk SmartPublisherStartCapture:videoQuality] != DANIULIVE_RETURN_OK)
+    {
         NSLog(@"Call SmartPublisherStartCapture failed..");
-        [_mediaCapture SmartPublisherUnInit];
-        _mediaCapture = nil;
+        [_smart_publisher_sdk SmartPublisherUnInit];
+        _smart_publisher_sdk = nil;
         return;
     }
     
-    if (!is_audio_only)
+    if (video_opt_ == 1)
     {
         [self.view addSubview:self.localPreview];
     }
@@ -330,13 +340,13 @@
         return;
     }
 
-    NSString* sdkVersion = [_mediaCapture SmartPublisherGetSDKVersionID];
+    NSString* sdkVersion = [_smart_publisher_sdk SmartPublisherGetSDKVersionID];
     NSLog(@"sdk version:%@",sdkVersion);
 }
 
 
 - (void)MuteBtn:(id)sender {
-    if ( _mediaCapture != nil )
+    if ( _smart_publisher_sdk != nil )
     {
         is_mute = !is_mute;
         
@@ -349,15 +359,13 @@
              [muteButton setTitle:@"静音" forState:UIControlStateNormal];
         }
         
-        [_mediaCapture SmartPublisherSetMute:is_mute];
+        [_smart_publisher_sdk SmartPublisherSetMute:is_mute];
     }
 }
 
 - (void)beautySettingsBtn:(id)sender {
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"请选择以下5种美颜效果" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
-
- //       UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"不用美颜" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
     
     actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
     [actionSheet showInView:self.view];
@@ -403,8 +411,8 @@
             break;
     }
     
-    if (_mediaCapture != nil) {
-        [_mediaCapture SmartPublisherSetBeautyFilterType:filter_type];
+    if (_smart_publisher_sdk != nil) {
+        [_smart_publisher_sdk SmartPublisherSetBeautyFilterType:filter_type];
     }
  
 }
@@ -416,7 +424,7 @@
     
     button.selected = !button.selected;
     
-    [_mediaCapture SmartPublisherSwitchCamera];
+    [_smart_publisher_sdk SmartPublisherSwitchCamera];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -477,7 +485,7 @@
 
 - (void)publishStream:(UIButton *)button
 {
-    NSLog(@"Run into publishStream..");
+    NSLog(@"publishStream++");
     
     button.selected = !button.selected;
     
@@ -493,16 +501,16 @@
         
         publishURL = [ baseURL stringByAppendingString:strNumber];
         
-        
         NSLog(@"publishURL: %@",publishURL);
         
         NSString *baseText = @"推送URL：";
         
         textModeLabel.text = [ baseText stringByAppendingString:publishURL];
         
-        NSInteger ret = [_mediaCapture SmartPublisherStartPublish:publishURL];
+        NSInteger ret = [_smart_publisher_sdk SmartPublisherStartPublish:publishURL];
         
-        if(ret != DANIULIVE_RETURN_OK){
+        if(ret != DANIULIVE_RETURN_OK)
+        {
             NSLog(@"Call SmartPublisherStartPublish failed..ret:%ld", (long)ret);
             
             if (ret == DANIULIVE_RETURN_SDK_EXPIRED) {
@@ -520,6 +528,22 @@
             medResolution.enabled = NO;
             backSettingsButton.enabled = NO;
         }
+        
+        //only for decoded audio processing test..
+        /*
+        char aac[] = {0x20, 0x66, 0x00, 0x01, 0x98, 0x00, 0x0e};
+        char aac_config[] = {0x12, 0x10};
+        [_mediaCapture SmartPublisherSetAudioSpecificConfig:aac_config len:2];
+        
+        unsigned long long tttt = 0;
+        for ( int i = 0; i < 1000; ++i )
+        {
+            tttt = i*23;
+            [_mediaCapture SmartPublisherOnReceivingAACData:aac len:7 isKeyFrame:1 timeStamp:tttt];
+        }
+        */
+        //end
+        
     }
     else
     {
@@ -527,7 +551,7 @@
         
         medResolution.enabled = YES;
         backSettingsButton.enabled = YES;
-        [_mediaCapture SmartPublisherStopPublish];
+        [_smart_publisher_sdk SmartPublisherStopPublish];
     }
     
 }
@@ -537,12 +561,12 @@
     
     NSLog(@"Run into backSettingsBtn..");
     
-    if (_mediaCapture != nil)
+    if (_smart_publisher_sdk != nil)
     {
-        [_mediaCapture SmartPublisherStopCaputure];
-        [_mediaCapture SmartPublisherUnInit];
-        _mediaCapture.delegate = nil;
-        _mediaCapture = nil;
+        [_smart_publisher_sdk SmartPublisherStopCaputure];
+        [_smart_publisher_sdk SmartPublisherUnInit];
+        _smart_publisher_sdk.delegate = nil;
+        _smart_publisher_sdk = nil;
     }
     
     //返回设置分辨率页面

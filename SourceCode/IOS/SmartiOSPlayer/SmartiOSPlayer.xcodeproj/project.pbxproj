@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C38D92D1DCA1DEC0061F87A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */; };
+		0C38D92F1DCA1DFD0061F87A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */; };
 		582F76391CD716F1002E8F64 /* btn_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76321CD716F1002E8F64 /* btn_selected@2x.png */; };
 		582F763A1CD716F1002E8F64 /* btn_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76331CD716F1002E8F64 /* btn_selected@3x.png */; };
 		582F763B1CD716F1002E8F64 /* btn_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 582F76341CD716F1002E8F64 /* btn_unselected@2x.png */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		582F76321CD716F1002E8F64 /* btn_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_selected@2x.png"; sourceTree = "<group>"; };
 		582F76331CD716F1002E8F64 /* btn_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_selected@3x.png"; sourceTree = "<group>"; };
 		582F76341CD716F1002E8F64 /* btn_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_unselected@2x.png"; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C38D92F1DCA1DFD0061F87A /* CoreMedia.framework in Frameworks */,
+				0C38D92D1DCA1DEC0061F87A /* VideoToolbox.framework in Frameworks */,
 				582FB9011C886D9000CD6B44 /* libz.tbd in Frameworks */,
 				582FB9001C886D4F00CD6B44 /* libbz2.1.0.tbd in Frameworks */,
 				582FB8FC1C886A5200CD6B44 /* AudioToolbox.framework in Frameworks */,
@@ -88,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C38D92B1DCA1DEC0061F87A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */,
+				0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		582F76311CD716F1002E8F64 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +121,7 @@
 				586D8C371D1CF1C9004737FF /* framework */,
 				582FB8CF1C885FD100CD6B44 /* SmartiOSPlayer */,
 				582FB8CE1C885FD100CD6B44 /* Products */,
+				0C38D92B1DCA1DEC0061F87A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +229,7 @@
 					582FB8CC1C885FD100CD6B44 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WHT83EA5Y4;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -304,10 +321,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -327,6 +345,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "1eb29052-bd16-4f0d-ba22-5c86050004bb";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
@@ -351,10 +370,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -368,6 +388,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1eb29052-bd16-4f0d-ba22-5c86050004bb";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -382,6 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yan jie ni (L58GFJB3ZD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WHT83EA5Y4;
 				INFOPLIST_FILE = SmartiOSPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -393,8 +415,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPlayer;
 				PRODUCT_NAME = SmartiOSPlayer;
-				PROVISIONING_PROFILE = "4bd92b2d-9d06-40a4-a59e-7076737aafe7";
-				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
@@ -406,6 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yan jie ni (L58GFJB3ZD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WHT83EA5Y4;
 				INFOPLIST_FILE = SmartiOSPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -417,8 +440,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPlayer;
 				PRODUCT_NAME = SmartiOSPlayer;
-				PROVISIONING_PROFILE = "4bd92b2d-9d06-40a4-a59e-7076737aafe7";
-				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;

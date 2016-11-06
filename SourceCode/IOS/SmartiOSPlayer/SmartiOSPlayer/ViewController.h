@@ -12,7 +12,8 @@
 
 @interface ViewController : UIViewController<SmartPlayerDelegate>
 
-- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly isRTSPTcpMode:(Boolean)isRTSPTcpMode;
+- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly
+                  isHWDecoder:(Boolean)isHWDecoder isRTSPTcpMode:(Boolean)isRTSPTcpMode;
 
 @end
 
