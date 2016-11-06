@@ -37,6 +37,17 @@ typedef enum DNErrorCode{
 - (NSInteger)SmartPlayerInitPlayer;
 
 /**
+ * 设置视频解码模式
+ *
+ * @param mode:
+ * if 0: 软解码;
+ * if 1: 硬解码.
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetVideoDecoderMode:(NSInteger)mode;
+
+/**
  * 创建播放view
  *
  * @param [in] 指定播放位置（CGRect)
@@ -96,6 +107,15 @@ typedef enum DNErrorCode{
  * @return {0} if successful
  */
 - (NSInteger)SmartPlayerStart;
+
+/**
+ * 设置播放过程中静音/取消静音
+ *
+ * @param mute: 设置为1，则静音，设置为0，取消静音
+ *
+ * @return {0} if successful
+ */
+- (NSInteger) SmartPlayerSetMute:(NSInteger) mute;
 
 
 /**
