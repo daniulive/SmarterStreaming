@@ -34,6 +34,12 @@ SmarterStreaming系列产品，系daniulive（大牛直播）出品的跨平台�
 
 **NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群: 499687479**)查看群共享文件。
 
+**[Windows版RTMP/RTSP直播播放器下载]**
+
+为了方便大家调试和产品对比，我们开放了Windows版的RTMP/RTSP播放器（Video：H.264/Audio: AAC, G.711），欢迎下载使用（支持buffer设置（0~10000ms）、RTSP(TCP/UDP设置)、实时静音/取消静音），也可能是最好用的Windows播放器。
+
+[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
+
 **[美颜、萌颜]**
 
 鉴于用户强烈的美颜、萌颜个性化需求，我们和visionin（[视诀科技](http://www.visualogies.com/)）合作，推出美颜、萌颜版SDK（如需测试，请在推流端美颜选项选择“外置美颜”），支持数百种道具选择（各种贴图、胡子、眼镜...）。
