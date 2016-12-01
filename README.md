@@ -6,8 +6,7 @@ SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/
 
 Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
 
-***For commercial support, please contact 89030985@qq.com.**
-
+***For commercial support, please contact 89030985@qq.com.***
 **Android publisher/iOS publisher**
 
 a) Audio encoding: AAC;
