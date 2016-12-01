@@ -4,7 +4,7 @@ SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/
 
 Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
 
-For commercial support, please contact 89030985@qq.com.
+***For commercial support, please contact 89030985@qq.com.**
 
 **Android publisher/iOS publisher**
 
@@ -38,23 +38,25 @@ n) H.264 interface after encoding;
 
 **windows player/android player/iOS player**
 
-a) Low latency rtmp player;
+a) Audio decoding: AAC/G.711;
 
-b) Low latency rtsp player;
- 
-c) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at the same time);
- 
+b) Video decoding: H.264;
+
+c) Protocol: RTMP/RTSP;
+
 d) Support RTSP TCP / UDP mode switch;
- 
+
 e) Support buffer settings;
- 
+
 f) support for customized layout;
- 
+
 g) Multi-mode of audio/video render mechanism;
- 
+
 h) Real-time mute/unmute;
- 
-i) Support software/hardware decoding.
+
+i) Support software/hardware decoding;
+
+j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at the same time);
 
 
 <img src="http://218.25.89.108:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
