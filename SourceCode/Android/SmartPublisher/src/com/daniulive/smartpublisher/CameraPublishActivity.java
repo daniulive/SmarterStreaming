@@ -718,8 +718,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    	Log.i(TAG, "no watermark settings..");
 			    }
 			    //end
-			    
-			    
+					        
 			    // IF not set url or url is empty, it will not publish stream
 			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
 			    if ( libPublisher.SmartPublisherSetURL(publishURL) != 0 )

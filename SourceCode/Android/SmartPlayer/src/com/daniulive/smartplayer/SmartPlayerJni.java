@@ -35,18 +35,39 @@ public class SmartPlayerJni {
 	 public native int SetSmartPlayerEventCallback(long handle, SmartEventCallback callback);
 	 
 	 /**
+	  * Set Video HW decoder, if support HW decoder, it will return 0
+	  * 
+	  * @param isHWDecoder: 0: software decoder; 1: hardware decoder.
+	  * 
+	  * @return {0} if successful
+	  */
+	 public native int SetSmartPlayerVideoHWDecoder(long handle, int isHWDecoder);
+	 
+	 /**
 	 * Set Surface view.
 	 *
 	 * @param handle: return value from SmartPlayerInit()
 	 *
 	 * @param glSurface: surface view
 	 * 
-	 * <pre> NOTE: if not set or set glSurface with null, it will playback audio only. </pre> 
+	 * <pre> NOTE: if not set or set surface with null, it will playback audio only. </pre> 
 	 *
 	 * @return {0} if successful
 	 */
-	 public native int SmartPlayerSetSurface(long handle, Object glSurface);
+	 public native int SmartPlayerSetSurface(long handle, Object surface);
 	
+	 
+	 /**
+	 * Set External Render.
+     *
+	 * @param handle: return value from SmartPlayerInit()
+	 *
+	 * @param external_render:  External Render
+	 * 
+	 * @return {0} if successful
+	 */
+	 public native int SmartPlayerSetExternalRender(long handle, Object external_render);
+ 
 
 	 /**
 	  * Set AudioOutput Type
@@ -73,7 +94,18 @@ public class SmartPlayerJni {
 	  * 
 	 * @return {0} if successful
 	  */
-	 public native int SmartPlayerSetBuffer(long handle, int buffer);	
+	 public native int SmartPlayerSetBuffer(long handle, int buffer);
+	 
+	 
+	 /**
+	  * Set mute or not
+	  * 
+	  * @param is_mute: if with 1:mute, if with 0: does not mute
+	  * 
+	  * @return {0} if successful
+	  */
+	 public native int SmartPlayerSetMute(long handle, int is_mute);
+	 
 	 
 	 /**
 	  * It's only used when playback RTSP stream
@@ -84,7 +116,7 @@ public class SmartPlayerJni {
 	  *
 	  * @return {0} if successful
 	  */
-	 public native int SmartPlayerSetRTSPTcpMode(long handle, int isUsingTCP);
+	 public native int SmartPlayerSetRTSPTcpMode(long handle, int is_using_tcp);
 	  	  	
 	 /**
 	 * Set playback orientation.

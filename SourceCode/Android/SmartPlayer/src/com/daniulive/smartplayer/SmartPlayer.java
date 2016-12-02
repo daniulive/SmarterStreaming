@@ -10,6 +10,8 @@
 
 package com.daniulive.smartplayer;
 
+import java.nio.ByteBuffer;
+
 import android.app.Activity;  
 import android.app.AlertDialog;
 import android.content.Context;
@@ -49,9 +51,15 @@ public class SmartPlayer extends Activity {
 	
 	private String playbackUrl = null;
 	
+	private boolean isMute = false;
+	
+	private boolean isHardwareDecoder = false;
+	
 	Button btnPopInputText;
 	Button btnPopInputUrl;
+	Button btnMute;
     Button btnStartStopPlayback;
+	Button btnHardwareDecoder;
     TextView txtCopyright;
     TextView txtQQQun;
     
@@ -90,6 +98,12 @@ public class SmartPlayer extends Activity {
     	if(id == null)
     		return;
     	
+    	if(id.equals("hks"))
+    	{
+    		playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    		return;
+    	}
+    	
     	btnStartStopPlayback.setEnabled(true);
     	String baseURL = "rtmp://daniulive.com:1935/hls/stream";
 
@@ -110,7 +124,7 @@ public class SmartPlayer extends Activity {
     		return;
     	}
     	
-    	if ( !url.startsWith("rtmp://") )
+    	if ( !url.startsWith("rtmp://") && !url.startsWith("rtsp://"))
     	{
     	    Log.e(TAG, "Input full url error:" + url);
     		return;
@@ -214,11 +228,25 @@ public class SmartPlayer extends Activity {
         btnPopInputUrl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnPopInputUrl, 1);
         
+        /*mute button */
+        isMute = false;
+        btnMute = new Button(this);
+        btnMute.setText("静音 ");
+        btnMute.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        lLinearLayout.addView(btnMute, 2);
+        
+        /*hardware decoder button */
+        isHardwareDecoder = false;
+        btnHardwareDecoder = new Button(this);
+        btnHardwareDecoder.setText("当前软解码");
+        btnHardwareDecoder.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        lLinearLayout.addView(btnHardwareDecoder, 3);
+        
         /* Start playback stream button */
         btnStartStopPlayback = new Button(this);
         btnStartStopPlayback.setText("开始播放 ");
         btnStartStopPlayback.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnStartStopPlayback, 2);
+        lLinearLayout.addView(btnStartStopPlayback, 4);
  
        
         outLinearLayout.addView(lLinearLayout, 0);
@@ -231,12 +259,14 @@ public class SmartPlayer extends Activity {
         {
         	btnPopInputText.setEnabled(false);
         	btnPopInputUrl.setEnabled(false);
+        	btnHardwareDecoder.setEnabled(false);
         	btnStartStopPlayback.setText("停止播放 ");
         }
         else
         {
         	btnPopInputText.setEnabled(true);
         	btnPopInputUrl.setEnabled(true);
+        	btnHardwareDecoder.setEnabled(true);
         	btnStartStopPlayback.setText("开始播放 ");
         }
         
@@ -259,7 +289,45 @@ public class SmartPlayer extends Activity {
         		 PopFullUrlDialog();
         	 }
         });
+        
+        btnMute.setOnClickListener(new Button.OnClickListener() 
+        { 
+       	 public void onClick(View v) { 
+    		 isMute = !isMute;
+    		 
+    		 if ( isMute )
+    		 {
+    			 btnMute.setText("取消静音");
+    		 }
+    		 else
+    		 {
+    			 btnMute.setText("静音");
+    		 }
+    		 
+    		 if ( playerHandle != 0 )
+    		 {
+    			 libPlayer.SmartPlayerSetMute(playerHandle, isMute?1:0);
+    		 }
+    	 }
+       });
 
+        btnHardwareDecoder.setOnClickListener(new Button.OnClickListener() 
+        { 
+       	 public void onClick(View v) { 
+    		 isHardwareDecoder = !isHardwareDecoder;
+    		 
+    		 if ( isHardwareDecoder )
+    		 {
+    			 btnHardwareDecoder.setText("当前硬解码");
+    		 }
+    		 else
+    		 {
+    			 btnHardwareDecoder.setText("当前软解码");
+    		 }
+    		 
+    	 }
+       });
+        
         btnStartStopPlayback.setOnClickListener(new Button.OnClickListener() {  
         	  
             //  @Override  
@@ -271,6 +339,7 @@ public class SmartPlayer extends Activity {
             		  btnStartStopPlayback.setText("开始播放 ");
             		  btnPopInputText.setEnabled(true);
             		  btnPopInputUrl.setEnabled(true);
+            		  btnHardwareDecoder.setEnabled(true);
             		  libPlayer.SmartPlayerClose(playerHandle);	
             		  playerHandle = 0;
             		  isPlaybackViewStarted = false;
@@ -289,19 +358,37 @@ public class SmartPlayer extends Activity {
             	      }
             		  
 					  libPlayer.SetSmartPlayerEventCallback(playerHandle, new EventHande());
-					              	      
+					  
             	      libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView); 	//if set the second param with null, it means it will playback audio only..
-            		  
-            	     // libPlayer.SmartPlayerSetSurface(playerHandle, null);    
+            		  	
+            	      // libPlayer.SmartPlayerSetSurface(playerHandle, null); 
+            	      
+            	      // External Render test
+            	      //libPlayer.SmartPlayerSetExternalRender(playerHandle, new RGBAExternalRender());
+            	      //libPlayer.SmartPlayerSetExternalRender(playerHandle, new I420ExternalRender());
  	              	 
             	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
             	      
             	      libPlayer.SmartPlayerSetBuffer(playerHandle, 200);
             	      
+            	      if ( isMute )
+            	      {
+            	    	  libPlayer.SmartPlayerSetMute(playerHandle, isMute?1:0);
+            	      }
+            	      
+            	      if( isHardwareDecoder )
+            	      {
+            	    	  Log.i(TAG, "check isHardwareDecoder: " + isHardwareDecoder);
+            	    	  
+                	      int hwChecking = libPlayer.SetSmartPlayerVideoHWDecoder(playerHandle, isHardwareDecoder?1:0);
+  						
+    					  Log.i(TAG, "[daniulive] hwChecking: " + hwChecking);
+            	      }
+
             	      //It only used when playback RTSP stream..
             	     // libPlayer.SmartPlayerSetRTSPTcpMode(playerHandle, 1);
      
-            	      //playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+            	    // playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
             	    	
             	      //playbackUrl = "rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
             	        
@@ -323,6 +410,7 @@ public class SmartPlayer extends Activity {
 	        		  btnStartStopPlayback.setText("停止播放 ");
 	                  btnPopInputText.setEnabled(false);
 	                  btnPopInputUrl.setEnabled(false);
+	                  btnHardwareDecoder.setEnabled(false);
 	              	  isPlaybackViewStarted = true;
 	              	  Log.i(TAG, "Start playback stream--");
 	        	  }
@@ -330,6 +418,223 @@ public class SmartPlayer extends Activity {
               });
 	}
 	
+    
+    public static final String bytesToHexString(byte[] buffer)
+    {   
+        StringBuffer sb = new StringBuffer(buffer.length);   
+        String temp;
+        
+        for (int i = 0; i < buffer.length; ++i)
+        {   
+        	temp = Integer.toHexString(0xff&buffer[i]);   
+          if (temp.length() < 2)   
+            sb.append(0);
+          
+          sb.append(temp);   
+        }   
+        
+        return sb.toString();   
+    }  
+    
+    class RGBAExternalRender implements NTExternalRender 
+    {
+    	//public static final int NT_FRAME_FORMAT_RGBA = 1;
+    	//public static final int NT_FRAME_FORMAT_ABGR = 2;
+    	//public static final int NT_FRAME_FORMAT_I420 = 3;
+    	
+    	private int width_ = 0;
+    	private int height_ = 0;
+    	private int row_bytes_ = 0;
+    	private ByteBuffer rgba_buffer_ = null;
+
+    	@Override
+    	public int getNTFrameFormat()
+    	{
+    		Log.i(TAG, "RGBAExternalRender::getNTFrameFormat return "+ NT_FRAME_FORMAT_RGBA);
+    		return NT_FRAME_FORMAT_RGBA;
+    	}
+
+    	@Override
+    	public void onNTFrameSizeChanged(int width, int height)
+    	{
+    		width_ = width;
+    		height_ = height;
+    		
+    		row_bytes_ = width_ * 4;
+    		
+    		Log.i(TAG, "RGBAExternalRender::onNTFrameSizeChanged width_:" + width_ + " height_:" + height_);
+    		
+    		rgba_buffer_ = ByteBuffer.allocateDirect(row_bytes_*height_);
+    	}
+
+    	@Override
+    	public ByteBuffer getNTPlaneByteBuffer(int index)
+    	{
+    		if ( index == 0 )
+    		{
+    			return rgba_buffer_;
+    		}
+    		else
+    		{
+    			Log.e(TAG, "RGBAExternalRender::getNTPlaneByteBuffer index error:" + index);
+    			return null;
+    		}
+    	}
+
+    	@Override
+    	public int getNTPlanePerRowBytes(int index)
+    	{
+    		if ( index == 0 )
+    		{
+    			return row_bytes_;
+    		}
+    		else
+    		{
+    			Log.e(TAG, "RGBAExternalRender::getNTPlanePerRowBytes index error:" + index);
+    			return 0;
+    		}
+    	}
+
+    	public void onNTRenderFrame()
+    	{
+    		 if( rgba_buffer_ == null )
+    	            return;
+    		 
+    		 rgba_buffer_.rewind();
+    		 
+    		 // copy buffer
+    		 
+    		 // test
+    		// byte[] test_buffer = new byte[16];
+    		// rgba_buffer_.get(test_buffer);
+    		 
+    		 //Log.i(TAG, "RGBAExternalRender:onNTRenderFrame rgba:" + bytesToHexString(test_buffer));
+    	}
+    }
+    
+    class I420ExternalRender implements NTExternalRender
+    {
+    	//public static final int NT_FRAME_FORMAT_RGBA = 1;
+    	//public static final int NT_FRAME_FORMAT_ABGR = 2;
+    	//public static final int NT_FRAME_FORMAT_I420 = 3;
+    	
+    	private int width_ = 0;
+    	private int height_ = 0;
+    	
+    	private int y_row_bytes_ = 0;
+    	private int u_row_bytes_ = 0;
+    	private int v_row_bytes_ = 0;
+    	
+    	private ByteBuffer y_buffer_ = null;
+    	private ByteBuffer u_buffer_ = null;
+    	private ByteBuffer v_buffer_ = null; 
+    	
+    	@Override
+    	public int getNTFrameFormat()
+    	{
+    		Log.i(TAG, "I420ExternalRender::getNTFrameFormat return "+ NT_FRAME_FORMAT_I420);
+    		return NT_FRAME_FORMAT_I420;
+    	}
+
+    	@Override
+    	public void onNTFrameSizeChanged(int width, int height)
+    	{
+    		width_ = width;
+    		height_ = height;
+    		
+    		y_row_bytes_ = (width_ + 15) & (~15);
+    		u_row_bytes_ = ((width_+1)/2 + 15) & (~15);
+    		v_row_bytes_ = ((width_+1)/2 + 15) & (~15);
+    		
+    		y_buffer_ = ByteBuffer.allocateDirect(y_row_bytes_*height_);
+    		u_buffer_ = ByteBuffer.allocateDirect(u_row_bytes_*(height_+1)/2);
+    		v_buffer_ = ByteBuffer.allocateDirect(v_row_bytes_*(height_+1)/2);
+    		
+    		Log.i(TAG, "I420ExternalRender::onNTFrameSizeChanged width_=" 
+    		    + width_ + " height_=" + height_ 
+    		    + " y_row_bytes_=" +  y_row_bytes_
+    		    + " u_row_bytes_=" + u_row_bytes_
+    		    + " v_row_bytes_=" + v_row_bytes_);
+    	}
+
+    	@Override
+    	public ByteBuffer getNTPlaneByteBuffer(int index)
+    	{
+    		if ( index == 0 )
+    		{
+    			return y_buffer_;
+    		}
+    		else if ( index == 1 )
+    		{
+    			return u_buffer_;
+    		}
+    		else if ( index == 2 )
+    		{
+    			return v_buffer_;
+    		}
+    		else
+    		{
+    			Log.e(TAG, "I420ExternalRender::getNTPlaneByteBuffer index error:" + index);
+    			return null;
+    		}
+    	}
+
+    	@Override
+    	public int getNTPlanePerRowBytes(int index)
+    	{
+    		if ( index == 0 )
+    		{
+    			return y_row_bytes_;
+    		}
+    		else if ( index == 1)
+    		{
+    			return u_row_bytes_;
+    		}
+    		else if (index == 2 )
+    		{
+    			return v_row_bytes_;
+    		}
+    		else
+    		{
+    			Log.e(TAG, "I420ExternalRender::getNTPlanePerRowBytes index error:" + index);
+    			return 0;
+    		}
+    	}
+
+    	public void onNTRenderFrame()
+    	{
+    		if ( y_buffer_ == null )
+    			return;
+    		
+    		if ( u_buffer_ == null )
+    			return;
+    		
+    		if ( v_buffer_ == null )
+    			return;
+    		
+      
+    		y_buffer_.rewind();
+    		
+    		u_buffer_.rewind();
+    		
+    		v_buffer_.rewind();
+    		
+    		 // copy buffer
+    		
+    		// test
+    		// byte[] test_buffer = new byte[16];
+    		// y_buffer_.get(test_buffer);
+    		 
+    		// Log.i(TAG, "I420ExternalRender::onNTRenderFrame y data:" + bytesToHexString(test_buffer));
+    		 
+    		// u_buffer_.get(test_buffer);
+    		// Log.i(TAG, "I420ExternalRender::onNTRenderFrame u data:" + bytesToHexString(test_buffer));
+    		 
+    		// v_buffer_.get(test_buffer);
+    		// Log.i(TAG, "I420ExternalRender::onNTRenderFrame v data:" + bytesToHexString(test_buffer));
+    	}
+    }
+    
     
     class EventHande implements SmartEventCallback
     {
