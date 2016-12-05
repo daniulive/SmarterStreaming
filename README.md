@@ -201,7 +201,7 @@ j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at t
 
 **3. iOS播放器：**
 
-<img src="http://daniulive.com:8080/files/image/iOS.JPG" width="600" alt="大牛直播iOS播放器" />
+<img src="http://daniulive.com:8080/files/image/iOSPlayer.JPG" width="600" alt="大牛直播iOS播放器" />
 
 ## android推流端/iOS推流端 ##
 
