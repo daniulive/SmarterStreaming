@@ -86,7 +86,7 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播播放端V1.0.06.10.19"];
+    [self.navigationItem setTitle:@"大牛直播播放端V1.0.06.12.05"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     
@@ -105,7 +105,7 @@
     self.urlID.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.urlID addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
     self.urlID.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    //[self.urlID setText:[NSString stringWithFormat:@"hks"]];
+    [self.urlID setText:[NSString stringWithFormat:@"hks"]];
     //[self.urlID setText:[NSString stringWithFormat:@"rtsp"]];
     //[self.urlID setText:[NSString stringWithFormat:@"audio"]];
     
