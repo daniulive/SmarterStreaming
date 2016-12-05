@@ -100,12 +100,13 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1018";
+    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1205";
     
     is_mute = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
-  
+
+    
     //当前屏幕宽高
     screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);

@@ -128,6 +128,10 @@
         _smart_publisher_sdk.delegate = self;
     }
     
+    
+    NSString* sdkVersion = [_smart_publisher_sdk SmartPublisherGetSDKVersionID];
+    NSLog(@"sdk version:%@",sdkVersion);
+    
     if([_smart_publisher_sdk SmartPublisherInit:audio_opt_ video_opt:video_opt_] != DANIULIVE_RETURN_OK)
     {
         NSLog(@"Call SmartPublisherInit failed..");
@@ -159,8 +163,6 @@
     if([_smart_publisher_sdk SmartPublisherSetRecorder:is_recorder] != DANIULIVE_RETURN_OK)
     {
         NSLog(@"Call SmartPublisherSetRecorder failed..");
-        _smart_publisher_sdk = nil;
-        return;
     }
     
     if (is_recorder)
@@ -172,8 +174,6 @@
         if([_smart_publisher_sdk SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK)
         {
             NSLog(@"Call SmartPublisherInit failed..");
-            _smart_publisher_sdk = nil;
-            return;
         }
         
         //每个录像文件大小
@@ -181,14 +181,14 @@
         if([_smart_publisher_sdk SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK)
         {
             NSLog(@"Call SmartPublisherInit failed..");
-            _smart_publisher_sdk = nil;
-            return;
         }
     }
     
     if(video_opt_ == 1)
     {
         self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+        
+        //self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(100, 130, 200, 200)];    //推流本地回显区域设置测试，默认全屏
         
         if([_smart_publisher_sdk SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK)
         {
@@ -339,9 +339,6 @@
     if (success ==NO ) {
         return;
     }
-
-    NSString* sdkVersion = [_smart_publisher_sdk SmartPublisherGetSDKVersionID];
-    NSLog(@"sdk version:%@",sdkVersion);
 }
 
 
