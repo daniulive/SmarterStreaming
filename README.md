@@ -189,19 +189,19 @@ j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at t
 
 <img src="http://daniulive.com:8080/files/image/IOSPublisher.png" width="800" alt="iOS采集，跨平台播放" />
 
-## RTMP摄像机对接 ##
+## 播放展示 ##
 
 **1. Windows播放器：**
 
-<img src="http://daniulive.com:8080/files/image/windowscameradisplayer.JPG" width="600" alt="RTMP摄像机播放" />
+<img src="http://daniulive.com:8080/files/image/windows.jpg" width="600" alt="大牛直播Windows播放器" />
 
 **2. Android播放器：**
 
-<img src="http://daniulive.com:8080/files/image/androidcameradisplayer.JPG" width="600" alt="android端播放RTMP摄像机数据" />
+<img src="http://daniulive.com:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
 
 **3. iOS播放器：**
 
-<img src="http://daniulive.com:8080/files/image/iOScameradisplayer.JPG" width="600" alt="iOS端播放RTMP摄像机数据" />
+<img src="http://daniulive.com:8080/files/image/iOS.JPG" width="600" alt="大牛直播iOS播放器" />
 
 ## android推流端/iOS推流端 ##
 
