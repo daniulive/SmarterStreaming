@@ -276,7 +276,12 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.1 Windows播放器：**
 
-选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”，右侧输入框输入 “rtmp://daniulive.com:1935/hls/stream123456” 或 “rtmp://live.hkstv.hk.lxdns.com/live/hks”（第三方url）， 然后依次点击 PlayerOpen-->StartPlay即可。
+播放器下载：[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
+1. 打开SmartPlayer.exe；
+2. 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
+3. 在播放之前，可以设置缓冲时间（单位：毫秒），支持0~10000ms设置；
+4. 如果播放rtsp url，可以设置使用TCP/UDP播放；
+5. 播放过程中，可选择实时静音/取消静音。
 
 **2.2 android播放器**
 
