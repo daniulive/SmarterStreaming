@@ -330,11 +330,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 4. iOS播放器 SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayer
 
-**[iOS编译注意事项]**
+**[编译注意事项]**
 
 1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
 2. 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
 3. iOS 需真机调试。
+4. 未授权版本，限制APP-name，如果需要集成到自己工程里面调试，可以用以下名字：
+a) android推送端：SmartPublisherSDKDemo b) android播放器：SmartPlayerSDKDemo c) iOS推送端：SmartiOSPublisher d) iOS播放器：SmartiOSPlayer
 
 ## 获取更多信息 ##
 
