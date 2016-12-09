@@ -1,5 +1,5 @@
 # SmarterStreaming
-    国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利       器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
+国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利                 器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
 
 ===========================
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
@@ -194,39 +194,39 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 **1.2 Android推流：**
 
 1. 安装SmartPublisher；
-2. [推流类型] 可选择推“纯音频”、“纯视频”、“音视频”；
-3. [水印类型] 可选择“图片水印”、“文字水印”、“全部水印”、“不加水印”；
-4. [分辨率] 可选择高、中、低、超高分辨率
-5. [录像] 可选择“本地录像”或不录像，如选择“本地录像”，支持边推流边录像；
-6. [录像管理] 可进入录像页面，比如，进行录像回放、文件管理；
-7. [静音] 支持推送过程中，主播端实时静音或取消静音；
-8. [硬编码/软编码] 默认软编码，如需硬编码，系统自动检测是否支持，如支持，优先采用硬编码；
-9. [输入推流URL] 可自定义推送url，如不输入，默认自动生成url，推送到daniulive服务器；
-10. 10.[开始推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止推流”；
-11. [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源。
+* [推流类型] 可选择推“纯音频”、“纯视频”、“音视频”；
+* [水印类型] 可选择“图片水印”、“文字水印”、“全部水印”、“不加水印”；
+* [分辨率] 可选择高、中、低、超高分辨率
+* [录像] 可选择“本地录像”或不录像，如选择“本地录像”，支持边推流边录像；
+* [录像管理] 可进入录像页面，比如，进行录像回放、文件管理；
+* [静音] 支持推送过程中，主播端实时静音或取消静音；
+* [硬编码/软编码] 默认软编码，如需硬编码，系统自动检测是否支持，如支持，优先采用硬编码；
+* [输入推流URL] 可自定义推送url，如不输入，默认自动生成url，推送到daniulive服务器；
+* [开始推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止推流”；
+* [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源。
 
 **1.3 iOS推流：**
 
 1. 安装SmartPublisher；
-2. [分辨率] 可选择高、中、低、超高分辨率；
-3. [推流类型] 可选择推“纯音频”、“音视频”、“纯视频”；
-4. [美颜] iOS推送端支持推送过程中，美颜设置，也可选择不美颜；
-5. [录像] 可选择“边推边录”或不录像，如选择“边推边录”，支持边推流边录像；
-6. [进入推流页面] 1~5步骤完成后，可进入推流页面；
-7. [进入回放页面] 可进入录像页面，比如，进行录像回放、文件管理；
-8. [静音] 支持推送过程中，主播端实时静音或取消静音；
-9. [美颜] 支持几种常规美颜；
-10. [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源；
-11. [推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止”；
-12. [返回] 未推流状态，返回上层设置页面。
-13. [第三方美颜、萌颜对接] 鉴于用户强烈的美颜、萌颜个性化需求，我们支持编码前/编码后接口，可供任意第三方专业美颜、萌颜厂商对接，如visionin（[视诀科技](http://www.visualogies.com/)），如需测试，请在推流端美颜选项选择“外置美颜”，支持数百种道具选择（各种贴图、胡子、眼镜...），[点击下载iOS定制版](http://daniulive.com:8080/files/daniulive/Daniulive_iOS_%E5%A4%96%E7%BD%AE%E7%BE%8E%E9%A2%9C_2016-11-01.zip)
+* [分辨率] 可选择高、中、低、超高分辨率；
+* [推流类型] 可选择推“纯音频”、“音视频”、“纯视频”；
+* [美颜] iOS推送端支持推送过程中，美颜设置，也可选择不美颜；
+* [录像] 可选择“边推边录”或不录像，如选择“边推边录”，支持边推流边录像；
+* [进入推流页面] 1~5步骤完成后，可进入推流页面；
+* [进入回放页面] 可进入录像页面，比如，进行录像回放、文件管理；
+* [静音] 支持推送过程中，主播端实时静音或取消静音；
+* [美颜] 支持几种常规美颜；
+* [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源；
+* [推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止”；
+* [返回] 未推流状态，返回上层设置页面。
+* [第三方美颜、萌颜对接] 鉴于用户强烈的美颜、萌颜个性化需求，我们支持编码前/编码后接口，可供任意第三方专业美颜、萌颜厂商对接，如visionin（[视诀科技](http://www.visualogies.com/)），如需测试，请在推流端美颜选项选择“外置美颜”，支持数百种道具选择（各种贴图、胡子、眼镜...），[点击下载iOS定制版](http://daniulive.com:8080/files/daniulive/Daniulive_iOS_%E5%A4%96%E7%BD%AE%E7%BE%8E%E9%A2%9C_2016-11-01.zip)
  
 **1.4 iOS端边推流边录像：** 
 
 1. [录像相关]设置推流过程中，是否录像（不录像 边推边录）；
-2. [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
-3. [录像相关]点击“删除全部文件”，可删除本地录制的所有文件；
-4. [录像相关]回放过程中，点击“暂停”，进入播放暂停状态，点击“恢复”继续播放。
+* [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
+* [录像相关]点击“删除全部文件”，可删除本地录制的所有文件；
+* [录像相关]回放过程中，点击“暂停”，进入播放暂停状态，点击“恢复”继续播放。
 
 **2 播放：**
 
@@ -235,36 +235,32 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 播放器下载：[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
 
 1. 打开SmartPlayer.exe；
-
-2. 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
-
-3. 在播放之前，可以设置缓冲时间（单位：毫秒），支持0~10000ms设置；
-
-4. 如果播放rtsp url，可以设置使用TCP/UDP播放；
-
-5. 播放过程中，可选择实时静音/取消静音。
+* 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
+* 在播放之前，可以设置缓冲时间（单位：毫秒），支持0~10000ms设置；
+* 如果播放rtsp url，可以设置使用TCP/UDP播放；
+* 播放过程中，可选择实时静音/取消静音。
 
 **2.2 android播放器**
 
 1. 安装SmartPlayer.apk；
-2. [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
-3. [纯音频url] 如需播放纯音频，编译工程，SmartPlayerSetSurface第二个参数设置为null；
-4. [输入完整url] 如需测试自己服务器或者公网rtsp/rtmp的url，点击“输入完整url”，比如“rtmp://live.hkstv.hk.lxdns.com/live/hks”，在弹出框输入想播放的url；
-5. [开始播放/停止播放] 输入播放url后，可以点击开始播放，如需停止，点击停止播放按钮即可；
-6. [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
-7. [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
-8. [软解码/硬解码]播放页面，默认会显示“当前软解码”，如需用硬解码，请点击此按钮，页面会显示“当前硬解码”，点击开始播放，会以页面当前显示的软解或硬解运行。
+* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+* [纯音频url] 如需播放纯音频，编译工程，SmartPlayerSetSurface第二个参数设置为null；
+* [输入完整url] 如需测试自己服务器或者公网rtsp/rtmp的url，点击“输入完整url”，比如“rtmp://live.hkstv.hk.lxdns.com/live/hks”，在弹出框输入想播放的url；
+* [开始播放/停止播放] 输入播放url后，可以点击开始播放，如需停止，点击停止播放按钮即可；
+* [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
+* [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
+* [软解码/硬解码]播放页面，默认会显示“当前软解码”，如需用硬解码，请点击此按钮，页面会显示“当前硬解码”，点击开始播放，会以页面当前显示的软解或硬解运行。
 
 **2.3 iOS播放器**
 
 1. 安装SmartPlayer.ipa；
-2. [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
-3. [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
-4. [软解码/硬解码]如需用硬解码，请选择“硬解”，然后进入播放页面；
-5. [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
-6. [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
-7. [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
-8. [返回] 播放另外一个url，点击返回按钮，到上级页面。
+* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+* [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
+* [软解码/硬解码]如需用硬解码，请选择“硬解”，然后进入播放页面；
+* [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
+* [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
+* [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
+* [返回] 播放另外一个url，点击返回按钮，到上级页面。
 
 **2.4 Web播放器**
 
@@ -289,10 +285,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 **[编译注意事项]**
 
 1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
-2. 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
-3. iOS 需真机调试。
-4. 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
-a) android推送端：SmartPublisherSDKDemo b) android播放器：SmartPlayerSDKDemo c) iOS推送端：SmartiOSPublisher d) iOS播放器：SmartiOSPlayer
+* 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
+* iOS 需真机调试。
+* 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
+    * android推送端：SmartPublisherSDKDemo
+    * android播放器：SmartPlayerSDKDemo
+    * iOS推送端：SmartiOSPublisher
+    * iOS播放器：SmartiOSPlayer
 
 ## 获取更多信息 ##
 
