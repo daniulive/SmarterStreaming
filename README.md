@@ -183,10 +183,10 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”（如需推送桌面，请使用SmartClientDeskDemo.exe，默认会采集PC屏幕左上角一块区域），进入系统后，左侧系推流端，右侧是播放端，推流依次点击:
 
-`1. `Open;
-`*` Login（输入用户名、密码)，如需Windows端推流测试，请联系QQ 89030985，或加入QQ群 499687479 和群主联系;
-`*` 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://daniulive.com:1935/hls/streamdaniulive;
-`*` 点击PushStream，完成Windows推流。
+1. Open;
+* Login（输入用户名、密码)，如需Windows端推流测试，请联系QQ 89030985，或加入QQ群 499687479 和群主联系;
+* 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://daniulive.com:1935/hls/streamdaniulive;
+* 点击PushStream，完成Windows推流。
 
 PushStream，如推流成功的话，会显示推流地址，如本URL对应的链接为：
 rtmp://daniulive.com:1935/hls/streamdaniulive.
