@@ -12,33 +12,20 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 **Android publisher/iOS publisher**
 
-a) Audio encoding: AAC;
-
-b) Video encoding: H.264;
-
-c) Protocol: RTMP;
-
-d) Different resolution settings;
-
-e) Front and back camera switching;
-
-f) Stream adaptive;
-
-g) Software/Hardware encoding;
-
-h) Low latency and automatic network connection.
-
-i) Push audio only;
-
-j) Push video only;
- 
-k) real-time mute/un-mute;
-
-l) YUV interface before encoding;
-
-m) AAC interface after encoding;
-
-n) H.264 interface after encoding;
+- [x] Audio encoding: AAC;
+- [x] Video encoding: H.264;
+- [x] Protocol: RTMP;
+- [x] Different resolution settings;
+- [x] Front and back camera switching;
+- [x] Stream adaptive;
+- [x] Software/Hardware encoding;
+- [x] Low latency and automatic network connection.
+- [x] Push audio only;
+- [x] Push video only;
+- [x] real-time mute/un-mute;
+- [x] YUV interface before encoding;
+- [x] AAC interface after encoding;
+- [x] H.264 interface after encoding;
 
 **windows player/android player/iOS player**
 
