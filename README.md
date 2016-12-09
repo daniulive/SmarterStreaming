@@ -1,9 +1,7 @@
 # SmarterStreaming
 
 国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
-
 ===========================
-
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
 Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
@@ -54,6 +52,8 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 [点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
 
+===========================
+
 **[一对一实时音视频互动]**
 
 - [x] 基于P2P或流媒体转发的一对一音视频互动产品；
@@ -63,17 +63,17 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 适用于秀场直播、在线教育、应急指挥、可视化购物、远程专家指挥系统、企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播等场景。
 
-1. **windows推流**
+**windows推流**
 
 - [x] 摄像头采集；
 - [x] 屏幕采集。
 
-2. **windows播放器**
+**windows播放器**
 
 - [x] 基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装；
 - [x] 基于flash控件开发的web播放器。
 
-3. **android推流/iOS推流**
+**android推流/iOS推流**
 
 - [x] 多分辨率选择；
 - [x] 支持横竖屏推送；
@@ -89,7 +89,7 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 - [x] 支持软硬编码自适应；
 - [x] 完美支持各个厂家CDN。
 
-4. **windows播放器/android播放器/iOS播放器**
+**windows播放器/android播放器/iOS播放器**
 
 - [x] 超低延迟的rtmp播放器；
 - [x] 超低延迟的rtsp播放器；
@@ -101,17 +101,17 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 - [x] 支持播放过程中，'实时静音/取消静音';
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
 
-5. **微信播放**
+**微信播放**
 
 - [x] 支持android设备rtmp/hls播放；
 - [x] 支持iOS设备hls播放；
 - [x] 支持公众号集成。
  
-6. 公网环境下，**毫秒级延迟**，支持云服务部署、各类厂商的CDN产品对接；
+公网环境下，**毫秒级延迟**，支持云服务部署、各类厂商的CDN产品对接；
 
-7. 支持**边推送边录像**（如执法记录或移动单兵场景），网络中断仍可继续录制，结束后可本地回放，并可对接第三方云服务，把录像数据保存到云端服务器；
+支持**边推送边录像**（如执法记录或移动单兵场景），网络中断仍可继续录制，结束后可本地回放，并可对接第三方云服务，把录像数据保存到云端服务器；
 
-8. 支持跨平台**纯音频、纯视频、音视频推送**、**纯音频、纯视频、音视频播放**、**纯音频、纯视频、音视频实时存储**。
+支持跨平台**纯音频、纯视频、音视频推送**、**纯音频、纯视频、音视频播放**、**纯音频、纯视频、音视频实时存储**。
 
 **[基于RTMP、RTSP安防摄像机、编码器、智能眼镜平台对接]**
 
