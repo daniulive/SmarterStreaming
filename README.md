@@ -3,7 +3,6 @@
 国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
 
 ===========================
-
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
 Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
@@ -53,9 +52,8 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 为了方便大家调试和产品对比，我们开放了Windows版的RTMP/RTSP直播播放器（Video：H.264/Audio: AAC, G.711），欢迎下载使用（支持buffer设置（0~10000ms）、RTSP(TCP/UDP设置)、实时静音/取消静音），也可能是最好用的**Windows RTMP/RTSP播放器**。
 
 [点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
-
 ===========================
-
+# 功能支持
 **[一对一实时音视频互动]**
 
 - [x] 基于P2P或流媒体转发的一对一音视频互动产品；
