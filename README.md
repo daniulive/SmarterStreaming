@@ -2,6 +2,8 @@
 
 国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
 
+===========================
+
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
 Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
@@ -75,15 +77,15 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 - [x] 多分辨率选择；
 - [x] 支持横竖屏推送；
-- [x] **音视频**推送、**纯音频**推送、**纯视频**推送；
-- [x] 支持**边采集、边录像**；
+- [x] `音视频`推送、`纯音频`推送、`纯视频`推送；
+- [x] 支持`边采集、边录像`；
 - [x] 网络中断，本地录像继续，保证数据的完整性；
 - [x] 支持本地录像文件回放、处理；
 - [x] 采集过程中，前后摄像头切换；
 - [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
 - [x] iOS自带美颜功能；
-- [x] android完美支持**文字水印、实时时间水印和图片水印**；
-- [x] 支持**推送端实时静音/取消静音**；
+- [x] android完美支持`文字水印、实时时间水印和图片水印`；
+- [x] 支持`推送端实时静音/取消静音`；
 - [x] 支持软硬编码自适应；
 - [x] 完美支持各个厂家CDN。
 
@@ -96,7 +98,7 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 - [x] 支持播放端，buffer设置；
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
-- [x] 支持播放过程中，**实时静音/取消静音**;
+- [x] 支持播放过程中，'实时静音/取消静音';
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
 
 5. **微信播放**
