@@ -1,6 +1,5 @@
 # SmarterStreaming
-
-  国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
+    国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利       器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼手机直播推送与播放。
 
 ===========================
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
@@ -131,7 +130,7 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 - [x] 支持鉴权认证、各种信息展示；
 - [x] 点播服务器：满足录像文件点播需求。
 
-**SmarterStreaming SDK库可供个人学习之用，企业及商用需要经过授权**；
+**SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
 ## 公网环境下推流、直播效果展示 ##
 <img src="http://daniulive.com:8080/files/image/windows_publisher.JPG" width="800" alt="Windows采集，跨平台播放" />
@@ -184,10 +183,10 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 选择“WindowsPusher&Player”文件，打开“SmartClientDemo.exe”（如需推送桌面，请使用SmartClientDeskDemo.exe，默认会采集PC屏幕左上角一块区域），进入系统后，左侧系推流端，右侧是播放端，推流依次点击:
 
-1. Open;
-2. Login（输入用户名、密码)，如需Windows端推流测试，请联系QQ 89030985，或加入QQ群 499687479 和群主联系;
-3. 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://daniulive.com:1935/hls/streamdaniulive;
-4. 点击PushStream，完成Windows推流。
+`1. `Open;
+`*` Login（输入用户名、密码)，如需Windows端推流测试，请联系QQ 89030985，或加入QQ群 499687479 和群主联系;
+`*` 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://daniulive.com:1935/hls/streamdaniulive;
+`*` 点击PushStream，完成Windows推流。
 
 PushStream，如推流成功的话，会显示推流地址，如本URL对应的链接为：
 rtmp://daniulive.com:1935/hls/streamdaniulive.
