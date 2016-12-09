@@ -29,25 +29,16 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 **windows player/android player/iOS player**
 
-a) Audio decoding: AAC/G.711;
-
-b) Video decoding: H.264;
-
-c) Protocol: RTMP/RTSP;
-
-d) Support RTSP TCP / UDP mode switch;
-
-e) Support buffer settings;
-
-f) support for customized layout;
-
-g) Multi-mode of audio/video render mechanism;
-
-h) Real-time mute/unmute;
-
-i) Support software/hardware decoding;
-
-j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at the same time);
+- [x] Audio decoding: AAC/G.711;
+- [x] Video decoding: H.264;
+- [x] Protocol: RTMP/RTSP;
+- [x] Support RTSP TCP / UDP mode switch;
+- [x] Support buffer settings;
+- [x] support for customized layout;
+- [x] Multi-mode of audio/video render mechanism;
+- [x] Real-time mute/unmute;
+- [x] Support software/hardware decoding;
+- [x] Perfectly support multi-instance playback(even playback rtmp/rtsp stream at the same time);
 
 **[SmarterStreaming SDK调用说明]**
 
@@ -63,8 +54,8 @@ j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at t
 
 **[一对一实时音视频互动]**
 
-1. 基于P2P或流媒体转发的一对一音视频互动产品；
-2. 以秀场、在线教育、远程诊疗、智能门禁等为核心的跨平台音视频实时互动。
+- [x] 基于P2P或流媒体转发的一对一音视频互动产品；
+- [x] 以秀场、在线教育、远程诊疗、智能门禁等为核心的跨平台音视频实时互动。
 
 **[一对多，多对多直播、互动]**
 
@@ -72,71 +63,47 @@ j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at t
 
 1. **windows推流**
 
- a)摄像头采集；
- 
- b)屏幕采集。
+- [x] 摄像头采集；
+- [x] 屏幕采集。
 
 2. **windows播放器**
 
- a)基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装；
- 
- b)基于flash控件开发的web播放器。
+- [x] 基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装；
+- [x] 基于flash控件开发的web播放器。
 
 3. **android推流/iOS推流**
 
- a)多分辨率选择；
- 
- b)支持横竖屏推送；
- 
- c)**音视频**推送、**纯音频**推送、**纯视频**推送；
- 
- d)支持**边采集、边录像**；
- 
- e)网络中断，本地录像继续，保证数据的完整性；
- 
- f)支持本地录像文件回放、处理；
- 
- g)采集过程中，前后摄像头切换；
- 
- h)提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
- 
- i)iOS自带美颜功能；
- 
- j)android完美支持**文字水印、实时时间水印和图片水印**；
- 
- k)支持**推送端实时静音/取消静音**；
- 
- l)支持软硬编码自适应；
- 
- m)完美支持各个厂家CDN。
+- [x] 多分辨率选择；
+- [x] 支持横竖屏推送；
+- [x] **音视频**推送、**纯音频**推送、**纯视频**推送；
+- [x] 支持**边采集、边录像**；
+- [x] 网络中断，本地录像继续，保证数据的完整性；
+- [x] 支持本地录像文件回放、处理；
+- [x] 采集过程中，前后摄像头切换；
+- [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
+- [x] iOS自带美颜功能；
+- [x] android完美支持**文字水印、实时时间水印和图片水印**；
+- [x] 支持**推送端实时静音/取消静音**；
+- [x] 支持软硬编码自适应；
+- [x] 完美支持各个厂家CDN。
 
 4. **windows播放器/android播放器/iOS播放器**
 
- a)超低延迟的rtmp播放器；
- 
- b)超低延迟的rtsp播放器；
- 
- c)完美支持多实例播放（同时播放多路stream，可同时支持rtmp、rtsp stream播放）；
- 
- d)支持RTSP TCP/UDP模式切换；
- 
- e)支持播放端，buffer设置；
- 
- f)支持自定义播放布局;
- 
- g)音视频多种render机制;
- 
- h)支持播放过程中，**实时静音/取消静音**;
- 
- i)android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
+- [x] 超低延迟的rtmp播放器；
+- [x] 超低延迟的rtsp播放器；
+- [x] 完美支持多实例播放（同时播放多路stream，可同时支持rtmp、rtsp stream播放）；
+- [x] 支持RTSP TCP/UDP模式切换；
+- [x] 支持播放端，buffer设置；
+- [x] 支持自定义播放布局;
+- [x] 音视频多种render机制;
+- [x] 支持播放过程中，**实时静音/取消静音**;
+- [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
 
 5. **微信播放**
 
- a)支持android设备rtmp/hls播放；
- 
- b)支持iOS设备hls播放；
- 
- c)支持公众号集成。
+- [x] 支持android设备rtmp/hls播放；
+- [x] 支持iOS设备hls播放；
+- [x] 支持公众号集成。
  
 6. 公网环境下，**毫秒级延迟**，支持云服务部署、各类厂商的CDN产品对接；
 
@@ -156,10 +123,10 @@ j) Perfectly support multi-instance playback(even playback rtmp/rtsp stream at t
 
 **[SmarterStreamServer]**
 
-1. 高并发，分布式部署，支持rtmp摄像机和采集设备完美对接，提供代建服务器或整套软硬件服务器方案；
-2. 高性能的流媒体服务器，标准rtmp输入，多种方式流输出（rtmp/hls），并同步保存采集端数据；
-3. 支持鉴权认证、各种信息展示；
-4. 点播服务器：满足录像文件点播需求。
+- [x] 高并发，分布式部署，支持rtmp摄像机和采集设备完美对接，提供代建服务器或整套软硬件服务器方案；
+- [x] 高性能的流媒体服务器，标准rtmp输入，多种方式流输出（rtmp/hls），并同步保存采集端数据；
+- [x] 支持鉴权认证、各种信息展示；
+- [x] 点播服务器：满足录像文件点播需求。
 
 **SmarterStreaming SDK库可供个人学习之用，企业及商用需要经过授权**；
 
