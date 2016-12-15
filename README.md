@@ -44,7 +44,7 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 [点击查看](http://daniulive.com:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
 
-**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59), 大牛直播技术交流群2：294891451**)查看群共享文件。
+**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59), 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)**)查看群共享文件。
 
 **[Windows版RTMP/RTSP直播播放器下载]**
 
@@ -149,7 +149,11 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 <img src="http://daniulive.com:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
 
-**3. iOS播放器：**
+**3. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
+
+<img src="http://daniulive.com:8080/files/image/box.png" width="800" alt="海思box播放" />
+
+**4. iOS播放器：**
 
 <img src="http://daniulive.com:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
 
@@ -297,10 +301,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 商务合作：QQ：89030985 
 技术支持：QQ: 2679481035
 
-QQ群(大牛直播技术交流群1)：499687479
+QQ群(大牛直播技术交流群1)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
 <img src="http://daniulive.com:8080/files/image/erweima.png" width="302" alt="QQ交流群" />
 
-QQ群(大牛直播技术交流群2 精英群)：294891451
+QQ群(大牛直播技术交流群2 精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 <img src="http://daniulive.com:8080/files/image/erweima2.png" width="302" alt="QQ交流群" />
