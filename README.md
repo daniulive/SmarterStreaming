@@ -44,7 +44,7 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 [点击查看](http://daniulive.com:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
 
-**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: 499687479, 大牛直播技术交流群2：294891451**)查看群共享文件。
+**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: 499687479 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="大牛直播技术交流群1" title="大牛直播技术交流群1"></a>, 大牛直播技术交流群2：294891451**)查看群共享文件。
 
 **[Windows版RTMP/RTSP直播播放器下载]**
 
