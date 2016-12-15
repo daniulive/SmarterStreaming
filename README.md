@@ -149,13 +149,13 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 <img src="http://daniulive.com:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
 
-**3. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
-
-<img src="http://daniulive.com:8080/files/image/box.png" width="800" alt="海思box播放" />
-
-**4. iOS播放器：**
+**3. iOS播放器：**
 
 <img src="http://daniulive.com:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
+
+**4. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
+
+<img src="http://daniulive.com:8080/files/image/box.png" width="800" alt="海思box播放" />
 
 ## android推流端/iOS推流端 ##
 
