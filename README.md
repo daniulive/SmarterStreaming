@@ -50,7 +50,7 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 为了方便大家调试和产品对比，我们开放了Windows版的RTMP/RTSP直播播放器（Video：H.264/Audio: AAC, G.711），欢迎下载使用（支持buffer设置（0~10000ms）、RTSP(TCP/UDP设置)、实时静音/取消静音），也可能是最好用的**Windows RTMP/RTSP播放器**。
 
-[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
+[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-12-20.zip)
 
 ===========================
 # 功能支持
