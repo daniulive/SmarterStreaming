@@ -52,6 +52,24 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 [点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-12-20.zip)
 
+**[Android后台推送摄像头/屏幕数据]**
+
+SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台service采集摄像头/屏幕数据的demo).
+
+[点击下载](http://daniulive.com:8080/files/daniulive/SmartServicePublisher.zip)
+
+1. 安装SmartServicePublisherSDKDemo；
+* [推送类型] 可选“推送屏幕”或“推送摄像头”；
+* [推送屏幕] 分辨率分“屏幕标准分辨率”和“屏幕低分辨率”；
+* [推送摄像头] 分“摄像头高分辨率”、“摄像头中分辨率”、“摄像头低分辨率”、“摄像头超高分辨率”;
+* [录像功能] 默认“本地不录像”，如需录像，请选择下来菜单“本地录像”；
+* [录像管理] 针对录像数据的回放、删除等操作；
+* [前后置摄像头选择] 默认后置摄像头，如需采集前置摄像头，请点击按钮，切换前后摄像头；
+* [输入推流URL] 默认我们会自动随机生成推送到我们server的url，如需推送到自己server，请自行设置，并点击“确认”生效；
+* [软硬编码切换] 默认软编码，如需硬编码，请点击此按钮选择；
+* [推屏权限检测] 由于android屏幕采集需要android 5.0以上版本，如推送屏幕数据，需要先检测推屏权限，如检测通过，才可以推流；
+* [开始推流] 推送数据到server端， 点击“开始推流”后，可切换到后台，采集屏幕或者摄像头数据，如需停止推送，点级"停止推送"按钮就可，NOTE: 开始推送后，后台会进入一直推流状态，测试结束后，记得点击“停止推送”。
+
 ===========================
 # 功能支持
 **[一对一实时音视频互动]**
@@ -209,24 +227,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 * [开始推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止推流”；
 * [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源。
 
-**1.3 Android后台推送摄像头/屏幕数据**
-
-SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台service采集摄像头/屏幕数据的demo).
-
-1. 安装SmartServicePublisherSDKDemo；
-* [推送类型] 可选“推送屏幕”或“推送摄像头”；
-* [推送屏幕] 分辨率分“屏幕标准分辨率”和“屏幕低分辨率”；
-* [推送摄像头] 分“摄像头高分辨率”、“摄像头中分辨率”、“摄像头低分辨率”、“摄像头超高分辨率”;
-* [录像功能] 默认“本地不录像”，如需录像，请选择下来菜单“本地录像”；
-* [录像管理] 针对录像数据的回放、删除等操作；
-* [前后置摄像头选择] 默认后置摄像头，如需采集前置摄像头，请点击按钮，切换前后摄像头；
-* [输入推流URL] 默认我们会自动随机生成推送到我们server的url，如需推送到自己server，请自行设置，并点击“确认”生效；
-* [软硬编码切换] 默认软编码，如需硬编码，请点击此按钮选择；
-* [推屏权限检测] 由于android屏幕采集需要android 5.0以上版本，如推送屏幕数据，需要先检测推屏权限，如检测通过，才可以推流；
-* [开始推流] 推送数据到server端， 点击“开始推流”后，可切换到后台，采集屏幕或者摄像头数据，如需停止推送，点级"停止推送"按钮就可，NOTE: 开始推送后，后台会进入一直推流状态，测试结束后，记得点击“停止推送”。
-
-
-**1.4 iOS推流：**
+**1.3 iOS推流：**
 
 1. 安装SmartPublisher；
 * [分辨率] 可选择高、中、低、超高分辨率；
@@ -241,7 +242,7 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 * [推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止”；
 * [返回] 未推流状态，返回上层设置页面。
  
-**1.5 iOS端边推流边录像：** 
+**1.4 iOS端边推流边录像：** 
 
 1. [录像相关]设置推流过程中，是否录像（不录像 边推边录）；
 * [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
@@ -309,7 +310,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 * iOS 需真机调试。
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
     * android推送端：SmartPublisherSDKDemo
-    * android播放器：SmartPlayerSDKDemo
+    * android后台Service推送：SmartServicePublisherSDKDemo
+    * android播放器：SmartPlayerSDKDemo
     * iOS推送端：SmartiOSPublisher
     * iOS播放器：SmartiOSPlayer
 
