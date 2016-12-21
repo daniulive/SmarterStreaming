@@ -105,6 +105,7 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 - [x] android完美支持`文字水印、实时时间水印和图片水印`；
 - [x] 支持`推送端实时静音/取消静音`；
 - [x] 支持软硬编码自适应；
+- [x] android支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
 - [x] 完美支持各个厂家CDN。
 
 **windows播放器/android播放器/iOS播放器**
