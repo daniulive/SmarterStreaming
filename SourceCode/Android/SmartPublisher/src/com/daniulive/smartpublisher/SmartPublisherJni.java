@@ -10,6 +10,8 @@
 
 package com.daniulive.smartpublisher;
 
+import java.nio.ByteBuffer;
+
 import com.eventhandle.SmartEventCallback;
 
 public class SmartPublisherJni {
@@ -77,7 +79,7 @@ public class SmartPublisherJni {
 	
     /**
      * Set picture water-mark
-     * 
+     * 											
      * @param picPath: the picture working path, e.g: /sdcard/logo.png
      * 
      * @param waterPostion: it should be "TOPLEFT", "TOPRIGHT", "BOTTOMLEFT", "BOTTOMRIGHT".
@@ -173,7 +175,6 @@ public class SmartPublisherJni {
 	*/
     public native int SmartPublisherOnCaptureVideoData(byte[] data, int len, int cameraType, int curOrg);
     
-    
     /**
 	* Set live video data(no encoded data).
 	*
@@ -191,6 +192,21 @@ public class SmartPublisherJni {
 	*/
     public native int SmartPublisherOnCaptureVideoI420Data(byte[] data, int len, int yStride, int uStride, int vStride);
     
+    
+    /**
+	* Set live video data(no encoded data).
+	*
+	* @param data: RGBA data
+	* 
+	* @param rowStride: stride information
+	* 
+	* @param width: width
+	* 
+	* @param height: height
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherOnCaptureVideoRGBAData(ByteBuffer data, int rowStride, int width, int height);
 	
 	/**
 	* Set encoded video data.
