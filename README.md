@@ -327,3 +327,6 @@ QQ群(大牛直播技术交流群1)：[499687479](http:////shang.qq.com/wpa/qunw
 QQ群(大牛直播技术交流群2 精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 <img src="http://daniulive.com:8080/files/image/erweima2.png" width="302" alt="QQ交流群" />
+
+想了解更多信息，点击 
+[大牛直播十万个为什么](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%8D%81%E4%B8%87%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88)
