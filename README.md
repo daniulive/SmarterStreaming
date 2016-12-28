@@ -286,7 +286,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.4 Web播放器**
 
-http://daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
+http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 在输入框中，清除老的url，输入推流的url，如 rtmp://daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
 
