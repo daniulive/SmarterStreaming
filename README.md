@@ -50,13 +50,13 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 为了方便大家调试和产品对比，我们开放了Windows版的RTMP/RTSP直播播放器（Video：H.264/Audio: AAC, G.711），欢迎下载使用（支持buffer设置（0~10000ms）、RTSP(TCP/UDP设置)、实时静音/取消静音），也可能是最好用的**Windows RTMP/RTSP播放器**。
 
-[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-12-20.zip)
+[点击下载](http://218.25.89.108:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-12-20.zip)
 
 **[Android后台推送摄像头/屏幕数据]**
 
 SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台service采集摄像头/屏幕数据的demo).
 
-[点击下载](http://daniulive.com:8080/files/daniulive/SmartServicePublisher.zip)
+[点击下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
 1. 安装SmartServicePublisherSDKDemo；
 * [推送类型] 可选“推送屏幕”或“推送摄像头”；
@@ -140,7 +140,7 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 
 适用于应急指挥、公安巡检等，以移动单兵设备为采集载体，实时上传音视频数据到指挥中心，并实现指挥中心对现场的实时指导。
 
-您可以用网页进行播放测试：<a href="http://daniulive.com:8080/files/SmartPlayer/SmartPlayer.html" target="_blank">http://daniulive.com:8080/files/SmartPlayer/SmartPlayer.html</a>
+您可以用网页进行播放测试：<a href="http://218.25.89.108:8080/files/SmartPlayer/SmartPlayer.html" target="_blank">http://218.25.89.108:8080/files/SmartPlayer/SmartPlayer.html</a>
 
 **[SmarterStreamServer]**
 
@@ -152,51 +152,51 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 **SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
 ## 公网环境下推流、直播效果展示 ##
-<img src="http://daniulive.com:8080/files/image/windows_publisher.JPG" width="800" alt="Windows采集，跨平台播放" />
+<img src="http://218.25.89.108:8080/files/image/windows_publisher.JPG" width="800" alt="Windows采集，跨平台播放" />
 
-<img src="http://daniulive.com:8080/files/image/AndroidPublisher.JPG" width="800" alt="Android采集，跨平台播放" />
+<img src="http://218.25.89.108:8080/files/image/AndroidPublisher.JPG" width="800" alt="Android采集，跨平台播放" />
 
-<img src="http://daniulive.com:8080/files/image/IOSPublisher.png" width="800" alt="iOS采集，跨平台播放" />
+<img src="http://218.25.89.108:8080/files/image/IOSPublisher.png" width="800" alt="iOS采集，跨平台播放" />
 
 ## 播放展示 ##
 
 **1. Windows播放器：**
 
-<img src="http://daniulive.com:8080/files/image/windowsplayer.jpg" width="600" alt="大牛直播Windows播放器" />
+<img src="http://218.25.89.108:8080/files/image/windowsplayer.jpg" width="600" alt="大牛直播Windows播放器" />
 
 **2. Android播放器：**
 
-<img src="http://daniulive.com:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
+<img src="http://218.25.89.108:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
 
 **3. iOS播放器：**
 
-<img src="http://daniulive.com:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
+<img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
 
 **4. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
 
-<img src="http://daniulive.com:8080/files/image/box.png" width="800" alt="海思box播放" />
+<img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
 
 ## android推流端/iOS推流端 ##
 
 **1. android边推送边录像(支持纯音频推送和播放)：**
 
-<img src="http://daniulive.com:8080/files/image/android_publisher.jpg" width="600" alt="android边推送边录像" />
+<img src="http://218.25.89.108:8080/files/image/android_publisher.jpg" width="600" alt="android边推送边录像" />
 
-<img src="http://daniulive.com:8080/files/image/watermark.jpg" width="600" height="750" alt="windows播放水印推流" />
+<img src="http://218.25.89.108:8080/files/image/watermark.jpg" width="600" height="750" alt="windows播放水印推流" />
 
 **2. iOS边推送边录像(支持纯音频推送和播放)：**
 
-<img src="http://daniulive.com:8080/files/image/iOS_publisher.jpg" width="600" alt="iOS边推送边录像" />
+<img src="http://218.25.89.108:8080/files/image/iOS_publisher.jpg" width="600" alt="iOS边推送边录像" />
 
-<img src="http://daniulive.com:8080/files/image/iOS_publisher_2.jpg" width="600" alt="iOS边推送边录像2" />
+<img src="http://218.25.89.108:8080/files/image/iOS_publisher_2.jpg" width="600" alt="iOS边推送边录像2" />
 
 **3. iOS录像管理：**
 
-<img src="http://daniulive.com:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
+<img src="http://218.25.89.108:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
 
 ## SmarterStreamServer url鉴权demo ##
 
-<img src="http://daniulive.com:8080/files/image/url_generate.png" width="798" alt="url生成demo" />
+<img src="http://218.25.89.108:8080/files/image/url_generate.png" width="798" alt="url生成demo" />
 
 ## 使用说明 ##
 
@@ -208,11 +208,11 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 
 1. Open;
 * Login（输入用户名、密码)，如需Windows端推流测试，请联系QQ 89030985，或加入QQ群 499687479 和群主联系;
-* 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://daniulive.com:1935/hls/streamdaniulive;
+* 输入用户名、密码之后，会自动根据用户名生成对应的播放URL，如用户名daniulive，则生成的url为：rtmp://218.25.89.108:1935/hls/streamdaniulive;
 * 点击PushStream，完成Windows推流。
 
 PushStream，如推流成功的话，会显示推流地址，如本URL对应的链接为：
-rtmp://daniulive.com:1935/hls/streamdaniulive.
+rtmp://218.25.89.108:1935/hls/streamdaniulive.
 
 **1.2 Android推流：**
 
@@ -254,7 +254,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.1 Windows播放器：**
 
-播放器下载：[点击下载](http://daniulive.com:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
+播放器下载：[点击下载](http://218.25.89.108:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-11-24.zip)
 
 1. 打开SmartPlayer.exe；
 * 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
@@ -265,7 +265,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 **2.2 android播放器**
 
 1. 安装SmartPlayer.apk；
-* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://218.25.89.108:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
 * [纯音频url] 如需播放纯音频，编译工程，SmartPlayerSetSurface第二个参数设置为null；
 * [输入完整url] 如需测试自己服务器或者公网rtsp/rtmp的url，点击“输入完整url”，比如“rtmp://live.hkstv.hk.lxdns.com/live/hks”，在弹出框输入想播放的url；
 * [开始播放/停止播放] 输入播放url后，可以点击开始播放，如需停止，点击停止播放按钮即可；
@@ -276,7 +276,7 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 **2.3 iOS播放器**
 
 1. 安装SmartPlayer.ipa；
-* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://daniulive.com:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://218.25.89.108:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
 * [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
 * [软解码/硬解码]如需用硬解码，请选择“硬解”，然后进入播放页面；
 * [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
@@ -286,9 +286,9 @@ rtmp://daniulive.com:1935/hls/streamdaniulive.
 
 **2.4 Web播放器**
 
-http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
+http://218.25.89.108:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
-在输入框中，清除老的url，输入推流的url，如 rtmp://daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
+在输入框中，清除老的url，输入推流的url，如 rtmp://218.25.89.108:1935/hls/stream123456（以推流端生成的URL为准）。
 
 **[上层源码目录]**
 
@@ -323,11 +323,11 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 QQ群(大牛直播技术交流群1)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
-<img src="http://daniulive.com:8080/files/image/erweima.png" width="302" alt="QQ交流群" />
+<img src="http://218.25.89.108:8080/files/image/erweima.png" width="302" alt="QQ交流群" />
 
 QQ群(大牛直播技术交流群2 精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
-<img src="http://daniulive.com:8080/files/image/erweima2.png" width="302" alt="QQ交流群" />
+<img src="http://218.25.89.108:8080/files/image/erweima2.png" width="302" alt="QQ交流群" />
 
 想了解更多信息，点击 
 [大牛直播十万个为什么](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%8D%81%E4%B8%87%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88)
