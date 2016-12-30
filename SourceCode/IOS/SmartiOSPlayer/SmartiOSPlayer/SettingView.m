@@ -231,7 +231,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     //默认baseURL
-    baseURL = @"rtmp://daniulive.com:1935/hls/stream";
+    baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
 
 }
 
@@ -256,7 +256,7 @@
             [self.daniuServerBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
             [self.cdnServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
             [self.audioOnlyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            baseURL = @"rtmp://daniulive.com:1935/hls/stream";
+            baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
             is_audio_only_ = false;
             break;
         }
@@ -273,7 +273,7 @@
             [self.audioOnlyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
             [self.cdnServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
             [self.daniuServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            baseURL = @"rtmp://daniulive.com:1935/hls/stream";
+            baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
             is_audio_only_ = true;
             break;
         }
@@ -374,7 +374,7 @@
     }
     else if( [inputVal isEqualToString:@"audio" ] )
     {
-        //playbackURL = @"rtmp://daniulive.com:1935/live/audio";
+        //playbackURL = @"rtmp://player.daniulive.com:1935/live/audio";
         
         is_audio_only_ = true;
     }
