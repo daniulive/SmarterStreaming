@@ -90,9 +90,9 @@ public class SmartPlayer extends Activity {
     
     /* For smartplayer demo app, the url is based on: baseURL + inputID
      * For example: 
-     * baseURL: rtmp://daniulive.com:1935/hls/stream
+     * baseURL: rtmp://player.daniulive.com:1935/hls/stream
      * inputID: 123456 
-     * playbackUrl: rtmp://daniulive.com:1935/hls/stream123456
+     * playbackUrl: rtmp://player.daniulive.com:1935/hls/stream123456
      * */
     private void GenerateURL(String id){
     	if(id == null)
@@ -105,7 +105,7 @@ public class SmartPlayer extends Activity {
     	}
     	
     	btnStartStopPlayback.setEnabled(true);
-    	String baseURL = "rtmp://daniulive.com:1935/hls/stream";
+    	String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
 
     	playbackUrl = baseURL + id;
     }
@@ -142,7 +142,7 @@ public class SmartPlayer extends Activity {
     	inputID.setFocusable(true);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("如 rtmp://daniulive.com:1935/hls/stream123456,请输入123456").setView(inputID).setNegativeButton(
+        builder.setTitle("如 rtmp://player.daniulive.com:1935/hls/stream123456,请输入123456").setView(inputID).setNegativeButton(
                 "取消", null);
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
@@ -158,10 +158,10 @@ public class SmartPlayer extends Activity {
     private void PopFullUrlDialog(){
     	final EditText inputUrlTxt = new EditText(this);
     	inputUrlTxt.setFocusable(true);
-    	inputUrlTxt.setText("rtmp://daniulive.com:1935/hls/stream");
+    	inputUrlTxt.setText("rtmp://player.daniulive.com:1935/hls/stream");
 
         AlertDialog.Builder builderUrl = new AlertDialog.Builder(this);
-        builderUrl.setTitle("如 rtmp://daniulive.com:1935/hls/stream123456").setView(inputUrlTxt).setNegativeButton(
+        builderUrl.setTitle("如 rtmp://player.daniulive.com:1935/hls/stream123456").setView(inputUrlTxt).setNegativeButton(
                 "取消", null);
         builderUrl.setPositiveButton("确认", new DialogInterface.OnClickListener() {
 
