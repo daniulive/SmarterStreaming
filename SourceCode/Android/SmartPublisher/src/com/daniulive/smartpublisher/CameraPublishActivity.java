@@ -111,7 +111,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private boolean isWritelogoFileSuccess = false;
 	
 	private String publishURL;
-	final private String baseURL = "rtmp://daniulive.com:1935/hls/stream";
+	final private String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
 	private String inputPushURL ="";
 
 	private String printText = "URL:";
@@ -600,7 +600,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	inputUrlTxt.setText(baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000)));
 
         AlertDialog.Builder builderUrl = new AlertDialog.Builder(this);
-        builderUrl.setTitle("如 rtmp://daniulive.com:1935/hls/stream123456").setView(inputUrlTxt).setNegativeButton(
+        builderUrl.setTitle("如 rtmp://player.daniulive.com:1935/hls/stream123456").setView(inputUrlTxt).setNegativeButton(
                 "取消", null);
         
         builderUrl.setPositiveButton("确认", new DialogInterface.OnClickListener() {
