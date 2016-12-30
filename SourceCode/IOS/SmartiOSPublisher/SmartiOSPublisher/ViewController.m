@@ -494,7 +494,7 @@
         
         NSString *strNumber = [NSString stringWithFormat:@"%ld", (long)randNumber];
         
-        NSString *baseURL = @"rtmp://daniulive.com:1935/hls/stream";
+        NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
         
         publishURL = [ baseURL stringByAppendingString:strNumber];
         
