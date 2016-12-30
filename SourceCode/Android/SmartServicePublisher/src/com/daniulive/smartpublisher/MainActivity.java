@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 	private boolean isCameraFaceFront = false; // 当前打开的摄像头标记
 	private boolean is_hardware_encoder = false;
 	private boolean isStart = false;
-	final private String baseURL = "rtmp://daniulive.com:1935/hls/stream";
+	final private String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
 	private String inputPushURL = "";
 	private TextView textCurURL = null;
 	private String printText = "URL:";
@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 	private int videoWidth = 640;
 	private int videoHight = 480;
 
-	private String publishURL = "rtmp://daniulive.com:1935/hls/streamservice";
+	private String publishURL = "rtmp://player.daniulive.com:1935/hls/streamservice";
 
 	private final int PUSH_TYPE_SCREEN = 0;
 	private final int PUSH_TYPE_CAMERA = 1;
@@ -446,7 +446,7 @@ public class MainActivity extends Activity {
 				+ String.valueOf((int) (System.currentTimeMillis() % 1000000)));
 
 		AlertDialog.Builder builderUrl = new AlertDialog.Builder(this);
-		builderUrl.setTitle("如 rtmp://daniulive.com:1935/hls/stream123456")
+		builderUrl.setTitle("如 rtmp://player.daniulive.com:1935/hls/stream123456")
 				.setView(inputUrlTxt).setNegativeButton("取消", null);
 
 		builderUrl.setPositiveButton("确认",
