@@ -57,6 +57,12 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 [点击下载](http://218.25.89.108:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-12-20.zip)
 
+**[Windows推送桌面]**
+
+Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面采集的SDK，支持帧率、关键帧间隔、码率等设置；支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流，完美支持自建服务器或CDN.
+
+[点击下载](http://218.25.89.108:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2017-01-05.zip)
+
 **[Android后台推送摄像头/屏幕数据]**
 
 SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台service采集摄像头/屏幕数据的demo).
@@ -181,21 +187,25 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 
 <img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
 
-## android推流端/iOS推流端 ##
+## windows推桌面/android推流端/iOS推流端 ##
 
-**1. android边推送边录像(支持纯音频推送和播放)：**
+**1.  windows推桌面：**
+
+<img src="http://218.25.89.108:8080/files/image/windows_screen_capture.png" width="800" alt="Windows推桌面" />
+
+**2. android边推送边录像(支持纯音频推送和播放)：**
 
 <img src="http://218.25.89.108:8080/files/image/android_publisher.jpg" width="600" alt="android边推送边录像" />
 
 <img src="http://218.25.89.108:8080/files/image/watermark.jpg" width="600" height="750" alt="windows播放水印推流" />
 
-**2. iOS边推送边录像(支持纯音频推送和播放)：**
+**3. iOS边推送边录像(支持纯音频推送和播放)：**
 
 <img src="http://218.25.89.108:8080/files/image/iOS_publisher.jpg" width="600" alt="iOS边推送边录像" />
 
 <img src="http://218.25.89.108:8080/files/image/iOS_publisher_2.jpg" width="600" alt="iOS边推送边录像2" />
 
-**3. iOS录像管理：**
+**4. iOS录像管理：**
 
 <img src="http://218.25.89.108:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
 
