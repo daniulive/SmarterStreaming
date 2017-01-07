@@ -310,13 +310,16 @@ http://218.25.89.108:8080/files/SmartPlayer1Stream/SmartPlayer.html
 1. android推流 SmartPublisher
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPublisher
 
-2. android播放器 SmartPlayer:
+2. android推流 SmartServicePublisher(后台service推送摄像头/屏幕)
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartServicePublisher
+
+3. android播放器 SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPlayer
 
-3. iOS推流 SmartPublisher:
+4. iOS推流 SmartPublisher:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisher
 
-4. iOS播放器 SmartPlayer:
+5. iOS播放器 SmartPlayer:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayer
 
 **[编译注意事项]**
@@ -333,7 +336,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 ## 获取更多信息 ##
 
-商务合作：QQ：89030985 
+商务合作：QQ：[89030985](<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我进行商务咨询" title="点我进行商务咨询"/></a>) 
 技术支持：QQ: 2679481035
 
 QQ群(大牛直播技术交流群1)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
