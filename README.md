@@ -337,9 +337,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 ## 获取更多信息 ##
 
 商务合作：QQ：89030985
-<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我进行商务咨询" title="点我进行商务咨询"/></a> 
+<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
 
 技术支持：QQ: 2679481035
+<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::52" alt="点我在线技术咨询" title="点我在线技术咨询"/></a>
 
 QQ群(大牛直播技术交流群1)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
