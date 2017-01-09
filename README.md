@@ -59,9 +59,13 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 **[Windows推送桌面]**
 
-Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面采集的SDK，支持帧率、关键帧间隔、码率等设置；支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流，完美支持自建服务器或CDN.
+Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面采集的SDK。
+1. 支持帧率、关键帧间隔、码率等设置；
+2. 支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
+3. 采集音频、选择音频采集设备，推送过程中实时静音/取消静音；
+4. 完美支持自建服务器或CDN.
 
-[点击下载](http://218.25.89.108:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2017-01-05.zip)
+[点击下载](http://218.25.89.108:8080/files/daniulive/windows-桌面推送-Beta版-2017-01-09.zip)
 
 **[Android后台推送摄像头/屏幕数据]**
 
