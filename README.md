@@ -331,12 +331,15 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
 * 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
 * iOS 需真机调试。
+ * 由于我们域名调整，原推送、播放 demo里面的baseURL “rtmp://daiulive.com” 调整为 "rtmp://player.daniulive.com"，各位用我们server测试时，请注意调整。 原域名映射到刚上线的大牛直播网站 www.daniulive.com 
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
  * android推送端：SmartPublisherSDKDemo
  * android后台Service推送：SmartServicePublisherSDKDemo
  * android播放器：SmartPlayerSDKDemo
  * iOS推送端：SmartiOSPublisher
  * iOS播放器：SmartiOSPlayer
+
+给大家带来的不便，谢谢谅解。。
 
 ## 获取更多信息 ##
 
