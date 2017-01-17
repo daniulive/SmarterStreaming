@@ -69,6 +69,7 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面采�
 * 完美支持自建服务器或CDN.
 
 使用步骤：
+
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
 * 点击“获取默认值”，拿到系统推荐的平均码率和最高码率；
@@ -86,7 +87,6 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面采�
 SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台service采集摄像头/屏幕数据的demo).
 
 [点击下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
-
 1. 安装SmartServicePublisherSDKDemo；
 * [推送类型] 可选“推送屏幕”或“推送摄像头”；
 * [推送屏幕] 分辨率分“屏幕标准分辨率”和“屏幕低分辨率”；
