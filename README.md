@@ -51,6 +51,11 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 **NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59), 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)**)查看群共享文件。
 
+**[Android美颜demo]**
+我们一直相信，专业的人做专业的事，所以一直未涉及美颜这块，鉴于大家对基础美颜的诉求，我们iOS推送端实现了基础美颜，如今发布android基础美颜demo供大家参考，上层代码对外开放，有需要的同学，可点击以下链接下载：
+
+[点击下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
+
 **[Windows版RTMP/RTSP直播播放器下载]**
 
 为了方便大家调试和产品对比，我们开放了Windows版的RTMP/RTSP直播播放器（Video：H.264/Audio: AAC, G.711），欢迎下载使用（支持buffer设置（0~10000ms）、RTSP(TCP/UDP设置)、实时静音/取消静音），也可能是最好用的**Windows RTMP/RTSP播放器**。
@@ -136,7 +141,7 @@ SmartServicePublisherSDKDemo(考虑到特定用户需求，我们发布了后台
 - [x] 支持本地录像文件回放、处理；
 - [x] 采集过程中，前后摄像头切换；
 - [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
-- [x] iOS自带美颜功能；
+- [x] android/iOS自带美颜功能；
 - [x] android完美支持`文字水印、实时时间水印和图片水印`；
 - [x] 支持`推送端实时静音/取消静音`；
 - [x] 支持软硬编码自适应；
