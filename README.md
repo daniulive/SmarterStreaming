@@ -63,9 +63,9 @@ Currently, it has already covered Windows/android/iOS platform with millisecond 
 
 [点击下载](http://218.25.89.108:8080/files/daniulive/windows-rtmp-rtsp-开放版-smartplayer-2016-12-20.zip)
 
-**[Windows推送桌面]**
+**[Windows推送端]**
 
-Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。
+Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。
 
 1. [屏幕/摄像头]支持帧率、关键帧间隔、码率等设置；
 * [屏幕]支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
