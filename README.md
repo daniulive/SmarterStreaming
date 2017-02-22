@@ -19,8 +19,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ***For commercial support, please contact 89030985@qq.com.***
 
-<img src="http://218.25.89.108:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
-
+===========================
 **[SmarterStreaming SDK调用说明]**
 
 [点击查看](http://218.25.89.108:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
