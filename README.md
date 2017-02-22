@@ -15,41 +15,11 @@
 ===========================
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
-Currently, it has already covered Windows/android/iOS platform with millisecond latency and great scalability.
+For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
 ***For commercial support, please contact 89030985@qq.com.***
 
 <img src="http://218.25.89.108:8080/files/image/SmarterStreaming.png" width="313" alt="SmarterStreaming" />
-
-**Android publisher/iOS publisher**
-
-- [x] Audio encoding: AAC;
-- [x] Video encoding: H.264;
-- [x] Protocol: RTMP;
-- [x] Different resolution settings;
-- [x] Front and back camera switching;
-- [x] Stream adaptive;
-- [x] Software/Hardware encoding;
-- [x] Low latency and automatic network connection.
-- [x] Push audio only;
-- [x] Push video only;
-- [x] real-time mute/un-mute;
-- [x] YUV interface before encoding;
-- [x] AAC interface after encoding;
-- [x] H.264 interface after encoding;
-
-**windows player/android player/iOS player**
-
-- [x] Audio decoding: AAC/G.711;
-- [x] Video decoding: H.264;
-- [x] Protocol: RTMP/RTSP;
-- [x] Support RTSP TCP / UDP mode switch;
-- [x] Support buffer settings;
-- [x] support for customized layout;
-- [x] Multi-mode of audio/video render mechanism;
-- [x] Real-time mute/unmute;
-- [x] Support software/hardware decoding;
-- [x] Perfectly support multi-instance playback(even playback rtmp/rtsp stream at the same time);
 
 **[SmarterStreaming SDK调用说明]**
 
