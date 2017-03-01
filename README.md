@@ -15,7 +15,7 @@
 **本地下载**
 
 **NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
-- [x] (大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
+- [x] 大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 - [x] 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 或者直接从私有服务器下载：
@@ -25,12 +25,16 @@
 - [x] [SDK调用说明下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
 - [x] [SmarterStreaming产品手册下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
+
 ===========================
+
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
 ***For commercial support, please contact 89030985@qq.com.***
+
+**SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
 ===========================
 
@@ -40,8 +44,16 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **windows推流**
 
-- [x] 摄像头采集；
-- [x] 屏幕采集。
+- [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率等设置；
+- [x] [屏幕]支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
+- [x] [摄像头]支持摄像头选择、分辨率设置、帧率设置；
+- [x] [音频]采集音频设备，
+- [x] [音频]采集扬声器；
+- [x] [音频]推送过程中实时静音/取消静音；
+- [x] [音视频]支持纯音频、纯视频、音视频推送；
+- [x] [对接服务器]完美支持自建服务器或CDN；
+- [x] [录像]支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
+- [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间。
 
 **windows播放器**
 
@@ -106,8 +118,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持鉴权认证、各种信息展示；
 - [x] 点播服务器：满足录像文件点播需求。
 
-**SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
-
 ## 公网环境下推流、直播效果展示 ##
 <img src="http://218.25.89.108:8080/files/image/windows_publisher.JPG" width="800" alt="Windows采集，跨平台播放" />
 
@@ -166,19 +176,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **1.1 Windows推送端：**
 
 Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
-
-1. [屏幕/摄像头]支持帧率、关键帧间隔、码率等设置；
-* [屏幕]支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
-* [摄像头]支持摄像头选择、分辨率设置、帧率设置；
-* [音频]采集音频设备，
-* [音频]采集扬声器；
-* [音频]推送过程中实时静音/取消静音；
-* [音视频]支持纯音频、纯视频、音视频推送；
-* [对接服务器]完美支持自建服务器或CDN；
-* [录像]支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
-* [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间。
-
-使用步骤：
 
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
