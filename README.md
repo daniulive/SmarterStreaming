@@ -145,11 +145,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
 
-## windows推桌面/android推流端/iOS推流端 ##
+## windows推送/android推流端/iOS推流端 ##
 
-**1.  windows推桌面：**
+**1.  windows推送：**
 
-<img src="http://218.25.89.108:8080/files/image/windows_screen_capture_0109.png" width="800" alt="Windows推桌面" />
+<img src="http://218.25.89.108:8080/files/image/windows_screen_capture_0301.png" width="800" alt="Windows推送" />
 
 **2. android边推送边录像(支持纯音频推送和播放)：**
 
