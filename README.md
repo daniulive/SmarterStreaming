@@ -1,6 +1,14 @@
 **大牛直播 <a href="http://www.daniulive.com" target="_blank">www.daniulive.com</a>**
 
   国内外为数不多不依赖开源框架、不依赖CDN实现秒开、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼或传统行业低延迟、高稳定直播推送与播放。
+  
+  SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
+
+For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
+
+***For commercial support, please contact 89030985@qq.com.***
+
+**SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
 **模块概览**
 
@@ -25,16 +33,6 @@
 - [x] [SDK调用说明下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
 - [x] [SmarterStreaming产品手册下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
-
-===========================
-
-SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
-
-For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
-
-***For commercial support, please contact 89030985@qq.com.***
-
-**SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
 ===========================
 
