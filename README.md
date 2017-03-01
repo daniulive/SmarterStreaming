@@ -24,16 +24,16 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **本地下载**
 
-**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
+很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
 - [x] 大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 - [x] 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 或者直接从私有服务器下载：
+- [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
+- [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 - [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
 - [x] [android推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2016-12-20.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
-- [x] [SDK调用说明下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
-- [x] [SmarterStreaming产品手册下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
 - [x] [Android后台推送摄像头/屏幕数据demo下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
@@ -43,7 +43,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 适用于秀场直播、在线教育、应急指挥、可视化购物、远程专家指挥系统、企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播等场景。
 
-**windows推流**
+**windows屏幕截取/摄像头推送录像**
 
 - [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率等设置；
 - [x] [屏幕]支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
@@ -67,6 +67,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持横竖屏推送；
 - [x] `音视频`推送、`纯音频`推送、`纯视频`推送；
 - [x] 支持`边采集、边录像`；
+- [x] 支持rtmp推送 live|record模式设置；
 - [x] 网络中断，本地录像继续，保证数据的完整性；
 - [x] 支持本地录像文件回放、处理；
 - [x] 采集过程中，前后摄像头切换；
