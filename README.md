@@ -10,6 +10,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
+===========================
+
 **模块概览**
 
 - [x] Windows屏幕、摄像头推流/录像;
