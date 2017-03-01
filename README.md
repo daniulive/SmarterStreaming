@@ -5,15 +5,20 @@
 **模块概览**
 
 - [x] Windows屏幕、摄像头推流/录像;
-- [x] Windows rtmp/rtsp播放器;  [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
+- [x] Windows rtmp/rtsp播放器;
 - [x] Android屏幕、摄像头推流/录像;
-- [x] Android rtmp/rtsp播放器;  [android推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2016-12-20.zip)
+- [x] Android rtmp/rtsp播放器;
 - [x] iOS摄像头推流/录像;
-- [x] iOS rtmp/rtsp播放器;  [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
+- [x] iOS rtmp/rtsp播放器;
 - [x] SmarterStreamServer.
 
 **本地下载**
 
+**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
+- [x] (**大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
+- [x] 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)**)
+
+或者直接从私有服务器下载：
 - [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
 - [x] [android推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2016-12-20.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
@@ -28,8 +33,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 ***For commercial support, please contact 89030985@qq.com.***
 
 ===========================
-
-**NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59), 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)**)查看群共享文件。
 
 <font color="red">**[Android美颜demo]**<font>
 
