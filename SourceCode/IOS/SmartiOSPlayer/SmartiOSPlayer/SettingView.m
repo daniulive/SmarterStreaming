@@ -3,9 +3,10 @@
 //  SmartiOSPlayer
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
-//  Created by daniulive on 16/3/24.
-//  Copyright © 2016年 daniulive. All rights reserved.
+//  Created by daniulive on 2016/01/03.
+//  Copyright © 2015~2017 daniulive. All rights reserved.
 
 #import "SettingView.h"
 #import "ViewController.h"
@@ -86,7 +87,7 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播播放端V1.0.06.12.05"];
+    [self.navigationItem setTitle:@"大牛直播播放端V1.0.17.01.12"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     
@@ -370,7 +371,6 @@
         //playbackURL = @"rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
     
         //playbackURL = @"rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
-        
     }
     else if( [inputVal isEqualToString:@"audio" ] )
     {
@@ -378,6 +378,7 @@
         
         is_audio_only_ = true;
     }
+    
     
     NSLog(@"pass playbackURL:%@", playbackURL);
     

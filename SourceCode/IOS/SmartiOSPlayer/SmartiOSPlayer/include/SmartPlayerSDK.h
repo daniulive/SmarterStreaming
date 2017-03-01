@@ -3,9 +3,10 @@
 //  SmartPlayerSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
-//  Created by daniuLive on 2016/01/03.
-//  Copyright © 2016年 daniuLive. All rights reserved.
+//  Created by daniulive on 2016/01/03.
+//  Copyright © 2015~2017 daniulive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

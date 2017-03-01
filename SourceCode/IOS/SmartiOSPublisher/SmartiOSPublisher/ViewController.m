@@ -3,9 +3,10 @@
 //  SmartiOSPublisher
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2016年 daniulive. All rights reserved.
+//  Copyright © 2015~2017 daniulive. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -31,6 +32,7 @@
     UIButton    *beautyButton;              //美颜设置
     UIButton    *swapCamerasButton;         //前后摄像头切换
     UIButton    *muteButton;                //静音控制
+    UIButton    *beautyLevelButton;         //美颜级别按钮
     UIButton    *publisherButton;           //推流控制
     UIButton    *backSettingsButton;        //返回到设置分辨率页面
     UILabel     *textModeLabel;             //文字提示
@@ -43,6 +45,8 @@
     Boolean     is_beauty;                  //是否美颜，默认美颜
     DN_FILTER_TYPE  filter_type;            //美颜类型
     Boolean     is_mute;                    // 是否静音
+    CGFloat screenWidth;
+    CGFloat screenHeight;
 }
 
 @synthesize localPreview;
@@ -109,10 +113,11 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1022";
+    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.17.0228";
+    
     //当前屏幕宽高
-    CGFloat screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
-    CGFloat screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
+    screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
+    screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     
@@ -140,6 +145,10 @@
         return;
     }
     
+    //NSInteger publish_orientation = 1;	//默认竖屏采集，传1:竖屏，传2:横屏
+    
+    //[_smart_publisher_sdk SmartPublisherSetPublishOrientation:publish_orientation];
+    
     DN_BEAUTY_TYPE beauty_type;
     
     if (is_beauty)
@@ -154,7 +163,7 @@
     if([_smart_publisher_sdk SmartPublisherSetBeauty:beauty_type] != DANIULIVE_RETURN_OK)
     {
         NSLog(@"Call SmartPublisherSetBeauty failed..");
-
+        
         _smart_publisher_sdk = nil;
         return;
     }
@@ -210,7 +219,7 @@
             return;
         }
     }
-
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docDir = [paths objectAtIndex:0];
     
@@ -230,6 +239,21 @@
     }
     
     CGFloat lineWidth = swapCamerasButton.frame.size.width * 0.12f;
+    
+    //美颜level设置
+    beautyLevelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 480, 120, 60);
+    beautyLevelButton.center = CGPointMake(self.view.frame.size.width / 6, beautyLevelButton.frame.origin.y + beautyLevelButton.frame.size.height / 2);
+    
+    beautyLevelButton.layer.cornerRadius = beautyLevelButton.frame.size.width / 2;
+    beautyLevelButton.layer.borderColor = [UIColor greenColor].CGColor;
+    beautyLevelButton.layer.borderWidth = lineWidth;
+    
+    [beautyLevelButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [beautyLevelButton setTitle:@"美颜level" forState:UIControlStateNormal];
+    
+    [beautyLevelButton addTarget:self action:@selector(beautyLevelBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:beautyLevelButton];
     
     //muteButton
     muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -319,7 +343,7 @@
     textModeLabel.backgroundColor = [UIColor clearColor];
     // 设置UILabel的文本颜色
     textModeLabel.textColor = [UIColor colorWithRed:1.0 green:0.0
-                                                blue:1.0 alpha:1.0];
+                                               blue:1.0 alpha:1.0];
     
     textModeLabel.adjustsFontSizeToFitWidth = YES;
     
@@ -327,7 +351,7 @@
     
     textModeLabel.text =  [str stringByAppendingString:copyRights];
     [self.view addSubview:textModeLabel];
-
+    
 }
 
 - (void)viewDidLoad {
@@ -341,6 +365,17 @@
     }
 }
 
+- (void)beautyLevelBtn:(id)sender {
+    //demo是0~1随机设置，具体使用，可根据实际效果，自行调节
+    if ( _smart_publisher_sdk != nil )
+    {
+        CGFloat level = (CGFloat)(arc4random()%(10))/10.0;
+        
+        NSLog(@"randNumber:%ld, level:%f", (long)randNumber, level);
+        
+        [_smart_publisher_sdk SmartPublisherSetBeautyBrightness:level];
+    }
+}
 
 - (void)MuteBtn:(id)sender {
     if ( _smart_publisher_sdk != nil )
@@ -353,7 +388,7 @@
         }
         else
         {
-             [muteButton setTitle:@"静音" forState:UIControlStateNormal];
+            [muteButton setTitle:@"静音" forState:UIControlStateNormal];
         }
         
         [_smart_publisher_sdk SmartPublisherSetMute:is_mute];
@@ -361,7 +396,7 @@
 }
 
 - (void)beautySettingsBtn:(id)sender {
-
+    
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"请选择以下5种美颜效果" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
     
     actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
@@ -411,7 +446,7 @@
     if (_smart_publisher_sdk != nil) {
         [_smart_publisher_sdk SmartPublisherSetBeautyFilterType:filter_type];
     }
- 
+    
 }
 
 - (void)swapCameraBtnPressed:(UIButton *)button
@@ -490,6 +525,10 @@
     {
         NSLog(@"Run into publishStream, start publisher..");
         
+        //NSInteger type = 0;
+        
+        //[_smart_publisher_sdk SmartPublisherSetRtmpPublishingType:type];
+        
         randNumber = arc4random()%(1000000);
         
         NSString *strNumber = [NSString stringWithFormat:@"%ld", (long)randNumber];
@@ -497,6 +536,8 @@
         NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
         
         publishURL = [ baseURL stringByAppendingString:strNumber];
+        
+        //publishURL = @"";     //如此设置时，只本地录制，不上传
         
         NSLog(@"publishURL: %@",publishURL);
         
@@ -528,17 +569,17 @@
         
         //only for decoded audio processing test..
         /*
-        char aac[] = {0x20, 0x66, 0x00, 0x01, 0x98, 0x00, 0x0e};
-        char aac_config[] = {0x12, 0x10};
-        [_mediaCapture SmartPublisherSetAudioSpecificConfig:aac_config len:2];
-        
-        unsigned long long tttt = 0;
-        for ( int i = 0; i < 1000; ++i )
-        {
-            tttt = i*23;
-            [_mediaCapture SmartPublisherOnReceivingAACData:aac len:7 isKeyFrame:1 timeStamp:tttt];
-        }
-        */
+         char aac[] = {0x20, 0x66, 0x00, 0x01, 0x98, 0x00, 0x0e};
+         char aac_config[] = {0x12, 0x10};
+         [_mediaCapture SmartPublisherSetAudioSpecificConfig:aac_config len:2];
+         
+         unsigned long long tttt = 0;
+         for ( int i = 0; i < 1000; ++i )
+         {
+         tttt = i*23;
+         [_mediaCapture SmartPublisherOnReceivingAACData:aac len:7 isKeyFrame:1 timeStamp:tttt];
+         }
+         */
         //end
         
     }
