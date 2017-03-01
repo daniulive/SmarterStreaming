@@ -3,9 +3,10 @@
 //  SmartPublisherSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2016年 daniulive. All rights reserved.
+//  Copyright © 2015~2017 daniulive. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -95,6 +96,18 @@ typedef enum DNCameraPosition{
  */
 - (NSInteger)SmartPublisherInit:(NSInteger)audio_opt video_opt:(NSInteger)video_opt;
 
+
+/**
+ * 设置横竖屏推送模式(仅适用于内置非美颜模式)
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * orientation: 竖屏推送:1, 横屏推送:2
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetPublishOrientation:(NSInteger)orientation;
+
 /**
  * 美颜相关
  *
@@ -122,6 +135,18 @@ typedef enum DNCameraPosition{
  */
 -(NSInteger)SmartPublisherSetBeautyFilterType:(DN_FILTER_TYPE)filterType;
 
+/**
+ * 内部美颜时使用
+ *
+ * <pre>Init后调用</pre>
+ *
+ * <NOTE> 此接口仅在使用daniulive基础美颜(DN_BEAUTY_INTERNAL_BEAUTY)时设置
+ *
+ * level范围: (0~1)
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetBeautyBrightness:(CGFloat)level;
 
 /**
  * 美颜或外部视频采集时使用
@@ -256,6 +281,15 @@ typedef enum DNCameraPosition{
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherSetRecorderFileMaxSize:(NSInteger)size;
+
+/**
+ * Set rtmp PublishingType
+ *
+ * @param type: 0:live, 1:record. please refer to rtmp specification Page 46
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherSetRtmpPublishingType:(NSInteger)type;
 
 /**
  * 设置video preview

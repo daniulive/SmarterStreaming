@@ -3,6 +3,7 @@
 //  SmartPublisherSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
 //  Copyright © 2016年 daniulive. All rights reserved.
@@ -127,7 +128,7 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播推流端V1.0.07.02.10"];
+    [self.navigationItem setTitle:@"大牛直播推流端V1.0.17.02.28"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
 
