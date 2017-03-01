@@ -35,6 +35,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [SDK调用说明下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
 - [x] [SmarterStreaming产品手册下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
+- [x] [Android后台推送摄像头/屏幕数据demo下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
 ===========================
 
