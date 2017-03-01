@@ -5,11 +5,11 @@
 **模块概览**
 
 - [x] Windows屏幕、摄像头推流/录像;
-- [x] Windows rtmp/rtsp播放器;
+- [x] Windows rtmp/rtsp播放器;  [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
 - [x] Android屏幕、摄像头推流/录像;
-- [x] Android rtmp/rtsp播放器;
+- [x] Android rtmp/rtsp播放器;  [android推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2016-12-20.zip)
 - [x] iOS摄像头推流/录像;
-- [x] iOS rtmp/rtsp播放器;
+- [x] iOS rtmp/rtsp播放器;  [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
 - [x] SmarterStreamServer.
 
 ===========================
@@ -22,7 +22,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 ===========================
 **[SmarterStreaming SDK调用说明]**
 
-[点击查看](http://218.25.89.108:8080/files/SDK/SmarterStreaming SDK调用说明.pdf)
+[点击查看](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
 
 **[SmarterStreaming SDK产品手册(含使用说明)]**
 
@@ -77,7 +77,7 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 * [录像] 设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
 * [录像] 点击“录像”或“停止录像”；
 
-[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-开放Beta版-2017-02-14.zip)
+[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
 
 **[Android后台推送摄像头/屏幕数据]**
 
