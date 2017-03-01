@@ -12,6 +12,14 @@
 - [x] iOS rtmp/rtsp播放器;  [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
 - [x] SmarterStreamServer.
 
+**本地下载**
+
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-02-28.zip)
+- [x] [android推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2016-12-20.zip)
+- [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
+- [x] [SDK调用说明下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
+- [x] [SmarterStreaming产品手册下载](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
+
 ===========================
 SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
@@ -20,13 +28,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 ***For commercial support, please contact 89030985@qq.com.***
 
 ===========================
-**[SmarterStreaming SDK调用说明]**
-
-[点击查看](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
-
-**[SmarterStreaming SDK产品手册(含使用说明)]**
-
-[点击查看](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 
 **NOTE：**很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享，下载有困难的同学，可以到QQ群(**大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59), 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)**)查看群共享文件。
 
