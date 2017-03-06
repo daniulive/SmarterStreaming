@@ -146,6 +146,17 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetRecorderFileMaxSize(int size);
     
+    
+    /**
+     * Set rtmp PublishingType
+     * 
+     * @param type: 0:live, 1:record. please refer to rtmp specification Page 46
+     * 
+     * @return {0} if successful
+     */
+    public native int SetRtmpPublishingType(int type);
+    
+    
     /**
 	* Set publish stream url.
 	* 
@@ -207,6 +218,21 @@ public class SmartPublisherJni {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherOnCaptureVideoRGBAData(ByteBuffer data, int rowStride, int width, int height);
+	
+	/**
+	 * Set live video data(no encoded data).
+	 *
+	 * @param data: ABGR flip vertical(垂直翻转) data
+	 *
+	 * @param rowStride: stride information
+	 *
+	 * @param width: width
+	 *
+	 * @param height: height
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherOnCaptureVideoABGRFlipVerticalData(ByteBuffer data, int rowStride, int width, int height);
 	
 	/**
 	* Set encoded video data.
