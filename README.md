@@ -31,7 +31,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 或者直接从私有服务器下载：
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming SDK调用说明1.8.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-03-02.zip)
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-03-13.zip)
 - [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-03-06.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-09.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
@@ -49,6 +49,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率等设置；
 - [x] [屏幕]支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
 - [x] [摄像头]支持摄像头选择、分辨率设置、帧率设置；
+- [x] [摄像头和屏幕实时切换]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
+- [x] [摄像头叠加到屏幕] 支持摄像头按照设置坐标，叠加到屏幕指定位置，并支持实时关闭叠加层；
+- [x] [屏幕叠加到摄像头] 支持屏幕按照设定坐标，叠加到摄像头指定位置，并支持实时关闭叠加层；
+- [x] [透明度]可以设置透明度处理；
 - [x] [音频]采集音频设备，
 - [x] [音频]采集扬声器；
 - [x] [音频]推送过程中实时静音/取消静音；
@@ -186,6 +190,10 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 * [屏幕裁剪] 推送过程中，可以点击“移动屏幕区域”，实时设置推送的屏幕区域；
 * [码流获取] 点击“获取默认值”，拿到系统推荐的平均码率和最高码率；
 * [摄像头] 如需推送摄像头数据，从摄像头列表选择设备，然后设置分辨率和推送帧率；
+* [摄像头和屏幕实时切换]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
+* [摄像头叠加到屏幕] 支持摄像头按照设置坐标，叠加到屏幕指定位置，并支持实时关闭叠加层；
+* [屏幕叠加到摄像头] 支持屏幕按照设定坐标，叠加到摄像头指定位置，并支持实时关闭叠加层；
+* [透明度]可以设置透明度处理；
 * [音频选择] 采集麦克风：实时获取麦克风数据；
 * [音频选择] 采集扬声器：实时获取扬声器数据，比如，无杂音的采集系统播放的音乐；
 * [音频控制] 推送过程中，可以选择“静音”或取消静音；
