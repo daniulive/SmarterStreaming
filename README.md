@@ -154,7 +154,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1.  windows推送：**
 
-<img src="http://218.25.89.108:8080/files/image/windows_screen_capture_0301.png" width="800" alt="Windows推送" />
+<img src="http://218.25.89.108:8080/files/image/SmartPublisher_windows.png" width="800" alt="Windows推送" />
 
 **2. android边推送边录像(支持纯音频推送和播放)：**
 
