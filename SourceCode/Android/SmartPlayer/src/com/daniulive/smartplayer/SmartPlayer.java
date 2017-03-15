@@ -105,7 +105,7 @@ public class SmartPlayer extends Activity {
     	}
     	
     	btnStartStopPlayback.setEnabled(true);
-    	String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
+         String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
 
     	playbackUrl = baseURL + id;
     }

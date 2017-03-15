@@ -454,7 +454,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPublisher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d14d68f4-b3a8-4a6b-bf1c-0a0ef68ae850";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
 				VALID_ARCHS = "armv7 arm64";
 			};
@@ -478,7 +478,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPublisher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d14d68f4-b3a8-4a6b-bf1c-0a0ef68ae850";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
 				VALID_ARCHS = "armv7 arm64";
 			};

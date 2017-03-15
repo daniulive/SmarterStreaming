@@ -3,9 +3,10 @@
 //  SmartiOSPlayer
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
-//  Created by daniulive on 16/01/03.
-//  Copyright © 2016年 daniulive. All rights reserved.
+//  Created by daniulive on 2016/01/03.
+//  Copyright © 2015~2017 daniulive. All rights reserved.
 
 #import "ViewController.h"
 #import "SettingView.h"
@@ -100,7 +101,7 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.16.1205";
+    copyRights = @"Copyright 2015~2017 www.daniulive.com v1.0.17.0301";
     
     is_mute = NO;
     

@@ -3,9 +3,10 @@
 //  nt_event_define
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: http://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2016年 daniulive. All rights reserved.
+//  Copyright © 2015~2017 daniulive. All rights reserved.
 //
 
 #ifndef NT_EVENT_DEFINE_H_
