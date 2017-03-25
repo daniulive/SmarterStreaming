@@ -117,6 +117,18 @@ public class SmartPlayerJni {
 	  * @return {0} if successful
 	  */
 	 public native int SmartPlayerSetRTSPTcpMode(long handle, int is_using_tcp);
+	 
+	 
+
+	 /**
+	  * Set fast startup
+	  *
+	  * @param is_fast_startup: if with 1, it will second play back, if with 0: does not it
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPlayerSetFastStartup(long handle, int is_fast_startup);
+	 
 	  	  	
 	 /**
 	 * Set playback orientation.

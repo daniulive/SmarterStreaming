@@ -560,6 +560,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 	 Log.i(TAG, "已生成一个录像文件 : " + param3);
                 	 txt = "已生成一个录像文件。。";
                      break;
+                     
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_SEND_DELAY:
+                	 Log.i(TAG, "发送时延: " + param1 + " 帧数:" + param2);
+                	 txt = "收到发送时延..";
+                	 break;
              }
              
              String str = "当前回调状态：" + txt;
