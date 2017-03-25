@@ -55,11 +55,17 @@ public class SmartPlayer extends Activity {
 	
 	private boolean isHardwareDecoder = false;
 	
-	Button btnPopInputText;
+	private int playBuffer = 200; // 默认200ms
+	
+	private boolean isFastStartup = true; // 是否秒开, 默认true
+	
+	//Button btnPopInputText;
 	Button btnPopInputUrl;
 	Button btnMute;
     Button btnStartStopPlayback;
 	Button btnHardwareDecoder;
+	Button btnFastStartup;
+	Button btnSetPlayBuffer;
     TextView txtCopyright;
     TextView txtQQQun;
     
@@ -117,6 +123,16 @@ public class SmartPlayer extends Activity {
     	if ( url == null )
     		return;
     	
+    	if ( url.equals("hks") )
+    	{
+    		btnStartStopPlayback.setEnabled(true);
+        	playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        	
+        	Log.i(TAG, "Input url:" + playbackUrl);
+        	 
+    		return;
+    	}
+    	
     	// rtmp:/
     	if ( url.length() < 8 )
     	{
@@ -133,7 +149,26 @@ public class SmartPlayer extends Activity {
     	btnStartStopPlayback.setEnabled(true);
     	playbackUrl = url;
     	
-    	 Log.i(TAG, "Input full url:" + url);
+    	Log.i(TAG, "Input full url:" + url);
+    }
+    
+    private void SaveInputPlayBuffer(String bufferText)
+    {
+    	try
+    	{
+    		Integer intValue;
+        	intValue = Integer.valueOf(bufferText);
+            
+            playBuffer = intValue;
+            
+            Log.i(TAG, "Input play buffer:" + playBuffer);
+            
+    	}catch(NumberFormatException e)
+    	{
+    		 Log.i(TAG, "Input play buffer convert exception");
+    		 
+    		e.printStackTrace();
+    	}
     }
     
     /* Popup InputID dialog */
@@ -154,7 +189,7 @@ public class SmartPlayer extends Activity {
         builder.show();
     }
     
-    
+  
     private void PopFullUrlDialog(){
     	final EditText inputUrlTxt = new EditText(this);
     	inputUrlTxt.setFocusable(true);
@@ -172,6 +207,34 @@ public class SmartPlayer extends Activity {
                 });
         builderUrl.show();
     }
+    
+    private void PopSettingBufferDialog()
+    {
+    	final EditText inputBuferTxt = new EditText(this);
+    	inputBuferTxt.setFocusable(true);
+    	
+    	String str = "";
+    	str += playBuffer;
+    	
+    	inputBuferTxt.setText(str);
+
+        AlertDialog.Builder builderBuffer = new AlertDialog.Builder(this);
+        
+        builderBuffer.setTitle("设置播放缓冲(毫秒),默认200ms").setView(inputBuferTxt).setNegativeButton(
+                "取消", null);
+        
+        builderBuffer.setPositiveButton("确认", new DialogInterface.OnClickListener(){
+
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        String bufferText = inputBuferTxt.getText().toString();
+                        SaveInputPlayBuffer(bufferText);
+                    }
+                });
+        
+        builderBuffer.show();
+    }
+    
     
     /* Generate basic layout */
     private void inflateLayout(int orientation) {
@@ -218,62 +281,121 @@ public class SmartPlayer extends Activity {
         copyRightLinearLayout.addView(txtQQQun, 1);
         
         /* PopInput button */
+        /*
         btnPopInputText = new Button(this);
         btnPopInputText.setText("输入urlID");
         btnPopInputText.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnPopInputText, 0);
+        */
         
         btnPopInputUrl = new Button(this);
-        btnPopInputUrl.setText("输入完整url");
+        btnPopInputUrl.setText("输入url");
         btnPopInputUrl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnPopInputUrl, 1);
+        lLinearLayout.addView(btnPopInputUrl);
         
         /*mute button */
-        isMute = false;
         btnMute = new Button(this);
-        btnMute.setText("静音 ");
+        
+        if ( !isMute )
+        {
+        	btnMute.setText("静音 ");
+        }
+        else
+        {
+        	btnMute.setText("取消静音 ");
+        }
+        
         btnMute.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnMute, 2);
+        lLinearLayout.addView(btnMute);
         
         /*hardware decoder button */
-        isHardwareDecoder = false;
         btnHardwareDecoder = new Button(this);
-        btnHardwareDecoder.setText("当前软解码");
+        
+        if ( !isHardwareDecoder )
+        {
+        	btnHardwareDecoder.setText("当前软解码");
+        }
+        else
+        {
+        	btnHardwareDecoder.setText("当前硬解码");
+        }
+        
         btnHardwareDecoder.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnHardwareDecoder, 3);
+        lLinearLayout.addView(btnHardwareDecoder);
+        
+        
+        // buffer setting++
+        
+        LinearLayout bufferLinearLayout = new LinearLayout(this);
+        bufferLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        bufferLinearLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        
+    	btnSetPlayBuffer = new Button(this);
+    	btnSetPlayBuffer.setText("设置缓冲");
+    	btnSetPlayBuffer.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+    	bufferLinearLayout.addView(btnSetPlayBuffer);
+    	
+    	btnFastStartup = new Button(this);
+    	
+    	if ( isFastStartup )
+    	{
+    		btnFastStartup.setText("停用秒开");
+    	}
+    	else
+    	{
+    		btnFastStartup.setText("启用秒开");
+    	}
+    	
+    	btnFastStartup.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+    	bufferLinearLayout.addView(btnFastStartup);
+    	
+    	lLinearLayout.addView(bufferLinearLayout);
+    	
+       // buffer setting--
+        
         
         /* Start playback stream button */
         btnStartStopPlayback = new Button(this);
         btnStartStopPlayback.setText("开始播放 ");
         btnStartStopPlayback.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnStartStopPlayback, 4);
- 
-       
+        lLinearLayout.addView(btnStartStopPlayback);
+        
+     
         outLinearLayout.addView(lLinearLayout, 0);
         outLinearLayout.addView(copyRightLinearLayout, 1);
         fFrameLayout.addView(outLinearLayout, 1);
 
         lLayout.addView(fFrameLayout, 0);
   
-        if(isPlaybackViewStarted)
+        if( isPlaybackViewStarted )
         {
-        	btnPopInputText.setEnabled(false);
+        	//btnPopInputText.setEnabled(false);
         	btnPopInputUrl.setEnabled(false);
         	btnHardwareDecoder.setEnabled(false);
+        	
+        	btnSetPlayBuffer.setEnabled(false);
+        	btnFastStartup.setEnabled(false);
+        	
         	btnStartStopPlayback.setText("停止播放 ");
         }
         else
         {
-        	btnPopInputText.setEnabled(true);
+        	//btnPopInputText.setEnabled(true);
         	btnPopInputUrl.setEnabled(true);
         	btnHardwareDecoder.setEnabled(true);
+        	
+        	btnSetPlayBuffer.setEnabled(true);
+        	btnFastStartup.setEnabled(true);
+        	
         	btnStartStopPlayback.setText("开始播放 ");
+      
         }
         
         /* PopInput button listener */
+        
+        /*
         btnPopInputText.setOnClickListener(new Button.OnClickListener() {  
-        	  
-            //  @Override  
+        	   
               public void onClick(View v) {  
             	  Log.i(TAG, "Run into input playback ID++");
 	              
@@ -281,7 +403,8 @@ public class SmartPlayer extends Activity {
             	  
             	  Log.i(TAG, "Run out from input playback ID--");
               	}
-              });  
+              });
+         */  
         
         
         btnPopInputUrl.setOnClickListener(new Button.OnClickListener() { 
@@ -328,6 +451,31 @@ public class SmartPlayer extends Activity {
     	 }
        });
         
+        
+        btnSetPlayBuffer.setOnClickListener(new Button.OnClickListener(){
+        	public void onClick(View v) { 
+        		PopSettingBufferDialog();
+        	}
+        });
+        
+        
+        btnFastStartup.setOnClickListener(new Button.OnClickListener(){
+        	public void onClick(View v)
+        	{ 
+        		isFastStartup = !isFastStartup;
+        		
+        		if ( isFastStartup )
+        		{
+        			btnFastStartup.setText("停用秒开");
+        		}
+        		else
+        		{
+        			btnFastStartup.setText("启用秒开");
+        		}
+        	}
+        });
+    	
+         
         btnStartStopPlayback.setOnClickListener(new Button.OnClickListener() {  
         	  
             //  @Override  
@@ -337,9 +485,15 @@ public class SmartPlayer extends Activity {
             	  {
                 	  Log.i(TAG, "Stop playback stream++");
             		  btnStartStopPlayback.setText("开始播放 ");
-            		  btnPopInputText.setEnabled(true);
+            		  
+            		  //btnPopInputText.setEnabled(true);
+            		 
             		  btnPopInputUrl.setEnabled(true);
             		  btnHardwareDecoder.setEnabled(true);
+            		  
+            		  btnSetPlayBuffer.setEnabled(true);
+                  	  btnFastStartup.setEnabled(true);
+            		  
             		  libPlayer.SmartPlayerClose(playerHandle);	
             		  playerHandle = 0;
             		  isPlaybackViewStarted = false;
@@ -369,7 +523,10 @@ public class SmartPlayer extends Activity {
  	              	 
             	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
             	      
-            	      libPlayer.SmartPlayerSetBuffer(playerHandle, 200);
+            	      libPlayer.SmartPlayerSetBuffer(playerHandle, playBuffer);
+            	      
+            	      libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup?1:0);
+            	      
             	      
             	      if ( isMute )
             	      {
@@ -408,9 +565,15 @@ public class SmartPlayer extends Activity {
 	                  }
 	
 	        		  btnStartStopPlayback.setText("停止播放 ");
-	                  btnPopInputText.setEnabled(false);
-	                  btnPopInputUrl.setEnabled(false);
+	                 
+	        		  //btnPopInputText.setEnabled(false);
+	                  
+	        		  btnPopInputUrl.setEnabled(false);
 	                  btnHardwareDecoder.setEnabled(false);
+	                  
+	                  btnSetPlayBuffer.setEnabled(false);
+                  	  btnFastStartup.setEnabled(false);
+	                  
 	              	  isPlaybackViewStarted = true;
 	              	  Log.i(TAG, "Start playback stream--");
 	        	  }
