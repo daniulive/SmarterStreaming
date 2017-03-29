@@ -28,6 +28,11 @@
     NSString        *copyRights;
     UILabel         *textModeLabel;             //文字提示
     Boolean         is_audio_only_;
+    
+    Boolean         is_fast_startup_;           //是否快速启动模式
+    
+    NSInteger       buffer_time_;               //buffer时间
+    
     Boolean         is_hardware_decoder_;       //默认软解码
     Boolean         is_rtsp_tcp_mode_;          //仅用于rtsp流，设置TCP传输模式
     NSInteger       screenWidth;
@@ -80,9 +85,11 @@
     return 0;
 }
 
-
-- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal isAudioOnly:(Boolean)isAudioOnly
-                isHWDecoder:(Boolean)isHWDecoder isRTSPTcpMode:(Boolean)isRTSPTcpMode
+- (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal
+                   bufferTime:(NSInteger)bufferTime
+                isFastStartup:(Boolean)isFastStartup
+                  isHWDecoder:(Boolean)isHWDecoder
+                isRTSPTcpMode:(Boolean)isRTSPTcpMode
 {
     self = [super init];
     if (!self) {
@@ -91,7 +98,8 @@
     else if(self) {
         _streamUrl = url;
         is_half_screen_ = isHalfScreenVal;
-        is_audio_only_ = isAudioOnly;
+        is_fast_startup_ = isFastStartup;
+        buffer_time_ = bufferTime;
         is_hardware_decoder_ = isHWDecoder;
         is_rtsp_tcp_mode_ = isRTSPTcpMode;
     }
@@ -101,9 +109,11 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2015~2017 www.daniulive.com v1.0.17.0301";
+    copyRights = @"Copyright 2015~2017 www.daniulive.com v1.0.17.0329";
     
     is_mute = NO;
+    
+    is_audio_only_ = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
 
@@ -175,11 +185,14 @@
         return;
     }
     
-    NSInteger bufferTime = 200;
+    if(buffer_time_>0)
+    {
+        [_player SmartPlayerSetBuffer:buffer_time_];
+    }
     
-    [_player SmartPlayerSetBuffer:bufferTime];
+    [_player SmartPlayerSetFastStartup:is_fast_startup_];
     
-    NSLog(@"playback URL: %@", _streamUrl);
+    NSLog(@"playback URL: %@, is_fast_startup_:%d, buffer_time_:%ld", _streamUrl, is_fast_startup_, (long)buffer_time_);
     
     [_player SmartPlayerSetPlayURL:_streamUrl];
     

@@ -17,17 +17,22 @@
 
 @interface SettingView ()
 {
-    NSString *baseURL;
-    Boolean is_audio_only_;
+    NSString* playback_url_;
+    NSInteger   buffer_time_;
+    Boolean is_fast_startup_;
     Boolean is_hardware_decoder_;
     Boolean is_rtsp_tcp_mode_;
 }
 
 @property (nonatomic, strong) UINavigationBar *nvgBar;
 
-@property (nonatomic, strong) UIButton *daniuServerBtn;
-@property (nonatomic, strong) UIButton *cdnServerBtn;
-@property (nonatomic, strong) UIButton *audioOnlyBtn;
+@property (nonatomic, strong) UITextField *inputUrlText; //url输入框，请输入rtmp/rtsp link
+
+@property (nonatomic, strong) UITextField *inputBufferText; //Buffer设置，单位: 毫秒
+@property (nonatomic, strong) UILabel *bufferTimeLable; //Buffer设置lable
+
+@property (nonatomic, strong) UISwitch *fastStartupSwitch;  //快速启动
+@property (nonatomic, strong) UILabel *fastStartupSwitchLable;
 
 @property (nonatomic, strong) UIButton *swDecoderBtn;
 @property (nonatomic, strong) UIButton *hwDecoderBtn;
@@ -35,33 +40,23 @@
 @property (nonatomic, strong) UIButton *udpBtn;
 @property (nonatomic, strong) UIButton *tcpBtn;
 
-@property (nonatomic, strong) UIButton *interPlaybackView;
-
-@property (nonatomic, strong) UILabel *cdnServerLable;
-@property (nonatomic, strong) UILabel *daniuServerLable;
-@property (nonatomic, strong) UILabel *audioOnlyLable;
-
 @property (nonatomic, strong) UILabel *swDecoderLable;
 @property (nonatomic, strong) UILabel *hwDecoderLable;
 
 @property (nonatomic, strong) UILabel *udpLable;
 @property (nonatomic, strong) UILabel *tcpLable;
 
-@property (nonatomic, strong) UITextField *urlID;
-
-- (void)qualityButtonClicked:(id)sender;
+@property (nonatomic, strong) UIButton *interPlaybackViewBtn;
 
 @end
 
 @implementation SettingView
 
 @synthesize nvgBar;
-@synthesize daniuServerBtn;
-@synthesize cdnServerBtn;
-@synthesize cdnServerLable;
-@synthesize daniuServerLable;
-@synthesize interPlaybackView;
-
+@synthesize bufferTimeLable;
+@synthesize fastStartupSwitch;
+@synthesize fastStartupSwitchLable;
+@synthesize interPlaybackViewBtn;
 
 #pragma mark - Init
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -75,74 +70,65 @@
 
 - (void)loadView
 {
-    is_audio_only_ = FALSE;
-    
     // If you create your views manually, you MUST override this method and use it to create your views.
     // If you use Interface Builder to create your views, then you must NOT override this method.
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    //当前屏幕宽高
+    is_fast_startup_ = YES;
+    
     CGFloat screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     
     //导航栏:直播设置
-    
-    [self.navigationItem setTitle:@"大牛直播播放端V1.0.17.01.12"];
-    
+    [self.navigationItem setTitle:@"大牛直播播放端V1.0.17.03.25"];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     
-
-    CGFloat buttonWidth = screenWidth - kHorMargin*2;
     
+    CGFloat buttonWidth = screenWidth - kHorMargin*2;
     CGFloat buttonSpace = (screenWidth - 2*kHorMargin-160)/6;
     
     //直播地址
-    self.urlID = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, kVerMargin, buttonWidth, kBtnHeight)];
-    [self.urlID setBackgroundColor:[UIColor whiteColor]];
-    self.urlID.placeholder = @"请输入播放urlID（推流url中，stream后的部分）";
-    self.urlID.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-    self.urlID.borderStyle = UITextBorderStyleRoundedRect;
-    self.urlID.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.urlID.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.urlID addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    self.urlID.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.urlID setText:[NSString stringWithFormat:@"hks"]];
-    //[self.urlID setText:[NSString stringWithFormat:@"rtsp"]];
-    //[self.urlID setText:[NSString stringWithFormat:@"audio"]];
+    self.inputUrlText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, kVerMargin, buttonWidth, kBtnHeight)];
+    [self.inputUrlText setBackgroundColor:[UIColor whiteColor]];
+    self.inputUrlText.placeholder = @"请输入完整rtmp/rtsp播放url";
+    self.inputUrlText.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    self.inputUrlText.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputUrlText.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.inputUrlText.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.inputUrlText addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    self.inputUrlText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.inputUrlText setText:[NSString stringWithFormat:@"hks"]];
+    //[self.inputUrlText setText:[NSString stringWithFormat:@"rtsp"]];
     
-    //直播视频质量
-    self.daniuServerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.daniuServerBtn.tag = 1;
-    self.daniuServerBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80, 20, 20);
-    [self.daniuServerBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-    [self.daniuServerBtn addTarget:self action:@selector(qualityButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    //Buffer设置
+    self.bufferTimeLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+20, 130, kBtnHeight)];
+    self.bufferTimeLable.text = @"Buffer设置(ms):";
+    self.bufferTimeLable.lineBreakMode = NSLineBreakByCharWrapping;
+    self.bufferTimeLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
     
-    self.daniuServerLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80, 50, 20)];
-    self.daniuServerLable.text = @"大牛";
-    self.cdnServerLable.lineBreakMode = NSLineBreakByCharWrapping;
-    self.daniuServerLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-
-    self.cdnServerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.cdnServerBtn.tag = 2;
+    self.inputBufferText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin + buttonSpace + 130, kVerMargin+kBtnHeight+20, buttonWidth-buttonSpace - 130, kBtnHeight)];
     
-    self.cdnServerBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80, 20, 20);
-    [self.cdnServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.cdnServerBtn addTarget:self action:@selector(qualityButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.cdnServerLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80, 50, 20)];
-    self.cdnServerLable.text = @"CDN";
-    self.cdnServerLable.lineBreakMode = NSLineBreakByCharWrapping;
-    self.cdnServerLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    [self.inputBufferText setBackgroundColor:[UIColor whiteColor]];
+    self.inputBufferText.placeholder = @"请输入buffer时间(单位:毫秒)";
+    self.inputBufferText.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    self.inputBufferText.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputBufferText.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.inputBufferText.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.inputBufferText addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    self.inputBufferText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.inputBufferText setText:[NSString stringWithFormat:@"200"]];
     
-    self.audioOnlyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.audioOnlyBtn.tag = 3;
+    //快速启动开关
+    self.fastStartupSwitchLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+100, 80, 20)];
+    self.fastStartupSwitchLable.text = @"快速启动";
+    self.fastStartupSwitchLable.lineBreakMode = NSLineBreakByCharWrapping;
+    self.fastStartupSwitchLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
     
-    self.audioOnlyBtn.frame = CGRectMake(screenWidth-kHorMargin-buttonSpace-60,kVerMargin+kBtnHeight+80,20,20);
-    [self.audioOnlyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.audioOnlyBtn addTarget:self action:@selector(qualityButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.audioOnlyLable = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-kHorMargin-buttonSpace-40,kVerMargin+kBtnHeight+80,50,20)];
-    self.audioOnlyLable.text = @"纯音频";
-    self.audioOnlyLable.lineBreakMode = NSLineBreakByCharWrapping;
-    self.audioOnlyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    self.fastStartupSwitch = [[UISwitch alloc]init];
+    self.fastStartupSwitch.tag = 1;
+    self.fastStartupSwitch.frame = CGRectMake(kHorMargin+buttonSpace+80, kVerMargin+kBtnHeight+95, 50, 20);
+    [self.fastStartupSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+    self.fastStartupSwitch.on = YES;
     
     //设置软解／硬解码
     self.swDecoderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -191,49 +177,46 @@
     self.tcpLable.text = @"TCP(RTSP)";
     self.tcpLable.lineBreakMode = NSLineBreakByCharWrapping;
     self.tcpLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-
+    
     
     //进入播放页面
-    self.interPlaybackView = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.interPlaybackView.tag = 4;
-    self.interPlaybackView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+80+80+20, buttonWidth, kBtnHeight);
-    [self.interPlaybackView setTitle:@"进入播放页面" forState:UIControlStateNormal];
-    [self.interPlaybackView setBackgroundImage:[UIImage imageNamed:@"start_playback"] forState:UIControlStateNormal];
-    self.interPlaybackView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    [self.interPlaybackView addTarget:self action:@selector(interPlaybackViewBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    self.interPlaybackViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.interPlaybackViewBtn.tag = 4;
+    self.interPlaybackViewBtn.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+80+80+20, buttonWidth, kBtnHeight);
+    [self.interPlaybackViewBtn setTitle:@"进入播放页面" forState:UIControlStateNormal];
+    [self.interPlaybackViewBtn setBackgroundImage:[UIImage imageNamed:@"start_playback"] forState:UIControlStateNormal];
+    self.interPlaybackViewBtn.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    [self.interPlaybackViewBtn addTarget:self action:@selector(interPlaybackViewBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.nvgBar];
-    [self.view addSubview:self.daniuServerBtn];
-    [self.view addSubview:self.cdnServerBtn];
-    [self.view addSubview:self.audioOnlyBtn];
-
+    
+    [self.view addSubview:self.inputUrlText];
+    [self.view addSubview:self.inputBufferText];
+    
+    [self.view addSubview:self.bufferTimeLable];
+    
+    [self.view addSubview:self.fastStartupSwitchLable];
+    [self.view addSubview:self.fastStartupSwitch];
+    
     [self.view addSubview:self.swDecoderBtn];
     [self.view addSubview:self.hwDecoderBtn];
     
     [self.view addSubview:self.udpBtn];
     [self.view addSubview:self.tcpBtn];
     
-    [self.view addSubview:self.interPlaybackView];
-    [self.view addSubview:self.daniuServerLable];
-    [self.view addSubview:self.cdnServerLable];
-    [self.view addSubview:self.audioOnlyLable];
+    [self.view addSubview:self.interPlaybackViewBtn];
     
     [self.view addSubview:self.swDecoderLable];
     [self.view addSubview:self.hwDecoderLable];
     
     [self.view addSubview:self.udpLable];
     [self.view addSubview:self.tcpLable];
-    
-    [self.view addSubview:self.urlID];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    //默认baseURL
-    baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
-
 }
 
 - (void)viewDidUnload
@@ -248,39 +231,18 @@
 }
 
 #pragma mark - Buttons methods
-- (void)qualityButtonClicked:(id)sender {
-    
-    UIButton *functionSelBtn = (UIButton *)sender;
 
-    switch (functionSelBtn.tag) {
-        case 1: {
-            [self.daniuServerBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.cdnServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.audioOnlyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
-            is_audio_only_ = false;
-            break;
-        }
-        case 2: {
-            
-            [self.cdnServerBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.daniuServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.audioOnlyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-             baseURL = @"rtmp://play.daniulive.8686c.com/live/stream";
-            is_audio_only_ = false;
-            break;
-        }
-        case 3: {
-            [self.audioOnlyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.cdnServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.daniuServerBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
-            is_audio_only_ = true;
-            break;
-        }
-        default:
-            break;
+-(void)switchAction:(id)sender
+{
+    UISwitch *switchButton = (UISwitch*)sender;
+    BOOL isButtonOn = [switchButton isOn];
+    if (isButtonOn) {
+        is_fast_startup_ = YES;
+    }else {
+        is_fast_startup_ = NO;
     }
+    
+    NSLog(@"is_fast_startup_:%d", is_fast_startup_);
 }
 
 - (void)decoderButtonClicked:(id)sender {
@@ -324,11 +286,11 @@
         case 2: {
             [self.udpBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
             [self.tcpBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-  
+            
             is_rtsp_tcp_mode_ = true;
             break;
         }
-
+            
         default:
             break;
     }
@@ -341,8 +303,8 @@
 }
 
 - (void)interPlaybackViewBtnPressed:(id)sender {
-
-    NSString* inputVal = [[self urlID] text];
+    
+    NSString* inputVal = [[self inputUrlText] text];
     if ( inputVal == nil )
     {
         NSLog(@"pass playbackURL input value is nil");
@@ -356,34 +318,36 @@
     }
     
     Boolean is_half_screen = FALSE;
-    NSString* playbackURL = [baseURL stringByAppendingString:self.urlID.text];
     
     if ( [inputVal isEqualToString:@"hks" ] )
     {
         is_half_screen = TRUE;
         
-        playbackURL = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
     }
     else if( [inputVal isEqualToString:@"rtsp" ] )
     {
         is_half_screen = TRUE;
         
-        //playbackURL = @"rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
-    
-        //playbackURL = @"rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
-    }
-    else if( [inputVal isEqualToString:@"audio" ] )
-    {
-        //playbackURL = @"rtmp://player.daniulive.com:1935/live/audio";
+        //playback_url_ = @"rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
         
-        is_audio_only_ = true;
+        //playback_url_ = @"rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
+    }
+    else
+    {
+        playback_url_ = self.inputUrlText.text;
     }
     
+    buffer_time_ = [self.inputBufferText.text intValue];
     
-    NSLog(@"pass playbackURL:%@", playbackURL);
+    NSLog(@"playbackURL:%@, buffer time:%ld, isFastStartup:%d", playback_url_, (long)buffer_time_, is_fast_startup_);
     
-    ViewController * coreView =[[ViewController alloc] initParameter:playbackURL isHalfScreen:is_half_screen
-                                                         isAudioOnly:is_audio_only_ isHWDecoder:is_hardware_decoder_ isRTSPTcpMode:is_rtsp_tcp_mode_];
+    ViewController * coreView =[[ViewController alloc] initParameter:playback_url_
+                                                        isHalfScreen:is_half_screen
+                                                          bufferTime:buffer_time_
+                                                       isFastStartup:is_fast_startup_
+                                                         isHWDecoder:is_hardware_decoder_
+                                                        isRTSPTcpMode:is_rtsp_tcp_mode_];
     [self presentViewController:coreView animated:YES completion:nil];
 }
 

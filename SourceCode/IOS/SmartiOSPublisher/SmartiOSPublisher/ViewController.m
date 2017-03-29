@@ -145,7 +145,7 @@
         return;
     }
     
-    //NSInteger publish_orientation = 1;	//默认竖屏采集，传1:竖屏，传2:横屏
+    //NSInteger publish_orientation = 2;	//默认竖屏采集，传1:竖屏，传2:横屏
     
     //[_smart_publisher_sdk SmartPublisherSetPublishOrientation:publish_orientation];
     
@@ -154,6 +154,13 @@
     if (is_beauty)
     {
         beauty_type = DN_BEAUTY_INTERNAL_BEAUTY;
+        
+        if ( _smart_publisher_sdk != nil )
+        {
+            CGFloat level = 0.1;
+            
+            [_smart_publisher_sdk SmartPublisherSetBeautyBrightness:level];
+        }
     }
     else
     {
@@ -197,7 +204,7 @@
     {
         self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
         
-        //self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(100, 130, 200, 200)];    //推流本地回显区域设置测试，默认全屏
+        //self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(150, 100, 80, 20)];    //推流本地回显区域设置测试，默认全屏
         
         if([_smart_publisher_sdk SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK)
         {
