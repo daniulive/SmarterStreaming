@@ -93,6 +93,15 @@ typedef enum DNErrorCode{
 - (NSInteger)SmartPlayerSetRTSPTcpMode:(Boolean)isUsingTCP;
 
 /**
+ * Set fast startup(快速启动)
+ *
+ * @param is_fast_startup: 1: 快速启动; 0: not.
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetFastStartup:(NSInteger)isFastStartup;
+
+/**
  * 设置播放URL
  *
  * @param url
