@@ -34,10 +34,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.8.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-03-13.zip)
-- [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-03-06.zip)
-- [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-09.zip)
-- [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-01.zip)
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-03-25.zip)
+- [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-03-25.zip)
+- [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
+- [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-29.zip)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
 - [x] [Android后台推送摄像头/屏幕数据demo下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
@@ -92,6 +92,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 完美支持多实例播放（同时播放多路stream，可同时支持rtmp、rtsp stream播放）；
 - [x] 支持RTSP TCP/UDP模式切换；
 - [x] 支持播放端，buffer设置；
+- [x] 支持秒开模式；
+- [x] audio支持aac/speex/g.711；
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
 - [x] 支持播放过程中，'实时静音/取消静音';
