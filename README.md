@@ -333,8 +333,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
  * iOS推送端：SmartiOSPublisher
  * iOS播放器：SmartiOSPlayer
 
-给大家带来的不便，谢谢谅解。。
-
 ## 获取更多信息 ##
 
 商务合作：QQ：89030985
