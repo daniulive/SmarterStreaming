@@ -151,6 +151,17 @@ public class SmartPlayerJni {
 	 * @return {0} if successful
 	 */
 	 public native int SmartPlayerStartPlayback(long handle, String uri);
+	 
+	 /**
+	 * Switch playback url
+	 *
+	 * @param handle: return value from SmartPlayerInit()
+	 * 
+	 * @param uri: the new playback uri
+	 *
+	 * @return {0} if successful
+	 */
+	 public native int SmartPlayerSwitchPlaybackUrl(long handle, String uri);
 		  	
 	 /**
 	 * Close player instance.

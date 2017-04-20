@@ -92,6 +92,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private Button  btnRecoderMgr;
 	private Button  btnMute;
+	private Button  btnMirror;
 	private Button	btnHWencoder;
 	private ImageView imgSwitchCamera;
 	private Button btnInputPushUrl;
@@ -135,6 +136,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private boolean is_need_local_recorder = false;		// do not enable recorder in default
 	
 	private boolean is_mute = false;
+	
+	private boolean is_mirror = false;
 	
 	private boolean is_hardware_encoder = false;
 	
@@ -339,6 +342,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         btnMute = (Button)findViewById(R.id.button_mute);
         btnMute.setOnClickListener(new ButtonMuteListener());
         
+        btnMirror = (Button)findViewById(R.id.button_mirror);
+        btnMirror.setOnClickListener(new ButtonMirrorListener());
+        
         btnHWencoder = (Button)findViewById(R.id.button_hwencoder);
         btnHWencoder.setOnClickListener(new ButtonHardwareEncoderListener());
         
@@ -516,6 +522,22 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	}
     }
     
+    class ButtonMirrorListener  implements OnClickListener
+    {
+    	public void onClick(View v)
+    	{
+    		is_mirror = !is_mirror;
+    		
+    		if ( is_mirror )
+    			btnMirror.setText("关镜像");
+    		else
+    			btnMirror.setText("开镜像");
+    		
+    		if ( libPublisher != null )
+    			libPublisher.SmartPublisherSetMirror(is_mirror?1:0);
+    	}
+    }
+    
     class ButtonHardwareEncoderListener  implements OnClickListener
     {
     	public void onClick(View v)
@@ -523,9 +545,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		is_hardware_encoder = !is_hardware_encoder;
     		
     		if ( is_hardware_encoder )
-    			btnHWencoder.setText("软编码");
+    			btnHWencoder.setText("当前硬解码");
     		else
-    			btnHWencoder.setText("硬编码");
+    			btnHWencoder.setText("当前软解码");
     	}
     }
     
@@ -635,6 +657,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	{
         		stop();
         		btnRecoderMgr.setEnabled(true);
+        		btnHWencoder.setEnabled(true);
         		return;
         	}
         	
@@ -712,11 +735,17 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    	if ( isWritelogoFileSuccess )
 			    		libPublisher.SmartPublisherSetPictureWatermark(path, WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160, 160, 10, 10);
 				    
-			    	libPublisher.SmartPublisherSetFontWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
+			    	libPublisher.SmartPublisherSetTextWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
+			    	
+			    	//libPublisher.SmartPublisherSetTextWatermarkFontFileName("/system/fonts/DroidSansFallback.ttf");
+			    	
+			    	//libPublisher.SmartPublisherSetTextWatermarkFontFileName("/sdcard/DroidSansFallback.ttf");
 			    }
 			    else if(watemarkType == 2)
 			    {
-				    libPublisher.SmartPublisherSetFontWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
+				    libPublisher.SmartPublisherSetTextWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
+				    
+				    //libPublisher.SmartPublisherSetTextWatermarkFontFileName("/system/fonts/DroidSansFallback.ttf");
 			    }
 			    else
 			    {
@@ -727,7 +756,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    
 			    //libPublisher.SetRtmpPublishingType(0);
 			    
-					        
+				
+			    //libPublisher.SmartPublisherSetGopInterval(40);
+			    
+			    //libPublisher.SmartPublisherSetFPS(15);
+			    			        
+			    //libPublisher.SmartPublisherSetSWVideoBitRate(600, 1200);
 			    // IF not set url or url is empty, it will not publish stream
 			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
 			    if ( libPublisher.SmartPublisherSetURL(publishURL) != 0 )
@@ -743,6 +777,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             	else
             	{
             		btnRecoderMgr.setEnabled(false);
+            		btnHWencoder.setEnabled(false);
             	}
 			}
 			
