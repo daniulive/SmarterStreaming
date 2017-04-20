@@ -63,7 +63,7 @@ public class SmartPublisherJni {
    public native int SetSmartPublisherVideoHWEncoder(int kbps);
     
     /**
-     * Set Font water-mark
+     * Set Text water-mark
      * 
      * @param fontSize: it should be "MEDIUM", "SMALL", "BIG"
      * 
@@ -75,7 +75,16 @@ public class SmartPublisherJni {
      * 
      * @return {0} if successful
      */
-    public native int SmartPublisherSetFontWatermark(String waterText, int isAppendTime, int fontSize, int waterPostion, int xPading, int yPading);
+    public native int SmartPublisherSetTextWatermark(String waterText, int isAppendTime, int fontSize, int waterPostion, int xPading, int yPading);
+    
+    
+    /**
+     * Set Text water-mark font file name
+     * @param fontFileName:  font full file name,  e.g: /system/fonts/DroidSansFallback.ttf
+	 *
+	 * @return {0} if successful
+     */
+    public native int SmartPublisherSetTextWatermarkFontFileName(String fontFileName);
 	
     /**
      * Set picture water-mark
@@ -94,6 +103,40 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetPictureWatermark(String picPath, int waterPostion, int picWidth, int picHeight, int xPading, int yPading);
     
+    /**
+     * Set gop interval.
+     *
+     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     *
+     * gopInterval: encode I frame interval, the value always > 0
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetGopInterval(int gopInterval);
+    
+    /**
+     * Set software encode video bit-rate.
+     *
+     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     *
+     * avgBitRate: average encode bit-rate(kbps)
+     * 
+     * maxBitRate: max encode bit-rate(kbps)
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetSWVideoBitRate(int avgBitRate, int maxBitRate);
+    
+    /**
+     * Set fps.
+     *
+     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     *
+     * fps: the fps of video, range with (1,25).
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetFPS(int fps);
     
     /**
      * Set mute or not during publish stream
@@ -103,6 +146,17 @@ public class SmartPublisherJni {
      * @return {0} if successful
      */
     public native int SmartPublisherSetMute(int isMute);
+    
+    /**
+     * Set mirror
+     * 
+     * @param isMirror: if with 1:mirror mode, if with 0: normal mode
+     * 
+     * Please note when with "mirror mode", the publisher and player with the same echo direction
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetMirror(int isMirror);
     
     /**
      * Set if recorder the stream to local file.

@@ -59,6 +59,10 @@ public class SmartPlayer extends Activity {
 	
 	private boolean isFastStartup = true; // 是否秒开, 默认true
 	
+	private boolean switchUrlFlag = false;
+	
+	private String switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+	
 	//Button btnPopInputText;
 	Button btnPopInputUrl;
 	Button btnMute;
@@ -66,6 +70,7 @@ public class SmartPlayer extends Activity {
 	Button btnHardwareDecoder;
 	Button btnFastStartup;
 	Button btnSetPlayBuffer;
+	Button btnSwitchUrl;
     TextView txtCopyright;
     TextView txtQQQun;
     
@@ -308,6 +313,22 @@ public class SmartPlayer extends Activity {
         btnMute.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnMute);
         
+        /*switch url button */
+        btnSwitchUrl = new Button(this);
+        
+        if ( !switchUrlFlag )
+        {
+        	btnSwitchUrl.setText("切换url1");
+        }
+        else
+        {
+        	btnSwitchUrl.setText("切换url2");
+        }
+        
+        btnSwitchUrl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        lLinearLayout.addView(btnSwitchUrl);
+        
+        
         /*hardware decoder button */
         btnHardwareDecoder = new Button(this);
         
@@ -434,6 +455,31 @@ public class SmartPlayer extends Activity {
     	 }
        });
 
+        btnSwitchUrl.setOnClickListener(new Button.OnClickListener() 
+        { 
+       	 public void onClick(View v) { 
+    		 switchUrlFlag = !switchUrlFlag;
+    		 
+    		 if ( switchUrlFlag )
+    		 {
+    			 btnSwitchUrl.setText("切换url2");
+    			         		 
+        		 switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks";	//实际以可切换url为准
+    		 }
+    		 else
+    		 {
+    			 btnSwitchUrl.setText("切换url1");
+    			 
+    			 switchURL = playbackUrl;
+    		 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       		 
+    		 if ( playerHandle != 0 )
+    		 {
+    			 libPlayer.SmartPlayerSwitchPlaybackUrl(playerHandle, switchURL);
+    		 }
+    	 }
+       });
+        
         btnHardwareDecoder.setOnClickListener(new Button.OnClickListener() 
         { 
        	 public void onClick(View v) { 
@@ -827,6 +873,9 @@ public class SmartPlayer extends Activity {
                 	 break;
                  case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_NO_MEDIADATA_RECEIVED:
                 	 Log.i(TAG, "收不到媒体数据，可能是url错误。。");
+                	 break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_SWITCH_URL:
+                	 Log.i(TAG, "切换播放URL。。");
              }
     	 }
     }

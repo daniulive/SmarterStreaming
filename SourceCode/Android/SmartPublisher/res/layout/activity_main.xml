@@ -73,10 +73,10 @@
             android:text=" 静音" />
             
             <Button
-            android:id="@+id/button_hwencoder"
+            android:id="@+id/button_mirror"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 硬编" />
+            android:text=" 开镜像" />
             
             </LinearLayout>
             
@@ -85,6 +85,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >"
+
+            <Button
+            android:id="@+id/button_hwencoder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 当前软编码" />
 
              <Button
                 android:id="@+id/button_input_push_url"
