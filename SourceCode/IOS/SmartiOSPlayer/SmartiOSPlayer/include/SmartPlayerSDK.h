@@ -119,6 +119,15 @@ typedef enum DNErrorCode{
 - (NSInteger)SmartPlayerStart;
 
 /**
+ * 快速切换播放url
+ *
+ * @param url: 需要切换的新的url
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSwitchPlaybackUrl:(NSString *)url;
+
+/**
  * 设置播放过程中静音/取消静音
  *
  * @param mute: 设置为1，则静音，设置为0，取消静音

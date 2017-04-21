@@ -32,21 +32,23 @@
     UIButton    *beautyButton;              //美颜设置
     UIButton    *swapCamerasButton;         //前后摄像头切换
     UIButton    *muteButton;                //静音控制
+    UIButton    *mirrorSwitchButton;        //镜像切换
     UIButton    *beautyLevelButton;         //美颜级别按钮
     UIButton    *publisherButton;           //推流控制
     UIButton    *backSettingsButton;        //返回到设置分辨率页面
+    
     UILabel     *textModeLabel;             //文字提示
-    NSInteger   randNumber;
     DNVideoStreamingQuality videoQuality;   //分辨率选择
     NSString    *copyRights;
     NSInteger   audio_opt_;                 //audio选项 0 1 2
     NSInteger   video_opt_;                 //video选项 0 1 2
     Boolean     is_recorder;                //默认不录像，如果设为true，则录像
     Boolean     is_beauty;                  //是否美颜，默认美颜
-    DN_FILTER_TYPE  filter_type;            //美颜类型
-    Boolean     is_mute;                    // 是否静音
-    CGFloat screenWidth;
-    CGFloat screenHeight;
+    Boolean     is_mute;                    //是否静音
+    Boolean     is_mirror;                  //是否镜像模式
+    CGFloat     screenWidth;
+    CGFloat     screenHeight;
+    CGFloat     curBeautyLevel;             //美颜level
 }
 
 @synthesize localPreview;
@@ -90,20 +92,26 @@
     return 0;
 }
 
-- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality audioOpt:(NSInteger)audioOpt videoOpt:(NSInteger)videoOpt
-                   isRecorder:(Boolean)isRecorder isBeauty:(Boolean)isBeauty
+- (instancetype)initParameter:(NSString*)url
+                streamQuality:(DNVideoStreamingQuality)streamQuality
+                     audioOpt:(NSInteger)audioOpt
+                     videoOpt:(NSInteger)videoOpt
+                   isRecorder:(Boolean)isRecorder
+                     isBeauty:(Boolean)isBeauty
 {
     self = [super init];
     if (!self) {
         return nil;
     }
     else if(self) {
+        publishURL = url;
         videoQuality = streamQuality;
         audio_opt_  = audioOpt;
         video_opt_  = videoOpt;
         is_recorder   = isRecorder;
         is_beauty = isBeauty;
         is_mute = false;
+        is_mirror = true;   //默认镜像模式
     }
     
     NSLog(@"[initParameter]videoQuality: %u, audio_opt: %ld, video_opt: %ld, is_recorder: %d",videoQuality, (long)audio_opt_, (long)video_opt_, is_recorder);
@@ -113,7 +121,7 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2016 www.daniulive.com v1.0.17.0228";
+    copyRights = @"Copyright 2014~2017 www.daniulive.com v1.0.17.0417";
     
     //当前屏幕宽高
     screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
@@ -124,7 +132,7 @@
     _smart_publisher_sdk = [[SmartPublisherSDK alloc] init];
     
     if (_smart_publisher_sdk == nil ) {
-        NSLog(@"_mediaCapture with nil..");
+        NSLog(@"_smart_publisher_sdk with nil..");
         return;
     }
     
@@ -149,6 +157,22 @@
     
     //[_smart_publisher_sdk SmartPublisherSetPublishOrientation:publish_orientation];
     
+    /*
+    NSInteger gop_interval = 30;
+    [_smart_publisher_sdk SmartPublisherSetGopInterval:gop_interval];
+    
+    NSInteger fps = 15;
+    [_smart_publisher_sdk SmartPublisherSetFPS:fps];
+    
+    NSInteger avg_bit_rate = 500;
+    NSInteger max_bit_rate = 1000;
+    
+    [_smart_publisher_sdk SmartPublisherSetVideoBitRate:avg_bit_rate maxBitRate:max_bit_rate];
+    
+    Boolean clip_mode = true;
+    [_smart_publisher_sdk SmartPublisherSetClippingMode:clip_mode];
+    */
+    
     DN_BEAUTY_TYPE beauty_type;
     
     if (is_beauty)
@@ -157,9 +181,9 @@
         
         if ( _smart_publisher_sdk != nil )
         {
-            CGFloat level = 0.1;
+            curBeautyLevel = 0.1;
             
-            [_smart_publisher_sdk SmartPublisherSetBeautyBrightness:level];
+            [_smart_publisher_sdk SmartPublisherSetBeautyBrightness:curBeautyLevel];
         }
     }
     else
@@ -204,7 +228,7 @@
     {
         self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
         
-        //self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(150, 100, 80, 20)];    //推流本地回显区域设置测试，默认全屏
+        //self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(150, 100, 200, 150)];    //推流本地回显区域设置测试，默认全屏
         
         if([_smart_publisher_sdk SmartPublisherSetVideoPreview:self.localPreview] != DANIULIVE_RETURN_OK)
         {
@@ -248,23 +272,41 @@
     CGFloat lineWidth = swapCamerasButton.frame.size.width * 0.12f;
     
     //美颜level设置
-    beautyLevelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 480, 120, 60);
-    beautyLevelButton.center = CGPointMake(self.view.frame.size.width / 6, beautyLevelButton.frame.origin.y + beautyLevelButton.frame.size.height / 2);
+    if(is_beauty)
+    {
+        beautyLevelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 360, 120, 60);
+        beautyLevelButton.center = CGPointMake(self.view.frame.size.width / 6, beautyLevelButton.frame.origin.y + beautyLevelButton.frame.size.height / 2);
+        
+        beautyLevelButton.layer.cornerRadius = beautyLevelButton.frame.size.width / 2;
+        beautyLevelButton.layer.borderColor = [UIColor greenColor].CGColor;
+        beautyLevelButton.layer.borderWidth = lineWidth;
+        
+        [beautyLevelButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        [beautyLevelButton setTitle:@"美颜level" forState:UIControlStateNormal];
+        
+        [beautyLevelButton addTarget:self action:@selector(beautyLevelBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:beautyLevelButton];
+    }
     
-    beautyLevelButton.layer.cornerRadius = beautyLevelButton.frame.size.width / 2;
-    beautyLevelButton.layer.borderColor = [UIColor greenColor].CGColor;
-    beautyLevelButton.layer.borderWidth = lineWidth;
+    //镜像切换
+    mirrorSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    mirrorSwitchButton.frame = CGRectMake(45, self.view.frame.size.height - 300, 120, 60);
+    mirrorSwitchButton.center = CGPointMake(self.view.frame.size.width / 6, mirrorSwitchButton.frame.origin.y + mirrorSwitchButton.frame.size.height / 2);
     
-    [beautyLevelButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [beautyLevelButton setTitle:@"美颜level" forState:UIControlStateNormal];
+    mirrorSwitchButton.layer.cornerRadius = mirrorSwitchButton.frame.size.width / 2;
+    mirrorSwitchButton.layer.borderColor = [UIColor greenColor].CGColor;
+    mirrorSwitchButton.layer.borderWidth = lineWidth;
     
-    [beautyLevelButton addTarget:self action:@selector(beautyLevelBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:beautyLevelButton];
+    [mirrorSwitchButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [mirrorSwitchButton setTitle:@"关镜像" forState:UIControlStateNormal];
+    
+    [mirrorSwitchButton addTarget:self action:@selector(mirrorSwitchBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:mirrorSwitchButton];
     
     //muteButton
     muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    muteButton.frame = CGRectMake(45, self.view.frame.size.height - 400, 120, 60);
+    muteButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 120, 60);
     muteButton.center = CGPointMake(self.view.frame.size.width / 6, muteButton.frame.origin.y + muteButton.frame.size.height / 2);
     
     muteButton.layer.cornerRadius = muteButton.frame.size.width / 2;
@@ -277,25 +319,9 @@
     [muteButton addTarget:self action:@selector(MuteBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:muteButton];
     
-    
-    //美颜设置
-    beautyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    beautyButton.frame = CGRectMake(45, self.view.frame.size.height - 320, 60, 60);
-    beautyButton.center = CGPointMake(self.view.frame.size.width / 6, beautyButton.frame.origin.y + beautyButton.frame.size.height / 2);
-    
-    beautyButton.layer.cornerRadius = beautyButton.frame.size.width / 2;
-    beautyButton.layer.borderColor = [UIColor greenColor].CGColor;
-    beautyButton.layer.borderWidth = lineWidth;
-    
-    [beautyButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [beautyButton setTitle:@"美颜" forState:UIControlStateNormal];
-    
-    [beautyButton addTarget:self action:@selector(beautySettingsBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:beautyButton];
-    
     //前后摄像头交换
     swapCamerasButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    swapCamerasButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 60, 60);
+    swapCamerasButton.frame = CGRectMake(45, self.view.frame.size.height - 180, 120, 60);
     swapCamerasButton.center = CGPointMake(self.view.frame.size.width / 6, swapCamerasButton.frame.origin.y + swapCamerasButton.frame.size.height / 2);
     
     swapCamerasButton.layer.cornerRadius = swapCamerasButton.frame.size.width / 2;
@@ -303,17 +329,17 @@
     swapCamerasButton.layer.borderWidth = lineWidth;
     
     [swapCamerasButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [swapCamerasButton setTitle:@"前置" forState:UIControlStateNormal];
+    [swapCamerasButton setTitle:@"切后置摄像头" forState:UIControlStateNormal];
     
     swapCamerasButton.selected = NO;
     [swapCamerasButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [swapCamerasButton setTitle:@"后置" forState:UIControlStateSelected];
+    [swapCamerasButton setTitle:@"切前置摄像头" forState:UIControlStateSelected];
     
     [swapCamerasButton addTarget:self action:@selector(swapCameraBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:swapCamerasButton];
     
     publisherButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    publisherButton.frame = CGRectMake(45, self.view.frame.size.height - 160, 60, 60);
+    publisherButton.frame = CGRectMake(45, self.view.frame.size.height - 120, 60, 60);
     publisherButton.center = CGPointMake(self.view.frame.size.width / 6, publisherButton.frame.origin.y + publisherButton.frame.size.height / 2);
     
     publisherButton.layer.cornerRadius = publisherButton.frame.size.width / 2;
@@ -331,7 +357,7 @@
     [self.view addSubview:publisherButton];
     
     backSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backSettingsButton.frame = CGRectMake(45, self.view.frame.size.height - 80, 60, 60);
+    backSettingsButton.frame = CGRectMake(45, self.view.frame.size.height - 60, 60, 60);
     backSettingsButton.center = CGPointMake(self.view.frame.size.width / 6, backSettingsButton.frame.origin.y + backSettingsButton.frame.size.height / 2);
     
     backSettingsButton.layer.cornerRadius = backSettingsButton.frame.size.width / 2;
@@ -372,15 +398,39 @@
     }
 }
 
+- (void)mirrorSwitchBtn:(id)sender {
+    if ( _smart_publisher_sdk != nil )
+    {
+        is_mirror = !is_mirror;
+        
+        [_smart_publisher_sdk SmartPublisherSetMirror:is_mirror];
+        
+        if ( is_mirror )
+        {
+            [mirrorSwitchButton setTitle:@"关镜像" forState:UIControlStateNormal];
+        }
+        else
+        {
+            [mirrorSwitchButton setTitle:@"开镜像" forState:UIControlStateNormal];
+        }
+    }
+}
+
 - (void)beautyLevelBtn:(id)sender {
     //demo是0~1随机设置，具体使用，可根据实际效果，自行调节
     if ( _smart_publisher_sdk != nil )
     {
-        CGFloat level = (CGFloat)(arc4random()%(10))/10.0;
+        if (curBeautyLevel > 1) {
+            curBeautyLevel = 0;
+        }
+        else
+        {
+            curBeautyLevel = curBeautyLevel + 0.1;
+        }
         
-        NSLog(@"randNumber:%ld, level:%f", (long)randNumber, level);
+        NSLog(@"curBeautyLevel:%f", curBeautyLevel);
         
-        [_smart_publisher_sdk SmartPublisherSetBeautyBrightness:level];
+        [_smart_publisher_sdk SmartPublisherSetBeautyBrightness:curBeautyLevel];
     }
 }
 
@@ -400,60 +450,6 @@
         
         [_smart_publisher_sdk SmartPublisherSetMute:is_mute];
     }
-}
-
-- (void)beautySettingsBtn:(id)sender {
-    
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"美颜选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"请选择以下5种美颜效果" otherButtonTitles:@"美颜",@"复古",@"素描",@"高亮",@"高亮+美颜", nil];
-    
-    actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
-    [actionSheet showInView:self.view];
-    
-}
-
-#pragma mark - UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    //按照按钮的顺序0-N；
-    switch (buttonIndex) {
-        case 0:
-            NSLog(@"点击了不设置美颜");
-            filter_type = DN_FILTER_NONE;
-            break;
-            
-        case 1:
-            NSLog(@"点击了美颜");
-            filter_type = DN_FILTER_TYPE_BEAUTY;
-            break;
-            
-        case 2:
-            NSLog(@"点击了复古");
-            filter_type = DN_FILTER_TYPE_SEPIA;
-            break;
-            
-        case 3:
-            NSLog(@"点击了素描");
-            filter_type = DN_FILTER_TYPE_SKETCH;
-            break;
-            
-        case 4:
-            NSLog(@"点击了高亮");
-            filter_type = DN_FILTER_TYPE_BRIGHT;
-            break;
-            
-        case 5:
-            NSLog(@"点击了高亮+美颜");
-            filter_type = DN_FILTER_TYPE_BRIGHT_BEAUTY;
-            break;
-            
-        default:
-            break;
-    }
-    
-    if (_smart_publisher_sdk != nil) {
-        [_smart_publisher_sdk SmartPublisherSetBeautyFilterType:filter_type];
-    }
-    
 }
 
 - (void)swapCameraBtnPressed:(UIButton *)button
@@ -536,14 +532,6 @@
         
         //[_smart_publisher_sdk SmartPublisherSetRtmpPublishingType:type];
         
-        randNumber = arc4random()%(1000000);
-        
-        NSString *strNumber = [NSString stringWithFormat:@"%ld", (long)randNumber];
-        
-        NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
-        
-        publishURL = [ baseURL stringByAppendingString:strNumber];
-        
         //publishURL = @"";     //如此设置时，只本地录制，不上传
         
         NSLog(@"publishURL: %@",publishURL);
@@ -605,7 +593,7 @@
 {
     
     NSLog(@"Run into backSettingsBtn..");
-    
+        
     if (_smart_publisher_sdk != nil)
     {
         [_smart_publisher_sdk SmartPublisherStopCaputure];

@@ -31,6 +31,8 @@
 @property (nonatomic, strong) UINavigationBar *nvgBar;
 @property (nonatomic, strong) UINavigationItem *nvgItem;
 
+@property (nonatomic, strong) UITextField *inputUrlText; //url输入框，请输入rtmp推送url
+
 @property (nonatomic, strong) UIButton *highQualityBtn;
 @property (nonatomic, strong) UIButton *mediumQualityBtn;
 @property (nonatomic, strong) UIButton *lowQualityBtn;
@@ -128,13 +130,26 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播推流端V1.0.17.03.29"];
+    [self.navigationItem setTitle:@"大牛直播推流端V1.0.17.04.21"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
 
     CGFloat buttonWidth = screenWidth - kHorMargin*2;
     
     CGFloat buttonSpace = (screenWidth - 2*kHorMargin-160)/6;
+    
+    //设置推流地址
+    self.inputUrlText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, kVerMargin - 10, buttonWidth, kBtnHeight)];
+    [self.inputUrlText setBackgroundColor:[UIColor whiteColor]];
+    self.inputUrlText.placeholder = @"输入推流rtmp的url,如不输入用默认url";
+    self.inputUrlText.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    self.inputUrlText.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputUrlText.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.inputUrlText.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.inputUrlText addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    self.inputUrlText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    //[self.inputUrlText setText:[NSString stringWithFormat:@"rtmp://player.daniulive.com:1935/hls/stream0"]];
+    
     //直播视频质量
     self.lowQualityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.lowQualityBtn.tag = 1;
@@ -258,6 +273,9 @@
     [self.interRecorderView addTarget:self action:@selector(interRecorderViewBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.nvgBar];
+    
+    [self.view addSubview:self.inputUrlText];
+    
     [self.view addSubview:self.highQualityBtn];
     [self.view addSubview:self.mediumQualityBtn];
     [self.view addSubview:self.lowQualityBtn];
@@ -416,8 +434,38 @@
     }
 }
 
+- (void)textFieldDone:(UITextField *)textField {
+    [textField resignFirstResponder];
+}
+
 - (void)interPublisherViewBtnPressed:(id)sender {
-    ViewController * coreView =[[ViewController alloc] initParameter:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isRecorder:is_recorder_ isBeauty:is_beauty_];
+    
+    NSString* publishURL;
+    
+    NSString* inputVal = [[self inputUrlText] text];
+    
+    if ( inputVal.length < 7 || ([inputVal hasPrefix:@"rtmp://"] == NO))
+    {
+        NSLog(@"incorrect publish url, use default url..");
+        
+        NSInteger randNumber = arc4random()%(1000000);
+        
+        NSString *strNumber = [NSString stringWithFormat:@"%ld", (long)randNumber];
+        
+        NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
+        
+        publishURL = [ baseURL stringByAppendingString:strNumber];
+
+    }
+    else
+    {
+        publishURL = inputVal;
+    }
+    
+    NSLog(@"publishURL:%@", publishURL);
+   
+    ViewController * coreView =[[ViewController alloc] initParameter:publishURL
+                                                       streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isRecorder:is_recorder_ isBeauty:is_beauty_];
     [self presentViewController:coreView animated:YES completion:nil];
 }
 

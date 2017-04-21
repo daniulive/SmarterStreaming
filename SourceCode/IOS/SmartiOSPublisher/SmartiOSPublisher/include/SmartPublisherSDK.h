@@ -37,21 +37,6 @@ typedef NS_ENUM(NSInteger, DN_BEAUTY_TYPE) {
 };
 
 /**
- *  美颜选择
- *
- *  此类型仅用于设置daniulive基础美颜
- *
- */
-typedef NS_ENUM(NSInteger, DN_FILTER_TYPE) {
-    DN_FILTER_NONE = 0,
-    DN_FILTER_TYPE_BEAUTY = 1,
-    DN_FILTER_TYPE_SEPIA = 2,
-    DN_FILTER_TYPE_SKETCH = 3,
-    DN_FILTER_TYPE_BRIGHT = 4,
-    DN_FILTER_TYPE_BRIGHT_BEAUTY = 5
-};
-
-/**
  *  推流分辨率选择
  *
  *  此类型仅用于daniulive做视频采集时使用，如视频数据来自美颜或第三方接口，无需使用
@@ -109,6 +94,65 @@ typedef enum DNCameraPosition{
 -(NSInteger)SmartPublisherSetPublishOrientation:(NSInteger)orientation;
 
 /**
+ * 设置GOP间隔
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param gopInterval: encode I frame interval, the value always > 0
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetGopInterval:(NSInteger)gopInterval;
+
+/**
+ * 设置software/harderware encode video bit-rate.
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param avgBitRate: average encode bit-rate(kbps)
+ *
+ * @param maxBitRate: max encode bit-rate(kbps)
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetVideoBitRate:(NSInteger)avgBitRate maxBitRate:(NSInteger)maxBitRate;
+
+/**
+ * 设置fps.
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param fps: the fps of video, range with (1,25).
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetFPS:(NSInteger)fps;
+
+/**
+ * 设置裁剪模式(仅用于640*480分辨率, 裁剪主要用于移动端宽高适配)
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param mode: 0: 非裁剪模式 1:裁剪模式(如不设置, 默认裁剪模式)
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetClippingMode:(Boolean)mode;
+
+/**
+ * 设置镜像(mirror)
+ *
+ * <pre>SmartPublisherInit之后调用</pre>
+ *
+ * mirror: : true: 镜像模式, false: 非镜像模式
+ *
+ * 镜像模式: 播放端和推送端本地回显方向显示一致
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetMirror:(Boolean)mirror;
+
+/**
  * 美颜相关
  *
  * 是否使用美颜
@@ -125,22 +169,11 @@ typedef enum DNCameraPosition{
 - (NSInteger)SmartPublisherSetBeauty:(DN_BEAUTY_TYPE)beautyTpye;
 
 /**
- * 设置美颜类型
- *
- * daniulive基础美颜效果设置
- *
- * <pre>Init后调用</pre>
- *
- * <NOTE> 此接口仅在使用daniulive基础美颜(DN_BEAUTY_INTERNAL_BEAUTY)时设置
- */
--(NSInteger)SmartPublisherSetBeautyFilterType:(DN_FILTER_TYPE)filterType;
-
-/**
  * 内部美颜时使用
  *
  * <pre>Init后调用</pre>
  *
- * <NOTE> 此接口仅在使用daniulive基础美颜(DN_BEAUTY_INTERNAL_BEAUTY)时设置
+ * <NOTE> 此接口仅在使用daniulive基础美颜时设置
  *
  * level范围: (0~1)
  *
