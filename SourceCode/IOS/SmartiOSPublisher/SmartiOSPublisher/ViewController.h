@@ -16,8 +16,12 @@
 
 @interface ViewController : UIViewController<SmartPublisherDelegate>
 
-- (instancetype)initParameter:(DNVideoStreamingQuality)streamQuality audioOpt:(NSInteger)audioOpt videoOpt:(NSInteger)videoOpt
-                   isRecorder:(Boolean)isRecorder isBeauty:(Boolean)isBeauty;
+- (instancetype)initParameter:(NSString*)url
+                streamQuality:(DNVideoStreamingQuality)streamQuality
+                     audioOpt:(NSInteger)audioOpt
+                     videoOpt:(NSInteger)videoOpt
+                   isRecorder:(Boolean)isRecorder
+                     isBeauty:(Boolean)isBeauty;
 
 @end
 
