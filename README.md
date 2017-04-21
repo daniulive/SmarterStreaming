@@ -32,12 +32,12 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 或者直接从私有服务器下载：
 
-- [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.8.pdf)
+- [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.9.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
 - [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-04-06.zip)
-- [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-03-25.zip)
+- [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-04-20.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
-- [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-03-29.zip)
+- [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
 - [x] [Android后台推送摄像头/屏幕数据demo下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
@@ -84,6 +84,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持`推送端实时静音/取消静音`；
 - [x] 支持软硬编码自适应；
 - [x] android支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
+- [x] 支持gop间隔、帧率、bierate设置；
+- [x] 支持推送端镜像设置；
+- [x] iOS支持裁剪模式设置；
 - [x] 完美支持各个厂家CDN。
 
 **windows播放器/android播放器/iOS播放器**
@@ -98,6 +101,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
 - [x] 支持播放过程中，'实时静音/取消静音';
+- [x] **支持播放url快速切换**；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
 
 **微信播放**
@@ -220,6 +224,7 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 * [录像] 可选择“本地录像”或不录像，如选择“本地录像”，支持边推流边录像；
 * [录像管理] 可进入录像页面，比如，进行录像回放、文件管理；
 * [静音] 支持推送过程中，主播端实时静音或取消静音；
+* [镜像] 默认关闭，如需开启，点击开镜像；
 * [硬编码/软编码] 默认软编码，如需硬编码，系统自动检测是否支持，如支持，优先采用硬编码；
 * [输入推流URL] 可自定义推送url，如不输入，默认自动生成url，推送到daniulive服务器；
 * [开始推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止推流”；
@@ -244,6 +249,7 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 **1.3 iOS推流：**
 
 1. 安装SmartPublisher；
+* [推送url设置] 在输入框输入推送的url(rtmp相关url)，如不输入，默认推送到daniulive server；
 * [分辨率] 可选择高、中、低、超高分辨率；
 * [推流类型] 可选择推“纯音频”、“音视频”、“纯视频”；
 * [美颜] iOS推送端支持推送过程中，美颜设置，也可选择不美颜；
@@ -251,7 +257,7 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 * [进入推流页面] 1~5步骤完成后，可进入推流页面；
 * [进入回放页面] 可进入录像页面，比如，进行录像回放、文件管理；
 * [静音] 支持推送过程中，主播端实时静音或取消静音；
-* [美颜] 支持几种常规美颜；
+* [镜像] 默认关闭，如需开启，点击开镜像；
 * [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源；
 * [推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止”；
 * [返回] 未推流状态，返回上层设置页面。
@@ -278,23 +284,25 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 **2.2 android播放器**
 
 1. 安装SmartPlayer.apk；
-* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://218.25.89.108:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+* [大牛直播url] 进入系统后，在输入框输入需要播放的url，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
 * [纯音频url] 如需播放纯音频，编译工程，SmartPlayerSetSurface第二个参数设置为null；
 * [输入完整url] 如需测试自己服务器或者公网rtsp/rtmp的url，点击“输入完整url”，比如“rtmp://live.hkstv.hk.lxdns.com/live/hks”，在弹出框输入想播放的url；
 * [开始播放/停止播放] 输入播放url后，可以点击开始播放，如需停止，点击停止播放按钮即可；
 * [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
 * [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
+* [url快速切换] 如在工程设置多个url，可快速切换不同url；
 * [软解码/硬解码]播放页面，默认会显示“当前软解码”，如需用硬解码，请点击此按钮，页面会显示“当前硬解码”，点击开始播放，会以页面当前显示的软解或硬解运行。
 
 **2.3 iOS播放器**
 
 1. 安装SmartPlayer.ipa；
-* [大牛直播url] 进入系统后，在输入框输入“urlID”，stream后的部分(如“rtmp://218.25.89.108:1935/hls/stream123456”,那就输入“123456”)，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
+* [大牛直播url] 进入系统后，在输入框输入需要播放的url，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
 * [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
 * [软解码/硬解码]如需用硬解码，请选择“硬解”，然后进入播放页面；
 * [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
 * [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
 * [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
+* [url快速切换] 如在工程设置多个url，可快速切换不同url；
 * [返回] 播放另外一个url，点击返回按钮，到上级页面。
 
 **2.4 Web播放器**
