@@ -34,7 +34,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.9.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-04-06.zip)
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-04-24.zip)
 - [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-04-20.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
@@ -57,11 +57,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [透明度]可以设置透明度处理；
 - [x] [音频]采集音频设备，
 - [x] [音频]采集扬声器；
+- [x] **支持回音消除功能；
+- [x] 支持噪音抑制功能；
+- [x] 支持自动增益控制；
+- [x] 支持Speex推送；
+- [x] Speex编码质量设置；**
 - [x] [音频]推送过程中实时静音/取消静音；
 - [x] [音视频]支持纯音频、纯视频、音视频推送；
 - [x] [对接服务器]完美支持自建服务器或CDN；
 - [x] [录像]支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
-- [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间。
+- [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
+
 
 **windows播放器**
 
@@ -190,7 +196,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1.1 Windows推送端：**
 
-Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-04-06.zip)
+Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-04-24.zip)
 
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
@@ -207,6 +213,11 @@ Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄
 * [音频选择] 采集扬声器：实时获取扬声器数据，比如，无杂音的采集系统播放的音乐；
 * [音频控制] 推送过程中，可以选择“静音”或取消静音；
 * [音频控制] 如果不选择桌面或摄像头，可支持纯音频推送；
+- [音频控制] 设置“回音消除”；
+- [音频控制] 设置“噪音抑制”；
+- [音频控制] 设置“自动增益控制”；
+- [音频控制] 默认采用AAC编码，如需推Speex，选择“使用Speex编码”；
+- [音频控制] 设置Speex编码质量；
 * [视频控制] 如果不选择音频，可支持纯视频推送；
 * 设置RTMP推送url；
 * 点击“推送”，如推到daniulive的服务器，系统会自动分配播放url，请按生成的播放地址，用大牛播放器播放；
