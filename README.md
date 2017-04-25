@@ -30,12 +30,12 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 - [x] 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
-或者直接从私有服务器下载：
+或者直接从私有服务器下载(注意：android eclipse工程内的SDK是每次同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为主)：
 
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.9.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-04-24.zip)
-- [x] [android推送、播放SDK本地下载(eclipse工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-04-20.zip)
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-04-25.zip)
+- [x] [**android推送、播放SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-04-25.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
@@ -196,7 +196,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1.1 Windows推送端：**
 
-Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-04-24.zip)
+Beta公测版：超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集的SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端屏幕推送软件。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-04-25.zip)
 
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
