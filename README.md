@@ -30,7 +30,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 - [x] 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
-或者直接从私有服务器下载(注意：android eclipse工程内的SDK是每次同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为主)：
+或者直接从私有服务器下载：
 
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.9.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
@@ -40,6 +40,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
 - [x] [Android后台推送摄像头/屏幕数据demo下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
+
+**NOTE:** android平台，eclipse工程(**android推送、播放SDK本地下载(eclipse工程)**)的SDK每次release是确保同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为准。
 
 ===========================
 
