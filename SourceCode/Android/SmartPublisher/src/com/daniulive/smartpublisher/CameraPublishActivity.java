@@ -91,6 +91,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private Spinner recorderSelector;
 	
 	private Button  btnRecoderMgr;
+	private Button  btnNoiseSuppression;
+	private Button  btnAGC;
+	private Button  btnSpeex;
 	private Button  btnMute;
 	private Button  btnMirror;
 	private Button	btnHWencoder;
@@ -134,6 +137,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private String recDir = "/sdcard/daniulive/rec";	//for recorder path
 	
 	private boolean is_need_local_recorder = false;		// do not enable recorder in default
+	
+	private boolean is_noise_suppression = true; 
+	
+	private boolean is_agc = false;
+	
+	private boolean is_speex = false;
 	
 	private boolean is_mute = false;
 	
@@ -338,7 +347,16 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         btnRecoderMgr = (Button)findViewById(R.id.button_recoder_manage);
         btnRecoderMgr.setOnClickListener(new ButtonRecorderMangerListener());
         //end
-       
+        
+        btnNoiseSuppression = (Button)findViewById(R.id.button_noise_suppression);
+        btnNoiseSuppression.setOnClickListener(new ButtonNoiseSuppressionListener());
+        
+        btnAGC = (Button)findViewById(R.id.button_agc);
+        btnAGC.setOnClickListener(new ButtonAGCListener());
+        
+        btnSpeex = (Button)findViewById(R.id.button_speex);
+        btnSpeex.setOnClickListener(new ButtonSpeexListener());
+        
         btnMute = (Button)findViewById(R.id.button_mute);
         btnMute.setOnClickListener(new ButtonMuteListener());
         
@@ -506,6 +524,45 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	}
     }
     
+    class ButtonNoiseSuppressionListener  implements OnClickListener
+    {
+    	public void onClick(View v)
+    	{
+    		is_noise_suppression = !is_noise_suppression;
+    		
+    		if ( is_noise_suppression )
+    			btnNoiseSuppression.setText("停用噪音抑制");
+    		else
+    			btnNoiseSuppression.setText("启用噪音抑制");
+    	}
+    }
+    
+    class ButtonAGCListener  implements OnClickListener
+    {
+    	public void onClick(View v)
+    	{
+    		is_agc = !is_agc;
+    		
+    		if ( is_agc )
+    			btnAGC.setText("停用AGC");
+    		else
+    			btnAGC.setText("启用AGC");
+    	}
+    }
+    
+    class ButtonSpeexListener  implements OnClickListener
+    {
+    	public void onClick(View v)
+    	{
+    		is_speex = !is_speex;
+    		
+    		if ( is_speex  )
+    			btnSpeex.setText("不使用Speex");
+    		else
+    			btnSpeex.setText("使用Speex");
+    	}
+    }
+    
     class ButtonMuteListener  implements OnClickListener
     {
     	public void onClick(View v)
@@ -658,6 +715,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         		stop();
         		btnRecoderMgr.setEnabled(true);
         		btnHWencoder.setEnabled(true);
+        		
+        		btnNoiseSuppression.setEnabled(true);
+        		btnAGC.setEnabled(true);
+        		btnSpeex.setEnabled(true);
+        		
         		return;
         	}
         	
@@ -754,6 +816,23 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    //end
 			    
 			    
+			    if ( !is_speex )
+			    {
+			    	 // set AAC encoder
+			    	 libPublisher.SmartPublisherSetAudioCodecType(1);
+			    }
+			    else
+			    {
+			    	// set Speex encoder
+			    	libPublisher.SmartPublisherSetAudioCodecType(2);
+			    	libPublisher.SmartPublisherSetSpeexEncoderQuality(8);
+			    }
+			    
+			    libPublisher.SmartPublisherSetNoiseSuppression(is_noise_suppression?1:0);
+			    
+			    libPublisher.SmartPublisherSetAGC(is_agc?1:0);
+			    
+			    
 			    //libPublisher.SetRtmpPublishingType(0);
 			    
 				
@@ -778,6 +857,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             	{
             		btnRecoderMgr.setEnabled(false);
             		btnHWencoder.setEnabled(false);
+            		
+            		btnNoiseSuppression.setEnabled(false);
+            		btnAGC.setEnabled(false);
+            		btnSpeex.setEnabled(false);
             	}
 			}
 			

@@ -80,6 +80,31 @@
             
             </LinearLayout>
             
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >"
+
+            <Button
+            android:id="@+id/button_noise_suppression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 停用噪音抑制" />
+
+            <Button
+                android:id="@+id/button_agc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 启用AGC" />
+                
+              <Button
+                android:id="@+id/button_speex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 使用Speex" />
+             
+           </LinearLayout>
+            
 
            <LinearLayout
             android:layout_width="wrap_content"
