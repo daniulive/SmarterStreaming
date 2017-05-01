@@ -138,6 +138,47 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetFPS(int fps);
     
+    
+    /**
+     * Set audio encoder type
+     * 
+     * @param type: if with 1:AAC, if with 2: SPEEX
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetAudioCodecType(int type);
+    
+    
+    /**
+     * Set speex encoder quality
+     * 
+     * @param quality: range with (0, 10), default value is 8
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetSpeexEncoderQuality(int quality);
+    
+    
+    /**
+     * Set Audio Noise Suppression
+     * 
+     * @param isNS: if with 1:suppress, if with 0: does not suppress
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetNoiseSuppression(int isNS);
+    
+    
+    /**
+     * Set Audio AGC
+     * 
+     * @param isNS: if with 1:AGC, if with 0: does not AGC
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetAGC(int isAGC);
+    
+    
     /**
      * Set mute or not during publish stream
      * 
