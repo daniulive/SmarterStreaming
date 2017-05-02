@@ -87,6 +87,15 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	 * 3: 1280*720
 	 * */
 	private Spinner resolutionSelector;
+	
+	/* video软编码profile设置
+     * 1: baseline profile
+     * 2: main profile
+     * 3: high profile
+	 * */
+	private Spinner swVideoEncoderProfileSelector;
+	
+	private int sw_video_encoder_profile = 1;	//default with baseline profile
 
 	private Spinner recorderSelector;
 	
@@ -152,9 +161,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
     private Context myContext; 
     
-    static {
-        System.load("libSmartPublisher.so");
-    }
+	static {  
+		System.loadLibrary("SmartPublisher");
+	}
+  
     
     private byte[] ReadAssetFileDataToByte(InputStream in) throws IOException
     {
@@ -301,6 +311,36 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				
 				SwitchResolution(position);
 		
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				
+			}
+		});
+        
+        swVideoEncoderProfileSelector = (Spinner)findViewById(R.id.swVideoEncoderProfileSelector);
+        final String []profileSel = new String[]{"BaseLineProfile", "MainProfile", "HighProfile"};
+        ArrayAdapter<String> adapterProfile = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, profileSel);
+        adapterProfile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        swVideoEncoderProfileSelector.setAdapter(adapterProfile);
+
+        swVideoEncoderProfileSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				if(isStart)
+				{
+					Log.e(TAG, "Could not switch video profile during publishing..");
+					return;
+				}
+				
+				Log.i(TAG, "[VideoProfile]Currently choosing: " + profileSel[position]);
+				
+				sw_video_encoder_profile = position + 1;		
 			}
 
 			@Override
@@ -832,6 +872,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    
 			    libPublisher.SmartPublisherSetAGC(is_agc?1:0);
 			    
+			    //libPublisher.SmartPublisherSetClippingMode(0);
+			    
+				libPublisher.SmartPublisherSetSWVideoEncoderProfile(sw_video_encoder_profile);
 			    
 			    //libPublisher.SetRtmpPublishingType(0);
 			    

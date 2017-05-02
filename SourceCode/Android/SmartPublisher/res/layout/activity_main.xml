@@ -34,9 +34,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-                        
+                    
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >"
             <Spinner
 	        android:id="@+id/pushTypeSelctor"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" />
+            
+             <Spinner
+	        android:id="@+id/resolutionSelctor"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content" />
             
@@ -44,22 +53,29 @@
 	        android:id="@+id/watermarkSelctor"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content" />
-
+				 </LinearLayout>
+				 
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >"
+            
             <Spinner
-	        android:id="@+id/resolutionSelctor"
+	        android:id="@+id/swVideoEncoderProfileSelector"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content" />
+            
+            <Spinner
+	        android:id="@+id/recoder_selctor"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+             </LinearLayout>
             
              <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >"
-            
-               <Spinner
-	        android:id="@+id/recoder_selctor"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" />
-               
+                          
             <Button
             android:id="@+id/button_recoder_manage"
             android:layout_width="wrap_content"
