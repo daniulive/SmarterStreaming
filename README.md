@@ -358,8 +358,14 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
  * iOS推送端：SmartiOSPublisher
  * iOS播放器：SmartiOSPlayer
 * 集成到自己工程，如何改名字（以推送端为例）：
- * android：strings.xml--> <string name="app_name">SmartPublisherSDKDemo</string>
- * iOS：Info.plist-->右键Open As-->Source Code，添加或者编辑 	<key>CFBundleName</key>	<string>SmartiOSPublisher</string>
+ * android：strings.xml-->
+ ```
+ <string name="app_name">SmartPublisherSDKDemo</string>
+ ```
+ * iOS：Info.plist-->右键Open As-->Source Code，添加或者编辑 
+  ```
+  <key>CFBundleName</key>	<string>SmartiOSPublisher</string>
+   ```
 
 ## 获取更多信息 ##
 
