@@ -138,7 +138,32 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetFPS(int fps);
     
-    
+	/**
+     * Set software video encoder profile.
+     *
+     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     *
+     * profile: the software video encoder profile, range with (1,3).
+     * 
+     * 1: baseline profile
+     * 2: main profile
+     * 3: high profile
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetSWVideoEncoderProfile(int profile);
+	
+     /**
+     * Set Clipping Mode: 设置裁剪模式(仅用于640*480分辨率, 裁剪主要用于移动端宽高适配)
+     *
+     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     *
+     * @param mode: 0: 非裁剪模式 1:裁剪模式(如不设置, 默认裁剪模式)
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetClippingMode(int mode);
+	
     /**
      * Set audio encoder type
      * 
@@ -147,7 +172,6 @@ public class SmartPublisherJni {
      * @return {0} if successful
      */
     public native int SmartPublisherSetAudioCodecType(int type);
-    
     
     /**
      * Set speex encoder quality
