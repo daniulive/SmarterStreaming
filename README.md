@@ -364,7 +364,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
  ```
  * iOS：Info.plist-->右键Open As-->Source Code，添加或者编辑 
   ```
-  <key>CFBundleName</key>	<string>SmartiOSPublisher</string>
+  <key>CFBundleName</key>	
+  <string>SmartiOSPublisher</string>
    ```
 
 ## 获取更多信息 ##
