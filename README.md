@@ -94,6 +94,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] android支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
 - [x] 支持gop间隔、帧率、bierate设置；
 - [x] 支持推送端镜像设置；
+- [x] [音频]android支持噪音抑制功能；
+- [x] [音频]android支持自动增益控制；
+- [x] [音频]android支持Speex推送；
+- [x] [音频]android支持Speex编码质量设置；
 - [x] iOS支持裁剪模式设置；
 - [x] 完美支持各个厂家CDN。
 
