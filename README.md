@@ -34,8 +34,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.0.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-04-25.zip)
-- [x] [**android推送、播放SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-01.zip)
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-05-02.zip)
+- [x] [**android推送、播放SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-02.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
