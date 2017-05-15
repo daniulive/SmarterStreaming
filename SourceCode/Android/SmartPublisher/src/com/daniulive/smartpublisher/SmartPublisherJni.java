@@ -412,5 +412,40 @@ public class SmartPublisherJni {
 	 */
     public native int SmartPublisherStop();
     
+       
+    /*********增加新的接口 ++ ***************/
+    /* 增加新接口是为了把推送和录像分离, 老的接口依然可用(SmartPublisherStart, SmartPublisherStop), 
+     * 但是不要老接口和新接口混着用，这样结果是未定义的
+    */
+    
+    /**
+	* Start publish stream 
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherStartPublisher();
+    
+    /**
+   	* Stop publish stream 
+   	*
+   	* @return {0} if successful
+   	*/
+    public native int SmartPublisherStopPublisher();
+    
+    /**
+	* Start recorder
+	*
+	* @return {0} if successful
+	*/
+    public native int SmartPublisherStartRecorder();
+    
+    /**
+   	* Stop recorder 
+   	*
+   	* @return {0} if successful
+   	*/
+    public native int SmartPublisherStopRecorder();
+    
    
+    /*********增加新的接口  -- ***************/      
 }

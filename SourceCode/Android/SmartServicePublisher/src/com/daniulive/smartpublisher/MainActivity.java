@@ -433,7 +433,7 @@ public class MainActivity extends Activity {
 			is_hardware_encoder = !is_hardware_encoder;
 
 			if (is_hardware_encoder)
-				btnHWencoder.setText("当前硬解码");
+				btnHWencoder.setText("当前硬编码");
 			else
 				btnHWencoder.setText("当前软编码");
 		}
