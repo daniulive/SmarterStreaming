@@ -146,6 +146,25 @@
                 android:text=" 开始推流 " />
                 
            </LinearLayout>
+           
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >"
+
+             <Button
+                android:id="@+id/button_start_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 推送" />
+
+            <Button
+                android:id="@+id/button_start_recorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 录像" />
+                
+           </LinearLayout>
       
         </LinearLayout>
 

@@ -56,7 +56,7 @@
                 android:id="@+id/button_hwencoder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="当前软解码" />
+                android:text="当前软编码" />
 
             <Button
                 android:id="@+id/permission_check"
