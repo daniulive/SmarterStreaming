@@ -152,6 +152,22 @@ public class SmartPublisherJni {
      * @return {0} if successful
      */
     public native int SmartPublisherSetSWVideoEncoderProfile(int profile);
+    
+    
+    /**
+     * 
+     * Set software video encoder speed.
+     * 
+     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * 
+     * @param speed: range with(1, 6), the default speed is 6. 
+     * 
+     * if with 1, CPU is lowest.
+     * if with 6, CPU is highest.
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetSWVideoEncoderSpeed(int speed);
 	
      /**
      * Set Clipping Mode: 设置裁剪模式(仅用于640*480分辨率, 裁剪主要用于移动端宽高适配)
