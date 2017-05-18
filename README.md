@@ -32,10 +32,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 或者直接从私有服务器下载：
 
-- [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.0.pdf)
+- [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.1.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-05-02.zip)
-- [x] [**android推送、播放SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-02.zip)
+- [x] [Windows推送、播放Demo本地下载](http://218.25.89.108:8080/files/windows-推送-播放版-2017-05-16.zip)
+- [x] [**android推送、播放SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-15.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
 - [x] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
@@ -83,7 +83,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] `音视频`推送、`纯音频`推送、`纯视频`推送；
 - [x] 支持`边采集、边录像`；
 - [x] 支持rtmp推送 live|record模式设置；
-- [x] 网络中断，本地录像继续，保证数据的完整性；
+- [x] 真正靠谱的录像、推流分离模式，**支持推流过程中随时开启录像，录像过程中，随时推流**；
 - [x] 支持本地录像文件回放、处理；
 - [x] 采集过程中，前后摄像头切换；
 - [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
@@ -202,7 +202,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1.1 Windows推送端：**
 
-超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端音视频推送SDK。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-05-02.zip)
+超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端音视频推送SDK。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-05-16.zip)
 
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
@@ -290,7 +290,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2.1 Windows播放器：**
 
-[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-05-02.zip)
+[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-05-16.zip)
 
 1. 打开SmartPlayer.exe；
 * 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
