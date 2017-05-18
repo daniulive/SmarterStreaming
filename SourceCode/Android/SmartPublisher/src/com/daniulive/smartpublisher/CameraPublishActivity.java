@@ -105,6 +105,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private Button  btnSpeex;
 	private Button  btnMute;
 	private Button  btnMirror;
+	
+	private Spinner swVideoEncoderSpeedSelector;
+	
 	private Button	btnHWencoder;
 	private ImageView imgSwitchCamera;
 	private Button btnInputPushUrl;
@@ -162,6 +165,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private boolean is_mute = false;
 	
 	private boolean is_mirror = false;
+	
+	private int sw_video_encoder_speed = 6;
 	
 	private boolean is_hardware_encoder = false;
 	
@@ -411,6 +416,37 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         btnMirror = (Button)findViewById(R.id.button_mirror);
         btnMirror.setOnClickListener(new ButtonMirrorListener());
         
+       
+        swVideoEncoderSpeedSelector = (Spinner)findViewById(R.id.sw_video_encoder_speed_selctor);
+        
+        final String [] video_encoder_speed_Sel = new String[]{"6", "5", "4", "3", "2", "1"};
+        ArrayAdapter<String> adapterVideoEncoderSpeed = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, video_encoder_speed_Sel);
+        
+        adapterVideoEncoderSpeed.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        swVideoEncoderSpeedSelector.setAdapter(adapterVideoEncoderSpeed);
+        
+        swVideoEncoderSpeedSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+						
+				Log.i(TAG, "Currently speed choosing: " + video_encoder_speed_Sel[position]);
+				
+				sw_video_encoder_speed = 6 - position;
+				
+				Log.i(TAG, "Choose speed=" + sw_video_encoder_speed);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				
+			}
+		});
+        
+        
         btnHWencoder = (Button)findViewById(R.id.button_hwencoder);
         btnHWencoder.setOnClickListener(new ButtonHardwareEncoderListener());
         
@@ -508,8 +544,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			
         if( audioRecord_ != null )
         {
-        	Log.i(TAG, "onCreate, call executeAudioRecordMethod.."); 
-        	audioRecord_.executeAudioRecordMethod();
+        	Log.i(TAG, "onCreate, call executeAudioRecordMethod..");
+        	// auido_ret: 0 ok, other failed
+        	int auido_ret= audioRecord_.executeAudioRecordMethod();
+        	Log.i(TAG, "onCreate, call executeAudioRecordMethod.. auido_ret=" + auido_ret); 
         }
     }
     
@@ -896,7 +934,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			    //libPublisher.SmartPublisherSetClippingMode(0);
 			    
 				libPublisher.SmartPublisherSetSWVideoEncoderProfile(sw_video_encoder_profile);
-			    
+				
+				libPublisher.SmartPublisherSetSWVideoEncoderSpeed(sw_video_encoder_speed);
+							    
 			    //libPublisher.SetRtmpPublishingType(0);
 			    
 				
@@ -1051,6 +1091,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		// libPublisher.SmartPublisherSetClippingMode(0);
 
 		libPublisher.SmartPublisherSetSWVideoEncoderProfile(sw_video_encoder_profile);
+		
+		libPublisher.SmartPublisherSetSWVideoEncoderSpeed(sw_video_encoder_speed);
 
 		// libPublisher.SetRtmpPublishingType(0);
 

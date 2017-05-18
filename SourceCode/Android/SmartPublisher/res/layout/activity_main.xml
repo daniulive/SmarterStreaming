@@ -94,6 +94,17 @@
             android:layout_height="wrap_content"
             android:text=" 开镜像" />
             
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="编码速度"
+             />
+            
+            <Spinner
+	        android:id="@+id/sw_video_encoder_speed_selctor"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" />
+            
             </LinearLayout>
             
             <LinearLayout
