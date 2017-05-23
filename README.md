@@ -56,7 +56,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **windows屏幕截取/摄像头推送录像**
 
-- [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率等设置；
+- [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率、编码profile、编码速度等设置；
 - [x] [屏幕]支持屏幕裁剪，根据帧率和推送分辨率，自动推荐码流；
 - [x] [摄像头]支持摄像头选择、分辨率设置、帧率设置；
 - [x] [**摄像头和屏幕实时切换**]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
@@ -66,7 +66,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [透明度]可以设置透明度处理；
 - [x] [音频]采集音频设备，
 - [x] [音频]采集扬声器；
-- [x] **[音频]支持回音消除功能；**
+- [x] **[音频]支持回音消除功能；（可通过在两台windows机器同时开启daniulive的推送和播放端demo，相互推送播放测试）**
 - [x] **[音频]支持噪音抑制功能；**
 - [x] **[音频]支持自动增益控制；**
 - [x] **[音频]支持Speex推送；**
@@ -99,7 +99,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持`推送端实时静音/取消静音`；
 - [x] 支持软硬编码自适应；
 - [x] android支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
-- [x] 支持gop间隔、帧率、bierate设置；
+- [x] 支持gop间隔、帧率、bierate、android编码profile和编码速度设置；
 - [x] 支持推送端镜像设置；
 - [x] [音频]android支持噪音抑制功能；
 - [x] [音频]android支持自动增益控制；
@@ -226,7 +226,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 * [音频选择] 采集扬声器：实时获取扬声器数据，比如，无杂音的采集系统播放的音乐；
 * [音频控制] 推送过程中，可以选择“静音”或取消静音；
 * [音频控制] 如果不选择桌面或摄像头，可支持纯音频推送；
-- [音频控制] 设置“回音消除”；
+- [音频控制] 设置“回音消除”，两台Windows端，分别启动推送和播放端，相互播放对方的url；
 - [音频控制] 设置“噪音抑制”；
 - [音频控制] 设置“自动增益控制”；
 - [音频控制] **默认采用AAC编码，如需推Speex，选择“使用Speex编码”**；
