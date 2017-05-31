@@ -16,7 +16,7 @@ import com.eventhandle.SmartEventCallback;
 
 public class SmartPublisherJni {
 	
-	static class WATERMARK {
+	public static class WATERMARK {
 	   	public static final int WATERMARK_FONTSIZE_MEDIUM 			= 0;
 	   	public static final int WATERMARK_FONTSIZE_SMALL 			= 1;
 	   	public static final int WATERMARK_FONTSIZE_BIG	 			= 2;
