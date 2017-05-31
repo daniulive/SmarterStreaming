@@ -5,7 +5,7 @@
  * Github: https://github.com/daniulive/SmarterStreaming
  * 
  * Created by DaniuLive on 2015/09/20.
- * Copyright © 2014~2016 DaniuLive. All rights reserved.
+ * Copyright 漏 2014~2016 DaniuLive. All rights reserved.
  */
 
 package com.daniulive.smartpublisher;
@@ -170,11 +170,11 @@ public class SmartPublisherJni {
     public native int SmartPublisherSetSWVideoEncoderSpeed(int speed);
 	
      /**
-     * Set Clipping Mode: 设置裁剪模式(仅用于640*480分辨率, 裁剪主要用于移动端宽高适配)
+     * Set Clipping Mode: 璁剧疆瑁佸壀妯″紡(浠呯敤浜�640*480鍒嗚鲸鐜�, 瑁佸壀涓昏鐢ㄤ簬绉诲姩绔楂橀�傞厤)
      *
      * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
      *
-     * @param mode: 0: 非裁剪模式 1:裁剪模式(如不设置, 默认裁剪模式)
+     * @param mode: 0: 闈炶鍓ā寮� 1:瑁佸壀妯″紡(濡備笉璁剧疆, 榛樿瑁佸壀妯″紡)
      *
      * @return {0} if successful
      */
@@ -217,6 +217,17 @@ public class SmartPublisherJni {
      * @return {0} if successful
      */
     public native int SmartPublisherSetAGC(int isAGC);
+    
+    
+    /**
+     * Set Audio Echo Cancellation
+     * 
+     * @param isCancel: if with 1:Echo Cancellation, if with 0: does not cancel
+     * @param delay: echo delay(ms), if with 0, SDK will automatically estimate the delay.
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetEchoCancellation(int isCancel, int delay);
     
     
     /**
@@ -357,7 +368,7 @@ public class SmartPublisherJni {
 	/**
 	 * Set live video data(no encoded data).
 	 *
-	 * @param data: ABGR flip vertical(垂直翻转) data
+	 * @param data: ABGR flip vertical(鍨傜洿缈昏浆) data
 	 *
 	 * @param rowStride: stride information
 	 *
@@ -368,6 +379,20 @@ public class SmartPublisherJni {
 	 * @return {0} if successful
 	 */
 	public native int SmartPublisherOnCaptureVideoABGRFlipVerticalData(ByteBuffer data, int rowStride, int width, int height);
+	
+	
+	/**
+	 * Set far end pcm data
+	 * 
+	 * @param pcmdata : 16bit pcm data
+	 * @param sampleRate: audio sample rate
+	 * @param channel: auido channel
+	 * @param per_channel_sample_number: per channel sample numbers
+	 * @param is_low_latency: if with 0, it is not low_latency, if with 1, it is low_latency
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherOnFarEndPCMData(ByteBuffer pcmdata, int sampleRate, int channel, int per_channel_sample_number, int is_low_latency);
+	
 	
 	/**
 	* Set encoded video data.
