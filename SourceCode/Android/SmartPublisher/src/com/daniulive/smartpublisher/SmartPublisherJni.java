@@ -220,6 +220,17 @@ public class SmartPublisherJni {
     
     
     /**
+     * Set Audio Echo Cancellation
+     * 
+     * @param isCancel: if with 1:Echo Cancellation, if with 0: does not cancel
+     * @param delay: echo delay(ms), if with 0, SDK will automatically estimate the delay.
+     * 
+     * @return {0} if successful
+     */
+    public native int SmartPublisherSetEchoCancellation(int isCancel, int delay);
+    
+    
+    /**
      * Set mute or not during publish stream
      * 
      * @param isMute: if with 1:mute, if with 0: does not mute
@@ -368,6 +379,20 @@ public class SmartPublisherJni {
 	 * @return {0} if successful
 	 */
 	public native int SmartPublisherOnCaptureVideoABGRFlipVerticalData(ByteBuffer data, int rowStride, int width, int height);
+	
+	
+	/**
+	 * Set far end pcm data
+	 * 
+	 * @param pcmdata : 16bit pcm data
+	 * @param sampleRate: audio sample rate
+	 * @param channel: auido channel
+	 * @param per_channel_sample_number: per channel sample numbers
+	 * @param is_low_latency: if with 0, it is not low_latency, if with 1, it is low_latency
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherOnFarEndPCMData(ByteBuffer pcmdata, int sampleRate, int channel, int per_channel_sample_number, int is_low_latency);
+	
 	
 	/**
 	* Set encoded video data.

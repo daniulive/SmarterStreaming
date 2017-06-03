@@ -68,6 +68,16 @@ public class SmartPlayerJni {
 	 */
 	 public native int SmartPlayerSetExternalRender(long handle, Object external_render);
  
+	 /**
+	 * Set External Audio Output.
+     *
+	 * @param handle: return value from SmartPlayerInit()
+	 *
+	 * @param external_audio_output:  External Audio Output
+	 * 
+	 * @return {0} if successful
+	 */
+	 public native int SmartPlayerSetExternalAudioOutput(long handle, Object external_audio_output);
 
 	 /**
 	  * Set AudioOutput Type
