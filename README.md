@@ -83,13 +83,16 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
 
 **Windows导播平台或多路合成、混音推流/录像**
+
 对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-23.zip)
+
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
 - [x] 支持拉取rtsp流；
 - [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得rtmp或rtsp流做合成、混音输出；
 - [x] 支持导播过程中，随时切断某一路音视频或音频；
-- [x] 支持rtsp数据转rtmp推送出去。
+- [x] 支持rtsp数据转rtmp推送出去；
+- [x] 音频混音同时选择“采集麦克风”+“采集扬声器”。
 
 **windows播放器**
 
