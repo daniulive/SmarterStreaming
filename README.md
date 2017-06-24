@@ -188,7 +188,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
 
-**4. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
+**5. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
 
 <img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
 
