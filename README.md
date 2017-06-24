@@ -17,6 +17,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **模块概览**
 
 - [x] Windows屏幕、摄像头合成或单个推流/录像;
+- [x] **Windows导播平台或多路合成、混音推流/录像;**
 - [x] Windows rtmp/rtsp播放器;
 - [x] **Windows一对一互动(可windows与windows/android互动)；**
 - [x] Android屏幕、摄像头推流/录像;
