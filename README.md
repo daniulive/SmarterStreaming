@@ -176,11 +176,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://218.25.89.108:8080/files/image/windowsplayer.jpg" width="600" alt="大牛直播Windows播放器" />
 
-**2. Android播放器：**
+**2. Windows播放导播合成效果：**
+
+<img src="http://player.daniulive.com:8080/files/image/windows/player1.png" width="600" alt="大牛直播Windows导播播放效果" />
+
+**3. Android播放器：**
 
 <img src="http://218.25.89.108:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
 
-**3. iOS播放器：**
+**4. iOS播放器：**
 
 <img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
 
@@ -194,19 +198,23 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://player.daniulive.com:8080/files/daniulive/win_publisher.png" width="800" alt="Windows推送" />
 
-**2. android边推送边录像(支持纯音频推送和播放)：**
+**2.  windows推送/实时导播：**
+
+<img src="http://player.daniulive.com:8080/files/image/windows/mix_publisher.png" width="800" alt="Windows推送" />
+
+**3. android边推送边录像(支持纯音频推送和播放)：**
 
 <img src="http://player.daniulive.com:8080/files/daniulive/android_publisher_echocancellation.png" alt="android边推送边录像" />
 
 <img src="http://218.25.89.108:8080/files/image/watermark.jpg" width="600" height="750" alt="windows播放水印推流" />
 
-**3. iOS边推送边录像(支持纯音频推送和播放)：**
+**4. iOS边推送边录像(支持纯音频推送和播放)：**
 
 <img src="http://218.25.89.108:8080/files/image/iOS_publisher.jpg" width="600" alt="iOS边推送边录像" />
 
 <img src="http://218.25.89.108:8080/files/image/iOS_publisher_2.jpg" width="600" alt="iOS边推送边录像2" />
 
-**4. iOS录像管理：**
+**5. iOS录像管理：**
 
 <img src="http://218.25.89.108:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
 
