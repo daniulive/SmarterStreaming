@@ -200,7 +200,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2.  windows推送/实时导播：**
 
-<img src="http://player.daniulive.com:8080/files/image/windows/mix_publisher.png" width="800" alt="Windows推送" />
+<img src="http://player.daniulive.com:8080/files/image/windows/mix_publisher1.png" width="800" alt="Windows推送" />
 
 **3. android边推送边录像(支持纯音频推送和播放)：**
 
