@@ -1,6 +1,6 @@
 **大牛直播 <a href="http://www.daniulive.com" target="_blank">www.daniulive.com</a>**
 
-国内外为数不多不依赖开源框架、公网毫秒级延迟、跨平台(windows/android/iOS)rtmp推流、rtmp/rtsp直播播放利器"SmarterStreaming"，系daniulive(大牛直播)出品的跨平台视频采集、直播SDK(支持rtmp推流/rtmp播放/rtsp播放，如windows推流(windows pusher)/android推流(android pusher)/iOS推流(iOS pusher)/windows播放器(windows player)/android播放器(android player)/iOS播放器(iOS player))，也许是最靠谱的视频直播推流、播放SDK之一，助您轻松实现类似于花椒、映客、斗鱼或传统行业低延迟、高稳定直播推送与播放。
+专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送-播放真正靠谱的超低延迟。
 
 适用于**秀场直播、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、在线教育、微信直播、监控对接、活动现场直播、游戏直播**等场景。
   
@@ -16,20 +16,20 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **模块概览**
 
-- [x] [Windows推流端-视频处理]屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
-- [x] [Windows推流端-音频处理]多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
-- [x] [Windows推流端-导播]rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
-- [x] [Windows推流端]rtmp推送模块(支持同时推多路url)；
-- [x] [Windows推流端]实时录像模块；
-- [x] [Window播放器]rtmp/rtsp超低延迟直播播放器;
-- [x] [Window互动]Windows一对一互动(可windows与windows/android互动)；
-- [x] [Android推流端]Android屏幕、摄像头推流/录像模块;
-- [x] [Android推流端]Android回音消除、噪音抑制、自动增益、VAD检测模块；
-- [x] [Android播放器]rtmp/rtsp超低延迟直播播放器;
-- [x] [Android互动]Android一对一互动(可android与windows/android互动)；
-- [x] [iOS推流端]iOS摄像头推流/录像;
-- [x] [iOS播放器]rtmp/rtsp超低延迟直播播放器;
-- [x] [Server]SmarterStreamServer。
+- [x] **[Windows推流端-视频处理]**屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
+- [x] **[Windows推流端-音频处理]**多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] **[Windows推流端-导播]**rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
+- [x] **[Windows推流端]**rtmp推送模块(支持同时推多路url)；
+- [x] **[Windows推流端]**实时录像模块；
+- [x] **[Window播放器]**rtmp/rtsp超低延迟直播播放器;
+- [x] **[Window互动]**Windows一对一互动(可windows与windows/android互动)；
+- [x] **[Android推流端]**Android屏幕、摄像头推流/录像模块;
+- [x] **[Android推流端]**Android回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] **[Android播放器]**rtmp/rtsp超低延迟直播播放器;
+- [x] **[Android互动]**Android一对一互动(可android与windows/android互动)；
+- [x] **[iOS推流端]**iOS摄像头推流/录像;
+- [x] **[iOS播放器]**rtmp/rtsp超低延迟直播播放器;
+- [x] **[Server]**SmarterStreamServer。
 
 **本地下载**
 
