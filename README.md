@@ -17,19 +17,19 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **模块概览**
 
 - [x] [**Windows推流端-视频处理**]屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
-- [x] **[Windows推流端-音频处理]**多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
-- [x] **[Windows推流端-导播]**rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
-- [x] **[Windows推流端]**rtmp推送模块(支持同时推多路url)；
-- [x] **[Windows推流端]**实时录像模块；
-- [x] **[Window播放器]**rtmp/rtsp超低延迟直播播放器;
-- [x] **[Window互动]**Windows一对一互动(可windows与windows/android互动)；
-- [x] **[Android推流端]**Android屏幕、摄像头推流/录像模块;
-- [x] **[Android推流端]**Android回音消除、噪音抑制、自动增益、VAD检测模块；
-- [x] **[Android播放器]**rtmp/rtsp超低延迟直播播放器;
-- [x] **[Android互动]**Android一对一互动(可android与windows/android互动)；
-- [x] **[iOS推流端]**iOS摄像头推流/录像;
-- [x] **[iOS播放器]**rtmp/rtsp超低延迟直播播放器;
-- [x] **[Server]**SmarterStreamServer。
+- [x] [**Windows推流端-音频处理**]多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [**Windows推流端-导播**]rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
+- [x] [**Windows推流端**]rtmp推送模块(支持同时推多路url)；
+- [x] [**Windows推流端**]实时录像模块；
+- [x] [**Window播放器**]rtmp/rtsp超低延迟直播播放器;
+- [x] [**Window互动**]Windows一对一互动(可windows与windows/android互动)；
+- [x] [**Android推流端**]Android屏幕、摄像头推流/录像模块;
+- [x] [**Android推流端**]Android回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [**Android播放器**]rtmp/rtsp超低延迟直播播放器;
+- [x] [**Android互动**]Android一对一互动(可android与windows/android互动)；
+- [x] [**iOS推流端**]iOS摄像头推流/录像;
+- [x] [**iOS播放器**]rtmp/rtsp超低延迟直播播放器;
+- [x] [**Server**]SmarterStreamServer。
 
 **本地下载**
 
