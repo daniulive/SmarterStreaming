@@ -41,7 +41,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.2.pdf)
 - [x] [**SmarterStreaming产品手册下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming产品手册.pdf)
-- [x] [Windows推送、播放、合成、导播Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-23.zip)
+- [x] [Windows推送、播放、合成、导播Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
 - [x] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-31.zip)
 - [x] [android推送、播放SDK本地下载(android studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 - [x] [iOS推送、播放SDK本地下载](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
@@ -91,7 +91,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-23.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
@@ -247,7 +247,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1.1 Windows推送端：**
 
-超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端音视频推送SDK。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-23.zip)
+超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端音视频推送SDK。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
 
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
@@ -337,7 +337,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2.1 Windows播放器：**
 
-[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-23.zip)
+[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
 
 1. 打开SmartPlayer.exe；
 * 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
