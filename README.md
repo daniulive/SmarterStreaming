@@ -162,18 +162,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [Windows]推送过程中，选择“回音消除”；
 - [x] [android] 可以边推送边播放，demo请参见 [https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation)
 
-**微信播放**
-
-- [x] 支持android设备rtmp/hls播放；
-- [x] 支持iOS设备hls播放；
-- [x] 支持公众号集成。
- 
-公网环境下，**毫秒级延迟**，支持云服务部署、各类厂商的CDN产品对接；
-
-支持**边推送边录像**（如执法记录或移动单兵场景），网络中断仍可继续录制，结束后可本地回放，并可对接第三方云服务，把录像数据保存到云端服务器；
-
-支持跨平台**纯音频、纯视频、音视频推送**、**纯音频、纯视频、音视频播放**、**纯音频、纯视频、音视频实时存储**。
-
 **[基于RTMP、RTSP安防摄像机、编码器、智能眼镜平台对接]**
 
 无论rtsp、rtmp，我们提供高稳定性、超低延迟的跨平台（Windows/android/iOS）综合视频监控系统对接。
@@ -191,36 +179,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持鉴权认证、各种信息展示；
 - [x] 点播服务器：满足录像文件点播需求。
 
-## 公网环境下推流、直播效果展示 ##
-<img src="http://218.25.89.108:8080/files/image/windows_publisher.JPG" width="800" alt="Windows采集，跨平台播放" />
-
-<img src="http://218.25.89.108:8080/files/image/AndroidPublisher.JPG" width="800" alt="Android采集，跨平台播放" />
-
-<img src="http://218.25.89.108:8080/files/image/IOSPublisher.png" width="800" alt="iOS采集，跨平台播放" />
-
-## 播放展示 ##
-
-**1. Windows播放器：**
-
-<img src="http://218.25.89.108:8080/files/image/windowsplayer.jpg" width="600" alt="大牛直播Windows播放器" />
-
-**2. Windows播放导播合成效果：**
-
-<img src="http://player.daniulive.com:8080/files/image/windows/player1.png" width="600" alt="大牛直播Windows导播播放效果" />
-
-**3. Android播放器：**
-
-<img src="http://218.25.89.108:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
-
-**4. iOS播放器：**
-
-<img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
-
-**5. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
-
-<img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
-
-## windows推送/android推流端/iOS推流端 ##
+## windows导播、推送端/android推流端/iOS推流端 ##
 
 **1.  windows推送：**
 
@@ -245,6 +204,28 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **5. iOS录像管理：**
 
 <img src="http://218.25.89.108:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
+
+## 播放展示 ##
+
+**1. Windows播放器：**
+
+<img src="http://218.25.89.108:8080/files/image/windowsplayer.jpg" width="600" alt="大牛直播Windows播放器" />
+
+**2. Windows播放导播合成效果：**
+
+<img src="http://player.daniulive.com:8080/files/image/windows/player1.png" width="600" alt="大牛直播Windows导播播放效果" />
+
+**3. Android播放器：**
+
+<img src="http://218.25.89.108:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
+
+**4. iOS播放器：**
+
+<img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
+
+**5. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
+
+<img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
 
 ## SmarterStreamServer url鉴权demo ##
 
