@@ -206,8 +206,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://player.daniulive.com:8080/files/daniulive/android_publisher_echocancellation.png" alt="android边推送边录像" />
 
-<img src="http://218.25.89.108:8080/files/image/watermark.jpg" width="600" height="750" alt="windows播放水印推流" />
-
 **4. iOS边推送边录像(支持纯音频推送和播放)：**
 
 <img src="http://218.25.89.108:8080/files/image/iOS_publisher.jpg" width="600" alt="iOS边推送边录像" />
