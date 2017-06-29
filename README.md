@@ -17,18 +17,31 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **模块概览**
 
 - [x] [**Windows推流端-视频处理**]屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
+
 - [x] [**Windows推流端-音频处理**]多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
+
 - [x] [**Windows推流端-导播**]rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
+
 - [x] [**Windows推流端**]rtmp推送模块(支持同时推多路url)；
+
 - [x] [**Windows推流端**]实时录像模块；
+
 - [x] [**Window播放器**]rtmp/rtsp超低延迟直播播放器;
+
 - [x] [**Window互动**]Windows一对一互动(可windows与windows/android互动)；
+
 - [x] [**Android推流端**]Android屏幕、摄像头推流/录像模块;
+
 - [x] [**Android推流端**]Android回音消除、噪音抑制、自动增益、VAD检测模块；
+
 - [x] [**Android播放器**]rtmp/rtsp超低延迟直播播放器;
+
 - [x] [**Android互动**]Android一对一互动(可android与windows/android互动)；
+
 - [x] [**iOS推流端**]iOS摄像头推流/录像;
+
 - [x] [**iOS播放器**]rtmp/rtsp超低延迟直播播放器;
+
 - [x] [**Server**]SmarterStreamServer。
 
 **本地下载**
@@ -43,7 +56,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [demo测试程序] [Windows推送、播放、合成、导播Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
 
-- [x] [SDK demo工程] [**Windows C#版本推送、播放SDK Demo工程**](http://player.daniulive.com:8080/files/daniulive/windows/Daniulive-Windows-C%23-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-2017-06-28.zip)
+- [x] [SDK demo工程] [**Windows C#版本推送、播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/Daniulive-Windows-C%23-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-2017-06-28.zip)
 
 - [x] [SDK demo工程] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-31.zip)
 
@@ -51,9 +64,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo扩展工程] [android推送、播放SDK本地下载(android studio demo工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 
-- [x] [SDK demo扩展工程] [Android美颜demo下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
+- [x] [SDK demo扩展工程] [Android美颜demo本地下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
 
-- [x] [SDK demo扩展工程] [Android后台推送摄像头/屏幕数据demo下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
+- [x] [SDK demo扩展工程] [Android后台推送摄像头/屏幕数据demo本地下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
 **NOTE:** android平台，eclipse工程(**android推送、播放SDK本地下载(eclipse工程)**)的SDK每次release是确保同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为准。
 
