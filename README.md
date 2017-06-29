@@ -108,7 +108,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [音频]推送过程中实时静音/取消静音；
 - [x] [音视频]支持纯音频、纯视频、音视频推送；
 - [x] [对接服务器]完美支持自建服务器或CDN；
-- [x] [录像]支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
+- [x] [录像]**录像和推送完全分离，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；**
 - [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
 
 **Windows导播平台或多路合成、混音推流/录像**
@@ -126,7 +126,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **windows播放器**
 
 - [x] 基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装；
-- [x] 基于flash控件开发的web播放器。
 
 **android推流/iOS推流**
 
@@ -249,6 +248,14 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **1.1 Windows推送端：**
 
 超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端音视频推送SDK。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
+
+Windows推送端，大概需要以下设置：
+
+1. 视频采集设置（设置叠加模式、遮盖、水印、采集区域、分辨率等）；
+2. 视频码率控制（点击“获取默认值”，可以得到系统推荐码流，如需自己设置，可以在推荐值基础上递增或递减，一般来说，最大码率可设置为平均码率的2倍）；
+2. 音频采集设置；
+4. RTMP推送；
+5. 本地录像（如需）。
 
 1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
 * 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
