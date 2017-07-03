@@ -22,6 +22,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端-导播**] rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
 
+- [x] [**Windows推流端-连麦**] 以标准协议为基础，完美支持Windows连麦；
+
 - [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
 
 - [x] [**Windows推流端**] 实时录像模块；
