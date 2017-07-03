@@ -170,10 +170,32 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] **支持播放url快速切换**；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
 
-**windows/android一对一互动**
+**windows/windows或windows/android一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”；
 - [x] [android] 可以边推送边播放，demo请参见 [https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation)
+
+**windows/windows或windows与android连麦**
+
+以Windows与android端连麦为例(Windows端作为主播端/指挥中心)：
+
+Windows端 
+
+1. 打开"SmartMixStreamDemo.exe";
+2. [视频] 选择期望的视频采集模式，并获取推荐的码流（码流可根据需求自行调整）；
+3. [音频] 选择"采集扬声器" + "采集麦克风"，并选择"回音消除"、"噪音抑制"、"端点检测(VAD)"(可选);
+4. [推送地址设置] 输入合流后的rtmp推送地址(可以直接推到CDN)，对应"RTMP推送地址1"，如"rtmp://player.daniulive.com:1935/hls/streammix"；
+5. [推送地址设置] 输入原始rtmp推送地址，对应"RTMP原始流推送地址"，如"rtmp://player.daniulive.com:1935/hls/streamorg"；
+6. [播放连麦互动rtmp] 在SmartMixStreamDemo.exe左下角播放器部分，在"播放URL"栏，输入android端的推送地址，如"rtmp://player.daniulive.com:1935/hls/streamandroid"；
+7. [推送] 点击"推送"和"推送原始流"。
+
+Android端
+
+1. 打开SmartEchoCancellation.apk
+2. [推送]根据需求，选择合适的分辨率和帧率，并选择"使用噪音抑制"，输入推送地址，如"rtmp://player.daniulive.com:1935/hls/streamandroid"，点击开始推送；
+3. [播放]输入Windows推送的原始rtmp推送地址，如此次设置，输入 "rtmp://player.daniulive.com:1935/hls/streamorg"，点击开始播放。
+
+至此，android和windows连麦基础设置完成，如第三方平台（windows/android/iOS）需要观看此次实时互动视频（连麦效果），在播放端，输入合流后的rtmp推送地址，此次demo为 "rtmp://player.daniulive.com:1935/hls/streammix"，即可完成播放。
 
 **[基于RTMP、RTSP安防摄像机、编码器、智能眼镜平台对接]**
 
