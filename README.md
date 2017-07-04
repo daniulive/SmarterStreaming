@@ -72,28 +72,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **NOTE:** android平台，eclipse工程(**android推送、播放SDK本地下载(eclipse工程)**)的SDK每次release是确保同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为准。
 
-**大牛直播产品使用说明**
-
-- [x] [**大牛直播Windows RTMP推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADWindows-RTMP%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播连麦使用说明(windows windows或windows与android)**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(windows-windows%E6%88%96windows%E4%B8%8Eandroid))
-
-- [x] [**大牛直播Windows播放器使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADWindows%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播Android推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播Android后台推送摄像头、屏幕数据]使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E5%90%8E%E5%8F%B0%E6%8E%A8%E9%80%81%E6%91%84%E5%83%8F%E5%A4%B4-%E5%B1%8F%E5%B9%95%E6%95%B0%E6%8D%AE%5D%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播Android播放器使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播iOS推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播 iOS端边推流边录像使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD-iOS%E7%AB%AF%E8%BE%B9%E6%8E%A8%E6%B5%81%E8%BE%B9%E5%BD%95%E5%83%8F%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播iOS推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
-- [x] [**大牛直播iOS播放器使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
-
 **大牛直播SDK集成和调用说明**
 
 - [x] [大牛直播Windows推流端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/windows/SmartPublisherSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.0.pdf)
@@ -107,6 +85,28 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [大牛直播iOS播放端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%92%AD%E6%94%BE%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 
 - [x] [文档] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.2.pdf)
+
+**大牛直播demo使用说明**
+
+- [x] [**大牛直播Windows RTMP推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADWindows-RTMP%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播连麦使用说明(windows windows或windows与android)**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(windows-windows%E6%88%96windows%E4%B8%8Eandroid))
+
+- [x] [**大牛直播Windows播放器使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADWindows%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播Android推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播Android后台推送摄像头、屏幕数据使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E5%90%8E%E5%8F%B0%E6%8E%A8%E9%80%81%E6%91%84%E5%83%8F%E5%A4%B4-%E5%B1%8F%E5%B9%95%E6%95%B0%E6%8D%AE%5D%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播Android播放器使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播iOS推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播 iOS端边推流边录像使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD-iOS%E7%AB%AF%E8%BE%B9%E6%8E%A8%E6%B5%81%E8%BE%B9%E5%BD%95%E5%83%8F%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播iOS推流端使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
+
+- [x] [**大牛直播iOS播放器使用说明**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)
 
 ===========================
 
@@ -196,6 +196,12 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] **支持播放url快速切换**；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
 
+**Web播放器在线测试**
+
+http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
+
+在输入框中，清除老的url，输入推流的url，如 rtmp://player.daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
+
 **windows/windows或windows/android一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”；
@@ -203,29 +209,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **windows/windows或windows与android连麦**
 
-以Windows与android端连麦为例(Windows端作为主播端/指挥中心)：
-
-Windows端 
-
-1. 打开"SmartMixStreamDemo.exe";
-2. [视频] 选择期望的视频采集模式，并获取推荐的码流（码流可根据需求自行调整）；
-3. [音频] 选择"采集扬声器" + "采集麦克风"，并选择"回音消除"、"噪音抑制"、"端点检测(VAD)"(可选);
-4. [推送地址设置] 输入合流后的rtmp推送地址(可以直接推到CDN)，对应"RTMP推送地址1"，如"rtmp://player.daniulive.com:1935/hls/streammix"；
-5. [推送地址设置] 输入原始rtmp推送地址，对应"RTMP原始流推送地址"，如"rtmp://player.daniulive.com:1935/hls/streamorg"；
-6. [播放连麦互动rtmp] 在SmartMixStreamDemo.exe左下角播放器部分，在"播放URL"栏，输入android端的推送地址，如"rtmp://player.daniulive.com:1935/hls/streamandroid"；
-7. [推送] 点击"推送"和"推送原始流"。
-
-Android端
-
-1. 打开SmartEchoCancellation.apk
-2. [推送]根据需求，选择合适的分辨率和帧率，并选择"使用噪音抑制"，输入推送地址，如"rtmp://player.daniulive.com:1935/hls/streamandroid"，点击开始推送；
-3. [播放]输入Windows推送的原始rtmp推送地址，如此次设置，输入 "rtmp://player.daniulive.com:1935/hls/streamorg"，点击开始播放。
-
-至此，android和windows连麦基础设置完成，如第三方平台（windows/android/iOS）需要观看此次实时互动视频（连麦效果），在播放端，输入合流后的rtmp推送地址，此次demo为 "rtmp://player.daniulive.com:1935/hls/streammix"，即可完成播放。
-
-**[基于RTMP、RTSP安防摄像机、编码器、智能眼镜平台对接]**
-
-无论rtsp、rtmp，我们提供高稳定性、超低延迟的跨平台（Windows/android/iOS）综合视频监控系统对接。
+完美支持标准协议的windows与windows、windows与android连麦（Windows作为主体端）。
 
 **[多对一实时通讯]**
 
@@ -290,149 +274,6 @@ Android端
 
 <img src="http://218.25.89.108:8080/files/image/url_generate.png" width="798" alt="url生成demo" />
 
-## 使用说明 ##
-
-**1. 推流:**
-
-**1.1 Windows推送端：**
-
-超低延迟、可直接推url到rtmp server的windows桌面/摄像头采集SDK(为防止未经许可的第三方利用本软件从事恶意盗录等非法活动，未经授权版本，每次只允许实时推送1小时（1小时后，如需继续试用，请关闭应用程序再重新打开），**请在法律许可范围内使用本软件**)，也可能是目前市面上最好用的PC端音视频推送SDK。[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
-
-Windows推送端，大概需要以下设置：
-
-1. 视频采集设置（设置叠加模式、遮盖、水印、采集区域、分辨率等）；
-2. 视频码率控制（点击“获取默认值”，可以得到系统推荐码流，如需自己设置，可以在推荐值基础上递增或递减，一般来说，最大码率可设置为平均码率的2倍）；
-2. 音频采集设置；
-4. RTMP推送；
-5. 本地录像（如需）。
-
-具体参数详解：
-
-1. 设置帧率和关键帧间隔(关键帧间隔可以是帧率的倍数)；
-* 如需屏幕裁剪，输入屏幕裁剪坐标和裁剪宽高信息；
-* [屏幕裁剪] 推送之前，点击“选取屏幕区域”，可弹出选择框，双击即可完成区域选择；
-* [屏幕裁剪] 推送过程中，可以点击“移动屏幕区域”，实时设置推送的屏幕区域；
-* [码流获取] 点击“获取默认值”，拿到系统推荐的平均码率和最高码率；
-* [摄像头] 如需推送摄像头数据，从摄像头列表选择设备，然后设置分辨率和推送帧率；
-* [**摄像头和屏幕实时切换**]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
-* [**摄像头叠加到屏幕**] 支持摄像头按照设置坐标，叠加到屏幕指定位置，并支持实时关闭叠加层；
-* [**屏幕叠加到摄像头**] 支持屏幕按照设定坐标，叠加到摄像头指定位置，并支持实时关闭叠加层；
-* [**实时水印**]"视频采集设置"-"屏幕和摄像头互相切换"行，选择“添加水印”，然后，在弹出框，选择水印路径和设置坐标，点击“确定”即可，推送过程中，如取消水印，点击“停止水印”，如再次开启，点击“启用水印”；
-* [透明度]可以设置透明度处理；
-* [音频选择] 采集麦克风：实时获取麦克风数据；
-* [音频选择] 采集扬声器：实时获取扬声器数据，比如，无杂音的采集系统播放的音乐；
-* [音频混音]**同时选择“采集扬声器”和“采集麦克风”)，可支持背景音和麦克风声音混音输出**；
-* [静音检测]**支持音频“端点检测（VAD）”，自适应码流，音频码流更节省（一般端点检测和噪音抑制组合使用）**；
-* [音频控制] 推送过程中，可以选择“静音”或取消静音；
-* [音频控制] 如果不选择桌面或摄像头，可支持纯音频推送；
-* [音频控制] 设置“回音消除”，两台Windows端，分别启动推送和播放端，相互播放对方的url；
-* [音频控制] 设置“噪音抑制”；
-* [音频控制] 设置“自动增益控制”；
-* [音频控制] **默认采用AAC编码，如需推Speex，选择“使用Speex编码”**；
-* [音频控制] 设置Speex编码质量；
-* [视频控制] 如果不选择音频，可支持纯视频推送；
-* 设置RTMP推送url；
-* 点击“推送”，如推到daniulive的服务器，系统会自动分配播放url，请按生成的播放地址，用大牛播放器播放；
-* 点击“停止”，关闭推送；
-* [录像] 设置录像目录；
-* [录像] 设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
-* [录像] 点击“录像”或“停止录像”；
-
-**1.2.1 Android推流：**
-
-1. 安装SmartPublisher；
-* [推流类型] 可选择推“纯音频”、“纯视频”、“音视频”；
-* [水印类型] 可选择“图片水印”、“文字水印”、“全部水印”、“不加水印”；
-* [分辨率] 可选择高、中、低、超高分辨率
-* [录像] 可选择“本地录像”或不录像，如选择“本地录像”，支持边推流边录像；
-* [录像管理] 可进入录像页面，比如，进行录像回放、文件管理；
-* [静音] 支持推送过程中，主播端实时静音或取消静音；
-* [镜像] 默认关闭，如需开启，点击开镜像；
-* [硬编码/软编码] 默认软编码，如需硬编码，系统自动检测是否支持，如支持，优先采用硬编码；
-* [输入推流URL] 可自定义推送url，如不输入，默认自动生成url，推送到daniulive服务器；
-* [开始推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止推流”；
-* [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源。
-
-**1.2.2 Android后台推送摄像头/屏幕数据]**
-
-[点击下载](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
-
-1. 安装SmartServicePublisherSDKDemo；
-* [推送类型] 可选“推送屏幕”或“推送摄像头”；
-* [推送屏幕] 分辨率分“屏幕标准分辨率”和“屏幕低分辨率”；
-* [推送摄像头] 分“摄像头高分辨率”、“摄像头中分辨率”、“摄像头低分辨率”、“摄像头超高分辨率”;
-* [录像功能] 默认“本地不录像”，如需录像，请选择下来菜单“本地录像”；
-* [录像管理] 针对录像数据的回放、删除等操作；
-* [前后置摄像头选择] 默认后置摄像头，如需采集前置摄像头，请点击按钮，切换前后摄像头；
-* [输入推流URL] 默认我们会自动随机生成推送到我们server的url，如需推送到自己server，请自行设置，并点击“确认”生效；
-* [软硬编码切换] 默认软编码，如需硬编码，请点击此按钮选择；
-* [推屏权限检测] 由于android屏幕采集需要android 5.0以上版本，如推送屏幕数据，需要先检测推屏权限，如检测通过，才可以推流；
-* [开始推流] 推送数据到server端， 点击“开始推流”后，可切换到后台，采集屏幕或者摄像头数据，如需停止推送，点级"停止推送"按钮就可，NOTE: 开始推送后，后台会进入一直推流状态，测试结束后，记得点击“停止推送”。
-
-**1.3 iOS推流：**
-
-1. 安装SmartPublisher；
-* [推送url设置] 在输入框输入推送的url(rtmp相关url)，如不输入，默认推送到daniulive server；
-* [分辨率] 可选择高、中、低、超高分辨率；
-* [推流类型] 可选择推“纯音频”、“音视频”、“纯视频”；
-* [美颜] iOS推送端支持推送过程中，美颜设置，也可选择不美颜；
-* [录像] 可选择“边推边录”或不录像，如选择“边推边录”，支持边推流边录像；
-* [进入推流页面] 1~5步骤完成后，可进入推流页面；
-* [进入回放页面] 可进入录像页面，比如，进行录像回放、文件管理；
-* [静音] 支持推送过程中，主播端实时静音或取消静音；
-* [镜像] 默认关闭，如需开启，点击开镜像；
-* [前后摄像头切换] 推流过程中，可点击前后摄像头切换图标，前后采集源；
-* [推流] 点击后，推送数据到流媒体服务器，如需停止，点击“停止”；
-* [返回] 未推流状态，返回上层设置页面。
- 
-**1.4 iOS端边推流边录像：** 
-
-1. [录像相关]设置推流过程中，是否录像（不录像 边推边录）；
-* [录像相关]如有边推送边录像，直播结束后，点击“进入回放页面”，可显示录像文件名称，点击回放，可进行本地录像回放；
-* [录像相关]点击“删除全部文件”，可删除本地录制的所有文件；
-* [录像相关]回放过程中，点击“暂停”，进入播放暂停状态，点击“恢复”继续播放。
-
-**2 播放：**
-
-**2.1 Windows播放器：**
-
-[点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
-
-1. 打开SmartPlayer.exe；
-* 根据提示，在RTMP/RTSP播放地址处，输入需要播放的url，如“rtmp://live.hkstv.hk.lxdns.com/live/hks”；
-* 在播放之前，可以设置缓冲时间（单位：毫秒），支持0~10000ms设置；
-* 如果播放rtsp url，可以设置使用TCP/UDP播放；
-* 播放过程中，可选择实时静音/取消静音。
-
-**2.2 android播放器**
-
-1. 安装SmartPlayer.apk；
-* [大牛直播url] 进入系统后，在输入框输入需要播放的url，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
-* [纯音频url] 如需播放纯音频，编译工程，SmartPlayerSetSurface第二个参数设置为null；
-* [输入完整url] 如需测试自己服务器或者公网rtsp/rtmp的url，点击“输入完整url”，比如“rtmp://live.hkstv.hk.lxdns.com/live/hks”，在弹出框输入想播放的url；
-* [开始播放/停止播放] 输入播放url后，可以点击开始播放，如需停止，点击停止播放按钮即可；
-* [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
-* [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
-* [url快速切换] 如在工程设置多个url，可快速切换不同url；
-* [软解码/硬解码]播放页面，默认会显示“当前软解码”，如需用硬解码，请点击此按钮，页面会显示“当前硬解码”，点击开始播放，会以页面当前显示的软解或硬解运行。
-
-**2.3 iOS播放器**
-
-1. 安装SmartPlayer.ipa；
-* [大牛直播url] 进入系统后，在输入框输入需要播放的url，点击“进入播放页面”即可，停止的话，点击“返回”按钮，返回主页面，可重新选择其他url播放；
-* [纯音频url] 如需播放纯音频，请选择“纯音频”选项，然后，输入urlID，进入播放状态；
-* [软解码/硬解码]如需用硬解码，请选择“硬解”，然后进入播放页面；
-* [rtsp播放] 如需测试rtsp url，请编译工程，设置全的url即可；
-* [rtsp播放] rtsp模式下，支持TCP/UDP模式切换；
-* [静音功能] 无论播放rtmp还是rtsp，播放过程中，可以实时静音/取消静音；
-* [url快速切换] 如在工程设置多个url，可快速切换不同url；
-* [返回] 播放另外一个url，点击返回按钮，到上级页面。
-
-**2.4 Web播放器**
-
-http://218.25.89.108:8080/files/SmartPlayer1Stream/SmartPlayer.html
-
-在输入框中，清除老的url，输入推流的url，如 rtmp://218.25.89.108:1935/hls/stream123456（以推流端生成的URL为准）。
 
 **[上层源码目录]**
 
