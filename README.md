@@ -56,6 +56,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [文档] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.2.pdf)
 
+- [x] [文档] [**大牛直播连麦使用说明(windows windows或windows与android)**](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(windows-windows%E6%88%96windows%E4%B8%8Eandroid))
+
 - [x] [demo测试程序] [Windows推送、播放、合成、导播Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-06-27.zip)
 
 - [x] [SDK demo工程] [**Windows C#版本推送、播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/Daniulive-Windows-C%23-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-2017-06-28.zip)
