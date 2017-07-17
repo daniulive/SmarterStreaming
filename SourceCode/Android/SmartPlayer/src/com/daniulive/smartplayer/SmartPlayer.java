@@ -10,17 +10,20 @@
 
 package com.daniulive.smartplayer;
 
+import java.io.File;
 import java.nio.ByteBuffer;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import android.annotation.SuppressLint;
 import android.app.Activity;  
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.SurfaceView;
-  
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
@@ -29,7 +32,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.eventhandle.SmartEventCallback;
 import com.videoengine.*;
 
@@ -63,11 +65,14 @@ public class SmartPlayer extends Activity {
 	
 	private String switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
 	
+	private String imageSavePath;
+	
 	//Button btnPopInputText;
 	Button btnPopInputUrl;
 	Button btnMute;
     Button btnStartStopPlayback;
 	Button btnHardwareDecoder;
+	Button btnCaptureImage;
 	Button btnFastStartup;
 	Button btnSetPlayBuffer;
 	Button btnSwitchUrl;
@@ -91,6 +96,11 @@ public class SmartPlayer extends Activity {
       libPlayer = new SmartPlayerJni();
          
       myContext = this.getApplicationContext();
+      
+      //设置快照路径(具体路径可自行设置)
+      File storageDir = getOwnCacheDirectory(myContext, "daniuimage");//创建保存的路径
+      imageSavePath = storageDir.getPath();
+      Log.i(TAG, "快照存储路径: " + imageSavePath);
 
 	  boolean bViewCreated = CreateView();
 	    
@@ -340,11 +350,17 @@ public class SmartPlayer extends Activity {
         {
         	btnHardwareDecoder.setText("当前硬解码");
         }
+      
+        /*capture image button */
+        btnCaptureImage = new Button(this);
+        
+        btnCaptureImage.setText("快照");
+        btnCaptureImage.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        lLinearLayout.addView(btnCaptureImage);
         
         btnHardwareDecoder.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnHardwareDecoder);
-        
-        
+      
         // buffer setting++
         
         LinearLayout bufferLinearLayout = new LinearLayout(this);
@@ -498,6 +514,22 @@ public class SmartPlayer extends Activity {
        });
         
         
+        btnCaptureImage.setOnClickListener(new Button.OnClickListener() 
+        { 
+       	 @SuppressLint("SimpleDateFormat")
+		public void onClick(View v) { 
+       		 
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String imageFileName = "dn_" + timeStamp;	//创建以时间命名的文件名称
+        	
+            String imagePath = imageSavePath + "/" + imageFileName + ".png";
+            
+       		Log.i(TAG, "imagePath:" + imagePath);
+       		
+       		libPlayer.SmartPlayerSaveCurImage(playerHandle, imagePath);
+    	 }
+       });
+        
         btnSetPlayBuffer.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) { 
         		PopSettingBufferDialog();
@@ -573,6 +605,7 @@ public class SmartPlayer extends Activity {
             	      
             	      libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup?1:0);
             	      
+            	      libPlayer.SmartPlayerSaveImageFlag(playerHandle, 1);
             	      
             	      if ( isMute )
             	      {
@@ -876,6 +909,19 @@ public class SmartPlayer extends Activity {
                 	 break;
                  case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_SWITCH_URL:
                 	 Log.i(TAG, "切换播放URL。。");
+                	 break;
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_CAPTURE_IMAGE:
+                	 Log.i(TAG, "快照: " + param1 + " 路径：" + param3);
+                	 
+                	 if(param1 == 0)
+                	 {
+                		 Log.i(TAG, "截取快照成功。."); 
+                	 }
+                	 else
+                	 {
+                		 Log.i(TAG, "截取快照失败。."); 
+                	 }
+                	 break;
              }
     	 }
     }
@@ -958,5 +1004,34 @@ public class SmartPlayer extends Activity {
 		super.onDestroy();
     	finish();
     	System.exit(0);
+    }
+	
+	/**
+     * 根据目录创建文件夹
+     * @param context
+     * @param cacheDir
+     * @return
+     */
+    public static File getOwnCacheDirectory(Context context, String cacheDir) {
+        File appCacheDir = null;
+        //判断sd卡正常挂载并且拥有权限的时候创建文件
+        if ( Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) && hasExternalStoragePermission(context)) {
+            appCacheDir = new File(Environment.getExternalStorageDirectory(), cacheDir);
+        	Log.i(TAG, "appCacheDir: " + appCacheDir);
+        }
+        if (appCacheDir == null || !appCacheDir.exists() && !appCacheDir.mkdirs()) {
+            appCacheDir = context.getCacheDir();
+        }
+        return appCacheDir;
+    }
+
+    /**
+     * 检查是否有权限
+     * @param context
+     * @return
+     */
+    private static boolean hasExternalStoragePermission(Context context) {
+        int perm = context.checkCallingOrSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+        return perm == 0;
     }
 }

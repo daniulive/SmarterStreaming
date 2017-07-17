@@ -292,6 +292,23 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetRecorderFileMaxSize(int size);
     
+	 /**
+	  * Set if needs to save image during publishing stream
+	  *
+	  * @param is_save_image: if with 1, it will save current image via the interface of SmartPlayerSaveImage(), if with 0: does not it
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPublisherSaveImageFlag(int is_save_image);
+		  
+	 /**
+	  * Save current image during publishing stream
+	  *
+	  * @param imageName: image name, which including fully path, "/sdcard/daniuliveimage/daniu.png", etc.
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPublisherSaveCurImage(String imageName);
     
     /**
      * Set rtmp PublishingType
@@ -301,8 +318,7 @@ public class SmartPublisherJni {
      * @return {0} if successful
      */
     public native int SetRtmpPublishingType(int type);
-    
-    
+        
     /**
 	* Set publish stream url.
 	* 
