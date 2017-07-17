@@ -5,7 +5,7 @@
  * Github: https://github.com/daniulive/SmarterStreaming
  * 
  * Created by DaniuLive on 2015/09/20.
- * Copyright 漏 2014~2016 DaniuLive. All rights reserved.
+ * Copyright © 2014~2016 DaniuLive. All rights reserved.
  */
 
 package com.daniulive.smartpublisher;
@@ -170,11 +170,11 @@ public class SmartPublisherJni {
     public native int SmartPublisherSetSWVideoEncoderSpeed(int speed);
 	
      /**
-     * Set Clipping Mode: 璁剧疆瑁佸壀妯″紡(浠呯敤浜�640*480鍒嗚鲸鐜�, 瑁佸壀涓昏鐢ㄤ簬绉诲姩绔楂橀�傞厤)
+     * Set Clipping Mode: 设置裁剪模式(仅用于640*480分辨率, 裁剪主要用于移动端宽高适配)
      *
      * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
      *
-     * @param mode: 0: 闈炶鍓ā寮� 1:瑁佸壀妯″紡(濡備笉璁剧疆, 榛樿瑁佸壀妯″紡)
+     * @param mode: 0: 非裁剪模式 1:裁剪模式(如不设置, 默认裁剪模式)
      *
      * @return {0} if successful
      */
@@ -292,6 +292,23 @@ public class SmartPublisherJni {
      */
     public native int SmartPublisherSetRecorderFileMaxSize(int size);
     
+	 /**
+	  * Set if needs to save image during publishing stream
+	  *
+	  * @param is_save_image: if with 1, it will save current image via the interface of SmartPlayerSaveImage(), if with 0: does not it
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPublisherSaveImageFlag(int is_save_image);
+		  
+	 /**
+	  * Save current image during publishing stream
+	  *
+	  * @param imageName: image name, which including fully path, "/sdcard/daniuliveimage/daniu.png", etc.
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPublisherSaveCurImage(String imageName);
     
     /**
      * Set rtmp PublishingType
@@ -301,8 +318,7 @@ public class SmartPublisherJni {
      * @return {0} if successful
      */
     public native int SetRtmpPublishingType(int type);
-    
-    
+        
     /**
 	* Set publish stream url.
 	* 
@@ -368,7 +384,7 @@ public class SmartPublisherJni {
 	/**
 	 * Set live video data(no encoded data).
 	 *
-	 * @param data: ABGR flip vertical(鍨傜洿缈昏浆) data
+	 * @param data: ABGR flip vertical(垂直翻转) data
 	 *
 	 * @param rowStride: stride information
 	 *

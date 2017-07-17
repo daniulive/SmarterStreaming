@@ -26,6 +26,7 @@ import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -46,8 +47,12 @@ import android.hardware.Camera.AutoFocusCallback;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -115,6 +120,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private Button btnStartPush;
 	private Button btnStartRecorder;
+	private Button btnCaptureImage;
 	
 	private SurfaceView mSurfaceView = null;  
     private SurfaceHolder mSurfaceHolder = null;  
@@ -169,8 +175,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private int sw_video_encoder_speed = 6;
 	
 	private boolean is_hardware_encoder = false;
-	
-    private Context myContext; 
+		
+    private Context myContext;
+    
+	private String imageSavePath;
     
 	static {  
 		System.loadLibrary("SmartPublisher");
@@ -204,6 +212,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         setContentView(R.layout.activity_main);
 
         myContext = this.getApplicationContext();
+        
+        //设置快照路径(具体路径可自行设置)
+        File storageDir = getOwnCacheDirectory(myContext, "daniuimage");//创建保存的路径
+        imageSavePath = storageDir.getPath();
+        Log.i(TAG, "快照存储路径: " + imageSavePath);
         
 		try {
 
@@ -464,6 +477,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         
         btnStartRecorder = (Button)findViewById(R.id.button_start_recorder);
         btnStartRecorder.setOnClickListener(new ButtonStartRecorderListener());
+        
+        btnCaptureImage = (Button)findViewById(R.id.button_capture_image);
+        btnCaptureImage.setOnClickListener(new ButtonCaptureImageListener());
         
         imgSwitchCamera = (ImageView)findViewById(R.id.button_switchCamera);
         imgSwitchCamera.setOnClickListener(new SwitchCameraListener());
@@ -737,6 +753,19 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 	 Log.i(TAG, "发送时延: " + param1 + " 帧数:" + param2);
                 	 txt = "收到发送时延..";
                 	 break;
+                	 
+                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE:
+                	 Log.i(TAG, "快照: " + param1 + " 路径：" + param3);
+                	 
+                	 if(param1 == 0)
+                	 {
+                		 txt = "截取快照成功。."; 
+                	 }
+                	 else
+                	 {
+                		 txt = "截取快照失败。."; 
+                	 }
+                	 break;
              }
              
              String str = "当前回调状态：" + txt;
@@ -936,6 +965,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				libPublisher.SmartPublisherSetSWVideoEncoderProfile(sw_video_encoder_profile);
 				
 				libPublisher.SmartPublisherSetSWVideoEncoderSpeed(sw_video_encoder_speed);
+				
+				libPublisher.SmartPublisherSaveImageFlag(1);
 							    
 			    //libPublisher.SetRtmpPublishingType(0);
 			    
@@ -1101,6 +1132,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		// libPublisher.SmartPublisherSetFPS(15);
 
 		// libPublisher.SmartPublisherSetSWVideoBitRate(600, 1200);
+		
+		libPublisher.SmartPublisherSaveImageFlag(1);
     }
     
     
@@ -1222,7 +1255,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	
         	if( libPublisher == null )
         		return;
-        	
+        	        	
         	isRecording = true;
         	
         	if ( !isPushing )
@@ -1257,7 +1290,22 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             btnStartRecorder.setText(" 停止录像");
         }
     };
-    
+        
+    class ButtonCaptureImageListener implements OnClickListener
+    {
+        @SuppressLint("SimpleDateFormat")
+		public void onClick(View v)
+        {   	      		
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String imageFileName = "dn_" + timeStamp;	//创建以时间命名的文件名称
+        	
+            String imagePath = imageSavePath + "/" + imageFileName + ".png";
+            
+       		Log.i(TAG, "imagePath:" + imagePath);
+       		
+       		libPublisher.SmartPublisherSaveCurImage(imagePath);
+        }
+    };
     
     private void stop()
     {
@@ -1658,6 +1706,35 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	}
     	
     	return hwEncoderKpbs;
+    }
+    
+	/**
+     * 根据目录创建文件夹
+     * @param context
+     * @param cacheDir
+     * @return
+     */
+    public static File getOwnCacheDirectory(Context context, String cacheDir) {
+        File appCacheDir = null;
+        //判断sd卡正常挂载并且拥有权限的时候创建文件
+        if ( Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) && hasExternalStoragePermission(context)) {
+            appCacheDir = new File(Environment.getExternalStorageDirectory(), cacheDir);
+        	Log.i(TAG, "appCacheDir: " + appCacheDir);
+        }
+        if (appCacheDir == null || !appCacheDir.exists() && !appCacheDir.mkdirs()) {
+            appCacheDir = context.getCacheDir();
+        }
+        return appCacheDir;
+    }
+
+    /**
+     * 检查是否有权限
+     * @param context
+     * @return
+     */
+    private static boolean hasExternalStoragePermission(Context context) {
+        int perm = context.checkCallingOrSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE");
+        return perm == 0;
     }
    
 }

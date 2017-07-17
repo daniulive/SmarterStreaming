@@ -150,7 +150,29 @@ public class SmartPlayerJni {
 	 * @return {0} if successful
 	 */
 	 public native int SmartPlayerSetOrientation(long handle, int surOrg);
-		  	
+	 
+	 /**
+	  * Set if needs to save image during playback stream
+	  *
+	  * @param handle: return value from SmartPlayerInit()
+	  *
+	  * @param is_save_image: if with 1, it will save current image via the interface of SmartPlayerSaveCurImage(), if with 0: does not it
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPlayerSaveImageFlag(long handle, int is_save_image);
+		  
+	 /**
+	  * Save current image during playback stream
+	  *
+	  * @param handle: return value from SmartPlayerInit()
+	  *
+	  * @param imageName: image name, which including fully path, "/sdcard/daniuliveimage/daniu.png", etc.
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPlayerSaveCurImage(long handle, String imageName);
+	 
 	 /**
 	 * Start playback stream
 	 *
