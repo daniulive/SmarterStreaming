@@ -33,25 +33,44 @@
     UIButton    *swapCamerasButton;         //前后摄像头切换
     UIButton    *muteButton;                //静音控制
     UIButton    *mirrorSwitchButton;        //镜像切换
+    UIButton    *publisherStreamButton;     //NEW: 推送和录像功能分离，推送按钮
+    UIButton    *recordStreamButton;        //NEW: 推送和录像功能分离，录像按钮
+    UIButton    *saveImageButton;           //快照按钮
     UIButton    *beautyLevelButton;         //美颜级别按钮
-    UIButton    *publisherButton;           //推流控制
     UIButton    *backSettingsButton;        //返回到设置分辨率页面
-    
     UILabel     *textModeLabel;             //文字提示
     DNVideoStreamingQuality videoQuality;   //分辨率选择
     NSString    *copyRights;
     NSInteger   audio_opt_;                 //audio选项 0 1 2
     NSInteger   video_opt_;                 //video选项 0 1 2
-    Boolean     is_recorder;                //默认不录像，如果设为true，则录像
     Boolean     is_beauty;                  //是否美颜，默认美颜
     Boolean     is_mute;                    //是否静音
     Boolean     is_mirror;                  //是否镜像模式
     CGFloat     screenWidth;
     CGFloat     screenHeight;
     CGFloat     curBeautyLevel;             //美颜level
+    UIImage     *image_path;
+    NSString    *tmp_path;
 }
 
 @synthesize localPreview;
+
+//(本demo快照最终拷贝保存到iOS设备“照片”目录，实际保存位置可自行设置，或以应用场景为准)
+- (void)image: (UIImage *)image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    if (error != NULL) {
+        NSLog(@"保存图片到默认相册失败..");
+    }
+    else
+    {
+        NSLog(@"保存图片到默认相册成功..");
+    }
+    
+    //删除文件
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDelete=[fileManager removeItemAtPath:tmp_path error:nil];
+    NSLog(@"old file deleted: %d",isDelete);
+}
 
 - (NSInteger) handleSmartPublisherEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
 {
@@ -86,6 +105,23 @@
     {
         NSLog(@"[event]一个录像文件完成..文件名: %@", param3);
     }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE)
+    {
+        if ((int)param1 == 0)
+        {
+            NSLog(@"[event]快照成功: %@", param3);
+            
+            tmp_path = param3;
+            
+            image_path = [ UIImage imageNamed:param3];
+            
+            UIImageWriteToSavedPhotosAlbum(image_path, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        }
+        else
+        {
+            NSLog(@"[event]快照失败: %@", param3);
+        }
+    }
     else
         NSLog(@"[event]nID:%lx", (long)nID);
     
@@ -96,7 +132,6 @@
                 streamQuality:(DNVideoStreamingQuality)streamQuality
                      audioOpt:(NSInteger)audioOpt
                      videoOpt:(NSInteger)videoOpt
-                   isRecorder:(Boolean)isRecorder
                      isBeauty:(Boolean)isBeauty
 {
     self = [super init];
@@ -108,13 +143,12 @@
         videoQuality = streamQuality;
         audio_opt_  = audioOpt;
         video_opt_  = videoOpt;
-        is_recorder   = isRecorder;
         is_beauty = isBeauty;
         is_mute = false;
         is_mirror = true;   //默认镜像模式
     }
     
-    NSLog(@"[initParameter]videoQuality: %u, audio_opt: %ld, video_opt: %ld, is_recorder: %d",videoQuality, (long)audio_opt_, (long)video_opt_, is_recorder);
+    NSLog(@"[initParameter]videoQuality: %u, audio_opt: %ld, video_opt: %ld",videoQuality, (long)audio_opt_, (long)video_opt_);
     
     return self;
 }
@@ -173,6 +207,9 @@
     [_smart_publisher_sdk SmartPublisherSetClippingMode:clip_mode];
     */
     
+    NSInteger image_flag = 1;
+    [_smart_publisher_sdk SmartPublisherSaveImageFlag:image_flag];
+    
     DN_BEAUTY_TYPE beauty_type;
     
     if (is_beauty)
@@ -197,31 +234,6 @@
         
         _smart_publisher_sdk = nil;
         return;
-    }
-    
-    //录像控制
-    if([_smart_publisher_sdk SmartPublisherSetRecorder:is_recorder] != DANIULIVE_RETURN_OK)
-    {
-        NSLog(@"Call SmartPublisherSetRecorder failed..");
-    }
-    
-    if (is_recorder)
-    {
-        //设置录像目录
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *recorderDir = [paths objectAtIndex:0];
-        
-        if([_smart_publisher_sdk SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK)
-        {
-            NSLog(@"Call SmartPublisherInit failed..");
-        }
-        
-        //每个录像文件大小
-        NSInteger size = 200;
-        if([_smart_publisher_sdk SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK)
-        {
-            NSLog(@"Call SmartPublisherInit failed..");
-        }
     }
     
     if(video_opt_ == 1)
@@ -271,11 +283,26 @@
     
     CGFloat lineWidth = swapCamerasButton.frame.size.width * 0.12f;
     
+    //快照按钮
+    saveImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    saveImageButton.frame = CGRectMake(45, self.view.frame.size.height - 480, 120, 60);
+    saveImageButton.center = CGPointMake(self.view.frame.size.width / 6, saveImageButton.frame.origin.y + saveImageButton.frame.size.height / 2);
+    
+    saveImageButton.layer.cornerRadius = saveImageButton.frame.size.width / 2;
+    saveImageButton.layer.borderColor = [UIColor greenColor].CGColor;
+    saveImageButton.layer.borderWidth = lineWidth;
+    
+    [saveImageButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [saveImageButton setTitle:@"快照" forState:UIControlStateNormal];
+    
+    [saveImageButton addTarget:self action:@selector(SaveImageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveImageButton];
+    
     //美颜level设置
     if(is_beauty)
     {
         beautyLevelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 360, 120, 60);
+        beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 420, 120, 60);
         beautyLevelButton.center = CGPointMake(self.view.frame.size.width / 6, beautyLevelButton.frame.origin.y + beautyLevelButton.frame.size.height / 2);
         
         beautyLevelButton.layer.cornerRadius = beautyLevelButton.frame.size.width / 2;
@@ -291,7 +318,7 @@
     
     //镜像切换
     mirrorSwitchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    mirrorSwitchButton.frame = CGRectMake(45, self.view.frame.size.height - 300, 120, 60);
+    mirrorSwitchButton.frame = CGRectMake(45, self.view.frame.size.height - 360, 120, 60);
     mirrorSwitchButton.center = CGPointMake(self.view.frame.size.width / 6, mirrorSwitchButton.frame.origin.y + mirrorSwitchButton.frame.size.height / 2);
     
     mirrorSwitchButton.layer.cornerRadius = mirrorSwitchButton.frame.size.width / 2;
@@ -306,7 +333,7 @@
     
     //muteButton
     muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    muteButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 120, 60);
+    muteButton.frame = CGRectMake(45, self.view.frame.size.height - 300, 120, 60);
     muteButton.center = CGPointMake(self.view.frame.size.width / 6, muteButton.frame.origin.y + muteButton.frame.size.height / 2);
     
     muteButton.layer.cornerRadius = muteButton.frame.size.width / 2;
@@ -321,7 +348,7 @@
     
     //前后摄像头交换
     swapCamerasButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    swapCamerasButton.frame = CGRectMake(45, self.view.frame.size.height - 180, 120, 60);
+    swapCamerasButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 120, 60);
     swapCamerasButton.center = CGPointMake(self.view.frame.size.width / 6, swapCamerasButton.frame.origin.y + swapCamerasButton.frame.size.height / 2);
     
     swapCamerasButton.layer.cornerRadius = swapCamerasButton.frame.size.width / 2;
@@ -338,23 +365,42 @@
     [swapCamerasButton addTarget:self action:@selector(swapCameraBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:swapCamerasButton];
     
-    publisherButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    publisherButton.frame = CGRectMake(45, self.view.frame.size.height - 120, 60, 60);
-    publisherButton.center = CGPointMake(self.view.frame.size.width / 6, publisherButton.frame.origin.y + publisherButton.frame.size.height / 2);
+    publisherStreamButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    publisherStreamButton.frame = CGRectMake(45, self.view.frame.size.height - 180, 120, 60);
+    publisherStreamButton.center = CGPointMake(self.view.frame.size.width / 6, publisherStreamButton.frame.origin.y + publisherStreamButton.frame.size.height / 2);
     
-    publisherButton.layer.cornerRadius = publisherButton.frame.size.width / 2;
-    publisherButton.layer.borderColor = [UIColor greenColor].CGColor;
-    publisherButton.layer.borderWidth = lineWidth;
+    publisherStreamButton.layer.cornerRadius = publisherStreamButton.frame.size.width / 2;
+    publisherStreamButton.layer.borderColor = [UIColor greenColor].CGColor;
+    publisherStreamButton.layer.borderWidth = lineWidth;
     
-    [publisherButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [publisherButton setTitle:@"推流" forState:UIControlStateNormal];
+    [publisherStreamButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [publisherStreamButton setTitle:@"开推流" forState:UIControlStateNormal];
     
-    publisherButton.selected = NO;
-    [publisherButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    [publisherButton setTitle:@"停止" forState:UIControlStateSelected];
+    publisherStreamButton.selected = NO;
+    [publisherStreamButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [publisherStreamButton setTitle:@"关推流" forState:UIControlStateSelected];
     
-    [publisherButton addTarget:self action:@selector(publishStream:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:publisherButton];
+    [publisherStreamButton addTarget:self action:@selector(publisherStreamBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:publisherStreamButton];
+    
+    
+    recordStreamButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    recordStreamButton.frame = CGRectMake(45, self.view.frame.size.height - 120, 120, 60);
+    recordStreamButton.center = CGPointMake(self.view.frame.size.width / 6, recordStreamButton.frame.origin.y + recordStreamButton.frame.size.height / 2);
+    
+    recordStreamButton.layer.cornerRadius = recordStreamButton.frame.size.width / 2;
+    recordStreamButton.layer.borderColor = [UIColor greenColor].CGColor;
+    recordStreamButton.layer.borderWidth = lineWidth;
+    
+    [recordStreamButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [recordStreamButton setTitle:@"开录像" forState:UIControlStateNormal];
+    
+    recordStreamButton.selected = NO;
+    [recordStreamButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [recordStreamButton setTitle:@"关录像" forState:UIControlStateSelected];
+    
+    [recordStreamButton addTarget:self action:@selector(recordStreamBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:recordStreamButton];
     
     backSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backSettingsButton.frame = CGRectMake(45, self.view.frame.size.height - 60, 60, 60);
@@ -395,6 +441,149 @@
     }];
     if (success ==NO ) {
         return;
+    }
+}
+
+- (void)publisherStreamBtn:(UIButton *)button{
+    NSLog(@"publish Stream only++");
+    
+    button.selected = !button.selected;
+    
+    if (button.selected)
+    {
+        NSLog(@"Run into publisherStreamBtn, start publisher only..");
+        
+        //NSInteger type = 0;
+        
+        //[_smart_publisher_sdk SmartPublisherSetRtmpPublishingType:type];
+        
+        NSLog(@"publishURL: %@",publishURL);
+        
+        NSString *baseText = @"推送URL：";
+        
+        textModeLabel.text = [ baseText stringByAppendingString:publishURL];
+        
+        NSInteger ret = [_smart_publisher_sdk SmartPublisherStartPublisher:publishURL];
+        
+        if(ret != DANIULIVE_RETURN_OK)
+        {
+            NSLog(@"Call SmartPublisherStartPublisher failed..ret:%ld", (long)ret);
+            
+            if (ret == DANIULIVE_RETURN_SDK_EXPIRED) {
+                textModeLabel.text = @"单推流失败，返回 DANIULIVE_RETURN_SDK_EXPIRED，请联系daniulive（QQ：89030985 or 2679481035）授权";
+            }
+            else
+            {
+                textModeLabel.text = @"单推流失败，返回 DANIULIVE_RETURN_ERROR";
+            }
+            
+            return;
+        }
+        else
+        {
+            medResolution.enabled = NO;
+            backSettingsButton.enabled = NO;
+            [publisherStreamButton setTitle:@"关推流" forState:UIControlStateNormal];
+        }
+        
+        //only for decoded audio processing test..
+        /*
+         char aac[] = {0x20, 0x66, 0x00, 0x01, 0x98, 0x00, 0x0e};
+         char aac_config[] = {0x12, 0x10};
+         [_mediaCapture SmartPublisherSetAudioSpecificConfig:aac_config len:2];
+         
+         unsigned long long tttt = 0;
+         for ( int i = 0; i < 1000; ++i )
+         {
+         tttt = i*23;
+         [_mediaCapture SmartPublisherOnReceivingAACData:aac len:7 isKeyFrame:1 timeStamp:tttt];
+         }
+         */
+        //end
+    }
+    else
+    {
+        NSLog(@"Run into publish Stream, stop publisher only..");
+        
+        medResolution.enabled = YES;
+        backSettingsButton.enabled = YES;
+        [_smart_publisher_sdk SmartPublisherStopPublisher];
+        [publisherStreamButton setTitle:@"开推流" forState:UIControlStateNormal];
+    }
+}
+
+- (void)recordStreamBtn:(UIButton *)button{
+    NSLog(@"record Stream only++");
+    
+    button.selected = !button.selected;
+    
+    if (button.selected)
+    {
+        NSInteger recorder = 1;
+        if([_smart_publisher_sdk SmartPublisherSetRecorder:recorder] != DANIULIVE_RETURN_OK)
+        {
+            NSLog(@"Call SmartPublisherSetRecorder failed..");
+        }
+        
+        //设置录像目录
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *recorderDir = [paths objectAtIndex:0];
+        
+        if([_smart_publisher_sdk SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK)
+        {
+            NSLog(@"Call SmartPublisherSetRecorderDirectory failed..");
+        }
+        
+        //每个录像文件大小
+        NSInteger size = 200;
+        if([_smart_publisher_sdk SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK)
+        {
+            NSLog(@"Call SmartPublisherSetRecorderFileMaxSize failed..");
+        }
+        
+        [_smart_publisher_sdk SmartPublisherStartRecorder];
+        [recordStreamButton setTitle:@"关录像" forState:UIControlStateNormal];
+        backSettingsButton.enabled = NO;
+    }
+    else
+    {
+        [_smart_publisher_sdk SmartPublisherStopRecorder];
+        [recordStreamButton setTitle:@"开录像" forState:UIControlStateNormal];
+        backSettingsButton.enabled = YES;
+    }
+}
+
+- (void)SaveImageBtn:(id)sender {
+    if ( _smart_publisher_sdk != nil )
+    {
+        //设置快照目录
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *saveImageDir = [paths objectAtIndex:0];
+        
+        NSLog(@"[SaveImageBtn] path: %@", saveImageDir);
+        
+        NSString* symbol = @"/";
+        
+        NSString* png = @".png";
+        
+        // 1.创建时间
+        NSDate *datenow = [NSDate date];
+        // 2.创建时间格式化
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // 3.指定格式
+        formatter.dateFormat = @"yyyyMMdd_HHmmss";
+        // 4.格式化时间
+        NSString *timeSp = [formatter stringFromDate:datenow];
+        
+        NSString* image_name =  [saveImageDir stringByAppendingString:symbol];
+        
+        image_name = [image_name stringByAppendingString:timeSp];
+        
+        image_name = [image_name stringByAppendingString:png];
+        
+        NSLog(@"[SaveImageBtn] image_name: %@", image_name);
+        
+        [_smart_publisher_sdk SmartPublisherSaveCurImage:image_name];
     }
 }
 
@@ -515,78 +704,6 @@
         
     }
     return YES;
-}
-
-
-- (void)publishStream:(UIButton *)button
-{
-    NSLog(@"publishStream++");
-    
-    button.selected = !button.selected;
-    
-    if (button.selected)
-    {
-        NSLog(@"Run into publishStream, start publisher..");
-        
-        //NSInteger type = 0;
-        
-        //[_smart_publisher_sdk SmartPublisherSetRtmpPublishingType:type];
-        
-        //publishURL = @"";     //如此设置时，只本地录制，不上传
-        
-        NSLog(@"publishURL: %@",publishURL);
-        
-        NSString *baseText = @"推送URL：";
-        
-        textModeLabel.text = [ baseText stringByAppendingString:publishURL];
-        
-        NSInteger ret = [_smart_publisher_sdk SmartPublisherStartPublish:publishURL];
-        
-        if(ret != DANIULIVE_RETURN_OK)
-        {
-            NSLog(@"Call SmartPublisherStartPublish failed..ret:%ld", (long)ret);
-            
-            if (ret == DANIULIVE_RETURN_SDK_EXPIRED) {
-                textModeLabel.text = @"推流失败，返回 DANIULIVE_RETURN_SDK_EXPIRED，请联系daniulive（QQ：89030985 or 2679481035）授权";
-            }
-            else
-            {
-                textModeLabel.text = @"推流失败，返回 DANIULIVE_RETURN_ERROR";
-            }
-            
-            return;
-        }
-        else
-        {
-            medResolution.enabled = NO;
-            backSettingsButton.enabled = NO;
-        }
-        
-        //only for decoded audio processing test..
-        /*
-         char aac[] = {0x20, 0x66, 0x00, 0x01, 0x98, 0x00, 0x0e};
-         char aac_config[] = {0x12, 0x10};
-         [_mediaCapture SmartPublisherSetAudioSpecificConfig:aac_config len:2];
-         
-         unsigned long long tttt = 0;
-         for ( int i = 0; i < 1000; ++i )
-         {
-         tttt = i*23;
-         [_mediaCapture SmartPublisherOnReceivingAACData:aac len:7 isKeyFrame:1 timeStamp:tttt];
-         }
-         */
-        //end
-        
-    }
-    else
-    {
-        NSLog(@"Run into publishStream, stop publisher..");
-        
-        medResolution.enabled = YES;
-        backSettingsButton.enabled = YES;
-        [_smart_publisher_sdk SmartPublisherStopPublish];
-    }
-    
 }
 
 - (void)backSettingsBtn:(UIButton *)button

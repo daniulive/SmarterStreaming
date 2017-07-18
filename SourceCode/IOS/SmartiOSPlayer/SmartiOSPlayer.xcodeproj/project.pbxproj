@@ -29,7 +29,6 @@
 		582FB8F81C886A3900CD6B44 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F71C886A3900CD6B44 /* AVFoundation.framework */; };
 		582FB8FA1C886A4500CD6B44 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F91C886A4500CD6B44 /* QuartzCore.framework */; };
 		582FB8FC1C886A5200CD6B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8FB1C886A5200CD6B44 /* AudioToolbox.framework */; };
-		582FB9001C886D4F00CD6B44 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8FF1C886D4F00CD6B44 /* libbz2.1.0.tbd */; };
 		582FB9011C886D9000CD6B44 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8EB1C8869CB00CD6B44 /* libz.tbd */; };
 		586930701D0AB2F10045421E /* libSmartPlayerSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5869306F1D0AB2F10045421E /* libSmartPlayerSDK.a */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		582FB8DC1C885FD100CD6B44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		582FB8DF1C885FD100CD6B44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582FB8E11C885FD100CD6B44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		582FB8E71C88699A00CD6B44 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		582FB8EB1C8869CB00CD6B44 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		582FB8ED1C8869D800CD6B44 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -64,7 +62,6 @@
 		582FB8F71C886A3900CD6B44 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		582FB8F91C886A4500CD6B44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		582FB8FB1C886A5200CD6B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		582FB8FF1C886D4F00CD6B44 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
 		5869306C1D0AB2E90045421E /* nt_event_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nt_event_define.h; sourceTree = "<group>"; };
 		5869306D1D0AB2E90045421E /* SmartPlayerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartPlayerSDK.h; sourceTree = "<group>"; };
 		5869306F1D0AB2F10045421E /* libSmartPlayerSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSmartPlayerSDK.a; sourceTree = "<group>"; };
@@ -78,7 +75,6 @@
 				0C38D92F1DCA1DFD0061F87A /* CoreMedia.framework in Frameworks */,
 				0C38D92D1DCA1DEC0061F87A /* VideoToolbox.framework in Frameworks */,
 				582FB9011C886D9000CD6B44 /* libz.tbd in Frameworks */,
-				582FB9001C886D4F00CD6B44 /* libbz2.1.0.tbd in Frameworks */,
 				582FB8FC1C886A5200CD6B44 /* AudioToolbox.framework in Frameworks */,
 				582FB8FA1C886A4500CD6B44 /* QuartzCore.framework in Frameworks */,
 				582FB8F81C886A3900CD6B44 /* AVFoundation.framework in Frameworks */,
@@ -94,15 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C38D92B1DCA1DEC0061F87A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */,
-				0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		582F76311CD716F1002E8F64 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +108,6 @@
 				586D8C371D1CF1C9004737FF /* framework */,
 				582FB8CF1C885FD100CD6B44 /* SmartiOSPlayer */,
 				582FB8CE1C885FD100CD6B44 /* Products */,
-				0C38D92B1DCA1DEC0061F87A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,7 +168,8 @@
 		586D8C371D1CF1C9004737FF /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				582FB8FF1C886D4F00CD6B44 /* libbz2.1.0.tbd */,
+				0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */,
+				0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */,
 				582FB8FB1C886A5200CD6B44 /* AudioToolbox.framework */,
 				582FB8F91C886A4500CD6B44 /* QuartzCore.framework */,
 				582FB8F71C886A3900CD6B44 /* AVFoundation.framework */,
@@ -192,7 +179,6 @@
 				582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */,
 				582FB8ED1C8869D800CD6B44 /* libiconv.tbd */,
 				582FB8EB1C8869CB00CD6B44 /* libz.tbd */,
-				582FB8E71C88699A00CD6B44 /* libstdc++.6.tbd */,
 			);
 			name = framework;
 			sourceTree = "<group>";

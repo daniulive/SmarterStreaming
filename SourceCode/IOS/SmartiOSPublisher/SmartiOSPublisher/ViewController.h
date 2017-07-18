@@ -20,7 +20,6 @@
                 streamQuality:(DNVideoStreamingQuality)streamQuality
                      audioOpt:(NSInteger)audioOpt
                      videoOpt:(NSInteger)videoOpt
-                   isRecorder:(Boolean)isRecorder
                      isBeauty:(Boolean)isBeauty;
 
 @end

@@ -2,11 +2,8 @@
 //  SmartPlayerSDK.h
 //  SmartPlayerSDK
 //
-//  GitHub: https://github.com/daniulive/SmarterStreaming
-//  website: http://www.daniulive.com
-//
-//  Created by daniulive on 2016/01/03.
-//  Copyright © 2015~2017 daniulive. All rights reserved.
+//  Created by daniuLive on 2016/01/03.
+//  Copyright © 2016年 daniuLive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -110,6 +107,27 @@ typedef enum DNErrorCode{
  */
 - (NSInteger)SmartPlayerSetPlayURL:(NSString *)url;
 
+/**
+ * Set if needs to save image during playback stream(设置是否启用快照功能)
+ *
+ * @param handle: return value from SmartPlayerInit()
+ *
+ * @param is_save_image: if with 1, it will save current image via the interface of SmartPlayerSaveCurImage(), if with 0: does not it
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSaveImageFlag:(NSInteger) is_save_image;
+
+/**
+ * Save current image during playback stream(快照)
+ *
+ * @param handle: return value from SmartPlayerInit()
+ *
+ * @param imageName: image name, which including fully path, "/sdcard/daniuliveimage/daniu.png", etc.
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSaveCurImage:(NSString*) imageName;
 
 /**
  * 开始播放

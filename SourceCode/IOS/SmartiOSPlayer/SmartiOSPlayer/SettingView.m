@@ -80,7 +80,7 @@
     CGFloat screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     
     //导航栏:直播设置
-    [self.navigationItem setTitle:@"大牛直播播放端V1.0.17.03.25"];
+    [self.navigationItem setTitle:@"大牛直播播放端V1.0.17.05.03"];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     
     

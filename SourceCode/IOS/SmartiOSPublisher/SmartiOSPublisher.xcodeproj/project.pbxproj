@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C41CFBC1EB1B5FC005BDF68 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C41CFBB1EB1B5FC005BDF68 /* libiconv.tbd */; };
+		0CC6E8941ECB22A2007CE1A9 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC6E8931ECB22A2007CE1A9 /* libbz2.1.0.tbd */; };
+		0CC6E8951ECB22B9007CE1A9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C41CFBD1EB1B603005BDF68 /* libz.tbd */; };
 		582605661CC3940A00F9E215 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582605651CC3940A00F9E215 /* VideoToolbox.framework */; };
 		586D8C2D1D1CDABD004737FF /* back_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 586D8C231D1CDABD004737FF /* back_color.png */; };
 		586D8C2E1D1CDABD004737FF /* backIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 586D8C241D1CDABD004737FF /* backIcon@2x.png */; };
@@ -33,9 +36,6 @@
 		58BE958D1CA4102A0031FFEE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE958C1CA4102A0031FFEE /* AVFoundation.framework */; };
 		58BE958F1CA4106E0031FFEE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */; };
 		58BE95911CA410810031FFEE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE95901CA410810031FFEE /* CoreMedia.framework */; };
-		58BE95931CA410920031FFEE /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE95921CA410920031FFEE /* libbz2.1.0.dylib */; };
-		58BE95951CA4109E0031FFEE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE95941CA4109E0031FFEE /* libz.dylib */; };
-		58BE95971CA410AB0031FFEE /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE95961CA410AB0031FFEE /* libiconv.dylib */; };
 		58BE963B1CA674450031FFEE /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */; };
 		58BE963D1CA6750A0031FFEE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963C1CA6750A0031FFEE /* libc++.tbd */; };
 		58BE96401CA6C1770031FFEE /* libSmartPublisherSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963F1CA6C1770031FFEE /* libSmartPublisherSDK.a */; };
@@ -43,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C41CFBB1EB1B5FC005BDF68 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		0C41CFBD1EB1B603005BDF68 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0CC6E8931ECB22A2007CE1A9 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
 		582605651CC3940A00F9E215 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		586D8C231D1CDABD004737FF /* back_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_color.png; sourceTree = "<group>"; };
 		586D8C241D1CDABD004737FF /* backIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backIcon@2x.png"; sourceTree = "<group>"; };
@@ -77,9 +80,6 @@
 		58BE958C1CA4102A0031FFEE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		58BE95901CA410810031FFEE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		58BE95921CA410920031FFEE /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
-		58BE95941CA4109E0031FFEE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		58BE95961CA410AB0031FFEE /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		58BE959C1CA412000031FFEE /* SmartPublisherSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartPublisherSDK.h; sourceTree = "<group>"; };
 		58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		58BE963C1CA6750A0031FFEE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -94,12 +94,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC6E8951ECB22B9007CE1A9 /* libz.tbd in Frameworks */,
+				0CC6E8941ECB22A2007CE1A9 /* libbz2.1.0.tbd in Frameworks */,
+				0C41CFBC1EB1B5FC005BDF68 /* libiconv.tbd in Frameworks */,
 				582605661CC3940A00F9E215 /* VideoToolbox.framework in Frameworks */,
 				58BE963D1CA6750A0031FFEE /* libc++.tbd in Frameworks */,
 				58BE963B1CA674450031FFEE /* libstdc++.6.0.9.tbd in Frameworks */,
-				58BE95971CA410AB0031FFEE /* libiconv.dylib in Frameworks */,
-				58BE95951CA4109E0031FFEE /* libz.dylib in Frameworks */,
-				58BE95931CA410920031FFEE /* libbz2.1.0.dylib in Frameworks */,
 				58BE95911CA410810031FFEE /* CoreMedia.framework in Frameworks */,
 				58BE958F1CA4106E0031FFEE /* AssetsLibrary.framework in Frameworks */,
 				58BE96401CA6C1770031FFEE /* libSmartPublisherSDK.a in Frameworks */,
@@ -113,6 +113,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C41CFBA1EB1B5FC005BDF68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C41CFBD1EB1B603005BDF68 /* libz.tbd */,
+				0C41CFBB1EB1B5FC005BDF68 /* libiconv.tbd */,
+				0CC6E8931ECB22A2007CE1A9 /* libbz2.1.0.tbd */,
+				58BE963C1CA6750A0031FFEE /* libc++.tbd */,
+				58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */,
+				582605651CC3940A00F9E215 /* VideoToolbox.framework */,
+				58BE95901CA410810031FFEE /* CoreMedia.framework */,
+				58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */,
+				58BE958C1CA4102A0031FFEE /* AVFoundation.framework */,
+				58BE958A1CA4100E0031FFEE /* UIKit.framework */,
+				58BE95881CA40FFF0031FFEE /* Foundation.framework */,
+				58BE95861CA40FEF0031FFEE /* AudioToolbox.framework */,
+				58BE95841CA40FE40031FFEE /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		586D8C221D1CDABD004737FF /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +175,7 @@
 			children = (
 				58BE95691CA40E820031FFEE /* SmartiOSPublisher */,
 				58BE95681CA40E820031FFEE /* Products */,
+				0C41CFBA1EB1B5FC005BDF68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,7 +197,6 @@
 				58D469D61CD48AF60095925A /* SettingView.m */,
 				58BE959A1CA412000031FFEE /* include */,
 				58BE959D1CA412000031FFEE /* libs */,
-				58BE95831CA40FCB0031FFEE /* frameworks */,
 				58BE956D1CA40E820031FFEE /* AppDelegate.h */,
 				58BE956E1CA40E820031FFEE /* AppDelegate.m */,
 				58BE95701CA40E820031FFEE /* ViewController.h */,
@@ -196,26 +216,6 @@
 				58BE956B1CA40E820031FFEE /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		58BE95831CA40FCB0031FFEE /* frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				58BE963C1CA6750A0031FFEE /* libc++.tbd */,
-				58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */,
-				582605651CC3940A00F9E215 /* VideoToolbox.framework */,
-				58BE95961CA410AB0031FFEE /* libiconv.dylib */,
-				58BE95941CA4109E0031FFEE /* libz.dylib */,
-				58BE95921CA410920031FFEE /* libbz2.1.0.dylib */,
-				58BE95901CA410810031FFEE /* CoreMedia.framework */,
-				58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */,
-				58BE958C1CA4102A0031FFEE /* AVFoundation.framework */,
-				58BE958A1CA4100E0031FFEE /* UIKit.framework */,
-				58BE95881CA40FFF0031FFEE /* Foundation.framework */,
-				58BE95861CA40FEF0031FFEE /* AudioToolbox.framework */,
-				58BE95841CA40FE40031FFEE /* Accelerate.framework */,
-			);
-			name = frameworks;
 			sourceTree = "<group>";
 		};
 		58BE959A1CA412000031FFEE /* include */ = {
@@ -267,6 +267,7 @@
 					58BE95661CA40E820031FFEE = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WHT83EA5Y4;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -443,8 +444,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yan jie ni (L58GFJB3ZD)";
-				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SmartiOSPublisher/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -455,7 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPublisher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
@@ -466,8 +467,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yan jie ni (L58GFJB3ZD)";
-				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM ="";
 				INFOPLIST_FILE = SmartiOSPublisher/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -479,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPublisher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = NiProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;

@@ -67,15 +67,15 @@ typedef enum DNCameraPosition{
  *
  * audio_opt和video_opt组合推送类型，如 audio_opt为1，video_opt为1，则代表推送音频和视频
  *
- * @param audio_opt:
- if with 0: 不推送音频
- if with 1: 推送音频
- if with 2: 推送外部编码后音频(目前仅支持AAC)
+ * @param audio_opt: 
+    if with 0: 不推送音频
+    if with 1: 推送音频
+    if with 2: 推送外部编码后音频(目前仅支持AAC)
  *
- * @param video_opt:
- if with 0: 不推送视频
- if with 1: 推送视频
- if with 2: 推送外部编码后视频(目前仅支持H.264),数据格式: 0000000167....
+ * @param video_opt: 
+    if with 0: 不推送视频
+    if with 1: 推送视频
+    if with 2: 推送外部编码后视频(目前仅支持H.264),数据格式: 0000000167....
  *
  * @return {0} if successful
  */
@@ -158,9 +158,9 @@ typedef enum DNCameraPosition{
  * 是否使用美颜
  *
  * beautyTpye:
- DN_BEAUTY_NONE = 0,             //!< 不加美颜
- DN_BEAUTY_INTERNAL_BEAUTY = 1,  //!< 内部daniulive基础美颜
- DN_BEAUTY_ADDITIONAL_BEAUTY = 2 //!< 第三方美颜对接
+    DN_BEAUTY_NONE = 0,             //!< 不加美颜
+    DN_BEAUTY_INTERNAL_BEAUTY = 1,  //!< 内部daniulive基础美颜
+    DN_BEAUTY_ADDITIONAL_BEAUTY = 2 //!< 第三方美颜对接
  *
  * <pre>beautyTpye为2(DN_BEAUTY_ADDITIONAL_BEAUTY)时，调用SmartPublisherSetExternalResolution和SmartPublisherSetExternalYuvData给数据</pre>
  *
@@ -316,6 +316,24 @@ typedef enum DNCameraPosition{
 - (NSInteger)SmartPublisherSetRecorderFileMaxSize:(NSInteger)size;
 
 /**
+ * Set if needs to save image during publishing stream(设置启用快照)
+ *
+ * @param is_save_image: if with 1, it will save current image via the interface of SmartPlayerSaveImage(), if with 0: does not it
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSaveImageFlag:(NSInteger)is_save_image;
+
+/**
+ * Save current image during publishing stream(实时快照)
+ *
+ * @param imageName: image name, which including fully path, "/sdcard/daniuliveimage/daniu.png", etc.
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSaveCurImage:(NSString*)imageName;
+
+/**
  * Set rtmp PublishingType
  *
  * @param type: 0:live, 1:record. please refer to rtmp specification Page 46
@@ -346,7 +364,7 @@ typedef enum DNCameraPosition{
  * 切换前后置摄像头
  *
  * 此接口仅当用daniulive采集视频数据时设置
- *
+ * 
  * <pre>必须在SmartPublisherStartCapture之后调用</pre>
  *
  * @return {0} if successful
@@ -368,6 +386,41 @@ typedef enum DNCameraPosition{
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherStopPublish;
+
+/*********增加新的接口 ++ ***************/
+/* 增加新接口是为了把推送和录像分离, 老的接口依然可用(SmartPublisherStartPublish, SmartPublisherStopPublish),
+ * 但是不要老接口和新接口混着用，这样结果是未定义的
+ */
+
+/**
+ * Start publish stream
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherStartPublisher:(NSString *)publisherURL;
+
+/**
+ * Stop publish stream
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherStopPublisher;
+
+/**
+ * Start recorder
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherStartRecorder;
+
+/**
+ * Stop recorder
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherStopRecorder;
+
+/*********增加新的接口  -- ***************/
 
 /**
  * 停止采集音视频数据

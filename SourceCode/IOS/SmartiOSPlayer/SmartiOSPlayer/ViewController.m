@@ -42,7 +42,27 @@
     UILabel         *backSettingLable;          //返回按钮 lable
     UIButton        *muteButton;                //静音 取消静音
     UIButton        *switchUrlButton;           //切换url按钮
+    UIButton        *saveImageButton;           //快照按钮
     
+    UIImage         *image_path;
+    NSString        *tmp_path;
+}
+
+//(本demo快照最终拷贝保存到iOS设备“照片”目录，实际保存位置可自行设置，或以应用场景为准)
+- (void)image: (UIImage *)image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    if (error != NULL) {
+        NSLog(@"保存图片到默认相册失败..");
+    }
+    else
+    {
+        NSLog(@"保存图片到默认相册成功..");
+    }
+    
+    //删除文件
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDelete=[fileManager removeItemAtPath:tmp_path error:nil];
+    NSLog(@"old file deleted: %d",isDelete);
 }
 
 - (NSInteger) handleSmartPlayerEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
@@ -82,6 +102,23 @@
     {
         NSLog(@"[event]快速切换url..");
     }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_CAPTURE_IMAGE)
+    {
+        if ((int)param1 == 0)
+        {
+            NSLog(@"[event]快照成功: %@", param3);
+            
+            tmp_path = param3;
+            
+            image_path = [ UIImage imageNamed:param3];
+            
+            UIImageWriteToSavedPhotosAlbum(image_path, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        }
+        else
+        {
+            NSLog(@"[event]快照失败: %@", param3);
+        }
+    }
     else
         NSLog(@"[event]nID:%lx", (long)nID);
     
@@ -112,7 +149,7 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2015~2017 www.daniulive.com v1.0.17.0421";
+    copyRights = @"Copyright 2015~2017 www.daniulive.com v1.0.17.0716";
     
     is_mute = NO;
     
@@ -202,10 +239,28 @@
     
     [_player SmartPlayerSetRTSPTcpMode:is_rtsp_tcp_mode_];
     
+    NSInteger image_flag = 1;
+    [_player SmartPlayerSaveImageFlag:image_flag];
+    
     [_player SmartPlayerStart];
 
     CGFloat lineWidth = muteButton.frame.size.width * 0.12f;
     
+    //快照按钮
+    saveImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    saveImageButton.frame = CGRectMake(45, playerHeight - 260, 120, 80);
+    saveImageButton.center = CGPointMake(self.view.frame.size.width / 6, saveImageButton.frame.origin.y + saveImageButton.frame.size.height / 2);
+    
+    saveImageButton.layer.cornerRadius = saveImageButton.frame.size.width / 2;
+    saveImageButton.layer.borderColor = [UIColor greenColor].CGColor;
+    saveImageButton.layer.borderWidth = lineWidth;
+    
+    [saveImageButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [saveImageButton setTitle:@"快照" forState:UIControlStateNormal];
+    
+    [saveImageButton addTarget:self action:@selector(SaveImageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveImageButton];
+
     //静音按钮
     muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     muteButton.frame = CGRectMake(45, playerHeight - 200, 120, 80);
@@ -250,7 +305,7 @@
     
     [backSettingsButton addTarget:self action:@selector(backSettingsBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backSettingsButton];
-     
+    
     // 创建文字提示 UILable
     textModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
     // 设置UILabel的背景色
@@ -265,8 +320,44 @@
     
     textModeLabel.text =  [str stringByAppendingString:copyRights];
     [self.view addSubview:textModeLabel];
-    
 }
+
+- (void)SaveImageBtn:(id)sender {
+    if ( _player != nil )
+    {
+        //设置快照目录
+        NSLog(@"[SaveImageBtn] path++");
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *saveImageDir = [paths objectAtIndex:0];
+        
+        NSLog(@"[SaveImageBtn] path: %@", saveImageDir);
+        
+        NSString* symbol = @"/";
+        
+        NSString* png = @".png";
+        
+        // 1.创建时间
+        NSDate *datenow = [NSDate date];
+        // 2.创建时间格式化
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // 3.指定格式
+        formatter.dateFormat = @"yyyyMMdd_HHmmss";
+        // 4.格式化时间
+        NSString *timeSp = [formatter stringFromDate:datenow];
+        
+        NSString* image_name =  [saveImageDir stringByAppendingString:symbol];
+        
+        image_name = [image_name stringByAppendingString:timeSp];
+        
+        image_name = [image_name stringByAppendingString:png];
+        
+        NSLog(@"[SaveImageBtn] image_name: %@", image_name);
+        
+        [_player SmartPlayerSaveCurImage:image_name];
+    }
+}
+
 
 - (void)MuteBtn:(id)sender {
     if ( _player != nil )
