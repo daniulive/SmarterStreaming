@@ -26,7 +26,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
 
-- [x] [**Windows推流端**] 实时录像模块；
+- [x] [**Windows推流端**] 实时录像模块/实时快照功能；
 
 - [x] [**Window播放器**] rtmp/rtsp超低延迟直播播放器;
 
@@ -60,9 +60,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程] [**Windows C#版本推送、播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/Daniulive-Windows-C%23-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-2017-06-28.zip)
 
-- [x] [SDK demo工程] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-05-31.zip)
+- [x] [SDK demo工程] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-07-17.zip)
 
-- [x] [SDK demo工程] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-04-21.zip)
+- [x] [SDK demo工程] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-07-18.zip)
 
 - [x] [SDK demo扩展工程] [android推送、播放SDK本地下载(android studio demo工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-03-29.zip)
 
@@ -84,7 +84,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [大牛直播iOS推流端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 - [x] [大牛直播iOS播放端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%92%AD%E6%94%BE%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 
-- [x] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.2.pdf)
+- [x] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.3.pdf)
 
 **大牛直播demo使用说明**
 
@@ -136,6 +136,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [对接服务器]完美支持自建服务器或CDN；
 - [x] [录像]**录像和推送完全分离，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；**
 - [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
+- [x] [快照]支持推送或录像过程中，**随时快照**。
 
 **Windows导播平台或多路合成、混音推流/录像**
 
@@ -176,6 +177,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [音频]android支持自动增益控制；
 - [x] [音频]android支持Speex推送；
 - [x] [音频]android支持Speex编码质量设置；
+- [x] [快照]支持推送或录像过程中，**随时快照**;
 - [x] iOS支持裁剪模式设置；
 - [x] 完美支持各个厂家CDN。
 
@@ -194,7 +196,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 音视频多种render机制;
 - [x] 支持播放过程中，'实时静音/取消静音';
 - [x] **支持播放url快速切换**；
-- [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+。
+- [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+；
+- [x] [快照]支持播放过程中，**随时快照**。
 
 **Web播放器在线测试**
 
