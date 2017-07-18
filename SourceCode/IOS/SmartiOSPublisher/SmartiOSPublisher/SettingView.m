@@ -24,7 +24,6 @@
     DNVideoStreamingQuality streamQuality;
     NSInteger               audio_opt_;
     NSInteger               video_opt_;
-    Boolean                 is_recorder_;
     Boolean                 is_beauty_;
 }
 
@@ -41,9 +40,6 @@
 @property (nonatomic, strong) UIButton *audioBtn;
 @property (nonatomic, strong) UIButton *videoBtn;
 
-@property (nonatomic, strong) UIButton *recorderBtn;
-@property (nonatomic, strong) UIButton *noRecorderBtn;
-
 @property (nonatomic, strong) UIButton *beautyBtn;
 @property (nonatomic, strong) UIButton *noBeautyBtn;
 
@@ -57,9 +53,6 @@
 @property (nonatomic, strong) UILabel *avLable;
 @property (nonatomic, strong) UILabel *audioLable;
 @property (nonatomic, strong) UILabel *videoLable;
-
-@property (nonatomic, strong) UILabel *recorderLable;
-@property (nonatomic, strong) UILabel *noRecorderLable;
 
 @property (nonatomic, strong) UILabel *beautyLable;
 @property (nonatomic, strong) UILabel *noBeautyLable;
@@ -79,8 +72,6 @@
 @synthesize avBtn;
 @synthesize audioBtn;
 @synthesize videoBtn;
-@synthesize recorderBtn;
-@synthesize noRecorderBtn;
 @synthesize beautyBtn;
 @synthesize noBeautyBtn;
 @synthesize lowQualityLable;
@@ -89,8 +80,6 @@
 @synthesize avLable;
 @synthesize audioLable;
 @synthesize videoLable;
-@synthesize recorderLable;
-@synthesize noRecorderLable;
 @synthesize beautyLable;
 @synthesize noBeautyLable;
 @synthesize interPublisherView;
@@ -117,8 +106,6 @@
     //默认采集音视频
     audio_opt_ = 1;
     video_opt_ = 1;
-    //默认不录像
-    is_recorder_  = false;
     //默认美颜
     is_beauty_ = true;
     
@@ -130,7 +117,7 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播推流端V1.0.17.04.21"];
+    [self.navigationItem setTitle:@"大牛直播推流端V1.0.17.05.05"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
 
@@ -212,45 +199,24 @@
     self.videoLable.text = @"纯视频";
     self.videoLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
 
-    //是否录像
-    self.noRecorderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.noRecorderBtn.tag = 1;
-    self.noRecorderBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80+80, 20, 20);
-    [self.noRecorderBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-    [self.noRecorderBtn addTarget:self action:@selector(recorderButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    
-    self.noRecorderLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80+80, 60, 20)];
-    self.noRecorderLable.text = @"不录像";
-    self.noRecorderLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-    
-    self.recorderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.recorderBtn.tag = 2;
-    
-    self.recorderBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80+80, 20, 20);
-    [self.recorderBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.recorderBtn addTarget:self action:@selector(recorderButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.recorderLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80, 80, 20)];
-    self.recorderLable.text = @"边推边录";
-    self.recorderLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-    
     //是否美颜
     self.beautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.beautyBtn.tag = 1;
-    self.beautyBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80+80+80, 20, 20);
+    self.beautyBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80+80, 20, 20);
     [self.beautyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
     [self.beautyBtn addTarget:self action:@selector(beautyButtonClicked:) forControlEvents:UIControlEventTouchDown];
     
-    self.beautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80+80+80, 60, 20)];
+    self.beautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80+80, 60, 20)];
     self.beautyLable.text = @"美颜";
     self.beautyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
     
     
     self.noBeautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.noBeautyBtn.tag = 2;
-    self.noBeautyBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80+80+80, 20, 20);
+    self.noBeautyBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80+80, 20, 20);
     [self.noBeautyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
     [self.noBeautyBtn addTarget:self action:@selector(beautyButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.noBeautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80+80, 80, 20)];
+    self.noBeautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80, 80, 20)];
     self.noBeautyLable.text = @"不美颜";
     self.noBeautyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
     
@@ -283,9 +249,6 @@
     [self.view addSubview:self.avBtn];
     [self.view addSubview:self.audioBtn];
     [self.view addSubview:self.videoBtn];
-    
-    [self.view addSubview:self.noRecorderBtn];
-    [self.view addSubview:self.recorderBtn];
 
     [self.view addSubview:self.beautyBtn];
     [self.view addSubview:self.noBeautyBtn];
@@ -299,9 +262,6 @@
     [self.view addSubview:self.avLable];
     [self.view addSubview:self.audioLable];
     [self.view addSubview:self.videoLable];
-    
-    [self.view addSubview:self.noRecorderLable];
-    [self.view addSubview:self.recorderLable];
     
     [self.view addSubview:self.beautyLable];
     [self.view addSubview:self.noBeautyLable];
@@ -390,28 +350,6 @@
     }
 }
 
-- (void)recorderButtonClicked:(id)sender {
-    
-    UIButton *recorderTypeBtn = (UIButton *)sender;
-    
-    switch (recorderTypeBtn.tag) {
-        case 1: {
-            [self.noRecorderBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.recorderBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            is_recorder_ = false;
-            break;
-        }
-        case 2: {
-            [self.noRecorderBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.recorderBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            is_recorder_ = true;
-            break;
-        }
-        default:
-            break;
-    }
-}
-
 - (void)beautyButtonClicked:(id)sender {
     
     UIButton *beautyTypeBtn = (UIButton *)sender;
@@ -465,7 +403,7 @@
     NSLog(@"publishURL:%@", publishURL);
    
     ViewController * coreView =[[ViewController alloc] initParameter:publishURL
-                                                       streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isRecorder:is_recorder_ isBeauty:is_beauty_];
+                                                       streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isBeauty:is_beauty_];
     [self presentViewController:coreView animated:YES completion:nil];
 }
 
