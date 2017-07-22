@@ -1,6 +1,6 @@
 **大牛直播 <a href="http://www.daniulive.com" target="_blank">www.daniulive.com</a>**
 
-专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-播放(支持rtmp/rtsp)业界**真正靠谱**的超低延迟(1秒左右)。
+专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-播放(支持rtmp/rtsp)，业界**真正靠谱**的超低延迟(1秒左右)。
 
 适用于**秀场直播、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、在线教育、微信直播、监控对接、活动现场直播、游戏直播**等场景。
   
@@ -56,7 +56,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-07-13.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-07-21.zip)
 
 - [x] [SDK demo工程] [**Windows C#版本推送、播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/Daniulive-Windows-C%23-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-2017-06-28.zip)
 
@@ -140,7 +140,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-07-13.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-07-21.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
@@ -189,6 +189,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持RTSP TCP/UDP模式切换；
 - [x] 支持播放端，buffer设置；
 - [x] 支持秒开模式；
+- [x] windows双击画面进入**全屏**模式；
 - [x] audio支持aac/speex/g.711；
 - [x] **android支持回调audio数据到上层（供二次处理之用）；**
 - [x] **android支持回调video YUV/RGB数据到上层（供二次处理之用）；**
