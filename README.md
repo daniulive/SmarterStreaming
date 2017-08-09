@@ -49,8 +49,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **本地下载**
 
 很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
-- [x] 大牛直播技术交流群1: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
-- [x] 大牛直播技术交流群2: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
+- [x] 大牛直播精英群: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
+- [x] 大牛直播技术交流群: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
 或者直接从私有服务器下载(Windows提供C#/C++ demo, android提供eclipse demo，iOS提供xcode demo)：
 
@@ -335,13 +335,13 @@ android：strings.xml：
 技术支持：QQ: 2679481035
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2679481035&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2679481035:51" alt="点我在线技术咨询" title="点我在线技术咨询"/></a>
 
-QQ群(大牛直播技术交流群1)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
-
-<img src="http://218.25.89.108:8080/files/image/erweima.png" width="302" alt="QQ交流群" />
-
-QQ群(大牛直播技术交流群2 精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
+QQ群(大牛直播精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 <img src="http://218.25.89.108:8080/files/image/erweima2.png" width="302" alt="QQ交流群" />
+
+QQ群(大牛直播技术交流群)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
+
+<img src="http://218.25.89.108:8080/files/image/erweima.png" width="302" alt="QQ交流群" />
 
 想了解更多信息，点击 
 [大牛直播十万个为什么](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%8D%81%E4%B8%87%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88)
