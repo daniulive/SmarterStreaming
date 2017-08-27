@@ -16,6 +16,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **模块概览**
 
+(http://218.25.89.108:8080/files/image/大牛直播SDK.png)
+
 - [x] [**Windows推流端-视频处理**] 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
 
 - [x] [**Windows推流端-音频处理**] 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
