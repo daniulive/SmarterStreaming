@@ -30,7 +30,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端**] 实时录像模块/实时快照功能；
 
-- [x] [**Window播放器**] rtmp/rtsp超低延迟直播播放器;
+- [x] [**Window播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
 
 - [x] [**Window互动**] Windows一对一互动(可windows与windows/android互动)；
 
@@ -58,7 +58,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-07-24.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-09.zip)
 
 - [x] [SDK demo工程] [**Windows C#版本推送、播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/Daniulive-Windows-C%23-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-2017-06-28.zip)
 
@@ -154,7 +154,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **windows播放器**
 
-- [x] 基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装；
+- [x] 基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装，支持player端截图、录像；
 
 **android推流/iOS推流**
 
