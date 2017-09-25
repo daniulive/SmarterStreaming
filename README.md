@@ -2,7 +2,7 @@
 
 专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-播放(支持rtmp/rtsp)，业界**真正靠谱**的超低延迟(1秒左右)。
 
-适用于**秀场直播、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、在线教育、微信直播、监控对接、活动现场直播、游戏直播**等场景。
+适用于**秀场直播、媒体移动直播、智能可视门禁对讲、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、在线教育、微信直播、监控对接、活动现场直播、游戏直播**等场景。
   
   SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
@@ -12,9 +12,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
-**最新release note**
-
-[release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)
+**[latest release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)**
 
 ===========================
 
@@ -30,11 +28,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端-连麦**] 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [**Windows多路转发模块**] 支持同时拉取多路rtmp/rtsp流，并超低延迟转发rtmp流推送出去；
+- [x] [**Windows多路转发模块**] 支持同时**拉取多路rtmp/rtsp流**，并超低延迟转发rtmp流推送出去；
 
 - [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
 
-- [x] [**Windows推流端**] 实时录像模块/实时快照功能；
+- [x] [**Windows推流端**] 实时**录像**模块/实时**快照**功能；
 
 - [x] [**Window播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
 
@@ -150,7 +148,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [对接服务器]完美支持自建服务器或CDN；
 - [x] [录像]**录像和推送完全分离，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；**
 - [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
-- [x] [快照]支持推送或录像过程中，**随时快照**。
+- [x] [快照]支持推送或录像过程中，**随时快照**；
+- [x] [扩展接口]推送端支持**H.264**数据接口输入；
+- [x] [扩展接口]推送端支持**AAC, Speex WB, PCMA, PCMU**数据接口输入。
 
 **Windows导播平台或多路合成、混音推流/录像**
 
@@ -176,7 +176,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **windows播放器**
 
-- [x] 基于C C++开发的低延迟低资源占用的windows cs架构的播放器（exe），支持RTSP/RTMP协议封装，支持player端截图、录像；
+- [x] 基于C++开发的低延迟低资源占用的windows cs架构的播放器（exe），对外提供C++/C#双重接口，支持RTSP/RTMP协议封装，支持player端截图、录像、YUV/RGB数据输出，时间戳输出等；
 
 **android推流/iOS推流**
 
@@ -215,6 +215,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
 - [x] audio支持aac/speex/g.711；
+- [x] **windows播放端sdk支持回调编码过的音视频数据到上层；**.
 - [x] **android支持回调audio数据到上层（供二次处理之用）；**
 - [x] **android支持回调video YUV/RGB数据到上层（供二次处理之用）；**
 - [x] 支持自定义播放布局;
