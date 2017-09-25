@@ -26,6 +26,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端-连麦**] 以标准协议为基础，完美支持Windows连麦；
 
+- [x] [**Windows多路转发模块**] 支持同时拉取多路rtmp/rtsp流，并超低延迟转发rtmp流推送出去；
+
 - [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
 
 - [x] [**Windows推流端**] 实时录像模块/实时快照功能；
@@ -152,7 +154,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-07-24.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
@@ -161,6 +163,16 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持导播过程中，随时切断某一路音视频或音频；
 - [x] 支持rtsp数据转rtmp推送出去；
 - [x] 音频混音同时选择“采集麦克风”+“采集扬声器”。
+
+**windows多路拉流转发模块**
+
+对应“SmartStreamRelayDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
+
+- [x] 支持拉取rtsp流；
+- [x] 支持拉取rtmp流；
+- [x] 支持拉取到的rtsp/rtmp随时本地预览、关闭预览；
+- [x] 支持拉取大的rtsp/rtmp流静音；
+- [x] 超低延迟转发拉取的rtsp/rtmp流到rtmp server。
 
 **windows播放器**
 
