@@ -48,6 +48,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Server**] SmarterStreamServer。
 
+**最新release note**
+
+[release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)
+
 **本地下载**
 
 很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
@@ -58,7 +62,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-09.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
 
 - [x] [SDK demo工程代码] [**Windows推流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2017-09-11.zip)
 
