@@ -12,6 +12,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
+**最新release note**
+
+[release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)
+
 ===========================
 
 **模块概览**
@@ -49,10 +53,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**iOS播放器**] rtmp/rtsp超低延迟直播播放器;
 
 - [x] [**Server**] SmarterStreamServer。
-
-**最新release note**
-
-[release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)
 
 **本地下载**
 
