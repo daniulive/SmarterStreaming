@@ -4,7 +4,7 @@
 
 适用于**秀场直播、媒体移动直播、智能可视门禁对讲、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、在线教育、微信直播、监控对接、活动现场直播、游戏直播**等场景。
   
-  SmarterStreaming, which is an excellent cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
+  SmarterStreaming, which is an excellent and powerful cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
