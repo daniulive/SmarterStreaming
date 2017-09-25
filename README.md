@@ -183,11 +183,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 对应“SmartStreamRelayDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
 
-- [x] 支持拉取rtsp流；
-- [x] 支持拉取rtmp流；
-- [x] 支持拉取到的rtsp/rtmp随时本地预览、关闭预览；
-- [x] 支持拉取大的rtsp/rtmp流静音；
-- [x] 超低延迟转发拉取的rtsp/rtmp流到rtmp server。
+- [x] [拉流]支持拉取rtsp流；
+- [x] [拉流]支持拉取rtmp流；
+- [x] [预览]支持拉取到的rtsp/rtmp随时本地预览、关闭预览；
+- [x] [拉流音频调节]支持拉取大的rtsp/rtmp流静音；
+- [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
 
 **windows播放器**
 
