@@ -155,7 +155,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] **[音频]支持噪音抑制功能；**
 - [x] **[音频]支持自动增益控制；**
 
-7. 音频推送类型选择
+7. 音视频推送类型选择
+- [x] **[视频]支持推送H.264；**
 - [x] **[音频]支持推送AAC；**
 - [x] **[音频]支持推送Speex；**
 - [x] **[音频]支持推送PCMA/PCMU；**
