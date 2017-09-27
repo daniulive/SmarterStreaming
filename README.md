@@ -2,7 +2,7 @@
 
 专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-播放(支持rtmp/rtsp)，业界**真正靠谱**的超低延迟(1秒左右)。
 
-适用于**秀场直播、媒体移动直播、智能可视门禁对讲、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、在线教育、微信直播、监控对接、活动现场直播、游戏直播**等场景。
+适用于**在线教育、智能可视门禁对讲、秀场直播、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播**等场景。
   
   SmarterStreaming, which is an excellent and powerful cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
@@ -24,11 +24,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端-音频处理**] 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
 
-- [x] [**Windows推流端-导播**] rtsp转rtmp，多路rtmp/rtsp流拉取，和屏幕、摄像头、本地音频实时导播模块；
+- [x] [**Windows推流端-导播**] 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；**多路流合成一路**实时导播推送；
 
 - [x] [**Windows推流端-连麦**] 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [**Windows多路转发模块**] 支持同时**拉取多路rtmp/rtsp流**，并超低延迟转发rtmp流推送出去；
+- [x] [**Windows多路转发模块**] 支持同时**多路拉取rtmp/rtsp流，并分别转发到服务器**；
 
 - [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
 
@@ -36,7 +36,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Window播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
 
-- [x] [**Window互动**] Windows一对一互动(可windows与windows/android互动)；
+- [x] [**Window互动**] Windows一对一互动(可windows与windows/android/iOS互动)；
 
 - [x] [**Android推流端**] Android屏幕、摄像头推流/录像模块;
 
@@ -156,14 +156,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] **[音频]支持自动增益控制；**
 
 7. 音频推送类型选择
-- [x] **[音频]支持Speex推送；**
-- [x] **[音频]Speex编码质量设置；**
+- [x] **[音频]支持推送AAC；**
+- [x] **[音频]支持推送Speex；**
+- [x] **[音频]支持推送PCMA/PCMU；**
 
 8. 音视频类型、静音、快照、录像等
-- [x] [音视频]支持纯音频、纯视频、音视频推送；
+- [x] [音视频]支持**纯音频、纯视频、音视频**推送；
 - [x] [音频]推送过程中实时静音/取消静音；
 - [x] [对接服务器]完美支持自建服务器或CDN；
-- [x] [录像]**录像和推送完全分离，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；**
+- [x] [录像]**录像和推送完全分离**，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
 - [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
 - [x] [快照]支持推送或录像过程中，**随时快照**；
 
@@ -186,12 +187,18 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [拉流]支持拉取rtsp流；
 - [x] [拉流]支持拉取rtmp流；
 - [x] [预览]支持拉取到的rtsp/rtmp随时本地预览、关闭预览；
-- [x] [拉流音频调节]支持拉取大的rtsp/rtmp流静音；
+- [x] [拉流音频调节]支持拉取的rtsp/rtmp流静音；
 - [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
 
 **windows播放器**
 
-- [x] 基于C++开发的低延迟低资源占用的windows cs架构的播放器（exe），对外提供C++/C#双重接口，支持RTSP/RTMP协议封装，支持player端截图、录像、YUV/RGB数据输出，时间戳输出等；
+- [x] 基于C++开发的低延迟低资源占用的windows cs架构的播放器（exe）；
+- [x] 对外提供C++/C#双重接口；
+- [x] 支持RTSP/RTMP协议封装；
+- [x] 支持player端截图；
+- [x] 支持player端录像（可只录像不播放，或只播放不录像，或同时）；
+- [x] 支持YUV/RGB数据回调；
+- [x] 支持时间戳回调；
 
 **android推流/iOS推流**
 
@@ -246,12 +253,12 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 在输入框中，清除老的url，输入推流的url，如 rtmp://player.daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
 
-**windows/windows或windows/android一对一互动**
+**windows/windows或windows/android/iOS一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”；
 - [x] [android] 可以边推送边播放，demo请参见 [https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation)
 
-**windows/windows或windows与android连麦**
+**windows/windows或windows与android/iOS连麦**
 
 完美支持标准协议的windows与windows、windows与android连麦（Windows作为主体端）。
 
