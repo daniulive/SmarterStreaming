@@ -44,11 +44,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Android播放器**] rtmp/rtsp超低延迟直播播放器;
 
-- [x] [**Android互动**] Android一对一互动(可android与windows/android互动)；
+- [x] [**Android互动**] Android一对一互动(可android与windows/android/iOS互动)；
 
 - [x] [**iOS推流端**] iOS摄像头推流/录像;
 
 - [x] [**iOS播放器**] rtmp/rtsp超低延迟直播播放器;
+
+- [x] [**iOS互动**] iOS一对一互动(可iOS与windows/android/iOS互动)；
 
 - [x] [**Server**] SmarterStreamServer。
 
