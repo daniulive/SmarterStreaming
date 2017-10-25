@@ -64,7 +64,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-10-25.zip)
+
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版64位-Beta版-2017-10-25.zip)
 
 - [x] [SDK demo工程代码] [**Windows推流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2017-09-11.zip)
 
@@ -185,7 +187,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **windows多路拉流转发模块**
 
-对应“SmartStreamRelayDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
+对应“SmartStreamRelayDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-10-25.zip)
 
 - [x] [拉流]支持拉取rtsp流；
 - [x] [拉流]支持拉取rtmp流；
@@ -202,6 +204,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持player端录像（可只录像不播放，或只播放不录像，或同时）；
 - [x] 支持YUV/RGB数据回调；
 - [x] 支持时间戳回调；
+- [x] 支持链接状态、实时下载速度统计、buffer开始、buffer比例、buffer结束状态；
+- [x] 支持PCM数据回调；
+- [x] 支持32bit/64bit.
 
 **android推流/iOS推流**
 
