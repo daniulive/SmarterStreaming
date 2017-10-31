@@ -1,4 +1,4 @@
-**大牛直播 <a href="http://www.daniulive.com" target="_blank">www.daniulive.com</a>**
+**大牛直播 <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
 
 专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-播放(支持rtmp/rtsp)，业界**真正靠谱**的超低延迟(1秒左右)。
 
