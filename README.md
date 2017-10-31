@@ -68,13 +68,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版64位-Beta版-2017-10-25.zip)
 
-- [x] [SDK demo工程代码] [**Windows推流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2017-09-11.zip)
+- [x] [SDK demo工程代码] [**Windows推流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2017-10-26.zip)
 
-- [x] [SDK demo工程代码] [**Windows播放器SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%92%AD%E6%94%BE%E5%99%A8SDK-CPP-Demo-2017-09-11.zip)
+- [x] [SDK demo工程代码] [**Windows播放器SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%92%AD%E6%94%BESDK-CPP-Demo-2017-10-26.zip)
 
-- [x] [SDK demo工程代码] [**Windows混流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%B7%B7%E6%B5%81SDK-CPP-Demo-2017-09-11.zip)
+- [x] [SDK demo工程代码] [**Windows混流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%B7%B7%E6%B5%81SDK-CPP-Demo-2017-10-26.zip)
 
-- [x] [SDK demo工程代码] [**Windows C#版本推送、播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/Daniulive-Windows-C%23%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE-SDK-demo-2017-09-20.zip)
+- [x] [SDK demo工程代码] [**Windows转发SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E8%BD%AC%E5%8F%91SDK-CPP-Demo-2017-10-26.zip)
+
+- [x] [SDK demo工程代码] [**Windows C#版本推送SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%8E%A8%E9%80%81SDK-C%23-Demo-2017-10-31.zip)
+
+- [x] [SDK demo工程代码] [**Windows C#版本播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%92%AD%E6%94%BESDK-C%23-Demo-2017-10-31.zip)
 
 - [x] [SDK demo工程代码] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-07-17.zip)
 
@@ -92,7 +96,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [大牛直播Windows推流端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/SmartPublisherSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.1.pdf)
 
-- [x] [大牛直播Windows播放端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/SmartPlayerSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.1.pdf)
+- [x] [大牛直播Windows播放端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/windows/SmartPlayerSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.2.pdf)
 
 - [x] [大牛直播Android推流端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%8E%A8%E6%B5%81%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 
@@ -177,7 +181,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-09-25.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-10-25.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
