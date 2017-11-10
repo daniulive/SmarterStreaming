@@ -1,4 +1,4 @@
-﻿//
+//
 //  nt_event_define.h
 //  nt_event_define
 //
@@ -34,6 +34,12 @@ extern "C"{
         EVENT_DANIULIVE_ERC_PLAYER_NO_MEDIADATA_RECEIVED        = EVENT_DANIULIVE_PLAYER_SDK | 0x8,	/*收不到RTMP数据*/
         EVENT_DANIULIVE_ERC_PLAYER_SWITCH_URL                   = EVENT_DANIULIVE_PLAYER_SDK | 0x9,	/*切换播放url*/
         EVENT_DANIULIVE_ERC_PLAYER_CAPTURE_IMAGE                = EVENT_DANIULIVE_PLAYER_SDK | 0xA,	/*截取快照*/
+        /* 接下来请从0x81开始*/
+        EVENT_DANIULIVE_ERC_PLAYER_START_BUFFERING              = EVENT_DANIULIVE_PLAYER_SDK | 0x81, /*开始缓冲*/
+        EVENT_DANIULIVE_ERC_PLAYER_BUFFERING                    = EVENT_DANIULIVE_PLAYER_SDK | 0x82, /*缓冲中, param1 表示百分比进度*/
+        EVENT_DANIULIVE_ERC_PLAYER_STOP_BUFFERING               = EVENT_DANIULIVE_PLAYER_SDK | 0x83, /*停止缓冲*/
+        
+        EVENT_DANIULIVE_ERC_PLAYER_DOWNLOAD_SPEED               = EVENT_DANIULIVE_PLAYER_SDK | 0x91, /*下载速度， param1表示下载速度，单位是(Byte/s)*/
     }PLAYER_EVENT_ID;
     
     /* publisher event ID*/

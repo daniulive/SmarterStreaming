@@ -20,6 +20,7 @@
     NSString* playback_url_;
     NSInteger   buffer_time_;
     Boolean is_fast_startup_;
+    Boolean is_low_latency_mode_;
     Boolean is_hardware_decoder_;
     Boolean is_rtsp_tcp_mode_;
 }
@@ -33,6 +34,9 @@
 
 @property (nonatomic, strong) UISwitch *fastStartupSwitch;  //快速启动
 @property (nonatomic, strong) UILabel *fastStartupSwitchLable;
+
+@property (nonatomic, strong) UISwitch *lowLatencyModeSwitch;  //极速延迟模式，特别适用于类似于直播娃娃机方案
+@property (nonatomic, strong) UILabel *lowLatencyModeSwitchLable;
 
 @property (nonatomic, strong) UIButton *swDecoderBtn;
 @property (nonatomic, strong) UIButton *hwDecoderBtn;
@@ -116,7 +120,7 @@
     self.inputBufferText.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.inputBufferText addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
     self.inputBufferText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.inputBufferText setText:[NSString stringWithFormat:@"200"]];
+    [self.inputBufferText setText:[NSString stringWithFormat:@"100"]];
     
     //快速启动开关
     self.fastStartupSwitchLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+100, 80, 20)];
@@ -129,6 +133,18 @@
     self.fastStartupSwitch.frame = CGRectMake(kHorMargin+buttonSpace+80, kVerMargin+kBtnHeight+95, 50, 20);
     [self.fastStartupSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     self.fastStartupSwitch.on = YES;
+    
+    //超低延迟模式
+    self.lowLatencyModeSwitchLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+100, 80, 20)];
+    self.lowLatencyModeSwitchLable.text = @"超低延迟";
+    self.lowLatencyModeSwitchLable.lineBreakMode = NSLineBreakByCharWrapping;
+    self.lowLatencyModeSwitchLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    
+    self.lowLatencyModeSwitch = [[UISwitch alloc]init];
+    self.lowLatencyModeSwitch.tag = 1;
+    self.lowLatencyModeSwitch.frame = CGRectMake(kHorMargin+3*buttonSpace+80+60, kVerMargin+kBtnHeight+95, 50, 20);
+    [self.lowLatencyModeSwitch addTarget:self action:@selector(lowLantecySwitchAction:) forControlEvents:UIControlEventValueChanged];
+    self.lowLatencyModeSwitch.on = NO;
     
     //设置软解／硬解码
     self.swDecoderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -198,6 +214,9 @@
     [self.view addSubview:self.fastStartupSwitchLable];
     [self.view addSubview:self.fastStartupSwitch];
     
+    [self.view addSubview:self.lowLatencyModeSwitchLable];
+    [self.view addSubview:self.lowLatencyModeSwitch];
+    
     [self.view addSubview:self.swDecoderBtn];
     [self.view addSubview:self.hwDecoderBtn];
     
@@ -243,6 +262,20 @@
     }
     
     NSLog(@"is_fast_startup_:%d", is_fast_startup_);
+}
+
+-(void)lowLantecySwitchAction:(id)sender
+{
+    UISwitch *lowLantecySwitchButton = (UISwitch*)sender;
+    BOOL isButtonOn = [lowLantecySwitchButton isOn];
+    if (isButtonOn) {
+        [self.inputBufferText setText:[NSString stringWithFormat:@"0"]];
+        is_low_latency_mode_ = YES;
+    }else {
+        is_low_latency_mode_ = NO;
+    }
+    
+    NSLog(@"is_low_latency_mode_:%d", is_low_latency_mode_);
 }
 
 - (void)decoderButtonClicked:(id)sender {
@@ -296,7 +329,6 @@
     }
 }
 
-
 #pragma mark - textField method
 - (void)textFieldDone:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -330,7 +362,7 @@
     {
         is_half_screen = TRUE;
         
-        //playback_url_ = @"rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
+        // playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
         
         //playback_url_ = @"rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
     }
@@ -346,9 +378,10 @@
     ViewController * coreView =[[ViewController alloc] initParameter:playback_url_
                                                         isHalfScreen:is_half_screen
                                                           bufferTime:buffer_time_
-                                                       isFastStartup:is_fast_startup_
-                                                         isHWDecoder:is_hardware_decoder_
-                                                        isRTSPTcpMode:is_rtsp_tcp_mode_];
+                                                          isFastStartup:is_fast_startup_
+                                                          isLowLantecy:is_low_latency_mode_
+                                                          isHWDecoder:is_hardware_decoder_
+                                                          isRTSPTcpMode:is_rtsp_tcp_mode_];
     [self presentViewController:coreView animated:YES completion:nil];
 }
 

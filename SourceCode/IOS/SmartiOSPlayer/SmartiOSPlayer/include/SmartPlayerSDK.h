@@ -68,6 +68,14 @@ typedef enum DNErrorCode{
  */
 - (NSInteger) SmartPlayerSetPlayView:(void*) playView;
 
+/**
+ * 设置player external yuv block callback
+ *
+ * @param isEnableYuvBlock: 默认false，如需回调YUV数据自己绘制，设置为true
+ *
+ * @return {0} if successful
+ */
+- (NSInteger) SmartPlayerSetYuvBlock:(Boolean)isEnableYuvBlock;
 
 /**
  * 设置player buffer
@@ -97,6 +105,30 @@ typedef enum DNErrorCode{
  * @return {0} if successful
  */
 - (NSInteger)SmartPlayerSetFastStartup:(NSInteger)isFastStartup;
+
+/**
+ * Set low lantency mode(设置超低延迟模式)
+ *
+ * @param mode: 1: 超低延迟模式; 0: not.
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetLowLatencyMode:(NSInteger)mode;
+
+/*
+ * 设置下载速度上报, 默认不上报下载速度
+ *
+ * is_report: 上报开关, 1: 表上报. 0: 表示不上报. 其他值无效.
+ *
+ * report_interval： 上报时间间隔（上报频率），单位是秒，最小值是1秒1次. 如果小于1且设置了上报，将调用失败
+ *
+ * 上报事件是：EVENT_DANIULIVE_ERC_PLAYER_DOWNLOAD_SPEED
+ *
+ * 这个接口必须在Start之前调用
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetReportDownloadSpeed:(NSInteger)is_report report_interval:(NSInteger)report_interval;
 
 /**
  * 设置播放URL
@@ -174,6 +206,18 @@ typedef enum DNErrorCode{
  *  获取当前sdk的版本号
  */
 -(NSString*) SmartPlayerGetSDKVersionID;
+
+/**
+ * YUV数据回调
+ */
+typedef void (^PlayerYuvDataBlock)(int width, int height, unsigned long long time_stamp,
+unsigned char*yData, unsigned char* uData, unsigned char*vData,
+int yStride, int uStride, int vStride);
+
+/**
+ * YUV数据回调
+ */
+@property (nonatomic, copy)PlayerYuvDataBlock yuvDataBlock;
 
 @end
 
