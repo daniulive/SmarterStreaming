@@ -59,6 +59,8 @@ public class SmartPlayer extends Activity {
 	
 	private int playBuffer = 200; // 默认200ms
 	
+	private boolean isLowLatency = false; //超低延时，默认不开启
+	
 	private boolean isFastStartup = true; // 是否秒开, 默认true
 	
 	private boolean switchUrlFlag = false;
@@ -75,6 +77,7 @@ public class SmartPlayer extends Activity {
 	Button btnCaptureImage;
 	Button btnFastStartup;
 	Button btnSetPlayBuffer;
+	Button btnLowLatency;
 	Button btnSwitchUrl;
     TextView txtCopyright;
     TextView txtQQQun;
@@ -372,6 +375,20 @@ public class SmartPlayer extends Activity {
     	btnSetPlayBuffer.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     	bufferLinearLayout.addView(btnSetPlayBuffer);
     	
+    	btnLowLatency = new Button(this);
+    	
+    	if ( isLowLatency )
+    	{
+    		btnLowLatency.setText("正常延时");
+    	}
+    	else
+    	{
+    		btnLowLatency.setText("超低延时");
+    	}
+    	
+    	btnLowLatency.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+    	bufferLinearLayout.addView(btnLowLatency);
+    	
     	btnFastStartup = new Button(this);
     	
     	if ( isFastStartup )
@@ -411,6 +428,7 @@ public class SmartPlayer extends Activity {
         	btnHardwareDecoder.setEnabled(false);
         	
         	btnSetPlayBuffer.setEnabled(false);
+        	btnLowLatency.setEnabled(false);
         	btnFastStartup.setEnabled(false);
         	
         	btnStartStopPlayback.setText("停止播放 ");
@@ -422,6 +440,7 @@ public class SmartPlayer extends Activity {
         	btnHardwareDecoder.setEnabled(true);
         	
         	btnSetPlayBuffer.setEnabled(true);
+        	btnLowLatency.setEnabled(true);
         	btnFastStartup.setEnabled(true);
         	
         	btnStartStopPlayback.setText("开始播放 ");
@@ -536,6 +555,23 @@ public class SmartPlayer extends Activity {
         	}
         });
         
+        btnLowLatency.setOnClickListener(new Button.OnClickListener(){
+        	public void onClick(View v) {
+        		isLowLatency = !isLowLatency;
+        				
+        		if ( isLowLatency )
+        		{
+        			playBuffer = 0;
+        			Log.i(TAG, "low latency mode, set playBuffer to 0");
+        			btnLowLatency.setText("正常延时");
+        		}
+        		else
+        		{
+        			btnLowLatency.setText("超低延时");
+        		}
+        	}
+        });
+        
         
         btnFastStartup.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v)
@@ -570,6 +606,7 @@ public class SmartPlayer extends Activity {
             		  btnHardwareDecoder.setEnabled(true);
             		  
             		  btnSetPlayBuffer.setEnabled(true);
+            		  btnLowLatency.setEnabled(true);
                   	  btnFastStartup.setEnabled(true);
             		  
             		  libPlayer.SmartPlayerClose(playerHandle);	
@@ -602,6 +639,8 @@ public class SmartPlayer extends Activity {
             	      libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
             	      
             	      libPlayer.SmartPlayerSetBuffer(playerHandle, playBuffer);
+            	      
+            	      libPlayer.SmartPlayerSetLowLatencyMode(playerHandle, isLowLatency?1:0);
             	      
             	      libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup?1:0);
             	      
@@ -651,6 +690,7 @@ public class SmartPlayer extends Activity {
 	                  btnHardwareDecoder.setEnabled(false);
 	                  
 	                  btnSetPlayBuffer.setEnabled(false);
+	                  btnLowLatency.setEnabled(false);
                   	  btnFastStartup.setEnabled(false);
 	                  
 	              	  isPlaybackViewStarted = true;
@@ -937,6 +977,7 @@ public class SmartPlayer extends Activity {
              *  If with false: it will set with default surfaceView;	
              */
         	sSurfaceView = NTRenderer.CreateRenderer(this, true);
+        	
         }
         
         if(sSurfaceView == null)
