@@ -29,6 +29,7 @@
     UILabel         *textModeLabel;             //文字提示
     Boolean         is_audio_only_;
     Boolean         is_fast_startup_;           //是否快速启动模式
+    Boolean         is_low_latency_mode_;       //是否开启极速模式
     NSInteger       buffer_time_;               //buffer时间
     Boolean         is_hardware_decoder_;       //默认软解码
     Boolean         is_rtsp_tcp_mode_;          //仅用于rtsp流，设置TCP传输模式
@@ -119,6 +120,25 @@
             NSLog(@"[event]快照失败: %@", param3);
         }
     }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_START_BUFFERING)
+    {
+        //NSLog(@"[event]开始buffer..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_BUFFERING)
+    {
+        //NSLog(@"[event]buffer百分比: %lld", param1);
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_STOP_BUFFERING)
+    {
+        //NSLog(@"[event]停止buffer..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PLAYER_DOWNLOAD_SPEED)
+    {
+        NSInteger speed_kbps = (NSInteger)param1*8/1000;
+        NSInteger speed_KBs = (NSInteger)param1/1024;
+        
+        NSLog(@"[event]download speed :%ld kbps - %ld KB/s", (long)speed_kbps, (long)speed_KBs);
+    }
     else
         NSLog(@"[event]nID:%lx", (long)nID);
     
@@ -127,7 +147,8 @@
 
 - (instancetype)initParameter:(NSString*)url isHalfScreen:(Boolean)isHalfScreenVal
                    bufferTime:(NSInteger)bufferTime
-                isFastStartup:(Boolean)isFastStartup
+                  isFastStartup:(Boolean)isFastStartup
+                  isLowLantecy:(Boolean)isLowLantecy
                   isHWDecoder:(Boolean)isHWDecoder
                 isRTSPTcpMode:(Boolean)isRTSPTcpMode
 {
@@ -139,6 +160,7 @@
         _streamUrl = url;
         is_half_screen_ = isHalfScreenVal;
         is_fast_startup_ = isFastStartup;
+        is_low_latency_mode_ = isLowLantecy;
         buffer_time_ = bufferTime;
         is_hardware_decoder_ = isHWDecoder;
         is_rtsp_tcp_mode_ = isRTSPTcpMode;
@@ -169,7 +191,7 @@
         playerHeight = screenWidth*3/4;
     
     NSLog(@"screenWidth:%ld, screenHeight:%ld",(long)screenWidth, (long)screenHeight);
-    
+
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     
     _player = [[SmartPlayerSDK alloc] init];
@@ -178,6 +200,18 @@
         NSLog(@"SmartPlayerSDK init failed..");
         return;
     }
+    
+    //_player.yuvDataBlock = nil; //如不需要回调YUV数据
+    
+    /*
+    _player.yuvDataBlock = ^void(int width, int height, unsigned long long time_stamp,
+                                 unsigned char*yData, unsigned char* uData, unsigned char*vData,
+                                 int yStride, int uStride, int vStride)
+    {
+        //NSLog(@"[PlaySideYuvCallback] width:%d, height:%d, ts:%lld, y:%d, u:%d, v:%d", width, height, time_stamp, yStride, uStride, vStride);
+        //这里接收底层回调的YUV数据
+    };
+     */
     
     if (_player.delegate == nil)
     {
@@ -203,30 +237,37 @@
     }
     
     [_player SmartPlayerSetVideoDecoderMode:videoDecoderMode];
-    
+
     if (is_audio_only_) {
         [_player SmartPlayerSetPlayView:nil];
     }
     else
     {
+        //如果只需外部回调YUV数据，自己绘制，无需创建view和设置view到SDK
         _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:0 width:screenWidth height:playerHeight]);
         
         if (_glView == nil ) {
             NSLog(@"createPlayView failed..");
             return;
         }
-        
+    
         [self.view addSubview:_glView];
         
         [_player SmartPlayerSetPlayView:(__bridge void *)(_glView)];
     }
+    
+    //设置YUV数据回调输出
+    [_player SmartPlayerSetYuvBlock:true];
     
     if (_streamUrl.length == 0) {
         NSLog(@"_streamUrl with nil..");
         return;
     }
     
-    if(buffer_time_>0)
+    //超低延迟模式
+    [_player SmartPlayerSetLowLatencyMode:(NSInteger)is_low_latency_mode_];
+    
+    if(buffer_time_ >= 0)
     {
         [_player SmartPlayerSetBuffer:buffer_time_];
     }
@@ -241,6 +282,11 @@
     
     NSInteger image_flag = 1;
     [_player SmartPlayerSaveImageFlag:image_flag];
+    
+    //如需查看实时流量信息，可打开以下接口
+    //NSInteger is_report = 1;
+    //NSInteger report_interval = 1;
+    //[_player SmartPlayerSetReportDownloadSpeed:is_report report_interval:report_interval];
     
     [_player SmartPlayerStart];
 
