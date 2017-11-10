@@ -139,6 +139,17 @@ public class SmartPlayerJni {
 	  */
 	 public native int SmartPlayerSetFastStartup(long handle, int is_fast_startup);
 	 
+	 
+	 
+	 /**
+	  * Set low latency mode
+	  *
+	  * @param mode: if with 1, low latency mode, if with 0: normal mode
+	  *
+	  * @return {0} if successful
+	  */
+	 public native int SmartPlayerSetLowLatencyMode(long handle, int mode);
+	 
 	  	  	
 	 /**
 	 * Set playback orientation.
