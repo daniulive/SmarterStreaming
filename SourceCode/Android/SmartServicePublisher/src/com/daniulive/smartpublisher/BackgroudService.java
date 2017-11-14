@@ -116,8 +116,8 @@ public class BackgroudService extends Service implements
 	private boolean is_need_local_recorder = false; // do not enable recorder in
 													// default
 
-	static {
-		System.load("libSmartPublisher.so");
+	static {  
+		System.loadLibrary("SmartPublisher");
 	}
 
 	@Override
