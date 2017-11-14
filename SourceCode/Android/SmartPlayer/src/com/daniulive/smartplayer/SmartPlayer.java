@@ -642,6 +642,9 @@ public class SmartPlayer extends Activity {
             	      
             	      libPlayer.SmartPlayerSetLowLatencyMode(playerHandle, isLowLatency?1:0);
             	      
+            	      // set report download speed
+            	      //libPlayer.SmartPlayerSetReportDownloadSpeed(playerHandle, 1, 5);
+            	      
             	      libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup?1:0);
             	      
             	      libPlayer.SmartPlayerSaveImageFlag(playerHandle, 1);
@@ -668,6 +671,7 @@ public class SmartPlayer extends Activity {
             	      //playbackUrl = "rtsp://218.204.223.237:554/live/1/67A7572844E51A64/f68g2mj7wjua3la7";
             	        
             	      //playbackUrl = "rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
+            	      
             	      
 	              	  if(playbackUrl == null){
 	              		 Log.e(TAG, "playback URL with NULL..."); 
@@ -961,6 +965,23 @@ public class SmartPlayer extends Activity {
                 	 {
                 		 Log.i(TAG, "截取快照失败。."); 
                 	 }
+                	 break;
+                	 
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_START_BUFFERING:
+                	 Log.i(TAG, "Start_Buffering");
+                	 break;
+                	 
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_BUFFERING:
+                	 Log.i(TAG, "Buffering:" + param1 + "%");
+                	 break;
+                	 
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_STOP_BUFFERING:
+                	 Log.i(TAG, "Stop_Buffering");
+                	 break;
+                	 
+                 case EVENTID.EVENT_DANIULIVE_ERC_PLAYER_DOWNLOAD_SPEED:
+                	 Log.i(TAG, "download_speed:" + param1 + "Byte/s" + ", " + (param1*8/1000) + "kbps" + 
+                                ", " + (param1/1024) + "KB/s");
                 	 break;
              }
     	 }
