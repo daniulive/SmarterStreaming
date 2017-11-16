@@ -74,11 +74,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [**Windows混流SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%B7%B7%E6%B5%81SDK-CPP-Demo-2017-10-26.zip)
 
-- [x] [SDK demo工程代码] [**Windows转发SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E8%BD%AC%E5%8F%91SDK-CPP-Demo-2017-10-26.zip)
+- [x] [SDK demo工程代码] [**Windows多路流媒体转发模块SDK(C++) Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/WIN-%E8%BD%AC%E5%8F%91SDK-CPP-Demo-2017-10-26.zip)
 
 - [x] [SDK demo工程代码] [**Windows C#版本推送SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%8E%A8%E9%80%81SDK-C%23-Demo-2017-10-31.zip)
 
 - [x] [SDK demo工程代码] [**Windows C#版本播放SDK Demo工程本地下载**](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%92%AD%E6%94%BESDK-C%23-Demo-2017-10-31.zip)
+
+- [x] [SDK demo工程代码] [**Windows C#多路流媒体转发模块SDK Demo工程本地下载**](http://218.25.89.108:8080/files/daniulive/windows/WIN-%E8%BD%AC%E5%8F%91SDK-C%23-demo-2017-11-16.zip)
 
 - [x] [SDK demo工程代码] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-11-10.zip)
 
