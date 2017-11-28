@@ -106,7 +106,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [大牛直播iOS推流端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 - [x] [大牛直播iOS播放端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%92%AD%E6%94%BE%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 
-- [x] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/SmarterStreaming%20SDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.4.pdf)
+- [x] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.4.pdf)
 
 **大牛直播demo使用说明**
 
@@ -185,7 +185,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-10-25.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-11-09.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
