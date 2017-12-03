@@ -395,7 +395,9 @@ android：strings.xml：
 ## 获取更多信息 ##
 
 商务合作：
-电话咨询：130-7210-2209
+
+手机：130-7210-2209
+
 QQ：89030985
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
 
