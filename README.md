@@ -20,6 +20,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://player.daniulive.com:8080/files/image/大牛直播SDK0914.png" alt="一张图看懂大牛直播SDK" />
 
+- [x] [视沃科技-大牛直播SDK介绍PPT](http://218.25.89.108:8080/files/daniulive/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E4%BB%8B%E7%BB%8D_1203.pdf)
+
 - [x] [**Windows推流端-视频处理**] 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
 
 - [x] [**Windows推流端-音频处理**] 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
@@ -109,8 +111,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**移动端SDK调用说明下载**](http://218.25.89.108:8080/files/daniulive/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.4.pdf)
 
 **大牛直播demo使用说明**
-
-- [x] [视沃科技-大牛直播SDK介绍PPT](http://218.25.89.108:8080/files/daniulive/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E4%BB%8B%E7%BB%8D_1025.pdf)
 
 - [x] [如何简单粗暴的测试Windows推送端和Windows播放器](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E6%B5%8B%E8%AF%95Windows%E6%8E%A8%E9%80%81%E7%AB%AF%E5%92%8CWindows%E6%92%AD%E6%94%BE%E5%99%A8)
 
@@ -394,7 +394,9 @@ android：strings.xml：
 
 ## 获取更多信息 ##
 
-商务合作：QQ：89030985
+商务合作：
+电话咨询：130-7210-2209
+QQ：89030985
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
 
 技术支持：QQ: 2679481035
