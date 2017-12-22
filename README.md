@@ -52,9 +52,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**iOS播放器**] rtmp/rtsp超低延迟直播播放器;
 
-- [x] [**iOS互动**] iOS一对一互动(可iOS与windows/android/iOS互动)；
-
-- [x] [**Server**] SmarterStreamServer。
+- [x] [**iOS互动**] iOS一对一互动(可iOS与windows/android/iOS互动).
 
 **本地下载**
 
@@ -86,7 +84,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-11-14.zip)
 
-- [x] [SDK demo工程代码] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-11-16.zip)
+- [x] [SDK demo工程代码] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-12-22.zip)
 
 - [x] [SDK demo扩展工程代码] [android推送、播放SDK本地下载(android studio demo工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-11-20.zip)
 
