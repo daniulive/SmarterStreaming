@@ -44,9 +44,12 @@
     UIButton        *muteButton;                //静音 取消静音
     UIButton        *switchUrlButton;           //切换url按钮
     UIButton        *saveImageButton;           //快照按钮
+    UIButton        *rotationButton;            //view旋转按钮
     
     UIImage         *image_path;
     NSString        *tmp_path;
+    
+    NSInteger       rotate_degrees;             //view旋转角度 0则不旋转
 }
 
 //(本demo快照最终拷贝保存到iOS设备“照片”目录，实际保存位置可自行设置，或以应用场景为准)
@@ -179,6 +182,8 @@
     
     is_audio_only_ = NO;
     
+    rotate_degrees = 0;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
     
     //当前屏幕宽高
@@ -267,6 +272,9 @@
     //超低延迟模式
     [_player SmartPlayerSetLowLatencyMode:(NSInteger)is_low_latency_mode_];
     
+    //设置视频view旋转角度
+    [_player SmartPlayerSetRotation:rotate_degrees];
+    
     if(buffer_time_ >= 0)
     {
         [_player SmartPlayerSetBuffer:buffer_time_];
@@ -337,9 +345,44 @@
     [switchUrlButton addTarget:self action:@selector(SwitchUrlBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:switchUrlButton];
     
+    //view旋转按钮
+    rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rotationButton.frame = CGRectMake(45, playerHeight - 80, 120, 80);
+    rotationButton.center = CGPointMake(self.view.frame.size.width / 6, rotationButton.frame.origin.y + rotationButton.frame.size.height / 2);
+    
+    rotationButton.layer.cornerRadius = muteButton.frame.size.width / 2;
+    rotationButton.layer.borderColor = [UIColor greenColor].CGColor;
+    rotationButton.layer.borderWidth = lineWidth;
+    
+    [rotationButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    
+    NSString* rotation_text;
+    
+    if ( 0 == rotate_degrees )
+    {
+        rotation_text = @"旋转90度";
+    }
+    else if ( 90 == rotate_degrees)
+    {
+        rotation_text = @"旋转180度";
+    }
+    else if ( 180 == rotate_degrees)
+    {
+        rotation_text = @"旋转270度";
+    }
+    else if ( 270 == rotate_degrees)
+    {
+        rotation_text = @"不旋转";
+    }
+    
+    [rotationButton setTitle:rotation_text forState:UIControlStateNormal];
+    
+    [rotationButton addTarget:self action:@selector(rotateSettingBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rotationButton];
+    
     //返回按钮
     backSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backSettingsButton.frame = CGRectMake(45, playerHeight - 80, 120, 80);
+    backSettingsButton.frame = CGRectMake(45, playerHeight - 20, 120, 80);
     backSettingsButton.center = CGPointMake(self.view.frame.size.width / 6, backSettingsButton.frame.origin.y + backSettingsButton.frame.size.height / 2);
     
     backSettingsButton.layer.cornerRadius = muteButton.frame.size.width / 2;
@@ -429,18 +472,52 @@
     {
         is_switch_url = !is_switch_url;
         
+        NSString* switchUrl = @"";
+        
+        //本demo url在原始rtmp url和hks流中切换
         if ( is_switch_url )
         {
-            _streamUrl = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+            switchUrl = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
             [switchUrlButton setTitle:@"切换URL2" forState:UIControlStateNormal];
         }
         else
         {
-            _streamUrl = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+            switchUrl = _streamUrl;
             [switchUrlButton setTitle:@"切换URL1" forState:UIControlStateNormal];
         }
         
-        [_player SmartPlayerSwitchPlaybackUrl:_streamUrl];
+        [_player SmartPlayerSwitchPlaybackUrl:switchUrl];
+    }
+}
+
+- (void)rotateSettingBtn:(id)sender {
+    if ( _player != nil )
+    {
+        rotate_degrees += 90;
+        rotate_degrees = rotate_degrees % 360;
+        
+        NSString* rotation_text;
+        
+        if ( 0 == rotate_degrees )
+        {
+            rotation_text = @"旋转90度";
+        }
+        else if ( 90 == rotate_degrees)
+        {
+            rotation_text = @"旋转180度";
+        }
+        else if ( 180 == rotate_degrees)
+        {
+            rotation_text = @"旋转270度";
+        }
+        else if ( 270 == rotate_degrees)
+        {
+            rotation_text = @"不旋转";
+        }
+        
+        [rotationButton setTitle:rotation_text forState:UIControlStateNormal];
+        
+        [_player SmartPlayerSetRotation:rotate_degrees];
     }
 }
 
