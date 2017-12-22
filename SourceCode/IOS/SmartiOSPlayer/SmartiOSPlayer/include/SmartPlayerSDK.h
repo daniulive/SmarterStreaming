@@ -115,6 +115,15 @@ typedef enum DNErrorCode{
  */
 - (NSInteger)SmartPlayerSetLowLatencyMode:(NSInteger)mode;
 
+/**
+ * 设置顺时针旋转, 注意除了0度之外， 其他角度都会额外消耗性能
+ *
+ * @param degress： 当前支持 0度，90度, 180度, 270度 旋转
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetRotation:(NSInteger)degress;
+
 /*
  * 设置下载速度上报, 默认不上报下载速度
  *
