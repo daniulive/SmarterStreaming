@@ -406,8 +406,15 @@ android：strings.xml：
 QQ：89030985
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
 
+商务合作微信
+<img src="http://218.25.89.108:8080/files/daniulive/image/sw_erweima.png" width="302" alt="商务合作微信" />
+
+
 技术支持：QQ: 2679481035
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2679481035&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2679481035:51" alt="点我在线技术咨询" title="点我在线技术咨询"/></a>
+
+商务支持微信
+<img src="http://218.25.89.108:8080/files/daniulive/image/js_erweima.png" width="302" alt="商务支持微信" />
 
 QQ群(大牛直播精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
