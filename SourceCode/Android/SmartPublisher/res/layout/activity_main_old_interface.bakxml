@@ -150,12 +150,11 @@
                 android:layout_height="wrap_content"
                 android:text="输入推流URL" />
 
-            <!--
             <Button
                 android:id="@+id/button_start_stop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 开始推流 " />-->
+                android:text=" 开始推流 " />
                 
            </LinearLayout>
            

@@ -62,7 +62,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 @SuppressWarnings("deprecation")
-public class CameraPublishActivity extends Activity implements Callback, PreviewCallback 
+public class CameraPublishActivity extends Activity
 {
 	private static String TAG = "SmartPublisher";
 	
@@ -74,8 +74,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	
 	private TextView textCurURL = null;
 	
-	private long publisherHandle = 0;
-		
+	private long publisherHandleBack = 0;
+	
+	private long publisherHandleFront = 0;
+	
 	private SmartPublisherJniV2 libPublisher = null;
 	
 	/* 推送类型选择
@@ -132,13 +134,20 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private Button btnStartRecorder;
 	private Button btnCaptureImage;
 	
-	private SurfaceView mSurfaceView = null;  
-    private SurfaceHolder mSurfaceHolder = null;  
+	private SurfaceView mSurfaceViewFront = null;  
+    private SurfaceHolder mSurfaceHolderFront = null;  
     
-    private Camera mCamera = null;  
-	private AutoFocusCallback myAutoFocusCallback = null;
+    private SurfaceView mSurfaceViewBack = null;
+    private SurfaceHolder mSurfaceHolderBack = null;  
+    
+    private Camera mCameraFront = null;  
+	private AutoFocusCallback myAutoFocusCallbackFront = null;
 	
-	private boolean mPreviewRunning = false; 
+	private Camera mCameraBack = null;
+	private AutoFocusCallback myAutoFocusCallbackBack = null;
+	
+	private boolean mPreviewRunningFront = false;
+	private boolean mPreviewRunningBack = false;
 
 	private boolean isStart = false;
 	
@@ -157,18 +166,23 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		
 	private static final int FRONT = 1;		//前置摄像头标记
 	private static final int BACK = 2;		//后置摄像头标记
-	private int currentCameraType = BACK;	//当前打开的摄像头标记
+	//private int currentCameraType = BACK;	//当前打开的摄像头标记
 	private static final int PORTRAIT = 1;	//竖屏
 	private static final int LANDSCAPE = 2;	//横屏
 	private int currentOrigentation = PORTRAIT;
-	private int curCameraIndex = -1;
+	//private int curCameraIndex = -1;
+	
+	private int curFrontCameraIndex = -1;
+	private int curBackCameraIndex  = -1;
 
 	private int videoWidth = 640;
 	private int videoHight = 480;
 	
-	private int frameCount = 0;
+	//private int frameCount = 0;
 	
-	private String recDir = "/sdcard/daniulive/rec";	//for recorder path
+	private String recDirFront = "/sdcard/daniulive/recfront";	//for recorder path
+	
+	private String recDirBack  = "/sdcard/daniulive/recback";
 	
 	private boolean is_need_local_recorder = false;		// do not enable recorder in default
 	
@@ -494,22 +508,42 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         imgSwitchCamera = (ImageView)findViewById(R.id.button_switchCamera);
         imgSwitchCamera.setOnClickListener(new SwitchCameraListener());
         
-        mSurfaceView = (SurfaceView) this.findViewById(R.id.surface);  
-        mSurfaceHolder = mSurfaceView.getHolder();  
-        mSurfaceHolder.addCallback(this);  
-        mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS); 
+        mSurfaceViewFront = (SurfaceView) this.findViewById(R.id.surface_front);  
+        mSurfaceHolderFront = mSurfaceViewFront.getHolder();  
+        mSurfaceHolderFront.addCallback(new NT_SP_SurfaceHolderCallback(FRONT));  
+        mSurfaceHolderFront.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS); 
         
         //自动聚焦变量回调       
-        myAutoFocusCallback = new AutoFocusCallback() 
+        myAutoFocusCallbackFront = new AutoFocusCallback() 
 		{  
             public void onAutoFocus(boolean success, Camera camera) {  
                 if(success)//success表示对焦成功  
                 {  
-                    Log.i(TAG, "onAutoFocus succeed...");   
+                    Log.i(TAG, "Front onAutoFocus succeed...");   
                 }  
                 else  
                 {  
-                    Log.i(TAG, "onAutoFocus failed...");  
+                    Log.i(TAG, "Front onAutoFocus failed...");  
+                }  
+            }  
+        }; 
+        
+        mSurfaceViewBack = (SurfaceView) this.findViewById(R.id.surface_back);  
+        mSurfaceHolderBack = mSurfaceViewBack.getHolder();  
+        mSurfaceHolderBack.addCallback(new NT_SP_SurfaceHolderCallback(BACK));  
+        mSurfaceHolderBack.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS); 
+        
+        //自动聚焦变量回调       
+        myAutoFocusCallbackBack = new AutoFocusCallback() 
+		{  
+            public void onAutoFocus(boolean success, Camera camera) {  
+                if(success)//success表示对焦成功  
+                {  
+                    Log.i(TAG, "Back onAutoFocus succeed...");   
+                }  
+                else  
+                {  
+                    Log.i(TAG, "Back onAutoFocus failed...");  
                 }  
             }  
         }; 
@@ -556,11 +590,21 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	videoWidth = 640;
     		videoHight = 480;
     	}
-    	   	
-    	mCamera.stopPreview();   
-        initCamera(mSurfaceHolder);
+    	
+    	Camera front_camera = GetCameraObj(FRONT); 
+    	if ( front_camera != null && mSurfaceHolderFront != null )
+    	{
+    		front_camera.stopPreview();
+    		initCamera(FRONT, mSurfaceHolderFront);
+    	}
+    	
+    	Camera back_camera = GetCameraObj(BACK);
+    	if ( back_camera != null && mSurfaceHolderBack != null )
+    	{
+    		back_camera.stopPreview();
+    		initCamera(BACK, mSurfaceHolderBack);
+    	}
     }
-    
     
     class NTAudioRecordV2CallbackImpl implements NTAudioRecordV2Callback
     { 	
@@ -573,13 +617,18 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		 
     		 */
     		 
-    		 if ( publisherHandle != 0 )
+    		 if ( publisherHandleFront != 0 )
     		 {
-    			 libPublisher.SmartPublisherOnPCMData(publisherHandle, data, size, sampleRate, channel, per_channel_sample_number);
+    			 libPublisher.SmartPublisherOnPCMData(publisherHandleFront, data, size, sampleRate, channel, per_channel_sample_number);
+    		 }
+    		 
+    		 if ( publisherHandleBack != 0 )
+    		 {
+    			 libPublisher.SmartPublisherOnPCMData(publisherHandleBack, data, size, sampleRate, channel, per_channel_sample_number);
     		 }
     	 }
     }
-    
+     
   
     void CheckInitAudioRecorder()
     {
@@ -597,7 +646,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	audioRecordCallback_ = new NTAudioRecordV2CallbackImpl();
         	
         	audioRecord_.AddCallback(audioRecordCallback_);
-        	
+                	
         	audioRecord_.Start();
         	
         	Log.i(TAG, "CheckInitAudioRecorder call audioRecord_.start()---...");
@@ -611,30 +660,31 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     }
     
     //Configure recorder related function.
-    void ConfigRecorderFuntion(boolean isNeedLocalRecorder)
+    
+    void ConfigRecorderFuntion(String rec, long handle, boolean isNeedLocalRecorder)
     {
     	if ( libPublisher != null )
     	{
     		if ( isNeedLocalRecorder )
     		{
-    			if ( recDir != null && !recDir.isEmpty() )
+    			if ( rec != null && !rec.isEmpty() )
         		{
-        			int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
+        			int ret = libPublisher.SmartPublisherCreateFileDirectory(rec);
             		if ( 0 == ret )
             		{
-            			if ( 0 != libPublisher.SmartPublisherSetRecorderDirectory(publisherHandle, recDir) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorderDirectory(handle, rec) )
             			{
-            				Log.e(TAG, "Set recoder dir failed , path:" + recDir);
+            				Log.e(TAG, "Set recoder dir failed , path:" + rec);
             				return;
             			}
             			
-            			if ( 0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 1) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorder(handle, 1) )
             			{
             				Log.e(TAG, "SmartPublisherSetRecoder failed.");
             				return;
             			}
             			
-            			if ( 0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(publisherHandle, 200) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(handle, 200) )
             			{
             				Log.e(TAG, "SmartPublisherSetRecoderFileMaxSize failed.");
             				return;
@@ -643,36 +693,48 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             		}
             		else
             		{
-            			Log.e(TAG, "Create recoder dir failed, path:" + recDir);
+            			Log.e(TAG, "Create recoder dir failed, path:" + rec);
             		}
         		}
     		}
     		else
     		{
-    			if ( 0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0) )
+    			if ( 0 != libPublisher.SmartPublisherSetRecorder(handle, 0) )
     			{
     				Log.e(TAG, "SmartPublisherSetRecoder failed.");
     				return;
     			}
     		}
     	}
-   	
+    }
+    
+    void ConfigRecorderFuntion(boolean isNeedLocalRecorder)
+    {
+    	ConfigRecorderFuntion(recDirFront, publisherHandleFront, isNeedLocalRecorder);
+    	ConfigRecorderFuntion(recDirBack, publisherHandleBack, isNeedLocalRecorder);	
     }
     
     class ButtonRecorderMangerListener implements OnClickListener
     {
     	public  void onClick(View v)
     	{
-    		if (mCamera != null )
+    		if ( mCameraFront != null )
     		{
-    			mCamera.stopPreview();
-    			mCamera.release();
-    			mCamera = null;
+    			mCameraFront.stopPreview();
+    			mCameraFront.release();
+    			mCameraFront = null;
+    		}
+    		
+    		if ( mCameraBack != null )
+    		{
+    			mCameraBack.stopPreview();
+    			mCameraBack.release();
+    			mCameraBack = null;
     		}
     		
     	    Intent intent = new Intent();
             intent.setClass(CameraPublishActivity.this, RecorderManager.class);
-            intent.putExtra("RecoderDir", recDir);
+            intent.putExtra("RecoderDir", recDirFront);
             startActivity(intent);
     	}
     }
@@ -728,7 +790,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     			btnMute.setText("静音");
     		
     		if ( libPublisher != null )
-    			libPublisher.SmartPublisherSetMute(publisherHandle, is_mute?1:0);
+    			libPublisher.SmartPublisherSetMute(publisherHandleFront, is_mute?1:0);
+    		
+    		if ( libPublisher != null )
+    			libPublisher.SmartPublisherSetMute(publisherHandleBack, is_mute?1:0);
     	}
     }
     
@@ -744,11 +809,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     			btnMirror.setText("开镜像");
     		
     		if ( libPublisher != null )
-    			libPublisher.SmartPublisherSetMirror(publisherHandle, is_mirror?1:0);
+    			libPublisher.SmartPublisherSetMirror(publisherHandleFront, is_mirror?1:0);
+    		
+    		if ( libPublisher != null )
+    			libPublisher.SmartPublisherSetMirror(publisherHandleBack, is_mirror?1:0);
     	}
     }
     
-    class ButtonHardwareEncoderListener implements OnClickListener
+    class ButtonHardwareEncoderListener  implements OnClickListener
     {
     	public void onClick(View v)
     	{
@@ -876,185 +944,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	 }
     }
     
-    /*
-    class ButtonStartListener implements OnClickListener
-    {
-        public void onClick(View v)
-        {    
-        	if (isPushing || isRecording )
-        	{
-        		return;
-        	}
-        	
-        	if (isStart)
-        	{
-        		stop();
-        		btnRecoderMgr.setEnabled(true);
-        		btnHWencoder.setEnabled(true);
-        		
-        		btnNoiseSuppression.setEnabled(true);
-        		btnAGC.setEnabled(true);
-        		btnSpeex.setEnabled(true);
-        		
-        		return;
-        	}
-        	
-        	isStart = true;
-        	btnStartStop.setText(" 停止推流 ");
-        	Log.i(TAG, "onClick start..");        
-            
-			if(libPublisher!=null)
-			{
-				if ( inputPushURL != null && inputPushURL.length() > 1 )
-				{
-					publishURL = inputPushURL;
-					Log.i(TAG, "start, input publish url:" + publishURL);
-				}
-				else
-				{
-					publishURL = baseURL + String.valueOf((int)( System.currentTimeMillis() % 1000000)); 
-					Log.i(TAG, "start, generate random url:" + publishURL);
-					
-				}
-				
-			    printText = "URL:" + publishURL;
-			        
-			    Log.i(TAG, printText);
-			     
-			    textCurURL = (TextView)findViewById(R.id.txtCurURL);
-			    textCurURL.setText(printText);
-				
-			    ConfigRecorderFuntion(is_need_local_recorder); 
-			    
-			    Log.i(TAG, "videoWidth: "+ videoWidth + " videoHight: " + videoHight + " pushType:" + pushType);
-			    		
-			    int audio_opt = 1;
-			    int video_opt = 1;
-			    
-			    if ( pushType == 1 )
-			    {
-			    	video_opt = 0;
-			    } 
-			    else if (pushType == 2 )
-			    {
-			    	audio_opt = 0;
-			    }    
-			    
-			    libPublisher.SmartPublisherInit(myContext, audio_opt, video_opt, videoWidth, videoHight);
-			   	
-			    if(is_hardware_encoder)
-			    {
-				    int hwHWKbps = setHardwareEncoderKbps(videoWidth, videoHight);
-				    
-			        Log.i(TAG, "hwHWKbps: " + hwHWKbps); 
-				    
-					int isSupportHWEncoder = libPublisher.SetSmartPublisherVideoHWEncoder(hwHWKbps);
-			        
-					if(isSupportHWEncoder == 0)
-					{
-				        Log.i(TAG, "Great, it supports hardware encoder!"); 
-					}
-			    }
-			    
-			    libPublisher.SetSmartPublisherEventCallback(new EventHande()); 
-			    
-			    //如果想和时间显示在同一行，请去掉'\n'
-			    String watermarkText = "大牛直播(daniulive)\n\n";
-			    
-			    String path =logoPath;
-			    
-			    if(watemarkType == 0)
-			    {
-			    	if ( isWritelogoFileSuccess )
-			    		libPublisher.SmartPublisherSetPictureWatermark(path, WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160, 160, 10, 10);
-			    }
-			    else if(watemarkType == 1)
-			    {
-			    	if ( isWritelogoFileSuccess )
-			    		libPublisher.SmartPublisherSetPictureWatermark(path, WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160, 160, 10, 10);
-				    
-			    	libPublisher.SmartPublisherSetTextWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
-			    	
-			    	//libPublisher.SmartPublisherSetTextWatermarkFontFileName("/system/fonts/DroidSansFallback.ttf");
-			    	
-			    	//libPublisher.SmartPublisherSetTextWatermarkFontFileName("/sdcard/DroidSansFallback.ttf");
-			    }
-			    else if(watemarkType == 2)
-			    {
-				    libPublisher.SmartPublisherSetTextWatermark(watermarkText, 1, WATERMARK.WATERMARK_FONTSIZE_BIG, WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
-				    
-				    //libPublisher.SmartPublisherSetTextWatermarkFontFileName("/system/fonts/DroidSansFallback.ttf");
-			    }
-			    else
-			    {
-			    	Log.i(TAG, "no watermark settings..");
-			    }
-			    //end
-			    
-			    
-			    if ( !is_speex )
-			    {
-			    	 // set AAC encoder
-			    	 libPublisher.SmartPublisherSetAudioCodecType(1);
-			    }
-			    else
-			    {
-			    	// set Speex encoder
-			    	libPublisher.SmartPublisherSetAudioCodecType(2);
-			    	libPublisher.SmartPublisherSetSpeexEncoderQuality(8);
-			    }
-			    
-			    libPublisher.SmartPublisherSetNoiseSuppression(is_noise_suppression?1:0);
-			    
-			    libPublisher.SmartPublisherSetAGC(is_agc?1:0);
-			    
-			    //libPublisher.SmartPublisherSetClippingMode(0);
-			    
-				libPublisher.SmartPublisherSetSWVideoEncoderProfile(sw_video_encoder_profile);
-				
-				libPublisher.SmartPublisherSetSWVideoEncoderSpeed(sw_video_encoder_speed);
-				
-				libPublisher.SmartPublisherSaveImageFlag(1);
-							    
-			    //libPublisher.SetRtmpPublishingType(0);
-			    
-				
-			    //libPublisher.SmartPublisherSetGopInterval(40);
-			    
-			    //libPublisher.SmartPublisherSetFPS(15);
-			    			        
-			    //libPublisher.SmartPublisherSetSWVideoBitRate(600, 1200);
-			    // IF not set url or url is empty, it will not publish stream
-			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
-			    if ( libPublisher.SmartPublisherSetURL(publishURL) != 0 )
-			    {
-			    	Log.e(TAG, "Failed to set publish stream URL..");
-			    }
-			    
-            	int isStarted = libPublisher.SmartPublisherStart();
-            	if(isStarted != 0)
-            	{
-            		Log.e(TAG, "Failed to publish stream..");
-            	}
-            	else
-            	{
-            		btnRecoderMgr.setEnabled(false);
-            		btnHWencoder.setEnabled(false);
-            		
-            		btnNoiseSuppression.setEnabled(false);
-            		btnAGC.setEnabled(false);
-            		btnSpeex.setEnabled(false);
-            	}
-			}
-			
-			if(pushType == 0 || pushType ==1)
-			{
-				CheckInitAudioRecorder();	//enable pure video publisher..
-			}
-        }
-    };
-    */
-    
+ 
     class ButtonStopListener implements OnClickListener
     {
         public void onClick(View v)
@@ -1074,43 +964,30 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		btnSpeex.setEnabled(isEnable);
     }
     
-    private void InitAndSetConfig()
+    
+    private void SetConfig(long handle)
     {
-		Log.i(TAG, "videoWidth: " + videoWidth + " videoHight: " + videoHight
-				+ " pushType:" + pushType);
-
-		int audio_opt = 1;
-		int video_opt = 1;
-
-		if (pushType == 1) 
-		{
-			video_opt = 0;
-		} 
-		else if (pushType == 2)
-		{
-			audio_opt = 0;
-		}
-
-		publisherHandle = libPublisher.SmartPublisherOpen(myContext, audio_opt, video_opt,
-				videoWidth, videoHight);
-		
-		Log.i(TAG, "publisherHandle=" + publisherHandle);
-
-		if (is_hardware_encoder) 
+    	if ( libPublisher == null )
+    		return;
+    	
+    	if ( handle == 0 )
+    		return;
+    	
+		if ( is_hardware_encoder ) 
 		{
 			int hwHWKbps = setHardwareEncoderKbps(videoWidth, videoHight);
 
 			Log.i(TAG, "hwHWKbps: " + hwHWKbps);
 
 			int isSupportHWEncoder = libPublisher
-					.SetSmartPublisherVideoHWEncoder(publisherHandle, hwHWKbps);
+					.SetSmartPublisherVideoHWEncoder(handle, hwHWKbps);
 
 			if (isSupportHWEncoder == 0) {
 				Log.i(TAG, "Great, it supports hardware encoder!");
 			}
 		}
 
-		libPublisher.SetSmartPublisherEventCallbackV2(publisherHandle, new EventHandeV2());
+		libPublisher.SetSmartPublisherEventCallbackV2(handle, new EventHandeV2());
 
 		// 如果想和时间显示在同一行，请去掉'\n'
 		String watermarkText = "大牛直播(daniulive)\n\n";
@@ -1120,7 +997,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		if (watemarkType == 0)
 		{
 			if (isWritelogoFileSuccess)
-				libPublisher.SmartPublisherSetPictureWatermark(publisherHandle, path,
+				libPublisher.SmartPublisherSetPictureWatermark(handle, path,
 								WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160,
 								160, 10, 10);
 			
@@ -1128,11 +1005,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		else if (watemarkType == 1)
 		{
 			if (isWritelogoFileSuccess)
-				libPublisher.SmartPublisherSetPictureWatermark(publisherHandle, path,
+				libPublisher.SmartPublisherSetPictureWatermark(handle, path,
 								WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160,
 								160, 10, 10);
 
-			libPublisher.SmartPublisherSetTextWatermark(publisherHandle, watermarkText, 1,
+			libPublisher.SmartPublisherSetTextWatermark(handle, watermarkText, 1,
 					WATERMARK.WATERMARK_FONTSIZE_BIG,
 					WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
 
@@ -1142,7 +1019,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		} 
 		else if (watemarkType == 2)
 		{
-			libPublisher.SmartPublisherSetTextWatermark(publisherHandle, watermarkText, 1,
+			libPublisher.SmartPublisherSetTextWatermark(handle, watermarkText, 1,
 					WATERMARK.WATERMARK_FONTSIZE_BIG,
 					WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
 
@@ -1156,36 +1033,81 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		if (!is_speex) 
 		{
 			// set AAC encoder
-			libPublisher.SmartPublisherSetAudioCodecType(publisherHandle, 1);
+			libPublisher.SmartPublisherSetAudioCodecType(handle, 1);
 		} 
 		else
 		{
 			// set Speex encoder
-			libPublisher.SmartPublisherSetAudioCodecType(publisherHandle, 2);
-			libPublisher.SmartPublisherSetSpeexEncoderQuality(publisherHandle, 8);
+			libPublisher.SmartPublisherSetAudioCodecType(handle, 2);
+			libPublisher.SmartPublisherSetSpeexEncoderQuality(handle, 8);
 		}
 
-		libPublisher.SmartPublisherSetNoiseSuppression(publisherHandle, is_noise_suppression ? 1
+		libPublisher.SmartPublisherSetNoiseSuppression(handle, is_noise_suppression ? 1
 				: 0);
 
-		libPublisher.SmartPublisherSetAGC(publisherHandle, is_agc ? 1 : 0);
+		libPublisher.SmartPublisherSetAGC(handle, is_agc ? 1 : 0);
 
-		// libPublisher.SmartPublisherSetClippingMode(publisherHandle, 0);
+		// libPublisher.SmartPublisherSetClippingMode(handle, 0);
 
-		libPublisher.SmartPublisherSetSWVideoEncoderProfile(publisherHandle, sw_video_encoder_profile);
+		libPublisher.SmartPublisherSetSWVideoEncoderProfile(handle, sw_video_encoder_profile);
 		
-		libPublisher.SmartPublisherSetSWVideoEncoderSpeed(publisherHandle, sw_video_encoder_speed);
+		libPublisher.SmartPublisherSetSWVideoEncoderSpeed(handle, sw_video_encoder_speed);
 
-		// libPublisher.SetRtmpPublishingType(publisherHandle, 0);
+		// libPublisher.SetRtmpPublishingType(handle, 0);
 
-		// libPublisher.SmartPublisherSetGopInterval(publisherHandle, 40);
+		// libPublisher.SmartPublisherSetGopInterval(handle, 40);
 
-		// libPublisher.SmartPublisherSetFPS(publisherHandle, 15);
-
-		// libPublisher.SmartPublisherSetSWVideoBitRate(publisherHandle, 600, 1200);
+		// libPublisher.SmartPublisherSetFPS(handle, 15);
 		
-		libPublisher.SmartPublisherSaveImageFlag(publisherHandle, 1);
+		if ( is_hardware_encoder ) 
+		{
+			libPublisher.SmartPublisherSetFPS(handle, 20);
+		}
+
+		// libPublisher.SmartPublisherSetSWVideoBitRate(handle, 600, 1200);
 		
+		libPublisher.SmartPublisherSaveImageFlag(handle, 1);
+		
+		libPublisher.SmartPublisherSetClippingMode(handle, 0);
+    }
+    
+    
+    private void InitAndSetConfig()
+    {
+		Log.i(TAG, "videoWidth: " + videoWidth + " videoHight: " + videoHight
+				+ " pushType:" + pushType);
+
+		int audio_opt = 1;
+		int video_opt = 1;
+
+		if (  pushType == 1) 
+		{
+			video_opt = 0;
+		} 
+		else if (pushType == 2)
+		{
+			audio_opt = 0;
+		}
+
+		publisherHandleFront = libPublisher.SmartPublisherOpen(myContext, audio_opt, video_opt,
+				videoWidth, videoHight);
+	
+		Log.i(TAG, "publisherHandleFront=" + publisherHandleFront);
+	
+		if ( publisherHandleFront != 0 )
+		{
+			SetConfig(publisherHandleFront);
+		}
+		
+		publisherHandleBack = libPublisher.SmartPublisherOpen(myContext, audio_opt, video_opt,
+				videoWidth, videoHight);
+		
+		Log.i(TAG, "publisherHandleBack=" + publisherHandleBack);
+		
+		if ( publisherHandleBack != 0 )
+		{
+			SetConfig(publisherHandleBack);
+		}
     }
     
     
@@ -1242,13 +1164,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			        
 			Log.i(TAG, printText);
 			
+			publishURL = "rtmp://player.daniulive.com:1935/hls/streamtfront";
 			
-			if ( libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0 )
+			if ( libPublisher.SmartPublisherSetURL(publisherHandleFront, publishURL) != 0 )
 			{
 			    Log.e(TAG, "Failed to set publish stream URL..");
 			}
 						
-            int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
+            int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandleFront);
             if( startRet != 0)
             {
             	isPushing = false;
@@ -1275,6 +1198,21 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				
 			btnStartPush.setText(" 停止推送 ");
 			
+			publishURL = "rtmp://player.daniulive.com:1935/hls/streamtback";
+			
+			if ( libPublisher.SmartPublisherSetURL(publisherHandleBack, publishURL) != 0 )
+			{
+			    Log.e(TAG, "Failed to set publish stream URL..");
+			}
+						
+            startRet = libPublisher.SmartPublisherStartPublisher(publisherHandleBack);
+            if( startRet != 0)
+            {
+            	isPushing = false;
+            	
+            	Log.e(TAG, "Failed to start push stream back..");
+            	return;
+            }   
         }
         
     };
@@ -1319,7 +1257,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	
         	ConfigRecorderFuntion(true);
         	
-            int startRet = libPublisher.SmartPublisherStartRecorder(publisherHandle);
+            int startRet = libPublisher.SmartPublisherStartRecorder(publisherHandleFront);
             if( startRet != 0 )
             {
             	isRecording = false;
@@ -1342,7 +1280,17 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             }
             				
             btnStartRecorder.setText(" 停止录像");
-                                
+            
+        
+            startRet = libPublisher.SmartPublisherStartRecorder(publisherHandleBack);
+            if( startRet != 0)
+            {
+                isPushing = false;
+                     	
+                Log.e(TAG, "Failed to start recorder stream.. back");
+                return;
+            }
+                                         
         }
     };
         
@@ -1358,7 +1306,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             
        		Log.i(TAG, "imagePath:" + imagePath);
        		
-       		libPublisher.SmartPublisherSaveCurImage(publisherHandle, imagePath);
+       		if ( publisherHandleFront != 0 )
+       		{
+       			libPublisher.SmartPublisherSaveCurImage(publisherHandleFront, imagePath);
+       		}	
         }
     };
     
@@ -1380,7 +1331,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
  	        {
  				Log.i(TAG, "stopPush, call audioRecord_.StopRecording.."); 
  				
- 			
  				audioRecord_.Stop();
  				
  				if ( audioRecordCallback_ != null )
@@ -1396,23 +1346,41 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
  	        }
     	}
     	
-    	 if ( libPublisher != null )
+    	 if ( libPublisher != null && publisherHandleFront != 0 )
     	 {
-    		libPublisher.SmartPublisherStopPublisher(publisherHandle);
+    		libPublisher.SmartPublisherStopPublisher(publisherHandleFront);
     	 }
     		 
     	 if ( !isRecording )
     	 {
-    		 if ( publisherHandle != 0 )
+    		 if ( publisherHandleFront != 0 )
     	 	 {
     	 		if ( libPublisher != null )
     	 	    {
-    	 	    	libPublisher.SmartPublisherClose(publisherHandle);
-    	 	    	publisherHandle = 0;
+    	 	    	libPublisher.SmartPublisherClose(publisherHandleFront);
+    	 	    	publisherHandleFront = 0;
     	 	    }
     	 	}
     	 }
-    	    	 
+    	 
+    	 
+    	 if ( libPublisher != null && publisherHandleBack != 0 )
+    	 {
+    		libPublisher.SmartPublisherStopPublisher(publisherHandleBack);
+    	 }
+    	 
+    	 if ( !isRecording )
+    	 {
+    		 if ( publisherHandleBack != 0 )
+    	 	 {
+    	 		if ( libPublisher != null )
+    	 	    {
+    	 	    	libPublisher.SmartPublisherClose(publisherHandleBack);
+    	 	    	publisherHandleBack = 0;
+    	 	    }
+    	 	}
+    	 }
+    	 
     }
     
     private void stopRecorder()
@@ -1438,23 +1406,42 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
  	        }
     	}
     	
-    	if ( libPublisher != null )
+    	if ( libPublisher != null && publisherHandleFront != 0)
     	{
-    	   libPublisher.SmartPublisherStopRecorder(publisherHandle);
+    	   libPublisher.SmartPublisherStopRecorder(publisherHandleFront);
     	}
     	
     	if ( !isPushing )
    	 	{
-   		 	if ( publisherHandle != 0 )
+   		 	if ( publisherHandleFront != 0 )
    		 	{
    		 		if ( libPublisher != null )
    		 		{
-   		 			libPublisher.SmartPublisherClose(publisherHandle);
-   		 			publisherHandle = 0;
+   		 			libPublisher.SmartPublisherClose(publisherHandleFront);
+   		 			publisherHandleFront = 0;
    		 		}
    		 	}
    	 	}
     	
+    	
+
+   	 if ( libPublisher != null && publisherHandleBack != 0)
+   	 {
+   		libPublisher.SmartPublisherStopRecorder(publisherHandleBack);
+   	 }
+   	 
+   	 
+   	 if ( !isPushing )
+   	 {
+   		 if ( publisherHandleBack != 0 )
+   	 	 {
+   	 		if ( libPublisher != null )
+   	 	    {
+   	 	    	libPublisher.SmartPublisherClose(publisherHandleBack);
+   	 	    publisherHandleBack = 0;
+   	 	    }
+   	 	}
+   	 }    	
     }
 
 	@Override
@@ -1497,12 +1484,21 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		isPushing = false;
     		isRecording = false;
     		
-    		if ( publisherHandle != 0 )
+    		if ( publisherHandleFront != 0 )
     		{
     			if ( libPublisher != null )
     	    	{
-    	    	    libPublisher.SmartPublisherClose(publisherHandle);
-    	    	    publisherHandle = 0;
+    	    	    libPublisher.SmartPublisherClose(publisherHandleFront);
+    	    	    publisherHandleFront = 0;
+    	    	}
+    		}
+    		
+    		if ( publisherHandleBack != 0 )
+    		{
+    			if ( libPublisher != null )
+    	    	{
+    	    	    libPublisher.SmartPublisherClose(publisherHandleBack);
+    	    	    publisherHandleBack = 0;
     	    	}
     		}
     	}
@@ -1556,16 +1552,42 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	}
 
 	/*it will call when surfaceChanged*/
-	private void initCamera(SurfaceHolder holder)
+	private void initCamera(int camera_type, SurfaceHolder holder)
 	{  
 		Log.i(TAG, "initCamera..");
-	
-		if(mPreviewRunning)
-			mCamera.stopPreview();
 		
+		Camera camera = GetCameraObj(camera_type);
+		if ( camera == null )
+		{
+			Log.e(TAG, "initCamera camera is null, type=" + camera_type);
+			return;
+		}
+		
+		int cameraIndex = GetCameraIndex(camera_type);
+		if ( -1 == cameraIndex )
+		{
+			Log.e(TAG, "initCamera cameraIndex is -1, type=" + camera_type);
+			return;
+		}
+		
+		if ( FRONT == camera_type )
+		{
+			if ( mPreviewRunningFront )
+			{
+				camera.stopPreview();
+			}
+		}
+		else if ( BACK == camera_type )
+		{
+			if ( mPreviewRunningBack )
+			{
+				camera.stopPreview();
+			}
+		}
+			
 		Camera.Parameters parameters;
 		try {
-			parameters = mCamera.getParameters();
+			parameters = camera.getParameters();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1578,75 +1600,167 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		
 		SetCameraFPS(parameters);
 		
-		setCameraDisplayOrientation(this, curCameraIndex, mCamera);
+		setCameraDisplayOrientation(this, cameraIndex, camera);
         
-		mCamera.setParameters(parameters); 
+		camera.setParameters(parameters); 
 		
 		int bufferSize = (((videoWidth|0xf)+1) * videoHight * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat())) / 8;
 		
-		mCamera.addCallbackBuffer(new byte[bufferSize]);
+		camera.addCallbackBuffer(new byte[bufferSize]);
 		
-		mCamera.setPreviewCallbackWithBuffer(this);  
-        try {  
-            mCamera.setPreviewDisplay(holder);  
+		camera.setPreviewCallbackWithBuffer(new NT_SP_CameraPreviewCallback(camera_type));  
+        
+		try
+        {  
+        	camera.setPreviewDisplay(holder);  
         } catch (Exception ex) {
         	// TODO Auto-generated catch block 
-        	if(null != mCamera){  
-        		mCamera.release();  
-        		mCamera = null;  
+        	if(null != camera)
+        	{  
+        		camera.release();  
+        		camera = null;
+        		SetCameraObj(camera_type, null);
             }
         	ex.printStackTrace();
         }  
-        mCamera.startPreview();  
-        mCamera.autoFocus(myAutoFocusCallback);
-        mPreviewRunning = true;  	
+        
+		if ( camera != null )
+		{
+			camera.startPreview();  
+		}
+        
+        if ( FRONT == camera_type )
+        {
+        	camera.autoFocus(myAutoFocusCallbackFront);
+        	mPreviewRunningFront = true;  	
+        }
+        else if ( BACK == camera_type )
+        {
+        	camera.autoFocus(myAutoFocusCallbackBack);
+        	mPreviewRunningBack = true; 
+        }
 	}  
 	
-	@Override
-	public void surfaceCreated(SurfaceHolder holder) {
-		Log.i(TAG, "surfaceCreated..");
-		try {
+	int GetCameraIndex(int type)
+	{
+		if ( FRONT == type )
+		{
+			return curFrontCameraIndex;
+		}
+		else if ( BACK == type )
+		{
+			return curBackCameraIndex;
+		}
+		else
+		{
+			Log.i(TAG, "GetCameraIndex type error, type=" + type);
+			return -1;
+		}
+	}
+	
+	Camera GetCameraObj(int type)
+	{
+		if ( FRONT == type )
+		{
+			return mCameraFront;
+		}
+		else if ( BACK == type )
+		{
+			return mCameraBack;
+		}
+		else
+		{
+			Log.i(TAG, "GetCameraObj type error, type=" + type);
+			return null;
+		}
+	}
+	
+	void SetCameraObj(int type, Camera c)
+	{
+		if ( FRONT == type )
+		{
+			mCameraFront = c;
+		}
+		else if ( BACK == type )
+		{
+			mCameraBack = c;
+		}
+		else
+		{
+			Log.i(TAG, "SetCameraObj type error, type=" + type);
+		}
+	}
+	
+	class NT_SP_SurfaceHolderCallback implements Callback
+	{
+		private int type_ = 0;
+		
+		public NT_SP_SurfaceHolderCallback(int type)
+		{
+			type_ = type;
+		}
+		
+		@Override
+		public void surfaceCreated(SurfaceHolder holder) {
 			
-	        int CammeraIndex=findBackCamera();
-	        Log.i(TAG, "BackCamera: " + CammeraIndex);
-	       
-	        if(CammeraIndex==-1){  
-	            CammeraIndex=findFrontCamera();
-	            currentCameraType = FRONT;
-	            imgSwitchCamera.setEnabled(false);
-	            if(CammeraIndex == -1)
-	            {
-	            	Log.i(TAG, "NO camera!!");
-	            	return;
-	            }   
-	        }
-	        else
-	        {
-	        	 currentCameraType = BACK;
-	        }
+			Log.i(TAG, "surfaceCreated..type_=" + type_);
 			
-	        if ( mCamera == null )
-	        {
-	        	mCamera = openCamera(currentCameraType);
+			if ( type_ != FRONT && type_ != BACK )
+			{
+				Log.e(TAG, "surfaceCreated type error, type=" + type_);
+				return;
+			}
+			
+			try {
+				
+				if ( type_ == FRONT )
+				{
+					int cammeraIndex = findFrontCamera();
+					if( cammeraIndex == -1 )
+		            {
+		            	Log.e(TAG, "surfaceCreated, There is no front camera!!");
+		            	return;
+		            }  
+				}
+				else if ( type_ == BACK )
+				{
+					int cammeraIndex = findBackCamera();
+					if ( -1 == cammeraIndex )
+					{
+						Log.e(TAG, "surfaceCreated, there is no back camera");
+						
+						return;
+					}
+				}
+				
+				if ( GetCameraObj(type_) == null )
+				{
+					Camera c = openCamera(type_); 
+					SetCameraObj(type_, c);
+				}
+		        
+	        } catch (Exception e) {
+	            e.printStackTrace();
 	        }
-	        
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		}
+		
+		@Override
+		public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+			Log.i(TAG, "surfaceChanged..");
+			
+			if ( type_ != FRONT && type_ != BACK )
+				return;
+			
+			initCamera(type_, holder);
+		}
 
+		@Override
+		public void surfaceDestroyed(SurfaceHolder holder) {
+			// TODO Auto-generated method stub
+			Log.i(TAG, "Surface Destroyed"); 
+		}
 	}
-
-	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-		Log.i(TAG, "surfaceChanged..");
-		initCamera(holder);
-	}
-
-	@Override
-	public void surfaceDestroyed(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-		Log.i(TAG, "Surface Destroyed"); 
-	}
+	
 	
 	public void onConfigurationChanged(Configuration newConfig) {  
         try {  
@@ -1665,36 +1779,60 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }  
     }
 
-	@Override
-	public void onPreviewFrame(byte[] data, Camera camera) {
-		frameCount++;
-		if ( frameCount % 3000 == 0 )
-		{
-			Log.i("OnPre", "gc+");
-			System.gc();
-			Log.i("OnPre", "gc-");
-		}
 	
-		if (data == null) {
-			Parameters params = camera.getParameters();
-			Size size = params.getPreviewSize();
-			int bufferSize = (((size.width|0x1f)+1) * size.height * ImageFormat.getBitsPerPixel(params.getPreviewFormat())) / 8;
-			camera.addCallbackBuffer(new byte[bufferSize]);
-		} 
-		else 
+	class NT_SP_CameraPreviewCallback implements PreviewCallback
+	{
+		private int type_ = 0;
+		
+		private int frameCount_ = 0;
+		
+		public NT_SP_CameraPreviewCallback(int type)
 		{
-			if(isStart|| isPushing || isRecording)
-			{
-				libPublisher.SmartPublisherOnCaptureVideoData(publisherHandle, data, data.length, currentCameraType, currentOrigentation);
-			}
-			
-			camera.addCallbackBuffer(data);
+			type_ = type;
 		}
-	} 
+		
+		@Override
+		public void onPreviewFrame(byte[] data, Camera camera) {
+			
+			frameCount_++;
+			if ( frameCount_ % 5000 == 0 )
+			{
+				//Log.i("OnPre", "gc+");
+				System.gc();
+				//Log.i("OnPre", "gc-");
+			}
+		
+			if (data == null) {
+				Parameters params = camera.getParameters();
+				Size size = params.getPreviewSize();
+				int bufferSize = (((size.width|0x1f)+1) * size.height * ImageFormat.getBitsPerPixel(params.getPreviewFormat())) / 8;
+				camera.addCallbackBuffer(new byte[bufferSize]);
+			} 
+			else 
+			{
+				if( isStart|| isPushing || isRecording )
+				{
+					if ( FRONT == type_ && publisherHandleFront != 0 )
+					{
+						libPublisher.SmartPublisherOnCaptureVideoData(publisherHandleFront, data, data.length, FRONT, currentOrigentation);
+					}
+					
+					if ( BACK == type_ && publisherHandleBack != 0 )
+					{
+						libPublisher.SmartPublisherOnCaptureVideoData(publisherHandleBack, data, data.length, BACK, currentOrigentation);
+					}
+				}
+				
+				camera.addCallbackBuffer(data);
+			}
+		} 
+	}
+
 	
     @SuppressLint("NewApi")
     private Camera openCamera(int type){
-        int frontIndex =-1;
+        
+    	int frontIndex =-1;
         int backIndex = -1;
         int cameraCount = Camera.getNumberOfCameras();
         Log.i(TAG, "cameraCount: " + cameraCount);
@@ -1709,20 +1847,22 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 backIndex = cameraIndex;
             }
         }
-
-        currentCameraType = type;
-        if(type == FRONT && frontIndex != -1){
-        	curCameraIndex = frontIndex;
+        
+        if( type == FRONT && frontIndex != -1) {
+        	curFrontCameraIndex = frontIndex;
             return Camera.open(frontIndex);
-        }else if(type == BACK && backIndex != -1){
-        	curCameraIndex = backIndex;
+        }else if(type == BACK && backIndex != -1) {
+        	curBackCameraIndex = backIndex;
             return Camera.open(backIndex);
         }
+        
         return null;
     }
 	
 	 private void switchCamera() throws IOException{
-		 	mCamera.setPreviewCallback(null);
+	    /*
+		  
+		 mCamera.setPreviewCallback(null);
 		 	mCamera.stopPreview();
 		 	mCamera.release();
 	        if(currentCameraType == FRONT){
@@ -1732,6 +1872,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	        }
 	        
 	        initCamera(mSurfaceHolder);
+	        
+	      */
 	    }
 	 
 	 /*
@@ -1819,16 +1961,16 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	
     	switch(width) {
         case 176:
-        	hwEncoderKpbs = 300;
+        	hwEncoderKpbs = 220;
             break;
         case 320:
-        	hwEncoderKpbs = 500;
+        	hwEncoderKpbs = 380;
             break;
         case 640:
-        	hwEncoderKpbs = 1000;
+        	hwEncoderKpbs = 560;
             break;
         case 1280:
-        	hwEncoderKpbs = 1700;
+        	hwEncoderKpbs = 1200;
             break;
         default:
         	hwEncoderKpbs = 1000;
