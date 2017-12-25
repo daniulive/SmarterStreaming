@@ -26,17 +26,19 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows推流端-音频处理**] 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
 
-- [x] [**Windows推流端-导播**] 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；**多路流合成一路**实时导播推送；
+- [x] [**Windows推流端-导播**] 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
 
 - [x] [**Windows推流端-连麦**] 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [**Windows多路流媒体转发模块**] 支持同时**多路拉取rtmp/rtsp流，并分别转发到服务器**；
+- [x] [**Windows多路流媒体转发模块**] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**；
 
 - [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
 
 - [x] [**Windows推流端**] 实时**录像**模块/实时**快照**功能；
 
-- [x] [**Window播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
+- [x] [**Window直播播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
+
+- [x] [**Window点播播放器**] 支持本地flv文件播放;
 
 - [x] [**Window互动**] Windows一对一互动(可windows与windows/android/iOS互动)；
 
