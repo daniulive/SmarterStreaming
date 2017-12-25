@@ -38,7 +38,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Window直播播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
 
-- [x] [**Window点播播放器**] 支持本地flv文件播放;
+- [x] [**Window点播播放器**] 支持本地flv文件播放 [使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8windows%E6%92%AD%E6%94%BE%E5%99%A8%E6%92%AD%E6%94%BE%E6%9C%AC%E5%9C%B0flv%E6%96%87%E4%BB%B6);
 
 - [x] [**Window互动**] Windows一对一互动(可windows与windows/android/iOS互动)；
 
