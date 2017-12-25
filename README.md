@@ -408,7 +408,7 @@ android：strings.xml：
 
 商务合作微信:
 
-<img src="http://218.25.89.108:8080/files/daniulive/image/shangwu_erweima.png" width="302" alt="商务合作微信" />
+<img src="http://218.25.89.108:8080/files/daniulive/image/shangwu_erweima.png" width="183" alt="商务合作微信" />
 
 
 技术支持QQ: 2679481035
@@ -416,7 +416,7 @@ android：strings.xml：
 
 技术支持微信：
 
-<img src="http://218.25.89.108:8080/files/daniulive/image/jishu_erweima.png" width="302" alt="技术支持微信" />
+<img src="http://218.25.89.108:8080/files/daniulive/image/jishu_erweima.png" width="183" alt="技术支持微信" />
 
 QQ群(大牛直播精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
