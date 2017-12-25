@@ -46,13 +46,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Android推流端**] Android回音消除、噪音抑制、自动增益、VAD检测模块；
 
-- [x] [**Android播放器**] rtmp/rtsp超低延迟直播播放器;
+- [x] [**Android直播播放器**] rtmp/rtsp超低延迟直播播放器;
 
 - [x] [**Android互动**] Android一对一互动(可android与windows/android/iOS互动)；
 
 - [x] [**iOS推流端**] iOS摄像头推流/录像;
 
-- [x] [**iOS播放器**] rtmp/rtsp超低延迟直播播放器;
+- [x] [**iOS直播播放器**] rtmp/rtsp超低延迟直播播放器;
 
 - [x] [**iOS互动**] iOS一对一互动(可iOS与windows/android/iOS互动).
 
