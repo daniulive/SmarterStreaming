@@ -63,6 +63,8 @@ public class SmartPlayer extends Activity {
 	
 	private boolean isFastStartup = true; // 是否秒开, 默认true
 	
+	private int rotate_degrees = 0;
+	
 	private boolean switchUrlFlag = false;
 	
 	private String switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
@@ -78,6 +80,7 @@ public class SmartPlayer extends Activity {
 	Button btnFastStartup;
 	Button btnSetPlayBuffer;
 	Button btnLowLatency;
+	Button btnRotation;
 	Button btnSwitchUrl;
     TextView txtCopyright;
     TextView txtQQQun;
@@ -354,12 +357,42 @@ public class SmartPlayer extends Activity {
         	btnHardwareDecoder.setText("当前硬解码");
         }
       
+        LinearLayout LinearLayoutImage = new LinearLayout(this);
+        LinearLayoutImage.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayoutImage.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        
         /*capture image button */
         btnCaptureImage = new Button(this);
         
         btnCaptureImage.setText("快照");
         btnCaptureImage.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        lLinearLayout.addView(btnCaptureImage);
+        LinearLayoutImage.addView(btnCaptureImage);
+        
+        
+        btnRotation = new Button(this);
+    	
+    	if ( 0 == rotate_degrees )
+    	{
+    		btnRotation.setText("旋转90度");
+    	}
+    	else if ( 90 == rotate_degrees)
+    	{
+    		btnRotation.setText("旋转180度");
+    	}
+    	else if ( 180 == rotate_degrees)
+    	{
+    		btnRotation.setText("旋转270度");
+    	}
+    	else if ( 270 == rotate_degrees)
+    	{
+    		btnRotation.setText("不旋转");
+    	}
+    		
+    	btnRotation.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+    	LinearLayoutImage.addView(btnRotation);
+    	
+    	lLinearLayout.addView(LinearLayoutImage);
+        
         
         btnHardwareDecoder.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lLinearLayout.addView(btnHardwareDecoder);
@@ -403,6 +436,7 @@ public class SmartPlayer extends Activity {
     	btnFastStartup.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     	bufferLinearLayout.addView(btnFastStartup);
     	
+ 	
     	lLinearLayout.addView(bufferLinearLayout);
     	
        // buffer setting--
@@ -549,6 +583,38 @@ public class SmartPlayer extends Activity {
     	 }
        });
         
+        
+        btnRotation.setOnClickListener(new Button.OnClickListener() 
+        { 
+       	  public void onClick(View v) { 
+       		 
+       		rotate_degrees += 90;
+       		rotate_degrees = rotate_degrees % 360;
+       		
+       		if ( 0 == rotate_degrees )
+        	{
+        		btnRotation.setText("旋转90度");
+        	}
+        	else if ( 90 == rotate_degrees)
+        	{
+        		btnRotation.setText("旋转180度");
+        	}
+        	else if ( 180 == rotate_degrees)
+        	{
+        		btnRotation.setText("旋转270度");
+        	}
+        	else if ( 270 == rotate_degrees)
+        	{
+        		btnRotation.setText("不旋转");
+        	}
+       		 		 
+    		if ( playerHandle != 0 )
+    		{
+    			libPlayer.SmartPlayerSetRotation(playerHandle, rotate_degrees);
+    		}
+    	 }
+       });
+        
         btnSetPlayBuffer.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) { 
         		PopSettingBufferDialog();
@@ -630,7 +696,8 @@ public class SmartPlayer extends Activity {
 					  
             	      libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView); 	//if set the second param with null, it means it will playback audio only..
             		  	
-            	      // libPlayer.SmartPlayerSetSurface(playerHandle, null); 
+					  
+            	      //libPlayer.SmartPlayerSetSurface(playerHandle, null); 
             	      
             	      // External Render test
             	      //libPlayer.SmartPlayerSetExternalRender(playerHandle, new RGBAExternalRender());
@@ -641,6 +708,9 @@ public class SmartPlayer extends Activity {
             	      libPlayer.SmartPlayerSetBuffer(playerHandle, playBuffer);
             	      
             	      libPlayer.SmartPlayerSetLowLatencyMode(playerHandle, isLowLatency?1:0);
+            	      
+            	      libPlayer.SmartPlayerSetRotation(playerHandle, rotate_degrees);
+            	         
             	      
             	      // set report download speed
             	      //libPlayer.SmartPlayerSetReportDownloadSpeed(playerHandle, 1, 5);
@@ -781,7 +851,7 @@ public class SmartPlayer extends Activity {
     		}
     	}
 
-    	public void onNTRenderFrame()
+    	public void onNTRenderFrame(int width, int height, long timestamp)
     	{
     		 if( rgba_buffer_ == null )
     	            return;
@@ -793,6 +863,8 @@ public class SmartPlayer extends Activity {
     		 // test
     		// byte[] test_buffer = new byte[16];
     		// rgba_buffer_.get(test_buffer);
+    		 
+    		 Log.i(TAG, "RGBAExternalRender:onNTRenderFrame w=" + width + " h=" + height + " timestamp=" + timestamp);
     		 
     		 //Log.i(TAG, "RGBAExternalRender:onNTRenderFrame rgba:" + bytesToHexString(test_buffer));
     	}
@@ -833,8 +905,8 @@ public class SmartPlayer extends Activity {
     		v_row_bytes_ = ((width_+1)/2 + 15) & (~15);
     		
     		y_buffer_ = ByteBuffer.allocateDirect(y_row_bytes_*height_);
-    		u_buffer_ = ByteBuffer.allocateDirect(u_row_bytes_*(height_+1)/2);
-    		v_buffer_ = ByteBuffer.allocateDirect(v_row_bytes_*(height_+1)/2);
+    		u_buffer_ = ByteBuffer.allocateDirect(u_row_bytes_*((height_+1)/2));
+    		v_buffer_ = ByteBuffer.allocateDirect(v_row_bytes_*((height_+1)/2));
     		
     		Log.i(TAG, "I420ExternalRender::onNTFrameSizeChanged width_=" 
     		    + width_ + " height_=" + height_ 
@@ -887,7 +959,7 @@ public class SmartPlayer extends Activity {
     		}
     	}
 
-    	public void onNTRenderFrame()
+    	public void onNTRenderFrame(int width, int height, long timestamp)
     	{
     		if ( y_buffer_ == null )
     			return;
@@ -904,6 +976,9 @@ public class SmartPlayer extends Activity {
     		u_buffer_.rewind();
     		
     		v_buffer_.rewind();
+    		
+    		
+    		 Log.i(TAG, "I420ExternalRender::onNTRenderFrame w=" + width + " h=" + height + " timestamp=" + timestamp);
     		
     		 // copy buffer
     		

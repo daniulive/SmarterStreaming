@@ -11,8 +11,11 @@
 package com.daniulive.smartpublisher;
 
 import com.daniulive.smartpublisher.SmartPublisherJni.WATERMARK;
-import com.eventhandle.SmartEventCallback;
-import com.voiceengine.NTAudioRecord;	//for audio capture..
+import com.eventhandle.NTSmartEventCallbackV2;
+import com.eventhandle.NTSmartEventID;
+//import com.voiceengine.NTAudioRecord;	//for audio capture..
+import com.voiceengine.NTAudioRecordV2;
+import com.voiceengine.NTAudioRecordV2Callback;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -56,17 +59,24 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 @SuppressWarnings("deprecation")
 public class CameraPublishActivity extends Activity implements Callback, PreviewCallback 
 {
 	private static String TAG = "SmartPublisher";
 	
-	NTAudioRecord audioRecord_ = null;	//for audio capture
+	//NTAudioRecord audioRecord_ = null;	//for audio capture
+	
+	NTAudioRecordV2 audioRecord_ = null;
+	
+	NTAudioRecordV2Callback audioRecordCallback_ = null;
 	
 	private TextView textCurURL = null;
 	
-	private SmartPublisherJni libPublisher = null;
+	private long publisherHandle = 0;
+		
+	private SmartPublisherJniV2 libPublisher = null;
 	
 	/* 推送类型选择
 	 * 0: 音视频
@@ -116,7 +126,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private Button	btnHWencoder;
 	private ImageView imgSwitchCamera;
 	private Button btnInputPushUrl;
-	private Button btnStartStop;
+	//private Button btnStartStop;
 	
 	private Button btnStartPush;
 	private Button btnStartRecorder;
@@ -469,8 +479,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         btnInputPushUrl =(Button)findViewById(R.id.button_input_push_url);
         btnInputPushUrl.setOnClickListener(new ButtonInputPushUrlListener());
         
-        btnStartStop = (Button)findViewById(R.id.button_start_stop);
-        btnStartStop.setOnClickListener(new ButtonStartListener());
+        //btnStartStop = (Button)findViewById(R.id.button_start_stop);
+        //btnStartStop.setOnClickListener(new ButtonStartListener());
         
         btnStartPush = (Button)findViewById(R.id.button_start_push);
         btnStartPush.setOnClickListener(new ButtonStartPushListener());
@@ -504,7 +514,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             }  
         }; 
         
-        libPublisher = new SmartPublisherJni();
+        libPublisher = new SmartPublisherJniV2();
     }
 	
     class SwitchCameraListener implements OnClickListener
@@ -551,19 +561,52 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         initCamera(mSurfaceHolder);
     }
     
+    
+    class NTAudioRecordV2CallbackImpl implements NTAudioRecordV2Callback
+    { 	
+    	 @Override
+    	 public void onNTAudioRecordV2Frame(ByteBuffer data, int size, int sampleRate, int channel, int per_channel_sample_number)
+    	 {
+    		 /*
+    		 Log.i(TAG, "onNTAudioRecordV2Frame size=" + size + " sampleRate=" + sampleRate + " channel=" + channel
+    				 + " per_channel_sample_number=" + per_channel_sample_number);
+    		 
+    		 */
+    		 
+    		 if ( publisherHandle != 0 )
+    		 {
+    			 libPublisher.SmartPublisherOnPCMData(publisherHandle, data, size, sampleRate, channel, per_channel_sample_number);
+    		 }
+    	 }
+    }
+    
+  
     void CheckInitAudioRecorder()
     {
     	if ( audioRecord_ == null )
 		{
-			 audioRecord_ = new NTAudioRecord(this, 1);
+			 //audioRecord_ = new NTAudioRecord(this, 1);
+		
+    		audioRecord_ = new NTAudioRecordV2(this);
 		}
 			
         if( audioRecord_ != null )
         {
-        	Log.i(TAG, "onCreate, call executeAudioRecordMethod..");
+        	Log.i(TAG, "CheckInitAudioRecorder call audioRecord_.start()+++...");
+        	
+        	audioRecordCallback_ = new NTAudioRecordV2CallbackImpl();
+        	
+        	audioRecord_.AddCallback(audioRecordCallback_);
+        	
+        	audioRecord_.Start();
+        	
+        	Log.i(TAG, "CheckInitAudioRecorder call audioRecord_.start()---...");
+        	
+        	
+        	//Log.i(TAG, "onCreate, call executeAudioRecordMethod..");
         	// auido_ret: 0 ok, other failed
-        	int auido_ret= audioRecord_.executeAudioRecordMethod();
-        	Log.i(TAG, "onCreate, call executeAudioRecordMethod.. auido_ret=" + auido_ret); 
+        	//int auido_ret= audioRecord_.executeAudioRecordMethod();
+        	//Log.i(TAG, "onCreate, call executeAudioRecordMethod.. auido_ret=" + auido_ret); 
         }
     }
     
@@ -579,19 +622,19 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         			int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
             		if ( 0 == ret )
             		{
-            			if ( 0 != libPublisher.SmartPublisherSetRecorderDirectory(recDir) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorderDirectory(publisherHandle, recDir) )
             			{
             				Log.e(TAG, "Set recoder dir failed , path:" + recDir);
             				return;
             			}
             			
-            			if ( 0 != libPublisher.SmartPublisherSetRecorder(1) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 1) )
             			{
             				Log.e(TAG, "SmartPublisherSetRecoder failed.");
             				return;
             			}
             			
-            			if ( 0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(200) )
+            			if ( 0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(publisherHandle, 200) )
             			{
             				Log.e(TAG, "SmartPublisherSetRecoderFileMaxSize failed.");
             				return;
@@ -606,13 +649,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		}
     		else
     		{
-    			if ( 0 != libPublisher.SmartPublisherSetRecorder(0) )
+    			if ( 0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0) )
     			{
     				Log.e(TAG, "SmartPublisherSetRecoder failed.");
     				return;
     			}
     		}
     	}
+   	
     }
     
     class ButtonRecorderMangerListener implements OnClickListener
@@ -684,7 +728,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     			btnMute.setText("静音");
     		
     		if ( libPublisher != null )
-    			libPublisher.SmartPublisherSetMute(is_mute?1:0);
+    			libPublisher.SmartPublisherSetMute(publisherHandle, is_mute?1:0);
     	}
     }
     
@@ -700,11 +744,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     			btnMirror.setText("开镜像");
     		
     		if ( libPublisher != null )
-    			libPublisher.SmartPublisherSetMirror(is_mirror?1:0);
+    			libPublisher.SmartPublisherSetMirror(publisherHandle, is_mirror?1:0);
     	}
     }
     
-    class ButtonHardwareEncoderListener  implements OnClickListener
+    class ButtonHardwareEncoderListener implements OnClickListener
     {
     	public void onClick(View v)
     	{
@@ -717,44 +761,47 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	}
     }
     
-    class EventHande implements SmartEventCallback
+    class EventHandeV2 implements NTSmartEventCallbackV2
     {
     	 @Override
-    	 public void onCallback(int code, long param1, long param2, String param3, String param4, Object param5){
-             switch (code) {
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_STARTED:
+    	 public void onNTSmartEventCallbackV2(long handle, int id, long param1, long param2, String param3, String param4, Object param5){
+    		 
+    		 Log.i(TAG, "EventHandeV2: handle=" + handle + " id:" + id);
+    		 
+    		 switch (id) { 
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_STARTED:
                 	 txt = "开始。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTING:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTING:
                 	 txt = "连接中。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTION_FAILED:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTION_FAILED:
                 	 txt = "连接失败。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTED:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTED:
                 	 txt = "连接成功。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_DISCONNECTED:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_DISCONNECTED:
                 	 txt = "连接断开。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_STOP:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_STOP:
                 	 txt =  "关闭。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_RECORDER_START_NEW_FILE:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_RECORDER_START_NEW_FILE:
                 	 Log.i(TAG, "开始一个新的录像文件 : " + param3);
                 	 txt = "开始一个新的录像文件。。";
                      break;
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_ONE_RECORDER_FILE_FINISHED:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_ONE_RECORDER_FILE_FINISHED:
                 	 Log.i(TAG, "已生成一个录像文件 : " + param3);
                 	 txt = "已生成一个录像文件。。";
                      break;
                      
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_SEND_DELAY:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_SEND_DELAY:
                 	 Log.i(TAG, "发送时延: " + param1 + " 帧数:" + param2);
                 	 txt = "收到发送时延..";
                 	 break;
                 	 
-                 case EVENTID.EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE:
+                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE:
                 	 Log.i(TAG, "快照: " + param1 + " 路径：" + param3);
                 	 
                 	 if(param1 == 0)
@@ -829,6 +876,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	 }
     }
     
+    /*
     class ButtonStartListener implements OnClickListener
     {
         public void onClick(View v)
@@ -1005,6 +1053,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			}
         }
     };
+    */
     
     class ButtonStopListener implements OnClickListener
     {
@@ -1042,8 +1091,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			audio_opt = 0;
 		}
 
-		libPublisher.SmartPublisherInit(myContext, audio_opt, video_opt,
+		publisherHandle = libPublisher.SmartPublisherOpen(myContext, audio_opt, video_opt,
 				videoWidth, videoHight);
+		
+		Log.i(TAG, "publisherHandle=" + publisherHandle);
 
 		if (is_hardware_encoder) 
 		{
@@ -1052,14 +1103,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			Log.i(TAG, "hwHWKbps: " + hwHWKbps);
 
 			int isSupportHWEncoder = libPublisher
-					.SetSmartPublisherVideoHWEncoder(hwHWKbps);
+					.SetSmartPublisherVideoHWEncoder(publisherHandle, hwHWKbps);
 
 			if (isSupportHWEncoder == 0) {
 				Log.i(TAG, "Great, it supports hardware encoder!");
 			}
 		}
 
-		libPublisher.SetSmartPublisherEventCallback(new EventHande());
+		libPublisher.SetSmartPublisherEventCallbackV2(publisherHandle, new EventHandeV2());
 
 		// 如果想和时间显示在同一行，请去掉'\n'
 		String watermarkText = "大牛直播(daniulive)\n\n";
@@ -1069,7 +1120,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		if (watemarkType == 0)
 		{
 			if (isWritelogoFileSuccess)
-				libPublisher.SmartPublisherSetPictureWatermark(path,
+				libPublisher.SmartPublisherSetPictureWatermark(publisherHandle, path,
 								WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160,
 								160, 10, 10);
 			
@@ -1077,11 +1128,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		else if (watemarkType == 1)
 		{
 			if (isWritelogoFileSuccess)
-				libPublisher.SmartPublisherSetPictureWatermark(path,
+				libPublisher.SmartPublisherSetPictureWatermark(publisherHandle, path,
 								WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160,
 								160, 10, 10);
 
-			libPublisher.SmartPublisherSetTextWatermark(watermarkText, 1,
+			libPublisher.SmartPublisherSetTextWatermark(publisherHandle, watermarkText, 1,
 					WATERMARK.WATERMARK_FONTSIZE_BIG,
 					WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
 
@@ -1091,7 +1142,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		} 
 		else if (watemarkType == 2)
 		{
-			libPublisher.SmartPublisherSetTextWatermark(watermarkText, 1,
+			libPublisher.SmartPublisherSetTextWatermark(publisherHandle, watermarkText, 1,
 					WATERMARK.WATERMARK_FONTSIZE_BIG,
 					WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
 
@@ -1105,35 +1156,36 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		if (!is_speex) 
 		{
 			// set AAC encoder
-			libPublisher.SmartPublisherSetAudioCodecType(1);
+			libPublisher.SmartPublisherSetAudioCodecType(publisherHandle, 1);
 		} 
 		else
 		{
 			// set Speex encoder
-			libPublisher.SmartPublisherSetAudioCodecType(2);
-			libPublisher.SmartPublisherSetSpeexEncoderQuality(8);
+			libPublisher.SmartPublisherSetAudioCodecType(publisherHandle, 2);
+			libPublisher.SmartPublisherSetSpeexEncoderQuality(publisherHandle, 8);
 		}
 
-		libPublisher.SmartPublisherSetNoiseSuppression(is_noise_suppression ? 1
+		libPublisher.SmartPublisherSetNoiseSuppression(publisherHandle, is_noise_suppression ? 1
 				: 0);
 
-		libPublisher.SmartPublisherSetAGC(is_agc ? 1 : 0);
+		libPublisher.SmartPublisherSetAGC(publisherHandle, is_agc ? 1 : 0);
 
-		// libPublisher.SmartPublisherSetClippingMode(0);
+		// libPublisher.SmartPublisherSetClippingMode(publisherHandle, 0);
 
-		libPublisher.SmartPublisherSetSWVideoEncoderProfile(sw_video_encoder_profile);
+		libPublisher.SmartPublisherSetSWVideoEncoderProfile(publisherHandle, sw_video_encoder_profile);
 		
-		libPublisher.SmartPublisherSetSWVideoEncoderSpeed(sw_video_encoder_speed);
+		libPublisher.SmartPublisherSetSWVideoEncoderSpeed(publisherHandle, sw_video_encoder_speed);
 
-		// libPublisher.SetRtmpPublishingType(0);
+		// libPublisher.SetRtmpPublishingType(publisherHandle, 0);
 
-		// libPublisher.SmartPublisherSetGopInterval(40);
+		// libPublisher.SmartPublisherSetGopInterval(publisherHandle, 40);
 
-		// libPublisher.SmartPublisherSetFPS(15);
+		// libPublisher.SmartPublisherSetFPS(publisherHandle, 15);
 
-		// libPublisher.SmartPublisherSetSWVideoBitRate(600, 1200);
+		// libPublisher.SmartPublisherSetSWVideoBitRate(publisherHandle, 600, 1200);
 		
-		libPublisher.SmartPublisherSaveImageFlag(1);
+		libPublisher.SmartPublisherSaveImageFlag(publisherHandle, 1);
+		
     }
     
     
@@ -1189,13 +1241,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			printText = "URL:" + publishURL;
 			        
 			Log.i(TAG, printText);
-			     
-			if ( libPublisher.SmartPublisherSetURL(publishURL) != 0 )
+			
+			
+			if ( libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0 )
 			{
 			    Log.e(TAG, "Failed to set publish stream URL..");
 			}
 						
-            int startRet = libPublisher.SmartPublisherStartPublisher();
+            int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
             if( startRet != 0)
             {
             	isPushing = false;
@@ -1221,6 +1274,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			textCurURL.setText(printText);
 				
 			btnStartPush.setText(" 停止推送 ");
+			
         }
         
     };
@@ -1265,7 +1319,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	
         	ConfigRecorderFuntion(true);
         	
-            int startRet = libPublisher.SmartPublisherStartRecorder();
+            int startRet = libPublisher.SmartPublisherStartRecorder(publisherHandle);
             if( startRet != 0 )
             {
             	isRecording = false;
@@ -1288,6 +1342,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             }
             				
             btnStartRecorder.setText(" 停止录像");
+                                
         }
     };
         
@@ -1303,10 +1358,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             
        		Log.i(TAG, "imagePath:" + imagePath);
        		
-       		libPublisher.SmartPublisherSaveCurImage(imagePath);
+       		libPublisher.SmartPublisherSaveCurImage(publisherHandle, imagePath);
         }
     };
     
+    /*
     private void stop()
     {
     	Log.i(TAG, "onClick stop..");
@@ -1314,6 +1370,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	isStart = false;
     	btnStartStop.setText(" 开始推流 ");
     }
+    */
     
     private void stopPush()
     {
@@ -1322,15 +1379,40 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		if( audioRecord_ != null )
  	        {
  				Log.i(TAG, "stopPush, call audioRecord_.StopRecording.."); 
- 	        	audioRecord_.StopRecording();
- 	        	audioRecord_ = null;
+ 				
+ 			
+ 				audioRecord_.Stop();
+ 				
+ 				if ( audioRecordCallback_ != null )
+ 				{
+ 					audioRecord_.RemoveCallback(audioRecordCallback_);
+ 					audioRecordCallback_ = null;
+ 				}
+ 				
+ 				audioRecord_ = null;
+ 				
+ 				//audioRecord_.StopRecording();
+ 	        	//audioRecord_ = null;
  	        }
     	}
     	
     	 if ( libPublisher != null )
     	 {
-    		libPublisher.SmartPublisherStopPublisher();
+    		libPublisher.SmartPublisherStopPublisher(publisherHandle);
     	 }
+    		 
+    	 if ( !isRecording )
+    	 {
+    		 if ( publisherHandle != 0 )
+    	 	 {
+    	 		if ( libPublisher != null )
+    	 	    {
+    	 	    	libPublisher.SmartPublisherClose(publisherHandle);
+    	 	    	publisherHandle = 0;
+    	 	    }
+    	 	}
+    	 }
+    	    	 
     }
     
     private void stopRecorder()
@@ -1340,15 +1422,39 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		if( audioRecord_ != null )
  	        {
  				Log.i(TAG, "stopRecorder, call audioRecord_.StopRecording.."); 
- 	        	audioRecord_.StopRecording();
- 	        	audioRecord_ = null;
+ 	        	
+ 				audioRecord_.Stop();
+ 				
+ 				if ( audioRecordCallback_ != null )
+ 				{
+ 					audioRecord_.RemoveCallback(audioRecordCallback_);
+ 					audioRecordCallback_ = null;
+ 				}
+ 				
+ 				audioRecord_ = null;
+ 				
+ 				//audioRecord_.StopRecording();
+ 	        	//audioRecord_ = null;
  	        }
     	}
     	
     	if ( libPublisher != null )
     	{
-    	   libPublisher.SmartPublisherStopRecorder();
+    	   libPublisher.SmartPublisherStopRecorder(publisherHandle);
     	}
+    	
+    	if ( !isPushing )
+   	 	{
+   		 	if ( publisherHandle != 0 )
+   		 	{
+   		 		if ( libPublisher != null )
+   		 		{
+   		 			libPublisher.SmartPublisherClose(publisherHandle);
+   		 			publisherHandle = 0;
+   		 		}
+   		 	}
+   	 	}
+    	
     }
 
 	@Override
@@ -1356,27 +1462,49 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	{
     	Log.i(TAG, "activity destory!");
     	
+    	/*
     	if ( isStart )
     	{
     		isStart = false;
     		StopPublish();
     		Log.i(TAG, "onDestroy StopPublish");
     	}
+    	*/
     	
     	if ( isPushing || isRecording )
     	{
     		if( audioRecord_ != null )
  	        {
  				Log.i(TAG, "surfaceDestroyed, call StopRecording.."); 
- 	        	audioRecord_.StopRecording();
- 	        	audioRecord_ = null;
+ 	        	
+ 				//audioRecord_.StopRecording();
+ 	        	//audioRecord_ = null;
+ 				
+ 				audioRecord_.Stop();
+ 				
+ 				if ( audioRecordCallback_ != null )
+ 				{
+ 					audioRecord_.RemoveCallback(audioRecordCallback_);
+ 					audioRecordCallback_ = null;
+ 				}
+ 				
+ 				audioRecord_ = null;
  	        }
     		
     		stopPush();
     		stopRecorder();
-    		
+    		   		
     		isPushing = false;
     		isRecording = false;
+    		
+    		if ( publisherHandle != 0 )
+    		{
+    			if ( libPublisher != null )
+    	    	{
+    	    	    libPublisher.SmartPublisherClose(publisherHandle);
+    	    	    publisherHandle = 0;
+    	    	}
+    		}
     	}
     	
     	super.onDestroy();
@@ -1557,7 +1685,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		{
 			if(isStart|| isPushing || isRecording)
 			{
-				libPublisher.SmartPublisherOnCaptureVideoData(data, data.length, currentCameraType, currentOrigentation);	
+				libPublisher.SmartPublisherOnCaptureVideoData(publisherHandle, data, data.length, currentCameraType, currentOrigentation);
 			}
 			
 			camera.addCallbackBuffer(data);
@@ -1606,6 +1734,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	        initCamera(mSurfaceHolder);
 	    }
 	 
+	 /*
 	 private void StopPublish()
 	 {
 		 if(audioRecord_ != null)
@@ -1619,7 +1748,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		 {
 			 libPublisher.SmartPublisherStop();
 		 }
-	 }
+	 }*/
 	
 	//Check if it has front camera
 	private int findFrontCamera(){	

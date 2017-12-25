@@ -152,6 +152,15 @@ public class SmartPlayerJni {
 	 
 	 
 	 /**
+	  * 设置顺时针旋转, 注意除了0度之外， 其他角度都会额外消耗性能
+	  * @param handle
+	  * @param degress： 当前支持 0度，90度, 180度, 270度 旋转
+	  * @return
+	  */
+	 public native int SmartPlayerSetRotation(long handle, int degress);
+	 	 
+	 
+	 /**
 	  * Set report download speed
 	  * 
 	  * @param handle
