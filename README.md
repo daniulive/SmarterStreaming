@@ -4,7 +4,7 @@
 
 适用于**在线教育、智能可视门禁对讲、秀场直播、[超低延迟娃娃机抓取播放方案](https://github.com/daniulive/SmarterStreaming/wiki/%E8%B6%85%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%A8%83%E5%A8%83%E6%9C%BA%E6%8A%93%E5%8F%96%E6%92%AD%E6%94%BE%E6%96%B9%E6%A1%88)、媒体移动直播、[应急指挥调度](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播**等场景。
 
-[大牛直播SDK介绍PPT](http://218.25.89.108:8080/files/daniulive/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E4%BB%8B%E7%BB%8D_1203.pdf)
+[大牛直播SDK介绍PPT](http://218.25.89.108:8080/files/daniulive/ppt/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E4%BB%8B%E7%BB%8D_080202.pdf)
   
   SmarterStreaming, which is an excellent and powerful cross-platform Live Streaming publisher/playback SDK, based on RTMP/RTSP protocol, developed by daniulive.
 
@@ -15,6 +15,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **SmarterStreaming SDK可供个人学习之用，企业及商用需要经过授权**；
 
 **[latest release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)**
+
+**[android/iOS播放端录像、iOS转发抢先版](http://www.jianshu.com/writer#/notebooks/5521989/notes/23508749)**
 
 ===========================
 
