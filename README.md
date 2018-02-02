@@ -16,7 +16,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[latest release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)**
 
-**[android/iOS播放端录像、iOS转发抢先版](http://www.jianshu.com/writer#/notebooks/5521989/notes/23508749)**
+**[android/iOS播放端录像、iOS转发抢先版](https://www.jianshu.com/p/f5bdb7accdcf)**
 
 ===========================
 
