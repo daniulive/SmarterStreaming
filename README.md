@@ -34,29 +34,33 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows多路流媒体转发模块**] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**；
 
-- [x] [**Windows推流端**] rtmp推送模块(支持同时推多路url)；
+- [x] [**Windows推流端SDK**] rtmp推送模块(支持同时推多路url)；
 
-- [x] [**Windows推流端**] 实时**录像**模块/实时**快照**功能；
+- [x] [**Windows推流端S'D'K**] 实时**录像**模块/实时**快照**功能；
 
-- [x] [**Window直播播放器**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
+- [x] [**Window直播播放器SDK**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
 
-- [x] [**Window点播播放器**] 支持本地flv文件播放 [使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8windows%E6%92%AD%E6%94%BE%E5%99%A8%E6%92%AD%E6%94%BE%E6%9C%AC%E5%9C%B0flv%E6%96%87%E4%BB%B6);
+- [x] [**Window点播播放器SDK**] 支持本地flv文件播放 [使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8windows%E6%92%AD%E6%94%BE%E5%99%A8%E6%92%AD%E6%94%BE%E6%9C%AC%E5%9C%B0flv%E6%96%87%E4%BB%B6);
 
-- [x] [**Window互动**] Windows一对一互动(可windows与windows/android/iOS互动)；
+- [x] [**Window互动SDK**] Windows一对一互动(可windows与windows/android/iOS互动)；
 
-- [x] [**Android推流端**] Android屏幕、摄像头推流/录像模块;
+- [x] [**Android推流端SDK**] Android屏幕、摄像头推流/录像模块;
 
-- [x] [**Android推流端**] Android回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [**Android推流端SDK**] Android回音消除、噪音抑制、自动增益、VAD检测模块；
 
-- [x] [**Android直播播放器**] rtmp/rtsp超低延迟直播播放器;
+- [x] [**Android直播播放器SDK**] rtmp/rtsp超低延迟直播播放器;
 
-- [x] [**Android互动**] Android一对一互动(可android与windows/android/iOS互动)；
+- [x] [**Android播放-录像SDK**] 支持实时播放rtsp/rtmp流，并实时录像;
 
-- [x] [**iOS推流端**] iOS摄像头推流/录像;
+- [x] [**Android互动SDK**] Android一对一互动(可android与windows/android/iOS互动)；
 
-- [x] [**iOS直播播放器**] rtmp/rtsp超低延迟直播播放器;
+- [x] [**iOS推流端SDK**] iOS摄像头推流/录像;
 
-- [x] [**iOS互动**] iOS一对一互动(可iOS与windows/android/iOS互动).
+- [x] [**iOS直播播放器SDK**] rtmp/rtsp超低延迟直播播放器;
+
+- [x] [**iOS播放-录像-转发SDK**] 支持实时播放rtsp/rtmp流，并实时录像，亦可把拉取的rtmp/rtsp流转发到指定rtmp url;
+
+- [x] [**iOS互动SDK**] iOS一对一互动(可iOS与windows/android/iOS互动).
 
 **本地下载**
 
