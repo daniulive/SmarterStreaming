@@ -24,43 +24,49 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://player.daniulive.com:8080/files/image/大牛直播SDK.png" alt="一张图看懂大牛直播SDK" />
 
-- [x] [**Windows推流端-视频处理**] 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
+**Windows端**
 
-- [x] [**Windows推流端-音频处理**] 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [推流SDK] rtmp推送SDK(支持同时推多路url)；
 
-- [x] [**Windows推流端-导播**] 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
+- [x] [直播播放器SDK] rtmp/rtsp超低延迟直播播放器SDK，**播放和录像完全分离**，支持**直接拉流录像**;
 
-- [x] [**Windows推流端-连麦**] 以标准协议为基础，完美支持Windows连麦；
+- [x] [导播SDK] 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
 
-- [x] [**Windows多路流媒体转发模块**] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**；
+- [x] [连麦SDK] 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [**Windows推流端SDK**] rtmp推送模块(支持同时推多路url)；
+- [x] [多路流媒体转发SDK] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**；
 
-- [x] [**Windows推流端S'D'K**] 实时**录像**模块/实时**快照**功能；
+- [x] [录像SDK] 实时**录像**模块/实时**快照**功能；
 
-- [x] [**Window直播播放器SDK**] rtmp/rtsp超低延迟直播播放器，**播放和录像完全分离**，支持**直接拉流录像**;
+- [x] [点播播放器SDK] 支持本地flv文件播放；
 
-- [x] [**Window点播播放器SDK**] 支持本地flv文件播放 [使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8windows%E6%92%AD%E6%94%BE%E5%99%A8%E6%92%AD%E6%94%BE%E6%9C%AC%E5%9C%B0flv%E6%96%87%E4%BB%B6);
+- [x] [互动SDK] Windows一对一互动(可windows与windows/android/iOS互动)；
 
-- [x] [**Window互动SDK**] Windows一对一互动(可windows与windows/android/iOS互动)；
+- [x] [推流端-视频处理] 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
 
-- [x] [**Android推流端SDK**] Android屏幕、摄像头推流/录像模块;
+- [x] [推流端-音频处理] 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
 
-- [x] [**Android推流端SDK**] Android回音消除、噪音抑制、自动增益、VAD检测模块；
+**Android端**
 
-- [x] [**Android直播播放器SDK**] rtmp/rtsp超低延迟直播播放器;
+- [x] [推流端SDK] Android屏幕、摄像头RTMP推流/录像SDK;
 
-- [x] [**Android播放-录像SDK**] 支持实时播放rtsp/rtmp流，并实时录像;
+- [x] [直播播放器SDK] rtmp/rtsp超低延迟直播播放器SDK;
 
-- [x] [**Android互动SDK**] Android一对一互动(可android与windows/android/iOS互动)；
+- [x] [录像SDK] 支持实时播放rtsp/rtmp流，并实时录像;
 
-- [x] [**iOS推流端SDK**] iOS摄像头推流/录像;
+- [x] [互动SDK] Android一对一互动(可android与windows/android/iOS互动)；
 
-- [x] [**iOS直播播放器SDK**] rtmp/rtsp超低延迟直播播放器;
+- [x] [推流端-音频处理] Android回音消除、噪音抑制、自动增益、VAD检测模块；
 
-- [x] [**iOS播放-录像-转发SDK**] 支持实时播放rtsp/rtmp流，并实时录像，亦可把拉取的rtmp/rtsp流转发到指定rtmp url;
+**iOS端**
 
-- [x] [**iOS互动SDK**] iOS一对一互动(可iOS与windows/android/iOS互动).
+- [x] [推流端SDK] iOS RTMP推流/录像;
+
+- [x] [直播播放器SDK] rtmp/rtsp超低延迟直播播放器SDK;
+
+- [x] [录像SDK] 支持实时播放rtsp/rtmp流，并实时录像;
+
+- [x] [转发SDK] 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
 
 **本地下载**
 
@@ -201,7 +207,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持rtsp数据转rtmp推送出去；
 - [x] 音频混音同时选择“采集麦克风”+“采集扬声器”。
 
-**windows多路拉流转发模块**
+**windows/iOS拉流转发模块**
 
 对应“SmartStreamRelayDemo.exe” [点击下载](http://218.25.89.108:8080/files/daniulive/windows-推送-播放版-2017-12-27.zip)
 
@@ -388,6 +394,7 @@ android后台Service推送：SmartServicePublisherSDKDemo
 android一对一互动：SmartEchoCancellation
 android播放器：SmartPlayerSDKDemo
 iOS推送端：SmartiOSPublisher
+iOS转发端：SmartiOSRelayDemo
 iOS播放器：SmartiOSPlayer
  ```
 * 集成到自己工程，如何改名字（以推送端为例）：
