@@ -88,6 +88,10 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-12-25.zip)
 
+- [x] [SDK demo工程代码] [**安卓播放-录像-SDK-抢先体验版(V2)(eclipse工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-%E5%AE%89%E5%8D%93%E6%92%AD%E6%94%BE-%E5%BD%95%E5%83%8F-SDK-%E6%8A%A2%E5%85%88%E4%BD%93%E9%AA%8C%E7%89%88-2018-02-01.zip)
+
+- [x] [SDK demo工程代码] [**iOS播放-录像-转发-SDK-抢先体验版(V2)(xcode工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-IOS%E6%92%AD%E6%94%BE-%E5%BD%95%E5%83%8F-%E8%BD%AC%E5%8F%91-SDK-%E6%8A%A2%E5%85%88%E4%BD%93%E9%AA%8C%E7%89%88-2018-02-01.zip)
+
 - [x] [SDK demo工程代码] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-12-22.zip)
 
 - [x] [SDK demo扩展工程代码] [android推送、播放SDK本地下载(android studio demo工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-11-20.zip)
@@ -105,12 +109,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [大牛直播Windows推流端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/SmartPublisherSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.1.pdf)
 
 - [x] [大牛直播Windows播放端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/windows/SmartPlayerSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.3.pdf)
-
-- [x] [大牛直播Android推流端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%8E%A8%E6%B5%81%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
-
-- [x] [大牛直播Android播放端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%92%AD%E6%94%BE%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
-- [x] [大牛直播iOS推流端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%8E%A8%E6%B5%81%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
-- [x] [大牛直播iOS播放端SDK说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADiOS%E6%92%AD%E6%94%BE%E7%AB%AFSDK%E8%AF%B4%E6%98%8E)
 
 - [x] [**移动端SDK(V1)调用说明**](http://218.25.89.108:8080/files/daniulive/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.4.pdf)
 
