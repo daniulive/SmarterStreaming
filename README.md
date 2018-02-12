@@ -1,6 +1,6 @@
 **大牛直播 <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
 
-专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(通常1秒左右，低延迟模式下200~400ms)。
+专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放-录像(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(1秒左右，低延迟模式下200~400ms)。
 
 适用于**在线教育、智能可视门禁对讲、秀场直播、[超低延迟娃娃机抓取播放方案](https://github.com/daniulive/SmarterStreaming/wiki/%E8%B6%85%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%A8%83%E5%A8%83%E6%9C%BA%E6%8A%93%E5%8F%96%E6%92%AD%E6%94%BE%E6%96%B9%E6%A1%88)、媒体移动直播、[应急指挥调度](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播**等场景。
 
@@ -225,20 +225,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [拉流音频调节]支持拉取的rtsp/rtmp流静音；
 - [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
 
-**windows播放器**
-
-- [x] 基于C++开发的低延迟低资源占用的windows cs架构的播放器（exe）；
-- [x] 对外提供C++/C#双重接口；
-- [x] 支持RTSP/RTMP协议封装；
-- [x] 支持player端截图；
-- [x] 支持player端录像（可只录像不播放，或只播放不录像，或同时）；
-- [x] 支持YUV/RGB数据回调；
-- [x] 支持时间戳回调；
-- [x] 支持链接状态、实时下载速度统计、buffer开始、buffer比例、buffer结束状态；
-- [x] 支持PCM数据回调；
-- [x] 支持32bit/64bit;
-- [x] 支持针对类似于娃娃机直播方案的超低延迟模式设置(公网200~400ms)。
-
 **android推流/iOS推流**
 
 - [x] 多分辨率选择；
@@ -276,15 +262,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
 - [x] audio支持aac/speex/g.711；
-- [x] **windows播放端sdk支持回调编码过的音视频数据到上层；**.
-- [x] **android支持回调audio数据到上层（供二次处理之用）；**
-- [x] **android支持回调video YUV/RGB数据到上层（供二次处理之用）；**
+- [x] windows/iOS播放端sdk支持回调编码过的音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
+- [x] android播放端sdk支持回调编码过的音视频数据(Video:YUV/RGB Audio:pcma/pcmu)到上层；
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
 - [x] 支持播放过程中，'实时静音/取消静音';
-- [x] **支持播放url快速切换**；
+- [x] 支持播放段视频view实时旋转(0° 90° 180° 270°)；
+- [x] **支持播放url快速切换，同等配置的流，切换url依旧可以录制到同一个文件**；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+；
-- [x] [快照]支持播放过程中，**随时快照**；
+- [x] [快照]支持播放/录像过程中，**随时快照**；
 - [x] 支持针对类似于娃娃机直播方案的超低延迟模式设置(公网200~400ms)。
 
 **Web播放器在线测试**
