@@ -311,13 +311,6 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 您可以用网页进行播放测试：<a href="http://218.25.89.108:8080/files/SmartPlayer/SmartPlayer.html" target="_blank">http://218.25.89.108:8080/files/SmartPlayer/SmartPlayer.html</a>
 
-**[SmarterStreamServer]**
-
-- [x] 高并发，分布式部署，支持rtmp摄像机和采集设备完美对接，提供代建服务器或整套软硬件服务器方案；
-- [x] 高性能的流媒体服务器，标准rtmp输入，多种方式流输出（rtmp/hls），并同步保存采集端数据；
-- [x] 支持鉴权认证、各种信息展示；
-- [x] 点播服务器：满足录像文件点播需求。
-
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
 **1.  windows推送：**
@@ -353,14 +346,6 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 **4. iOS播放器：**
 
 <img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
-
-**5. 海思板子（4核低端版，同时播放4路720P rtmp流）：**
-
-<img src="http://218.25.89.108:8080/files/image/box.png" width="800" alt="海思box播放" />
-
-## SmarterStreamServer url鉴权demo ##
-
-<img src="http://218.25.89.108:8080/files/image/url_generate.png" width="798" alt="url生成demo" />
 
 
 **[上层源码目录]**
