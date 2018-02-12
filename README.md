@@ -332,15 +332,9 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 <img src="http://player.daniulive.com:8080/files/daniulive/android_publisher_echocancellation.png" alt="android边推送边录像" />
 
-**4. iOS边推送边录像(支持纯音频推送和播放)：**
+**4. iOS播放-录像-转发一体：**
 
-<img src="http://218.25.89.108:8080/files/image/iOS_publisher.jpg" width="600" alt="iOS边推送边录像" />
-
-<img src="http://218.25.89.108:8080/files/image/iOS_publisher_2.jpg" width="600" alt="iOS边推送边录像2" />
-
-**5. iOS录像管理：**
-
-<img src="http://218.25.89.108:8080/files/image/iOS_recorder.JPG" width="600" alt="iOS录像管理" />
+<img src="http://218.25.89.108:8080/files/image/iOS_relay.jpg" width="600" alt="iOS播放-录像-转发" />
 
 ## 播放展示 ##
 
