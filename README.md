@@ -334,7 +334,7 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 **4. iOS播放-录像-转发一体：**
 
-<img src="http://218.25.89.108:8080/files/image/ios_relay.jpg" alt="iOS播放-录像-转发" />
+<img src="http://218.25.89.108:8080/files/image/ios_relay.jpg" width="400" alt="iOS播放-录像-转发" />
 
 ## 播放展示 ##
 
