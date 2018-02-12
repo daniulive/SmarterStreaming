@@ -346,7 +346,7 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 
 **1. Windows播放器：**
 
-<img src="http://218.25.89.108:8080/files/image/windowsplayer.jpg" width="600" alt="大牛直播Windows播放器" />
+<img src="http://218.25.89.108:8080/files/image/win_player.png" width="600" alt="大牛直播Windows播放器" />
 
 **2. Windows播放导播合成效果：**
 
