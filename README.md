@@ -1,4 +1,4 @@
-**大牛直播 <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
+**视沃科技-大牛直播SDK <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
 
 专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放-录像(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(1秒左右，低延迟模式下200~400ms)。
 
@@ -8,7 +8,7 @@
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
-**大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:89030985 或 手机:130-7210-2209)；
+**大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:89030985 或 517631076 手机:130-7210-2209 或 135-6452-9354)；
 
 **[latest release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)**
 
