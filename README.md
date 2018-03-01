@@ -34,7 +34,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [录像SDK] 实时**录像**模块/实时**快照**功能；
 
-- [x] [点播播放器SDK] 支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)；
+- [x] [点播播放器SDK] 支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，**也许是行业内seek最快的flv点播播放器**)；
 
 - [x] [互动SDK] Windows一对一互动(可windows与windows/android/iOS互动)；
 
