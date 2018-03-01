@@ -34,7 +34,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [录像SDK] 实时**录像**模块/实时**快照**功能；
 
-- [x] [点播播放器SDK] 支持本地flv文件播放；
+- [x] [点播播放器SDK] 支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)；
 
 - [x] [互动SDK] Windows一对一互动(可windows与windows/android/iOS互动)；
 
@@ -86,17 +86,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2017-12-27.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-02-28.zip)
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-64%E4%BD%8D-2017-12-27.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-64%E4%BD%8D-2018-02-28.zip)
 
-- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2017-12-22.zip)
+- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2018-02-28.zip)
 
-- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%92%AD%E6%94%BESDK-CPP-Demo-2017-12-22.zip)
+- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%92%AD%E6%94%BESDK-CPP-Demo-2018-02-28.zip)
 
-- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%B7%B7%E6%B5%81SDK-CPP-Demo-2017-12-22.zip)
+- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%B7%B7%E6%B5%81SDK-CPP-Demo-2018-02-28.zip)
 
-- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E8%BD%AC%E5%8F%91SDK-CPP-Demo-2017-12-22.zip)
+- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E8%BD%AC%E5%8F%91SDK-CPP-Demo-2018-02-28.zip)
 
 - [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%8E%A8%E9%80%81SDK-C%23-Demo-2017-10-31.zip)
 
@@ -267,6 +267,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] **支持播放url快速切换，同等配置的流，切换url依旧可以录制到同一个文件**；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+；
 - [x] [快照]支持播放/录像过程中，**随时快照**；
+- [x] [windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)
 - [x] 支持针对类似于娃娃机直播方案的超低延迟模式设置(公网200~400ms)。
 
 **Web播放器在线测试**
@@ -383,10 +384,13 @@ android：strings.xml：
 
 商务合作：
 
-手机：130-7210-2209
+手机：130-7210-2209 或 135-6452-9354
 
 商务合作QQ：89030985
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
+
+商务合作QQ：517631076
+<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=517631076&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:517631076:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
 
 商务合作微信:
 
