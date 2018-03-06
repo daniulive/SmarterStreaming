@@ -1,6 +1,6 @@
 **视沃科技-大牛直播SDK <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
 
-专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放-录像(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(1秒左右，低延迟模式下200~400ms)。
+专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放-录像(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(真1秒，低延迟模式下200~400ms)。
 
 适用于**在线教育、无纸化推屏/会议、智慧教室、智能可视门禁对讲、[超低延迟娃娃机抓取播放方案](https://github.com/daniulive/SmarterStreaming/wiki/%E8%B6%85%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%A8%83%E5%A8%83%E6%9C%BA%E6%8A%93%E5%8F%96%E6%92%AD%E6%94%BE%E6%96%B9%E6%A1%88)、媒体移动直播、[应急指挥调度](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
@@ -32,7 +32,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [连麦SDK] 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [多路流媒体转发SDK] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**；
+- [x] [多路流媒体转发SDK] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换；
 
 - [x] [录像SDK] 实时**录像**模块/实时**快照**功能；
 
@@ -80,11 +80,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [**iOS播放-录像-转发-SDK-抢先体验版(V2)(xcode工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-IOS%E6%92%AD%E6%94%BE-%E5%BD%95%E5%83%8F-%E8%BD%AC%E5%8F%91-SDK-%E6%8A%A2%E5%85%88%E4%BD%93%E9%AA%8C%E7%89%88-2018-02-01.zip)
 
-- [x] [SDK demo工程代码] [**安卓推送SDK Demo(V2)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-AndroidStudio-SmartPublisherV2-2018-02-02.zip)
-
-- [x] [SDK demo工程代码] [**安卓播放-录像-SDK-抢先体验版Demo(V2)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-AndroidStudio-SmartPlayerV2-2018-02-06.zip)
-
-- [x] [SDK demo工程代码] [**安卓无纸化推屏/会议Demo(V2)(Android Studio工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android%E6%97%A0%E7%BA%B8%E5%8C%96%E6%8E%A8%E5%B1%8FDemo-2018-03-02.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
 
 **大牛直播产品demo本地下载**
 
@@ -106,15 +102,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/windows/WIN-%E8%BD%AC%E5%8F%91SDK-C%23-demo-2017-11-16.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动SDK本地下载(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-12-25.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-12-25.zip)
+
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
 
 - [x] [SDK demo工程代码] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-12-22.zip)
 
-- [x] [SDK demo扩展工程代码] [android推送、播放SDK本地下载(android studio demo工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-AndroidStudio-SDK-2017-11-20.zip)
-
 - [x] [SDK demo扩展工程代码] [Android美颜demo本地下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
-
-- [x] [SDK demo扩展工程代码] [Android后台推送摄像头/屏幕数据demo本地下载，建议用V2版本测试](http://218.25.89.108:8080/files/daniulive/SmartServicePublisher.zip)
 
 **NOTE:** android平台，eclipse工程(**android推送、播放SDK本地下载(eclipse工程)**)的SDK每次release是确保同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为准。
 
@@ -221,6 +215,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [拉流]支持拉取rtmp流；
 - [x] [预览]支持拉取到的rtsp/rtmp随时本地预览、关闭预览；
 - [x] [拉流音频调节]支持拉取的rtsp/rtmp流静音；
+- [x] [url切换]**支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换**；
 - [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
 
 **android推流/iOS推流**
@@ -281,7 +276,7 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 **windows/windows或windows/android/iOS一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”和“噪音抑制”；
-- [x] [android] 可以边推送边播放，demo请参见 [https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation)
+- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
 - [x] [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
 **windows/windows或windows与android/iOS连麦**
