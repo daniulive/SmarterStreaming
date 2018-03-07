@@ -90,7 +90,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PublisherSDK-CPP-Demo-2018-03-05.zip)
 
-- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%92%AD%E6%94%BESDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PlayerSDK-CPP-Demo-2018-03-05.zip)
 
 - [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-03-05.zip)
 
