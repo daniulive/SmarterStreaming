@@ -86,19 +86,19 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-03-05.zip)
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-64%E4%BD%8D-2018-03-05.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%8864%E4%BD%8D-2018-03-05.zip)
 
-- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PublisherSDK-CPP-Demo-2018-03-05.zip)
 
 - [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%92%AD%E6%94%BESDK-CPP-Demo-2018-03-05.zip)
 
-- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E6%B7%B7%E6%B5%81SDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-03-05.zip)
 
-- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/WIN-%E8%BD%AC%E5%8F%91SDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-RelaySDK-CPP-Demo-2018-03-05.zip)
 
 - [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%8E%A8%E9%80%81SDK-C%23-Demo-2017-10-31.zip)
 
-- [x] [SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%92%AD%E6%94%BESDK-C%23-Demo-2017-10-31.zip)
+- [x] [SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PlayerSDK-CPP-Demo-2018-03-05.zip)
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/windows/WIN-%E8%BD%AC%E5%8F%91SDK-C%23-demo-2017-11-16.zip)
 
