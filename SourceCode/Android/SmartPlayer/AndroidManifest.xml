@@ -32,6 +32,21 @@
             </intent-filter>
             
         </activity>
+        
+         <activity
+            android:name="com.daniulive.smartplayer.RecorderManager"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|keyboardHidden" >
+
+        </activity>
+        
+        <activity
+            android:name="com.daniulive.smartplayer.RecorderPlayback"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+             android:screenOrientation="portrait">
+
+        </activity>
 
     </application>
 
