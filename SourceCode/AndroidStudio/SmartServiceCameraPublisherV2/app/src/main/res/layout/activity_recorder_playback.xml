@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+     android:layout_gravity="center"
+     >
+    
+      <VideoView   
+        android:id="@+id/VideoViewRecoderPlayback"   
+        android:layout_width="match_parent"  
+    	android:layout_height="wrap_content"
+     />  
+     
+
+   <TextView
+        android:id="@+id/textViewRecoderPlaybackFilePath"     
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"
+        android:textSize="14dip"    
+        android:layout_x="10px"  
+   		android:layout_y="50px"  
+    />  
+
+</AbsoluteLayout>
