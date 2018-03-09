@@ -159,7 +159,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private static final int BACK = 2;		//后置摄像头标记
 	private int currentCameraType = BACK;	//当前打开的摄像头标记
 	private static final int PORTRAIT = 1;	//竖屏
-	private static final int LANDSCAPE = 2;	//横屏
+	private static final int LANDSCAPE = 2;	//横屏 home键在右边的情况
+	private static final int LANDSCAPE_LEFT_HOME_KEY = 3; // 横屏 home键在左边的情况
+	
 	private int currentOrigentation = PORTRAIT;
 	private int curCameraIndex = -1;
 
@@ -185,7 +187,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private int sw_video_encoder_speed = 6;
 	
 	private boolean is_hardware_encoder = false;
-		
+			
     private Context myContext;
     
 	private String imageSavePath;
@@ -1654,7 +1656,20 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         	Log.i(TAG, "onConfigurationChanged, start:" + isStart);
             if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) { 
             	if(!isStart && !isPushing && !isRecording) {
-            		currentOrigentation = LANDSCAPE;
+            		
+            		int rotation = getWindowManager ().getDefaultDisplay ().getRotation();  
+            		if ( Surface.ROTATION_270 == rotation )
+            		{
+            			Log.i(TAG, "onConfigurationChanged rotation=" + rotation + " LANDSCAPE_LEFT_HOME_KEY");
+            			
+            			currentOrigentation = LANDSCAPE_LEFT_HOME_KEY;
+            		}
+            		else
+            		{
+            			Log.i(TAG, "onConfigurationChanged rotation=" + rotation + " LANDSCAPE");
+            			
+            			currentOrigentation = LANDSCAPE;
+            		}
 				}
             } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             	if(!isStart && !isPushing && !isRecording ) {
@@ -1798,7 +1813,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             case Surface.ROTATION_270:  
                 degrees = 270;  
                 break;  
-        }  
+        } 
+                
         int result;  
         if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {  
             result = (info.orientation + degrees) % 360;  
@@ -1807,8 +1823,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             // back-facing  
             result = ( info.orientation - degrees + 360) % 360;  
         }  
-        
-    	Log.i(TAG, "curDegree: "+ result); 
+                
+        Log.i(TAG, "curDegree: "+ result); 
     	
         camera.setDisplayOrientation (result);  
     }
