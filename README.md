@@ -14,7 +14,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android%E6%97%A0%E7%BA%B8%E5%8C%96%E6%8E%A8%E5%B1%8FDemo-2018-03-02.zip)**
 
-**[android/iOS播放端录像、iOS转发抢先版](https://www.jianshu.com/p/f5bdb7accdcf)**
+**[android/iOS播放器SDK(V2)APICloud接口封装](https://www.apicloud.com/mod_detail/49069)**
+
+**[android/iOS播放器SDK(V2)APICloud调用说明](https://docs.apicloud.com/Client-API/Open-SDK/daniuPlayer)**
 
 ===========================
 
