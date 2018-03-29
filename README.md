@@ -14,7 +14,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android%E6%97%A0%E7%BA%B8%E5%8C%96%E6%8E%A8%E5%B1%8FDemo-2018-03-02.zip)**
 
-**[iOS无纸化推屏/会议Demo(V2)xcode工程)](https://download.csdn.net/download/renhui1112/10313775)**
+**[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](https://pan.baidu.com/s/1fLBi60iVQvAACueL_mFdhQ)**
 
 **[android/iOS播放器SDK(V2)APICloud接口封装](https://www.apicloud.com/mod_detail/49069)**
 
@@ -78,14 +78,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 或者直接从私有服务器下载(Windows提供C#/C++ demo, android提供eclipse demo，iOS提供xcode demo)：
 
-**V2抢先体验版本地下载(已经是最新库)**
-
-- [x] [SDK demo工程代码] [**安卓播放-录像-SDK-抢先体验版(V2)(eclipse工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-%E5%AE%89%E5%8D%93%E6%92%AD%E6%94%BE-%E5%BD%95%E5%83%8F-SDK-%E6%8A%A2%E5%85%88%E4%BD%93%E9%AA%8C%E7%89%88-2018-02-01.zip)
-
-- [x] [SDK demo工程代码] [**iOS播放-录像-转发-SDK-抢先体验版(V2)(xcode工程)**](http://player.daniulive.com:8080/files/daniulive/beta/Daniulive-IOS%E6%92%AD%E6%94%BE-%E5%BD%95%E5%83%8F-%E8%BD%AC%E5%8F%91-SDK-%E6%8A%A2%E5%85%88%E4%BD%93%E9%AA%8C%E7%89%88-2018-02-01.zip)
-
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
-
 **大牛直播产品demo本地下载**
 
 - [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-03-05.zip)
@@ -106,11 +98,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/windows/WIN-%E8%BD%AC%E5%8F%91SDK-C%23-demo-2017-11-16.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(eclipse工程)**](http://218.25.89.108:8080/files/daniulive/Daniulive-Android-SDK-2017-12-25.zip)
-
 - [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
 
-- [x] [SDK demo工程代码] [**iOS推送、播放SDK本地下载**](http://218.25.89.108:8080/files/daniulive/Daniulive-iOS-SDK-2017-12-22.zip)
+- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](https://pan.baidu.com/s/1fLBi60iVQvAACueL_mFdhQ)
 
 - [x] [SDK demo扩展工程代码] [Android美颜demo本地下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
 
