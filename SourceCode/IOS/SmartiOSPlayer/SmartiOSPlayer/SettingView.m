@@ -371,6 +371,8 @@
         playback_url_ = self.inputUrlText.text;
     }
     
+    //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream123";
+    
     buffer_time_ = [self.inputBufferText.text intValue];
     
     NSLog(@"playbackURL:%@, buffer time:%ld, isFastStartup:%d", playback_url_, (long)buffer_time_, is_fast_startup_);

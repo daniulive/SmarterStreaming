@@ -1,0 +1,689 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C51DA262068BE0D009F86A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DA252068BE0D009F86A9 /* AppDelegate.m */; };
+		0C51DA292068BE0D009F86A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DA282068BE0D009F86A9 /* ViewController.m */; };
+		0C51DA2C2068BE0D009F86A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DA2A2068BE0D009F86A9 /* Main.storyboard */; };
+		0C51DA2E2068BE0D009F86A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DA2D2068BE0D009F86A9 /* Assets.xcassets */; };
+		0C51DA312068BE0D009F86A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DA2F2068BE0D009F86A9 /* LaunchScreen.storyboard */; };
+		0C51DA342068BE0D009F86A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DA332068BE0D009F86A9 /* main.m */; };
+		0C51DA412068BE3A009F86A9 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA402068BE3A009F86A9 /* ReplayKit.framework */; };
+		0C51DA452068BE3A009F86A9 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DA442068BE3A009F86A9 /* SampleHandler.m */; };
+		0C51DA4C2068BE3A009F86A9 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA402068BE3A009F86A9 /* ReplayKit.framework */; };
+		0C51DA4E2068BE3A009F86A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA4D2068BE3A009F86A9 /* UIKit.framework */; };
+		0C51DA522068BE3A009F86A9 /* BroadcastSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C51DA512068BE3A009F86A9 /* BroadcastSetupViewController.m */; };
+		0C51DA562068BE3A009F86A9 /* DaniuliveExtSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0C51DA4B2068BE3A009F86A9 /* DaniuliveExtSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0C51DA592068BE3A009F86A9 /* DaniuliveExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0C51DA3E2068BE3A009F86A9 /* DaniuliveExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0C51DA622068BFDD009F86A9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51DA612068BFDD009F86A9 /* MainInterface.storyboard */; };
+		0C51DA642068D2A4009F86A9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA632068D2A4009F86A9 /* AudioToolbox.framework */; };
+		0C51DA662068D2AB009F86A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA652068D2AB009F86A9 /* Foundation.framework */; };
+		0C51DA682068D2B3009F86A9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA672068D2B3009F86A9 /* Accelerate.framework */; };
+		0C51DA6A2068D2B9009F86A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA692068D2B8009F86A9 /* AVFoundation.framework */; };
+		0C51DA6C2068D2BF009F86A9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA6B2068D2BF009F86A9 /* AssetsLibrary.framework */; };
+		0C51DA6E2068D2C8009F86A9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA6D2068D2C8009F86A9 /* CoreMedia.framework */; };
+		0C51DA702068D2CE009F86A9 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA6F2068D2CE009F86A9 /* VideoToolbox.framework */; };
+		0C51DA712068D2D6009F86A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA4D2068BE3A009F86A9 /* UIKit.framework */; };
+		0C51DA732068D2EC009F86A9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA722068D2EC009F86A9 /* libz.tbd */; };
+		0C51DA752068D2F3009F86A9 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA742068D2F3009F86A9 /* libiconv.tbd */; };
+		0C51DA772068D2FC009F86A9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA762068D2FC009F86A9 /* libc++.tbd */; };
+		0C51DA792068D306009F86A9 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA782068D306009F86A9 /* libbz2.tbd */; };
+		0C51DA7B2068D30D009F86A9 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA7A2068D30D009F86A9 /* libstdc++.tbd */; };
+		0C51DA802068D357009F86A9 /* libSmartPublisherSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA7F2068D357009F86A9 /* libSmartPublisherSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C51DA542068BE3A009F86A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C51DA192068BE0D009F86A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C51DA4A2068BE3A009F86A9;
+			remoteInfo = DaniuliveExtSetupUI;
+		};
+		0C51DA572068BE3A009F86A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C51DA192068BE0D009F86A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C51DA3D2068BE3A009F86A9;
+			remoteInfo = DaniuliveExt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0C51DA602068BE3A009F86A9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0C51DA592068BE3A009F86A9 /* DaniuliveExt.appex in Embed App Extensions */,
+				0C51DA562068BE3A009F86A9 /* DaniuliveExtSetupUI.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0C51DA212068BE0D009F86A9 /* SmartiOSScreenPublisherV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartiOSScreenPublisherV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C51DA242068BE0D009F86A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0C51DA252068BE0D009F86A9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0C51DA272068BE0D009F86A9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0C51DA282068BE0D009F86A9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0C51DA2B2068BE0D009F86A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C51DA2D2068BE0D009F86A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C51DA302068BE0D009F86A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0C51DA322068BE0D009F86A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C51DA332068BE0D009F86A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0C51DA3E2068BE3A009F86A9 /* DaniuliveExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DaniuliveExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C51DA402068BE3A009F86A9 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		0C51DA432068BE3A009F86A9 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
+		0C51DA442068BE3A009F86A9 /* SampleHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleHandler.m; sourceTree = "<group>"; };
+		0C51DA462068BE3A009F86A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C51DA4B2068BE3A009F86A9 /* DaniuliveExtSetupUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DaniuliveExtSetupUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C51DA4D2068BE3A009F86A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0C51DA502068BE3A009F86A9 /* BroadcastSetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcastSetupViewController.h; sourceTree = "<group>"; };
+		0C51DA512068BE3A009F86A9 /* BroadcastSetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcastSetupViewController.m; sourceTree = "<group>"; };
+		0C51DA532068BE3A009F86A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C51DA612068BFDD009F86A9 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		0C51DA632068D2A4009F86A9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0C51DA652068D2AB009F86A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0C51DA672068D2B3009F86A9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0C51DA692068D2B8009F86A9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0C51DA6B2068D2BF009F86A9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		0C51DA6D2068D2C8009F86A9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0C51DA6F2068D2CE009F86A9 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		0C51DA722068D2EC009F86A9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0C51DA742068D2F3009F86A9 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		0C51DA762068D2FC009F86A9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		0C51DA782068D306009F86A9 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		0C51DA7A2068D30D009F86A9 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		0C51DA7F2068D357009F86A9 /* libSmartPublisherSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSmartPublisherSDK.a; path = daniuliveSDK/libs/libSmartPublisherSDK.a; sourceTree = "<group>"; };
+		0C51DA812068D362009F86A9 /* nt_common_media_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_common_media_define.h; path = daniuliveSDK/include/nt_common_media_define.h; sourceTree = "<group>"; };
+		0C51DA822068D362009F86A9 /* nt_event_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_event_define.h; path = daniuliveSDK/include/nt_event_define.h; sourceTree = "<group>"; };
+		0C51DA832068D362009F86A9 /* SmartPublisherSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartPublisherSDK.h; path = daniuliveSDK/include/SmartPublisherSDK.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0C51DA1E2068BE0D009F86A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C51DA3B2068BE3A009F86A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA7B2068D30D009F86A9 /* libstdc++.tbd in Frameworks */,
+				0C51DA792068D306009F86A9 /* libbz2.tbd in Frameworks */,
+				0C51DA772068D2FC009F86A9 /* libc++.tbd in Frameworks */,
+				0C51DA752068D2F3009F86A9 /* libiconv.tbd in Frameworks */,
+				0C51DA732068D2EC009F86A9 /* libz.tbd in Frameworks */,
+				0C51DA712068D2D6009F86A9 /* UIKit.framework in Frameworks */,
+				0C51DA702068D2CE009F86A9 /* VideoToolbox.framework in Frameworks */,
+				0C51DA802068D357009F86A9 /* libSmartPublisherSDK.a in Frameworks */,
+				0C51DA6E2068D2C8009F86A9 /* CoreMedia.framework in Frameworks */,
+				0C51DA6C2068D2BF009F86A9 /* AssetsLibrary.framework in Frameworks */,
+				0C51DA6A2068D2B9009F86A9 /* AVFoundation.framework in Frameworks */,
+				0C51DA682068D2B3009F86A9 /* Accelerate.framework in Frameworks */,
+				0C51DA662068D2AB009F86A9 /* Foundation.framework in Frameworks */,
+				0C51DA642068D2A4009F86A9 /* AudioToolbox.framework in Frameworks */,
+				0C51DA412068BE3A009F86A9 /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C51DA482068BE3A009F86A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA4C2068BE3A009F86A9 /* ReplayKit.framework in Frameworks */,
+				0C51DA4E2068BE3A009F86A9 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C51DA182068BE0D009F86A9 = {
+			isa = PBXGroup;
+			children = (
+				0C51DA232068BE0D009F86A9 /* SmartiOSScreenPublisherV2 */,
+				0C51DA422068BE3A009F86A9 /* DaniuliveExt */,
+				0C51DA4F2068BE3A009F86A9 /* DaniuliveExtSetupUI */,
+				0C51DA3F2068BE3A009F86A9 /* Frameworks */,
+				0C51DA222068BE0D009F86A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0C51DA222068BE0D009F86A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA212068BE0D009F86A9 /* SmartiOSScreenPublisherV2.app */,
+				0C51DA3E2068BE3A009F86A9 /* DaniuliveExt.appex */,
+				0C51DA4B2068BE3A009F86A9 /* DaniuliveExtSetupUI.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0C51DA232068BE0D009F86A9 /* SmartiOSScreenPublisherV2 */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA242068BE0D009F86A9 /* AppDelegate.h */,
+				0C51DA252068BE0D009F86A9 /* AppDelegate.m */,
+				0C51DA272068BE0D009F86A9 /* ViewController.h */,
+				0C51DA282068BE0D009F86A9 /* ViewController.m */,
+				0C51DA2A2068BE0D009F86A9 /* Main.storyboard */,
+				0C51DA2D2068BE0D009F86A9 /* Assets.xcassets */,
+				0C51DA2F2068BE0D009F86A9 /* LaunchScreen.storyboard */,
+				0C51DA322068BE0D009F86A9 /* Info.plist */,
+				0C51DA332068BE0D009F86A9 /* main.m */,
+			);
+			path = SmartiOSScreenPublisherV2;
+			sourceTree = "<group>";
+		};
+		0C51DA3F2068BE3A009F86A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA7A2068D30D009F86A9 /* libstdc++.tbd */,
+				0C51DA782068D306009F86A9 /* libbz2.tbd */,
+				0C51DA762068D2FC009F86A9 /* libc++.tbd */,
+				0C51DA742068D2F3009F86A9 /* libiconv.tbd */,
+				0C51DA722068D2EC009F86A9 /* libz.tbd */,
+				0C51DA6F2068D2CE009F86A9 /* VideoToolbox.framework */,
+				0C51DA6D2068D2C8009F86A9 /* CoreMedia.framework */,
+				0C51DA6B2068D2BF009F86A9 /* AssetsLibrary.framework */,
+				0C51DA692068D2B8009F86A9 /* AVFoundation.framework */,
+				0C51DA672068D2B3009F86A9 /* Accelerate.framework */,
+				0C51DA652068D2AB009F86A9 /* Foundation.framework */,
+				0C51DA632068D2A4009F86A9 /* AudioToolbox.framework */,
+				0C51DA402068BE3A009F86A9 /* ReplayKit.framework */,
+				0C51DA4D2068BE3A009F86A9 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C51DA422068BE3A009F86A9 /* DaniuliveExt */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA7C2068D33F009F86A9 /* daniuliveSDK */,
+				0C51DA432068BE3A009F86A9 /* SampleHandler.h */,
+				0C51DA442068BE3A009F86A9 /* SampleHandler.m */,
+				0C51DA462068BE3A009F86A9 /* Info.plist */,
+			);
+			path = DaniuliveExt;
+			sourceTree = "<group>";
+		};
+		0C51DA4F2068BE3A009F86A9 /* DaniuliveExtSetupUI */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA502068BE3A009F86A9 /* BroadcastSetupViewController.h */,
+				0C51DA512068BE3A009F86A9 /* BroadcastSetupViewController.m */,
+				0C51DA532068BE3A009F86A9 /* Info.plist */,
+				0C51DA612068BFDD009F86A9 /* MainInterface.storyboard */,
+			);
+			path = DaniuliveExtSetupUI;
+			sourceTree = "<group>";
+		};
+		0C51DA7C2068D33F009F86A9 /* daniuliveSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA7E2068D34D009F86A9 /* libs */,
+				0C51DA7D2068D347009F86A9 /* include */,
+			);
+			name = daniuliveSDK;
+			sourceTree = "<group>";
+		};
+		0C51DA7D2068D347009F86A9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA812068D362009F86A9 /* nt_common_media_define.h */,
+				0C51DA822068D362009F86A9 /* nt_event_define.h */,
+				0C51DA832068D362009F86A9 /* SmartPublisherSDK.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		0C51DA7E2068D34D009F86A9 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0C51DA7F2068D357009F86A9 /* libSmartPublisherSDK.a */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0C51DA202068BE0D009F86A9 /* SmartiOSScreenPublisherV2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C51DA372068BE0D009F86A9 /* Build configuration list for PBXNativeTarget "SmartiOSScreenPublisherV2" */;
+			buildPhases = (
+				0C51DA1D2068BE0D009F86A9 /* Sources */,
+				0C51DA1E2068BE0D009F86A9 /* Frameworks */,
+				0C51DA1F2068BE0D009F86A9 /* Resources */,
+				0C51DA602068BE3A009F86A9 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C51DA552068BE3A009F86A9 /* PBXTargetDependency */,
+				0C51DA582068BE3A009F86A9 /* PBXTargetDependency */,
+			);
+			name = SmartiOSScreenPublisherV2;
+			productName = SmartiOSScreenPublisherV2;
+			productReference = 0C51DA212068BE0D009F86A9 /* SmartiOSScreenPublisherV2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0C51DA3D2068BE3A009F86A9 /* DaniuliveExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C51DA5D2068BE3A009F86A9 /* Build configuration list for PBXNativeTarget "DaniuliveExt" */;
+			buildPhases = (
+				0C51DA3A2068BE3A009F86A9 /* Sources */,
+				0C51DA3B2068BE3A009F86A9 /* Frameworks */,
+				0C51DA3C2068BE3A009F86A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaniuliveExt;
+			productName = DaniuliveExt;
+			productReference = 0C51DA3E2068BE3A009F86A9 /* DaniuliveExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		0C51DA4A2068BE3A009F86A9 /* DaniuliveExtSetupUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C51DA5A2068BE3A009F86A9 /* Build configuration list for PBXNativeTarget "DaniuliveExtSetupUI" */;
+			buildPhases = (
+				0C51DA472068BE3A009F86A9 /* Sources */,
+				0C51DA482068BE3A009F86A9 /* Frameworks */,
+				0C51DA492068BE3A009F86A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaniuliveExtSetupUI;
+			productName = DaniuliveExtSetupUI;
+			productReference = 0C51DA4B2068BE3A009F86A9 /* DaniuliveExtSetupUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0C51DA192068BE0D009F86A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = daniulive;
+				TargetAttributes = {
+					0C51DA202068BE0D009F86A9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					0C51DA3D2068BE3A009F86A9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					0C51DA4A2068BE3A009F86A9 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0C51DA1C2068BE0D009F86A9 /* Build configuration list for PBXProject "SmartiOSScreenPublisherV2" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0C51DA182068BE0D009F86A9;
+			productRefGroup = 0C51DA222068BE0D009F86A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0C51DA202068BE0D009F86A9 /* SmartiOSScreenPublisherV2 */,
+				0C51DA3D2068BE3A009F86A9 /* DaniuliveExt */,
+				0C51DA4A2068BE3A009F86A9 /* DaniuliveExtSetupUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0C51DA1F2068BE0D009F86A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA312068BE0D009F86A9 /* LaunchScreen.storyboard in Resources */,
+				0C51DA2E2068BE0D009F86A9 /* Assets.xcassets in Resources */,
+				0C51DA2C2068BE0D009F86A9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C51DA3C2068BE3A009F86A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C51DA492068BE3A009F86A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA622068BFDD009F86A9 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0C51DA1D2068BE0D009F86A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA292068BE0D009F86A9 /* ViewController.m in Sources */,
+				0C51DA342068BE0D009F86A9 /* main.m in Sources */,
+				0C51DA262068BE0D009F86A9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C51DA3A2068BE3A009F86A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA452068BE3A009F86A9 /* SampleHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C51DA472068BE3A009F86A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C51DA522068BE3A009F86A9 /* BroadcastSetupViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C51DA552068BE3A009F86A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C51DA4A2068BE3A009F86A9 /* DaniuliveExtSetupUI */;
+			targetProxy = 0C51DA542068BE3A009F86A9 /* PBXContainerItemProxy */;
+		};
+		0C51DA582068BE3A009F86A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C51DA3D2068BE3A009F86A9 /* DaniuliveExt */;
+			targetProxy = 0C51DA572068BE3A009F86A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0C51DA2A2068BE0D009F86A9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C51DA2B2068BE0D009F86A9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0C51DA2F2068BE0D009F86A9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C51DA302068BE0D009F86A9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0C51DA352068BE0D009F86A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0C51DA362068BE0D009F86A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0C51DA382068BE0D009F86A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				INFOPLIST_FILE = SmartiOSScreenPublisherV2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = daniulive.SmartiOSScreenPublisherV2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C51DA392068BE0D009F86A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				INFOPLIST_FILE = SmartiOSScreenPublisherV2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = daniulive.SmartiOSScreenPublisherV2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0C51DA5B2068BE3A009F86A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				INFOPLIST_FILE = DaniuliveExtSetupUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = daniulive.SmartiOSScreenPublisherV2.DaniuliveExtSetupUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C51DA5C2068BE3A009F86A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				INFOPLIST_FILE = DaniuliveExtSetupUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = daniulive.SmartiOSScreenPublisherV2.DaniuliveExtSetupUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0C51DA5E2068BE3A009F86A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				INFOPLIST_FILE = DaniuliveExt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DaniuliveExt/daniuliveSDK/libs",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = daniulive.SmartiOSScreenPublisherV2.DaniuliveExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C51DA5F2068BE3A009F86A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHT83EA5Y4;
+				INFOPLIST_FILE = DaniuliveExt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DaniuliveExt/daniuliveSDK/libs",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = daniulive.SmartiOSScreenPublisherV2.DaniuliveExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0C51DA1C2068BE0D009F86A9 /* Build configuration list for PBXProject "SmartiOSScreenPublisherV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C51DA352068BE0D009F86A9 /* Debug */,
+				0C51DA362068BE0D009F86A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C51DA372068BE0D009F86A9 /* Build configuration list for PBXNativeTarget "SmartiOSScreenPublisherV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C51DA382068BE0D009F86A9 /* Debug */,
+				0C51DA392068BE0D009F86A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C51DA5A2068BE3A009F86A9 /* Build configuration list for PBXNativeTarget "DaniuliveExtSetupUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C51DA5B2068BE3A009F86A9 /* Debug */,
+				0C51DA5C2068BE3A009F86A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C51DA5D2068BE3A009F86A9 /* Build configuration list for PBXNativeTarget "DaniuliveExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C51DA5E2068BE3A009F86A9 /* Debug */,
+				0C51DA5F2068BE3A009F86A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0C51DA192068BE0D009F86A9 /* Project object */;
+}

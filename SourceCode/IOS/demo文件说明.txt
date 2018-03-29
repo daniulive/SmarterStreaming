@@ -1,0 +1,26 @@
+Demo文件说明：
+1. SmartiOSPlayer：2018年2月10日之前的播放器demo，接口展示比较全面，不涵盖录像；
+2. SmartiOSPlayerV2: 大牛直播SDK播放端demo，V2版，涵盖实时录像功能；
+3. SmartiOSPublisherV2: 大牛直播SDK推送端demo；
+4. SmartiOSRelayDemoV2: 大牛直播SDK互动、转发、录像三合一Demo；
+5. SmartiOSScreenPublisherV2: 大牛直播SDK无纸化推屏/会议demo。
+
+未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
+1. iOS推送端：SmartiOSPublisher
+2. iOS转发端：SmartiOSRelayDemo
+3. iOS播放端：SmartiOSPlayer或者SmartiOSPlayerV2
+4. iOS后台推屏：DaniuliveExtStream
+5. APICloud对接测试名字：自定义loader
+
+详细集成说明请参见"视沃科技-大牛直播移动端SDK(V2)调用说明2.5.pdf".
+
+QQ群(大牛直播精英群)：294891451
+QQ群(大牛直播技术交流群)：499687479
+
+Github：https://github.com/daniulive/SmarterStreaming
+
+
+商务合作：
+
+手机：130-7210-2209 或 135-6452-9354
+商务合作QQ：89030985 或 517631076

@@ -580,6 +580,12 @@
         case UIDeviceOrientationLandscapeRight:
             isPortrait = false;
             break;
+        case UIDeviceOrientationFaceUp:
+            isPortrait = true;
+            break;
+        case UIDeviceOrientationFaceDown:
+            isPortrait = true;
+            break;
             
         default:
             break;
