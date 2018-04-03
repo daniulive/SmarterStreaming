@@ -2,9 +2,9 @@
 
 专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放-录像(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(真1秒，低延迟模式下200~400ms)。
 
-适用于**在线教育、[无纸化推屏/会议](https://blog.csdn.net/renhui1112/article/details/79713589)、智慧教室、智能可视门禁对讲、[超低延迟娃娃机抓取播放方案](https://blog.csdn.net/renhui1112/article/details/78511272)、媒体移动直播、[应急指挥调度](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
+适用于**在线教育、[无纸化推屏/会议](https://blog.csdn.net/renhui1112/article/details/79713589)、智慧教室、智能可视门禁对讲、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、[应急指挥调度](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
-[大牛直播SDK介绍PPT](http://218.25.89.108:8080/files/daniulive/ppt/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E4%BB%8B%E7%BB%8D_080202.pdf)
+[大牛直播SDK介绍PPT](http://daniulive.com/wp-content/uploads/2018/04/PPT%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK%E4%BB%8B%E7%BB%8D_080329.pdf)
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
@@ -12,19 +12,19 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[latest release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)**
 
-**[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://218.25.89.108:8080/files/daniulive/Daniulive-Android%E6%97%A0%E7%BA%B8%E5%8C%96%E6%8E%A8%E5%B1%8FDemo-2018-03-02.zip)**
+**[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)**
 
-**[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](https://pan.baidu.com/s/1fLBi60iVQvAACueL_mFdhQ)**
+**[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)**
 
 **[android/iOS播放器SDK(V2)APICloud接口封装](https://www.apicloud.com/mod_detail/49069)**
 
-**[android/iOS播放器SDK(V2)APICloud调用说明](https://blog.csdn.net/renhui1112/article/details/79599184)**
+**[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
 
 ===========================
 
 **模块概览**
 
-<img src="http://player.daniulive.com:8080/files/image/大牛直播SDK.png" alt="一张图看懂大牛直播SDK" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK.png" alt="一张图看懂大牛直播SDK" />
 
 **Windows端**
 
@@ -80,35 +80,33 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-03-05.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-03-30.zip)
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://218.25.89.108:8080/files/daniulive/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%8864%E4%BD%8D-2018-03-05.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%8864%E4%BD%8D-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PublisherSDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-PublisherSDK-CPP-Demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PlayerSDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-PlayerSDK-CPP-Demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-MixStreamSDK-CPP-Demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-RelaySDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-RelaySDK-CPP-Demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://player.daniulive.com:8080/files/daniulive/windows/WIN-%E6%8E%A8%E9%80%81SDK-C%23-Demo-2017-10-31.zip)
+- [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-%E6%8E%A8%E9%80%81SDK-C#-Demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/WIN-PlayerSDK-CPP-Demo-2018-03-05.zip)
+- [x] [SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-%E6%92%AD%E6%94%BESDK-C#-Demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://218.25.89.108:8080/files/daniulive/windows/WIN-%E8%BD%AC%E5%8F%91SDK-C%23-demo-2017-11-16.zip)
+- [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/windows/WIN-%E8%BD%AC%E5%8F%91SDK-C#-demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
 
-- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](https://pan.baidu.com/s/1fLBi60iVQvAACueL_mFdhQ)
+- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)
 
-- [x] [SDK demo扩展工程代码] [Android美颜demo本地下载](http://player.daniulive.com:8080/files/daniulive/Daniulive-Android-Beauty-SmartPublisher-20170123.zip)
-
-**NOTE:** android平台，eclipse工程(**android推送、播放SDK本地下载(eclipse工程)**)的SDK每次release是确保同步更新的，android其他相关demo使用的SDK，请以eclipse工程内提供的SDK为准。
+**NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
 **大牛直播SDK集成和调用说明**
 
-- [x] [**移动端SDK(V2)调用说明**](http://player.daniulive.com:8080/files/daniulive/sdk/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDK%28V2%29%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.5.pdf)
+- [x] [**移动端SDK(V2)调用说明**](http://daniulive.com/wp-content/uploads/2018/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.5.pdf)
 
 - [x] [大牛直播Windows推流端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/SmartPublisherSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.1.pdf)
 
