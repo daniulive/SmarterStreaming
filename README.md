@@ -106,7 +106,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播SDK集成和调用说明**
 
-- [x] [**移动端SDK(V2)调用说明**](http://daniulive.com/wp-content/uploads/2018/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.5.pdf)
+- [x] [**移动端SDK(V2)调用说明**](http://daniulive.com/wp-content/uploads/2018/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.6.pdf)
 
 - [x] [大牛直播Windows推流端SDK说明(C#版)](http://player.daniulive.com:8080/files/daniulive/SmartPublisherSDK%20C%23%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E1.1.pdf)
 
