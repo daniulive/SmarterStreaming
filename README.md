@@ -136,6 +136,35 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [大牛直播连麦使用说明(windows windows或windows与android/iOS)](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(windows-windows%E6%88%96windows%E4%B8%8Eandroid))
 
+**[上层源码目录]**
+
+1. android推流 SmartPublisherV2
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPublisherV2
+
+2. android推流 SmartServicePublisherV2(后台service推送屏幕)
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartServicePublisherV2
+
+3. android推流 SmartServiceCameraPublisherV2(后台service推送摄像头)
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartServiceCameraPublisherV2
+
+4. android一对一回音消除 SmartEchoCancellationV2
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartEchoCancellationV2
+
+5. android播放器 SmartPlayerV2:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPlayerV2
+
+6. iOS推流 SmartiOSPublisherV2:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisherV2
+
+7. iOS后台推屏 SmartiOSScreenPublisherV2:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2
+
+8. iOS播放器 SmartiOSPlayerV2:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2
+
+9. iOS转发-录像-播放三合一 SmartiOSRelayDemoV2:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2
+
 ===========================
 
 # 功能支持
@@ -319,32 +348,11 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 <img src="http://218.25.89.108:8080/files/image/ios_player.jpg" width="600" alt="大牛直播iOS播放器" />
 
 
-**[上层源码目录]**
-
-1. android推流 SmartPublisher
-https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPublisher
-
-2. android推流 SmartServicePublisher(后台service推送摄像头/屏幕)
-https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartServicePublisher
-
-3. android一对一回音消除 SmartEchoCancellation
-https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartEchoCancellation
-
-3. android播放器 SmartPlayer:
-https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/Android/SmartPlayer
-
-4. iOS推流 SmartPublisher:
-https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisher
-
-5. iOS播放器 SmartPlayer:
-https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayer
-
 **[编译注意事项]**
 
 1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
 * 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
 * iOS 需真机调试
-* 由于我们域名调整，原推送、播放 demo里面的baseURL “rtmp://daiulive.com” 调整为 "rtmp://player.daniulive.com"，各位用我们server测试时，请注意调整，原域名映射到刚上线的大牛直播网站 www.daniulive.com 
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
  ```
 android推送端：SmartPublisherSDKDemo
