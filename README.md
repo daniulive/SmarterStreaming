@@ -10,7 +10,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:89030985 或 517631076 手机:130-7210-2209 或 135-6452-9354)；
 
-**[latest release note](https://github.com/daniulive/SmarterStreaming/wiki/release-note)**
+**[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
 **[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)**
 
