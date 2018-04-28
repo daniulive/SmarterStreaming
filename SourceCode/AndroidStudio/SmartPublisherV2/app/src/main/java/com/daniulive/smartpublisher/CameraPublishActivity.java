@@ -159,7 +159,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private static final int BACK = 2;		//后置摄像头标记
 	private int currentCameraType = BACK;	//当前打开的摄像头标记
 	private static final int PORTRAIT = 1;	//竖屏
-	private static final int LANDSCAPE = 2;	//横屏
+	private static final int LANDSCAPE = 2;	//横屏 home键在右边的情况
+	private static final int LANDSCAPE_LEFT_HOME_KEY = 3; // 横屏 home键在左边的情况
 	private int currentOrigentation = PORTRAIT;
 	private int curCameraIndex = -1;
 
@@ -1652,23 +1653,36 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 		// TODO Auto-generated method stub
 		Log.i(TAG, "Surface Destroyed"); 
 	}
-	
-	public void onConfigurationChanged(Configuration newConfig) {  
-        try {  
-            super.onConfigurationChanged(newConfig);  
-        	Log.i(TAG, "onConfigurationChanged, start:" + isStart);
-            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) { 
-            	if(!isStart && !isPushing && !isRecording) {
-            		currentOrigentation = LANDSCAPE;
+
+	public void onConfigurationChanged(Configuration newConfig) {
+		try {
+			super.onConfigurationChanged(newConfig);
+			Log.i(TAG, "onConfigurationChanged, start:" + isStart);
+			if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+				if(!isStart && !isPushing && !isRecording) {
+
+					int rotation = getWindowManager ().getDefaultDisplay ().getRotation();
+					if ( Surface.ROTATION_270 == rotation )
+					{
+						Log.i(TAG, "onConfigurationChanged rotation=" + rotation + " LANDSCAPE_LEFT_HOME_KEY");
+
+						currentOrigentation = LANDSCAPE_LEFT_HOME_KEY;
+					}
+					else
+					{
+						Log.i(TAG, "onConfigurationChanged rotation=" + rotation + " LANDSCAPE");
+
+						currentOrigentation = LANDSCAPE;
+					}
 				}
-            } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            	if(!isStart && !isPushing && !isRecording ) {
-            		currentOrigentation = PORTRAIT;
+			} else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+				if(!isStart && !isPushing && !isRecording ) {
+					currentOrigentation = PORTRAIT;
 				}
-            }  
-        } catch (Exception ex) {  
-        }  
-    }
+			}
+		} catch (Exception ex) {
+		}
+	}
 
 	@Override
 	public void onPreviewFrame(byte[] data, Camera camera) {

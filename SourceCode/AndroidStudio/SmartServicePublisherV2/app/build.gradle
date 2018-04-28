@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion '26.0.0'
     defaultConfig {
-        applicationId "com.daniulive.smartpublisher"
+        applicationId "com.daniulive.smartservicescreenpublisher"
         minSdkVersion 9
         targetSdkVersion 22
         versionCode 1

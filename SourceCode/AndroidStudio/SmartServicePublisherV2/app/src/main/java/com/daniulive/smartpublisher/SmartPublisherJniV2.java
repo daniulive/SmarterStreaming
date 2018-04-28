@@ -1,7 +1,8 @@
 /*
  * SmartPublisherJniV2.java
  * SmartPublisherJniV2
- * 
+ *
+ * WebSite: http://daniulive.com
  * Github: https://github.com/daniulive/SmarterStreaming
  * 
  * Created by DaniuLive on 2015/09/20.
@@ -32,10 +33,16 @@ public class SmartPublisherJniV2 {
 	 *
 	 * @param ctx: get by this.getApplicationContext()
 	 * 
-	 * @param audio_opt: if with 0: it does not publish audio; if with 1, it publish audio; if with 2, it publish external encoded audio, only support aac.
+	 * @param audio_opt:
+	 * if 0: 不推送音频
+	 * if 1: 推送编码前音频(PCM)
+	 * if 2: 推送编码后音频(aac/pcma/pcmu/speex).
 	 * 
-	 * @param video_opt: if with 0: it does not publish video; if with 1, it publish video; if with 2, it publish external encoded video, only support h264, data:0000000167....
-	 * 
+	 * @param video_opt:
+	 * if 0: 不推送视频
+	 * if 1: 推送编码前视频(YUV420SP/YUV420P/RGBA/ARGB)
+	 * if 2: 推送编码后视频(H.264)
+	 *
 	 * @param width: capture width; height: capture height.
 	 *
 	 * <pre>This function must be called firstly.</pre>
@@ -337,7 +344,10 @@ public class SmartPublisherJniV2 {
 	*
 	* @param cameraType: CAMERA_FACING_BACK with 0, CAMERA_FACING_FRONT with 1
 	* 
-	* @param curOrg: LANDSCAPE with 0, PORTRAIT 1
+	* @param curOrg:
+		 * PORTRAIT = 1;	//竖屏
+		 * LANDSCAPE = 2;	//横屏 home键在右边的情况
+		 * LANDSCAPE_LEFT_HOME_KEY = 3; //横屏 home键在左边的情况
 	*
 	* @return {0} if successful
 	*/
@@ -416,8 +426,56 @@ public class SmartPublisherJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPublisherOnFarEndPCMData(long handle,  ByteBuffer pcmdata, int sampleRate, int channel, int per_channel_sample_number, int is_low_latency);
-	
-	
+
+	/**
+	 * 设置编码后视频数据(H.264)
+	 *
+	 * @param codec_id, H.264对应 1
+	 *
+	 * @param data 编码后的video数据
+	 *
+	 * @param size data length
+	 *
+	 * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0.
+	 *
+	 * @param timestamp video timestamp
+	 *
+	 * @param pts Presentation Time Stamp, 显示时间戳
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostVideoEncodedData(long handle, int codec_id, ByteBuffer data, int size, int is_key_frame, long timestamp, long pts);
+
+	/**
+	 * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
+	 *
+	 * @param codec_id:
+	 *
+	 *  NT_MEDIA_CODEC_ID_AUDIO_BASE = 0x10000,
+	 *	NT_MEDIA_CODEC_ID_PCMA = NT_MEDIA_CODEC_ID_AUDIO_BASE,
+	 *	NT_MEDIA_CODEC_ID_PCMU,
+	 *	NT_MEDIA_CODEC_ID_AAC,
+	 *	NT_MEDIA_CODEC_ID_SPEEX,
+	 *	NT_MEDIA_CODEC_ID_SPEEX_NB,
+	 *	NT_MEDIA_CODEC_ID_SPEEX_WB,
+	 *	NT_MEDIA_CODEC_ID_SPEEX_UWB,
+	 *
+	 * @param data audio数据
+	 *
+	 * @param size data length
+	 *
+	 * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0, audio忽略
+	 *
+	 * @param timestamp video timestamp
+	 *
+	 * @param parameter_info 用于AAC special config信息填充
+	 *
+	 * @param parameter_info_size parameter info size
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostAudioEncodedData(long handle, int codec_id, ByteBuffer data, int size, int is_key_frame, long timestamp,ByteBuffer parameter_info, int parameter_info_size);
+
 	/**
 	* Set encoded video data.
 	*
@@ -432,7 +490,6 @@ public class SmartPublisherJniV2 {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherOnReceivingVideoEncodedData(long handle,  byte[] buffer, int len, int isKeyFrame, long timeStamp);
-    
 
 	/**
 	* set audio specific configure.
