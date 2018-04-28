@@ -3,13 +3,15 @@ Demo文件说明：
 2. SmartPublisherV2: 大牛直播SDK推送端demo；
 3. SmartEchoCancellationV2: 大牛直播SDK一对一互动demo；
 4. SmartServiceCameraPublisherV2: 大牛直播SDK后台推摄像头demo.
-5. SmartServicePublisherV2: 大牛直播SDK无纸化推屏/会议demo；
+5. SmartServicePublisherV2: 大牛直播SDK无纸化推屏/会议demo.
+6. SmartRelayDemoV2: 大牛直播SDK转发demo.
 
 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
 1. android推送端：SmartPublisherSDKDemo
 2. android后台Service推送：SmartServicePublisherSDKDemo
 3. android一对一互动：SmartEchoCancellation
 4. android播放器：SmartPlayerSDKDemo
+
 
 详细集成说明请参见"视沃科技-大牛直播移动端SDK(V2)调用说明2.5.pdf".
 
