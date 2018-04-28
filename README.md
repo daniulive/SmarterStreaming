@@ -12,7 +12,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
-**[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)**
+**[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/Daniulive-Android-SDKV2-AndroidStudio-2018-04-28.zip)**
 
 **[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)**
 
@@ -98,7 +98,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/WIN-转发SDK-C-demo-2018-03-30.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/Daniulive-Android-SDKV2-AndroidStudio-2018-04-28.zip)
 
 - [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)
 
@@ -228,9 +228,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持rtsp数据转rtmp推送出去；
 - [x] 音频混音同时选择“采集麦克风”+“采集扬声器”。
 
-**windows/iOS拉流转发模块**
-
-对应“SmartStreamRelayDemo.exe” [点击下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-04-24.zip)
+**windows/Android/iOS拉流转发模块**
 
 - [x] [拉流]支持拉取rtsp流；
 - [x] [拉流]支持拉取rtmp流；
