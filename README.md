@@ -24,6 +24,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **模块概览**
 
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/直播SDK模块.png" alt="直播SDK模块" />
+
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDK.png" alt="一张图看懂大牛直播SDK" />
 
 **Windows端**
