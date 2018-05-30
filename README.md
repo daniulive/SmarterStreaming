@@ -18,7 +18,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)**
 
-**[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK接口说明](http://daniulive.com/index.php/2018/05/27/androidrtmp-rtsp%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E7%AB%AFunity3d%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E/)**
+**[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
 **[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
 
