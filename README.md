@@ -18,11 +18,14 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 除此之外，大牛直播SDK播放端，支持**APICloud**和**React Native**扩展，并且支持**Unity3D**平台，也可能是Unity3D平台下首款**真正高稳定、超低延迟**的rtmp/rtsp直播播放器。
 
-**[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
+**[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
 
 **[android/iOS播放器SDK(V2)Unity3D调用说明](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/视沃科技-大牛直播移动端SDKV2Unity3D调用说明1.0.pdf)**
 
-**[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
+**[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
+
+**[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/APKUnity3D-SmartPlayer-0530.zip)**
+
 
 ===========================
 
