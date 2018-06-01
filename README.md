@@ -89,9 +89,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-04-24.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-01.zip)
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%8864%E4%BD%8D-2018-04-24.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版64位-2018-06-01.zip)
 
 - [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/WIN-PublisherSDK-CPP-Demo-2018-04-24.zip)
 
@@ -224,6 +224,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [录像]**录像和推送完全分离**，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
 - [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
 - [x] [快照]支持推送或录像过程中，**随时快照**；
+
+9. 本地预览/回显
+- [x] 支持摄像头/屏幕/合成数据**实时预览**功能，可以先预览后推送.
 
 **Windows导播平台或多路合成、混音推流/录像**
 
