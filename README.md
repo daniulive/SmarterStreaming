@@ -230,7 +230,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/windows-%E6%8E%A8%E9%80%81-%E6%92%AD%E6%94%BE%E7%89%88-2018-04-24.zip)
+对应“SmartMixStreamDemo.exe” [点击下载]http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-01.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
@@ -299,16 +299,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)
 - [x] 支持针对类似于娃娃机直播方案的超低延迟模式设置(公网200~400ms)。
 
-**Web播放器在线测试**
-
-http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
-
-在输入框中，清除老的url，输入推流的url，如 rtmp://player.daniulive.com:1935/hls/stream123456（以推流端生成的URL为准）。
-
 **windows/windows或windows/android/iOS一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”和“噪音抑制”；
-- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-03-05.zip)
+- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/Daniulive-Android-SDKV2-AndroidStudio-2018-04-28.zip)
 - [x] [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
 **windows/windows或windows与android/iOS连麦**
@@ -320,8 +314,6 @@ http://player.daniulive.com:8080/files/SmartPlayer1Stream/SmartPlayer.html
 [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
 适用于应急指挥、公安巡检等，以移动单兵设备为采集载体，实时上传音视频数据到指挥中心，并实现指挥中心对现场的实时指导。
-
-您可以用网页进行播放测试：<a href="http://218.25.89.108:8080/files/SmartPlayer/SmartPlayer.html" target="_blank">http://218.25.89.108:8080/files/SmartPlayer/SmartPlayer.html</a>
 
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
