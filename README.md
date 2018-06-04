@@ -292,7 +292,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
 - [x] 支持播放过程中，'实时静音/取消静音';
-- [x] 支持播放段视频view实时旋转(0° 90° 180° 270°)；
+- [x] 支持播放段视频view实时旋转(0° 90° 180° 270°)，windows还支持水平反转、垂直反转；
 - [x] **支持播放url快速切换，同等配置的流，切换url依旧可以录制到同一个文件**；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+；
 - [x] [快照]支持播放/录像过程中，**随时快照**；
