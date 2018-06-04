@@ -232,7 +232,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载]http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-01.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-01.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
