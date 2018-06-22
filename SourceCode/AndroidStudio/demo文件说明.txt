@@ -13,13 +13,15 @@ Demo文件说明：
 4. android播放器：SmartPlayerSDKDemo
 
 
-详细集成说明请参见"视沃科技-大牛直播移动端SDK(V2)调用说明2.5.pdf".
+详细集成说明请参见"视沃科技-大牛直播移动端SDK(V2)调用说明2.6.pdf".
 
 QQ群(大牛直播精英群)：294891451
 QQ群(大牛直播技术交流群)：499687479
 
+官网：http://daniulive.com/
 Github：https://github.com/daniulive/SmarterStreaming
 
+如需Unity3D/APICloud/React Native Demo，请直接联系我们。
 
 商务合作：
 
