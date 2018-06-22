@@ -1719,6 +1719,7 @@ public class SmartPlayer extends Activity {
 			video_buffer_.rewind();
 
 			if ( ret == 0 && isPulling ) {
+
 				libPublisher.SmartPublisherPostVideoEncodedData(publisherHandle, video_codec_id, video_buffer_, sample_size, is_key_frame, timestamp, presentation_timestamp);
 			}
 		}
