@@ -16,7 +16,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)**
 
-除此之外，大牛直播SDK播放端，支持**APICloud**和**React Native**扩展，并且支持**Unity3D**平台，也可能是Unity3D平台下首款**真正高稳定、超低延迟**的rtmp/rtsp直播播放器。
+除此之外，大牛直播SDK播放端，支持**APICloud**和**React Native**二次封装，并且全平台支持**Unity3D**平台，也可能是Unity3D平台下首款**真正高稳定、超低延迟**的rtmp/rtsp直播播放器。
 
 **[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
 
@@ -39,15 +39,19 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows端**
 
-- [x] [推流SDK] rtmp推送SDK(支持同时推多路url)；
+- [x] [直播推流SDK] rtmp推送SDK(支持同时推多路url)；
 
-- [x] [直播播放器SDK] rtmp/rtsp超低延迟直播播放器SDK，**播放和录像完全分离**，支持**直接拉流录像**;
+- [x] [直播播放器SDK] rtmp/rtsp超低延迟直播播放器SDK(除native SDK，还支持unity3d, APICloud/React Native封装)，**播放和录像完全分离**，支持**直接拉流录像**;
+
+- [x] [多路流媒体转发SDK] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换；
+
+- [x] [轻量级RTSP服务SDK](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持；
 
 - [x] [导播SDK] 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
 
 - [x] [连麦SDK] 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [多路流媒体转发SDK] 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换；
+
 
 - [x] [录像SDK] 实时**录像**模块/实时**快照**功能；
 
