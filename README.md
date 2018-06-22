@@ -127,7 +127,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows SDK说明(以C#为例)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/视沃科技-Windows-SDK集成说明2.6.pdf)
 
-**[windows/android/iOS播放器SDK(V2)Unity3D调用说明](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/视沃科技-大牛直播SDKV2Unity3D调用说明1.1.pdf)**
+- [x] [**windows/android/iOS播放器SDK(V2)Unity3D调用说明**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/视沃科技-大牛直播SDKV2Unity3D调用说明1.1.pdf)
 
 **大牛直播demo使用说明**
 
