@@ -446,6 +446,33 @@ public class SmartPublisherJniV2 {
 	 */
 	public native int SmartPublisherPostVideoEncodedData(long handle, int codec_id, ByteBuffer data, int size, int is_key_frame, long timestamp, long pts);
 
+
+	/**
+	 * 设置编码后视频数据(H.264)
+	 *
+	 * @param codec_id, H.264对应 1
+	 *
+	 * @param data 编码后的video数据
+	 *
+	 *@param offset data的偏移
+	 *
+	 * @param size data length
+	 *
+	 * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0.
+	 *
+	 * @param timestamp video timestamp
+	 *
+	 * @param pts Presentation Time Stamp, 显示时间戳
+	 *
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostVideoEncodedDataV2(long handle, int codec_id,
+														   ByteBuffer data, int offset, int size,
+														   int is_key_frame, long timestamp, long pts,
+														   byte[] sps, int sps_len,
+														   byte[] pps, int pps_len);
+
 	/**
 	 * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
 	 *
@@ -475,6 +502,42 @@ public class SmartPublisherJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPublisherPostAudioEncodedData(long handle, int codec_id, ByteBuffer data, int size, int is_key_frame, long timestamp,ByteBuffer parameter_info, int parameter_info_size);
+
+
+	/**
+	 * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
+	 *
+	 * @param codec_id:
+	 *
+	 *  NT_MEDIA_CODEC_ID_AUDIO_BASE = 0x10000,
+	 *	NT_MEDIA_CODEC_ID_PCMA = NT_MEDIA_CODEC_ID_AUDIO_BASE,
+	 *	NT_MEDIA_CODEC_ID_PCMU,
+	 *	NT_MEDIA_CODEC_ID_AAC,
+	 *	NT_MEDIA_CODEC_ID_SPEEX,
+	 *	NT_MEDIA_CODEC_ID_SPEEX_NB,
+	 *	NT_MEDIA_CODEC_ID_SPEEX_WB,
+	 *	NT_MEDIA_CODEC_ID_SPEEX_UWB,
+	 *
+	 * @param data audio数据
+	 *
+	 * @param offset data的偏移
+	 *
+	 * @param size data length
+	 *
+	 * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0, audio忽略
+	 *
+	 * @param timestamp video timestamp
+	 *
+	 * @param parameter_info 用于AAC special config信息填充
+	 *
+	 * @param parameter_info_size parameter info size
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostAudioEncodedDataV2(long handle, int codec_id,
+														   ByteBuffer data, int offset, int size,
+														   int is_key_frame, long timestamp,
+														   byte[] parameter_info, int parameter_info_size);
 
 	/**
 	* Set encoded video data.
