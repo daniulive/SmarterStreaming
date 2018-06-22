@@ -22,6 +22,8 @@
 	<string>1</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>1</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
