@@ -108,6 +108,8 @@
     
     //拉流url可以自定义
     playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        
+    //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
     
     CGFloat lineWidth = playbackButton.frame.size.width * 0.12f;
     
@@ -460,7 +462,7 @@
     [_smart_player_sdk SmartPlayerSetPlayURL:playback_url_];
     
     //超低延迟模式
-    is_low_latency_mode_ = YES;
+    is_low_latency_mode_ = NO;
     [_smart_player_sdk SmartPlayerSetLowLatencyMode:(NSInteger)is_low_latency_mode_];
     
     buffer_time_ = 0;
@@ -472,8 +474,9 @@
     is_fast_startup_ = YES;
     [_smart_player_sdk SmartPlayerSetFastStartup:(NSInteger)is_fast_startup_];
     
-    NSLog(@"[relayDemo]is_fast_startup_:%d, buffer_time_:%ld", is_fast_startup_, (long)buffer_time_);
+    NSLog(@"[SmartPlayerV2]is_fast_startup_:%d, buffer_time_:%ld", is_fast_startup_, (long)buffer_time_);
     
+    is_rtsp_tcp_mode_ = NO;
     [_smart_player_sdk SmartPlayerSetRTSPTcpMode:is_rtsp_tcp_mode_];
  
     NSInteger image_flag = 1;
