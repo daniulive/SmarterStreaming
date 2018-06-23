@@ -2,7 +2,7 @@
 
 专注、极致、智慧，国内外为数不多不依赖开源框架、跨平台(windows/android/iOS)、公网推送(支持rtmp)-转发-播放-录像(支持rtmp/rtsp)，**比快更快**，业界**真正靠谱**的超低延迟(真1秒，低延迟模式下200~400ms)。
 
-适用于**在线教育、[无纸化推屏/会议](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/)、智慧教室、智能可视门禁对讲、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、[应急指挥调度](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
+适用于**在线教育、无纸化推屏/会议、智慧教室、智能可视门禁对讲、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
 [大牛直播SDK介绍PPT](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/PPT视沃科技-大牛直播SDK介绍_080604.pdf)
 
@@ -11,10 +11,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:89030985 或 517631076 手机:130-7210-2209 或 135-6452-9354)；
 
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
-
-**[安卓无纸化推屏/会议Demo(V2)Android Studio工程)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/Daniulive-Android-SDKV2-AndroidStudio-2018-04-28.zip)**
-
-**[iOS推送-播放-转发-录屏Demo(V2)xcode工程)](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)**
 
 除此之外，大牛直播SDK播放端，支持**APICloud**和**React Native**二次封装，并且全平台支持**Unity3D**平台，也可能是Unity3D平台下首款**真正高稳定、超低延迟**的rtmp/rtsp直播播放器。
 
@@ -33,7 +29,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **模块概览**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/直播SDK模块1.png" alt="直播SDK模块" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/框架图.png" alt="直播SDK模块" />
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/大牛直播SDK.png" alt="一张图看懂大牛直播SDK" />
 
@@ -115,9 +111,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-转发SDK-C-demo-2018-06-22.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/Daniulive-Android-SDKV2-AndroidStudio-2018-04-28.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-06-22.zip)
 
-- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://daniulive.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-03-29.zip)
+- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-06-22.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
