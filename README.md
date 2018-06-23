@@ -55,7 +55,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**互动SDK**] Windows一对一互动(可windows与windows/android/iOS互动)；
 
-- [x] [**连麦SDK**] 以标准协议为基础，完美支持Windows连麦；
+- [x] [**连麦SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
 
 - [x] [**点播播放器SDK**] 支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，**也许是行业内seek最快的flv点播播放器**)；
 
