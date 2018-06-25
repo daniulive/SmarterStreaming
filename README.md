@@ -93,17 +93,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-01.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-25.zip)
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版64位-2018-06-01.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版64位-2018-06-25.zip)
 
-- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-PublisherSDK-CPP-Demo-2018-06-01.zip)
+- [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-PublisherSDK-CPP-Demo-2018-06-25.zip)
 
-- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-PlayerSDK-CPP-Demo-2018-06-01.zip)
+- [x] [SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-PlayerSDK-CPP-Demo-2018-06-25.zip)
 
-- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-MixStreamSDK-CPP-Demo-2018-06-01.zip)
+- [x] [SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-MixStreamSDK-CPP-Demo-2018-06-25.zip)
 
-- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-RelaySDK-CPP-Demo-2018-06-01.zip)
+- [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-RelaySDK-CPP-Demo-2018-06-25.zip)
 
 - [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-推送SDK-C-Demo-2018-06-22.zip)
 
@@ -232,7 +232,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-01.zip)
+对应“SmartMixStreamDemo.exe” [点击下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/windows-推送-播放版-2018-06-25.zip)
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
@@ -304,7 +304,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 **windows/windows或windows/android/iOS一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”和“噪音抑制”；
-- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/Daniulive-Android-SDKV2-AndroidStudio-2018-04-28.zip)
+- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-06-22.zip)
 - [x] [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
 **windows/windows或windows与android/iOS连麦**
