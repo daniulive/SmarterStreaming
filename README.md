@@ -1,6 +1,6 @@
 **视沃科技-大牛直播SDK <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
 
-国内外为数不多致力于**极致体验**的**超强全自研跨平台**(windows/android/iOS)流媒体内核，通过模块化自由组合，支持实时RTMP推流、RTMP/RTSP直播播放、录像、多路流媒体转发、音视频导播、动态视频合成、音频混音、直播互动、内置轻量级RTSP服务SDK等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(通常1秒左右，低延迟模式下200~400ms)。
+国内外为数不多致力于极致体验的**超强全自研跨平台**(windows/android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTMP/RTSP直播播放、录像、多路流媒体转发、音视频导播、动态视频合成、音频混音、直播互动、内置轻量级RTSP服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(通常1秒左右，低延迟模式下200~400ms)。
 
 适用于**在线教育、无纸化推屏/会议、智慧教室、智能可视门禁对讲、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
@@ -389,30 +389,4 @@ android：strings.xml：
 手机：130-7210-2209 或 135-6452-9354
 
 商务合作QQ：89030985
-<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:89030985:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
-
-商务合作QQ：517631076
-<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=517631076&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:517631076:51" alt="点我在线商务咨询" title="点我在线商务咨询"/></a> 
-
-商务合作微信:
-
-<img src="http://218.25.89.108:8080/files/daniulive/image/shangwu_erweima.png" width="183" alt="商务合作微信" />
-
-
-技术支持QQ: 2679481035
-<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2679481035&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2679481035:51" alt="点我在线技术咨询" title="点我在线技术咨询"/></a>
-
-技术支持微信：
-
-<img src="http://218.25.89.108:8080/files/daniulive/image/jishu_erweima.png" width="183" alt="技术支持微信" />
-
-QQ群(大牛直播精英群)：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
-
-<img src="http://218.25.89.108:8080/files/image/erweima2.png" width="183" alt="QQ交流群" />
-
-QQ群(大牛直播技术交流群)：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
-
-<img src="http://218.25.89.108:8080/files/image/erweima.png" width="183" alt="QQ交流群" />
-
-想了解更多信息，点击进入 
-[视沃科技官网](http://daniulive.com)
+<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/
