@@ -318,15 +318,15 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **1.  windows推送：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_publisher_2018_0709.png" width="800" alt="Windows推送" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_publisher_2018_0709.png" alt="Windows推送" />
 
 **2.  windows多路RTSP/RTSP转发：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_relay_2018_0709.png" width="800" alt="Windows推送" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_relay_2018_0709.png"  alt="Windows推送" />
 
 **3.  windows实时导播：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流主界面.png" width="800" alt="Windows推送" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流主界面.png" alt="Windows推送" />
 
 **4. android边推送边录像(支持纯音频推送和播放)：**
 
@@ -334,13 +334,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **5. iOS播放-录像-转发一体：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/iOS抓发.jpg" width="400" alt="iOS播放-录像-转发" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/iOS抓发.jpg" alt="iOS播放-录像-转发" />
 
 ## 播放展示 ##
 
 **1. Windows播放器：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_player_2018_0709.png" width="600" alt="大牛直播Windows播放器" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_player_2018_0709.png" alt="大牛直播Windows播放器" />
 
 **2. Windows播放导播合成效果：**
 
