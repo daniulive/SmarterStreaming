@@ -347,11 +347,11 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **3. Android播放器：**
 
-<img src="http://218.25.89.108:8080/files/image/android.jpg" width="600" alt="大牛直播android播放器" />
+<img src="http://218.25.89.108:8080/files/image/android.jpg" alt="大牛直播android播放器" />
 
 **4. iOS播放器：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/ios_player_2018_0709.jpg" width="600" alt="大牛直播iOS播放器" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/ios_player_2018_0709.jpg" alt="大牛直播iOS播放器" />
 
 
 **[编译注意事项]**
