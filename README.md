@@ -392,7 +392,11 @@ android：strings.xml：
 技术支持QQ: 2679481035
 
 QQ群：
+
 大牛直播SDK技术交流群1：499687479
+
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播iOS播放器" />
+
 大牛直播SDK技术交流群2：294891451
+
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播iOS播放器" />
