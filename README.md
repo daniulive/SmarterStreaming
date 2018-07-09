@@ -35,9 +35,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**直播推流SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) rtmp推送SDK(支持同时推多路url)；
 
-- [x] [**直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) rtmp/rtsp超低延迟直播播放器SDK，**播放和录像完全分离**，支持**直接拉流录像**;
+- [x] [**直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) rtmp/rtsp超低延迟直播播放器SDK;
 
-- [x] [**Unity3D直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows/Android/iOS全平台支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
+- [x] [**Unity3D直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
 - [x] [**多路流媒体转发SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换；
 
@@ -47,11 +47,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式；
 
-- [x] [**互动SDK**] Windows一对一互动(可windows与windows/android/iOS互动)；
+- [x] [**互动SDK**] Windows一对一互动(可windows与windows/android互动)；
 
 - [x] [**连麦SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
 
 - [x] [**点播播放器SDK**] 支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，**也许是行业内seek最快的flv点播播放器**)；
+
+- [x] [**SEI扩展数据发送/接收SDK**] 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
 - [x] [**视频处理SDK**] 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
 
@@ -59,7 +61,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Android端**
 
-- [x] [**直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流/录像SDK;
+- [x] [**直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK;
 
 - [x] [**直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) rtmp/rtsp超低延迟直播播放器SDK;
 
@@ -69,17 +71,24 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**互动SDK**] Android一对一互动(可android与windows/android/iOS互动)；
 
+- [x] [**SEI扩展数据发送/接收SDK**] 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
+
+- [x] [**视频处理SDK**] Android文字水印、png图片水印；
+
 - [x] [**音频处理SDK**] Android回音消除、噪音抑制、自动增益、VAD检测模块；
+
 
 **iOS端**
 
-- [x] [**直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流/录像SDK;
+- [x] [**直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
 
 - [x] [**直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) rtmp/rtsp超低延迟直播播放器SDK;
 
 - [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式；
 
 - [x] [**转发SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
+
+- [x] [**SEI扩展数据发送/接收SDK**] 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
 **本地下载**
 
