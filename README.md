@@ -325,11 +325,11 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **2.  windows推送/实时导播：**
 
-<img src="http://player.daniulive.com:8080/files/image/windows/mix_publisher1.png" width="800" alt="Windows推送" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流主界面.png" width="800" alt="Windows推送" />
 
 **3. android边推送边录像(支持纯音频推送和播放)：**
 
-<img src="http://player.daniulive.com:8080/files/daniulive/android_publisher_echocancellation.png" alt="android边推送边录像" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_publisher.jpg" alt="android边推送边录像" />
 
 **4. iOS播放-录像-转发一体：**
 
@@ -389,4 +389,9 @@ android：strings.xml：
 手机：130-7210-2209 或 135-6452-9354
 
 商务合作QQ：89030985
-<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=89030985&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/
+技术支持QQ: 2679481035
+
+大牛直播SDK技术交流群1：
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播iOS播放器" />
+大牛直播SDK技术交流群2：
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播iOS播放器" />
