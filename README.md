@@ -321,7 +321,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **1.  windows推送：**
 
-<img src="http://player.daniulive.com:8080/files/daniulive/win_publisher.png" width="800" alt="Windows推送" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_publisher_2018_0709.png" width="800" alt="Windows推送" />
 
 **2.  windows推送/实时导播：**
 
@@ -333,7 +333,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **4. iOS播放-录像-转发一体：**
 
-<img src="http://218.25.89.108:8080/files/image/ios_relay.jpg" width="400" alt="iOS播放-录像-转发" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/iOS抓发.jpg" width="400" alt="iOS播放-录像-转发" />
 
 ## 播放展示 ##
 
@@ -343,7 +343,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **2. Windows播放导播合成效果：**
 
-<img src="http://player.daniulive.com:8080/files/image/windows/player1.png" width="600" alt="大牛直播Windows导播播放效果" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流输出.png" width="600" alt="大牛直播Windows导播播放效果" />
 
 **3. Android播放器：**
 
