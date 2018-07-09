@@ -329,7 +329,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **3. android边推送边录像(支持纯音频推送和播放)：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_publisher.jpg" alt="android边推送边录像" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_publisher_20180709.jpg" alt="android边推送边录像" />
 
 **4. iOS播放-录像-转发一体：**
 
