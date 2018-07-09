@@ -25,8 +25,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/APKUnity3D-SmartPlayer-0530.zip)**
 
 
-===========================
-
 **模块概览**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/框架图.png" alt="直播SDK模块" />
@@ -89,7 +87,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] 大牛直播精英群: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 - [x] 大牛直播技术交流群: [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
-或者直接从私有服务器下载(Windows提供C#/C++ demo, android提供eclipse demo，iOS提供xcode demo)：
+或者直接从私有服务器下载(Windows提供C#/C++ demo, android提供android studio demo，iOS提供xcode demo)：
 
 **大牛直播产品demo本地下载**
 
@@ -178,7 +176,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 9. iOS转发-录像-播放三合一 SmartiOSRelayDemoV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2
 
-===========================
 
 # 功能支持
 
@@ -388,14 +385,14 @@ android：strings.xml：
 
 ## 获取更多信息 ##
 
-商务合作：
+**商务合作：**
 
 手机：130-7210-2209 或 135-6452-9354
 
 商务合作QQ：89030985
 技术支持QQ: 2679481035
 
-QQ交流群：
+**QQ交流群：**
 
 大牛直播SDK技术交流群1：499687479
 
