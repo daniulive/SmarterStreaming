@@ -340,7 +340,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **1. Windows播放器：**
 
-<img src="http://218.25.89.108:8080/files/image/win_player.png" width="600" alt="大牛直播Windows播放器" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_player_2018_0709.png" width="600" alt="大牛直播Windows播放器" />
 
 **2. Windows播放导播合成效果：**
 
@@ -348,7 +348,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **3. Android播放器：**
 
-<img src="http://218.25.89.108:8080/files/image/android.jpg" alt="大牛直播android播放器" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_player_20180709.png" alt="大牛直播android播放器" />
 
 **4. iOS播放器：**
 
