@@ -323,15 +323,19 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_publisher_2018_0709.png" width="800" alt="Windows推送" />
 
-**2.  windows推送/实时导播：**
+**2.  windows多路RTSP/RTSP转发：**
+
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_relay_2018_0709.png" width="800" alt="Windows推送" />
+
+**3.  windows实时导播：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流主界面.png" width="800" alt="Windows推送" />
 
-**3. android边推送边录像(支持纯音频推送和播放)：**
+**4. android边推送边录像(支持纯音频推送和播放)：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_publisher_2018_0709.jpg" alt="android边推送边录像" />
 
-**4. iOS播放-录像-转发一体：**
+**5. iOS播放-录像-转发一体：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/iOS抓发.jpg" width="400" alt="iOS播放-录像-转发" />
 
@@ -391,7 +395,7 @@ android：strings.xml：
 商务合作QQ：89030985
 技术支持QQ: 2679481035
 
-QQ群：
+QQ交流群：
 
 大牛直播SDK技术交流群1：499687479
 
