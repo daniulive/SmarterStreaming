@@ -29,8 +29,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/框架图.png" alt="直播SDK模块" />
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/大牛直播SDK.png" alt="一张图看懂大牛直播SDK" />
-
 **Windows端**
 
 - [x] [**直播推流SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) rtmp推送SDK(支持同时推多路url)；
@@ -341,11 +339,15 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流主界面.png" alt="Windows推送" />
 
-**4. android边推送边录像(支持纯音频推送和播放)：**
+**4. android推送：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_publisher_2018_0709.jpg" alt="android边推送边录像" />
 
-**5. iOS播放-录像-转发一体：**
+**5. iOS推送：**
+
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/ios_publisher_player_2018_0709.png" alt="iOS推送" />
+
+**6. iOS播放-录像-转发一体：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/iOS抓发.jpg" alt="iOS播放-录像-转发" />
 
@@ -409,8 +411,8 @@ android：strings.xml：
 
 大牛直播SDK技术交流群1：499687479
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播iOS播放器" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播SDK技术交流群1" />
 
 大牛直播SDK技术交流群2：294891451
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播iOS播放器" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播SDK技术交流群2" />
