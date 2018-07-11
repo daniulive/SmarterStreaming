@@ -264,13 +264,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 多分辨率选择；
 - [x] 支持横竖屏推送；
 - [x] `音视频`推送、`纯音频`推送、`纯视频`推送；
-- [x] 支持`边采集、边录像`；
+- [x] 支持`边采集、边录像`，或只采集、只录像；
 - [x] 支持rtmp推送 live|record模式设置；
 - [x] 真正靠谱的录像、推流分离模式，**支持推流过程中随时开启录像，录像过程中，随时推流；**
 - [x] 支持本地录像文件回放、处理；
 - [x] 采集过程中，前后摄像头切换；
 - [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
-- [x] android/iOS自带美颜功能；
+- [x] iOS自带基础美颜功能；
 - [x] android完美支持`文字水印、实时时间水印和图片水印`；
 - [x] 支持`推送端实时静音/取消静音`；
 - [x] 支持软硬编码自适应；
@@ -284,26 +284,27 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [音频]android支持Speex推送；
 - [x] [音频]android支持Speex编码质量设置；
 - [x] [快照]支持推送或录像过程中，**随时快照**;
-- [x] iOS支持裁剪模式设置；
+- [x] 支持裁剪模式设置；
 - [x] 完美支持各个厂家CDN。
 
 **windows播放器/android播放器/iOS播放器**
 
 - [x] 超低延迟的rtmp播放器；
 - [x] 超低延迟的rtsp播放器；
-- [x] 完美支持多实例播放（同时播放多路stream，可同时支持rtmp、rtsp stream播放）；
+- [x] 完美支持多实例播放（启动多实例，同时播放多路流，如同时播放多路rtmp/rtsp流）；
 - [x] 支持RTSP TCP/UDP模式切换；
 - [x] 支持播放端，buffer设置；
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
-- [x] audio支持aac/speex/g.711；
-- [x] windows/iOS播放端sdk支持回调编码过的音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
-- [x] android播放端sdk支持回调编码过的音视频数据(Video:YUV/RGB Audio:pcma/pcmu)到上层；
+- [x] video支持H.264，audio支持aac/speex/pcma/pcmu播放；
+- [x] windows/android/iOS平台均支持回调音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
 - [x] 支持播放过程中，'实时静音/取消静音';
-- [x] 支持播放段视频view实时旋转(0° 90° 180° 270°)，windows还支持水平反转、垂直反转；
-- [x] **支持播放url快速切换，同等配置的流，切换url依旧可以录制到同一个文件**；
+- [x] 支持播放端视频view实时旋转(0° 90° 180° 270°)、水平反转、垂直反转；
+- [x] 支持播放过程中快速切换URL；
+- [x] 支持播放端录像，或只录像不播放，同等配置的流，切换url依旧可以录制到同一个文件；
+- [x] 播放过程中，音视频信息改变后自动适配；
 - [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+；
 - [x] [快照]支持播放/录像过程中，**随时快照**；
 - [x] [windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)
@@ -323,7 +324,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
-适用于应急指挥、公安巡检等，以移动单兵设备为采集载体，实时上传音视频数据到指挥中心，并实现指挥中心对现场的实时指导。
+适用于应急指挥、公安巡检等，以移动设备为采集载体，实时上传音视频数据到指挥中心，并实现指挥中心对现场的实时指导。
 
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
@@ -333,7 +334,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **2.  windows多路RTSP/RTSP转发：**
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_relay_2018_0709.png"  alt="Windows推送" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_relay_2018_07_09.png"  alt="Windows转发" />
 
 **3.  windows实时导播：**
 
@@ -357,15 +358,11 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_player_2018_0709.png" alt="大牛直播Windows播放器" />
 
-**2. Windows播放导播合成效果：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流输出.png" width="600" alt="大牛直播Windows导播播放效果" />
-
-**3. Android播放器：**
+**2. Android播放器：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_player_20180709.png" alt="大牛直播android播放器" />
 
-**4. iOS播放器：**
+**3. iOS播放器：**
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/ios_player_2018_0709.jpg" alt="大牛直播iOS播放器" />
 
@@ -409,10 +406,10 @@ android：strings.xml：
 
 **QQ交流群：**
 
-大牛直播SDK技术交流群1：499687479
+大牛直播SDK技术交流群1：499687479(http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播SDK技术交流群1" />
 
-大牛直播SDK技术交流群2：294891451
+大牛直播SDK技术交流群2：294891451(http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播SDK技术交流群2" />
