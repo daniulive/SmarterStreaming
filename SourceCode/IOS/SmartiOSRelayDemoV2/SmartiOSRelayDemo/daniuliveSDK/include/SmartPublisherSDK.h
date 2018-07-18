@@ -28,7 +28,7 @@ typedef enum DNErrorCode{
     DANIULIVE_RETURN_SDK_EXPIRED    //!< SDK过期
 }DNErrorCode;
 */
-
+ 
 /**
  * 美颜类型
  */
@@ -433,7 +433,71 @@ typedef enum DNCameraPosition{
  *
  * @return {0} if successful
  */
--(NSInteger) SmartPublisherSetRtmpPublishingType:(NSInteger)type;
+-(NSInteger)SmartPublisherSetRtmpPublishingType:(NSInteger)type;
+
+/*++++发送用户自定义数据相关接口++++*/
+/*
+ * 1. 目前使用sei机制发送用户自定数据到播放端
+ * 2. 这种机制有可能会丢失数据, 所以这种方式不保证接收端一定能收到
+ * 3. 优势:能和视频保持同步，虽然有可能丢失，但一般的需求都满足了
+ * 4. 目前提供两种发送方式 第一种发送二进制数据, 第二种发送 utf8字符串
+ */
+
+/**
+ * 设置发送队列大小，为保证实时性，默认大小为3, 必须设置一个大于0的数
+ *
+ * @param max_size: 队列最大长度
+ *
+ * @param reserve: 保留字段
+ *
+ * NOTE: 1. 如果数据超过队列大小，将丢掉队头数据; 2. 这个接口请在 StartPublisher 之前调用
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetPostUserDataQueueMaxSize:(NSInteger)max_size reserve:(NSInteger)reserve;
+
+/**
+ * 清空用户数据队列, 有些情况可能会用到，比如发送队列里面有4条消息再等待发送,又想把最新的消息快速发出去, 可以先清除掉正在排队消息, 再调用PostUserXXX
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherClearPostUserDataQueue;
+
+/**
+ * 发送二进制数据
+ *
+ * NOTE:
+ * 1.目前数据大小限制在256个字节以内，太大可能会影响视频传输，如果有特殊需求，需要增大限制，请联系我们
+ * 2. 如果积累的数据超过了设置的队列大小，之前的队头数据将被丢弃
+ * 3. 必须再调用StartPublisher之后再发送数据
+ *
+ * @param data: 二进制数据
+ *
+ * @param size: 数据大小
+ *
+ * @param reserve: 保留字段
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherPostUserData:(unsigned char*)data size:(NSInteger)size reserve:(NSInteger)reserve;
+
+/**
+ * 发送utf8字符串
+ *
+ * NOTE:
+ * 1. 字符串长度不能超过256, 太大可能会影响视频传输，如果有特殊需求，需要增大限制，请联系我们
+ * 2. 如果积累的数据超过了设置的队列大小，之前的队头数据将被丢弃
+ * 3. 必须再调用StartPublisher之后再发送数据
+ *
+ * @param utf8_str: utf8字符串
+ *
+ * @param reserve: 保留字段
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherPostUserUTF8StringData:(NSString*)utf8_str reserve:(NSInteger)reserve;
+
+/*----发送用户自定义数据相关接口----*/
 
 /**
  * 设置video preview
@@ -545,5 +609,4 @@ typedef enum DNCameraPosition{
 - (NSInteger) handleSmartPublisherEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
 
 @end
-
 
