@@ -72,6 +72,24 @@ typedef enum DNErrorCode{
 - (NSInteger) SmartPlayerSetPlayView:(void*) playView;
 
 /**
+ * 设置拉流时，用户数据回调(目前是推送的发过来的)
+ *
+ * @param isEnableUserDataCallback 默认false，如需回调用户数据(通过扩展SEI信息传递的数据)，设置为true
+ *
+ * @return {0} if successful
+ */
+- (NSInteger) SmartPlayerSetUserDataCallback:(Boolean)isEnableUserDataCallback;
+
+/**
+ * 设置拉流时，视频的SEI数据回调
+ *
+ * @param isEnableSEIDataCallback 默认false，如需回调SEI数据(通过扩展SEI信息传递的数据)，设置为true
+ *
+ * @return {0} if successful
+ */
+- (NSInteger) SmartPlayerSetSEIDataBlock:(Boolean)isEnableSEIDataCallback;
+
+/**
  * 设置拉流时，视频YUV数据回调
  *
  * @param isEnableYuvBlock 默认false，如需回调YUV数据自己绘制，设置为true
@@ -135,6 +153,24 @@ typedef enum DNErrorCode{
  * @return {0} if successful
  */
 - (NSInteger)SmartPlayerSetLowLatencyMode:(NSInteger)mode;
+
+/**
+ * 设置视频垂直反转
+ *
+ * @param is_flip： 0: 不反转, 1: 反转
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetFlipVertical:(NSInteger)is_flip;
+
+/**
+ * 设置视频水平反转
+ *
+ * @param is_flip： 0: 不反转, 1: 反转
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetFlipHorizontal:(NSInteger)is_flip;
 
 /**
  * 设置顺时针旋转, 注意除了0度之外， 其他角度都会额外消耗性能
@@ -281,6 +317,45 @@ typedef enum DNErrorCode{
  *  获取当前sdk的版本号
  */
 -(NSString*) SmartPlayerGetSDKVersionID;
+
+/*
+ * 用户数据回调，目前是推送端发送过来的
+ * data_type: 数据类型，1:表示二进制字节类型. 2:表示utf8字符串
+ * data：实际数据， 如果data_type是1的话，data类型是const NT_BYTE*, 如果data_type是2的话，data类型是 const NT_CHAR*
+ * size: 数据大小
+ * timestamp: 视频时间戳
+ * reserve1: 保留
+ * reserve2: 保留
+ * reserve3: 保留
+ */
+typedef void (^SP_SDKUserDataCallBack)(int data_type, unsigned char* data, unsigned int size,
+                                       unsigned long long timestamp, unsigned long long reserve1,
+                                       long long reserve2, unsigned char* reserve3);
+
+/**
+ * 拉流时，用户数据回调
+ */
+@property (nonatomic, copy)SP_SDKUserDataCallBack spUserDataCallBack;
+
+/*
+ * 视频的sei数据回调
+ * data: sei 数据
+ * size: sei 数据大小
+ * timestamp：视频时间戳
+ * reserve1: 保留
+ * reserve2: 保留
+ * reserve3: 保留
+ * 注意: 目前测试发现有些视频有好几个sei nal, 为了方便用户处理，我们把解析到的所有sei都吐出来,sei nal之间还是用 00 00 00 01 分隔, 这样方便解析
+ * 吐出来的sei数据目前加了 00 00 00 01 前缀
+ */
+typedef void (^SP_SDKSEIDataCallBack)(unsigned char* data, unsigned int size,
+                                      unsigned long long timestamp, unsigned long long reserve1,
+                                      long long reserve2, unsigned char* reserve3);
+
+/**
+ * 拉流时，视频的sei数据回调
+ */
+@property (nonatomic, copy)SP_SDKSEIDataCallBack spSEIDataCallBack;
 
 /**
  * 拉流时YUV数据回调

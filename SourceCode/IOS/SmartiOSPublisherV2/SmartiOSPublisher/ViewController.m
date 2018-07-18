@@ -6,7 +6,7 @@
 //  website: http://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2015~2017 daniulive. All rights reserved.
+//  Copyright © 2015~2018 daniulive. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -17,6 +17,10 @@
 
 //预览视图
 @property (nonatomic, strong) UIView *localPreview;
+
+@property (strong, nonatomic) UILabel *textPubisherUrlLabel;
+
+@property (strong, nonatomic) UILabel *textPublisherEventLabel;
 
 //推流SDK API
 @property (nonatomic,strong) SmartPublisherSDK *smart_publisher_sdk;
@@ -35,10 +39,10 @@
     UIButton    *mirrorSwitchButton;        //镜像切换
     UIButton    *publisherStreamButton;     //NEW: 推送和录像功能分离，推送按钮
     UIButton    *recordStreamButton;        //NEW: 推送和录像功能分离，录像按钮
+    UIButton    *pushUserDataButton;        //发送用户数据按钮
     UIButton    *saveImageButton;           //快照按钮
     UIButton    *beautyLevelButton;         //美颜级别按钮
     UIButton    *backSettingsButton;        //返回到设置分辨率页面
-    UILabel     *textModeLabel;             //文字提示
     DNVideoStreamingQuality videoQuality;   //分辨率选择
     NSString    *copyRights;
     NSInteger   audio_opt_;                 //audio选项 0 1 2
@@ -74,42 +78,48 @@
 
 - (NSInteger) handleSmartPublisherEvent:(NSInteger)nID param1:(unsigned long long)param1 param2:(unsigned long long)param2 param3:(NSString*)param3 param4:(NSString*)param4 pObj:(void *)pObj;
 {
+    NSString* pubilisher_event = @"";
+    NSString* lable = @"";
+    
     if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_STARTED) {
-        NSLog(@"[event]开始推流..");
+        pubilisher_event = @"开始推流..";
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTING)
     {
-        NSLog(@"[event]连接中..");
+        pubilisher_event = @"连接中..";
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTION_FAILED)
     {
-        NSLog(@"[event]连接失败..");
+        pubilisher_event = @"连接失败..";
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTED)
     {
-        NSLog(@"[event]已连接..");
+        pubilisher_event = @"已连接..";
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_DISCONNECTED)
     {
-        NSLog(@"[event]断开连接..");
+        pubilisher_event = @"断开连接..";
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_STOP)
     {
-        NSLog(@"[event]停止推流..");
+        pubilisher_event = @"停止推流..";
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_RECORDER_START_NEW_FILE)
     {
-        NSLog(@"[event]录像写入新文件..文件名: %@", param3);
+        lable = @"录像写入新文件..文件名:";
+        pubilisher_event = [lable stringByAppendingFormat:@"%@", param3];
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_ONE_RECORDER_FILE_FINISHED)
     {
-        NSLog(@"[event]一个录像文件完成..文件名: %@", param3);
+        lable = @"一个录像文件完成..文件名:";
+        pubilisher_event = [lable stringByAppendingFormat:@"%@", param3];
     }
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE)
     {
         if ((int)param1 == 0)
         {
-            NSLog(@"[event]快照成功: %@", param3);
+            lable = @"快照成功:";
+            pubilisher_event = [lable stringByAppendingFormat:@"%@", param3];
             
             tmp_path = param3;
             
@@ -119,11 +129,26 @@
         }
         else
         {
-            NSLog(@"[event]快照失败: %@", param3);
+            lable = @"快照失败:";
+            pubilisher_event = [lable stringByAppendingFormat:@"%@", param3];
         }
     }
     else
-        NSLog(@"[event]nID:%lx", (long)nID);
+    {
+        lable = @"nID:";
+        pubilisher_event = [lable stringByAppendingFormat:@"%lx", (long)nID];
+    }
+
+    NSString* publisher_event_tag = @"当前状态:";
+    NSString* event = [publisher_event_tag stringByAppendingFormat:@"%@", pubilisher_event];
+    
+    NSLog(@"%@", event);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.textPublisherEventLabel.text = event;
+        });
+    });
     
     return 0;
 }
@@ -155,7 +180,7 @@
 
 - (void)loadView
 {
-    copyRights = @"Copyright 2014~2017 www.daniulive.com v1.0.17.0417";
+    copyRights = @"Copyright 2014~2018 www.daniulive.com v1.0.18.0718";
     
     //当前屏幕宽高
     screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
@@ -206,6 +231,8 @@
     Boolean clip_mode = true;
     [_smart_publisher_sdk SmartPublisherSetClippingMode:clip_mode];
     */
+    
+    [_smart_publisher_sdk SmartPublisherSetPostUserDataQueueMaxSize:3 reserve:0];
     
     NSInteger image_flag = 1;
     [_smart_publisher_sdk SmartPublisherSaveImageFlag:image_flag];
@@ -402,6 +429,22 @@
     [recordStreamButton addTarget:self action:@selector(recordStreamBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:recordStreamButton];
     
+    //推送用户数据
+    pushUserDataButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    pushUserDataButton.frame = CGRectMake(45, self.view.frame.size.height - 120, 120, 60);
+    pushUserDataButton.center = CGPointMake(self.view.frame.size.width / 2, pushUserDataButton.frame.origin.y + pushUserDataButton.frame.size.height / 2);
+    
+    pushUserDataButton.layer.cornerRadius = pushUserDataButton.frame.size.width / 2;
+    pushUserDataButton.layer.borderColor = [UIColor greenColor].CGColor;
+    pushUserDataButton.layer.borderWidth = lineWidth;
+    
+    [pushUserDataButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [pushUserDataButton setTitle:@"发送文本" forState:UIControlStateNormal];
+    
+    [pushUserDataButton addTarget:self action:@selector(pushUserDataBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pushUserDataButton];
+    
+    //返回按钮
     backSettingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backSettingsButton.frame = CGRectMake(45, self.view.frame.size.height - 60, 60, 60);
     backSettingsButton.center = CGPointMake(self.view.frame.size.width / 6, backSettingsButton.frame.origin.y + backSettingsButton.frame.size.height / 2);
@@ -416,21 +459,33 @@
     [backSettingsButton addTarget:self action:@selector(backSettingsBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backSettingsButton];
     
-    // 创建文字提示 UILable
-    textModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
+    // 创建推流URL文本
+    _textPubisherUrlLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
     // 设置UILabel的背景色
-    textModeLabel.backgroundColor = [UIColor clearColor];
+    _textPubisherUrlLabel.backgroundColor = [UIColor clearColor];
     // 设置UILabel的文本颜色
-    textModeLabel.textColor = [UIColor colorWithRed:1.0 green:0.0
+    _textPubisherUrlLabel.textColor = [UIColor colorWithRed:1.0 green:0.0
                                                blue:1.0 alpha:1.0];
     
-    textModeLabel.adjustsFontSizeToFitWidth = YES;
+    _textPubisherUrlLabel.adjustsFontSizeToFitWidth = YES;
     
-    NSString *str = @"欢迎使用SmartPublisher, ";
+    _textPubisherUrlLabel.text = @"推流URL:";
+    [self.view addSubview:_textPubisherUrlLabel];
     
-    textModeLabel.text =  [str stringByAppendingString:copyRights];
-    [self.view addSubview:textModeLabel];
+    // 创建Event显示文本
+    _textPublisherEventLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 50)];
+    // 设置UILabel的背景色
+    _textPublisherEventLabel.backgroundColor = [UIColor clearColor];
+    // 设置UILabel的文本颜色
+    _textPublisherEventLabel.textColor = [UIColor colorWithRed:1.0 green:0.0
+                                                blue:1.0 alpha:1.0];
     
+    _textPublisherEventLabel.adjustsFontSizeToFitWidth = YES;
+    
+    NSString *str = @"欢迎使用大牛直播SDK, ";
+    
+    _textPublisherEventLabel.text =  [str stringByAppendingString:copyRights];
+    [self.view addSubview:_textPublisherEventLabel];
 }
 
 - (void)viewDidLoad {
@@ -461,7 +516,7 @@
         
         NSString *baseText = @"推送URL：";
         
-        textModeLabel.text = [ baseText stringByAppendingString:publishURL];
+        _textPubisherUrlLabel.text = [ baseText stringByAppendingString:publishURL];
         
         NSInteger ret = [_smart_publisher_sdk SmartPublisherStartPublisher:publishURL];
         
@@ -470,11 +525,11 @@
             NSLog(@"Call SmartPublisherStartPublisher failed..ret:%ld", (long)ret);
             
             if (ret == DANIULIVE_RETURN_SDK_EXPIRED) {
-                textModeLabel.text = @"单推流失败，返回 DANIULIVE_RETURN_SDK_EXPIRED，请联系daniulive（QQ：89030985 or 2679481035）授权";
+                _textPublisherEventLabel.text = @"单推流失败，返回 DANIULIVE_RETURN_SDK_EXPIRED，请联系daniulive（www.daniulive.com QQ：89030985 or 2679481035）授权";
             }
             else
             {
-                textModeLabel.text = @"单推流失败，返回 DANIULIVE_RETURN_ERROR";
+                _textPublisherEventLabel.text = @"单推流失败，返回 DANIULIVE_RETURN_ERROR";
             }
             
             return;
@@ -550,6 +605,27 @@
         [_smart_publisher_sdk SmartPublisherStopRecorder];
         [recordStreamButton setTitle:@"开录像" forState:UIControlStateNormal];
         backSettingsButton.enabled = YES;
+    }
+}
+
+- (void)pushUserDataBtn:(id)sender {
+    
+    if ( _smart_publisher_sdk != nil )
+    {
+        NSString* daniuString = @"大牛直播iOS推流SDK: ";
+    
+        // 1.创建时间
+        NSDate *datenow = [NSDate date];
+        // 2.创建时间格式化
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // 3.指定格式
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        // 4.格式化时间
+        NSString *timeSp = [formatter stringFromDate:datenow];
+        
+        NSString* utf8_string = [daniuString stringByAppendingFormat:@"%@", timeSp];
+        
+        [_smart_publisher_sdk SmartPublisherPostUserUTF8StringData:utf8_string reserve:0];
     }
 }
 
