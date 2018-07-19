@@ -539,6 +539,70 @@ public class SmartPublisherJniV2 {
 														   int is_key_frame, long timestamp,
 														   byte[] parameter_info, int parameter_info_size);
 
+	/*++++发送用户自定义数据相关接口++++*/
+	/*
+	* 1. 目前使用sei机制发送用户自定数据到播放端
+	* 2. 这种机制有可能会丢失数据, 所以这种方式不保证接收端一定能收到
+	* 3. 优势:能和视频保持同步，虽然有可能丢失，但一般的需求都满足了
+	* 4. 目前提供两种发送方式 第一种发送二进制数据, 第二种发送 utf8字符串
+	*/
+
+	/**
+	 * 设置发送队列大小，为保证实时性，默认大小为3, 必须设置一个大于0的数
+	 *
+	 * @param max_size: 队列最大长度
+	 *
+	 * @param reserve: 保留字段
+	 *
+	 * NOTE: 1. 如果数据超过队列大小，将丢掉队头数据; 2. 这个接口请在 StartPublisher 之前调用
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetPostUserDataQueueMaxSize(long handle, int max_size, int reserve);
+
+	/**
+	 * 清空用户数据队列, 有些情况可能会用到，比如发送队列里面有4条消息再等待发送,又想把最新的消息快速发出去, 可以先清除掉正在排队消息, 再调用PostUserXXX
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherClearPostUserDataQueue(long handle);
+
+	/**
+	 * 发送二进制数据
+	 *
+	 * NOTE:
+	 * 1.目前数据大小限制在256个字节以内，太大可能会影响视频传输，如果有特殊需求，需要增大限制，请联系我们
+	 * 2. 如果积累的数据超过了设置的队列大小，之前的队头数据将被丢弃
+	 * 3. 必须再调用StartPublisher之后再发送数据
+	 *
+	 * @param data: 二进制数据
+	 *
+	 * @param size: 数据大小
+	 *
+	 * @param reserve: 保留字段
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostUserData(long handle, byte[] data, int size, int reserve);
+
+	/**
+	 * 发送utf8字符串
+	 *
+	 * NOTE:
+	 * 1. 字符串长度不能超过256, 太大可能会影响视频传输，如果有特殊需求，需要增大限制，请联系我们
+	 * 2. 如果积累的数据超过了设置的队列大小，之前的队头数据将被丢弃
+	 * 3. 必须再调用StartPublisher之后再发送数据
+	 *
+	 * @param utf8_str: utf8字符串
+	 *
+	 * @param reserve: 保留字段
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostUserUTF8StringData(long handle, String utf8_str, int reserve);
+
+	/*----发送用户自定义数据相关接口----*/
+
 	/**
 	* Set encoded video data.
 	*

@@ -42,12 +42,20 @@ import com.eventhandle.NTSmartEventCallbackV2;
 import com.eventhandle.NTSmartEventID;
 //import android.graphics.YuvImage;  
 //import android.graphics.ImageFormat;
+import com.videoengine.NTUserDataCallback;
+import com.videoengine.NTSEIDataCallback;
+import android.os.Handler;
+import android.os.Message;
 
 public class SmartPlayer extends Activity {
 
 	private SurfaceView sSurfaceView = null;
 
 	private long playerHandle = 0;
+
+	private static final int PLAYER_EVENT_MSG = 1;
+	private static final int PLAYER_USER_DATA_MSG = 2;
+	private static final int PLAYER_SEI_DATA_MSG = 3;
 
 	private static final int PORTRAIT = 1; // 竖屏
 	private static final int LANDSCAPE = 2; // 横屏
@@ -73,6 +81,10 @@ public class SmartPlayer extends Activity {
 
 	private boolean switchUrlFlag = false;
 
+	private boolean is_flip_vertical = false;
+
+	private boolean is_flip_horizontal = false;
+
 	private String switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
 
 	private String imageSavePath;
@@ -93,10 +105,12 @@ public class SmartPlayer extends Activity {
 	Button btnFastStartup;
 	Button btnSetPlayBuffer;
 	Button btnLowLatency;
+	Button btnFlipVertical;	//垂直反转
+	Button btnFlipHorizontal;	//水平反转
 	Button btnRotation;
 	Button btnSwitchUrl;
-	TextView txtCopyright;
-	TextView txtQQQun;
+	TextView txtEventMsg;
+	TextView txtUserDataMsg;
 
 	LinearLayout lLayout = null;
 	FrameLayout fFrameLayout = null;
@@ -301,18 +315,18 @@ public class SmartPlayer extends Activity {
 		rl.topMargin = getWindowManager().getDefaultDisplay().getHeight() - 270;
 		copyRightLinearLayout.setLayoutParams(rl);
 
-		txtCopyright = new TextView(this);
-		txtCopyright.setLayoutParams(new LinearLayout.LayoutParams(
+		txtEventMsg = new TextView(this);
+		txtEventMsg.setLayoutParams(new LinearLayout.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		txtCopyright
-				.setText("Copyright 2014~2016 www.daniulive.com v1.0.16.0326");
-		copyRightLinearLayout.addView(txtCopyright, 0);
+		txtEventMsg
+				.setText("Copyright 2014~2018 www.daniulive.com v1.0.18.0622");
+		copyRightLinearLayout.addView(txtEventMsg, 0);
 
-		txtQQQun = new TextView(this);
-		txtQQQun.setLayoutParams(new LinearLayout.LayoutParams(
+		txtUserDataMsg = new TextView(this);
+		txtUserDataMsg.setLayoutParams(new LinearLayout.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		txtQQQun.setText("QQ群:294891451,  499687479");
-		copyRightLinearLayout.addView(txtQQQun, 1);
+		txtUserDataMsg.setText("QQ群:294891451,  499687479");
+		copyRightLinearLayout.addView(txtUserDataMsg, 1);
 
 		/* PopInput button */
 		/*
@@ -342,6 +356,11 @@ public class SmartPlayer extends Activity {
 				LayoutParams.WRAP_CONTENT));
 		lLinearLayout.addView(btnMute);
 
+		LinearLayout LinearLayoutSwitchUrl = new LinearLayout(this);
+		LinearLayoutSwitchUrl.setOrientation(LinearLayout.HORIZONTAL);
+		LinearLayoutSwitchUrl.setLayoutParams(new LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
 		/* switch url button */
 		btnSwitchUrl = new Button(this);
 
@@ -353,7 +372,35 @@ public class SmartPlayer extends Activity {
 
 		btnSwitchUrl.setLayoutParams(new LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		lLinearLayout.addView(btnSwitchUrl);
+		LinearLayoutSwitchUrl.addView(btnSwitchUrl);
+
+		/* 垂直反转 button */
+		btnFlipVertical = new Button(this);
+
+		if (is_flip_vertical) {
+			btnFlipVertical.setText("取消反转");
+		} else {
+			btnFlipVertical.setText("垂直反转");
+		}
+
+		btnFlipVertical.setLayoutParams(new LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		LinearLayoutSwitchUrl.addView(btnFlipVertical);
+
+		/* 水平反转 button */
+		btnFlipHorizontal = new Button(this);
+
+		if (is_flip_horizontal) {
+			btnFlipHorizontal.setText("取消反转");
+		} else {
+			btnFlipHorizontal.setText("水平反转");
+		}
+
+		btnFlipHorizontal.setLayoutParams(new LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		LinearLayoutSwitchUrl.addView(btnFlipHorizontal);
+
+		lLinearLayout.addView(LinearLayoutSwitchUrl);
 
 		/* hardware decoder button */
 		btnHardwareDecoder = new Button(this);
@@ -536,6 +583,7 @@ public class SmartPlayer extends Activity {
 			}
 		});
 
+
 		btnSwitchUrl.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				switchUrlFlag = !switchUrlFlag;
@@ -555,6 +603,40 @@ public class SmartPlayer extends Activity {
 				if (playerHandle != 0) {
 					libPlayer.SmartPlayerSwitchPlaybackUrl(playerHandle,
 							switchURL);
+				}
+			}
+		});
+
+		btnFlipVertical.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				is_flip_vertical = !is_flip_vertical;
+
+				if (is_flip_vertical) {
+					btnFlipVertical.setText("取消反转");
+				} else {
+					btnFlipVertical.setText("垂直反转");
+				}
+
+				if (playerHandle != 0) {
+					libPlayer.SmartPlayerSetFlipVertical(playerHandle,
+							is_flip_vertical ? 1 : 0);
+				}
+			}
+		});
+
+		btnFlipHorizontal.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				is_flip_horizontal = !is_flip_horizontal;
+
+				if (is_flip_horizontal) {
+					btnFlipHorizontal.setText("取消反转");
+				} else {
+					btnFlipHorizontal.setText("水平反转");
+				}
+
+				if (playerHandle != 0) {
+					libPlayer.SmartPlayerSetFlipHorizontal(playerHandle,
+							is_flip_horizontal ? 1 : 0);
 				}
 			}
 		});
@@ -745,6 +827,9 @@ public class SmartPlayer extends Activity {
 					// libPlayer.SmartPlayerSetExternalRender(playerHandle, new
 					// I420ExternalRender());
 
+					libPlayer.SmartPlayerSetUserDataCallback(playerHandle, new UserDataCallback());
+					//libPlayer.SmartPlayerSetSEIDataCallback(playerHandle, new SEIDataCallback());
+
 					libPlayer.SmartPlayerSetAudioOutputType(playerHandle, 0);
 
 					if (isMute) {
@@ -765,6 +850,10 @@ public class SmartPlayer extends Activity {
 
 					libPlayer.SmartPlayerSetLowLatencyMode(playerHandle, isLowLatency ? 1
 							: 0);
+
+					libPlayer.SmartPlayerSetFlipVertical(playerHandle, is_flip_vertical ? 1 : 0);
+
+					libPlayer.SmartPlayerSetFlipHorizontal(playerHandle, is_flip_horizontal ? 1 : 0);
 
 					libPlayer.SmartPlayerSetRotation(playerHandle, rotate_degrees);
 					
@@ -1065,6 +1154,150 @@ public class SmartPlayer extends Activity {
     	}
     }
 
+	class UserDataCallback implements NTUserDataCallback
+	{
+		private int user_data_buffer_size = 0;
+
+		private ByteBuffer user_data_buffer_ = null;
+		
+		private static final int NT_SDK_E_H264_SEI_USER_DATA_TYPE_BYTE_DATA = 1;
+		private static final int NT_SDK_E_H264_SEI_USER_DATA_TYPE_UTF8_STRING = 2;
+
+		@Override
+		public ByteBuffer getUserDataByteBuffer(int size)
+		{
+			if( size < 1 )
+			{
+				return null;
+			}
+
+			if ( size <= user_data_buffer_size &&  user_data_buffer_ != null )
+			{
+				return  user_data_buffer_;
+			}
+
+			user_data_buffer_size = size + 512;
+			user_data_buffer_ = ByteBuffer.allocateDirect(user_data_buffer_size);
+
+			return user_data_buffer_;
+		}
+
+		private String byteArrayToStr(byte[] byteArray) {
+			if (byteArray == null) {
+				return null;
+			}
+			String str = new String(byteArray);
+			return str;
+		}
+
+		public void onUserDataCallback(int ret, int data_type, int size, long timestamp, long reserve1, long reserve2)
+		{
+			//Log.i("onUserDataCallback", "ret: " + ret + ", data_type: " + data_type + ", size: " + size + ", timestamp: "+ timestamp);
+			if(data_type == NT_SDK_E_H264_SEI_USER_DATA_TYPE_UTF8_STRING)
+			{
+				if ( user_data_buffer_ == null)
+					return;
+
+				user_data_buffer_.rewind();
+				
+				byte[] byte_buffer = new byte[size];
+				user_data_buffer_.get(byte_buffer);
+
+				String str = byteArrayToStr(byte_buffer);
+
+				Log.i(TAG, "onUserDataCallback, userdata: " + str);
+
+				Message message=new Message();
+				message.what= PLAYER_USER_DATA_MSG;
+				message.obj = str;
+				handler.sendMessage(message);
+			}
+		}
+	}
+
+	class SEIDataCallback implements NTSEIDataCallback
+	{
+		private int sei_data_buffer_size = 0;
+
+		private ByteBuffer sei_data_buffer_ = null;
+
+		@Override
+		public ByteBuffer getSEIDataByteBuffer(int size)
+		{
+			//Log.i("getSEIDataByteBuffer", "size: " + size);
+
+			if( size < 1 )
+			{
+				return null;
+			}
+
+			if ( size <= sei_data_buffer_size &&  sei_data_buffer_ != null )
+			{
+				return  sei_data_buffer_;
+			}
+
+			sei_data_buffer_size = size + 100;
+			sei_data_buffer_ = ByteBuffer.allocateDirect(sei_data_buffer_size);
+
+			// Log.i("getVideoByteBuffer", "size: " + size + " buffer_size:" + user_data_buffer_size);
+
+			return sei_data_buffer_;
+		}
+
+		private String byteArrayToStr(byte[] byteArray) {
+			if (byteArray == null) {
+				return null;
+			}
+			String str = new String(byteArray);
+			return str;
+		}
+
+		public void onSEIDataCallback(int ret, int size, long timestamp, long reserve1, long reserve2)
+		{
+			Log.i("onSEIDataCallback", "ret: " + ret + ", size: " + size + ", timestamp: "+ timestamp);
+
+			if ( sei_data_buffer_ == null)
+				return;
+
+			sei_data_buffer_.rewind();
+
+			// test
+			//byte[] byte_buffer = new byte[size];
+			//sei_data_buffer_.get(byte_buffer);
+
+			//String str = bytesToHexString(byte_buffer);
+
+			//Log.i(TAG, "onSEIDataCallback, seidata: " + str);
+
+			/*
+			Message message=new Message();
+			message.what= PLAYER_SEI_DATA_MSG;
+			message.obj = str;
+			handler.sendMessage(message);
+			*/
+		}
+	}
+
+	private Handler handler=new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+
+			switch (msg.what){
+				case PLAYER_EVENT_MSG:
+					String cur_event = "Event: " + (String)msg.obj;
+					txtEventMsg.setText(cur_event);
+					break;
+				case PLAYER_USER_DATA_MSG:
+					String user_data = "收到信息: " + (String)msg.obj;
+					txtUserDataMsg.setText(user_data);
+					break;
+				default:
+					break;
+			}
+		}
+	};
+
 	class EventHandeV2 implements NTSmartEventCallbackV2 {
 		@Override
 		public void onNTSmartEventCallbackV2(long handle, int id, long param1,
@@ -1072,53 +1305,55 @@ public class SmartPlayer extends Activity {
 
 			//Log.i(TAG, "EventHandeV2: handle=" + handle + " id:" + id);
 
+			String player_event = "";
+
 			switch (id) {
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_STARTED:
-				Log.i(TAG, "开始。。");
+				player_event = "开始..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_CONNECTING:
-				Log.i(TAG, "连接中。。");
+				player_event = "连接中..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_CONNECTION_FAILED:
-				Log.i(TAG, "连接失败。。");
+				player_event = "连接失败..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_CONNECTED:
-				Log.i(TAG, "连接成功。。");
+				player_event = "连接成功..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_DISCONNECTED:
-				Log.i(TAG, "连接断开。。");
+				player_event = "连接断开..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_STOP:
-				Log.i(TAG, "停止播放。。");
+				player_event = "停止播放..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_RESOLUTION_INFO:
-				Log.i(TAG, "分辨率信息: width: " + param1 + ", height: " + param2);
+				player_event = "分辨率信息: width: " + param1 + ", height: " + param2;
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_NO_MEDIADATA_RECEIVED:
-				Log.i(TAG, "收不到媒体数据，可能是url错误。。");
+				player_event = "收不到媒体数据，可能是url错误..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_SWITCH_URL:
-				Log.i(TAG, "切换播放URL。。");
+				player_event = "切换播放URL..";
 				break;
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_CAPTURE_IMAGE:
-				Log.i(TAG, "快照: " + param1 + " 路径：" + param3);
+				player_event =  "快照: " + param1 + " 路径：" + param3;
 
 				if (param1 == 0) {
-					Log.i(TAG, "截取快照成功。.");
+					player_event =  player_event + ", 截取快照成功";
 				} else {
-					Log.i(TAG, "截取快照失败。.");
+					player_event =  player_event + ", 截取快照失败";
 				}
 				break;
 				
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_RECORDER_START_NEW_FILE:
-           	 	Log.i(TAG, "[record]开始一个新的录像文件 : " + param3);
+				player_event = "[record]开始一个新的录像文件 : " + param3;
                 break;
             case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_ONE_RECORDER_FILE_FINISHED:
-           	 Log.i(TAG, "[record]已生成一个录像文件 : " + param3);
+				player_event = "[record]已生成一个录像文件 : " + param3;
                 break;
 
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_START_BUFFERING:
-				Log.i(TAG, "Start_Buffering");
+				Log.i(TAG, "Start Buffering");
 				break;
 
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_BUFFERING:
@@ -1126,14 +1361,23 @@ public class SmartPlayer extends Activity {
 				break;
 
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_STOP_BUFFERING:
-				Log.i(TAG, "Stop_Buffering");
+				Log.i(TAG, "Stop Buffering");
 				break;
 
 			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_DOWNLOAD_SPEED:
-				Log.i(TAG, "download_speed:" + param1 + "Byte/s" + ", "
+				player_event =  "download_speed:" + param1 + "Byte/s" + ", "
 						+ (param1 * 8 / 1000) + "kbps" + ", " + (param1 / 1024)
-						+ "KB/s");
+						+ "KB/s";
 				break;
+			}
+
+			if(player_event.length() > 0)
+			{
+				Log.i(TAG, player_event);
+				Message message=new Message();
+				message.what= PLAYER_EVENT_MSG;
+				message.obj = player_event;
+				handler.sendMessage(message);
 			}
 		}
 	}
@@ -1319,8 +1563,8 @@ public class SmartPlayer extends Activity {
 
 		libPlayer.SmartPlayerSetBuffer(playerHandle, playBuffer);
 
-		// set report download speed
-		// libPlayer.SmartPlayerSetReportDownloadSpeed(playerHandle, 1, 5);
+		// set report download speed(默认5秒一次回调 用户可自行调整report间隔)
+		libPlayer.SmartPlayerSetReportDownloadSpeed(playerHandle, 1, 5);
 
 		libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup ? 1 : 0);
 
@@ -1330,6 +1574,8 @@ public class SmartPlayer extends Activity {
 		// libPlayer.SmartPlayerSetRTSPTcpMode(playerHandle, 1);
 
 		//playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+
+		//playbackUrl = "rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
 
 		//playbackUrl = "rtmp://player.daniulive.com:1935/hls/stream1";
 

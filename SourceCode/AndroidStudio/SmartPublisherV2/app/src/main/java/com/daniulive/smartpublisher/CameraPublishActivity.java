@@ -30,6 +30,8 @@ import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -61,6 +63,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.StringTokenizer;
+
 @SuppressWarnings("deprecation")
 public class CameraPublishActivity extends Activity implements Callback, PreviewCallback 
 {
@@ -73,6 +80,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	NTAudioRecordV2Callback audioRecordCallback_ = null;
 	
 	private TextView textCurURL = null;
+
+	private TextView textEventMsg = null;
 	
 	private long publisherHandle = 0;
 		
@@ -126,7 +135,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	private Button	btnHWencoder;
 	private ImageView imgSwitchCamera;
 	private Button btnInputPushUrl;
-	//private Button btnStartStop;
+	private Button btnPushUserData;
 	
 	private Button btnStartPush;
 	private Button btnStartRecorder;
@@ -152,8 +161,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 	final private String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
 	private String inputPushURL ="";
 
-	private String printText = "URL:";
-	private String txt = "当前状态";
+	private String printText = "推流URL:";
 		
 	private static final int FRONT = 1;		//前置摄像头标记
 	private static final int BACK = 2;		//后置摄像头标记
@@ -190,6 +198,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private Context myContext;
     
 	private String imageSavePath;
+
+	private static final int PUBLISHER_EVENT_MSG = 1;
+	private static final int PUBLISHER_USER_DATA_MSG = 2;
     
 	static {  
 		System.loadLibrary("SmartPublisher");
@@ -476,12 +487,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         
         textCurURL = (TextView)findViewById(R.id.txtCurURL);
         textCurURL.setText(printText);
+
+		textEventMsg = (TextView)findViewById(R.id.txtEventMsg);
         
         btnInputPushUrl =(Button)findViewById(R.id.button_input_push_url);
         btnInputPushUrl.setOnClickListener(new ButtonInputPushUrlListener());
-        
-        //btnStartStop = (Button)findViewById(R.id.button_start_stop);
-        //btnStartStop.setOnClickListener(new ButtonStartListener());
+
+		btnPushUserData = (Button)findViewById(R.id.button_push_user_data);
+		btnPushUserData.setOnClickListener(new ButtonPushUserDataListener());
         
         btnStartPush = (Button)findViewById(R.id.button_start_push);
         btnStartPush.setOnClickListener(new ButtonStartPushListener());
@@ -760,6 +773,22 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     			btnHWencoder.setText("当前软解码");
     	}
     }
+
+	private Handler handler=new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+
+			switch (msg.what){
+				case PUBLISHER_EVENT_MSG:
+					String cur_event = "Event: " + (String)msg.obj;
+					textEventMsg.setText(cur_event);
+					break;
+				default:
+					break;
+			}
+		}
+	};
     
     class EventHandeV2 implements NTSmartEventCallbackV2
     {
@@ -767,57 +796,61 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     	 public void onNTSmartEventCallbackV2(long handle, int id, long param1, long param2, String param3, String param4, Object param5){
     		 
     		 Log.i(TAG, "EventHandeV2: handle=" + handle + " id:" + id);
-    		 
+
+			 String publisher_event = "";
+
     		 switch (id) { 
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_STARTED:
-                	 txt = "开始。。";
+                	 publisher_event = "开始..";
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTING:
-                	 txt = "连接中。。";
+                	 publisher_event = "连接中..";
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTION_FAILED:
-                	 txt = "连接失败。。";
+                	 publisher_event = "连接失败..";
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CONNECTED:
-                	 txt = "连接成功。。";
+                	 publisher_event = "连接成功..";
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_DISCONNECTED:
-                	 txt = "连接断开。。";
+                	 publisher_event = "连接断开..";
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_STOP:
-                	 txt =  "关闭。。";
+                	 publisher_event =  "关闭..";
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_RECORDER_START_NEW_FILE:
-                	 Log.i(TAG, "开始一个新的录像文件 : " + param3);
-                	 txt = "开始一个新的录像文件。。";
+                	 publisher_event = "开始一个新的录像文件 : " + param3;
                      break;
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_ONE_RECORDER_FILE_FINISHED:
-                	 Log.i(TAG, "已生成一个录像文件 : " + param3);
-                	 txt = "已生成一个录像文件。。";
+                	 publisher_event = "已生成一个录像文件 : " + param3;
                      break;
                      
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_SEND_DELAY:
-                	 Log.i(TAG, "发送时延: " + param1 + " 帧数:" + param2);
-                	 txt = "收到发送时延..";
+                	 publisher_event = "发送时延: " + param1 + " 帧数:" + param2;
                 	 break;
                 	 
                  case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE:
-                	 Log.i(TAG, "快照: " + param1 + " 路径：" + param3);
-                	 
-                	 if(param1 == 0)
+ 					 publisher_event = "快照: " + param1 + " 路径：" + param3;
+
+					 if(param1 == 0)
                 	 {
-                		 txt = "截取快照成功。."; 
+                		 publisher_event = publisher_event + "截取快照成功..";
                 	 }
                 	 else
                 	 {
-                		 txt = "截取快照失败。."; 
+                		 publisher_event = publisher_event + "截取快照失败..";
                 	 }
                 	 break;
              }
              
-             String str = "当前回调状态：" + txt;
+             String str = "当前回调状态：" + publisher_event;
                           
              Log.i(TAG, str);
+
+			 Message message=new Message();
+			 message.what= PUBLISHER_EVENT_MSG;
+			 message.obj = publisher_event;
+			 handler.sendMessage(message);
              
          }
     }
@@ -867,7 +900,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         
         builderUrl.show();
     }
-    
+
     class ButtonInputPushUrlListener implements OnClickListener
     {
     	 public void onClick(View v)
@@ -875,7 +908,33 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     		 PopInputUrlDialog();
     	 }
     }
-    
+
+	class ButtonPushUserDataListener implements OnClickListener
+	{
+		public void onClick(View v)
+		{
+			String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+			String utf8_string = "大牛直播SDK: " + timeStamp;	//创建以时间命名的文件名称
+
+			libPublisher.SmartPublisherPostUserUTF8StringData(publisherHandle, utf8_string, 0);
+
+			/*
+			String user_data = "chinease is great, we like school, and food is good too..";
+
+			byte[] midbytes = new byte[user_data.length()+1];
+
+			midbytes[user_data.length()] = 0;
+
+			try {
+				midbytes = user_data.getBytes("UTF8");
+			}catch (UnsupportedEncodingException e)
+			{
+			}
+			libPublisher.SmartPublisherPostUserData(publisherHandle, midbytes, midbytes.length, 0);
+			*/
+		}
+	}
+
     /*
     class ButtonStartListener implements OnClickListener
     {
@@ -1244,7 +1303,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 				Log.i(TAG, "start, generate random url:" + publishURL);
 			}
 				
-			printText = "URL:" + publishURL;
+			printText = "推流URL:" + publishURL;
 			        
 			Log.i(TAG, printText);
 			
@@ -1252,6 +1311,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 			if ( libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0 )
 			{
 			    Log.e(TAG, "Failed to set publish stream URL..");
+			}
+
+			if ( libPublisher.SmartPublisherSetPostUserDataQueueMaxSize(publisherHandle, 3, 0) != 0 )
+			{
+				Log.e(TAG, "Failed to SetPostUserDataQueueMaxSize..");
 			}
 						
             int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
