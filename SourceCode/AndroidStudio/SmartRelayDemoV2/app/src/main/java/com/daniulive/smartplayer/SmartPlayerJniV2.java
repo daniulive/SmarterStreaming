@@ -103,6 +103,28 @@ public class SmartPlayerJniV2 {
 	public native int SmartPlayerSetVideoDataCallback(long handle, Object video_data_callback);
 
 	/**
+	 * Set user data Callback.
+	 *
+	 * @param handle: return value from SmartPlayerOpen()
+	 *
+	 * @param : user_data_callback Callback.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetUserDataCallback(long handle, Object user_data_callback);
+
+	/**
+	 * Set SEI data Callback.
+	 *
+	 * @param handle: return value from SmartPlayerOpen()
+	 *
+	 * @param : sei_data_callback Callback.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetSEIDataCallback(long handle, Object sei_data_callback);
+
+	/**
 	 * Set AudioOutput Type
 	 *
 	 * @param handle: return value from SmartPlayerOpen()
@@ -173,6 +195,21 @@ public class SmartPlayerJniV2 {
 	 */
 	public native int SmartPlayerSetLowLatencyMode(long handle, int mode);
 
+	/**
+	 * 设置视频垂直反转
+	 * @param handle
+	 * @param is_flip： 0: 不反转, 1: 反转
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetFlipVertical(long handle, int is_flip);
+
+	/**
+	 * 设置视频水平反转
+	 * @param handle
+	 * @param is_flip： 0: 不反转, 1: 反转
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetFlipHorizontal(long handle, int is_flip);
 
 	/**
 	 * 设置顺时针旋转, 注意除了0度之外， 其他角度都会额外消耗性能
