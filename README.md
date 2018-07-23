@@ -120,9 +120,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-转发SDK-C-demo-2018-06-22.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-06-22.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-07-19.zip)
 
-- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-06-22.zip)
+- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-07-18.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
@@ -406,10 +406,10 @@ android：strings.xml：
 
 **QQ交流群：**
 
-大牛直播SDK技术交流群1：499687479(http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
+大牛直播SDK技术交流群1：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播SDK技术交流群1" />
 
-大牛直播SDK技术交流群2：294891451(http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
+大牛直播SDK技术交流群2：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播SDK技术交流群2" />
