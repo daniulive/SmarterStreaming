@@ -43,7 +43,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**导播SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%AF%BC%E6%92%ADsdk/) 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
 
-- [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式；
+- [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，业内为数不多的支持**RTSP H.265录制到MP4文件**的录像SDK；
 
 - [x] [**互动SDK**] Windows一对一互动(可windows与windows/android互动)；
 
@@ -297,7 +297,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
 - [x] video支持H.264，audio支持aac/speex/pcma/pcmu播放；
-- [x] Windows支持RTSP **H.265**播放；
+- [x] Windows支持RTSP **H.265**播放，并支持**RTSP H.265录制到MP4文件**；
 - [x] windows/android/iOS平台均支持回调音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
