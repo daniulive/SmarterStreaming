@@ -102,9 +102,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/windows-推送-播放版-2018-07-25.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/windows-推送-播放版-2018-07-30.zip)
 
-- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/windows-推送-播放版64位-2018-07-25.zip)
+- [x] [demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/windows-推送-播放版64位-2018-07-30.zip)
 
 - [x] [SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-PublisherSDK-CPP-Demo-2018-06-25.zip)
 
