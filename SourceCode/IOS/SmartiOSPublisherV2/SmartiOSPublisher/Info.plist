@@ -20,12 +20,16 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>1</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>cameraDesciption</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>MicrophoneDesciption</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>1</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -47,9 +51,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>cameraDesciption</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>MicrophoneDesciption</string>
 </dict>
 </plist>

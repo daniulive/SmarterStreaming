@@ -15,15 +15,6 @@
 //设置协议
 @protocol SmartPlayerDelegate;
 
-/**
- *  错误返回值
- */
-typedef enum DNErrorCode{
-    DANIULIVE_RETURN_OK = 0,        //!< 返回OK
-    DANIULIVE_RETURN_ERROR,         //!< 返回错误
-    DANIULIVE_RETURN_SDK_EXPIRED    //!< SDK过期
-}DNErrorCode;
-
 @interface SmartPlayerSDK : NSObject
 
 //Event callback
@@ -379,8 +370,8 @@ typedef void (^SP_SDKSEIDataCallBack)(unsigned char* data, unsigned int size,
  * @param vStride V分量stride
  */
 typedef void (^PlayerYuvDataBlock)(int width, int height, unsigned long long time_stamp,
-                unsigned char*yData, unsigned char* uData, unsigned char*vData,
-                int yStride, int uStride, int vStride);
+                                   unsigned char*yData, unsigned char* uData, unsigned char*vData,
+                                   int yStride, int uStride, int vStride);
 
 /**
  * 拉流时，YUV数据回调

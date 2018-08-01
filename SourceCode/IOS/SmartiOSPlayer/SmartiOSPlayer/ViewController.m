@@ -224,9 +224,6 @@
         NSLog(@"SmartPlayerSDK _player.delegate:%@", _player);
     }
     
-    NSString* sdkVersion = [_player SmartPlayerGetSDKVersionID];
-    NSLog(@"sdk version:%@",sdkVersion);
-    
     NSInteger initRet = [_player SmartPlayerInitPlayer];
     if ( initRet != DANIULIVE_RETURN_OK )
     {

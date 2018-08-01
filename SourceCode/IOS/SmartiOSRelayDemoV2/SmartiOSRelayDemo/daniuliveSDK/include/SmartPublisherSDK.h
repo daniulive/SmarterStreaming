@@ -19,17 +19,6 @@
 @protocol SmartPublisherDelegate;
 
 /**
- *  错误返回值
- */
-/*
-typedef enum DNErrorCode{
-    DANIULIVE_RETURN_OK = 0,        //!< 返回OK
-    DANIULIVE_RETURN_ERROR,         //!< 返回错误
-    DANIULIVE_RETURN_SDK_EXPIRED    //!< SDK过期
-}DNErrorCode;
-*/
- 
-/**
  * 美颜类型
  */
 typedef NS_ENUM(NSInteger, DN_BEAUTY_TYPE) {
@@ -597,6 +586,54 @@ typedef enum DNCameraPosition{
  *  获取当前sdk的版本号
  */
 -(NSString*) SmartPublisherGetSDKVersionID;
+
+/*+++++++++++++++内置轻量级RTSP服务SDK+++++++++++++++*/
+/*
+ * 设置rtsp的流名称
+ *
+ * stream_name: 流程名称，不能为空字符串，必须是英文
+ * 这个作用是: 比如rtsp的url是:rtsp://192.168.0.111/test, test就是设置下去的stream_name
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SetRtspStreamName:(NSString*)stream_name;
+
+/*
+ * 给要发布的rtsp流设置rtsp server, 一个流可以发布到多个rtsp server上，rtsp server的创建启动请参考OpenRtspServer和StartRtspServer接口
+ *
+ * handle: 推送实例句柄
+ *
+ * rtsp_server_handle：rtsp server句柄
+ *
+ * reserve： 保留参数，传0
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)AddRtspStreamServer:(void*)rtsp_server_handle reserve:(NSInteger)reserve;
+
+/*
+ * 清除设置的rtsp server
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)ClearRtspStreamServer;
+
+/*
+ * 启动rtsp流
+ *
+ * reserve: 保留参数，传0
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)StartRtspStream:(NSInteger)reserve;
+
+/*
+ * 停止rtsp流
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)StopRtspStream;
+/*---------------内置轻量级RTSP服务SDK---------------*/
 
 @end
 
