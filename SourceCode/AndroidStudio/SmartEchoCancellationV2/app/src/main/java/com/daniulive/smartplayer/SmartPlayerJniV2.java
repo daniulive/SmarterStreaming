@@ -167,7 +167,7 @@ public class SmartPlayerJniV2 {
 	 *
 	 * Default with UDP mode
 	 *
-	 * @param isUsingTCP: if with 1, it will via TCP mode, while 0 with UDP mode
+	 * @param is_using_tcp: if with 1, it will via TCP mode, while 0 with UDP mode
 	 *
 	 * @return {0} if successful
 	 */

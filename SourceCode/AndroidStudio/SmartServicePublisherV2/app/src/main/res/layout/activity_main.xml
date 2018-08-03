@@ -53,6 +53,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="开始推流" />
+
+            <Button
+                android:id="@+id/button_rtsp_publisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发布RTSP流" />
+
         </LinearLayout>
 
         <LinearLayout

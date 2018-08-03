@@ -6,7 +6,7 @@
  * Github: https://github.com/daniulive/SmarterStreaming
  * 
  * Created by DaniuLive on 2015/09/20.
- * Copyright © 2014~2016 DaniuLive. All rights reserved.
+ * Copyright © 2014~2018 DaniuLive. All rights reserved.
  */
 
 package com.daniulive.smartpublisher;
@@ -653,8 +653,7 @@ public class SmartPublisherJniV2 {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherOnReceivingAACData(long handle,  byte[] buffer, int len, int isKeyFrame, long timeStamp);
-    
-   
+
     /**
 	* Start publish stream 
 	*
@@ -682,7 +681,159 @@ public class SmartPublisherJniV2 {
    	* @return {0} if successful
    	*/
     public native int SmartPublisherStopRecorder(long handle);
-    
+
+	/*+++++++++++++++内置轻量级RTSP服务SDK+++++++++++++++*/
+
+	/*+++++++++++++++SmartRTSPServerSDK+++++++++++++++*/
+
+	/*
+	 * Init rtsp server(和UnInitRtspServer配对使用，即便是启动多个RTSP服务，也只需调用一次InitRtspServer，请确保在OpenRtspServer之前调用)
+	 *
+	 * @param ctx: get by this.getApplicationContext()
+	 *
+	 * @return {0} if successful
+	 */
+	public native int InitRtspServer(Object ctx);
+
+	/*
+	 * 创建一个rtsp server
+	 *
+   	 * @param reserve：保留参数传0
+	 *
+	 * @return rtsp server 句柄
+	 */
+	public native long OpenRtspServer(int reserve);
+
+	/*
+	 * 设置rtsp server 监听端口, 在StartRtspServer之前必须要设置端口
+	 *
+   	 * @param rtsp_server_handle: rtsp server 句柄
+	 *
+   	 * @param port: 端口号，可以设置为554,或者是1024到65535之间,其他值返回失败
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtspServerPort(long rtsp_server_handle, int port);
+
+	/*
+	 * 设置rtsp server 鉴权用户名和密码, 这个可以不设置，只有需要鉴权的再设置
+	 *
+   	 * @param rtsp_server_handle: rtsp server 句柄
+	 *
+   	 * @param user_name: 用户名(必须是英文)
+	 * 
+   	 * @param password：密码(必须是英文)
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtspServerUserNamePassword(long rtsp_server_handle, String user_name, String password);
+
+	/*
+	 * 获取rtsp server当前的客户会话数, 这个接口必须在StartRtspServer之后再调用
+	 *
+   	 * @param rtsp_server_handle: rtsp server 句柄
+	 *
+	 * @return {当前rtsp server会话数}
+	 */
+	public native int GetRtspServerClientSessionNumbers(long rtsp_server_handle);
+
+	/*
+	 * 启动rtsp server
+	 *
+   	 * @param rtsp_server_handle: rtsp server 句柄
+	 *
+   	 * @param reserve: 保留参数传0
+	 *
+	 * @return {0} if successful
+	 */
+	public native int StartRtspServer(long rtsp_server_handle, int reserve);
+
+	/*
+	 * 停止rtsp server
+	 *
+   	 * @param rtsp_server_handle: rtsp server 句柄
+	 *
+	 * @return {0} if successful
+	 */
+	public native int StopRtspServer(long rtsp_server_handle);
+
+	/*
+	 * 关闭rtsp server
+	 *
+	 * @param rtsp_server_handle: rtsp server 句柄
+	 *
+	 * NOTE: 调用这个接口之后rtsp_server_handle失效，
+	 *
+	 * @return {0} if successful
+	 */
+	public native int CloseRtspServer(long rtsp_server_handle);
+
+	/*
+	 * UnInit rtsp server(和InitRtspServer配对使用，即便是启动多个RTSP服务，也只需调用一次UnInitRtspServer)
+	 *
+	 * @return {0} if successful
+	 */
+	public native int UnInitRtspServer();
+	/*---------------SmartRTSPServerSDK---------------*/
+
+	/*+++++++++++++++SmartRTSPServerSDK供Publisher调用的接口+++++++++++++++*/
+	/*
+	 * 设置rtsp的流名称
+	 *
+	 * @param handle: 推送实例句柄
+	 *
+   	 * @param stream_name: 流程名称，不能为空字符串，必须是英文
+	 *
+	 * 这个作用是: 比如rtsp的url是:rtsp://192.168.0.111/test, test就是设置下去的stream_name
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtspStreamName(long handle, String stream_name);
+
+	/*
+	 * 给要发布的rtsp流设置rtsp server, 一个流可以发布到多个rtsp server上，rtsp server的创建启动请参考OpenRtspServer和StartRtspServer接口
+	 *
+   	 * @param handle: 推送实例句柄
+	 *
+   	 * @param rtsp_server_handle：rtsp server句柄
+   	 *
+	 * @param reserve：保留参数，传0
+	 *
+	 * @return {0} if successful
+	 */
+	public native int AddRtspStreamServer(long handle, long rtsp_server_handle, int reserve);
+
+	/*
+	 * 清除设置的rtsp server
+	 *
+	 * @param handle: 推送实例句柄
+	 *
+	 * @return {0} if successful
+	 */
+	public native int ClearRtspStreamServer(long handle);
+
+	/*
+	 * 启动rtsp流
+	 *
+	 * @param handle: 推送实例句柄
+	 *
+	 * @param reserve: 保留参数，传0
+	 *
+	 * @return {0} if successful
+	 */
+	public native int StartRtspStream(long handle, int reserve);
+
+	/*
+	 * 停止rtsp流
+	 *
+	 * @param handle: 推送实例句柄
+	 *
+	 * @return {0} if successful
+	 */
+	public native int StopRtspStream(long handle);
+	/*---------------SmartRTSPServerSDK供Publisher调用的接口---------------*/
+
+	/*---------------内置轻量级RTSP服务SDK---------------*/
        
     /**
      * 结束时必须调用close接口释放资源

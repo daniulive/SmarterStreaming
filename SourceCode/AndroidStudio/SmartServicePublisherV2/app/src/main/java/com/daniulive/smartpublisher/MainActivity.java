@@ -49,9 +49,13 @@ public class MainActivity extends Activity {
     private Button btnPermissionCheck;
     private Button btnPublisher;
 
+    private Button btnRtspPublisher;    //发布、停止RTSP流按钮
+
     private boolean is_need_local_recorder = false; //默认不录像
     private boolean is_hardware_encoder = false;    //默认软编码
-    private boolean is_running = false;
+
+    private boolean isPushing = false;
+    private boolean isRTSPPublisherRunning = false;
 
     final private String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
     private String inputPushURL = "";
@@ -64,6 +68,11 @@ public class MainActivity extends Activity {
     private final int SCREEN_RESOLUTION_LOW = 1;
 
     private int screenResolution = SCREEN_RESOLUTION_STANDARD;
+
+    private final int PUSH_TYPE_RTMP = 0;
+    private final int PUSH_TYPE_RTSP = 1;
+
+    private int push_type = PUSH_TYPE_RTMP;
 
     private String recDir = "/sdcard/daniulive/rec"; // for recorder path
 
@@ -91,7 +100,7 @@ public class MainActivity extends Activity {
                     public void onItemSelected(AdapterView<?> parent,
                                                View view, int position, long id) {
 
-                        if (is_running) {
+                        if (isPushing || isRTSPPublisherRunning ) {
                             Log.e(TAG,
                                     "Could not switch screen resolution during publishing..");
                             return;
@@ -153,6 +162,10 @@ public class MainActivity extends Activity {
         btnInputPushUrl = (Button) findViewById(R.id.button_input_push_url);
         btnInputPushUrl.setOnClickListener(new ButtonInputPushUrlListener());
 
+        btnRtspPublisher = (Button) findViewById(R.id.button_rtsp_publisher);
+        btnRtspPublisher.setOnClickListener(new ButtonRtspPublisherListener());
+        btnRtspPublisher.setEnabled(false);
+
         btnPermissionCheck = (Button) findViewById(R.id.permission_check);
         btnPermissionCheck.setOnClickListener(new OnClickListener() {
             @SuppressLint("NewApi")
@@ -176,7 +189,12 @@ public class MainActivity extends Activity {
             @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
-                if (!is_running) {
+                if(isRTSPPublisherRunning)
+                {
+                    Log.e(TAG, "(简单Demo演示)推送RTMP之前，确保RTSP内置服务关闭..");
+                    return;
+                }
+                if (!isPushing) {
                     Log.i(TAG, "Start publish screen++");
 
                     intent_bgd_service.putExtra("SCREENRESOLUTION", screenResolution);
@@ -189,11 +207,9 @@ public class MainActivity extends Activity {
                                 + String.valueOf((int) (System
                                 .currentTimeMillis() % 1000000));
                         Log.i(TAG, "start, generate random url:" + publishURL);
-
                     }
 
                     printText = "URL:" + publishURL;
-
                     Log.i(TAG, printText);
 
                     textCurURL = (TextView) findViewById(R.id.txtCurURL);
@@ -204,29 +220,34 @@ public class MainActivity extends Activity {
                     intent_bgd_service.putExtra("RECORDER", is_need_local_recorder);    //是否录像
                     intent_bgd_service.putExtra("HWENCODER", is_hardware_encoder);      //软编还是硬编
 
+                    push_type = PUSH_TYPE_RTMP;  //RTMP
+                    intent_bgd_service.putExtra("PUSHTYPE", push_type);
+
                     startService(intent_bgd_service);
 
-                    is_running = true;
-                    btnPublisher.setText("停止推屏");
+                    btnPublisher.setText("停止RTMP推送");
                     screenResolutionSelector.setEnabled(false);
                     recorderSelector.setEnabled(false);
                     btnRecorderMgr.setEnabled(false);
                     btnInputPushUrl.setEnabled(false);
                     btnEncoderType.setEnabled(false);
+
+                    btnRtspPublisher.setEnabled(false);
+                    isPushing = true;
                     Log.i(TAG, "Start publish screen--");
                 } else {
                     Log.i(TAG, "Stop publisher screen++");
                     stopService(intent_bgd_service);
-                    is_running = false;
-                    btnPublisher.setText("开始推屏");
-                    btnPublisher.setEnabled(false);
+                    btnPublisher.setText("开始RTMP推送");
                     screenResolutionSelector.setEnabled(true);
                     btnPermissionCheck.setEnabled(true);
-
                     recorderSelector.setEnabled(true);
                     btnRecorderMgr.setEnabled(true);
                     btnInputPushUrl.setEnabled(true);
                     btnEncoderType.setEnabled(true);
+
+                    btnPublisher.setEnabled(false);
+                    isPushing = false;
                     Log.i(TAG, "Stop publisher screen--");
                 }
             }
@@ -247,6 +268,7 @@ public class MainActivity extends Activity {
             mResultData = data;
             btnPermissionCheck.setEnabled(false);
             btnPublisher.setEnabled(true);
+            btnRtspPublisher.setEnabled(true);
         }
     }
 
@@ -333,4 +355,53 @@ public class MainActivity extends Activity {
         }
     }
 
+    //启动/停止RTSP服务
+    class ButtonRtspPublisherListener implements OnClickListener {
+        public void onClick(View v) {
+
+            if(isPushing)
+            {
+                Log.e(TAG, "(简单Demo演示)启动内置RTSP服务之前，确保RTMP推送关闭..");
+                return;
+            }
+
+            if (!isRTSPPublisherRunning ) {
+                Log.i(TAG, "Start RTSP publisher++");
+
+                intent_bgd_service.putExtra("SCREENRESOLUTION", screenResolution);
+
+                intent_bgd_service.putExtra("RECORDER", is_need_local_recorder);    //是否录像
+                intent_bgd_service.putExtra("HWENCODER", is_hardware_encoder);      //软编还是硬编
+
+                push_type = PUSH_TYPE_RTSP;  //RTSP
+                intent_bgd_service.putExtra("PUSHTYPE", push_type);
+
+                startService(intent_bgd_service);
+
+                btnRtspPublisher.setText("停止RTSP流");
+                screenResolutionSelector.setEnabled(false);
+                recorderSelector.setEnabled(false);
+                btnRecorderMgr.setEnabled(false);
+                btnEncoderType.setEnabled(false);
+
+                btnPublisher.setEnabled(false);
+                isRTSPPublisherRunning = true;
+                Log.i(TAG, "Start RTSP publisher--");
+            } else {
+                Log.i(TAG, "Stop RTSP publisher++");
+                stopService(intent_bgd_service);
+                btnRtspPublisher.setText("发布RTSP流");
+                screenResolutionSelector.setEnabled(true);
+                btnPermissionCheck.setEnabled(true);
+
+                recorderSelector.setEnabled(true);
+                btnRecorderMgr.setEnabled(true);
+                btnEncoderType.setEnabled(true);
+
+                btnRtspPublisher.setEnabled(false);
+                isRTSPPublisherRunning = false;
+                Log.i(TAG, "Stop RTSP publisher--");
+            }
+        }
+    }
 }

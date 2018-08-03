@@ -60,7 +60,8 @@ public class BackgroudService extends Service implements
     NTAudioRecordV2 audioRecord_ = null;
     NTAudioRecordV2Callback audioRecordCallback_ = null;
 
-    private long publisherHandle = 0;
+    private long publisherHandle = 0;    //推送handle
+    private long rtsp_handle_ = 0;    //RTSP handle
 
     private SmartPublisherJniV2 libPublisher = null;
 
@@ -74,13 +75,20 @@ public class BackgroudService extends Service implements
 
     private int screenResolution = SCREEN_RESOLUTION_STANDARD;
 
+    private final int PUSH_TYPE_RTMP = 0;
+    private final int PUSH_TYPE_RTSP = 1;
+
+    private int push_type = PUSH_TYPE_RTMP;
+
     private String recDir = "/sdcard/daniulive/rec"; // for recorder path
 
     private boolean is_need_local_recorder = false; // do not enable recorder in
     // default
 
-    private boolean isPushing = false;
-    private boolean isRecording = false;
+    private boolean isPushing = false;    //RTMP推送状态
+    private boolean isRecording = false;    //录像状态
+    private boolean isRTSPServiceRunning = false;    //RTSP服务状态
+    private boolean isRTSPPublisherRunning = false; //RTSP流发布状态
 
     private int sw_video_encoder_profile = 1;    //default with baseline profile
 
@@ -110,6 +118,8 @@ public class BackgroudService extends Service implements
         Log.i(TAG, "onCreate..");
 
         libPublisher = new SmartPublisherJniV2();
+
+        libPublisher.InitRtspServer(this.getApplicationContext());
     }
 
     @SuppressWarnings("deprecation")
@@ -131,6 +141,10 @@ public class BackgroudService extends Service implements
 
         is_hardware_encoder = intent.getExtras().getBoolean("HWENCODER");
 
+        push_type = intent.getExtras().getInt("PUSHTYPE");
+
+        Log.e(TAG, "push_type: " + push_type);
+
         mWindowManager = (WindowManager) getSystemService(Service.WINDOW_SERVICE);
 
         // 窗口管理者
@@ -147,23 +161,26 @@ public class BackgroudService extends Service implements
             return;
         }
 
-        String publishURL = intent.getStringExtra("PUBLISHURL");
+        if(push_type == PUSH_TYPE_RTMP)
+        {
+            String publishURL = intent.getStringExtra("PUBLISHURL");
 
-        Log.i(TAG, "publishURL: " + publishURL);
+            Log.i(TAG, "publishURL: " + publishURL);
 
-        if (libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0) {
-            stopScreenCapture();
+            if (libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0) {
+                stopScreenCapture();
 
-            Log.e(TAG, "Failed to set publish stream URL..");
+                Log.e(TAG, "Failed to set publish stream URL..");
 
-            if (publisherHandle != 0) {
-                if (libPublisher != null) {
-                    libPublisher.SmartPublisherClose(publisherHandle);
-                    publisherHandle = 0;
+                if (publisherHandle != 0) {
+                    if (libPublisher != null) {
+                        libPublisher.SmartPublisherClose(publisherHandle);
+                        publisherHandle = 0;
+                    }
                 }
-            }
 
-            return;
+                return;
+            }
         }
 
         //启动传递数据线程
@@ -195,20 +212,89 @@ public class BackgroudService extends Service implements
         }
         //录像相关——
 
-        //推流相关++
-        int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
-
-        if (startRet != 0) {
-            isPushing = false;
-
-            Log.e(TAG, "Failed to start push stream..");
-            return;
-        }
-        else
+        if(push_type == PUSH_TYPE_RTMP)
         {
-            isPushing = true;
+            Log.e(TAG, "Push RTMP..");
+            //推流相关++
+            int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
+
+            if (startRet != 0) {
+                isPushing = false;
+
+                Log.e(TAG, "Failed to start push stream..");
+                return;
+            }
+            else
+            {
+                isPushing = true;
+            }
+            //推流相关--
         }
-        //推流相关--
+        else if(push_type == PUSH_TYPE_RTSP)
+        {
+            Log.e(TAG, "Push RTSP..");
+
+            if (isRTSPPublisherRunning)
+            {
+                stopRtspPublisher();
+                isRTSPPublisherRunning = false;
+                if (isRTSPServiceRunning)
+                {
+                    stopRtspService();
+                    isRTSPServiceRunning = false;
+                    return;
+                }
+                return;
+            }
+
+            Log.i(TAG, "onClick start rtsp service..");
+
+            rtsp_handle_ = libPublisher.OpenRtspServer(0);
+
+            if (rtsp_handle_ == 0) {
+                Log.e(TAG, "创建rtsp server实例失败! 请检查SDK有效性");
+            } else {
+                int port = 8554;
+                if (libPublisher.SetRtspServerPort(rtsp_handle_, port) != 0) {
+                    libPublisher.CloseRtspServer(rtsp_handle_);
+                    rtsp_handle_ = 0;
+                    Log.e(TAG, "创建rtsp server端口失败! 请检查端口是否重复或者端口不在范围内!");
+                }
+
+                //String user_name = "admin";
+                //String password = "12345";
+
+                //libPublisher.SetRtspServerUserNamePassword(rtsp_handle_, user_name, password);
+
+                if (libPublisher.StartRtspServer(rtsp_handle_, 0) == 0) {
+                    Log.i(TAG, "启动rtsp server 成功!");
+                } else {
+                    libPublisher.CloseRtspServer(rtsp_handle_);
+                    rtsp_handle_ = 0;
+                    Log.e(TAG, "启动rtsp server失败! 请检查设置的端口是否被占用!");
+                }
+
+                isRTSPServiceRunning = true;
+            }
+
+            if(isRTSPServiceRunning)
+            {
+                Log.i(TAG, "onClick start rtsp publisher..");
+
+                String rtsp_stream_name = "stream1";
+                libPublisher.SetRtspStreamName(publisherHandle, rtsp_stream_name);
+                libPublisher.ClearRtspStreamServer(publisherHandle);
+
+                libPublisher.AddRtspStreamServer(publisherHandle, rtsp_handle_, 0);
+
+                if (libPublisher.StartRtspStream(publisherHandle, 0) != 0) {
+                    Log.e(TAG, "调用发布rtsp流接口失败!");
+                    return;
+                }
+
+                isRTSPPublisherRunning = true;
+            }
+        }
 
         //如果同时推送和录像，Audio启动一次就可以了
         CheckInitAudioRecorder();
@@ -217,7 +303,12 @@ public class BackgroudService extends Service implements
     }
 
     private void stopPush() {
-        if (!isRecording) {
+        if(!isPushing)
+        {
+            return;
+        }
+
+        if (!isRecording && !isRTSPPublisherRunning) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopPush, call audioRecord_.StopRecording..");
 
@@ -237,7 +328,7 @@ public class BackgroudService extends Service implements
             libPublisher.SmartPublisherStopPublisher(publisherHandle);
         }
 
-        if (!isRecording) {
+        if (!isRecording && !isRTSPPublisherRunning) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
@@ -248,7 +339,11 @@ public class BackgroudService extends Service implements
     }
 
     private void stopRecorder() {
-        if (!isPushing) {
+        if(!isRecording)
+        {
+            return;
+        }
+        if (!isPushing && !isRTSPPublisherRunning) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopRecorder, call audioRecord_.StopRecording..");
 
@@ -267,13 +362,63 @@ public class BackgroudService extends Service implements
             libPublisher.SmartPublisherStopRecorder(publisherHandle);
         }
 
-        if (!isPushing) {
+        if (!isPushing && !isRTSPPublisherRunning) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
                     publisherHandle = 0;
                 }
             }
+        }
+    }
+
+    //停止发布RTSP流
+    private void stopRtspPublisher() {
+        if(!isRTSPPublisherRunning)
+        {
+            return;
+        }
+
+        if (!isPushing && !isRecording) {
+            if (audioRecord_ != null) {
+                Log.i(TAG, "stopRtspPublisher, call audioRecord_.StopRecording..");
+
+                audioRecord_.Stop();
+
+                if (audioRecordCallback_ != null) {
+                    audioRecord_.RemoveCallback(audioRecordCallback_);
+                    audioRecordCallback_ = null;
+                }
+
+                audioRecord_ = null;
+            }
+        }
+
+        if (libPublisher != null) {
+            libPublisher.StopRtspStream(publisherHandle);
+        }
+
+        if (!isPushing && !isRecording) {
+            if (publisherHandle != 0) {
+                if (libPublisher != null) {
+                    libPublisher.SmartPublisherClose(publisherHandle);
+                    publisherHandle = 0;
+                }
+            }
+        }
+    }
+
+    //停止RTSP服务
+    private void stopRtspService() {
+        if(!isRTSPServiceRunning)
+        {
+            return;
+        }
+
+        if (libPublisher != null && rtsp_handle_ != 0) {
+            libPublisher.StopRtspServer(rtsp_handle_);
+            libPublisher.CloseRtspServer(rtsp_handle_);
+            rtsp_handle_ = 0;
         }
     }
 
@@ -306,7 +451,7 @@ public class BackgroudService extends Service implements
             Log.i(TAG, "onDestroy post_data_thread closed--");
         }
 
-        if (isPushing || isRecording)
+        if (isPushing || isRecording || isRTSPPublisherRunning)
         {
             if (audioRecord_ != null) {
                 Log.i(TAG, "surfaceDestroyed, call StopRecording..");
@@ -322,10 +467,16 @@ public class BackgroudService extends Service implements
             }
 
             stopPush();
-            stopRecorder();
-
             isPushing = false;
+
+            stopRecorder();
             isRecording = false;
+
+            stopRtspPublisher();
+            isRTSPPublisherRunning = false;
+
+            stopRtspService();
+            isRTSPServiceRunning = false;
 
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
@@ -334,6 +485,8 @@ public class BackgroudService extends Service implements
                 }
             }
         }
+
+        libPublisher.UnInitRtspServer();
 
         super.onDestroy();
     }
@@ -452,7 +605,7 @@ public class BackgroudService extends Service implements
     @SuppressLint("NewApi")
     private void processScreenImage(Image image) {
 
-        if(!isPushing && !isRecording)
+        if(!isPushing && !isRecording &&!isRTSPPublisherRunning)
         {
             return;
         }
@@ -528,6 +681,9 @@ public class BackgroudService extends Service implements
                         txt = "截取快照失败。.";
                     }
                     break;
+                case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_RTSP_URL:
+                    txt = "RTSP服务URL: " + param3;
+                    break;
             }
 
             String str = "当前回调状态：" + txt;
@@ -546,7 +702,7 @@ public class BackgroudService extends Service implements
 
     		 */
 
-            if ( publisherHandle != 0 && (isRecording || isPushing) )
+            if ( publisherHandle != 0 && (isRecording || isPushing || isRTSPPublisherRunning) )
             {
                 libPublisher.SmartPublisherOnPCMData(publisherHandle, data, size, sampleRate, channel, per_channel_sample_number);
             }
@@ -836,7 +992,7 @@ public class BackgroudService extends Service implements
                 }
                 else
                 {
-                    if( last_buffer != null && publisherHandle != 0 && (isPushing || isRecording) )
+                    if( last_buffer != null && publisherHandle != 0 && (isPushing || isRecording || isRTSPPublisherRunning) )
                     {
                         libPublisher.SmartPublisherOnCaptureVideoRGBAData(publisherHandle, last_buffer, row_stride_,
                                 width_, height_);

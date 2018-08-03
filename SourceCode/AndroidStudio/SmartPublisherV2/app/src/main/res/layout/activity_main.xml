@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
-     <android.view.SurfaceView
+    <android.view.SurfaceView
         android:id="@+id/surface"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,11 +12,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/button_switchCamera"
@@ -33,162 +33,183 @@
             android:id="@+id/adcontainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-                    
+            android:orientation="vertical">
+
             <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >"
-            <Spinner
-	        android:id="@+id/pushTypeSelctor"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content" />
-            
-             <Spinner
-	        android:id="@+id/resolutionSelctor"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content" />
-            
-            <Spinner
-	        android:id="@+id/watermarkSelctor"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content" />
-				 </LinearLayout>
-				 
-            <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >"
-            
-            <Spinner
-	        android:id="@+id/swVideoEncoderProfileSelector"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content" />
-            
-            <Spinner
-	        android:id="@+id/recoder_selctor"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" />
-             </LinearLayout>
-            
-             <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >"
-                          
-            <Button
-            android:id="@+id/button_recoder_manage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 录像管理 " />
-            
-            <Button
-            android:id="@+id/button_mute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 静音" />
-            
-            <Button
-            android:id="@+id/button_mirror"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 开镜像" />
-            
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="编码速度"
-             />
-            
-            <Spinner
-	        android:id="@+id/sw_video_encoder_speed_selctor"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content" />
-            
+                android:orientation="horizontal">"
+
+                <Spinner
+                    android:id="@+id/pushTypeSelctor"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/resolutionSelctor"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/watermarkSelctor"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-            
+
             <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >"
-
-            <Button
-            android:id="@+id/button_noise_suppression"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 停用噪音抑制" />
-
-            <Button
-                android:id="@+id/button_agc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 启用AGC" />
-                
-              <Button
-                android:id="@+id/button_speex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 使用Speex" />
-             
-           </LinearLayout>
-            
+                android:orientation="horizontal">"
 
-           <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="视频编码:" />
 
-            <Button
-            android:id="@+id/button_hwencoder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 当前软编码" />
+                <Spinner
+                    android:id="@+id/swVideoEncoderProfileSelector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
 
-             <Button
-                android:id="@+id/button_input_push_url"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="输入推流URL" />
+                <Button
+                    android:id="@+id/button_recorder_mgr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="录像管理" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/button_push_user_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发送文本" />
-                
-           </LinearLayout>
-           
             <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">"
 
-             <Button
-                android:id="@+id/button_start_push"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 推送" />
+                <Button
+                    android:id="@+id/button_mute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="实时静音" />
 
-            <Button
-                android:id="@+id/button_start_recorder"
+                <Button
+                    android:id="@+id/button_mirror"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已关闭镜像" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="软编码速度" />
+
+                <Spinner
+                    android:id="@+id/sw_video_encoder_speed_selector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 录像" />
-                
-            <Button
-                android:id="@+id/button_capture_image"
+                android:orientation="horizontal">"
+
+                <Button
+                    android:id="@+id/button_noise_suppression"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已打开噪音抑制" />
+
+                <Button
+                    android:id="@+id/button_agc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已关闭AGC" />
+
+                <Button
+                    android:id="@+id/button_speex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前AAC编码" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 快照" />
-                
-           </LinearLayout>
-      
+                android:orientation="horizontal">"
+
+                <Button
+                    android:id="@+id/button_hwencoder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前软编码" />
+
+                <Button
+                    android:id="@+id/button_input_push_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="输入推流URL" />
+
+                <Button
+                    android:id="@+id/button_push_user_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发送文本" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">"
+
+                <Button
+                    android:id="@+id/button_start_push"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="推送RTMP" />
+
+                <Button
+                    android:id="@+id/button_start_recorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="实时录像" />
+
+                <Button
+                    android:id="@+id/button_capture_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="实时快照" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">"
+
+                <Button
+                    android:id="@+id/button_rtsp_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="启动RTSP服务" />
+
+                <Button
+                    android:id="@+id/button_rtsp_publisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发布RTSP流" />
+
+                <Button
+                    android:id="@+id/button_get_session_numbers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获取RTSP会话数" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtCurURL"
@@ -205,8 +226,8 @@
                 android:singleLine="false"
                 android:text="@string/copyright"
                 tools:context=".CameraPublishActivity" />
-                
-             <TextView
+
+            <TextView
                 android:id="@+id/txtQQQun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
