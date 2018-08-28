@@ -179,16 +179,19 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStud
 5. android播放器 SmartPlayerV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPlayerV2
 
-6. iOS推流 SmartiOSPublisherV2:
+6. android转发-录像-播放三合一 SmartRelayDemoV2:
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartRelayDemoV2
+
+7. iOS推流 SmartiOSPublisherV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisherV2
 
-7. iOS后台推屏 SmartiOSScreenPublisherV2:
+8. iOS后台推屏 SmartiOSScreenPublisherV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2
 
-8. iOS播放器 SmartiOSPlayerV2:
+9. iOS播放器 SmartiOSPlayerV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2
 
-9. iOS转发-录像-播放三合一 SmartiOSRelayDemoV2:
+10. iOS转发-录像-播放三合一 SmartiOSRelayDemoV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2
 
 
