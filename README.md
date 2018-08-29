@@ -299,7 +299,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 超低延迟的rtmp播放器；
 - [x] 超低延迟的rtsp播放器；
 - [x] 完美支持多实例播放（启动多实例，同时播放多路流，如同时播放多路rtmp/rtsp流）；
-- [x] 支持RTSP TCP/UDP模式切换；
+- [x] 支持RTSP TCP/UDP模式设置；
+- [x] Windows播放SDK支持rtsp tcp-udp自动切换；
+- [x] Windows播放SDK支持rtsp超时时间设置；
+- [x] Windows播放SDK支持上报rtsp 401事件；
 - [x] 支持播放端，buffer设置；
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
