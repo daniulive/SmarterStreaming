@@ -71,8 +71,6 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     UIButton        *saveImageButton;           //快照按钮
     UIButton        *quitButton;                //退出按钮
     
-    //UILabel         *textModeLabel;             //文字提示
-    
     UIImage         *image_path_;
     NSString        *tmp_path_;
     
@@ -104,9 +102,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     //拉流url可以自定义
     playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
-    
-    //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream123";
-    
+
     //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
     
     is_audio_only_ = NO;
@@ -376,7 +372,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     if (isPortrait) {
         f.origin.x = 0;
-        f.origin.y = 50;
+        f.origin.y = 100;
         f.size.width = screen_width_;
         f.size.height = screen_width_*stream_height_/stream_width_;
     }
@@ -389,6 +385,8 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
     
     _glView.frame = f;
+    
+     [self.view bringSubviewToFront:_glView];
 }
 
 - (void)SwitchUrlBtn:(id)sender {
@@ -400,8 +398,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         
         if ( is_switch_url_ )
         {
-            switchUrl = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";     //切换url可自定义
-            //switchUrl = @"rtmp://player.daniulive.com:1935/hls/stream2";
+            switchUrl = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";     //切换url可自定义
             [switchUrlButton setTitle:@"切换URL2" forState:UIControlStateNormal];
         }
         else
@@ -741,6 +738,14 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     //RTSP TCP还是UDP模式
     [_smart_player_sdk SmartPlayerSetRTSPTcpMode:is_rtsp_tcp_mode_];
  
+    //设置RTSP超时时间
+    NSInteger rtsp_timeout = 10;
+    [_smart_player_sdk SmartPlayerSetRTSPTimeout:rtsp_timeout];
+    
+    //设置RTSP TCP/UDP自动切换
+    NSInteger is_tcp_udp_auto_switch = 1;
+    [_smart_player_sdk SmartPlayerSetRTSPAutoSwitchTcpUdp:is_tcp_udp_auto_switch];
+    
     //快照设置 如需快照 参数传1
     [_smart_player_sdk SmartPlayerSaveImageFlag:save_image_flag_];
     
@@ -777,7 +782,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     else
     {
         //如果只需外部回调YUV数据，自己绘制，无需创建view和设置view到SDK
-        _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:50 width:player_view_width_ height:player_view_height_]);
+        _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:100 width:player_view_width_ height:player_view_height_]);
         
         if (_glView == nil ) {
             NSLog(@"createPlayView failed..");
@@ -952,6 +957,21 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         
         lable = @"[event]download speed :";
         player_event = [lable stringByAppendingFormat:@"%ld kbps - %ld KB/s", (long)speed_kbps, (long)speed_KBs];
+    }
+    else if(nID == EVENT_DANIULIVE_ERC_PLAYER_RTSP_STATUS_CODE)
+    {
+        lable = @"[event]RTSP status code received:";
+        player_event = [lable stringByAppendingFormat:@"%ld", (long)param1];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController *aleView=[UIAlertController alertControllerWithTitle:@"RTSP错误状态" message:player_event preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action_ok=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [aleView addAction:action_ok];
+                
+                [self presentViewController:aleView animated:YES completion:nil];
+            });
+        });
     }
     else
         NSLog(@"[event]nID:%lx", (long)nID);

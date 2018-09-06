@@ -303,7 +303,7 @@ typedef enum DNCameraPosition{
 /**
  * 设置编码前视频CMSampleBufferRef数据, 如需缩放比例, 请使用SmartPublisherSetVideoScaleRate接口
  *
- * @param data 编码后的video数据
+ * @param data 编码前的video数据
  *
  * @return {0} if successful
  */
@@ -312,7 +312,7 @@ typedef enum DNCameraPosition{
 /**
  * 设置编码前音频CMSampleBufferRef数据
  *
- * @param data 编码后的audio数据
+ * @param data 编码前的audio数据
  *
  * @param inputType: 1: 麦克风 2: 应用程序音频
  *
