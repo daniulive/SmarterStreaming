@@ -20,7 +20,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows播放端APP下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/Daniulive-Windows-Unity3dPlayer-2018-06-04.zip)**
+**[Unity3D-Windows播放端APP下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Unity3D-Win-SmartPlayer-2018-09-04.zip)**
 
 **[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/APKUnity3D-SmartPlayer-0530.zip)**
 
@@ -118,15 +118,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-RelaySDK-CPP-Demo-2018-08-29.zip)
 
-- [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-推送SDK-C-Demo-2018-06-22.zip)
+- [x] [SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CSharp-Demo-2018-09-06.zip)
 
-- [x] [SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-播放SDK-C-Demo-2018-06-22.zip)
+- [x] [SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CSharp-Demo-2018-09-06.zip)
 
-- [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/WIN-转发SDK-C-demo-2018-06-22.zip)
+- [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/WIN-RelaySDK-CSharp-demo-2018-09-06.zip)
 
 - [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-07-19.zip)
 
-- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-iOS-SDK-2018-07-18.zip)
+- [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-C#-Demo-2018-09-06.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
@@ -300,9 +300,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 超低延迟的rtsp播放器；
 - [x] 完美支持多实例播放（启动多实例，同时播放多路流，如同时播放多路rtmp/rtsp流）；
 - [x] 支持RTSP TCP/UDP模式设置；
-- [x] Windows播放SDK支持rtsp tcp-udp自动切换；
-- [x] Windows播放SDK支持rtsp超时时间设置；
-- [x] Windows播放SDK支持上报rtsp 401事件；
+- [x] Windows/iOS播放SDK支持rtsp tcp-udp自动切换；
+- [x] Windows/iOS播放SDK支持rtsp超时时间设置；
+- [x] Windows/iOS播放SDK支持上报rtsp 401事件；
 - [x] 支持播放端，buffer设置；
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
