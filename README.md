@@ -324,7 +324,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 **windows/windows或windows/android/iOS一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”和“噪音抑制”；
-- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-06-22.zip)
+- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-07-19.zip)
 - [x] [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
 **windows/windows或windows与android/iOS连麦**
