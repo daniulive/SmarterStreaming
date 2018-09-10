@@ -382,7 +382,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
 * 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
-* iOS 需真机调试
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
  ```
 android推送端：SmartPublisherSDKDemo
