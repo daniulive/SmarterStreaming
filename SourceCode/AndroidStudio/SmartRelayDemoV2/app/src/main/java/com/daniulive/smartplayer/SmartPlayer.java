@@ -1245,6 +1245,10 @@ public class SmartPlayer extends Activity {
 						+ (param1 * 8 / 1000) + "kbps" + ", " + (param1 / 1024)
 						+ "KB/s");
 				break;
+
+			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_RTSP_STATUS_CODE:
+				Log.e(TAG, "RTSP error code received, please make sure username/password is correct, error code:" + param1);
+				break;
 			}
 		}
 	}

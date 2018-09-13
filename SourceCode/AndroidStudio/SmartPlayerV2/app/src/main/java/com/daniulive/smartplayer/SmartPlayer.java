@@ -1369,6 +1369,11 @@ public class SmartPlayer extends Activity {
 						+ (param1 * 8 / 1000) + "kbps" + ", " + (param1 / 1024)
 						+ "KB/s";
 				break;
+
+			case NTSmartEventID.EVENT_DANIULIVE_ERC_PLAYER_RTSP_STATUS_CODE:
+				Log.e(TAG, "RTSP error code received, please make sure username/password is correct, error code:" + param1);
+				player_event =  "RTSP error code:" + param1;
+				break;
 			}
 
 			if(player_event.length() > 0)
@@ -1567,6 +1572,14 @@ public class SmartPlayer extends Activity {
 		libPlayer.SmartPlayerSetReportDownloadSpeed(playerHandle, 1, 5);
 
 		libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup ? 1 : 0);
+
+		//设置RTSP超时时间
+		int rtsp_timeout = 10;
+		libPlayer.SmartPlayerSetRTSPTimeout(playerHandle, rtsp_timeout);
+
+		//设置RTSP TCP/UDP模式自动切换
+		int is_auto_switch_tcp_udp = 1;
+		libPlayer.SmartPlayerSetRTSPAutoSwitchTcpUdp(playerHandle, is_auto_switch_tcp_udp);
 
 		libPlayer.SmartPlayerSaveImageFlag(playerHandle, 1);
 

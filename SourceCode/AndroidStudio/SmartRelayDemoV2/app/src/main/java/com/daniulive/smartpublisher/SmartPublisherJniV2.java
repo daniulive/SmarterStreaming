@@ -654,6 +654,24 @@ public class SmartPublisherJniV2 {
 	*/
     public native int SmartPublisherOnReceivingAACData(long handle,  byte[] buffer, int len, int isKeyFrame, long timeStamp);
 
+	/**
+	 * Set Audio Encoded Data Callback.
+	 *
+	 * @param audio_encoded_data_callback: Audio Encoded Data Callback.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetAudioEncodedDataCallback(long handle, Object audio_encoded_data_callback);
+
+	/**
+	 * Set Video Encoded Data Callback.
+	 *
+	 * @param video_encoded_data_callback: Video Encoded Data Callback.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetVideoEncodedDataCallback(long handle, Object video_encoded_data_callback);
+
     /**
 	* Start publish stream 
 	*
@@ -681,6 +699,20 @@ public class SmartPublisherJniV2 {
    	* @return {0} if successful
    	*/
     public native int SmartPublisherStopRecorder(long handle);
+
+	/**
+	 * Start output Encoded Data(用于编码后的音视频数据回调)
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherStartOutputEncodedData(long handle);
+
+	/**
+	 *  Stop output Encoded Data
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherStopOutputEncodedData(long handle);
 
 	/*+++++++++++++++内置轻量级RTSP服务SDK+++++++++++++++*/
 

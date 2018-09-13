@@ -173,7 +173,26 @@ public class SmartPlayerJniV2 {
 	 */
 	public native int SmartPlayerSetRTSPTcpMode(long handle, int is_using_tcp);
 
+	/**
+	 * 设置RTSP超时时间, timeout单位为秒，必须大于0
+	 *
+	 * @param timeout: RTSP timeout setting
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetRTSPTimeout(long handle, int timeout);
 
+	/**
+	 * 设置RTSP TCP/UDP自动切换
+	 *
+	 * NOTE: 对于RTSP来说，有些可能支持rtp over udp方式，有些可能支持使用rtp over tcp方式.
+	 * 为了方便使用，有些场景下可以开启自动尝试切换开关, 打开后如果udp无法播放，sdk会自动尝试tcp, 如果tcp方式播放不了,sdk会自动尝试udp.
+	 *
+	 * @param is_auto_switch_tcp_udp 如果设置1的话, sdk将在tcp和udp之间尝试切换播放，如果设置为0，则不尝试切换.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetRTSPAutoSwitchTcpUdp(long handle, int is_auto_switch_tcp_udp);
 
 	/**
 	 * Set fast startup
