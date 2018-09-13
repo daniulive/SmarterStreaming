@@ -124,7 +124,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/WIN-RelaySDK-CSharp-demo-2018-09-06.zip)
 
-- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-07-19.zip)
+- [x] [SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-09-13.zip)
 
 - [x] [SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-C#-Demo-2018-09-06.zip)
 
@@ -247,7 +247,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **Windows导播平台或多路合成、混音推流/录像**
 
-对应“SmartMixStreamDemo.exe” [点击下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/windows-推送-播放版-2018-07-30.zip)
+对应“SmartMixStreamDemo.exe”:
 
 - [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
 - [x] 支持拉取rtmp流；
@@ -276,7 +276,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 真正靠谱的录像、推流分离模式，**支持推流过程中随时开启录像，录像过程中，随时推流；**
 - [x] 支持本地录像文件回放、处理；
 - [x] 采集过程中，前后摄像头切换；
-- [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用。
+- [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用；
+- [x] android推送SDK支持**输出编码后的H264数据到上层**，方便对接第三方平台.
 - [x] iOS自带基础美颜功能；
 - [x] android完美支持`文字水印、实时时间水印和图片水印`；
 - [x] 支持`推送端实时静音/取消静音`；
@@ -300,14 +301,14 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 超低延迟的rtsp播放器；
 - [x] 完美支持多实例播放（启动多实例，同时播放多路流，如同时播放多路rtmp/rtsp流）；
 - [x] 支持RTSP TCP/UDP模式设置；
-- [x] Windows/iOS播放SDK支持rtsp tcp-udp自动切换；
-- [x] Windows/iOS播放SDK支持rtsp超时时间设置；
-- [x] Windows/iOS播放SDK支持上报rtsp 401事件；
+- [x] 支持**rtsp tcp-udp自动切换**；
+- [x] 支持rtsp超时时间设置；
+- [x] 支持上报rtsp 401事件；
 - [x] 支持播放端，buffer设置；
 - [x] 支持秒开模式；
 - [x] windows双击画面进入**全屏**模式；
 - [x] video支持H.264，audio支持aac/speex(rtmp)/pcma/pcmu播放；
-- [x] Windows支持RTSP **H.265**播放，并支持**RTSP H.265录制到MP4文件**；
+- [x] 全平台支持RTSP **H.265**播放，并支持**RTSP H.265录制到MP4文件**；
 - [x] windows/android/iOS平台均支持回调音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
 - [x] 支持自定义播放布局;
 - [x] 音视频多种render机制;
@@ -324,7 +325,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 **windows/windows或windows/android/iOS一对一互动**
 
 - [x] [Windows]推送过程中，选择“回音消除”和“噪音抑制”；
-- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-07-19.zip)
+- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-09-13.zip)
 - [x] [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
 
 **windows/windows或windows与android/iOS连麦**
