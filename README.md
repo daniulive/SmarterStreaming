@@ -298,7 +298,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 **Windows/Android/iOS RTMP、RTSP直播播放器SDK**
 
 - [x] 高稳定、超低延迟的跨平台rtmp直播播放器；
-- [x] 高稳定、超低延迟的rtsp直播播放器；
+- [x] 高稳定、超低延迟的跨平台rtsp直播播放器；
 - [x] 完美支持多实例播放（如同时播放多路rtmp/rtsp流）；
 - [x] 支持RTSP TCP/UDP模式设置；
 - [x] 支持**rtsp TCP、UDP模式自动切换**；
