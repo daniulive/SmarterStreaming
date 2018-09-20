@@ -197,7 +197,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 # 功能支持
 
-**windows屏幕截取/摄像头推送录像**
+**windows RTMP推送端SDK**
 
 1. 视频源相关：
 - [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率、编码profile、编码速度等设置；
@@ -295,48 +295,44 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持裁剪模式设置；
 - [x] 完美支持各个厂家CDN。
 
-**windows播放器/android播放器/iOS播放器**
+**Windows/Android/iOS RTMP、RTSP直播播放器SDK**
 
-- [x] 超低延迟的rtmp播放器；
-- [x] 超低延迟的rtsp播放器；
-- [x] 完美支持多实例播放（启动多实例，同时播放多路流，如同时播放多路rtmp/rtsp流）；
+- [x] 高稳定、超低延迟的跨平台rtmp直播播放器；
+- [x] 高稳定、超低延迟的rtsp直播播放器；
+- [x] 完美支持多实例播放（如同时播放多路rtmp/rtsp流）；
 - [x] 支持RTSP TCP/UDP模式设置；
-- [x] 支持**rtsp tcp-udp自动切换**；
+- [x] 支持**rtsp TCP、UDP模式自动切换**；
 - [x] 支持rtsp超时时间设置；
 - [x] 支持上报rtsp 401事件；
-- [x] 支持播放端，buffer设置；
-- [x] 支持秒开模式；
+- [x] 支持buffer time设置；
+- [x] 支持首屏秒开模式；
 - [x] windows双击画面进入**全屏**模式；
 - [x] video支持H.264，audio支持aac/speex(rtmp)/pcma/pcmu播放；
-- [x] 全平台支持RTSP **H.265**播放，并支持**RTSP H.265录制到MP4文件**；
-- [x] windows/android/iOS平台均支持回调音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
-- [x] 支持自定义播放布局;
-- [x] 音视频多种render机制;
+- [x] 全平台支持**RTSP H.265**播放，并支持**RTSP H.265录制到MP4文件**；
+- [x] 全平台均支持回调音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
+- [x] 支持自定义播放布局；
+- [x] 音视频多种render机制；
 - [x] 支持播放过程中，'实时静音/取消静音';
 - [x] 支持播放端视频view实时旋转(0° 90° 180° 270°)、水平反转、垂直反转；
 - [x] 支持播放过程中快速切换URL；
-- [x] 支持播放端录像，或只录像不播放，同等配置的流，切换url依旧可以录制到同一个文件；
-- [x] 播放过程中，音视频信息改变后自动适配；
-- [x] android/iOS支持软硬解码，业内真正靠谱的超低延迟、低资源占用播放rtsp/rtmp 1080p+；
+- [x] 播放、录像完全隔离，同等配置的流，切换url依旧可以录制到同一个文件；
+- [x] 播放过程中，音视频信息改变后自适应；
+- [x] Android/iOS支持软、硬解码，超低延迟、低资源占用播放rtsp/rtmp 1080p+；
 - [x] [快照]支持播放/录像过程中，**随时快照**；
 - [x] [windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)
-- [x] 支持针对类似于娃娃机直播方案的超低延迟模式设置(公网200~400ms)。
+- [x] 支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)。
 
-**windows/windows或windows/android/iOS一对一互动**
-
-- [x] [Windows]推送过程中，选择“回音消除”和“噪音抑制”；
-- [x] [android] 可以边推送边播放，demo请参见 [SmartEchoCancellationV2](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-09-13.zip)
-- [x] [点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
-
-**windows/windows或windows与android/iOS连麦**
-
-完美支持标准协议的windows与windows、windows与android连麦（Windows作为主体端）。
-
-**[多对一实时通讯]**
-
-[点击获取使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%5B%E5%BA%94%E6%80%A5%E6%8C%87%E6%8C%A5%5D%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0android%E7%BB%88%E7%AB%AF%E5%92%8Cwindows%E6%8C%87%E6%8C%A5%E4%B8%AD%E5%BF%83%E5%AE%9E%E6%97%B6%E5%AF%B9%E8%AE%B2)
-
-适用于应急指挥、公安巡检等，以移动设备为采集载体，实时上传音视频数据到指挥中心，并实现指挥中心对现场的实时指导。
+**Windows/Android/iOS内置轻量级RTSP服务SDK**
+- [x] 音频编码：AAC；
+- [x] 视频编码：H.264；
+- [x] 内置服务协议：RTSP；
+- [x] [音视频]支持纯音频/纯视频/音视频输出；
+- [x] 支持帧率、关键帧间隔(GOP)、码率(bit-rate)设置；
+- [x] 支持本地内置摄像头/屏幕数据采集；
+- [x] 支持RTSP端口设置；
+- [x] 支持RTSP鉴权用户名、密码设置；
+- [x] 支持获取当前RTSP服务会话连接数；
+- [x] 支持同时创建多个内置RTSP服务。
 
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
