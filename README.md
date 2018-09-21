@@ -388,21 +388,17 @@ android：strings.xml：
 
 **商务合作：**
 
-手机：130-7210-2209
+**手机：130-7210-2209        QQ:89030985**
 
-QQ：89030985
-
-微信: 
+**微信: **
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/sales.png" alt="商务合作" />
 
 **技术支持：**
 
-手机：135-6452-9354
+**手机：135-6452-9354        QQ:**2679481035
 
-QQ: 2679481035
-
-微信: 
+**微信: **
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/tech_support.png" alt="技术支持" />
 
