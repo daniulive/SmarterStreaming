@@ -197,142 +197,115 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 # 功能支持
 
-**windows RTMP推送端SDK**
+**Windows视频采集处理SDK(对应SmartPublisherDemo.exe)**
 
-1. 视频源相关：
-- [x] [屏幕/摄像头]支持帧率、关键帧间隔、码率、编码profile、编码速度等设置；
-- [x] [屏幕]支持**屏幕裁剪**，根据帧率和推送分辨率，自动推荐码流；
-- [x] [摄像头]支持摄像头选择、分辨率设置、帧率设置；
-- [x] [扩展数据]支持外部H.264接口输入；
-
-2. 音频源相关
-- [x] [音频]采集麦克风；
-- [x] [音频]采集扬声器；
-- [x] [扩展数据]AAC, Speex WB, PCMA, PCMU数据接口输入；
-
-3. 摄像头和屏幕合成
+1. 支持视频源
+- [x] 支持Windows屏幕采集、**屏幕裁剪**、**特定窗口采集**、摄像头采集、扩展外部H.264数据对接；
+2. 摄像头和屏幕合成
 - [x] [**摄像头和屏幕实时切换**]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
 - [x] [**摄像头叠加到屏幕**] 支持摄像头按照设置坐标，叠加到屏幕指定位置，并支持实时关闭叠加层；
 - [x] [**屏幕叠加到摄像头**] 支持屏幕按照设定坐标，叠加到摄像头指定位置，并支持实时关闭叠加层；
-
-4. 水印和透明度遮挡
+3. 水印和透明度遮挡
 - [x] [**实时水印**]支持**动态水印**设置，完美支持`文字水印、实时时间水印和图片水印`；
 - [x] [透明度]可以设置透明度处理（设置遮盖）；
 
-5. 音频合成
-- [x] **[音频]支持扬声器和麦克风音频混音输出(同时选择“采集扬声器”和“采集麦克风”)；**
+**Windows音频采集处理SDK(对应SmartPublisherDemo.exe)**
 
-6. 音频处理
+1. 支持音频源
+- [x] 支持Windows采集**麦克风**、**扬声器**和外部AAC, Speex WB, PCMA, PCMU数据接口输入；
+2. 音频合成
+- [x] [音频]支持扬声器和麦克风音频**混音输出**(同时选择“采集扬声器”和“采集麦克风”)；
+3. 音频处理
 - [x] **[音频]支持音频“端点检测（VAD）”，自适应码流，音频码流更节省；**
-- [x] **[音频]支持回音消除功能（一对一功能：可通过在两台windows机器同时开启daniulive的推送和播放端demo，相互推送播放测试）；**
+- [x] **[音频]支持回音消除功能；**
 - [x] **[音频]支持噪音抑制功能；**
 - [x] **[音频]支持自动增益控制；**
 
-7. 音视频推送类型选择
-- [x] **[视频]支持推送H.264；**
-- [x] **[音频]支持推送AAC；**
-- [x] **[音频]支持推送Speex；**
-- [x] **[音频]支持推送PCMA/PCMU；**
+**Windows/Android/iOS RTMP直播推流SDK**
 
-8. 音视频类型、静音、快照、录像等
-- [x] [音视频]支持**纯音频、纯视频、音视频**推送；
-- [x] [音频]推送过程中实时静音/取消静音；
-- [x] [对接服务器]完美支持自建服务器或CDN；
-- [x] [录像]**录像和推送完全分离**，完美支持“边推送边录像”、“先推送、后录像”、“先录像，后推送；
-- [x] [录像]支持设置录像文件前缀、录像文件大小，录像文件增加日期、时间；
-- [x] [快照]支持推送或录像过程中，**随时快照**；
-
-9. 本地预览/回显
-- [x] 支持摄像头/屏幕/合成数据**实时预览**功能，可以先预览后推送.
-
-**Windows导播平台或多路合成、混音推流/录像**
-
-对应“SmartMixStreamDemo.exe”:
-
-- [x] 支持“windows屏幕截取/摄像头推送录像”模块所有功能；
-- [x] 支持拉取rtmp流；
-- [x] 支持拉取rtsp流；
-- [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得rtmp或rtsp流做合成、混音输出；
-- [x] 支持导播过程中，随时切断某一路音视频或音频；
-- [x] 支持rtsp数据转rtmp推送出去；
-- [x] 音频混音同时选择“采集麦克风”+“采集扬声器”。
-
-**windows/Android/iOS拉流转发模块**
-
-- [x] [拉流]支持拉取rtsp流；
-- [x] [拉流]支持拉取rtmp流；
-- [x] [预览]支持拉取到的rtsp/rtmp随时本地预览、关闭预览；
-- [x] [拉流音频调节]支持拉取的rtsp/rtmp流静音；
-- [x] [url切换]**支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换**；
-- [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
-
-**android推流/iOS推流**
-
-- [x] 多分辨率选择；
-- [x] 支持横竖屏推送；
-- [x] `音视频`推送、`纯音频`推送、`纯视频`推送；
-- [x] 支持`边采集、边录像`，或只采集、只录像；
-- [x] 支持rtmp推送 live|record模式设置；
-- [x] 真正靠谱的录像、推流分离模式，**支持推流过程中随时开启录像，录像过程中，随时推流；**
-- [x] 支持本地录像文件回放、处理；
-- [x] 采集过程中，前后摄像头切换；
-- [x] 提供编码前(YUV/RGB)、编码后音视频(H.264/AAC)接口对接，方便AR/VR设备调用；
-- [x] android推送SDK支持**输出编码后的H264数据到上层**，方便对接第三方平台.
-- [x] iOS自带基础美颜功能；
-- [x] android完美支持`文字水印、实时时间水印和图片水印`；
-- [x] 支持`推送端实时静音/取消静音`；
-- [x] 支持软硬编码自适应；
-- [x] android支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
-- [x] iOS支持后台推送屏幕(基于ReplayKit，需要iOS 10.0+版本)；
-- [x] **android支持实时传递远端PCM数据；**
-- [x] 支持gop间隔、帧率、bierate、android编码profile和编码速度设置；
-- [x] 支持推送端镜像设置；
-- [x] [音频]android支持噪音抑制功能；
-- [x] [音频]android支持自动增益控制；
-- [x] [音频]android支持Speex推送；
-- [x] [音频]android支持Speex编码质量设置；
-- [x] [快照]支持推送或录像过程中，**随时快照**;
-- [x] 支持裁剪模式设置；
-- [x] 完美支持各个厂家CDN。
+- [x] **Windows RTMP直播推流SDK涵盖“Windows视频采集处理SDK”功能**；
+- [x] **Windows RTMP直播推流SDK涵盖“Windows音频采集处理SDK”功能**；
+- [x] Windows RTMP直播推流SDK支持摄像头/屏幕/合成数据**实时预览**功能；
+- [x] Windows/Android/iOS平台支持多分辨率、帧率、码率、gop间隔、编码profile和编码速度设置；
+- [x] Android/iOS平台支持横竖屏推送；
+- [x] Windows/Android/iOS平台`音视频`推送、`纯音频`推送、`纯视频`推送；
+- [x] Android/iOS平台支持rtmp推送 live|record模式设置；
+- [x] [录像SDK同步使用]Windows/Android/iOS平台真正靠谱的录像、推流分离模式，**支持推流过程中随时开启录像，录像过程中，随时推流；**
+- [x] Android/iOS平台支持本地录像文件回放；
+- [x] Android/iOS平台支持采集过程中，前后摄像头切换；
+- [x] Windows/Android/iOS平台提供编码前(YUV/RGB)、编码后音视频(H.264/AAC/PCMA/PCMU)接口对接，方便AR/VR设备调用；
+- [x] Android平台支持**输出编码后的H264数据到上层**，方便对接第三方平台(如GB28181)对接；
+- [x] iOS平台自带基础美颜功能；
+- [x] Android平台完美支持`文字水印、实时时间水印和图片水印`；
+- [x] Windows/Android/iOS平台支持`推送端实时静音/取消静音`；
+- [x] Android/iOS平台支持软、硬编码自适应；
+- [x] Android平台支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
+- [x] iOS平台支持后台推送屏幕(基于ReplayKit，需要iOS 10.0+版本)；
+- [x] android支持实时传递远端PCM数据，方便回音消除处理；
+- [x] Windows/Android/iOS平台支持推送端镜像设置；
+- [x] Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
+- [x] Windows/Android平台支持噪音抑制功能；
+- [x] Windows/Android平台支持自动增益控制；
+- [x] Windows/Android平台支持Speex推送、Speex编码质量设置；
+- [x] Windows/Android/iOS平台支持推送或录像过程中，**随时快照**;
+- [x] Windows/Android/iOS平台支持裁剪模式设置；
+- [x] Windows/Android/iOS平台支持**多实例推送**；
+- [x] Windows/Android/iOS平台直播推流SDK支持支持自建服务器(如Nginx、SRS)或CDN。
 
 **Windows/Android/iOS RTMP、RTSP直播播放器SDK**
 
-- [x] 高稳定、超低延迟的跨平台rtmp直播播放器；
-- [x] 高稳定、超低延迟的跨平台rtsp直播播放器；
-- [x] 完美支持多实例播放（如同时播放多路rtmp/rtsp流）；
-- [x] 支持RTSP TCP/UDP模式设置；
-- [x] 支持**rtsp TCP、UDP模式自动切换**；
-- [x] 支持rtsp超时时间设置；
-- [x] 支持上报rtsp 401事件；
-- [x] 支持buffer time设置；
-- [x] 支持首屏秒开模式；
-- [x] windows双击画面进入**全屏**模式；
-- [x] video支持H.264，audio支持aac/speex(rtmp)/pcma/pcmu播放；
-- [x] 全平台支持**RTSP H.265**播放，并支持**RTSP H.265录制到MP4文件**；
-- [x] 全平台均支持回调音视频数据(Video:H.264/YUV Audio:aac/speex/pcma/pcmu)到上层；
-- [x] 支持自定义播放布局；
-- [x] 音视频多种render机制；
-- [x] 支持播放过程中，'实时静音/取消静音';
-- [x] 支持播放端视频view实时旋转(0° 90° 180° 270°)、水平反转、垂直反转；
-- [x] 支持播放过程中快速切换URL；
-- [x] 播放、录像完全隔离，同等配置的流，切换url依旧可以录制到同一个文件；
-- [x] 播放过程中，音视频信息改变后自适应；
-- [x] Android/iOS支持软、硬解码，超低延迟、低资源占用播放rtsp/rtmp 1080p+；
-- [x] [快照]支持播放/录像过程中，**随时快照**；
-- [x] [windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器。)
-- [x] 支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)。
+- [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTMP直播播放器；
+- [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTSP直播播放器；
+- [x] Windows/Android/iOS平台完美支持**多实例**播放（如同时播放多路rtmp/rtsp流）；
+- [x] Windows/Android/iOS平台支持RTSP TCP/UDP模式设置；
+- [x] Windows/Android/iOS平台支持**RTSP TCP、UDP模式自动切换**；
+- [x] Windows/Android/iOS平台支持rtsp超时时间设置；
+- [x] Windows/Android/iOS平台支持上报rtsp 401事件；
+- [x] Windows/Android/iOS平台支持buffer time设置；
+- [x] Windows/Android/iOS平台支持**首屏秒开**模式；
+- [x] Windows平台双击画面进入**全屏**模式；
+- [x] Windows/Android/iOS平台视频支持H.264(RTMP/RTSP)/H.265(RTSP)，音频支持AAC/PCMA/PCMU和SPEEX(RTMP)播放；
+- [x] Windows/Android/iOS平台支持**RTSP H.265**播放，并支持**RTSP H.265录制到MP4文件**；
+- [x] Windows/Android/iOS平台均支持回调音视频数据(视频: H.264/YUV 音频：AAC/PCMA/PCMU/SPEEX)到上层；
+- [x] Windows/Android/iOS平台支持自定义播放布局；
+- [x] Android平台音视频多种render机制，视频支持普通Surface和GLSurface，音频支持audiotrack和opensl es；
+- [x] Windows/Android/iOS平台支持播放过程中，'实时静音/取消静音';
+- [x] Windows/Android/iOS平台支持播放端视频view实时旋转(0° 90° 180° 270°)、水平反转、垂直反转；
+- [x] Windows/Android/iOS平台支持播放过程中快速切换URL；
+- [x] [录像SDK同步使用]Windows/Android/iOS平台播放、录像完全隔离，同等配置的流，切换url依旧可以录制到同一个文件；
+- [x] Windows/Android/iOS平台播放过程中，音视频信息改变后自适应；
+- [x] Android/iOS平台支持软、硬解码，超低延迟、低资源占用播放rtsp/rtmp 1080p+；
+- [x] Windows/Android/iOS平台支持播放/录像过程中，**随时快照**；
+- [x] [Windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)；
+- [x] Windows/Android/iOS平台支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)。
 
 **Windows/Android/iOS内置轻量级RTSP服务SDK**
+
+- [x] 支持Windows/Android/iOS平台RTMP直播SDK除推送RTMP外的所有常规功能；
 - [x] 音频编码：AAC；
 - [x] 视频编码：H.264；
 - [x] 内置服务协议：RTSP；
-- [x] [音视频]支持纯音频/纯视频/音视频输出；
-- [x] 支持帧率、关键帧间隔(GOP)、码率(bit-rate)设置；
-- [x] 支持本地内置摄像头/屏幕数据采集；
 - [x] 支持RTSP端口设置；
 - [x] 支持RTSP鉴权用户名、密码设置；
 - [x] 支持获取当前RTSP服务会话连接数；
 - [x] 支持同时创建多个内置RTSP服务。
+
+**Windows/Android/iOS转发SDK**
+
+- [x] [拉流]支持拉取RTSP流；
+- [x] [拉流]支持拉取RTMP流；
+- [x] [预览]支持拉取到的RTMP/RTSP随时本地预览、关闭预览；
+- [x] [拉流音频调节]支持拉取的RTMP/RTSP流静音；
+- [x] [url切换]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
+- [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
+
+**Windows导播SDK**
+
+- [x] 支持拉取RTSP流；
+- [x] 支持拉取RTMP流；
+- [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得RTSP或RTMP流做合成、混音输出；
+- [x] 支持导播过程中，随时切断某一路音视频或音频；
+- [x] 支持音频混音（同时选择“采集麦克风”+“采集扬声器”）。
 
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
