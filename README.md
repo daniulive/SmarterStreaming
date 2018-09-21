@@ -6,6 +6,8 @@
 
 [大牛直播SDK介绍PPT](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/PPT视沃科技-大牛直播SDK介绍_080709.pdf)
 
+[大牛直播SDK Demo界面展示](http://daniulive.com/index.php/2018/09/21/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-demo%E5%B1%95%E7%A4%BA/)
+
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
 **大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:89030985 或 517631076 手机:130-7210-2209 或 135-6452-9354)；
@@ -75,9 +77,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
-- [x] [**视频处理SDK**] Android文字水印、png图片水印；
+- [x] [**视频处理SDK**] (http://daniulive.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/)Android文字水印、png图片水印；
 
-- [x] [**音频处理SDK**] Android回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [**音频处理SDK**] (http://daniulive.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/)Android回音消除、噪音抑制、自动增益、VAD检测模块；
 
 
 **iOS端**
@@ -138,7 +140,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**windows/android/iOS播放器SDK(V2)Unity3D调用说明**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/视沃科技-大牛直播SDKV2Unity3D调用说明1.1.pdf)
 
-**大牛直播demo使用说明**
+**大牛直播SDK Demo使用说明**
+
 
 - [x] [大牛直播Windows RTMP推流端使用说明](http://daniulive.com/index.php/2018/04/15/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-windows%E6%8E%A8%E9%80%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)
 
@@ -353,46 +356,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 测试程序：SmartMixStreamDemo.exe；
 - [x] C++工程：WIN-MixStreamSDK-CPP-Demo；
 ---
-## windows导播、推送端/android推流端/iOS推流端 ##
-
-**1.  windows推送：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_publisher_2018_0709.png" alt="Windows推送" />
-
-**2.  windows多路RTSP/RTSP转发：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_relay_2018_07_09.png"  alt="Windows转发" />
-
-**3.  windows实时导播：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/合流主界面.png" alt="Windows推送" />
-
-**4. android推送：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_publisher_2018_0709.jpg" alt="android边推送边录像" />
-
-**5. iOS推送：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/ios_publisher_player_2018_0709.png" alt="iOS推送" />
-
-**6. iOS播放-录像-转发一体：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/04/iOS抓发.jpg" alt="iOS播放-录像-转发" />
-
-## 播放展示 ##
-
-**1. Windows播放器：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/win_player_2018_0709.png" alt="大牛直播Windows播放器" />
-
-**2. Android播放器：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/android_player_20180709.png" alt="大牛直播android播放器" />
-
-**3. iOS播放器：**
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/ios_player_2018_0709.jpg" alt="大牛直播iOS播放器" />
-
 
 **[编译注意事项]**
 
