@@ -197,33 +197,41 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 # 功能支持
 ---
-**Windows视频采集处理SDK(对应SmartPublisherDemo.exe)**
+**1. Windows视频采集处理SDK**
 
 1. 支持视频源
 - [x] 支持Windows屏幕采集、**屏幕裁剪**、**特定窗口采集**、摄像头采集、扩展外部H.264数据对接；
 2. 摄像头和屏幕合成
-- [x] [**摄像头和屏幕实时切换**]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
-- [x] [**摄像头叠加到屏幕**] 支持摄像头按照设置坐标，叠加到屏幕指定位置，并支持实时关闭叠加层；
-- [x] [**屏幕叠加到摄像头**] 支持屏幕按照设定坐标，叠加到摄像头指定位置，并支持实时关闭叠加层；
+- [x] [摄像头和屏幕实时切换]支持推送过程中，摄像头和屏幕互相切换，单画面显示摄像头或屏幕；
+- [x] [摄像头叠加到屏幕] 支持摄像头按照设置坐标，叠加到屏幕指定位置，并支持实时关闭叠加层；
+- [x] [屏幕叠加到摄像头] 支持屏幕按照设定坐标，叠加到摄像头指定位置，并支持实时关闭叠加层；
 3. 水印和透明度遮挡
-- [x] [**实时水印**]支持**动态水印**设置，完美支持`文字水印、实时时间水印和图片水印`；
+- [x] [实时水印]支持**动态水印**设置，完美支持`文字水印、实时时间水印和图片水印`；
 - [x] [透明度]可以设置透明度处理（设置遮盖）；
+4. 对应Demo：
+- [x] 测试程序：SmartPublisherDemo.exe；
+- [x] C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] C#工程：WIN-PublisherSDK-CSharp-Demo。
 ---
 
-**Windows音频采集处理SDK(对应SmartPublisherDemo.exe)**
+**2. Windows音频采集处理SDK(对应SmartPublisherDemo.exe)**
 
 1. 支持音频源
 - [x] 支持Windows采集**麦克风**、**扬声器**和外部AAC, Speex WB, PCMA, PCMU数据接口输入；
 2. 音频合成
 - [x] [音频]支持扬声器和麦克风音频**混音输出**(同时选择“采集扬声器”和“采集麦克风”)；
 3. 音频处理
-- [x] **[音频]支持音频“端点检测（VAD）”，自适应码流，音频码流更节省；**
-- [x] **[音频]支持回音消除功能；**
-- [x] **[音频]支持噪音抑制功能；**
-- [x] **[音频]支持自动增益控制；**
+- [x] 支持音频“端点检测（VAD）”，自适应码流，音频码流更节省；
+- [x] 支持回音消除功能；
+- [x] 支持噪音抑制功能；
+- [x] 支持自动增益控制。
+4. 对应Demo：
+- [x] 测试程序：SmartPublisherDemo.exe；
+- [x] C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] C#工程：WIN-PublisherSDK-CSharp-Demo。
 ---
 
-**Windows/Android/iOS RTMP直播推流SDK**
+**3. Windows/Android/iOS RTMP直播推流SDK**
 
 - [x] **Windows RTMP直播推流SDK涵盖“Windows视频采集处理SDK”功能**；
 - [x] **Windows RTMP直播推流SDK涵盖“Windows音频采集处理SDK”功能**；
@@ -253,9 +261,16 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台支持裁剪模式设置；
 - [x] Windows/Android/iOS平台支持**多实例推送**；
 - [x] Windows/Android/iOS平台直播推流SDK支持支持自建服务器(如Nginx、SRS)或CDN。
+
+对应Demo：
+- [x] Windows测试程序：SmartPublisherDemo.exe；
+- [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] Windows C#工程：WIN-PublisherSDK-CSharp-Demo；
+- [x] Android工程：SmartPublisherV2；
+- [x] iOS工程：SmartiOSPublisherV2。
 ---
 
-**Windows/Android/iOS RTMP、RTSP直播播放器SDK**
+**4. Windows/Android/iOS RTMP、RTSP直播播放器SDK**
 
 - [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTMP直播播放器；
 - [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTSP直播播放器；
@@ -281,9 +296,16 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台支持播放/录像过程中，**随时快照**；
 - [x] [Windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)；
 - [x] Windows/Android/iOS平台支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)。
+
+对应Demo：
+- [x] Windows测试程序：SmartPlayer.exe；
+- [x] Windows C++工程：WIN-PlayerSDK-CPP-Demo；
+- [x] Windows C#工程：WIN-PlayerSDK-CSharp-Demo；
+- [x] Android工程：SmartPlayerV2；
+- [x] iOS工程：SmartiOSPlayerV2。
 ---
 
-**Windows/Android/iOS内置轻量级RTSP服务SDK**
+**5. Windows/Android/iOS内置轻量级RTSP服务SDK**
 
 - [x] 支持Windows/Android/iOS平台RTMP直播SDK除推送RTMP外的所有常规功能；
 - [x] 音频编码：AAC；
@@ -293,9 +315,16 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持RTSP鉴权用户名、密码设置；
 - [x] 支持获取当前RTSP服务会话连接数；
 - [x] 支持同时创建多个内置RTSP服务。
+
+对应Demo：
+- [x] Windows测试程序：SmartPublisherDemo.exe；
+- [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] Windows C#工程：WIN-PublisherSDK-CSharp-Demo；
+- [x] Android工程：SmartPublisherV2；
+- [x] iOS工程：SmartiOSPublisherV2。
 ---
 
-**Windows/Android/iOS转发SDK**
+**6. Windows/Android/iOS转发SDK**
 
 - [x] [拉流]支持拉取RTSP流；
 - [x] [拉流]支持拉取RTMP流；
@@ -303,15 +332,26 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [拉流音频调节]支持拉取的RTMP/RTSP流静音；
 - [x] [url切换]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
 - [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
+
+对应Demo：
+- [x] Windows测试程序：SmartStreamRelayDemo.exe；
+- [x] Windows C++工程：WIN-RelaySDK-CPP-Demo；
+- [x] Windows C#工程：WIN-RelaySDK-CSharp-Demo；
+- [x] Android工程：SmartRelayDemoV2；
+- [x] iOS工程：SmartiOSRelayDemoV2。
 ---
 
-**Windows导播SDK**
+**7. Windows导播SDK**
 
 - [x] 支持拉取RTSP流；
 - [x] 支持拉取RTMP流；
 - [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得RTSP或RTMP流做合成、混音输出；
 - [x] 支持导播过程中，随时切断某一路音视频或音频；
 - [x] 支持音频混音（同时选择“采集麦克风”+“采集扬声器”）。
+
+对应Demo：
+- [x] 测试程序：SmartMixStreamDemo.exe；
+- [x] C++工程：WIN-MixStreamSDK-CPP-Demo；
 ---
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
