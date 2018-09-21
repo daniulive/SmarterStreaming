@@ -389,15 +389,22 @@ android：strings.xml：
 **商务合作：**
 
 手机：130-7210-2209
+
 QQ：89030985
-<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=89030985&o=http://daniulive.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:89030985:1 alt="点击这里给我发消息">
-微信: <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/sales.png" alt="商务合作" />
+
+微信: 
+
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/sales.png" alt="商务合作" />
 
 **技术支持：**
+
 手机：135-6452-9354
+
 QQ: 2679481035
-<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=2679481035&o=http://daniulive.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:2679481035:1 alt="点击这里给我发消息">
-微信: <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/tech_support.png" alt="技术支持" />
+
+微信: 
+
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/tech_support.png" alt="技术支持" />
 
 **QQ交流群：**
 
