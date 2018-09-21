@@ -10,7 +10,7 @@
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
-**大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:89030985 或 517631076 手机:130-7210-2209 或 135-6452-9354)；
+**大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:**89030985** 或 **517631076** 手机:**130-7210-2209** 或 **135-6452-9354**)；
 
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
@@ -388,7 +388,7 @@ android：strings.xml：
 
 **商务合作：**
 
-**手机：**130-7210-2209                    **QQ:** 89030985
+**手机:** 130-7210-2209                    **QQ:** 89030985
 
 **微信:** 
 
@@ -396,7 +396,7 @@ android：strings.xml：
 
 **技术支持：**
 
-**手机：**135-6452-9354                    **QQ:** 2679481035
+**手机:** 135-6452-9354                    **QQ:** 2679481035
 
 **微信:** 
 
