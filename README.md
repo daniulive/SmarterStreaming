@@ -27,7 +27,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 **[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/APKUnity3D-SmartPlayer-0530.zip)**
 
 
-**模块概览**
+## 模块概览 ## 
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/框架图.png" alt="直播SDK模块" />
 
@@ -98,7 +98,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
-**本地下载**
+## 本地下载 ##
 
 很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
 - [x] 大牛直播精英群: [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
@@ -132,7 +132,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
-**大牛直播SDK集成和调用说明**
+## 大牛直播SDK集成和调用说明 ##
 
 - [x] [**移动端SDK(V2)调用说明**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/08/视沃科技-大牛直播移动端SDKV2调用说明2.8.pdf)
 
@@ -141,7 +141,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**windows/android/iOS播放器SDK(V2)Unity3D调用说明**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/视沃科技-大牛直播SDKV2Unity3D调用说明1.1.pdf)
 
 **大牛直播SDK Demo使用说明**
-
 
 - [x] [大牛直播Windows RTMP推流端使用说明](http://daniulive.com/index.php/2018/04/15/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-windows%E6%8E%A8%E9%80%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)
 
@@ -165,7 +164,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [大牛直播连麦使用说明(windows windows或windows与android/iOS)](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E(windows-windows%E6%88%96windows%E4%B8%8Eandroid))
 
-**[上层源码目录]**
+## 上层源码目录 ##
 
 1. android推流 SmartPublisherV2
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPublisherV2
@@ -198,7 +197,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2
 
 
-# 功能支持
+## 功能支持 ##
 ---
 **1. Windows视频采集处理SDK**
 
@@ -357,7 +356,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] C++工程：WIN-MixStreamSDK-CPP-Demo；
 ---
 
-**[编译注意事项]**
+## 编译注意事项 ##
 
 * 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
 * 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
@@ -386,7 +385,7 @@ android：strings.xml：
 
 ## 联系我们 ##
 
-[点击此处链接联系我们](http://daniulive.com/index.php/%E8%81%94%E7%B3%BB/)
+[点击查看联系方式](http://daniulive.com/index.php/%E8%81%94%E7%B3%BB/)
 
 **QQ交流群：**
 
