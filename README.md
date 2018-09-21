@@ -196,7 +196,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 
 # 功能支持
-
+---
 **Windows视频采集处理SDK(对应SmartPublisherDemo.exe)**
 
 1. 支持视频源
@@ -208,6 +208,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 3. 水印和透明度遮挡
 - [x] [**实时水印**]支持**动态水印**设置，完美支持`文字水印、实时时间水印和图片水印`；
 - [x] [透明度]可以设置透明度处理（设置遮盖）；
+---
 
 **Windows音频采集处理SDK(对应SmartPublisherDemo.exe)**
 
@@ -220,6 +221,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] **[音频]支持回音消除功能；**
 - [x] **[音频]支持噪音抑制功能；**
 - [x] **[音频]支持自动增益控制；**
+---
 
 **Windows/Android/iOS RTMP直播推流SDK**
 
@@ -251,6 +253,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台支持裁剪模式设置；
 - [x] Windows/Android/iOS平台支持**多实例推送**；
 - [x] Windows/Android/iOS平台直播推流SDK支持支持自建服务器(如Nginx、SRS)或CDN。
+---
 
 **Windows/Android/iOS RTMP、RTSP直播播放器SDK**
 
@@ -278,6 +281,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台支持播放/录像过程中，**随时快照**；
 - [x] [Windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)；
 - [x] Windows/Android/iOS平台支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)。
+---
 
 **Windows/Android/iOS内置轻量级RTSP服务SDK**
 
@@ -289,6 +293,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持RTSP鉴权用户名、密码设置；
 - [x] 支持获取当前RTSP服务会话连接数；
 - [x] 支持同时创建多个内置RTSP服务。
+---
 
 **Windows/Android/iOS转发SDK**
 
@@ -298,6 +303,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [拉流音频调节]支持拉取的RTMP/RTSP流静音；
 - [x] [url切换]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
 - [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
+---
 
 **Windows导播SDK**
 
@@ -306,7 +312,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得RTSP或RTMP流做合成、混音输出；
 - [x] 支持导播过程中，随时切断某一路音视频或音频；
 - [x] 支持音频混音（同时选择“采集麦克风”+“采集扬声器”）。
-
+---
 ## windows导播、推送端/android推流端/iOS推流端 ##
 
 **1.  windows推送：**
