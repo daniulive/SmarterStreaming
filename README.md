@@ -359,7 +359,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **[编译注意事项]**
 
-1. 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
+* 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
 * 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
  ```
@@ -388,17 +388,17 @@ android：strings.xml：
 
 **商务合作：**
 
-手机：130-7210-2209                    QQ:89030985
+**手机：**130-7210-2209                    **QQ:** 89030985
 
-微信: 
+**微信:** 
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/sales.png" alt="商务合作" />
 
 **技术支持：**
 
-手机：135-6452-9354                    QQ:2679481035
+**手机：**135-6452-9354                    **QQ:** 2679481035
 
-微信: 
+**微信:** 
 
 <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/tech_support.png" alt="技术支持" />
 
