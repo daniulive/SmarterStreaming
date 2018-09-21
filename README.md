@@ -384,24 +384,10 @@ android：strings.xml：
  <string>SmartiOSPublisher</string>
  ```
 
-## 获取更多信息 ##
+## 联系我们 ##
 
-**商务合作：**
+[点击此处链接联系我们](http://daniulive.com/index.php/%E8%81%94%E7%B3%BB/)
 
-```**手机:** 130-7210-2209                    **QQ:** 89030985
-
-**微信:** 
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/sales.png" alt="商务合作" />
-```
-**技术支持：**
-```
-**手机:** 135-6452-9354                    **QQ:** 2679481035
-
-**微信:** 
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/tech_support.png" alt="技术支持" />
-```
 **QQ交流群：**
 
 大牛直播SDK技术交流群1：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
