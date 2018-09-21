@@ -388,17 +388,19 @@ android：strings.xml：
 
 **商务合作：**
 
-手机：130-7210-2209 或 135-6452-9354
+手机：130-7210-2209
+QQ：89030985
+<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=89030985&o=http://daniulive.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:89030985:1 alt="点击这里给我发消息">
+微信: <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/sales.png" alt="商务合作" />
 
-商务合作QQ：89030985
-技术支持QQ: 2679481035
+**技术支持：**
+手机：135-6452-9354
+QQ: 2679481035
+<img  style="CURSOR: pointer" onclick="javascript:window.open('http://b.qq.com/webc.htm?new=0&sid=2679481035&o=http://daniulive.com&q=7', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" SRC=http://wpa.qq.com/pa?p=1:2679481035:1 alt="点击这里给我发消息">
+微信: <img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/tech_support.png" alt="技术支持" />
 
 **QQ交流群：**
 
 大牛直播SDK技术交流群1：[499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima.png" alt="大牛直播SDK技术交流群1" />
-
 大牛直播SDK技术交流群2：[294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)
-
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/erweima2.png" alt="大牛直播SDK技术交流群2" />
