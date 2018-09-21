@@ -214,7 +214,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] C#工程：WIN-PublisherSDK-CSharp-Demo。
 ---
 
-**2. Windows音频采集处理SDK(对应SmartPublisherDemo.exe)**
+**2. Windows音频采集处理SDK**
 
 1. 支持音频源
 - [x] 支持Windows采集**麦克风**、**扬声器**和外部AAC, Speex WB, PCMA, PCMU数据接口输入；
