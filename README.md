@@ -108,17 +108,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播产品demo本地下载**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/windows-推送-播放版-2018-09-12.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/windows-推送-播放版-2018-09-26.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/windows-推送-播放版64位-2018-09-12.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/09/windows-推送-播放版64位-2018-09-6.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CPP-Demo-2018-09-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CPP-Demo-2018-09-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CPP-Demo-2018-09-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CPP-Demo-2018-09-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CPP-Demo-2018-09-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CPP-Demo-2018-09-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-RelaySDK-CPP-Demo-2018-09-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-RelaySDK-CPP-Demo-2018-09-26.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CSharp-Demo-2018-09-06.zip)
 
@@ -128,7 +128,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Android SDK demo工程代码] [**android推送、播放、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-09-13.zip)
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-%E6%8E%A8%E9%80%81SDK-C#-Demo-2018-09-06.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-SDK-iOS-2018-09-27.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
@@ -246,6 +246,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Android/iOS平台支持本地录像文件回放；
 - [x] Android/iOS平台支持采集过程中，前后摄像头切换；
 - [x] Windows/Android/iOS平台提供编码前(YUV/RGB)、编码后音视频(H.264/AAC/PCMA/PCMU)接口对接，方便AR/VR设备调用；
+- [x] Windows平台外部PCM音频数据对接接口；
 - [x] Android平台支持**输出编码后的H264数据到上层**，方便对接第三方平台(如GB28181)对接；
 - [x] iOS平台自带基础美颜功能；
 - [x] Android平台完美支持`文字水印、实时时间水印和图片水印`；
@@ -277,6 +278,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTMP直播播放器；
 - [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTSP直播播放器；
 - [x] Windows/Android/iOS平台完美支持**多实例**播放（如同时播放多路rtmp/rtsp流）；
+- [x] Windows平台支持**rtmp扩展H.265**播放；
 - [x] Windows/Android/iOS平台支持RTSP TCP/UDP模式设置；
 - [x] Windows/Android/iOS平台支持**RTSP TCP、UDP模式自动切换**；
 - [x] Windows/Android/iOS平台支持rtsp超时时间设置；
@@ -332,6 +334,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [拉流]支持拉取RTMP流；
 - [x] [预览]支持拉取到的RTMP/RTSP随时本地预览、关闭预览；
 - [x] [拉流音频调节]支持拉取的RTMP/RTSP流静音；
+- [x] [拉流音频转码]支持拉取的RTMP/RTSP的PCMA/PCMU/SPEEX音频格式转AAC后再转发到RTMP服务器；
 - [x] [url切换]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
 - [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server。
 
