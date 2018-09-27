@@ -359,6 +359,29 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] C++工程：WIN-MixStreamSDK-CPP-Demo；
 ---
 
+**8. Windows/Android/iOS录像SDK**
+
+- [x] 支持拉取RTSP流录像；
+- [x] 支持拉取RTMP流录像；
+- [x] 支持推送端同步录像；
+- [x] 支持设置单个录像文件大小、录像路径等；
+- [x] 支持音频(PCMU/PCMA,Speex等)转AAC后再录像；
+- [x] 支持**RTSP H.265**录制到MP4文件；
+- [x] 从开始录像，到录像结束均有event callback上来，网络堵塞、音视频同步均做了非常友好的处理。
+
+对应Demo：
+- [x] Windows测试程序：SmartPlayer.exe；
+- [x] Windows C++工程：WIN-PlayerSDK-CPP-Demo；
+- [x] Windows C#工程：WIN-PlayerSDK-CSharp-Demo；
+- [x] 测试程序：SmartPublisherDemo.exe；
+- [x] C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] C#工程：WIN-PublisherSDK-CSharp-Demo。
+- [x] Android工程：SmartPlayerV2；
+- [x] iOS工程：SmartiOSPlayerV2；
+- [x] Android工程：SmartPublisherV2；
+- [x] iOS工程：SmartiOSPublisherV2。
+---
+
 ## 编译注意事项 ##
 
 * 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
