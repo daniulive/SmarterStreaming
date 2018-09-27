@@ -385,8 +385,6 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
     
     _glView.frame = f;
-    
-     [self.view bringSubviewToFront:_glView];
 }
 
 - (void)SwitchUrlBtn:(id)sender {
@@ -753,6 +751,10 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     NSInteger is_report = 1;
     NSInteger report_interval = 5;
     [_smart_player_sdk SmartPlayerSetReportDownloadSpeed:is_report report_interval:report_interval];
+    
+    //录像端音频，是否转AAC后保存
+    NSInteger is_transcode = 1;
+    [_smart_player_sdk SmartPlayerSetRecorderAudioTranscodeAAC:is_transcode];
     
     is_inited_player_ = YES;
     

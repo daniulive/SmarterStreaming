@@ -620,6 +620,12 @@
     //NSInteger report_interval = 1;
     //[_player SmartPlayerSetReportDownloadSpeed:is_report report_interval:report_interval];
     
+    NSInteger is_rec_trans_code = 1;
+    [_smart_player_sdk SmartPlayerSetRecorderAudioTranscodeAAC:is_rec_trans_code];
+    
+    NSInteger is_pull_trans_code = 1;
+    [_smart_player_sdk SmartPlayerSetPullStreamAudioTranscodeAAC:is_pull_trans_code];
+    
     is_inited_player_ = YES;
     
     NSLog(@"InitPlayer--");

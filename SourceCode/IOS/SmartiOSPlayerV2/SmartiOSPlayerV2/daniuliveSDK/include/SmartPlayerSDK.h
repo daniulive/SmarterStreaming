@@ -286,6 +286,17 @@
  */
 - (NSInteger)SmartPlayerSetRecorderFileMaxSize:(NSInteger)size;
 
+/*
+ * 设置录像时音频转AAC编码的开关
+ *
+ * aac比较通用，sdk增加其他音频编码(比如speex, pcmu, pcma等)转aac的功能.
+ *
+ * @param is_transcode: 设置为1的话，如果音频编码不是aac，则转成aac, 如果是aac，则不做转换. 设置为0的话，则不做任何转换. 默认是0.
+ *
+ * 注意: 转码会增加性能消耗
+ */
+- (NSInteger)SmartPlayerSetRecorderAudioTranscodeAAC:(NSInteger)is_transcode;
+
 /**
  * 录像相关：
  *
@@ -303,6 +314,19 @@
  * @return {0} if successful
  */
 - (NSInteger)SmartPlayerStopRecorder;
+
+/*
+ * 设置拉流时音频转AAC编码的开关
+ *
+ * aac比较通用，sdk增加其他音频编码(比如speex, pcmu, pcma等)转aac的功能.
+ *
+ * @param is_transcode: 设置为1的话，如果音频编码不是aac，则转成aac, 如果是aac，则不做转换. 设置为0的话，则不做任何转换. 默认是0.
+ 
+ * 注意: 转码会增加性能消耗
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetPullStreamAudioTranscodeAAC:(NSInteger)is_transcode;
 
 /*
  * 启动拉流
