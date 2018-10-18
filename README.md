@@ -4,8 +4,6 @@
 
 适用于**在线教育、无纸化推屏/会议、智慧教室、直播答题、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
-[大牛直播SDK介绍PPT](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/07/PPT视沃科技-大牛直播SDK介绍_080709.pdf)
-
 [大牛直播SDK Demo界面展示](http://daniulive.com/index.php/2018/09/21/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-demo%E5%B1%95%E7%A4%BA/)
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
