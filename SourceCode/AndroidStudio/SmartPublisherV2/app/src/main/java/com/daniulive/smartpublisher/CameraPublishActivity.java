@@ -549,6 +549,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             audioRecordCallback_ = new NTAudioRecordV2CallbackImpl();
 
+            // audioRecord_.IsMicSource(true);
+
             audioRecord_.AddCallback(audioRecordCallback_);
 
             audioRecord_.Start();

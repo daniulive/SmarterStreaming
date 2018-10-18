@@ -49,7 +49,7 @@ public class SmartPlayerJniV2 {
 	 *
 	 * @param handle: return value from SmartPlayerOpen()
 	 *
-	 * @param glSurface: surface view
+	 * @param surface: surface view
 	 *
 	 * <pre> NOTE: if not set or set surface with null, it will playback audio only. </pre> 
 	 *
@@ -57,6 +57,21 @@ public class SmartPlayerJniV2 {
 	 */
 	public native int SmartPlayerSetSurface(long handle, Object surface);
 
+	/**
+	 * 设置视频硬解码下Mediacodec自行绘制模式（此种模式下，硬解码兼容性和效率更好，回调YUV/RGB和快照功能将不可用）
+	 *
+	 * @param isHWRenderMode: 0: not enable; 1: 用SmartPlayerSetSurface设置的surface自行绘制
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetHWRenderMode(long handle, int isHWRenderMode);
+
+	/**
+	 * 更新硬解码surface
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerUpdateHWRenderSurface(long handle);
 
 	/**
 	 * Set External Render.
@@ -324,6 +339,19 @@ public class SmartPlayerJniV2 {
 	 */
 	public native int SmartPlayerSetRecorderFileMaxSize(long handle, int size);
 
+	/*
+	 * 设置录像时音频转AAC编码的开关
+	 *
+	 * aac比较通用，sdk增加其他音频编码(比如speex, pcmu, pcma等)转aac的功能.
+	 *
+	 * @param is_transcode: 设置为1的话，如果音频编码不是aac，则转成aac，如果是aac，则不做转换. 设置为0的话，则不做任何转换. 默认是0.
+	 *
+	 * 注意: 转码会增加性能消耗
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetRecorderAudioTranscodeAAC(long handle, int is_transcode);
+
 	/**
 	 * Set playback/recorder stream url
 	 *
@@ -370,6 +398,19 @@ public class SmartPlayerJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPlayerStopRecorder(long handle);
+
+	/*
+	 * 设置拉流时音频转AAC编码的开关
+	 *
+	 * aac比较通用，sdk增加其他音频编码(比如speex, pcmu, pcma等)转aac的功能.
+	 *
+	 * @param is_transcode: 设置为1的话，如果音频编码不是aac，则转成aac, 如果是aac，则不做转换. 设置为0的话，则不做任何转换. 默认是0.
+
+	 * 注意: 转码会增加性能消耗
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetPullStreamAudioTranscodeAAC(long handle, int is_transcode);
 
 	/**
 	 * Start pull stream

@@ -736,6 +736,9 @@ public class SmartPlayer extends Activity {
 					libPlayer.SmartPlayerSetAudioDataCallback(playerHandle, new PlayerAudioDataCallback());
 					libPlayer.SmartPlayerSetVideoDataCallback(playerHandle, new PlayerVideoDataCallback());
 
+					int is_pull_trans_code  = 1;
+					libPlayer.SmartPlayerSetPullStreamAudioTranscodeAAC(playerHandle, is_pull_trans_code);
+
 					int startRet = libPlayer.SmartPlayerStartPullStream(playerHandle);
 
 					if (startRet != 0) {
@@ -1446,6 +1449,9 @@ public class SmartPlayer extends Activity {
 	@SuppressLint("NewApi")
 	void ConfigRecorderFuntion() {
 		if (libPlayer != null) {
+			int is_rec_trans_code  = 1;
+			libPlayer.SmartPlayerSetRecorderAudioTranscodeAAC(playerHandle, is_rec_trans_code);
+
 			if (recDir != null && !recDir.isEmpty()) {
 				int ret = libPlayer.SmartPlayerCreateFileDirectory(recDir);
 				if (0 == ret) {
@@ -1499,6 +1505,14 @@ public class SmartPlayer extends Activity {
 		// libPlayer.SmartPlayerSetReportDownloadSpeed(playerHandle, 1, 5);
 
 		libPlayer.SmartPlayerSetFastStartup(playerHandle, isFastStartup ? 1 : 0);
+
+		//设置RTSP超时时间
+		int rtsp_timeout = 12;
+		libPlayer.SmartPlayerSetRTSPTimeout(playerHandle, rtsp_timeout);
+
+		//设置RTSP TCP/UDP模式自动切换
+		int is_auto_switch_tcp_udp = 1;
+		libPlayer.SmartPlayerSetRTSPAutoSwitchTcpUdp(playerHandle, is_auto_switch_tcp_udp);
 
 		libPlayer.SmartPlayerSaveImageFlag(playerHandle, 1);
 

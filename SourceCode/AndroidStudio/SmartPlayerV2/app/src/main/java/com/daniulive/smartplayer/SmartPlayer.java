@@ -47,7 +47,11 @@ import com.videoengine.NTSEIDataCallback;
 import android.os.Handler;
 import android.os.Message;
 
-public class SmartPlayer extends Activity {
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.SurfaceHolder.Callback;
+
+public class SmartPlayer extends Activity implements android.view.SurfaceHolder.Callback{
 
 	private SurfaceView sSurfaceView = null;
 
@@ -70,6 +74,8 @@ public class SmartPlayer extends Activity {
 	private boolean isMute = false;
 
 	private boolean isHardwareDecoder = false;
+
+	private boolean is_enable_hardware_render_mode = false;	//设置视频硬解码下Mediacodec自行绘制模式（此种模式下，硬解码兼容性和效率更好，回调YUV/RGB和快照功能将不可用）
 
 	private int playBuffer = 200; // 默认200ms
 
@@ -119,6 +125,25 @@ public class SmartPlayer extends Activity {
 
 	static {
 		System.loadLibrary("SmartPlayer");
+	}
+
+	public void surfaceChanged(SurfaceHolder holder, int format, int in_width,
+							   int in_height) {
+		Log.i(TAG, "surfaceChanged..");
+	}
+
+	public void surfaceCreated(SurfaceHolder holder) {
+		Log.i(TAG, "surfaceCreated..");
+
+		if(isHardwareDecoder && is_enable_hardware_render_mode && isPlaying)
+		{
+			Log.i(TAG, "UpdateHWRenderSurface..");
+			libPlayer.SmartPlayerUpdateHWRenderSurface(playerHandle);
+		}
+	}
+
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		Log.i(TAG, "surfaceDestroyed..");
 	}
 
 	@Override
@@ -439,7 +464,6 @@ public class SmartPlayer extends Activity {
 		btnRotation.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT));
 		LinearLayoutImage.addView(btnRotation);
-
 		lLinearLayout.addView(LinearLayoutImage);
 
 		btnHardwareDecoder.setLayoutParams(new LayoutParams(
@@ -808,9 +832,16 @@ public class SmartPlayer extends Activity {
 						libPlayer.SmartPlayerClose(playerHandle);
 						playerHandle = 0;
 					}
-					
+
 					isPlaying = false;
 					btnStartStopPlayback.setText("开始播放 ");
+
+					if(  is_enable_hardware_render_mode && sSurfaceView != null )
+					{
+						sSurfaceView.setVisibility(View.GONE);
+						sSurfaceView.setVisibility(View.VISIBLE);
+					}
+
 					Log.i(TAG, "Stop playback stream--");
 				} else {
 					Log.i(TAG, "Start playback stream++");
@@ -818,9 +849,15 @@ public class SmartPlayer extends Activity {
 					if (!isRecording) {
 						InitAndSetConfig();
 					}
-					
+
 					// 如果第二个参数设置为null，则播放纯音频
 					libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView);
+
+					if(isHardwareDecoder && is_enable_hardware_render_mode)
+					{
+						libPlayer.SmartPlayerSetHWRenderMode(playerHandle, 1);
+					}
+
 					// External Render test
 					// libPlayer.SmartPlayerSetExternalRender(playerHandle, new
 					// RGBAExternalRender());
@@ -842,8 +879,7 @@ public class SmartPlayer extends Activity {
 								+ isHardwareDecoder);
 
 						int hwChecking = libPlayer
-								.SetSmartPlayerVideoHWDecoder(playerHandle,
-										isHardwareDecoder ? 1 : 0);
+								.SetSmartPlayerVideoHWDecoder(playerHandle,1);
 
 						Log.i(TAG, "[daniulive] hwChecking: " + hwChecking);
 					}
@@ -1391,18 +1427,34 @@ public class SmartPlayer extends Activity {
 	private boolean CreateView() {
 
 		if (sSurfaceView == null) {
-			/*
-			 * useOpenGLES2: If with true: Check if system supports openGLES, if
-			 * supported, it will choose openGLES. If with false: it will set
-			 * with default surfaceView;
-			 */
-			sSurfaceView = NTRenderer.CreateRenderer(this, false);
-
+			if(is_enable_hardware_render_mode)
+			{
+				//hardware render模式，第二个参数设置为false
+				sSurfaceView = NTRenderer.CreateRenderer(this, false);
+			}
+			else
+			{
+				/*
+				 * useOpenGLES2: If with true: Check if system supports openGLES, if
+				 * supported, it will choose openGLES. If with false: it will set
+				 * with default surfaceView;
+				 */
+				sSurfaceView = NTRenderer.CreateRenderer(this, false);
+			}
 		}
 
 		if (sSurfaceView == null) {
 			Log.i(TAG, "Create render failed..");
 			return false;
+		}
+
+		if(is_enable_hardware_render_mode)
+		{
+			SurfaceHolder surfaceHolder = sSurfaceView.getHolder();
+			if (surfaceHolder == null) {
+				Log.e(TAG, "CreateView, surfaceHolder with null..");
+			}
+			surfaceHolder.addCallback(this);
 		}
 
 		return true;
@@ -1441,7 +1493,10 @@ public class SmartPlayer extends Activity {
 		if (!isPlaying)
 			return;
 
-		libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
+		if(!isHardwareDecoder || !is_enable_hardware_render_mode)
+		{
+			libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
+		}
 
 		Log.i(TAG, "Run out of onConfigurationChanged--");
 	}
@@ -1450,7 +1505,7 @@ public class SmartPlayer extends Activity {
     protected void onResume() {
     	Log.i(TAG, "Run into activity onResume++");
     	
-    	if(isPlaying && playerHandle != 0)
+    	if(isPlaying && playerHandle != 0 && (!isHardwareDecoder || !is_enable_hardware_render_mode) )
     	{
     		libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
     	}
@@ -1519,6 +1574,9 @@ public class SmartPlayer extends Activity {
 	@SuppressLint("NewApi")
 	void ConfigRecorderFuntion() {
 		if (libPlayer != null) {
+			int is_rec_trans_code  = 1;
+			libPlayer.SmartPlayerSetRecorderAudioTranscodeAAC(playerHandle, is_rec_trans_code);
+
 			if (recDir != null && !recDir.isEmpty()) {
 				int ret = libPlayer.SmartPlayerCreateFileDirectory(recDir);
 				if (0 == ret) {
@@ -1597,6 +1655,7 @@ public class SmartPlayer extends Activity {
 
 		// playbackUrl =
 		// "rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
+
 
 		if (playbackUrl == null) {
 			Log.e(TAG, "playback URL with NULL...");
