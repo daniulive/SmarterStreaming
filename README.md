@@ -126,7 +126,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载](http://daniulive.com/wp-content/uploads/daniulive/WIN-RelaySDK-CSharp-demo-2018-09-06.zip)
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-09-13.zip)
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-10-18.zip)
 
 - [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-SDK-iOS-2018-09-27.zip)
 
@@ -278,7 +278,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTMP直播播放器；
 - [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTSP直播播放器；
 - [x] Windows/Android/iOS平台完美支持**多实例**播放（如同时播放多路rtmp/rtsp流）；
-- [x] Windows平台支持**rtmp扩展H.265**播放；
+- [x] Windows/Android/iOS平台支持**rtmp扩展H.265**播放；
 - [x] Windows/Android/iOS平台支持RTSP TCP/UDP模式设置；
 - [x] Windows/Android/iOS平台支持**RTSP TCP、UDP模式自动切换**；
 - [x] Windows/Android/iOS平台支持rtsp超时时间设置；
