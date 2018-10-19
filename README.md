@@ -351,7 +351,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持拉取RTMP流；
 - [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得RTSP或RTMP流做合成、混音输出；
 - [x] 支持导播过程中，随时切断某一路音视频或音频；
-- [x] 支持音频混音（同时选择“采集麦克风”+“采集扬声器”）。
+- [x] 支持音频混音（同时选择“采集麦克风”+“采集扬声器”）；
+- [x] 多路流合成一路流后，推送到RTMP服务器；
+- [x] 多路合成后的流，支持本地录像、快照。
 
 对应Demo：
 - [x] 测试程序：SmartMixStreamDemo.exe；
@@ -363,9 +365,11 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持拉取RTSP流录像；
 - [x] 支持拉取RTMP流录像；
 - [x] 支持推送端同步录像；
-- [x] 支持设置单个录像文件大小、录像路径等；
+- [x] 大牛直播录像SDK不同于普通录像接口，更智能，和推送、播放、转发、内置轻量级RTSP服务SDK功能完全分离，支持随时录像；
+- [x] 在录像过程中，支持切换不同URL，如两个URL配置一致，则可以录制到同一个MP4文件，如不一致，可自动分割到下一个文件；
+- [x] 支持设置单个录像文件大小、录像路径等，并支持纯音频、纯视频、音视频录制模式；
 - [x] 支持音频(PCMU/PCMA,Speex等)转AAC后再录像；
-- [x] 支持**RTSP H.265**录制到MP4文件；
+- [x] 支持**RTSP/RTMP H.265**录制到MP4文件；
 - [x] 从开始录像，到录像结束均有event callback上来，网络堵塞、音视频同步均做了非常友好的处理。
 
 对应Demo：
