@@ -297,7 +297,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Android/iOS平台支持软、硬解码，超低延迟、低资源占用播放rtsp/rtmp 1080p+；
 - [x] Windows/Android/iOS平台支持播放/录像过程中，**随时快照**；
 - [x] [Windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)；
-- [x] Windows/Android/iOS平台支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)。
+- [x] Windows/Android/iOS平台支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)；
+- [x] 详尽的callback状态回调机制。
 
 对应Demo：
 - [x] Windows测试程序：SmartPlayer.exe；
@@ -316,7 +317,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持RTSP端口设置；
 - [x] 支持RTSP鉴权用户名、密码设置；
 - [x] 支持获取当前RTSP服务会话连接数；
-- [x] 支持同时创建多个内置RTSP服务。
+- [x] 支持同时创建多个内置RTSP服务；
+ -[x] 支持设置后的rtsp url通过event回调到上层。
 
 对应Demo：
 - [x] Windows测试程序：SmartPublisherDemo.exe；
@@ -387,10 +389,15 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 ## 编译注意事项 ##
 
-* 编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
-* 编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
+* iOS平台支持真机和模拟器编译运行.
+* iOS播放端编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.
+* iOS推送端编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：
  ```
+Windows推送端：SmartPublisherDemo
+Windows播放端：SmartPlayer
+Windows转发端：SmartStreamRelayDemo
+Windows合流导播端：SmartMixStreamDemo
 android推送端：SmartPublisherSDKDemo
 android后台Service推送：SmartServicePublisherSDKDemo
 android一对一互动：SmartEchoCancellation
