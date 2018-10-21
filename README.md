@@ -245,7 +245,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Android/iOS平台支持采集过程中，前后摄像头切换；
 - [x] Windows/Android/iOS平台提供编码前(YUV/RGB)、编码后音视频(H.264/AAC/PCMA/PCMU)接口对接，方便AR/VR设备调用；
 - [x] Windows平台外部PCM音频数据对接接口；
-- [x] Android平台支持**输出编码后的H264数据到上层**，方便对接第三方平台(如GB28181)对接；
+- [x] Android平台支持**输出编码后的H264/AAC数据到上层**，方便对接第三方平台(如GB28181)对接；
 - [x] iOS平台自带基础美颜功能；
 - [x] Android平台完美支持`文字水印、实时时间水印和图片水印`；
 - [x] Windows/Android/iOS平台支持`推送端实时静音/取消静音`；
