@@ -387,6 +387,27 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPublisherV2。
 ---
 
+**9. Windows/Android/iOS SEI扩展数据发送/接收SDK**
+
+- [x] 支持内置RTSP服务SDK携带SEI扩展信息(H.264)；
+- [x] 支持RTMP推送SDK携带SEI扩展信息(H.264)；
+- [x] 持发送自定义用户数据(如自定义utf8字符串)；
+- [x] 支持发送二进制数据；
+- [x] RTSP/RTMP直播播放端SDK支持utf8文本、二进制、和原SEI数据解析。
+
+对应Demo：
+- [x] Windows测试程序：SmartPlayer.exe；
+- [x] Windows C++工程：WIN-PlayerSDK-CPP-Demo；
+- [x] Windows C#工程：WIN-PlayerSDK-CSharp-Demo；
+- [x] 测试程序：SmartPublisherDemo.exe；
+- [x] C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] C#工程：WIN-PublisherSDK-CSharp-Demo。
+- [x] Android工程：SmartPlayerV2；
+- [x] iOS工程：SmartiOSPlayerV2；
+- [x] Android工程：SmartPublisherV2；
+- [x] iOS工程：SmartiOSPublisherV2。
+---
+
 ## 编译注意事项 ##
 
 * iOS平台支持真机和模拟器编译运行.
