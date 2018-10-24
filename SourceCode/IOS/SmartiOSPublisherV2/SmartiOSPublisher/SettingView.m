@@ -106,8 +106,8 @@
     //默认采集音视频
     audio_opt_ = 1;
     video_opt_ = 1;
-    //默认美颜
-    is_beauty_ = true;
+    //默认不美颜
+    is_beauty_ = false;
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -203,7 +203,7 @@
     self.beautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.beautyBtn.tag = 1;
     self.beautyBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80+80, 20, 20);
-    [self.beautyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
+    [self.beautyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
     [self.beautyBtn addTarget:self action:@selector(beautyButtonClicked:) forControlEvents:UIControlEventTouchDown];
     
     self.beautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80+80, 60, 20)];
@@ -214,7 +214,7 @@
     self.noBeautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.noBeautyBtn.tag = 2;
     self.noBeautyBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80+80, 20, 20);
-    [self.noBeautyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
+    [self.noBeautyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
     [self.noBeautyBtn addTarget:self action:@selector(beautyButtonClicked:) forControlEvents:UIControlEventTouchDown];
     self.noBeautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80, 80, 20)];
     self.noBeautyLable.text = @"不美颜";

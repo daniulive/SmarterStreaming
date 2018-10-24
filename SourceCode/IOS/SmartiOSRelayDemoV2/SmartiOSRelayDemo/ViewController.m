@@ -112,8 +112,7 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //拉流url可以自定义
-    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
-    
+    //playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
     //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream1";
     
     //转发url可以自定义
@@ -612,6 +611,12 @@
     
     [_smart_player_sdk SmartPlayerSetRTSPTcpMode:is_rtsp_tcp_mode_];
     
+    NSInteger rtsp_timeout = 10;    //RTSP超时时间设置
+    [_smart_player_sdk SmartPlayerSetRTSPTimeout:rtsp_timeout];
+    
+    NSInteger is_auto_switch_tcp_udp = 1;       //RTSP TCP/UDP模式自动切换设置
+    [_smart_player_sdk SmartPlayerSetRTSPAutoSwitchTcpUdp:is_auto_switch_tcp_udp];
+    
     NSInteger image_flag = 1;
     [_smart_player_sdk SmartPlayerSaveImageFlag:image_flag];
     
@@ -722,6 +727,12 @@
     if (_smart_player_sdk != nil)
     {
         [_smart_player_sdk SmartPlayerUnInitPlayer];
+        
+        if(_smart_player_sdk.delegate != nil)
+        {
+            _smart_player_sdk.delegate = nil;
+        }
+        
         _smart_player_sdk = nil;
     }
     
@@ -811,7 +822,12 @@
     if (_smart_publisher_sdk != nil)
     {
         [_smart_publisher_sdk SmartPublisherUnInit];
-        _smart_publisher_sdk.delegate = nil;
+        
+        if(_smart_publisher_sdk.delegate != nil)
+        {
+            _smart_publisher_sdk.delegate = nil;
+        }
+        
         _smart_publisher_sdk = nil;
     }
     

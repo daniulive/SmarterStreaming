@@ -59,6 +59,7 @@
     UIImage     *image_path;
     NSString    *tmp_path;
     void        *rtsp_handle_;
+    NSInteger   publish_orientation_;       //默认竖屏采集，传1:竖屏，传2:横屏(home键在右侧)
 }
 
 @synthesize localPreview;
@@ -222,9 +223,9 @@
         return;
     }
     
-    //NSInteger publish_orientation = 2;	//默认竖屏采集，传1:竖屏，传2:横屏(home键在右侧)
-    
-    //[_smart_publisher_sdk SmartPublisherSetPublishOrientation:publish_orientation];
+    //设置横竖屏采集模式，传1:竖屏，传2:横屏(home键在右侧)
+    publish_orientation_ = 1;
+    [_smart_publisher_sdk SmartPublisherSetPublishOrientation:publish_orientation_];
     
     /*
      NSInteger gop_interval = 30;
@@ -275,7 +276,14 @@
     
     if(video_opt_ == 1)
     {
-        self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+        if(publish_orientation_ == 1)   //竖屏模式
+        {
+            self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+        }
+        else
+        {
+            self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenHeight, screenWidth)];
+        }
         
         //self.localPreview = [[UIView alloc] initWithFrame:CGRectMake(150, 100, 200, 150)];    //推流本地回显区域设置测试，默认全屏
         
@@ -899,12 +907,12 @@
 {
     if(_smart_rtsp_server_sdk != NULL && rtsp_handle_ != NULL)
     {
-        int session_numbers = 0;
+        NSInteger session_numbers = 0;
         [_smart_rtsp_server_sdk GetRtspServerClientSessionNumbers:rtsp_handle_ session_numbers:&session_numbers];
         
-        NSLog(@"RTSP服务当前客户会话数: %d", session_numbers);
+        NSLog(@"RTSP服务当前客户会话数: %d", (int)session_numbers);
         
-        NSString *stringInt = [NSString stringWithFormat:@"%d",session_numbers];
+        NSString *stringInt = [NSString stringWithFormat:@"%d", (int)session_numbers];
         
         UIAlertView *mBoxView = [[UIAlertView alloc] initWithTitle:@"RTSP服务当前客户会话数:" message:stringInt
                                                           delegate:nil cancelButtonTitle:@"确定"otherButtonTitles:nil, nil];
@@ -978,20 +986,42 @@
 
 - (void)backSettingsBtn:(UIButton *)button
 {
-    
     NSLog(@"Run into backSettingsBtn..");
         
     if (_smart_publisher_sdk != nil)
     {
         [_smart_publisher_sdk SmartPublisherStopCaputure];
         [_smart_publisher_sdk SmartPublisherUnInit];
-        _smart_publisher_sdk.delegate = nil;
+        
+        if(_smart_publisher_sdk.delegate != nil)
+        {
+            _smart_publisher_sdk.delegate = nil;
+        }
+        
         _smart_publisher_sdk = nil;
+        self.localPreview = nil;
     }
     
     //返回设置分辨率页面
     SettingView * settingView =[[SettingView alloc] init];
     [self presentViewController:settingView animated:YES completion:nil];
 }
+
+//+++针对横屏模式代码+++
+/*
+#pragma mark 强制横屏(针对present方式)
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return (UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationLandscapeLeft);
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationLandscapeRight;
+}
+*/
+//---针对横屏模式代码---
 
 @end

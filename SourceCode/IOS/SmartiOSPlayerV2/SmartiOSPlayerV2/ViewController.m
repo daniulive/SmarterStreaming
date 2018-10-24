@@ -101,9 +101,9 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     stream_height_ = 288;
     
     //拉流url可以自定义
-    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    //playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
 
-    //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
+    //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";   //公网rtsp流，TCP模式的有audio
     
     is_audio_only_ = NO;
     is_half_screen_ = YES;            //半屏播放, 只是为了效果展示
@@ -111,7 +111,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     is_fast_startup_ = YES;           //是否快速启动模式
     is_low_latency_mode_ = NO;        //是否开启极速模式
     buffer_time_ = 100;               //buffer时间
-    is_hardware_decoder_ = NO;        //默认软解码
+    is_hardware_decoder_ = NO;       //默认软解码
     is_rtsp_tcp_mode_ = NO;           //仅用于rtsp流 设置TCP传输模式 默认UDP模式
     
     is_flip_vertical_ = NO;           //垂直反转
@@ -796,6 +796,19 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         [_smart_player_sdk SmartPlayerSetPlayView:(__bridge void *)(_glView)];
     }
     
+    /*
+     _smart_player_sdk.yuvDataBlock = ^void(int width, int height, unsigned long long time_stamp,
+     unsigned char*yData, unsigned char* uData, unsigned char*vData,
+     int yStride, int uStride, int vStride)
+     {
+     NSLog(@"[PlaySideYuvCallback] width:%d, height:%d, ts:%lld, y:%d, u:%d, v:%d", width, height, time_stamp, yStride, uStride, vStride);
+     //这里接收底层回调的YUV数据
+     };
+    
+    //设置YUV数据回调输出
+    [_smart_player_sdk SmartPlayerSetYuvBlock:true];
+    */
+    
     NSInteger ret = [_smart_player_sdk SmartPlayerStart];
     
     if(ret != DANIULIVE_RETURN_OK)
@@ -836,6 +849,12 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     if (_smart_player_sdk != nil)
     {
         [_smart_player_sdk SmartPlayerUnInitPlayer];
+        
+        if (_smart_player_sdk.delegate != nil)
+        {
+            _smart_player_sdk.delegate = nil;
+        }
+        
         _smart_player_sdk = nil;
     }
     
