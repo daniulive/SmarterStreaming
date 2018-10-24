@@ -22,7 +22,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3D-Windows播放端APP下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Unity3D-Win-SmartPlayer-2018-09-04.zip)**
 
-**[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/APKUnity3D-SmartPlayer-0530.zip)**
+**[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Unity3D-SmartPlayer-2018-10-24.apk)**
 
 
 ## 模块概览 ## 
