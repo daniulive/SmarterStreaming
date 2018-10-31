@@ -16,13 +16,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
 
-**[windows/android/iOS播放器SDK(V2)Unity3D调用说明](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/06/视沃科技-大牛直播SDKV2Unity3D调用说明1.1.pdf)**
+**[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2018/10/31)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/10/视沃科技-大牛直播SDKV2Unity3D调用说明1.2.pdf)**
 
 **[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows播放端APP下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Unity3D-Win-SmartPlayer-2018-09-04.zip)**
+**[Unity3D-Windows播放端APP下载(更新于2018/09/04)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Unity3D-Win-SmartPlayer-2018-09-04.zip)**
 
-**[Unity3D-Android播放端APK下载](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Unity3D-SmartPlayer-2018-10-24.apk)**
+**[Unity3D-Android播放端APK下载(更新于2018/10/24)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Unity3D-SmartPlayer-2018-10-24.apk)**
 
 
 ## 模块概览 ## 
