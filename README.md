@@ -261,7 +261,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows/Android/iOS平台支持推送或录像过程中，**随时快照**;
 - [x] Windows/Android/iOS平台支持裁剪模式设置；
 - [x] Windows/Android/iOS平台支持**多实例推送**；
-- [x] Windows推送SDK支持**rtmp扩展H.265**推送；
+- [x] Windows推送SDK支持**rtmp h265推送**，针对摄像头采集编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头；
 - [x] Windows/Android/iOS平台直播推流SDK支持支持自建服务器(如Nginx、SRS)或CDN。
 
 对应Demo：
