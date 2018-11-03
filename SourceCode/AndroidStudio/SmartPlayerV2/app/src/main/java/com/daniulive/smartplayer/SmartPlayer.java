@@ -878,10 +878,12 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 						Log.i(TAG, "check isHardwareDecoder: "
 								+ isHardwareDecoder);
 
+						int hevcChecking = libPlayer.SetSmartPlayerVideoHevcHWDecoder(playerHandle,1);
+
 						int hwChecking = libPlayer
 								.SetSmartPlayerVideoHWDecoder(playerHandle,1);
 
-						Log.i(TAG, "[daniulive] hwChecking: " + hwChecking);
+						Log.i(TAG, "[daniulive] hwChecking: " + hwChecking + ", hevcChecking: " + hevcChecking);
 					}
 
 					libPlayer.SmartPlayerSetLowLatencyMode(playerHandle, isLowLatency ? 1

@@ -551,6 +551,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             // audioRecord_.IsMicSource(true);
 
+            // audioRecord_.IsRemoteSubmixSource(true);
+
             audioRecord_.AddCallback(audioRecordCallback_);
 
             audioRecord_.Start();
@@ -1456,6 +1458,20 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             e.printStackTrace();
             return;
         }
+
+        /*
+        List<Size> pictureSizes = parameters.getSupportedPictureSizes();
+        int length = pictureSizes.size();
+        for (int i = 0; i < length; i++) {
+            Log.e("SupportedPictureSizes","SupportedPictureSizes : " + pictureSizes.get(i).width + "x" + pictureSizes.get(i).height);
+        }
+
+        List<Size> previewSizes = parameters.getSupportedPreviewSizes();
+        length = previewSizes.size();
+        for (int i = 0; i < length; i++) {
+            Log.e("SupportedPreviewSizes","SupportedPreviewSizes : " + previewSizes.get(i).width + "x" + previewSizes.get(i).height);
+        }
+        */
 
         parameters.setPreviewSize(videoWidth, videoHeight);
         parameters.setPictureFormat(PixelFormat.JPEG);

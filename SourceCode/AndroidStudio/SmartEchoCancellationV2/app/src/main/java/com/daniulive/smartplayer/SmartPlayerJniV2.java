@@ -29,20 +29,29 @@ public class SmartPlayerJniV2 {
 	/**
 	 * Set callbackv2 event
 	 *
-	 * @param callback function
+	 * @param callbackv2 function
 	 *
 	 * @return {0} if successful
 	 */
 	public native int SetSmartPlayerEventCallbackV2(long handle, NTSmartEventCallbackV2 callbackv2);
 
 	/**
-	 * Set Video HW decoder, if support HW decoder, it will return 0
+	 * Set Video H.264 HW decoder, if support H.264 HW decoder, it will return 0
 	 *
 	 * @param isHWDecoder: 0: software decoder; 1: hardware decoder.
 	 *
 	 * @return {0} if successful
 	 */
 	public native int SetSmartPlayerVideoHWDecoder(long handle, int isHWDecoder);
+
+	/**
+	 * Set Video H.265(hevc) HW decoder, if support H.265(hevc) HW decoder, it will return 0
+	 *
+	 * @param isHevcHWDecoder: 0: software decoder; 1: hardware decoder.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetSmartPlayerVideoHevcHWDecoder(long handle, int isHevcHWDecoder);
 
 	/**
 	 * Set Surface view.
