@@ -274,33 +274,40 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **4. Windows/Android/iOS RTMP、RTSP直播播放器SDK**
 
-- [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTMP直播播放器；
-- [x] Windows/Android/iOS平台高稳定、超低延迟的跨平台RTSP直播播放器；
-- [x] Windows/Android/iOS平台完美支持**多实例**播放（如同时播放多路rtmp/rtsp流）；
-- [x] Windows/Android/iOS平台支持**rtmp扩展H.265**播放；
-- [x] Windows/Android/iOS平台支持RTSP TCP/UDP模式设置；
-- [x] Windows/Android/iOS平台支持**RTSP TCP、UDP模式自动切换**；
-- [x] Windows/Android/iOS平台支持rtsp超时时间设置；
-- [x] Windows/Android/iOS平台支持上报rtsp 401事件；
-- [x] Windows/Android/iOS平台支持buffer time设置；
-- [x] Windows/Android/iOS平台支持**首屏秒开**模式；
-- [x] Windows平台双击画面进入**全屏**模式；
-- [x] Windows/Android/iOS平台视频支持H.264(RTMP/RTSP)/H.265(RTSP)，音频支持AAC/PCMA/PCMU和SPEEX(RTMP)播放；
-- [x] Windows/Android/iOS平台支持**RTSP H.265**播放，并支持**RTSP H.265录制到MP4文件**；
-- [x] Android平台支持**H.265硬解码**播放，H.264/H.265硬解码可单独设置；
-- [x] Windows/Android/iOS平台均支持回调音视频数据(视频: H.264/YUV 音频：AAC/PCMA/PCMU/SPEEX)到上层；
-- [x] Windows/Android/iOS平台支持自定义播放布局；
-- [x] Android平台音视频多种render机制，视频支持普通Surface和GLSurface，音频支持audiotrack和opensl es；
-- [x] Windows/Android/iOS平台支持播放过程中，'实时静音/取消静音';
-- [x] Windows/Android/iOS平台支持播放端视频view实时旋转(0° 90° 180° 270°)、水平反转、垂直反转；
-- [x] Windows/Android/iOS平台支持播放过程中快速切换URL；
-- [x] [录像SDK同步使用]Windows/Android/iOS平台播放、录像完全隔离，同等配置的流，切换url依旧可以录制到同一个文件；
-- [x] Windows/Android/iOS平台播放过程中，音视频信息改变后自适应；
-- [x] Android/iOS平台支持软、硬解码，超低延迟、低资源占用播放rtsp/rtmp 1080p+；
-- [x] Windows/Android/iOS平台支持播放/录像过程中，**随时快照**；
-- [x] [Windows点播播放器]支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)；
-- [x] Windows/Android/iOS平台支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)；
-- [x] 详尽的callback状态回调机制。
+如不单独说明，系Windows、Android、iOS全平台支持。
+
+- [x] [**支持播放协议**]高稳定、超低延迟（一秒内，行业内几无效果接近的播放端）、业内首屈一指的RTMP/RTSP直播播放器SDK；
+- [x] [**多实例播放**]支持多实例播放（如同时播放多路RTMP/RTSP流）；
+- [x] [**事件回调**]支持网络状态、buffer状态等回调；
+- [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264；
+- [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
+- [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
+- [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
+- [x] [**H.265硬解**]Android支持H.265硬解；
+- [x] [**H.264/H.265硬解码**]Android支持设置Surface模式硬解和普通模式硬解码；
+- [x] [**RTSP模式设置**]支持RTSP TCP/UDP模式设置；
+- [x] [**RTSP TCP/UDP自动切换**]支持RTSP TCP、UDP模式自动切换；
+- [x] [**RTSP超时设置**]支持RTSP超时时间设置，单位：秒；
+- [x] [**RTSP 401认证处理**]支持上报RTSP 401事件，如URL携带鉴权信息，会自动处理；
+- [x] [**缓冲时间设置**]支持buffer time设置；
+- [x] [**首屏秒开**]支持首屏秒开模式；
+- [x] [**低延迟模式**]支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)；
+- [x] [**复杂网络处理**]支持断网重连等各种网络环境自动适配；
+- [x] [**快速切换URL**]支持播放过程中，快速切换其他URL，内容切换更快；
+- [x] [**音视频多种render机制**]Android平台，视频：surfaceview/OpenGL ES，音频：AudioTrack/OpenSL ES；
+- [x] [**实时静音**]支持播放过程中，实时静音/取消静音；
+- [x] [**实时快照**]支持播放过程中截取当前播放画面；
+- [x] [**渲染角度**]支持0°，90°，180°和270°四个视频画面渲染角度设置；
+- [x] [**渲染镜像**]支持水平反转、垂直反转模式设置；
+- [x] [**实时下载速度更新**]支持当前下载速度实时回调(支持设置回调时间间隔)；
+- [x] [**解码前视频数据回调**]支持H.264/H.265数据回调；
+- [x] [**解码后视频数据回调**]支持解码后YUV/RGB数据回调；
+- [x] [**解码前音频数据回调**]支持AAC/PCMA/PCMU/SPEEX数据回调；
+- [x] [**音视频自适应**]支持播放过程中，音视频信息改变后自适应；
+- [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；
+- [x] [**全屏**]Windows平台双击画面进入全屏模式；
+- [x] [**Windows本地FLV播放器**]支持本地FLV文件播放(支持获取FLV文件的duration(时长)；支持显示当前播放位置；
+- [x] [**Windows本地FLV播放器**]支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)。
 
 对应Demo：
 - [x] Windows测试程序：SmartPlayer.exe；
