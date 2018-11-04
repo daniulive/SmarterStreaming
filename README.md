@@ -233,36 +233,48 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **3. Windows/Android/iOS RTMP直播推流SDK**
 
-- [x] **Windows RTMP直播推流SDK涵盖“Windows视频采集处理SDK”功能**；
-- [x] **Windows RTMP直播推流SDK涵盖“Windows音频采集处理SDK”功能**；
-- [x] Windows RTMP直播推流SDK支持摄像头/屏幕/合成数据**实时预览**功能；
-- [x] Windows/Android/iOS平台支持多分辨率、帧率、码率、gop间隔、编码profile和编码速度设置；
-- [x] Android/iOS平台支持横竖屏推送；
-- [x] Windows/Android/iOS平台`音视频`推送、`纯音频`推送、`纯视频`推送；
-- [x] Android/iOS平台支持rtmp推送 live|record模式设置；
-- [x] [录像SDK同步使用]Windows/Android/iOS平台真正靠谱的录像、推流分离模式，**支持推流过程中随时开启录像，录像过程中，随时推流；**
-- [x] Android/iOS平台支持本地录像文件回放；
-- [x] Android/iOS平台支持采集过程中，前后摄像头切换；
-- [x] Windows/Android/iOS平台提供编码前(YUV/RGB)、编码后音视频(H.264/AAC/PCMA/PCMU)接口对接，方便AR/VR设备调用；
-- [x] Windows平台外部PCM音频数据对接接口；
-- [x] Android平台支持**输出编码后的H264/AAC数据到上层**，方便对接第三方平台(如GB28181)对接；
-- [x] iOS平台自带基础美颜功能；
-- [x] Android平台完美支持`文字水印、实时时间水印和图片水印`；
-- [x] Windows/Android/iOS平台支持`推送端实时静音/取消静音`；
-- [x] Android/iOS平台支持软、硬编码自适应；
-- [x] Android平台支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
-- [x] iOS平台支持后台推送屏幕(基于ReplayKit，需要iOS 10.0+版本)；
-- [x] android支持实时传递远端PCM数据，方便回音消除处理；
-- [x] Windows/Android/iOS平台支持推送端镜像设置；
-- [x] Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
-- [x] Windows/Android平台支持噪音抑制功能；
-- [x] Windows/Android平台支持自动增益控制；
-- [x] Windows/Android平台支持Speex推送、Speex编码质量设置；
-- [x] Windows/Android/iOS平台支持推送或录像过程中，**随时快照**;
-- [x] Windows/Android/iOS平台支持裁剪模式设置；
-- [x] Windows/Android/iOS平台支持**多实例推送**；
-- [x] Windows推送SDK支持**rtmp h265推送**，针对摄像头采集编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头；
-- [x] Windows/Android/iOS平台直播推流SDK支持支持自建服务器(如Nginx、SRS)或CDN。
+如不单独说明，系Windows、Android、iOS全平台支持。
+
+- [x] [**视频采集处理**]Windows平台涵盖“Windows视频采集处理SDK”功能；
+- [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
+- [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；
+- [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
+- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows支持RTMP扩展H.265推送）；
+- [x] [**视频格式**]Windows平台支持H.264/H.265编码，Android/iOS平台支持H.264编码；
+- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
+- [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
+- [x] [**H.264硬编码**]Android/iOS支持H.264硬编码；
+- [x] [**硬编码码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编；
+- [x] [**编码参数配置**]支持gop间隔、帧率、bit-rate、软编码profile、软编码速度设置；
+- [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；
+- [x] [**RTMP扩展H.265**]Windows推送SDK支持**RTMP扩展H.265推送**，针对摄像头采集编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头；
+- [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；
+- [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；
+- [x] [**Windows推屏**]支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
+- [x] [**移动端推屏**]Android平台支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
+- [x] [**移动端推屏**]iOS平台支持后台推送屏幕(基于ReplayKit，需要iOS 10.0+版本)；
+- [x] [**事件回调**]支持各种状态实时回调；
+- [x] [**水印**]Windows平台支持文字水印、png水印、实时遮挡，Android平台支持文字水印、png水印；
+- [x] [**RTMP推送模式**]支持RTMP推送 live|record模式设置（需服务器支持）；
+- [x] [**镜像**]Android/iOS平台支持前置摄像头实时镜像功能；
+- [x] [**前后摄像头实时切换**]Android/iOS平台支持采集过程中，前后摄像头切换；
+- [x] [**复杂网络处理**]支持断网重连等各种网络环境自动适配；
+- [x] [**动态码率**]支持根据网络情况自动调整推流码率；
+- [x] [**实时静音**]支持推送过程中，实时静音/取消静音；
+- [x] [**实时快照**]支持推流过程中，实时快照；
+- [x] [**纯音频推流**]支持仅采集音频流并发起推流功能；
+- [x] [**纯视频推流**]支持特殊场景下的纯视频推流功能；
+- [x] [**降噪**]Windows/Android平台支持环境音、手机干扰等引起的噪音降噪处理、自动增益、VAD检测；
+- [x] [**回音消除**]android支持实时传递远端PCM数据，方便回音消除处理；
+- [x] [**外部编码前视频数据对接**]支持YUV数据对接；
+- [x] [**外部编码前音频数据对接**]支持PCM对接；
+- [x] [**外部编码后视频数据对接**]支持外部H.264数据对接；
+- [x] [**外部编码后音频数据对接**]外部AAC/PCMA/PCMU/SPEEX数据对接；
+- [x] [**编码后数据输出**]Android平台支持输出编码后的H264/AAC数据到上层，方便对接第三方平台(如GB28181)对接；
+- [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；
+- [x] [**基础美颜**]iOS平台自带基础美颜功能；
+- [x] [**裁剪模式**]Android/iOS平台支持特定分辨率摄像头裁剪模式设置；
+- [x] [**服务器兼容**]支持支持自建服务器(如Nginx、SRS)或CDN。
 
 对应Demo：
 - [x] Windows测试程序：SmartPublisherDemo.exe；
@@ -285,6 +297,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
 - [x] [**H.265硬解**]Android支持H.265硬解；
 - [x] [**H.264/H.265硬解码**]Android支持设置Surface模式硬解和普通模式硬解码；
+- [x] [**硬解码自适应**]Android/iOS平台支持硬解码码自适应，如检测到硬解码不支持，自动切换到软解；
 - [x] [**RTSP模式设置**]支持RTSP TCP/UDP模式设置；
 - [x] [**RTSP TCP/UDP自动切换**]支持RTSP TCP、UDP模式自动切换；
 - [x] [**RTSP超时设置**]支持RTSP超时时间设置，单位：秒；
