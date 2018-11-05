@@ -376,13 +376,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **7. Windows导播SDK**
 
-- [x] 支持拉取RTSP流；
-- [x] 支持拉取RTMP流；
-- [x] 支持本地采集到屏幕或摄像头数据，和远程拉取得RTSP或RTMP流做合成、混音输出；
-- [x] 支持导播过程中，随时切断某一路音视频或音频；
-- [x] 支持音频混音（同时选择“采集麦克风”+“采集扬声器”）；
-- [x] 多路流合成一路流后，推送到RTMP服务器；
-- [x] 多路合成后的流，支持本地录像、快照。
+- [x] [**拉流**]支持拉取RTSP流；
+- [x] [**拉流**]支持拉取RTMP流；
+- [x] [**混音合成**]支持本地采集到屏幕或摄像头数据，和远程拉取得RTSP或RTMP流做合成、混音输出；
+- [x] [**导播**]支持导播过程中，随时切断某一路音视频或音频；
+- [x] [**混音**]支持音频混音（同时选择“采集麦克风”+“采集扬声器”）；
+- [x] [**合成**]多路流合成一路流后，推送到RTMP服务器；
+- [x] [**扩展录像快照**]多路合成后的流，支持本地录像、快照。
 
 对应Demo：
 - [x] 测试程序：SmartMixStreamDemo.exe；
@@ -391,16 +391,16 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **8. Windows/Android/iOS录像SDK**
 
-- [x] 支持拉取RTSP流录像；
-- [x] 支持拉取RTMP流录像；
-- [x] 支持推送端同步录像；
-- [x] 大牛直播录像SDK不同于普通录像接口，更智能，和推送、播放、转发、内置轻量级RTSP服务SDK功能完全分离，支持随时录像；
-- [x] 在录像过程中，支持切换不同URL，如两个URL配置一致，则可以录制到同一个MP4文件，如不一致，可自动分割到下一个文件；
-- [x] 支持设置单个录像文件大小、录像路径等，并支持纯音频、纯视频、音视频录制模式；
-- [x] 支持音频(PCMU/PCMA,Speex等)转AAC后再录像；
-- [x] 支持**RTSP/RTMP H.265**录制到MP4文件；
-- [x] Windows推送SDK支持H265录像;
-- [x] 从开始录像，到录像结束均有event callback上来，网络堵塞、音视频同步均做了非常友好的处理。
+- [x] [**拉流**]支持拉取RTSP流录像；
+- [x] [**拉流**]支持拉取RTMP流录像；
+- [x] [**推流端录像**]支持推送端同步录像；
+- [x] [**逻辑分离**]大牛直播录像SDK不同于普通录像接口，更智能，和推送、播放、转发、内置轻量级RTSP服务SDK功能完全分离，支持随时录像；
+- [x] [**url切换**]在录像过程中，支持切换不同URL，如两个URL配置一致，则可以录制到同一个MP4文件，如不一致，可自动分割到下一个文件；
+- [x] [**参数设置**]支持设置单个录像文件大小、录像路径等，并支持纯音频、纯视频、音视频录制模式；
+- [x] [**音频转码**]支持音频(PCMU/PCMA,Speex等)转AAC后再录像；
+- [x] [**265支持**]支持**RTSP/RTMP H.265**录制到MP4文件；
+- [x] [**推送端265录像**]Windows推送SDK支持H265录像;
+- [x] [**事件回调**]从开始录像，到录像结束均有event callback上来，网络堵塞、音视频同步均做了非常友好的处理。
 
 对应Demo：
 - [x] Windows测试程序：SmartPlayer.exe；
@@ -417,11 +417,11 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **9. Windows/Android/iOS SEI扩展数据发送/接收SDK**
 
-- [x] 支持内置RTSP服务SDK携带SEI扩展信息(H.264)；
-- [x] 支持RTMP推送SDK携带SEI扩展信息(H.264)；
-- [x] 持发送自定义用户数据(如自定义utf8字符串)；
-- [x] 支持发送二进制数据；
-- [x] RTSP/RTMP直播播放端SDK支持utf8文本、二进制、和原SEI数据解析。
+- [x] [**RTSP SEI**]支持内置RTSP服务SDK携带SEI扩展信息(H.264)；
+- [x] [**RTMP SEI**]支持RTMP推送SDK携带SEI扩展信息(H.264)；
+- [x] [**自定义数据**]持发送自定义用户数据(如自定义utf8字符串)；
+- [x] [**二进制数据**]支持发送二进制数据；
+- [x] [**播放端解析**]RTSP/RTMP直播播放端SDK支持utf8文本、二进制、和原SEI数据解析。
 
 对应Demo：
 - [x] Windows测试程序：SmartPlayer.exe；
