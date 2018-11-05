@@ -332,16 +332,18 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **5. Windows/Android/iOS内置轻量级RTSP服务SDK**
 
-- [x] 支持Windows/Android/iOS平台RTMP直播SDK除推送RTMP外的所有常规功能；
-- [x] 音频编码：AAC；
-- [x] 视频编码：H.264；
-- [x] 内置服务协议：RTSP；
-- [x] 支持RTSP端口设置；
-- [x] 支持RTSP鉴权用户名、密码设置；
-- [x] 支持获取当前RTSP服务会话连接数；
-- [x] 支持同时创建多个内置RTSP服务；
-- [x] Windows内置rtsp server支持发布H.265视频（64位库）；
- -[x] 支持设置后的rtsp url通过event回调到上层。
+如不单独说明，系Windows、Android、iOS全平台支持。
+
+- [x] [**基础功能**]支持Windows/Android/iOS平台RTMP直播SDK除推送RTMP外的所有常规功能；
+- [x] [**音频格式**]AAC；
+- [x] [**视频格式**]H.264、H.265；
+- [x] [**协议类型**]RTSP；
+- [x] [**端口设置**]支持RTSP端口设置；
+- [x] [**鉴权设置**]支持RTSP鉴权用户名、密码设置；
+- [x] [**获取session连接数**]支持获取当前RTSP服务会话连接数；
+- [x] [**多服务支持**]支持同时创建多个内置RTSP服务；
+- [x] [**H.265支持**]Windows内置rtsp server支持发布H.265视频（64位库）；
+- [x] [**RTSP url回调**]支持设置后的rtsp url通过event回调到上层。
 
 对应Demo：
 - [x] Windows测试程序：SmartPublisherDemo.exe；
@@ -353,14 +355,16 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 **6. Windows/Android/iOS转发SDK**
 
-- [x] [拉流]支持拉取RTSP流；
-- [x] [拉流]支持拉取RTMP流；
-- [x] [预览]支持拉取到的RTMP/RTSP随时本地预览、关闭预览；
-- [x] [拉流音频调节]支持拉取的RTMP/RTSP流静音；
-- [x] [拉流音频转码]支持拉取的RTMP/RTSP的PCMA/PCMU/SPEEX音频格式**转AAC**后再转发到RTMP服务器；
-- [x] [url切换]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
-- [x] [转发]超低延迟转发拉取的rtsp/rtmp流到rtmp server；
-- [x] [HEVC]业内为数不多**支持RTSP/RTMP H.265转RTMP推送**的SDK(提供配套RTMP扩展H.265服务器)；
+如不单独说明，系Windows、Android、iOS全平台支持。
+
+- [x] [**拉流**]支持拉取RTSP流；
+- [x] [**拉流**]支持拉取RTMP流；
+- [x] [**预览**]支持拉取到的RTMP/RTSP随时本地预览、关闭预览；
+- [x] [**拉流音频调节**]支持拉取的RTMP/RTSP流静音；
+- [x] [**音频转码**]支持拉取的RTMP/RTSP的PCMA/PCMU/SPEEX音频格式**转AAC**后再转发到RTMP服务器；
+- [x] [**url切换**]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
+- [x] [**转发**]超低延迟转发拉取的rtsp/rtmp流到rtmp server；
+- [x] [**H.265支持**]**业内首家支持RTSP/RTMP H.265转RTMP推送**的SDK(提供配套RTMP扩展H.265服务器)；
 
 对应Demo：
 - [x] Windows测试程序：SmartStreamRelayDemo.exe；
