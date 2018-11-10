@@ -27,7 +27,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 模块概览 ## 
 
-<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/10/daniulive_sdk.png" alt="直播SDK模块" />
+<img src="http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/daniulive.png" alt="直播SDK模块" />
 
 **Windows端**
 
@@ -108,17 +108,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播SDK相关demo本地下载**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2018/11/01)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/windows-推送-播放版-2018-11-01.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/windows-推送-播放版-2018-11-09.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2018/11/01)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/windows-推送-播放版64位-2018-11-01.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/windows-推送-播放版64位-2018-11-09.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2018/11/01)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CPP-Demo-2018-11-01.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CPP-Demo-2018-11-09.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2018/11/01)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CPP-Demo-2018-11-01.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-PlayerSDK-CPP-Demo-2018-11-09.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2018/11/01)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-11-01.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-11-09.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2018/11/01)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-RelaySDK-CPP-Demo-2018-11-01.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-RelaySDK-CPP-Demo-2018-11-09.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2018/10/26)](http://daniulive.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CSharp-Demo-2018-10-26.zip)
 
@@ -358,6 +358,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 **6. Windows内网RTSP网关SDK**
 
 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入。
+简单来说：内置轻量级RTSP服务SDK和内置RTSP网关SDK的区别在于**数据来源不同**，内置轻量级RTSP服务SDK数据来源于**终端设备自带摄像头数据/屏幕数据/外部编码前后数据**，内置RTSP网关SDK的数据源是**RTSP/RTMP流**数据。
 
 - [x] [**音频格式**]AAC；
 - [x] [**视频格式**]H.264、H.265；
