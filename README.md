@@ -372,11 +372,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**RTSP url回调**]支持设置后的rtsp url通过event回调到上层；
 
 对应Demo：
-- [x] Windows测试程序：SmartPublisherDemo.exe；
-- [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；
-- [x] Windows C#工程：WIN-PublisherSDK-CSharp-Demo；
-- [x] Android工程：SmartPublisherV2；
-- [x] iOS工程：SmartiOSPublisherV2。
+- [x] Windows测试程序：SmartStreamRelayDemo.exe；
+- [x] Windows C++工程：WIN-RelaySDK-CPP-Demo；
+- [x] Windows C#工程：WIN-RelaySDK-CSharp-Demo。
 ---
 
 **7. Windows/Android/iOS RTMP/RTSP多路流媒体转RTMP推送SDK**
