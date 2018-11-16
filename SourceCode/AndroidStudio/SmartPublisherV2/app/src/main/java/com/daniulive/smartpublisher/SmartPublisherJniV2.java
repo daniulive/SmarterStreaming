@@ -69,6 +69,15 @@ public class SmartPublisherJniV2 {
 	  * @return {0} if successful
 	  */
    public native int SetSmartPublisherVideoHWEncoder(long handle, int kbps);
+
+	/**
+	 * Set Video H.265(hevc) hardware encoder, if support H.265(hevc) hardware encoder, it will return 0
+	 *
+	 * @param kbps: the kbps of different resolution(25 fps).
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetSmartPublisherVideoHevcHWEncoder(long handle, int kbps);
     
     /**
      * Set Text water-mark
@@ -110,7 +119,22 @@ public class SmartPublisherJniV2 {
      * @return {0} if successful
      */
     public native int SmartPublisherSetPictureWatermark(long handle, String picPath, int waterPostion, int picWidth, int picHeight, int xPading, int yPading);
-    
+
+	/**
+	 * Set software encode vbr mode(软编码可变码率).
+	 *
+	 * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+	 *
+	 * is_enable_vbr: if 0: NOT enable vbr mode, 1: enable vbr
+	 *
+	 * video_quality: vbr video quality, range with (1,50), default 23
+	 *
+	 * vbr_max_kbitrate: vbr max encode bit-rate(kbps)
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetSwVBRMode(long handle, int is_enable_vbr, int video_quality, int vbr_max_kbitrate);
+
     /**
      * Set gop interval.
      *

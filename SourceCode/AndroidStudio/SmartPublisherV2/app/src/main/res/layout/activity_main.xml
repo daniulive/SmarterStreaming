@@ -135,23 +135,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">"
 
+                <Spinner
+                    android:id="@+id/videoEncodeTypeSelector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
                 <Button
-                    android:id="@+id/button_hwencoder"
+                    android:id="@+id/button_bitratecontrol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="当前软编码" />
+                    android:text="当前可变码率" />
 
                 <Button
                     android:id="@+id/button_input_push_url"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="输入推流URL" />
-
-                <Button
-                    android:id="@+id/button_push_user_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="发送文本" />
             </LinearLayout>
 
             <LinearLayout
@@ -176,6 +175,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="实时快照" />
+
+                <Button
+                    android:id="@+id/button_push_user_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发送文本" />
 
             </LinearLayout>
 

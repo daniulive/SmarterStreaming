@@ -43,7 +43,6 @@ public class MainActivity extends Activity {
     private Spinner recorderSelector;
 
     private Button btnRecorderMgr;
-    private Button btnEncoderType;
     private Button btnInputPushUrl;
 
     private Button btnPermissionCheck;
@@ -52,7 +51,19 @@ public class MainActivity extends Activity {
     private Button btnRtspPublisher;    //发布、停止RTSP流按钮
 
     private boolean is_need_local_recorder = false; //默认不录像
-    private boolean is_hardware_encoder = false;    //默认软编码
+
+    /* 推送类型选择
+     * 0: 视频软编码(H.264)
+     * 1: 视频硬编码(H.264)
+     * 2: 视频硬编码(H.265)
+     * */
+    private int VIDEO_ENCODE_TYPE_SW_H264 = 0;
+    private int VIDEO_ENCODE_TYPE_HW_H264 = 1;
+    private int VIDEO_ENCODE_TYPE_HW_H265 = 2;
+
+    private int video_encode_type = VIDEO_ENCODE_TYPE_SW_H264;  //默认软编码
+
+    private Spinner videoEncodeTypeSelector;
 
     private boolean isPushing = false;
     private boolean isRTSPPublisherRunning = false;
@@ -156,8 +167,34 @@ public class MainActivity extends Activity {
         btnRecorderMgr = (Button) findViewById(R.id.button_recoder_manage);
         btnRecorderMgr.setOnClickListener(new ButtonRecorderMangerListener());
 
-        btnEncoderType = (Button) findViewById(R.id.button_hwencoder);
-        btnEncoderType.setOnClickListener(new ButtonHardwareEncoderListener());
+        //视频编码类型选择++++++++++
+        videoEncodeTypeSelector = (Spinner) findViewById(R.id.videoEncodeTypeSelector);
+        final String[] videoEncodeTypes = new String[]{"软编(H.264)", "硬编(H.264)", "硬编(H.265)"};
+        ArrayAdapter<String> adapterVideoEncodeType = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, videoEncodeTypes);
+        adapterVideoEncodeType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        videoEncodeTypeSelector.setAdapter(adapterVideoEncodeType);
+
+        videoEncodeTypeSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+
+                if (isRTSPPublisherRunning || isPushing ) {
+                    Log.e(TAG, "Could not switch video encoder type during publishing..");
+                    return;
+                }
+
+                SwitchVideoEncodeType(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //视频编码类型选择----------
 
         btnInputPushUrl = (Button) findViewById(R.id.button_input_push_url);
         btnInputPushUrl.setOnClickListener(new ButtonInputPushUrlListener());
@@ -218,7 +255,7 @@ public class MainActivity extends Activity {
                     intent_bgd_service.putExtra("PUBLISHURL", publishURL);
 
                     intent_bgd_service.putExtra("RECORDER", is_need_local_recorder);    //是否录像
-                    intent_bgd_service.putExtra("HWENCODER", is_hardware_encoder);      //软编还是硬编
+                    intent_bgd_service.putExtra("VIDEOENCODETYPE", video_encode_type);      //视频编码类型选择
 
                     push_type = PUSH_TYPE_RTMP;  //RTMP
                     intent_bgd_service.putExtra("PUSHTYPE", push_type);
@@ -230,7 +267,7 @@ public class MainActivity extends Activity {
                     recorderSelector.setEnabled(false);
                     btnRecorderMgr.setEnabled(false);
                     btnInputPushUrl.setEnabled(false);
-                    btnEncoderType.setEnabled(false);
+                    videoEncodeTypeSelector.setEnabled(false);
 
                     btnRtspPublisher.setEnabled(false);
                     isPushing = true;
@@ -244,7 +281,7 @@ public class MainActivity extends Activity {
                     recorderSelector.setEnabled(true);
                     btnRecorderMgr.setEnabled(true);
                     btnInputPushUrl.setEnabled(true);
-                    btnEncoderType.setEnabled(true);
+                    videoEncodeTypeSelector.setEnabled(true);
 
                     btnPublisher.setEnabled(false);
                     isPushing = false;
@@ -287,14 +324,21 @@ public class MainActivity extends Activity {
         }
     }
 
-    class ButtonHardwareEncoderListener implements OnClickListener {
-        public void onClick(View v) {
-            is_hardware_encoder = !is_hardware_encoder;
+    void SwitchVideoEncodeType(int position) {
+        Log.i(TAG, "Current encode type: " + position);
 
-            if (is_hardware_encoder)
-                btnEncoderType.setText("当前硬编码");
-            else
-                btnEncoderType.setText("当前软编码");
+        switch (position) {
+            case 0:
+                video_encode_type = VIDEO_ENCODE_TYPE_SW_H264;
+                break;
+            case 1:
+                video_encode_type = VIDEO_ENCODE_TYPE_HW_H264;
+                break;
+            case 2:
+                video_encode_type = VIDEO_ENCODE_TYPE_HW_H265;
+                break;
+            default:
+                video_encode_type = VIDEO_ENCODE_TYPE_SW_H264;
         }
     }
 
@@ -371,7 +415,7 @@ public class MainActivity extends Activity {
                 intent_bgd_service.putExtra("SCREENRESOLUTION", screenResolution);
 
                 intent_bgd_service.putExtra("RECORDER", is_need_local_recorder);    //是否录像
-                intent_bgd_service.putExtra("HWENCODER", is_hardware_encoder);      //软编还是硬编
+                intent_bgd_service.putExtra("VIDEOENCODETYPE", video_encode_type);      //视频编码类型选择
 
                 push_type = PUSH_TYPE_RTSP;  //RTSP
                 intent_bgd_service.putExtra("PUSHTYPE", push_type);
@@ -382,7 +426,7 @@ public class MainActivity extends Activity {
                 screenResolutionSelector.setEnabled(false);
                 recorderSelector.setEnabled(false);
                 btnRecorderMgr.setEnabled(false);
-                btnEncoderType.setEnabled(false);
+                videoEncodeTypeSelector.setEnabled(false);
 
                 btnPublisher.setEnabled(false);
                 isRTSPPublisherRunning = true;
@@ -396,7 +440,7 @@ public class MainActivity extends Activity {
 
                 recorderSelector.setEnabled(true);
                 btnRecorderMgr.setEnabled(true);
-                btnEncoderType.setEnabled(true);
+                videoEncodeTypeSelector.setEnabled(true);
 
                 btnRtspPublisher.setEnabled(false);
                 isRTSPPublisherRunning = false;

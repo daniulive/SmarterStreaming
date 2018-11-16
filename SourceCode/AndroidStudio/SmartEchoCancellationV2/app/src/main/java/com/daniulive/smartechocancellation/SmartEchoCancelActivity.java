@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
 import android.graphics.PixelFormat;
@@ -126,7 +125,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		/* 推流分辨率选择
 		 * 0: 640*480
 		 * 1: 320*240
-		 * 2: 176*144
+		 * 2: 864*480
 		 * 3: 1280*720
 		 * */
 		private Spinner pushResolutionSelector;
@@ -148,8 +147,18 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		private Button  btnPushSpeex;
 		private Button  btnPushMute;
 		private Button  btnPushMirror;
-		private Button  btnPushEchoCancelDelay; 
-		private Button	btnPushHWencoder;
+		private Button  btnPushEchoCancelDelay;
+
+		/* 推送类型选择
+		 * 0: 视频软编码(H.264)
+		 * 1: 视频硬编码(H.264)
+		 * 2: 视频硬编码(H.265)
+		 * */
+		private Spinner videoEncodeTypeSelector;
+		private int videoEncodeType = 0;
+
+		private Button btnBitrateControl;    //编码码率类型选择：可变码率或固定码率，默认可变码率(软编码)
+
 		private ImageView imgPushSwitchCamera;
 		private Button btnPushInputPushUrl;
 		private Button btnPushStartStop;
@@ -180,7 +189,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 
 		private int pushCurCameraIndex = -1;
 		private int pushVideoWidth     = 640;
-		private int pushVideoHight     = 480;
+		private int pushVideoHeight = 480;
 		private int pushFrameCount     = 0;
 		
 		private int echoCancelDelay    = 0; //100ms
@@ -193,7 +202,8 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		private boolean is_push_speex = false;
 		private boolean is_push_mute = false;
 		private boolean is_push_mirror = false;
-		private boolean is_push_hardware_encoder = false;
+		private int sw_video_encoder_speed = 3;	//软编码编码速度
+		private boolean is_sw_vbr_mode = true;
 	    
 	    private Context curContext = null; 
 	    
@@ -351,7 +361,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 	        //end
 	        
 	        pushResolutionSelector = (Spinner)findViewById(R.id.push_resolution_selctor);
-	        final String []resolutionSel = new String[]{"高分辨率", "中分辨率", "低分辨率", "超高分辨率"};
+	        final String []resolutionSel = new String[]{"680*480", "320*240", "864*480", "1280*720"};
 	        ArrayAdapter<String> adapterResolution = new ArrayAdapter<String>(this,
 	                android.R.layout.simple_spinner_item, resolutionSel);
 	        adapterResolution.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -468,9 +478,40 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 	        
 	        btnPushEchoCancelDelay = (Button)findViewById(R.id.btn_push_echo_cancel_delay);
 	        btnPushEchoCancelDelay.setOnClickListener(new ButtonPushEchoCancelDelayListener());
-	        
-	        btnPushHWencoder = (Button)findViewById(R.id.btn_push_hwencoder);
-	        btnPushHWencoder.setOnClickListener(new ButtonPushHardwareEncoderListener());
+
+		//视频编码类型选择++++++++++
+		videoEncodeTypeSelector = (Spinner) findViewById(R.id.videoEncodeTypeSelector);
+		final String[] videoEncodeTypes = new String[]{"软编(H.264)", "硬编(H.264)", "硬编(H.265)"};
+		ArrayAdapter<String> adapterVideoEncodeType = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, videoEncodeTypes);
+		adapterVideoEncodeType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		videoEncodeTypeSelector.setAdapter(adapterVideoEncodeType);
+
+		videoEncodeTypeSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+									   int position, long id) {
+
+				if (isPushStart) {
+					Log.e(TAG, "Could not switch video encoder type during publishing..");
+					return;
+				}
+
+				videoEncodeType = position;
+
+				Log.i(TAG, "[视频编码类型]Currently choosing: " + videoEncodeTypes[position] + ", videoEncodeType: " + videoEncodeType);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+		//视频编码类型选择----------
+
+		btnBitrateControl = (Button) findViewById(R.id.button_bitratecontrol);
+		btnBitrateControl.setOnClickListener(new ButtonBitrateControlListener());
 	        
 	        textPushCurURL = (TextView)findViewById(R.id.txt_push_cur_url);
 	        textPushCurURL.setText(printPushText);
@@ -611,7 +652,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     	if ( url.equals("hks") )
     	{
     		btnPlaybackStartStopPlayback.setEnabled(true);
-        	playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        	playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
         	
         	Log.i(TAG, "Input url:" + playbackUrl);
         	 
@@ -984,14 +1025,14 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
             	    	  libPlayer.SmartPlayerSetMute(playerHandle, isPlaybackMute?1:0);
             	      }
             	      
-            	      if( isPlaybackHardwareDecoder )
-            	      {
-            	    	  Log.i(PLAY_TAG, "check isHardwareDecoder: " + isPlaybackHardwareDecoder);
-            	    	  
-                	      int hwChecking = libPlayer.SetSmartPlayerVideoHWDecoder(playerHandle, isPlaybackHardwareDecoder?1:0);
-  						
-    					  Log.i(PLAY_TAG, "[daniulive] hwChecking: " + hwChecking);
-            	      }
+					  if (isPlaybackHardwareDecoder) {
+						  int isSupportHevcHwDecoder = libPlayer.SetSmartPlayerVideoHevcHWDecoder(playerHandle,1);
+
+						  int isSupportH264HwDecoder = libPlayer
+								  .SetSmartPlayerVideoHWDecoder(playerHandle,1);
+
+						  Log.i(TAG, "isSupportH264HwDecoder: " + isSupportH264HwDecoder + ", isSupportHevcHwDecoder: " + isSupportHevcHwDecoder);
+					  }
 
 	              	  if( playbackUrl == null )
 	              	  {
@@ -1123,23 +1164,28 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     	switch(position) {
         case 0:
         	pushVideoWidth = 640;
-    		pushVideoHight = 480;
+    		pushVideoHeight = 480;
+			sw_video_encoder_speed = 3;
             break;
         case 1:
         	pushVideoWidth = 320;
-        	pushVideoHight = 240;
+        	pushVideoHeight = 240;
+			sw_video_encoder_speed = 5;
             break;
         case 2:
-        	pushVideoWidth = 176;
-        	pushVideoHight = 144;
+        	pushVideoWidth = 864;
+        	pushVideoHeight = 480;
+			sw_video_encoder_speed = 3;
             break;
         case 3:
         	pushVideoWidth = 1280;
-        	pushVideoHight = 720;
+        	pushVideoHeight = 720;
+			sw_video_encoder_speed = 2;
             break;
         default:
         	pushVideoWidth = 640;
-        	pushVideoHight = 480;
+        	pushVideoHeight = 480;
+			sw_video_encoder_speed = 3;
     	}
     	   	
     	pushCamera.stopPreview();   
@@ -1387,19 +1433,17 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     		PopPushSettingEchoCancelDelayDialog();
     	}
     }
-    
-    class ButtonPushHardwareEncoderListener  implements OnClickListener
-    {
-    	public void onClick(View v)
-    	{
-    		is_push_hardware_encoder = !is_push_hardware_encoder;
-    		
-    		if ( is_push_hardware_encoder )
-    			btnPushHWencoder.setText("当前硬解码");
-    		else
-    			btnPushHWencoder.setText("当前软解码");
-    	}
-    }
+
+	class ButtonBitrateControlListener implements OnClickListener {
+		public void onClick(View v) {
+			is_sw_vbr_mode = !is_sw_vbr_mode;
+
+			if (is_sw_vbr_mode)
+				btnBitrateControl.setText("当前可变码率");
+			else
+				btnBitrateControl.setText("当前固定码率");
+		}
+	}
 
 	class EventHandePublisherV2 implements NTSmartEventCallbackV2
 	{
@@ -1525,7 +1569,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
         		stopPubliser();
         		btnPushStartStop.setText(" 开始推流 ");
         		btnPushRecoderMgr.setEnabled(true);
-        		btnPushHWencoder.setEnabled(true);
+				videoEncodeTypeSelector.setEnabled(true);
         		
         		btnPushNoiseSuppression.setEnabled(true);
         		btnPushAGC.setEnabled(true);
@@ -1557,7 +1601,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			    textPushCurURL = (TextView)findViewById(R.id.txt_push_cur_url);
 			    textPushCurURL.setText(printPushText);
 
-			    Log.i(PUSH_TAG, "videoWidth: "+ pushVideoWidth + " videoHight: " + pushVideoHight + " pushType:" + pushType);
+			    Log.i(PUSH_TAG, "videoWidth: "+ pushVideoWidth + " videoHight: " + pushVideoHeight + " pushType:" + pushType);
 			    		
 			    int audio_opt = 1;
 			    int video_opt = 1;
@@ -1572,7 +1616,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			    }
 
 				publisherHandle = libPublisher.SmartPublisherOpen(curContext, audio_opt, video_opt,
-						pushVideoWidth, pushVideoHight);
+						pushVideoWidth, pushVideoHeight);
 
 				if ( publisherHandle == 0  )
 				{
@@ -1581,19 +1625,45 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 
 				ConfigPushRecorderFuntion();
 
-				if( is_push_hardware_encoder )
-			    {
-				    int hwHWKbps = setHardwareEncoderKbps(pushVideoWidth, pushVideoHight);
-				    
-			        Log.i(TAG, "hwHWKbps: " + hwHWKbps); 
-				    
-					int isSupportHWEncoder = libPublisher.SetSmartPublisherVideoHWEncoder(publisherHandle, hwHWKbps);
-			        
-					if(isSupportHWEncoder == 0)
-					{
-				        Log.i(TAG, "Great, it supports hardware encoder!"); 
+				if(videoEncodeType == 1)
+				{
+					int h264HWKbps = setHardwareEncoderKbps(true, pushVideoWidth,
+							pushVideoHeight);
+
+					Log.i(TAG, "h264HWKbps: " + h264HWKbps);
+
+					int isSupportH264HWEncoder = libPublisher
+							.SetSmartPublisherVideoHWEncoder(publisherHandle, h264HWKbps);
+
+					if (isSupportH264HWEncoder == 0) {
+						Log.i(TAG, "Great, it supports h.264 hardware encoder!");
 					}
-			    }
+				}
+				else if (videoEncodeType == 2)
+				{
+					int hevcHWKbps = setHardwareEncoderKbps(false, pushVideoWidth,
+							pushVideoHeight);
+
+					Log.i(TAG, "hevcHWKbps: " + hevcHWKbps);
+
+					int isSupportHevcHWEncoder = libPublisher
+							.SetSmartPublisherVideoHevcHWEncoder(publisherHandle, hevcHWKbps);
+
+					if (isSupportHevcHWEncoder == 0) {
+						Log.i(TAG, "Great, it supports hevc hardware encoder!");
+					}
+				}
+
+				if(is_sw_vbr_mode)
+				{
+					int is_enable_vbr = 1;
+					int video_quality = CalVideoQuality(pushVideoWidth,
+							pushVideoHeight, true);
+					int vbr_max_bitrate = CalVbrMaxKBitRate(pushVideoWidth,
+							pushVideoHeight);
+
+					libPublisher.SmartPublisherSetSwVBRMode(publisherHandle, is_enable_vbr, video_quality, vbr_max_bitrate);
+				}
 
 				libPublisher.SetSmartPublisherEventCallbackV2(publisherHandle, new EventHandePublisherV2());
 			    
@@ -1654,11 +1724,12 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 				libPublisher.SmartPublisherSetSWVideoEncoderProfile(publisherHandle, push_sw_video_encoder_profile);
 			    
 			    //libPublisher.SetRtmpPublishingType(0);
-			    
-				
-			    //libPublisher.SmartPublisherSetGopInterval(40);
-			    
-			    //libPublisher.SmartPublisherSetFPS(15);
+
+			    //libPublisher.SmartPublisherSetGopInterval(publisherHandle, 18*3);
+
+			    //libPublisher.SmartPublisherSetFPS(publisherHandle, 18);
+
+			    libPublisher.SmartPublisherSetSWVideoEncoderSpeed(publisherHandle, sw_video_encoder_speed);
 			    			        
 			    //libPublisher.SmartPublisherSetSWVideoBitRate(600, 1200);
 			    
@@ -1680,7 +1751,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
             	else
             	{
             		btnPushRecoderMgr.setEnabled(false);
-            		btnPushHWencoder.setEnabled(false);
+					videoEncodeTypeSelector.setEnabled(false);
             		
             		btnPushNoiseSuppression.setEnabled(false);
             		btnPushAGC.setEnabled(false);
@@ -1796,7 +1867,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			return;
 		}
 			
-		parameters.setPreviewSize(pushVideoWidth, pushVideoHight);
+		parameters.setPreviewSize(pushVideoWidth, pushVideoHeight);
 		parameters.setPictureFormat(PixelFormat.JPEG); 
 		parameters.setPreviewFormat(PixelFormat.YCbCr_420_SP); 
 		
@@ -1806,7 +1877,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
         
 		pushCamera.setParameters(parameters); 
 		
-		int bufferSize = (((pushVideoWidth|0xf)+1) * pushVideoHight * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat())) / 8;
+		int bufferSize = (((pushVideoWidth|0xf)+1) * pushVideoHeight * ImageFormat.getBitsPerPixel(parameters.getPreviewFormat())) / 8;
 		
 		pushCamera.addCallbackBuffer(new byte[bufferSize]);
 		
@@ -2008,32 +2079,141 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     	
         camera.setDisplayOrientation (result);  
     }
-    
-    private int setHardwareEncoderKbps(int width, int height)
-    {
-    	int hwEncoderKpbs = 0;
-    	
-    	switch(width) {
-        case 176:
-        	hwEncoderKpbs = 300;
-            break;
-        case 320:
-        	hwEncoderKpbs = 500;
-            break;
-        case 640:
-        	hwEncoderKpbs = 1000;
-            break;
-        case 1280:
-        	hwEncoderKpbs = 1700;
-            break;
-        default:
-        	hwEncoderKpbs = 1000;
-    	}
-    	
-    	return hwEncoderKpbs;
-    }
-    
-    
+
+	//设置H.264/H.265硬编码码率(按照25帧计算)
+	private int setHardwareEncoderKbps(boolean isH264, int width, int height)
+	{
+		int kbit_rate = 2000;
+		int area = width * height;
+
+		if (area <= (320 * 300)) {
+			kbit_rate = isH264?350:280;
+		} else if (area <= (370 * 320)) {
+			kbit_rate = isH264?470:400;
+		} else if (area <= (640 * 360)) {
+			kbit_rate = isH264?850:650;
+		} else if (area <= (640 * 480)) {
+			kbit_rate = isH264?1000:800;
+		} else if (area <= (800 * 600)) {
+			kbit_rate = isH264?1050:950;
+		} else if (area <= (900 * 700)) {
+			kbit_rate = isH264?1450:1100;
+		} else if (area <= (1280 * 720)) {
+			kbit_rate = isH264?2000:1500;
+		} else if (area <= (1366 * 768)) {
+			kbit_rate = isH264?2200:1900;
+		} else if (area <= (1600 * 900)) {
+			kbit_rate = isH264?2700:2300;
+		} else if (area <= (1600 * 1050)) {
+			kbit_rate =isH264?3000:2500;
+		} else if (area <= (1920 * 1080)) {
+			kbit_rate = isH264?4500:2800;
+		} else {
+			kbit_rate = isH264?4000:3000;
+		}
+		return kbit_rate;
+	}
+
+	private int CalVideoQuality(int w, int h, boolean is_h264)
+	{
+		int area = w*h;
+
+		int quality = is_h264 ? 23 : 28;
+
+		if ( area <= (320 * 240) )
+		{
+			quality = is_h264? 23 : 27;
+		}
+		else if ( area <= (640 * 360) )
+		{
+			quality = is_h264? 25 : 28;
+		}
+		else if ( area <= (640 * 480) )
+		{
+			quality = is_h264? 26 : 28;
+		}
+		else if ( area <= (960 * 600) )
+		{
+			quality = is_h264? 26 : 28;
+		}
+		else if ( area <= (1280 * 720) )
+		{
+			quality = is_h264? 27 : 29;
+		}
+		else if ( area <= (1600 * 900) )
+		{
+			quality = is_h264 ? 28 : 30;
+		}
+		else if ( area <= (1920 * 1080) )
+		{
+			quality = is_h264 ? 29 : 31;
+		}
+		else
+		{
+			quality = is_h264 ? 30 : 32;
+		}
+
+		return quality;
+	}
+
+	private int CalVbrMaxKBitRate(int w, int h)
+	{
+		int max_kbit_rate = 2000;
+
+		int area = w*h;
+
+		if (area <= (320 * 300))
+		{
+			max_kbit_rate = 320;
+		}
+		else if (area <= (360 * 320))
+		{
+			max_kbit_rate = 400;
+		}
+		else if (area <= (640 * 360))
+		{
+			max_kbit_rate = 600;
+		}
+		else if (area <= (640 * 480))
+		{
+			max_kbit_rate = 700;
+		}
+		else if (area <= (800 * 600))
+		{
+			max_kbit_rate = 800;
+		}
+		else if (area <= (900 * 700))
+		{
+			max_kbit_rate = 1000;
+		}
+		else if (area <= (1280 * 720))
+		{
+			max_kbit_rate = 1400;
+		}
+		else if (area <= (1366 * 768))
+		{
+			max_kbit_rate = 1700;
+		}
+		else if (area <= (1600 * 900))
+		{
+			max_kbit_rate = 2400;
+		}
+		else if (area <= (1600 * 1050))
+		{
+			max_kbit_rate = 2600;
+		}
+		else if (area <= (1920 * 1080))
+		{
+			max_kbit_rate = 2900;
+		}
+		else
+		{
+			max_kbit_rate = 3500;
+		}
+
+		return max_kbit_rate;
+	}
+
     public static final String bytesToHexString(byte[] buffer)
     {   
         StringBuffer sb = new StringBuffer(buffer.length);   

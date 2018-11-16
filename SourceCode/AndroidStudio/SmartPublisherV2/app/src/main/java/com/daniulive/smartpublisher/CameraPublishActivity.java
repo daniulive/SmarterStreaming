@@ -5,7 +5,7 @@
  * Github: https://github.com/daniulive/SmarterStreaming
  *
  * Created by DaniuLive on 2015/09/20.
- * Copyright © 2014~2018 DaniuLive. All rights reserved.
+ * Copyright (C) 2014~2018 DaniuLive. All rights reserved.
  */
 
 package com.daniulive.smartpublisher;
@@ -92,14 +92,15 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
      * 3: 不加水印
      * */
     private Spinner watermarkSelctor;
-    private int watemarkType = 0;
+    private int watemarkType = 3;
 
     /* 推流分辨率选择
      * 0: 640*480
      * 1: 320*240
-     * 2: 176*144
+     * 2: 720*480
      * 3: 1280*720
      * */
+    //分辨率为演示方便设置4个档位，可与系统枚举到的分辨率比较后再设置，以防系统不支持
     private Spinner resolutionSelector;
 
     /* video软编码profile设置
@@ -119,7 +120,15 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
     private Spinner swVideoEncoderSpeedSelector;
 
-    private Button btnHWencoder;    //软硬编码设置按钮
+    /* 推送类型选择
+     * 0: 视频软编码(H.264)
+     * 1: 视频硬编码(H.264)
+     * 2: 视频硬编码(H.265)
+     * */
+    private Spinner videoEncodeTypeSelector;
+    private int videoEncodeType = 0;
+
+    private Button btnBitrateControl;    //编码码率类型选择：可变码率或固定码率，默认可变码率(软编码)
     private ImageView imgSwitchCamera;    //前后摄像头切换按钮
     private Button btnInputPushUrl;    //推送的RTMP url设置按钮
     private Button btnPushUserData;    //用户扩展数据发送按钮
@@ -176,8 +185,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private boolean is_speex = false;
     private boolean is_mute = false;
     private boolean is_mirror = false;
-    private int sw_video_encoder_speed = 6;
-    private boolean is_hardware_encoder = false;
+    private int sw_video_encoder_speed = 3;
+    private boolean is_sw_vbr_mode = true;
 
     private String imageSavePath;
 
@@ -286,6 +295,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
         watermarkSelctor.setAdapter(adapterWatermark);
 
+        watermarkSelctor.setSelection(3,true);
+        watemarkType = 3;   //默认不加水印
+
         watermarkSelctor.setOnItemSelectedListener(new OnItemSelectedListener() {
 
             @Override
@@ -310,7 +322,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
         //采集分辨率选择++++++++++
         resolutionSelector = (Spinner) findViewById(R.id.resolutionSelctor);
-        final String[] resolutionSel = new String[]{"高分辨率", "中分辨率", "低分辨率", "超高分辨率"};
+        final String[] resolutionSel = new String[]{"680*480", "320*240", "864*480", "1280*720"};
         ArrayAdapter<String> adapterResolution = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, resolutionSel);
         adapterResolution.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -419,8 +431,39 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         });
         //video软编码speed设置----------
 
-        btnHWencoder = (Button) findViewById(R.id.button_hwencoder);
-        btnHWencoder.setOnClickListener(new ButtonHardwareEncoderListener());
+        //视频编码类型选择++++++++++
+        videoEncodeTypeSelector = (Spinner) findViewById(R.id.videoEncodeTypeSelector);
+        final String[] videoEncodeTypes = new String[]{"软编(H.264)", "硬编(H.264)", "硬编(H.265)"};
+        ArrayAdapter<String> adapterVideoEncodeType = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, videoEncodeTypes);
+        adapterVideoEncodeType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        videoEncodeTypeSelector.setAdapter(adapterVideoEncodeType);
+
+        videoEncodeTypeSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+
+                if (isRTSPPublisherRunning || isPushing || isRecording) {
+                    Log.e(TAG, "Could not switch video encoder type during publishing..");
+                    return;
+                }
+
+                videoEncodeType = position;
+
+                Log.i(TAG, "[视频编码类型]Currently choosing: " + videoEncodeTypes[position] + ", videoEncodeType: " + videoEncodeType);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //视频编码类型选择----------
+
+        btnBitrateControl = (Button) findViewById(R.id.button_bitratecontrol);
+        btnBitrateControl.setOnClickListener(new ButtonBitrateControlListener());
 
         textCurURL = (TextView) findViewById(R.id.txtCurURL);
         textCurURL.setText(printText);
@@ -499,23 +542,30 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             case 0:
                 videoWidth = 640;
                 videoHeight = 480;
+                sw_video_encoder_speed = 3;
                 break;
             case 1:
                 videoWidth = 320;
                 videoHeight = 240;
+                sw_video_encoder_speed = 5;
                 break;
             case 2:
-                videoWidth = 176;
-                videoHeight = 144;
+                videoWidth = 864;
+                videoHeight = 480;
+                sw_video_encoder_speed = 3;
                 break;
             case 3:
                 videoWidth = 1280;
                 videoHeight = 720;
+                sw_video_encoder_speed = 2;
                 break;
             default:
                 videoWidth = 640;
                 videoHeight = 480;
+                sw_video_encoder_speed = 3;
         }
+
+        swVideoEncoderSpeedSelector.setSelection(swVideoEncoderSpeedSelector.getCount() - sw_video_encoder_speed,true);
 
         mCamera.stopPreview();
         initCamera(mSurfaceHolder);
@@ -549,7 +599,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             audioRecordCallback_ = new NTAudioRecordV2CallbackImpl();
 
-            // audioRecord_.IsMicSource(true);
+            // audioRecord_.IsMicSource(true);      //如采集音频声音过小，可以打开此选项
 
             // audioRecord_.IsRemoteSubmixSource(true);
 
@@ -596,11 +646,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             } else {
                 if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0)) {
                     Log.e(TAG, "SmartPublisherSetRecorder failed.");
-                    return;
                 }
             }
         }
-
     }
 
     class ButtonRecorderMangerListener implements OnClickListener {
@@ -679,17 +727,18 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
-    class ButtonHardwareEncoderListener implements OnClickListener {
+    class ButtonBitrateControlListener implements OnClickListener {
         public void onClick(View v) {
-            is_hardware_encoder = !is_hardware_encoder;
+            is_sw_vbr_mode = !is_sw_vbr_mode;
 
-            if (is_hardware_encoder)
-                btnHWencoder.setText("当前硬解码");
+            if (is_sw_vbr_mode)
+                btnBitrateControl.setText("当前可变码率");
             else
-                btnHWencoder.setText("当前软解码");
+                btnBitrateControl.setText("当前固定码率");
         }
     }
 
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -853,11 +902,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
     private void ConfigControlEnable(boolean isEnable) {
         btnRecorderMgr.setEnabled(isEnable);
-        btnHWencoder.setEnabled(isEnable);
-
+        videoEncodeTypeSelector.setEnabled(isEnable);
+        btnBitrateControl.setEnabled(isEnable);
         btnNoiseSuppression.setEnabled(isEnable);
         btnAGC.setEnabled(isEnable);
         btnSpeex.setEnabled(isEnable);
+        btnInputPushUrl.setEnabled(isEnable);
     }
 
     private void InitAndSetConfig() {
@@ -883,17 +933,40 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
         Log.i(TAG, "publisherHandle=" + publisherHandle);
 
-        if (is_hardware_encoder) {
-            int hwHWKbps = setHardwareEncoderKbps(videoWidth, videoHeight);
+        if(videoEncodeType == 1)
+        {
+            int h264HWKbps = setHardwareEncoderKbps(true, videoWidth, videoHeight);
 
-            Log.i(TAG, "hwHWKbps: " + hwHWKbps);
+            Log.i(TAG, "h264HWKbps: " + h264HWKbps);
 
-            int isSupportHWEncoder = libPublisher
-                    .SetSmartPublisherVideoHWEncoder(publisherHandle, hwHWKbps);
+            int isSupportH264HWEncoder = libPublisher
+                    .SetSmartPublisherVideoHWEncoder(publisherHandle, h264HWKbps);
 
-            if (isSupportHWEncoder == 0) {
-                Log.i(TAG, "Great, it supports hardware encoder!");
+            if (isSupportH264HWEncoder == 0) {
+                Log.i(TAG, "Great, it supports h.264 hardware encoder!");
             }
+        }
+        else if (videoEncodeType == 2)
+        {
+            int hevcHWKbps = setHardwareEncoderKbps(false, videoWidth, videoHeight);
+
+            Log.i(TAG, "hevcHWKbps: " + hevcHWKbps);
+
+            int isSupportHevcHWEncoder = libPublisher
+                    .SetSmartPublisherVideoHevcHWEncoder(publisherHandle, hevcHWKbps);
+
+            if (isSupportHevcHWEncoder == 0) {
+                Log.i(TAG, "Great, it supports hevc hardware encoder!");
+            }
+        }
+
+        if(is_sw_vbr_mode)	//H.264 software encoder
+        {
+            int is_enable_vbr = 1;
+            int video_quality = CalVideoQuality(videoWidth, videoHeight, true);
+            int vbr_max_bitrate = CalVbrMaxKBitRate(videoWidth, videoHeight);
+
+            libPublisher.SmartPublisherSetSwVBRMode(publisherHandle, is_enable_vbr, video_quality, vbr_max_bitrate);
         }
 
         libPublisher.SetSmartPublisherEventCallbackV2(publisherHandle, new EventHandeV2());
@@ -1699,29 +1772,138 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         camera.setDisplayOrientation(result);
     }
 
-    //这里硬编码码率是按照25帧来计算的
-    private int setHardwareEncoderKbps(int width, int height) {
-        int hwEncoderKpbs = 0;
-
+    //设置H.264/H.265硬编码码率(按照25帧计算)
+    private int setHardwareEncoderKbps(boolean isH264, int width, int height)
+    {
+        int kbit_rate = 2000;
         int area = width * height;
 
-        if (area < (200 * 180)) {
-            hwEncoderKpbs = 300;
-        } else if (area < (400 * 320)) {
-            hwEncoderKpbs = 600;
-        } else if (area < (640 * 500)) {
-            hwEncoderKpbs = 1200;
-        } else if (area < (960 * 600)) {
-            hwEncoderKpbs = 1500;
-        } else if (area < (1300 * 720)) {
-            hwEncoderKpbs = 2000;
-        } else if (area < (2000 * 1080)) {
-            hwEncoderKpbs = 3000;
+        if (area <= (320 * 300)) {
+            kbit_rate = isH264?350:280;
+        } else if (area <= (370 * 320)) {
+            kbit_rate = isH264?470:400;
+        } else if (area <= (640 * 360)) {
+            kbit_rate = isH264?850:650;
+        } else if (area <= (640 * 480)) {
+            kbit_rate = isH264?1000:800;
+        } else if (area <= (800 * 600)) {
+            kbit_rate = isH264?1050:950;
+        } else if (area <= (900 * 700)) {
+            kbit_rate = isH264?1450:1100;
+        } else if (area <= (1280 * 720)) {
+            kbit_rate = isH264?2000:1500;
+        } else if (area <= (1366 * 768)) {
+            kbit_rate = isH264?2200:1900;
+        } else if (area <= (1600 * 900)) {
+            kbit_rate = isH264?2700:2300;
+        } else if (area <= (1600 * 1050)) {
+            kbit_rate =isH264?3000:2500;
+        } else if (area <= (1920 * 1080)) {
+            kbit_rate = isH264?4500:2800;
         } else {
-            hwEncoderKpbs = 4000;
+            kbit_rate = isH264?4000:3000;
+        }
+        return kbit_rate;
+    }
+
+    private int CalVideoQuality(int w, int h, boolean is_h264)
+    {
+        int area = w*h;
+
+        int quality = is_h264 ? 23 : 28;
+
+        if ( area <= (320 * 240) )
+        {
+            quality = is_h264? 23 : 27;
+        }
+        else if ( area <= (640 * 360) )
+        {
+            quality = is_h264? 25 : 28;
+        }
+        else if ( area <= (640 * 480) )
+        {
+            quality = is_h264? 26 : 28;
+        }
+        else if ( area <= (960 * 600) )
+        {
+            quality = is_h264? 26 : 28;
+        }
+        else if ( area <= (1280 * 720) )
+        {
+            quality = is_h264? 27 : 29;
+        }
+        else if ( area <= (1600 * 900) )
+        {
+            quality = is_h264 ? 28 : 30;
+        }
+        else if ( area <= (1920 * 1080) )
+        {
+            quality = is_h264 ? 29 : 31;
+        }
+        else
+        {
+            quality = is_h264 ? 30 : 32;
         }
 
-        return hwEncoderKpbs;
+        return quality;
+    }
+
+    private int CalVbrMaxKBitRate(int w, int h)
+    {
+        int max_kbit_rate = 2000;
+
+        int area = w*h;
+
+        if (area <= (320 * 300))
+        {
+            max_kbit_rate = 320;
+        }
+        else if (area <= (360 * 320))
+        {
+            max_kbit_rate = 400;
+        }
+        else if (area <= (640 * 360))
+        {
+            max_kbit_rate = 600;
+        }
+        else if (area <= (640 * 480))
+        {
+            max_kbit_rate = 700;
+        }
+        else if (area <= (800 * 600))
+        {
+            max_kbit_rate = 800;
+        }
+        else if (area <= (900 * 700))
+        {
+            max_kbit_rate = 1000;
+        }
+        else if (area <= (1280 * 720))
+        {
+            max_kbit_rate = 1400;
+        }
+        else if (area <= (1366 * 768))
+        {
+            max_kbit_rate = 1700;
+        }
+        else if (area <= (1600 * 900))
+        {
+            max_kbit_rate = 2400;
+        }
+        else if (area <= (1600 * 1050))
+        {
+            max_kbit_rate = 2600;
+        }
+        else if (area <= (1920 * 1080))
+        {
+            max_kbit_rate = 2900;
+        }
+        else
+        {
+            max_kbit_rate = 3500;
+        }
+
+        return max_kbit_rate;
     }
 
     /**

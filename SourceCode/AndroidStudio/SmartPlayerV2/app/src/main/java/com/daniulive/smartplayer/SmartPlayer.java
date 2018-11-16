@@ -91,7 +91,7 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 
 	private boolean is_flip_horizontal = false;
 
-	private String switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+	private String switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
 
 	private String imageSavePath;
 
@@ -178,7 +178,7 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 			return;
 
 		if (id.equals("hks")) {
-			playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+			playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
 			return;
 		}
 
@@ -875,15 +875,12 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 					}
 
 					if (isHardwareDecoder) {
-						Log.i(TAG, "check isHardwareDecoder: "
-								+ isHardwareDecoder);
+						int isSupportHevcHwDecoder = libPlayer.SetSmartPlayerVideoHevcHWDecoder(playerHandle,1);
 
-						int hevcChecking = libPlayer.SetSmartPlayerVideoHevcHWDecoder(playerHandle,1);
-
-						int hwChecking = libPlayer
+						int isSupportH264HwDecoder = libPlayer
 								.SetSmartPlayerVideoHWDecoder(playerHandle,1);
 
-						Log.i(TAG, "[daniulive] hwChecking: " + hwChecking + ", hevcChecking: " + hevcChecking);
+						Log.i(TAG, "isSupportH264HwDecoder: " + isSupportH264HwDecoder + ", isSupportHevcHwDecoder: " + isSupportHevcHwDecoder);
 					}
 
 					libPlayer.SmartPlayerSetLowLatencyMode(playerHandle, isLowLatency ? 1
@@ -1646,7 +1643,7 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 		// It only used when playback RTSP stream..
 		// libPlayer.SmartPlayerSetRTSPTcpMode(playerHandle, 1);
 
-		//playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+		//playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
 
 		//playbackUrl = "rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
 

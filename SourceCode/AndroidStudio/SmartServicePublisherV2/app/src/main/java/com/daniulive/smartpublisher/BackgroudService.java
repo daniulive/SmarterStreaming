@@ -5,7 +5,7 @@
  * Github: https://github.com/daniulive/SmarterStreaming
  * 
  * Created by DaniuLive on 2016/12/12.
- * Copyright © 2014~2018 DaniuLive. All rights reserved.
+ * Copyright (C) 2014~2018 DaniuLive. All rights reserved.
  */
 
 package com.daniulive.smartpublisher;
@@ -61,7 +61,7 @@ public class BackgroudService extends Service implements
     NTAudioRecordV2Callback audioRecordCallback_ = null;
 
     private long publisherHandle = 0;    //推送handle
-    private long rtsp_handle_ = 0;    //RTSP handle
+    private long rtsp_handle_ = 0;       //RTSP handle
 
     private SmartPublisherJniV2 libPublisher = null;
 
@@ -88,11 +88,18 @@ public class BackgroudService extends Service implements
     private boolean isPushing = false;    //RTMP推送状态
     private boolean isRecording = false;    //录像状态
     private boolean isRTSPServiceRunning = false;    //RTSP服务状态
-    private boolean isRTSPPublisherRunning = false; //RTSP流发布状态
+    private boolean isRTSPPublisherRunning = false;  //RTSP流发布状态
 
     private int sw_video_encoder_profile = 1;    //default with baseline profile
 
-    private boolean is_hardware_encoder = false;
+    private boolean is_sw_vbr_mode = true;          //默认软编码可变码率
+
+    /* 推送类型选择
+     * 0: 视频软编码(H.264)
+     * 1: 视频硬编码(H.264)
+     * 2: 视频硬编码(H.265)
+     * */
+    private int videoEncodeType = 0;
 
     private Thread post_data_thread = null;
 
@@ -139,7 +146,7 @@ public class BackgroudService extends Service implements
 
         screenResolution = intent.getExtras().getInt("SCREENRESOLUTION");
 
-        is_hardware_encoder = intent.getExtras().getBoolean("HWENCODER");
+        videoEncodeType = intent.getExtras().getInt("VIDEOENCODETYPE");
 
         push_type = intent.getExtras().getInt("PUSHTYPE");
 
@@ -721,6 +728,8 @@ public class BackgroudService extends Service implements
 
             audioRecordCallback_ = new NTAudioRecordV2CallbackImpl();
 
+            //audioRecord_.IsMicSource(true);		//如音频采集声音过小，建议开启
+
             audioRecord_.AddCallback(audioRecordCallback_);
 
             audioRecord_.Start();
@@ -735,42 +744,138 @@ public class BackgroudService extends Service implements
         }
     }
 
-    //这里硬编码码率是按照25帧来计算的
-    private int setHardwareEncoderKbps(int width, int height) {
-        int hwEncoderKpbs = 0;
-
+    //设置H.264/H.265硬编码码率(按照25帧计算)
+    private int setHardwareEncoderKbps(boolean isH264, int width, int height)
+    {
+        int kbit_rate = 2000;
         int area = width * height;
 
-        if ( area < (200*180) )
-        {
-            hwEncoderKpbs = 400;
+        if (area <= (320 * 300)) {
+            kbit_rate = isH264?450:380;
+        } else if (area <= (370 * 320)) {
+            kbit_rate = isH264?570:500;
+        } else if (area <= (640 * 360)) {
+            kbit_rate = isH264?850:750;
+        } else if (area <= (640 * 480)) {
+            kbit_rate = isH264?1000:900;
+        } else if (area <= (800 * 600)) {
+            kbit_rate = isH264?1150:1050;
+        } else if (area <= (1000 * 700)) {
+            kbit_rate = isH264?1450:1200;
+        } else if (area <= (1280 * 720)) {
+            kbit_rate = isH264?2000:1600;
+        } else if (area <= (1366 * 768)) {
+            kbit_rate = isH264?2200:1900;
+        } else if (area <= (1600 * 900)) {
+            kbit_rate = isH264?2700:2300;
+        } else if (area <= (1600 * 1050)) {
+            kbit_rate =isH264?3000:2500;
+        } else if (area <= (1920 * 1080)) {
+            kbit_rate = isH264?4500:2800;
+        } else {
+            kbit_rate = isH264?4000:3000;
         }
-        else if (area < (400*320) )
+        return kbit_rate;
+    }
+
+    private int CalVideoQuality(int w, int h, boolean is_h264)
+    {
+        int area = w*h;
+
+        int quality = is_h264 ? 23 : 28;
+
+        if ( area <= (320 * 240) )
         {
-            hwEncoderKpbs = 800;
+            quality = is_h264? 23 : 27;
         }
-        else if (area < (640*500) )
+        else if ( area <= (640 * 360) )
         {
-            hwEncoderKpbs = 1500;
+            quality = is_h264? 25 : 28;
         }
-        else if (area < (960*600))
+        else if ( area <= (640 * 480) )
         {
-            hwEncoderKpbs = 2000;
+            quality = is_h264? 26 : 28;
         }
-        else if (area < (1300*720) )
+        else if ( area <= (960 * 600) )
         {
-            hwEncoderKpbs = 2500;
+            quality = is_h264? 26 : 28;
         }
-        else if ( area < (2000*1080) )
+        else if ( area <= (1280 * 720) )
         {
-            hwEncoderKpbs = 3000;
+            quality = is_h264? 27 : 29;
+        }
+        else if ( area <= (1600 * 900) )
+        {
+            quality = is_h264 ? 28 : 30;
+        }
+        else if ( area <= (1920 * 1080) )
+        {
+            quality = is_h264 ? 29 : 31;
         }
         else
         {
-            hwEncoderKpbs = 4000;
+            quality = is_h264 ? 30 : 32;
         }
 
-        return hwEncoderKpbs;
+        return quality;
+    }
+
+    private int CalVbrMaxKBitRate(int w, int h)
+    {
+        int max_kbit_rate = 2000;
+
+        int area = w*h;
+
+        if (area <= (320 * 300))
+        {
+            max_kbit_rate = 320;
+        }
+        else if (area <= (360 * 320))
+        {
+            max_kbit_rate = 400;
+        }
+        else if (area <= (640 * 360))
+        {
+            max_kbit_rate = 600;
+        }
+        else if (area <= (640 * 480))
+        {
+            max_kbit_rate = 700;
+        }
+        else if (area <= (800 * 600))
+        {
+            max_kbit_rate = 800;
+        }
+        else if (area <= (900 * 700))
+        {
+            max_kbit_rate = 1000;
+        }
+        else if (area <= (1280 * 720))
+        {
+            max_kbit_rate = 1400;
+        }
+        else if (area <= (1366 * 768))
+        {
+            max_kbit_rate = 1700;
+        }
+        else if (area <= (1600 * 900))
+        {
+            max_kbit_rate = 2400;
+        }
+        else if (area <= (1600 * 1050))
+        {
+            max_kbit_rate = 2600;
+        }
+        else if (area <= (1920 * 1080))
+        {
+            max_kbit_rate = 2900;
+        }
+        else
+        {
+            max_kbit_rate = 3500;
+        }
+
+        return max_kbit_rate;
     }
 
     // Configure recorder related function.
@@ -840,18 +945,44 @@ public class BackgroudService extends Service implements
 
         libPublisher.SetSmartPublisherEventCallbackV2(publisherHandle, new EventHandeV2());
 
-        if (is_hardware_encoder) {
-            int kbps = setHardwareEncoderKbps(sreenWindowWidth,
+        if(videoEncodeType == 1)
+        {
+            int h264HWKbps = setHardwareEncoderKbps(true, sreenWindowWidth,
                     screenWindowHeight);
 
-            Log.i(TAG, "hwHWKbps: " + kbps);
+            Log.i(TAG, "h264HWKbps: " + h264HWKbps);
 
-            int isSupportHWEncoder = libPublisher
-                    .SetSmartPublisherVideoHWEncoder(publisherHandle, kbps);
+            int isSupportH264HWEncoder = libPublisher
+                    .SetSmartPublisherVideoHWEncoder(publisherHandle, h264HWKbps);
 
-            if (isSupportHWEncoder == 0) {
-                Log.i(TAG, "Great, it supports hardware encoder!");
+            if (isSupportH264HWEncoder == 0) {
+                Log.i(TAG, "Great, it supports h.264 hardware encoder!");
             }
+        }
+        else if (videoEncodeType == 2)
+        {
+            int hevcHWKbps = setHardwareEncoderKbps(false, sreenWindowWidth,
+                    screenWindowHeight);
+
+            Log.i(TAG, "hevcHWKbps: " + hevcHWKbps);
+
+            int isSupportHevcHWEncoder = libPublisher
+                    .SetSmartPublisherVideoHevcHWEncoder(publisherHandle, hevcHWKbps);
+
+            if (isSupportHevcHWEncoder == 0) {
+                Log.i(TAG, "Great, it supports hevc hardware encoder!");
+            }
+        }
+
+        if(is_sw_vbr_mode)
+        {
+            int is_enable_vbr = 1;
+            int video_quality = CalVideoQuality(sreenWindowWidth,
+                    screenWindowHeight, true);
+            int vbr_max_bitrate = CalVbrMaxKBitRate(sreenWindowWidth,
+                    screenWindowHeight);
+
+            libPublisher.SmartPublisherSetSwVBRMode(publisherHandle, is_enable_vbr, video_quality, vbr_max_bitrate);
         }
 
         //水印可以参考SmartPublisher工程

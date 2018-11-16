@@ -165,11 +165,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >"
 
-            <Button
-            android:id="@+id/btn_push_hwencoder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 当前软编码" />
+           <Spinner
+               android:id="@+id/videoEncodeTypeSelector"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content" />
+
+           <Button
+               android:id="@+id/button_bitratecontrol"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="当前可变码率" />
 
              <Button
                 android:id="@+id/btn_push_input_push_url"
@@ -177,13 +182,20 @@
                 android:layout_height="wrap_content"
                 android:text="输入推流URL" />
 
-            <Button
-                android:id="@+id/btn_push_start_stop"
+           </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 开始推流 " />
-                      
-           </LinearLayout>
+                android:orientation="horizontal" >"
+
+                <Button
+                    android:id="@+id/btn_push_start_stop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 开始推流 " />
+
+            </LinearLayout>
            
            <TextView
                 android:id="@+id/txt_push_cur_url"
