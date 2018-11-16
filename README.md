@@ -61,7 +61,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Android端**
 
-- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK;
+- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码);
 
 - [x] [**RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的rtmp/rtsp超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
 
@@ -71,7 +71,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
 
-- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持；
+- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持(支持H.265)；
 
 - [x] [**互动SDK**] Android一对一互动(可android与windows/android/iOS互动)；
 
@@ -242,14 +242,15 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
 - [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows支持RTMP扩展H.265推送）；
-- [x] [**视频格式**]Windows平台支持H.264/H.265编码，Android/iOS平台支持H.264编码；
+- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
-- [x] [**H.264硬编码**]Android/iOS支持H.264硬编码；
+- [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
+- [x] [**H.265硬编码**]Android平台支持H.265硬编码；
 - [x] [**硬编码码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编；
 - [x] [**编码参数配置**]支持gop间隔、帧率、bit-rate、软编码profile、软编码速度设置；
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；
-- [x] [**RTMP扩展H.265**]Windows推送SDK支持**RTMP扩展H.265推送**，针对摄像头采集编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头；
+- [x] [**RTMP扩展H.265**]Windows/Android推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android支持H.265硬编码；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；
 - [x] [**Windows推屏**]支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
