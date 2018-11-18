@@ -241,7 +241,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
 - [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
-- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows支持RTMP扩展H.265推送）；
+- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android支持RTMP扩展H.265推送）；
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
