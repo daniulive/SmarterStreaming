@@ -426,7 +426,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**参数设置**]支持设置单个录像文件大小、录像路径等，并支持纯音频、纯视频、音视频录制模式；
 - [x] [**音频转码**]支持音频(PCMU/PCMA,Speex等)转AAC后再录像；
 - [x] [**265支持**]支持**RTSP/RTMP H.265**录制到MP4文件；
-- [x] [**推送端265录像**]Windows推送SDK支持H265录像;
+- [x] [**推送端265录像**]Windows/Android推送端SDK支持H265录像;
 - [x] [**事件回调**]从开始录像，到录像结束均有event callback上来，网络堵塞、音视频同步均做了非常友好的处理。
 
 对应Demo：
