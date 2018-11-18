@@ -248,7 +248,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
 - [x] [**H.265硬编码**]Android平台支持H.265硬编码；
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；
-- [x] [**编码参数配置**]支持gop间隔、帧率、bit-rate、软编码profile、软编码速度设置；
+- [x] [**软硬编码参数配置**]支持gop间隔、帧率、bit-rate设置；
+- [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；
 - [x] [**RTMP扩展H.265**]Windows/Android推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android支持H.265硬编码；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；
