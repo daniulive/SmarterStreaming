@@ -11,6 +11,7 @@
 #import "ViewController.h"
 
 #import "RecorderView.h"
+#import "SmartRTSPSeverSDK.h"
 
 @interface ViewController ()
 
@@ -20,10 +21,12 @@
 {
     SmartPlayerSDK  *_smart_player_sdk;
     SmartPublisherSDK *_smart_publisher_sdk;    //推流SDK API
+    SmartRTSPServerSDK *_smart_rtsp_server_sdk; //内置轻量级RTSP服务SDK API
     
     UIView          * _glView;
     
     Boolean         is_inited_player_;
+    Boolean         is_inited_publisher_;
     
     NSString        *playback_url_;             //拉流url
     NSString        *relay_url_;                //转发url
@@ -51,6 +54,9 @@
     UIButton        *playbackButton;            //录像按钮
     UIButton        *recButton;                 //录像按钮
     UIButton        *pullStreamButton;          //拉流按钮
+    UIButton        *rtspServiceButton;         //内置服务按钮, 启动/停止服务
+    UIButton        *rtspPublisherButton;       //内置rtsp服务功能
+    UIButton        *getRtspSvrSessionNumButton;//获取rtsp server当前的客户会话数
     UIButton        *quitButton;                //退出按钮
     
     NSString        *copyRights;
@@ -67,6 +73,10 @@
     Boolean         is_playing_;                 //是否播放状态
     Boolean         is_recording_;               //是否录像状态
     Boolean         is_pulling_;                 //是否pull状态
+    Boolean         isRTSPServiceRunning;        //RTSP服务状态
+    Boolean         isRTSPPublisherRunning;      //RTSP流发布状态
+    Boolean         is_stream_data_callback_started;    //拉流数据状态回调
+    void            *rtsp_handle_;
 }
 
 - (void)viewDidLoad {
@@ -90,10 +100,14 @@
     is_mute_ = NO;
     
     is_inited_player_ = NO;
+    is_inited_publisher_ = NO;
     
     is_playing_ = NO;
     is_recording_ = NO;
     is_pulling_ = NO;
+    isRTSPServiceRunning = NO;    //RTSP服务状态
+    isRTSPPublisherRunning = NO;  //RTSP流发布状态
+    is_stream_data_callback_started = NO;
     
     //用户可自定义显示view区域
     if ( is_half_screen_ )
@@ -112,7 +126,7 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //拉流url可以自定义
-    //playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
     //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream1";
     
     //转发url可以自定义
@@ -121,6 +135,8 @@
     NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
     
     relay_url_ = [ baseURL stringByAppendingString:strNumber];
+    
+    //relay_url_ = @"rtmp://player.daniulive.com:1935/hls/stream999";
     
     CGFloat lineWidth = playbackButton.frame.size.width * 0.12f;
     
@@ -156,7 +172,7 @@
     
     //静音按钮
     muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    muteButton.frame = CGRectMake(45, screen_height_/2 + 100, 120, 80);
+    muteButton.frame = CGRectMake(45, screen_height_/2 + 90, 120, 80);
     muteButton.center = CGPointMake(self.view.frame.size.width / 6, muteButton.frame.origin.y + muteButton.frame.size.height / 2);
     
     muteButton.layer.cornerRadius = muteButton.frame.size.width / 2;
@@ -169,9 +185,26 @@
     [muteButton addTarget:self action:@selector(MuteBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:muteButton];
     
+    //获取rtsp server当前的客户会话数
+    getRtspSvrSessionNumButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    getRtspSvrSessionNumButton.frame = CGRectMake(45, screen_height_/2 + 90, 180, 60);
+    getRtspSvrSessionNumButton.center = CGPointMake(self.view.frame.size.width / 2, getRtspSvrSessionNumButton.frame.origin.y + getRtspSvrSessionNumButton.frame.size.height / 2);
+    
+    getRtspSvrSessionNumButton.layer.cornerRadius = getRtspSvrSessionNumButton.frame.size.width / 2;
+    getRtspSvrSessionNumButton.layer.borderColor = [UIColor greenColor].CGColor;
+    getRtspSvrSessionNumButton.layer.borderWidth = lineWidth;
+    
+    [getRtspSvrSessionNumButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [getRtspSvrSessionNumButton setTitle:@"获取RTSP会话数" forState:UIControlStateNormal];
+    
+    [getRtspSvrSessionNumButton addTarget:self action:@selector(getRtspSvrSessionNumBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:getRtspSvrSessionNumButton];
+    
+    getRtspSvrSessionNumButton.hidden = YES;
+    
     //录像按钮
     recButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    recButton.frame =  CGRectMake(45, screen_height_/2 + 150, 120, 80);
+    recButton.frame =  CGRectMake(45, screen_height_/2 + 130, 120, 80);
     recButton.center = CGPointMake(self.view.frame.size.width / 6, recButton.frame.origin.y + recButton.frame.size.height / 2);
     
     recButton.layer.cornerRadius = recButton.frame.size.width / 2;
@@ -186,7 +219,7 @@
     
     //拉流按钮
     pullStreamButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    pullStreamButton.frame = CGRectMake(45, screen_height_/2 + 200, 120, 80);
+    pullStreamButton.frame = CGRectMake(45, screen_height_/2 + 170, 120, 80);
     pullStreamButton.center = CGPointMake(self.view.frame.size.width / 6, pullStreamButton.frame.origin.y + pullStreamButton.frame.size.height / 2);
     
     pullStreamButton.layer.cornerRadius = pullStreamButton.frame.size.width / 2;
@@ -199,9 +232,50 @@
     [pullStreamButton addTarget:self action:@selector(pullStreamBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pullStreamButton];
     
+    //启动、停止RTSP服务
+    rtspServiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rtspServiceButton.frame = CGRectMake(45, screen_height_/2 + 220, 120, 60);
+    rtspServiceButton.center = CGPointMake(self.view.frame.size.width / 6, rtspServiceButton.frame.origin.y + rtspServiceButton.frame.size.height / 2);
+    
+    rtspServiceButton.layer.cornerRadius = rtspServiceButton.frame.size.width / 2;
+    rtspServiceButton.layer.borderColor = [UIColor greenColor].CGColor;
+    rtspServiceButton.layer.borderWidth = lineWidth;
+    
+    [rtspServiceButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [rtspServiceButton setTitle:@"启动RTSP服务" forState:UIControlStateNormal];
+    
+    rtspServiceButton.selected = NO;
+    [rtspServiceButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [rtspServiceButton setTitle:@"停止RTSP服务" forState:UIControlStateSelected];
+    
+    [rtspServiceButton addTarget:self action:@selector(rtspServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rtspServiceButton];
+    
+    //rtsp内置服务器
+    rtspPublisherButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rtspPublisherButton.frame = CGRectMake(45, screen_height_/2 + 220, 120, 60);
+    rtspPublisherButton.center = CGPointMake(self.view.frame.size.width / 2, rtspPublisherButton.frame.origin.y + rtspPublisherButton.frame.size.height / 2);
+    
+    rtspPublisherButton.layer.cornerRadius = rtspPublisherButton.frame.size.width / 2;
+    rtspPublisherButton.layer.borderColor = [UIColor greenColor].CGColor;
+    rtspPublisherButton.layer.borderWidth = lineWidth;
+    
+    [rtspPublisherButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [rtspPublisherButton setTitle:@"发布RTSP流" forState:UIControlStateNormal];
+    
+    rtspPublisherButton.selected = NO;
+    [rtspPublisherButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [rtspPublisherButton setTitle:@"停止RTSP流" forState:UIControlStateSelected];
+    
+    [rtspPublisherButton addTarget:self action:@selector(rtspPublisherBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rtspPublisherButton];
+    
+    //启动RTSP服务后，才可以发布RTSP流
+    rtspPublisherButton.hidden = YES;
+    
     //退出按钮
     quitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    quitButton.frame = CGRectMake(45, screen_height_/2 + 250, 120, 80);
+    quitButton.frame = CGRectMake(45, screen_height_/2 + 260, 120, 80);
     quitButton.center = CGPointMake(self.view.frame.size.width / 6, quitButton.frame.origin.y + quitButton.frame.size.height / 2);
     
     quitButton.layer.cornerRadius = quitButton.frame.size.width / 2;
@@ -298,7 +372,7 @@
         
         if ( is_switch_url_ )
         {
-            switchUrl = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+            switchUrl = @"rtmp://live.hkstv.hk.lxdns.com/live/hks2";
             //switchUrl = @"rtmp://player.daniulive.com:1935/hls/stream2";
             [switchUrlButton setTitle:@"切换URL2" forState:UIControlStateNormal];
         }
@@ -359,7 +433,7 @@
         
         [self StopPlayer];
         
-        if(!is_pulling_ && !is_recording_)
+        if(!is_pulling_ && !is_recording_ && !isRTSPPublisherRunning)
         {
             [self UnInitPlayer];
         }
@@ -409,10 +483,13 @@
     }
     else
     {
+        if(!is_recording_)
+            return;
+        
         [_smart_player_sdk SmartPlayerStopRecorder];
         [recButton setTitle:@"开始录像" forState:UIControlStateNormal];
         
-        if(!is_playing_ && !is_pulling_)
+        if(!is_playing_ && !is_pulling_ && !isRTSPPublisherRunning)
         {
             [self UnInitPlayer];
         }
@@ -424,7 +501,7 @@
 //如需转发video数据
 - (void)OnPostVideoEncodedData:(NSInteger)codec_id data:(unsigned char*)data size:(NSInteger)size is_key_frame:(NSInteger)is_key_frame timestamp:(unsigned long long)timestamp pts:(unsigned long long)pts
 {
-    if(is_pulling_ && _smart_publisher_sdk != nil )
+    if((is_pulling_ || isRTSPPublisherRunning) && _smart_publisher_sdk != nil )
     {
         [_smart_publisher_sdk SmartPublisherPostVideoEncodedData:codec_id data:data size:size is_key_frame:is_key_frame timestamp:timestamp pts:pts];
     }
@@ -433,7 +510,7 @@
 //如需转发audio数据
 - (void)OnPostAudioEncodedData:(NSInteger)codec_id data:(unsigned char*)data size:(NSInteger)size is_key_frame:(NSInteger)is_key_frame timestamp:(unsigned long long)timestamp parameter_info:(unsigned char*)parameter_info parameter_info_size:(NSInteger)parameter_info_size
 {
-    if(is_pulling_ && _smart_publisher_sdk != nil )
+    if((is_pulling_ || isRTSPPublisherRunning) && _smart_publisher_sdk != nil )
     {
         [_smart_publisher_sdk SmartPublisherPostAudioEncodedData:codec_id data:data size:size is_key_frame:is_key_frame timestamp:timestamp parameter_info:parameter_info parameter_info_size:parameter_info_size];
     }
@@ -452,44 +529,11 @@
         
         [self InitPlayer];
         
-        //_smart_player_sdk.pullStreamVideoDataBlock = nil; //如不需要回调视频数据
-        
-        __weak __typeof(self) weakSelf = self;
-        
-        _smart_player_sdk.pullStreamVideoDataBlock = ^(int video_codec_id, unsigned char *data, int size, int is_key_frame, unsigned long long timestamp, int width, int height, unsigned char *parameter_info, int parameter_info_size, unsigned long long presentation_timestamp)
-        {
-            //NSLog(@"[pullStreamVideoDataBlock]videoCodecID:%d, is_key_frame:%d, size:%d, width:%d, height:%d, ts:%lld",
-            //      video_codec_id, is_key_frame, size, width, height, timestamp);
-            
-            [weakSelf OnPostVideoEncodedData:video_codec_id data:data size:size is_key_frame:is_key_frame timestamp:timestamp pts:presentation_timestamp];
-        };
-        
-        //_smart_player_sdk.pullStreamAudioDataBlock = nil; //如不需要回调音频数据
-        
-        _smart_player_sdk.pullStreamAudioDataBlock = ^(int audio_codec_id, unsigned char *data, int size, int is_key_frame, unsigned long long timestamp, int sample_rate, int channel, unsigned char *parameter_info, int parameter_info_size, unsigned long long reserve)
-        {
-            //NSLog(@"[pullStreamAudioDataBlock]audioCodecID:%x, is_key_frame:%d, size:%d, parameter_info_size:%d",
-            //      audio_codec_id, is_key_frame, size, parameter_info_size);
-            
-            [weakSelf OnPostAudioEncodedData:audio_codec_id data:data size:size is_key_frame:is_key_frame timestamp:timestamp parameter_info:parameter_info parameter_info_size:parameter_info_size];
-        };
-        
-        //设置拉流视频数据回调
-        bool isEnablePSVideoDataBlock = true;
-        [_smart_player_sdk SmartPlayerSetPullStreamVideoDataBlock:isEnablePSVideoDataBlock];
-        
-        //设置拉流音频数据回调
-        bool isEnablePSAudioDataBlock = true;
-        [_smart_player_sdk SmartPlayerSetPullStreamAudioDataBlock:isEnablePSAudioDataBlock];
+        [self StartStreamDataCallback];
         
         [self InitPublisher];
         
         [self StartPublisher];
-        
-        if([_smart_player_sdk SmartPlayerStartPullStream] != DANIULIVE_RETURN_OK)
-        {
-            NSLog(@"Call SmartPlayerStartPullStream failed..");
-        }
         
         [pullStreamButton setTitle:@"停止拉流" forState:UIControlStateNormal];
         
@@ -501,21 +545,189 @@
             return;
         
         [self StopPublisher];
-        [self UnInitPublisher];
         
-        [_smart_player_sdk SmartPlayerStopPullStream];
+        if(!isRTSPPublisherRunning)
+        {
+            [self UnInitPublisher];
+            [_smart_player_sdk SmartPlayerStopPullStream];
+            is_stream_data_callback_started = false;
+        }
         
-        [pullStreamButton setTitle:@"开始拉流" forState:UIControlStateNormal];
-        
-        if(!is_playing_ && !is_recording_)
+        if(!is_playing_ && !is_recording_ && !isRTSPPublisherRunning)
         {
             [self UnInitPlayer];
         }
+        
+        [pullStreamButton setTitle:@"开始拉流" forState:UIControlStateNormal];
         
         is_pulling_ = NO;
     }
 }
 
+- (void)rtspServiceBtn:(UIButton *)button{
+    NSLog(@"rtsp service++");
+    
+    button.selected = !button.selected;
+    
+    if (button.selected)
+    {
+        if(isRTSPServiceRunning)
+            return;
+        
+        if(_smart_rtsp_server_sdk == nil)
+        {
+            _smart_rtsp_server_sdk = [[SmartRTSPServerSDK alloc] init];
+        }
+        
+        if(_smart_rtsp_server_sdk != nil)
+        {
+            rtsp_handle_ = [_smart_rtsp_server_sdk OpenRtspServer:0];
+            
+            if(rtsp_handle_ == NULL)
+            {
+                NSLog(@"创建rtsp server实例失败! 请检查SDK有效性");
+            }
+            else
+            {
+                NSInteger port = 8554;
+                if(DANIULIVE_RETURN_OK != [_smart_rtsp_server_sdk SetRtspServerPort:rtsp_handle_ port:port])
+                {
+                    [_smart_rtsp_server_sdk CloseRtspServer:rtsp_handle_];
+                    rtsp_handle_ = NULL;
+                    NSLog(@"创建rtsp server端口失败! 请检查端口是否重复或者端口不在范围内!");
+                }
+                
+                //NSString* user_name = @"admin";
+                //NSString* password = @"12345";
+                //[_smart_rtsp_server_sdk SetRtspServerUserNamePassword:rtsp_handle_ user_name:user_name password:password];
+                
+                if(DANIULIVE_RETURN_OK == [_smart_rtsp_server_sdk StartRtspServer:rtsp_handle_ reserve:0])
+                {
+                    NSLog(@"启动rtsp server 成功!");
+                }
+                else
+                {
+                    [_smart_rtsp_server_sdk CloseRtspServer:rtsp_handle_];
+                    rtsp_handle_ = NULL;
+                    NSLog(@"启动rtsp server失败! 请检查设置的端口是否被占用!");
+                }
+            }
+        }
+        
+        isRTSPServiceRunning = YES;    //RTSP服务状态
+        
+        [rtspServiceButton setTitle:@"停止RTSP服务" forState:UIControlStateNormal];
+        
+        rtspPublisherButton.hidden = NO;
+    }
+    else
+    {
+        if(!isRTSPServiceRunning)
+            return;
+        
+        [_smart_rtsp_server_sdk StopRtspServer:rtsp_handle_];
+        
+        [_smart_rtsp_server_sdk CloseRtspServer:rtsp_handle_];
+        
+        rtsp_handle_ = NULL;
+        
+        _smart_rtsp_server_sdk = NULL;
+        
+        [rtspServiceButton setTitle:@"启动RTSP服务" forState:UIControlStateNormal];
+        
+        isRTSPServiceRunning = NO;    //RTSP服务状态
+        
+        rtspPublisherButton.hidden = YES;
+    }
+}
+
+- (void)rtspPublisherBtn:(UIButton *)button{
+    NSLog(@"rtsp publisher++");
+    
+    button.selected = !button.selected;
+    
+    if (button.selected)
+    {
+        if(isRTSPPublisherRunning)
+            return;
+        
+        if(rtsp_handle_ == nil)
+        {
+            NSLog(@"请先启动RTSP服务..");
+            return;
+        }
+
+        [self InitPlayer];
+        
+        [self StartStreamDataCallback];
+        
+        [self InitPublisher];
+        
+        NSString* rtsp_stream_name = @"stream1";
+        [_smart_publisher_sdk SetRtspStreamName:rtsp_stream_name];
+        [_smart_publisher_sdk ClearRtspStreamServer];
+        
+        [_smart_publisher_sdk AddRtspStreamServer:rtsp_handle_ reserve:0];
+        
+        if(DANIULIVE_RETURN_OK != [_smart_publisher_sdk StartRtspStream:0])
+        {
+            NSLog(@"调用发布rtsp流接口失败!");
+            return;
+        }
+        
+        [rtspPublisherButton setTitle:@"停止RTSP流" forState:UIControlStateNormal];
+        
+        rtspServiceButton.hidden = YES;
+        getRtspSvrSessionNumButton.hidden = NO;
+        
+        isRTSPPublisherRunning = YES;
+    }
+    else
+    {
+        if(!isRTSPPublisherRunning)
+            return;
+        
+        [_smart_publisher_sdk StopRtspStream];
+        
+        if(!is_pulling_)
+        {
+            [self UnInitPublisher];
+            [_smart_player_sdk SmartPlayerStopPullStream];
+            is_stream_data_callback_started = false;
+        }
+        
+        if(!is_playing_ && !is_recording_ && !is_pulling_)
+        {
+            [self UnInitPlayer];
+        }
+        
+        [rtspPublisherButton setTitle:@"发布RTSP流" forState:UIControlStateNormal];
+        
+        rtspServiceButton.hidden = NO;
+        getRtspSvrSessionNumButton.hidden = YES;
+        
+        isRTSPPublisherRunning = NO;
+        
+        //_textPublisherEventLabel.text = @"";
+    }
+}
+
+- (void)getRtspSvrSessionNumBtn:(id)sender
+{
+    if(_smart_rtsp_server_sdk != NULL && rtsp_handle_ != NULL)
+    {
+        NSInteger session_numbers = 0;
+        [_smart_rtsp_server_sdk GetRtspServerClientSessionNumbers:rtsp_handle_ session_numbers:&session_numbers];
+        
+        NSLog(@"RTSP服务当前客户会话数: %d", (int)session_numbers);
+        
+        NSString *stringInt = [NSString stringWithFormat:@"%d", (int)session_numbers];
+        
+        UIAlertView *mBoxView = [[UIAlertView alloc] initWithTitle:@"RTSP服务当前客户会话数:" message:stringInt
+                                                          delegate:nil cancelButtonTitle:@"确定"otherButtonTitles:nil, nil];
+        [mBoxView show];
+    }
+}
 
 - (void)quitBtn:(UIButton *)button {
     
@@ -524,33 +736,55 @@
     if(is_pulling_)
     {
         [self StopPublisher];
-        [self UnInitPublisher];
-        
-        [_smart_player_sdk SmartPlayerStopPullStream];
         [pullStreamButton setTitle:@"开始拉流" forState:UIControlStateNormal];
+    }
+    
+    if(isRTSPPublisherRunning)
+    {
+        [_smart_publisher_sdk StopRtspStream];
+        [rtspPublisherButton setTitle:@"发布RTSP流" forState:UIControlStateNormal];
+    }
+    
+    if(isRTSPServiceRunning && rtsp_handle_ != nil)
+    {
+        [_smart_rtsp_server_sdk StopRtspServer:rtsp_handle_];
+        [_smart_rtsp_server_sdk CloseRtspServer:rtsp_handle_];
         
-        is_pulling_ = NO;
+        rtsp_handle_ = NULL;
+        _smart_rtsp_server_sdk = NULL;
     }
     
     if(is_recording_)
     {
         [_smart_player_sdk SmartPlayerStopRecorder];
         [recButton setTitle:@"开始录像" forState:UIControlStateNormal];
-        
-        is_recording_ = NO;
     }
     
     if(is_playing_)
     {
         [self StopPlayer];
-        
         [playbackButton setTitle:@"开始播放" forState:UIControlStateNormal];
-        
-        is_mute_ = NO;
-        is_playing_ = NO;
     }
     
-    [self UnInitPlayer];
+    if(is_pulling_ || isRTSPPublisherRunning)
+    {
+        [self UnInitPublisher];
+        
+        [_smart_player_sdk SmartPlayerStopPullStream];
+    }
+    
+    if(is_playing_ || is_recording_ || is_pulling_ || isRTSPPublisherRunning)
+    {
+         [self UnInitPlayer];
+    }
+    
+    is_mute_ = NO;
+    is_playing_ = NO;
+    is_recording_ = NO;
+    is_pulling_ = NO;
+    isRTSPServiceRunning = NO;    //RTSP服务状态
+    isRTSPPublisherRunning = NO;  //RTSP流发布状态
+    is_stream_data_callback_started = NO;
     
     RecorderView * recorderView =[[RecorderView alloc] init];
     [self presentViewController:recorderView animated:YES completion:nil];
@@ -567,6 +801,7 @@
         NSLog(@"InitPlayer: has inited before..");
         return true;
     }
+    
     _smart_player_sdk = [[SmartPlayerSDK alloc] init];
     
     if (_smart_player_sdk ==nil ) {
@@ -747,6 +982,12 @@
 {
     NSLog(@"InitPublisher++");
     
+    if(is_inited_publisher_)
+    {
+        NSLog(@"InitPublisher: has inited before..");
+        return true;
+    }
+    
     if(_smart_publisher_sdk != nil)
     {
         NSLog(@"InitPublisher, publisher() has inited before..");
@@ -776,6 +1017,8 @@
         _smart_publisher_sdk = nil;
         return false;
     }
+    
+    is_inited_publisher_ = YES;
     
     NSLog(@"InitPublisher--");
     return true;
@@ -831,8 +1074,62 @@
         _smart_publisher_sdk = nil;
     }
     
+    is_inited_publisher_ = NO;
+    
     NSLog(@"UnInitPublisher--");
     return true;
+}
+
+-(void)StartStreamDataCallback
+{
+    //_smart_player_sdk.pullStreamVideoDataBlock = nil; //如不需要回调视频数据
+   
+    if(is_stream_data_callback_started)
+    {
+        NSLog(@"StartStreamDataCallback: has inited before..");
+        return;
+    }
+    
+    if(_smart_player_sdk == nil)
+    {
+        NSLog(@"StartStreamDataCallback failed, _smart_player_sdk is null..");
+        return;
+    }
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    _smart_player_sdk.pullStreamVideoDataBlock = ^(int video_codec_id, unsigned char *data, int size, int is_key_frame, unsigned long long timestamp, int width, int height, unsigned char *parameter_info, int parameter_info_size, unsigned long long presentation_timestamp)
+    {
+        //NSLog(@"[pullStreamVideoDataBlock]videoCodecID:%d, is_key_frame:%d, size:%d, width:%d, height:%d, ts:%lld",
+        //      video_codec_id, is_key_frame, size, width, height, timestamp);
+        
+        [weakSelf OnPostVideoEncodedData:video_codec_id data:data size:size is_key_frame:is_key_frame timestamp:timestamp pts:presentation_timestamp];
+    };
+    
+    //_smart_player_sdk.pullStreamAudioDataBlock = nil; //如不需要回调音频数据
+    
+    _smart_player_sdk.pullStreamAudioDataBlock = ^(int audio_codec_id, unsigned char *data, int size, int is_key_frame, unsigned long long timestamp, int sample_rate, int channel, unsigned char *parameter_info, int parameter_info_size, unsigned long long reserve)
+    {
+        //NSLog(@"[pullStreamAudioDataBlock]audioCodecID:%x, is_key_frame:%d, size:%d, parameter_info_size:%d",
+        //      audio_codec_id, is_key_frame, size, parameter_info_size);
+        
+        [weakSelf OnPostAudioEncodedData:audio_codec_id data:data size:size is_key_frame:is_key_frame timestamp:timestamp parameter_info:parameter_info parameter_info_size:parameter_info_size];
+    };
+    
+    //设置拉流视频数据回调
+    bool isEnablePSVideoDataBlock = true;
+    [_smart_player_sdk SmartPlayerSetPullStreamVideoDataBlock:isEnablePSVideoDataBlock];
+    
+    //设置拉流音频数据回调
+    bool isEnablePSAudioDataBlock = true;
+    [_smart_player_sdk SmartPlayerSetPullStreamAudioDataBlock:isEnablePSAudioDataBlock];
+    
+    if([_smart_player_sdk SmartPlayerStartPullStream] != DANIULIVE_RETURN_OK)
+    {
+        NSLog(@"Call SmartPlayerStartPullStream failed..");
+    }
+    
+    is_stream_data_callback_started = YES;
 }
 
 //event相关处理
@@ -938,6 +1235,21 @@
         
         NSLog(@"[event]download speed :%ld kbps - %ld KB/s", (long)speed_kbps, (long)speed_KBs);
     }
+    else if(nID == EVENT_DANIULIVE_ERC_PLAYER_RTSP_STATUS_CODE)
+    {
+        NSString* lable = @"[event]RTSP status code received:";
+        NSString* player_event = [lable stringByAppendingFormat:@"%ld", (long)param1];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController *aleView=[UIAlertController alertControllerWithTitle:@"RTSP错误状态" message:player_event preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action_ok=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [aleView addAction:action_ok];
+                
+                [self presentViewController:aleView animated:YES completion:nil];
+            });
+        });
+    }
     else
         NSLog(@"[event]nID:%lx", (long)nID);
     
@@ -980,6 +1292,10 @@
     else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_CAPTURE_IMAGE)
     {
         NSLog(@"[event]推送快照..");
+    }
+    else if (nID == EVENT_DANIULIVE_ERC_PUBLISHER_RTSP_URL)
+    {
+        NSLog(@"[event]RTSP服务URL: %@", param3);
     }
     else
         NSLog(@"[event]nID:%lx", (long)nID);

@@ -71,6 +71,7 @@
 		0C4E0F0120033FC500598A58 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0C4E0F0220033FCE00598A58 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		0C4F15CD2015D45A00C3BC8B /* nt_common_media_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_common_media_define.h; path = daniuliveSDK/include/nt_common_media_define.h; sourceTree = "<group>"; };
+		0CDBC36321B119F000960087 /* SmartRTSPSeverSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartRTSPSeverSDK.h; path = daniuliveSDK/include/SmartRTSPSeverSDK.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +177,7 @@
 		0C4E0EEB2003108200598A58 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				0CDBC36321B119F000960087 /* SmartRTSPSeverSDK.h */,
 				0C4F15CD2015D45A00C3BC8B /* nt_common_media_define.h */,
 				0C4E0EED2003108F00598A58 /* nt_event_define.h */,
 				0C4E0EEE2003108F00598A58 /* SmartPlayerSDK.h */,

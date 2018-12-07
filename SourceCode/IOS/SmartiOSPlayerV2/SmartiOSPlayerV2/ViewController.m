@@ -101,8 +101,8 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     stream_height_ = 288;
     
     //拉流url可以自定义
-    //playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
-
+    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
+    
     //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";   //公网rtsp流，TCP模式的有audio
     
     is_audio_only_ = NO;
@@ -111,7 +111,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     is_fast_startup_ = YES;           //是否快速启动模式
     is_low_latency_mode_ = NO;        //是否开启极速模式
     buffer_time_ = 100;               //buffer时间
-    is_hardware_decoder_ = NO;       //默认软解码
+    is_hardware_decoder_ = NO;        //默认软解码
     is_rtsp_tcp_mode_ = NO;           //仅用于rtsp流 设置TCP传输模式 默认UDP模式
     
     is_flip_vertical_ = NO;           //垂直反转
@@ -537,7 +537,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         
         Boolean enableUserDataCallback = YES;
         [_smart_player_sdk SmartPlayerSetUserDataCallback:enableUserDataCallback];
-        //如需处理回调的用户数据---------
+         //如需处理回调的用户数据---------
         
         if(![self StartPlayer])
         {
@@ -755,6 +755,14 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     //录像端音频，是否转AAC后保存
     NSInteger is_transcode = 1;
     [_smart_player_sdk SmartPlayerSetRecorderAudioTranscodeAAC:is_transcode];
+    
+    //录制MP4文件 是否录制视频
+    NSInteger is_record_video = 1;
+    [_smart_player_sdk SmartPlayerSetRecorderVideo:is_record_video];
+    
+    //录制MP4文件 是否录制音频
+    NSInteger is_record_audio = 1;
+    [_smart_player_sdk SmartPlayerSetRecorderAudio:is_record_audio];
     
     is_inited_player_ = YES;
     

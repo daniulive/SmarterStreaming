@@ -186,7 +186,7 @@
         video_opt_  = videoOpt;
         is_beauty = isBeauty;
         is_mute = false;
-        is_mirror = true;   //默认镜像模式
+        is_mirror = false;   //默认镜像模式
         rtsp_handle_ = NULL;
     }
     
@@ -226,14 +226,33 @@
     //设置横竖屏采集模式，传1:竖屏，传2:横屏(home键在右侧)
     publish_orientation_ = 1;
     [_smart_publisher_sdk SmartPublisherSetPublishOrientation:publish_orientation_];
+     
+    NSInteger video_encoder_type = 1;    //1: H.264, 2: H.265编码
+    Boolean is_video_hardware_encoder = YES;
+    [_smart_publisher_sdk SmartPublisherSetVideoEncoderType:video_encoder_type isHwEncoder:is_video_hardware_encoder];
     
-    /*
-     NSInteger gop_interval = 30;
-     [_smart_publisher_sdk SmartPublisherSetGopInterval:gop_interval];
+    NSInteger audio_encoder_type = 1;    //1: AAC
+    Boolean is_audio_hardware_encoder = NO;
+    [_smart_publisher_sdk SmartPublisherSetAudioEncoderType:audio_encoder_type isHwEncoder:is_audio_hardware_encoder];
+    
+    NSInteger is_enable_vbr = 1;
+    NSInteger video_quality = [self CalVideoQuality:videoQuality is_h264:YES];
+    NSInteger vbr_max_kbitrate = [self CalVbrMaxKBitRate:videoQuality];
+    [_smart_publisher_sdk SmartPublisherSetSwVBRMode:is_enable_vbr video_quality:video_quality vbr_max_kbitrate:vbr_max_kbitrate];
+    
+    //NSInteger gop_interval = 40;
+    //[_smart_publisher_sdk SmartPublisherSetGopInterval:gop_interval];
      
-     NSInteger fps = 15;
-     [_smart_publisher_sdk SmartPublisherSetFPS:fps];
-     
+    //NSInteger fps = 20;
+    //[_smart_publisher_sdk SmartPublisherSetFPS:fps];
+    
+    //NSInteger sw_video_encoder_profile = 1;
+    //[_smart_publisher_sdk SmartPublisherSetSWVideoEncoderProfile:sw_video_encoder_profile];
+    
+    //NSInteger sw_video_encoder_speed = 2;
+    //[_smart_publisher_sdk SmartPublisherSetSWVideoEncoderSpeed:sw_video_encoder_speed];
+    
+     /*
      NSInteger avg_bit_rate = 500;
      NSInteger max_bit_rate = 1000;
      
@@ -371,7 +390,7 @@
     mirrorSwitchButton.layer.borderWidth = lineWidth;
     
     [mirrorSwitchButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [mirrorSwitchButton setTitle:@"关镜像" forState:UIControlStateNormal];
+    [mirrorSwitchButton setTitle:@"当前镜像:关闭" forState:UIControlStateNormal];
     
     [mirrorSwitchButton addTarget:self action:@selector(mirrorSwitchBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:mirrorSwitchButton];
@@ -858,11 +877,11 @@
         
         if ( is_mirror )
         {
-            [mirrorSwitchButton setTitle:@"关镜像" forState:UIControlStateNormal];
+            [mirrorSwitchButton setTitle:@"当前镜像:打开" forState:UIControlStateNormal];
         }
         else
         {
-            [mirrorSwitchButton setTitle:@"开镜像" forState:UIControlStateNormal];
+            [mirrorSwitchButton setTitle:@"当前镜像:关闭" forState:UIControlStateNormal];
         }
     }
 }
@@ -1005,6 +1024,46 @@
     //返回设置分辨率页面
     SettingView * settingView =[[SettingView alloc] init];
     [self presentViewController:settingView animated:YES completion:nil];
+}
+
+- (NSInteger)CalVideoQuality:(DNVideoStreamingQuality)video_quality is_h264:(Boolean)is_h264
+{
+    NSInteger quality = is_h264 ? 23 : 28;
+    
+    if ( DN_VIDEO_QUALITY_LOW == video_quality )
+    {
+        quality = is_h264? 23 : 27;
+    }
+    else if ( DN_VIDEO_QUALITY_MEDIUM == video_quality )
+    {
+        quality = is_h264? 26 : 28;
+    }
+    else if ( DN_VIDEO_QUALITY_HIGH == video_quality )
+    {
+        quality = is_h264? 27 : 29;
+    }
+    
+    return quality;
+}
+
+- (NSInteger)CalVbrMaxKBitRate:(DNVideoStreamingQuality)video_quality
+{
+     NSInteger max_kbit_rate = 2000;
+    
+    if ( DN_VIDEO_QUALITY_LOW == video_quality )
+    {
+        max_kbit_rate = 400;
+    }
+    else if ( DN_VIDEO_QUALITY_MEDIUM == video_quality )
+    {
+        max_kbit_rate = 700;
+    }
+    else if ( DN_VIDEO_QUALITY_HIGH == video_quality  )
+    {
+        max_kbit_rate = 1400;
+    }
+    
+    return max_kbit_rate;
 }
 
 //+++针对横屏模式代码+++

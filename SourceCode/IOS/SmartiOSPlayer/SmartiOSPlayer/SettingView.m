@@ -355,7 +355,7 @@
     {
         is_half_screen = TRUE;
         
-        playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
         
     }
     else if( [inputVal isEqualToString:@"rtsp" ] )

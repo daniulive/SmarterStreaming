@@ -88,6 +88,47 @@ typedef enum DNCameraPosition{
 -(NSInteger)SmartPublisherSetPublishOrientation:(NSInteger)orientation;
 
 /**
+ * 设置视频编码类型(H.264/H.265,软编码还是硬编码)
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param encoderType: 1: H.264, 2: H.265编码
+ *
+ * @param isHwEncoder: YES: 硬编码 NO: 软编码
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetVideoEncoderType:(NSInteger)encoderType isHwEncoder:(Boolean)isHwEncoder;
+
+/**
+ * 设置音频编码类型(目前仅支持AAC)
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param encoderType: 1: AAC
+ *
+ * @param isHwEncoder: YES: 硬编码 NO: 软编码
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetAudioEncoderType:(NSInteger)encoderType isHwEncoder:(Boolean)isHwEncoder;
+
+/**
+ * Set software encode vbr mode(软编码可变码率).
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * is_enable_vbr: if false: NOT enable vbr mode, true: enable vbr
+ *
+ * video_quality: vbr video quality, range with (1,50), default 23
+ *
+ * vbr_max_kbitrate: vbr max encode bit-rate(kbps)
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetSwVBRMode:(Boolean)is_enable_vbr video_quality:(NSInteger)video_quality vbr_max_kbitrate:(NSInteger)vbr_max_kbitrate;
+
+/**
  * 设置GOP间隔
  *
  * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
@@ -110,6 +151,36 @@ typedef enum DNCameraPosition{
  * @return {0} if successful
  */
 -(NSInteger)SmartPublisherSetVideoBitRate:(NSInteger)avgBitRate maxBitRate:(NSInteger)maxBitRate;
+
+/**
+ * Set software video encoder profile(设置视频软编码profile).
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * profile: the software video encoder profile, range with (1,3).
+ *
+ * 1: baseline profile
+ * 2: main profile
+ * 3: high profile
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetSWVideoEncoderProfile:(NSInteger)profile;
+
+/**
+ *
+ * Set software video encoder speed(设置视频软编码speed).
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param speed: range with(1, 6), the default speed is 6.
+ *
+ * if with 1, CPU is lowest.
+ * if with 6, CPU is highest.
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetSWVideoEncoderSpeed:(NSInteger)speed;
 
 /**
  * 设置fps.
@@ -219,6 +290,27 @@ typedef enum DNCameraPosition{
  * @return {0} if successful
  */
 -(NSInteger)SmartPublisherSetExternalARGBData:(unsigned char*)data stride:(NSInteger)stride;
+
+/*
+ * 投递PCM音频数据给SDK, 每10ms音频数据传入一次
+ *
+ * SmartPublisherInit接口设置audio_opt为4时, 调用此接口传递外部编码前PCM数据
+ *
+ * data: pcm数据, 注意每个采样必须是16位的, 其他格式不支持, 注意双通道的话数据是交错的
+ *
+ * size: pcm数据大小
+ *
+ * timestamp：时间戳单位是毫秒，必须是递增的
+ *
+ * sample_rate: 采样率
+ *
+ * channels: 通道, 当前通道只支持1和2，也就是单通道和双通道
+ *
+ * per_channel_sample_number: 这个请传入的是 sampleRate/100， 也就是单个通道的10毫秒的采样数
+ */
+-(NSInteger)SmartPublisherPostAudioPCMData:(unsigned char*)data size:(NSInteger)size
+                                 timestamp:(unsigned long long)timestamp sample_rate:(NSInteger)sample_rate
+                                  channels:(NSInteger)channels per_channel_sample_number:(NSInteger)per_channel_sample_number;
 
 /**
  * 设置编码后视频数据(H.264)

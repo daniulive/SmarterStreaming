@@ -25,28 +25,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SmartiOSPublisher/ViewController.m"
-            timestampString = "562060203.783922"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-initParameter:streamQuality:audioOpt:videoOpt:isBeauty:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../../source/SmartPublisherSDK/SmartPublisherSDK/publisher/nt_ios_publisher.mm"
-            timestampString = "562055340.182766"
+            timestampString = "565587720.109401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1326"
-            endingLineNumber = "1326"
+            startingLineNumber = "1379"
+            endingLineNumber = "1379"
             landmarkName = "IOSPublisher::OnCaptureAudioData(unsigned char* audioBuf, int sampleSize, long long time_stamp, int samplerate)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../source/SmartPublisherSDK/SmartPublisherSDK/publisher/nt_ios_publisher.mm"
-            timestampString = "562055340.182812"
+            timestampString = "565587720.1094559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1410"
-            endingLineNumber = "1410"
+            startingLineNumber = "1463"
+            endingLineNumber = "1463"
             landmarkName = "IOSPublisher::postVideoEncodedData(int codec_id, unsigned char* data, int size, int is_key_frame, unsigned long long timestamp, unsigned long long pts)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartiOSPublisher/SettingView.m"
-            timestampString = "562056706.0868959"
+            timestampString = "565775763.5174021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "357"

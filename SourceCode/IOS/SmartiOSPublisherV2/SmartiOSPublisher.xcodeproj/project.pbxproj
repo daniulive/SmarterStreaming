@@ -36,7 +36,6 @@
 		58BE958D1CA4102A0031FFEE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE958C1CA4102A0031FFEE /* AVFoundation.framework */; };
 		58BE958F1CA4106E0031FFEE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */; };
 		58BE95911CA410810031FFEE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE95901CA410810031FFEE /* CoreMedia.framework */; };
-		58BE963B1CA674450031FFEE /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */; };
 		58BE963D1CA6750A0031FFEE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963C1CA6750A0031FFEE /* libc++.tbd */; };
 		58BE96401CA6C1770031FFEE /* libSmartPublisherSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963F1CA6C1770031FFEE /* libSmartPublisherSDK.a */; };
 		58D469D71CD48AF60095925A /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D469D61CD48AF60095925A /* SettingView.m */; };
@@ -82,7 +81,6 @@
 		58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		58BE95901CA410810031FFEE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		58BE959C1CA412000031FFEE /* SmartPublisherSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartPublisherSDK.h; sourceTree = "<group>"; };
-		58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		58BE963C1CA6750A0031FFEE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		58BE963F1CA6C1770031FFEE /* libSmartPublisherSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSmartPublisherSDK.a; sourceTree = "<group>"; };
 		58D469D51CD48AF60095925A /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				0C41CFBC1EB1B5FC005BDF68 /* libiconv.tbd in Frameworks */,
 				582605661CC3940A00F9E215 /* VideoToolbox.framework in Frameworks */,
 				58BE963D1CA6750A0031FFEE /* libc++.tbd in Frameworks */,
-				58BE963B1CA674450031FFEE /* libstdc++.6.0.9.tbd in Frameworks */,
 				58BE95911CA410810031FFEE /* CoreMedia.framework in Frameworks */,
 				58BE958F1CA4106E0031FFEE /* AssetsLibrary.framework in Frameworks */,
 				58BE96401CA6C1770031FFEE /* libSmartPublisherSDK.a in Frameworks */,
@@ -121,7 +118,6 @@
 				0C41CFBB1EB1B5FC005BDF68 /* libiconv.tbd */,
 				0CC6E8931ECB22A2007CE1A9 /* libbz2.1.0.tbd */,
 				58BE963C1CA6750A0031FFEE /* libc++.tbd */,
-				58BE963A1CA674440031FFEE /* libstdc++.6.0.9.tbd */,
 				582605651CC3940A00F9E215 /* VideoToolbox.framework */,
 				58BE95901CA410810031FFEE /* CoreMedia.framework */,
 				58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */,

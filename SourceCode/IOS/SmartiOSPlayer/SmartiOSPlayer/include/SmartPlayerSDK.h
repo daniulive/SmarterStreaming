@@ -169,7 +169,7 @@
 /**
  * 设置视频垂直反转
  *
- * @param is_flip： 0: 不反转, 1: 反转
+ * @param is_flip 0: 不反转, 1: 反转
  *
  * @return {0} if successful
  */
@@ -178,7 +178,7 @@
 /**
  * 设置视频水平反转
  *
- * @param is_flip： 0: 不反转, 1: 反转
+ * @param is_flip 0: 不反转, 1: 反转
  *
  * @return {0} if successful
  */
@@ -296,6 +296,24 @@
  * 注意: 转码会增加性能消耗
  */
 - (NSInteger)SmartPlayerSetRecorderAudioTranscodeAAC:(NSInteger)is_transcode;
+
+/**
+ * 设置是否录视频，默认的话，如果视频源有视频就录，没有就不录, 但有些场景下可能不想录制视频，只想录音频，所以增加个开关
+ *
+ * @param is_record_video 1 表示录制视频, 0 表示不录制视频, 默认是1
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetRecorderVideo:(NSInteger)is_record_video;
+
+/**
+ * 设置是否录音频，默认的话，如果视频源有音频就录，没有就不录, 但有些场景下可能不想录制音频，只想录视频，所以增加个开关
+ *
+ * @param is_record_audio 1 表示录制音频, 0 表示不录制音频, 默认是1
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetRecorderAudio:(NSInteger)is_record_audio;
 
 /**
  * 录像相关：
