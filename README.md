@@ -1,4 +1,4 @@
-**视沃科技-大牛直播SDK <a href="http://www.daniulive.com" target="_blank">daniulive.com</a>**
+**视沃科技-大牛直播SDK <a href="https://www.daniulive.com" target="_blank">daniulive.com</a>**
 
 始于2014年，国内外为数不多致力于极致体验的**超强全自研跨平台**(windows/android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时录像、多路流媒体转发、音视频导播、动态视频合成、音频混音、互动直播、内置轻量级RTSP服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
@@ -128,13 +128,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2018/11/16)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-11-16.zip)
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2018/10/24)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-SDK-iOS-2018-10-24.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2018/12/07)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2018-12-07.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
 ## 大牛直播SDK集成和调用说明 ##
 
-- [x] [**移动端SDK(V2)调用说明**(更新于2018/11/18)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.10.pdf)
+- [x] [**移动端SDK(V2)调用说明**(更新于2018/12/07)](https://gz.bcebos.com/v1/daniulive/视沃科技-大牛直播移动端SDK(V2)调用说明2.11.pdf)
 
 - [x] [**Windows SDK调用说明(以C#为例)(更新于2018/11/27)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-Windows-SDK%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E2.10.pdf)
 
