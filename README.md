@@ -33,7 +33,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP直播推流SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) rtmp推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**(64位库))；
 
-- [x] [**RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的rtmp/rtsp超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+
+- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
@@ -63,7 +65,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码);
 
-- [x] [**RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的rtmp/rtsp超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+
+- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Android支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
@@ -86,7 +90,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
 
-- [x] [**RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp-rtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的rtmp/rtsp超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+
+- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**iOS支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
@@ -300,7 +306,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
 - [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
-- [x] [**H.265硬解**]Android支持H.265硬解；
+- [x] [**H.265硬解**]Android/iOS支持H.265硬解；
 - [x] [**H.264/H.265硬解码**]Android支持设置Surface模式硬解和普通模式硬解码；
 - [x] [**硬解码自适应**]Android/iOS平台支持硬解码码自适应，如检测到硬解码不支持，自动切换到软解；
 - [x] [**RTSP模式设置**]支持RTSP TCP/UDP模式设置；
@@ -322,7 +328,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**解码后视频数据回调**]支持解码后YUV/RGB数据回调；
 - [x] [**解码前音频数据回调**]支持AAC/PCMA/PCMU/SPEEX数据回调；
 - [x] [**音视频自适应**]支持播放过程中，音视频信息改变后自适应；
-- [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；
+- [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能(支持RTSP H.265流录制，支持PCMA/PCMU转AAC后录制，支持设置只录制音频或视频)，可参见"**8. Windows/Android/iOS录像SDK**"；
 - [x] [**全屏**]Windows平台双击画面进入全屏模式；
 - [x] [**Windows本地FLV播放器**]支持本地FLV文件播放(支持获取FLV文件的duration(时长)；支持显示当前播放位置；
 - [x] [**Windows本地FLV播放器**]支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)。
