@@ -31,7 +31,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows端**
 
-- [x] [**RTMP直播推流SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) rtmp推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**(64位库))；
+- [x] [**RTMP直播推流SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) RTMP推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**(64位库))；
+
+- [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
 - [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
 
@@ -248,7 +250,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
 - [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
-- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android支持RTMP扩展H.265推送）；
+- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android/iOS支持RTMP扩展H.265推送）；
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
@@ -258,7 +260,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**软硬编码参数配置**]支持gop间隔、帧率、bit-rate设置；
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；
-- [x] [**RTMP扩展H.265**]Windows/Android推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android支持H.265硬编码；
+- [x] [**RTMP扩展H.265**]Windows/Android/iOS推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android/iOS平台支持H.265硬编码；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；
 - [x] [**Windows推屏**]支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
