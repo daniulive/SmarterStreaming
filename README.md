@@ -27,7 +27,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 模块概览 ## 
 
-<img src="https://gz.bcebos.com/v1/daniulive/daniulive.png" alt="直播SDK模块" />
+<img src="https://gz.bcebos.com/v1/daniulive/daniulive_20181220.png" alt="直播SDK模块" />
 
 **Windows端**
 
