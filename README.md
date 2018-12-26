@@ -118,17 +118,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播SDK相关demo本地下载**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2018/12/14)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版-2018-12-14.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版-2018-12-26.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2018/12/14)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版64位-2018-12-14.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版64位-2018-12-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2018/12/14)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2018-12-14.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2018-12-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2018/12/14)](https://gz.bcebos.com/v1/daniulive/WIN-PlayerSDK-CPP-Demo-2018-12-14.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-PlayerSDK-CPP-Demo-2018-12-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2018/12/14)](https://gz.bcebos.com/v1/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-12-14.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-12-26.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2018/11/09)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/WIN-RelaySDK-CPP-Demo-2018-11-09.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CPP-Demo-2018-12-26.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2018/11/27)](http://daniulive.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CSharp-Demo-2018-11-09.zip)
 
@@ -250,6 +250,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
 - [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
+- [x] [**摄像头采集**]除常规YUV格式外，还支持**MJPEG**格式的摄像头采集；
 - [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android/iOS支持RTMP扩展H.265推送）；
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
@@ -303,6 +304,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
 - [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
+- [x] [**摄像头采集**]除常规YUV格式外，还支持**MJPEG**格式的摄像头采集；
 - [x] [**RTSP推流**]超低延时的RTSP协议直播推流SDK；
 - [x] [**RTSP鉴权**]支持RTSP鉴权推送；
 - [x] [**TCP/UDP模式**]支持rtp over udp和rtp over tcp两种传输方式；
