@@ -92,6 +92,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
 
+- [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
+
 - [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
 
 - [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
@@ -138,15 +140,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2018/11/16)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-11-16.zip)
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2018/12/07)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2018-12-07.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2019/01/16)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-01-16.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
 ## 大牛直播SDK集成和调用说明 ##
 
-- [x] [**移动端SDK(V2)调用说明**(更新于2018/12/07)](https://gz.bcebos.com/v1/daniulive/视沃科技-大牛直播移动端SDK(V2)调用说明2.11.pdf)
+- [x] [**移动端SDK(V2)调用说明**(更新于2018/12/07)](https://gz.bcebos.com/v1/daniulive/视沃科技-大牛直播移动端SDK(V2)调用说明2.12.pdf)
 
-- [x] [**Windows SDK调用说明(以C#为例)(更新于2018/11/27)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/11/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-Windows-SDK%E9%9B%86%E6%88%90%E8%AF%B4%E6%98%8E2.10.pdf)
+- [x] [**Windows SDK调用说明(以C#为例)(更新于2019/01/02)**](https://gz.bcebos.com/v1/daniulive/视沃科技-Windows-SDK集成说明2.11.pdf)
 
 
 **大牛直播SDK Demo使用说明**
@@ -298,7 +300,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPublisherV2。
 ---
 
-**4. Windows RTSP直播推流SDK**
+**4. RTSP直播推流SDK**
 
 - [x] [**视频采集处理**]Windows平台涵盖“Windows视频采集处理SDK”功能；
 - [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
@@ -306,6 +308,12 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
 - [x] [**摄像头采集**]除常规YUV格式外，还支持**MJPEG**格式的摄像头采集；
 - [x] [**RTSP推流**]超低延时的RTSP协议直播推流SDK；
+- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
+- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
+- [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
+- [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
+- [x] [**H.265硬编码**]Android平台支持H.265硬编码；
+- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；
 - [x] [**RTSP鉴权**]支持RTSP鉴权推送；
 - [x] [**TCP/UDP模式**]支持rtp over udp和rtp over tcp两种传输方式；
 - [x] [**401事件处理**]RTSP推送支持401事件上报；
@@ -335,7 +343,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 对应Demo：
 - [x] Windows测试程序：SmartPublisherDemo.exe；
-- [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo。
+- [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] iOS工程：SmartiOSPublisherV2。
 ---
 
 **5. Windows/Android/iOS RTMP、RTSP直播播放器SDK**
