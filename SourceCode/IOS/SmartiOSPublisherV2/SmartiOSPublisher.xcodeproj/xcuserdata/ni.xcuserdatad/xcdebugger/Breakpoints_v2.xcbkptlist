@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../source/SmartPublisherSDK/SmartPublisherSDK/publisher/nt_ios_publisher.mm"
-            timestampString = "565587720.109401"
+            timestampString = "569235758.3771729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1379"
-            endingLineNumber = "1379"
+            startingLineNumber = "1388"
+            endingLineNumber = "1388"
             landmarkName = "IOSPublisher::OnCaptureAudioData(unsigned char* audioBuf, int sampleSize, long long time_stamp, int samplerate)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../source/SmartPublisherSDK/SmartPublisherSDK/publisher/nt_ios_publisher.mm"
-            timestampString = "565587720.1094559"
+            timestampString = "569235758.377246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1463"
-            endingLineNumber = "1463"
+            startingLineNumber = "1472"
+            endingLineNumber = "1472"
             landmarkName = "IOSPublisher::postVideoEncodedData(int codec_id, unsigned char* data, int size, int is_key_frame, unsigned long long timestamp, unsigned long long pts)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SmartiOSPublisher/SettingView.m"
-            timestampString = "565775763.5174021"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
-            landmarkName = "-beautyButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

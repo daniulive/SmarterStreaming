@@ -3,21 +3,19 @@
 //  SmartiOSPlayerV2
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: https://www.daniulive.com
 //
-//  Created by daniulive on 2017/12/28.
-//  Copyright © 2014~2018年 daniulive. All rights reserved.
+//  Created by daniulive on 2016/01/03.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import "ViewController.h"
-
 #import "RecorderView.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic) UILabel *textPlayerEventLabel;
-
 @property (strong, nonatomic) UILabel *textPlayerUserDataLabel;
-
 @property NSTimer *timer;
 
 /**
@@ -35,13 +33,9 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     SmartPlayerSDK  *_smart_player_sdk;
     
     UIView          * _glView;
-    
     Boolean         is_inited_player_;
-    
     NSString        *playback_url_;             //拉流url
- 
     Boolean         is_half_screen_;
-    
     Boolean         is_audio_only_;
     Boolean         is_fast_startup_;           //是否快速启动模式
     Boolean         is_low_latency_mode_;       //是否开启极速模式
@@ -51,7 +45,6 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     NSInteger       screen_width_;
     NSInteger       screen_height_;
-    
     NSInteger       player_view_width_;
     NSInteger       player_view_height_;
     NSInteger       stream_width_;              //视频宽
@@ -85,7 +78,6 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
     
     is_inited_player_ = NO;
@@ -104,6 +96,8 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
     
     //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";   //公网rtsp流，TCP模式的有audio
+    
+    //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream123";
     
     is_audio_only_ = NO;
     is_half_screen_ = YES;            //半屏播放, 只是为了效果展示
@@ -326,6 +320,20 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     _textPlayerUserDataLabel.text =  [str stringByAppendingString:playback_url_];
     [self.view addSubview:_textPlayerUserDataLabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -795,7 +803,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:100 width:player_view_width_ height:player_view_height_]);
         
         if (_glView == nil ) {
-            NSLog(@"createPlayView failed..");
+            NSLog(@"CreatePlayView failed..");
             return false;
         }
         
@@ -923,8 +931,8 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         stream_width_ = (NSInteger)param1;
         stream_height_ = (NSInteger)param2;
         
-        NSString *str_w = [NSString stringWithFormat:@"%ld",stream_width_];
-        NSString *str_h = [NSString stringWithFormat:@"%ld",stream_height_];
+        NSString *str_w = [NSString stringWithFormat:@"%ld", (long)stream_width_];
+        NSString *str_h = [NSString stringWithFormat:@"%ld", (long)stream_height_];
         
         lable = @"[event]视频解码分辨率信息: ";
         player_event = [lable stringByAppendingFormat:@"%@*%@", str_w, str_h];

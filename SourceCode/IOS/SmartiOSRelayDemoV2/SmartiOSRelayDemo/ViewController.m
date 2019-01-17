@@ -3,9 +3,10 @@
 //  SmartiOSRelayDemo
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: https://www.daniulive.com
 //
 //  Created by daniulive on 2017/12/28.
-//  Copyright © 2014~2018年 daniulive. All rights reserved.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -19,7 +20,7 @@
 
 @implementation ViewController
 {
-    SmartPlayerSDK  *_smart_player_sdk;
+    SmartPlayerSDK  *_smart_player_sdk;         //拉流SDK API
     SmartPublisherSDK *_smart_publisher_sdk;    //推流SDK API
     SmartRTSPServerSDK *_smart_rtsp_server_sdk; //内置轻量级RTSP服务SDK API
     
@@ -82,7 +83,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
     
     //当前屏幕宽高
@@ -217,9 +217,9 @@
     [recButton addTarget:self action:@selector(recorderBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:recButton];
     
-    //拉流按钮
+    //拉取RTMP/RTSP流 然后转发到RTMP/RTSP服务
     pullStreamButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    pullStreamButton.frame = CGRectMake(45, screen_height_/2 + 170, 120, 80);
+    pullStreamButton.frame = CGRectMake(45, screen_height_/2 + 170, 200, 80);
     pullStreamButton.center = CGPointMake(self.view.frame.size.width / 6, pullStreamButton.frame.origin.y + pullStreamButton.frame.size.height / 2);
     
     pullStreamButton.layer.cornerRadius = pullStreamButton.frame.size.width / 2;
@@ -227,7 +227,7 @@
     pullStreamButton.layer.borderWidth = lineWidth;
     
     [pullStreamButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [pullStreamButton setTitle:@"开始拉流" forState:UIControlStateNormal];
+    [pullStreamButton setTitle:@"转推RTMP/RTSP" forState:UIControlStateNormal];
     
     [pullStreamButton addTarget:self action:@selector(pullStreamBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pullStreamButton];
@@ -302,6 +302,20 @@
     
     textModeLabel.text =  [str stringByAppendingString:relay_url_];
     [self.view addSubview:textModeLabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -533,9 +547,11 @@
         
         [self InitPublisher];
         
-        [self StartPublisher];
+        [self StartPushRTMP];
         
-        [pullStreamButton setTitle:@"停止拉流" forState:UIControlStateNormal];
+        //[self StartPushRTSP];   //如需转推RTSP 这里打开即可
+        
+        [pullStreamButton setTitle:@"停止转推" forState:UIControlStateNormal];
         
         is_pulling_ = YES;
     }
@@ -544,7 +560,9 @@
         if (!is_pulling_ )
             return;
         
-        [self StopPublisher];
+        [self StopPushRTMP];
+        
+        //[self StopPushRTSP];   //如需转推RTSP 这里打开即可
         
         if(!isRTSPPublisherRunning)
         {
@@ -558,7 +576,7 @@
             [self UnInitPlayer];
         }
         
-        [pullStreamButton setTitle:@"开始拉流" forState:UIControlStateNormal];
+        [pullStreamButton setTitle:@"转推RTMP/RTSP" forState:UIControlStateNormal];
         
         is_pulling_ = NO;
     }
@@ -735,7 +753,7 @@
     
     if(is_pulling_)
     {
-        [self StopPublisher];
+        [self StopPushRTMP];
         [pullStreamButton setTitle:@"开始拉流" forState:UIControlStateNormal];
     }
     
@@ -1024,38 +1042,92 @@
     return true;
 }
 
--(bool)StartPublisher
+-(bool)StartPushRTMP
 {
-    NSLog(@"StartPublisher++");
+    NSLog(@"StartPushRTMP++");
     if ( _smart_publisher_sdk == nil )
     {
-        NSLog(@"StartPublisher, publiher SDK with nil");
+        NSLog(@"StartPushRTMP, publisher SDK with nil");
         return false;
     }
     
-    NSInteger ret = [_smart_publisher_sdk SmartPublisherStartPublisher:relay_url_];
+    NSInteger errorCode = [_smart_publisher_sdk SmartPublisherStartPublisher:relay_url_];
     
-    if(ret != DANIULIVE_RETURN_OK)
+    NSLog(@"rtmp pusher url: %@", relay_url_);
+    
+    if(errorCode != DANIULIVE_RETURN_OK)
     {
-        NSLog(@"Call SmartPublisherStartPublisher failed..ret:%ld", (long)ret);
+        NSLog(@"Call SmartPublisherStartPublisher failed..ret:%ld", (long)errorCode);
         return false;
     }
-    NSLog(@"StartPublisher--");
+    
+    NSLog(@"StartPushRTMP--");
     return true;
 }
 
--(bool)StopPublisher
+-(bool)StopPushRTMP
 {
-    NSLog(@"StopPublisher++");
+    NSLog(@"StopPushRTMP++");
     if ( _smart_publisher_sdk == nil )
     {
-        NSLog(@"StopPublisher, publiher SDK with nil");
+        NSLog(@"StopPushRTMP, publiher SDK with nil");
         return false;
     }
     
     [_smart_publisher_sdk SmartPublisherStopPublisher];
     
-    NSLog(@"StopPublisher--");
+    NSLog(@"StopPushRTMP--");
+    return true;
+}
+
+-(bool)StartPushRTSP
+{
+    NSLog(@"StartPushRTSP++");
+    if ( _smart_publisher_sdk == nil )
+    {
+        NSLog(@"StartPushRTSP, publisher SDK with nil");
+        return false;
+    }
+    
+    NSString* rtsp_push_url = @"rtsp://player.daniulive.com:554/live123.sdp";   //推送到自己的RTSP服务器即可
+    
+    NSLog(@"rtsp pusher url: %@",rtsp_push_url);
+    
+    NSInteger transport_protocol = 1;
+    [_smart_publisher_sdk SetPushRtspTransportProtocol:transport_protocol];
+    
+    NSInteger errorCode = [_smart_publisher_sdk SetPushRtspURL:rtsp_push_url];
+    
+    if(errorCode != DANIULIVE_RETURN_OK)
+    {
+        NSLog(@"Call SetPushRtspURL failed..ret:%ld", (long)errorCode);
+        return false;
+    }
+    
+    NSInteger reserve = 0;
+    errorCode = [_smart_publisher_sdk StartPushRtsp:reserve];
+    
+    if(errorCode != DANIULIVE_RETURN_OK)
+    {
+        NSLog(@"Call StartPushRtsp failed..ret:%ld", (long)errorCode);
+        return false;
+    }
+    NSLog(@"StartPushRTSP--");
+    return true;
+}
+
+-(bool)StopPushRTSP
+{
+    NSLog(@"StopPushRTSP++");
+    if ( _smart_publisher_sdk == nil )
+    {
+        NSLog(@"StopPushRTSP, publisher SDK with nil");
+        return false;
+    }
+    
+    [_smart_publisher_sdk StopPushRtsp];
+    
+    NSLog(@"StopPushRTSP--");
     return true;
 }
 

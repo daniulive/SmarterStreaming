@@ -3,10 +3,10 @@
 //  SmartPublisherSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
-//  website: http://www.daniulive.com
+//  website: https://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2016年 daniulive. All rights reserved.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import "SettingView.h"
@@ -117,25 +117,13 @@
     
     //导航栏:直播设置
     
-    [self.navigationItem setTitle:@"大牛直播推流端V1.0.17.05.05"];
+    [self.navigationItem setTitle:@"Daniulive RTMP/RTSP推送SDK"];
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
 
     CGFloat buttonWidth = screenWidth - kHorMargin*2;
     
     CGFloat buttonSpace = (screenWidth - 2*kHorMargin-160)/6;
-    
-    //设置推流地址
-    self.inputUrlText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, kVerMargin - 10, buttonWidth, kBtnHeight)];
-    [self.inputUrlText setBackgroundColor:[UIColor whiteColor]];
-    self.inputUrlText.placeholder = @"输入推流rtmp的url,如不输入用默认url";
-    self.inputUrlText.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-    self.inputUrlText.borderStyle = UITextBorderStyleRoundedRect;
-    self.inputUrlText.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.inputUrlText.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.inputUrlText addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    self.inputUrlText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    //[self.inputUrlText setText:[NSString stringWithFormat:@"rtmp://player.daniulive.com:1935/hls/stream0"]];
     
     //直播视频质量
     self.lowQualityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -219,6 +207,18 @@
     self.noBeautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80, 80, 20)];
     self.noBeautyLable.text = @"不美颜";
     self.noBeautyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    
+    //设置推流地址
+    self.inputUrlText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+60, buttonWidth, kBtnHeight)];
+    [self.inputUrlText setBackgroundColor:[UIColor whiteColor]];
+    self.inputUrlText.placeholder = @"输入推流的rtmp url,如不输入用默认url";
+    self.inputUrlText.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    self.inputUrlText.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputUrlText.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.inputUrlText.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.inputUrlText addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    self.inputUrlText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    //[self.inputUrlText setText:[NSString stringWithFormat:@"rtmp://player.daniulive.com:1935/hls/stream0"]];
     
     //进入推流页面
     self.interPublisherView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -378,13 +378,13 @@
 
 - (void)interPublisherViewBtnPressed:(id)sender {
     
-    NSString* publishURL;
+    NSString* push_url;     //考虑到好多开发者没有自建rtsp服务器 rtsp url可在ViewController单独设置
     
     NSString* inputVal = [[self inputUrlText] text];
     
     if ( inputVal.length < 7 || ([inputVal hasPrefix:@"rtmp://"] == NO))
     {
-        NSLog(@"incorrect publish url, use default url..");
+        NSLog(@"incorrect rtmp publish url, use default url..");
         
         NSInteger randNumber = arc4random()%(1000000);
         
@@ -392,17 +392,17 @@
         
         NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
         
-        publishURL = [ baseURL stringByAppendingString:strNumber];
+        push_url = [ baseURL stringByAppendingString:strNumber];
 
     }
     else
     {
-        publishURL = inputVal;
+        push_url = inputVal;
     }
     
-    NSLog(@"publishURL:%@", publishURL);
+    NSLog(@"publishURL:%@", push_url);
    
-    ViewController * coreView =[[ViewController alloc] initParameter:publishURL
+    ViewController * coreView =[[ViewController alloc] initParameter:push_url
                                                        streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isBeauty:is_beauty_];
     [self presentViewController:coreView animated:YES completion:nil];
 }

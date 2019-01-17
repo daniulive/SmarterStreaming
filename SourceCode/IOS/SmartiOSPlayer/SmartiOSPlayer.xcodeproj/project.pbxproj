@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C34BB6B21EEF294002E5CDA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C34BB6A21EEF294002E5CDA /* libc++.tbd */; };
 		0C38D92D1DCA1DEC0061F87A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */; };
 		0C38D92F1DCA1DFD0061F87A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */; };
 		0CFB75BB201885D0007E0F93 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFB75BA201885C2007E0F93 /* libbz2.tbd */; };
@@ -23,7 +24,6 @@
 		582FB8DD1C885FD100CD6B44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582FB8DC1C885FD100CD6B44 /* Assets.xcassets */; };
 		582FB8E01C885FD100CD6B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582FB8DE1C885FD100CD6B44 /* LaunchScreen.storyboard */; };
 		582FB8EE1C8869D800CD6B44 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8ED1C8869D800CD6B44 /* libiconv.tbd */; };
-		582FB8F01C8869FD00CD6B44 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */; };
 		582FB8F21C886A1600CD6B44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F11C886A1600CD6B44 /* UIKit.framework */; };
 		582FB8F41C886A2000CD6B44 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F31C886A2000CD6B44 /* GLKit.framework */; };
 		582FB8F61C886A2E00CD6B44 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FB8F51C886A2E00CD6B44 /* OpenGLES.framework */; };
@@ -35,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C34BB6A21EEF294002E5CDA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0C38D92C1DCA1DEC0061F87A /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		0C38D92E1DCA1DFD0061F87A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0CFB75BA201885C2007E0F93 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
@@ -57,7 +58,6 @@
 		582FB8E11C885FD100CD6B44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		582FB8EB1C8869CB00CD6B44 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		582FB8ED1C8869D800CD6B44 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
-		582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		582FB8F11C886A1600CD6B44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		582FB8F31C886A2000CD6B44 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		582FB8F51C886A2E00CD6B44 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -82,9 +82,9 @@
 				582FB8F61C886A2E00CD6B44 /* OpenGLES.framework in Frameworks */,
 				582FB8F41C886A2000CD6B44 /* GLKit.framework in Frameworks */,
 				582FB8F21C886A1600CD6B44 /* UIKit.framework in Frameworks */,
+				0C34BB6B21EEF294002E5CDA /* libc++.tbd in Frameworks */,
 				0CFB75BB201885D0007E0F93 /* libbz2.tbd in Frameworks */,
 				582FB9011C886D9000CD6B44 /* libz.tbd in Frameworks */,
-				582FB8F01C8869FD00CD6B44 /* libstdc++.tbd in Frameworks */,
 				582FB8EE1C8869D800CD6B44 /* libiconv.tbd in Frameworks */,
 				586930701D0AB2F10045421E /* libSmartPlayerSDK.a in Frameworks */,
 			);
@@ -96,6 +96,7 @@
 		0CFB75B9201885C2007E0F93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C34BB6A21EEF294002E5CDA /* libc++.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 				582FB8F51C886A2E00CD6B44 /* OpenGLES.framework */,
 				582FB8F31C886A2000CD6B44 /* GLKit.framework */,
 				582FB8F11C886A1600CD6B44 /* UIKit.framework */,
-				582FB8EF1C8869FD00CD6B44 /* libstdc++.tbd */,
 				0CFB75BA201885C2007E0F93 /* libbz2.tbd */,
 				582FB8ED1C8869D800CD6B44 /* libiconv.tbd */,
 				582FB8EB1C8869CB00CD6B44 /* libz.tbd */,
@@ -340,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "1eb29052-bd16-4f0d-ba22-5c86050004bb";
@@ -384,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1eb29052-bd16-4f0d-ba22-5c86050004bb";

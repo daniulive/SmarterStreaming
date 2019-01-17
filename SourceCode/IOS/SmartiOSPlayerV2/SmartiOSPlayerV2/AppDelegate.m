@@ -3,9 +3,10 @@
 //  SmartiOSPlayerV2
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
+//  website: https://www.daniulive.com
 //
-//  Created by daniulive on 2017/12/28.
-//  Copyright © 2014~2018年 daniulive. All rights reserved.
+//  Created by daniulive on 2016/01/03.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -21,16 +22,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:253/255.0 green:153/255.0 blue:3/255.0 alpha:1]} forState:UIControlStateSelected];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     ViewController *homeVC = [[ViewController alloc] init];
+    
     UINavigationController* nav = [[UINavigationController alloc]initWithRootViewController:homeVC];
     
     self.window.rootViewController = nav;
     
     [self.window makeKeyAndVisible];
     
-    return YES;
     return YES;
 }
 

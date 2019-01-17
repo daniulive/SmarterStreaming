@@ -11,10 +11,6 @@
 #import "ViewController.h"
 #import "SettingView.h"
 
-#define kBtnHeight     50
-#define kHorMargin     10
-#define kVerMargin     80
-
 @interface ViewController ()
 
 @end

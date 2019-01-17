@@ -28,7 +28,6 @@
 		0C4E0F0E200343A400598A58 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0EF620033F0000598A58 /* AudioToolbox.framework */; };
 		0C4E0F0F200343F600598A58 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0F0220033FCE00598A58 /* libiconv.tbd */; };
 		0C4E0F10200343FC00598A58 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0F0120033FC500598A58 /* libz.tbd */; };
-		0C4E0F112003440400598A58 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0F0020033FBC00598A58 /* libstdc++.tbd */; };
 		0C4E0F122003441100598A58 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0EFF20033FAF00598A58 /* libc++.tbd */; };
 		0C4E0F132003441800598A58 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0EFE20033FA400598A58 /* libbz2.tbd */; };
 		0C4E0F142003444200598A58 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4E0EF520033EED00598A58 /* AssetsLibrary.framework */; };
@@ -67,7 +66,6 @@
 		0C4E0EFD20033F9000598A58 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0C4E0EFE20033FA400598A58 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		0C4E0EFF20033FAF00598A58 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		0C4E0F0020033FBC00598A58 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		0C4E0F0120033FC500598A58 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		0C4E0F0220033FCE00598A58 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		0C4F15CD2015D45A00C3BC8B /* nt_common_media_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_common_media_define.h; path = daniuliveSDK/include/nt_common_media_define.h; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				0C4E0F142003444200598A58 /* AssetsLibrary.framework in Frameworks */,
 				0C4E0F132003441800598A58 /* libbz2.tbd in Frameworks */,
 				0C4E0F122003441100598A58 /* libc++.tbd in Frameworks */,
-				0C4E0F112003440400598A58 /* libstdc++.tbd in Frameworks */,
 				0C4E0F10200343FC00598A58 /* libz.tbd in Frameworks */,
 				0C4E0F0F200343F600598A58 /* libiconv.tbd in Frameworks */,
 				0C4E0F0E200343A400598A58 /* AudioToolbox.framework in Frameworks */,
@@ -200,7 +197,6 @@
 			children = (
 				0C4E0F0220033FCE00598A58 /* libiconv.tbd */,
 				0C4E0F0120033FC500598A58 /* libz.tbd */,
-				0C4E0F0020033FBC00598A58 /* libstdc++.tbd */,
 				0C4E0EFF20033FAF00598A58 /* libc++.tbd */,
 				0C4E0EFE20033FA400598A58 /* libbz2.tbd */,
 				0C4E0EFD20033F9000598A58 /* CoreMedia.framework */,

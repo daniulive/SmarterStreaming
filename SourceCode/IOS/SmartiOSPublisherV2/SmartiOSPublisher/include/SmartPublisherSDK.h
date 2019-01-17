@@ -3,10 +3,10 @@
 //  SmartPublisherSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
-//  website: http://www.daniulive.com
+//  website: https://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2015~2018 daniulive. All rights reserved.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -62,6 +62,7 @@ typedef enum DNCameraPosition{
  if with 1: 推送SDK内部采集的音频
  if with 2: 推送外部编码后音频(目前支持AAC/PCMA/PCMU/SPEEX宽带)
  if with 3: 推送外部编码前音频数据(CMSampleBufferRef类型), 数据传递对应接口: SmartPublisherPostAudioSampleBuffer
+ if with 4: 推送外部采集的PCM音频
  *
  * @param video_opt:
  if with 0: 不推送视频
@@ -118,7 +119,7 @@ typedef enum DNCameraPosition{
  *
  * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
  *
- * is_enable_vbr: if false: NOT enable vbr mode, true: enable vbr
+ * is_enable_vbr: if 0: NOT enable vbr mode, 1: enable vbr
  *
  * video_quality: vbr video quality, range with (1,50), default 23
  *
@@ -590,7 +591,7 @@ typedef enum DNCameraPosition{
 -(NSInteger)SmartPublisherSetVideoPreview:(UIView*)preview;
 
 /**
- * 开始采集音视频数据
+ * 开始采集音视频数据(和SmartPublisherStopCaputure配对使用)
  *
  * <pre>resolution：采集分辨率</pre>
  *
@@ -609,6 +610,7 @@ typedef enum DNCameraPosition{
  */
 -(NSInteger)SmartPublisherSwitchCamera;
 
+/*+++++++++++++++SmartPublisherStartPublish和SmartPublisherStopPublish系2016年之前接口，不建议使用+++++++++++++++*/
 /**
  * 开始推流
  *
@@ -616,49 +618,80 @@ typedef enum DNCameraPosition{
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherStartPublish:(NSString *)publisherURL;
+//- (NSInteger)SmartPublisherStartPublish:(NSString *)publisherURL;
 
 /**
  * 停止推流
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherStopPublish;
-
-/*********增加新的接口 ++ ***************/
-/* 增加新接口是为了把推送和录像分离, 老的接口依然可用(SmartPublisherStartPublish, SmartPublisherStopPublish),
- * 但是不要老接口和新接口混着用，这样结果是未定义的
- */
+//- (NSInteger)SmartPublisherStopPublish;
+/*---------------SmartPublisherStartPublish和SmartPublisherStopPublish系2016年之前接口，不建议使用---------------*/
 
 /**
- * Start publish stream
+ * Start publish rtmp stream(启动推送RTMP流)
  *
  * @return {0} if successful
  */
-- (NSInteger)SmartPublisherStartPublisher:(NSString *)publisherURL;
+- (NSInteger)SmartPublisherStartPublisher:(NSString*)publisherURL;
 
 /**
- * Stop publish stream
+ * Stop publish rtmp stream(停止推送RTMP流)
  *
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherStopPublisher;
 
+/*+++++++++++++++推送rtsp相关接口+++++++++++++++*/
+/*
+ * 设置推送rtsp传输方式
+ *
+ * @param transport_protocol: 1表示UDP传输rtp包; 2表示TCP传输rtp包. 默认是1, UDP传输. 传其他值SDK报错。
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SetPushRtspTransportProtocol:(NSInteger)transport_protocol;
+
+/*
+ * 设置推送RTSP的URL
+ *
+ * @param url: 推送的RTSP url
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SetPushRtspURL:(NSString*)url;
+
+/*
+ * 启动推送RTSP流
+ *
+ * @param reserve: 保留参数，传0
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)StartPushRtsp:(NSInteger)reserve;
+
+/*
+ * 停止推送RTSP流
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)StopPushRtsp;
+
+/*---------------推送rtsp相关接口---------------*/
+
 /**
- * Start recorder
+ * Start recorder(开始录像)
  *
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherStartRecorder;
 
 /**
- * Stop recorder
+ * Stop recorder(停止录像)
  *
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherStopRecorder;
-
-/*********增加新的接口  -- ***************/
 
 /**
  * 停止采集音视频数据

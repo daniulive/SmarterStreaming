@@ -3,10 +3,10 @@
 //  SmartPublisherSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
-//  website: http://www.daniulive.com
+//  website: https://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2015~2017 daniulive. All rights reserved.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
