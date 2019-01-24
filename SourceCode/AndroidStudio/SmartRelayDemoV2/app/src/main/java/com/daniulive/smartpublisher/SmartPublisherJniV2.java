@@ -2,11 +2,11 @@
  * SmartPublisherJniV2.java
  * SmartPublisherJniV2
  *
- * WebSite: http://daniulive.com
+ * WebSite: https://daniulive.com
  * Github: https://github.com/daniulive/SmarterStreaming
  * 
  * Created by DaniuLive on 2015/09/20.
- * Copyright © 2014~2018 DaniuLive. All rights reserved.
+ * Copyright © 2014~2019 DaniuLive. All rights reserved.
  */
 
 package com.daniulive.smartpublisher;
@@ -29,7 +29,7 @@ public class SmartPublisherJniV2 {
 	}
 	
 	/**
-	 * Open publisher.
+	 * Open publisher(启动推送实例)
 	 *
 	 * @param ctx: get by this.getApplicationContext()
 	 * 
@@ -47,22 +47,21 @@ public class SmartPublisherJniV2 {
 	 *
 	 * <pre>This function must be called firstly.</pre>
 	 *
-	 * @return {0} if successful
+	 * @return the handle of publisher instance
 	 */
     public native long SmartPublisherOpen(Object ctx, int audio_opt, int video_opt,  int width, int height);
-    
-    
+
 	 /**
-	  * Set callbackv2 event
+	  * Set callback event(设置事件回调)
 	  * 
-	  * @param callback function
+	  * @param callbackv2: callback function
 	  * 
 	 * @return {0} if successful
 	  */
     public native int SetSmartPublisherEventCallbackV2(long handle, NTSmartEventCallbackV2 callbackv2);
     
 	 /**
-	  * Set Video HW Encoder, if support HW encoder, it will return 0
+	  * Set Video H.264 HW Encoder, if support HW encoder, it will return 0(设置H.264硬编码)
 	  * 
 	  * @param kbps: the kbps of different resolution(25 fps).
 	  * 
@@ -71,7 +70,7 @@ public class SmartPublisherJniV2 {
    public native int SetSmartPublisherVideoHWEncoder(long handle, int kbps);
 
 	/**
-	 * Set Video H.265(hevc) hardware encoder, if support H.265(hevc) hardware encoder, it will return 0
+	 * Set Video H.265(hevc) hardware encoder, if support H.265(hevc) hardware encoder, it will return 0(设置H.265硬编码)
 	 *
 	 * @param kbps: the kbps of different resolution(25 fps).
 	 *
@@ -80,7 +79,7 @@ public class SmartPublisherJniV2 {
 	public native int SetSmartPublisherVideoHevcHWEncoder(long handle, int kbps);
     
     /**
-     * Set Text water-mark
+     * Set Text water-mark(设置文字水印)
      * 
      * @param fontSize: it should be "MEDIUM", "SMALL", "BIG"
      * 
@@ -96,15 +95,16 @@ public class SmartPublisherJniV2 {
     
     
     /**
-     * Set Text water-mark font file name
-     * @param fontFileName:  font full file name,  e.g: /system/fonts/DroidSansFallback.ttf
+     * Set Text water-mark font file name(设置文字水印字体路径)
+	 *
+     * @param fontFileName:  font full file name, e.g: /system/fonts/DroidSansFallback.ttf
 	 *
 	 * @return {0} if successful
      */
     public native int SmartPublisherSetTextWatermarkFontFileName(long handle, String fontFileName);
 	
     /**
-     * Set picture water-mark
+     * Set picture water-mark(设置png图片水印)
      * 											
      * @param picPath: the picture working path, e.g: /sdcard/logo.png
      * 
@@ -123,7 +123,7 @@ public class SmartPublisherJniV2 {
 	/**
 	 * Set software encode vbr mode(软编码可变码率).
 	 *
-	 * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+	 * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
 	 *
 	 * is_enable_vbr: if 0: NOT enable vbr mode, 1: enable vbr
 	 *
@@ -136,9 +136,9 @@ public class SmartPublisherJniV2 {
 	public native int SmartPublisherSetSwVBRMode(long handle, int is_enable_vbr, int video_quality, int vbr_max_kbitrate);
 
     /**
-     * Set gop interval.
+     * Set gop interval(设置I帧间隔)
      *
-     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
      *
      * gopInterval: encode I frame interval, the value always > 0
      *
@@ -147,9 +147,9 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetGopInterval(long handle, int gopInterval);
     
     /**
-     * Set software encode video bit-rate.
+     * Set software encode video bit-rate(设置视频软编码bit-rate)
      *
-     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
      *
      * avgBitRate: average encode bit-rate(kbps)
      * 
@@ -160,9 +160,9 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetSWVideoBitRate(long handle, int avgBitRate, int maxBitRate);
     
     /**
-     * Set fps.
+     * Set fps(设置帧率)
      *
-     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
      *
      * fps: the fps of video, range with (1,25).
      *
@@ -171,9 +171,9 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetFPS(long handle, int fps);
     
 	/**
-     * Set software video encoder profile.
+     * Set software video encoder profile(设置视频编码profile).
      *
-     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
      *
      * profile: the software video encoder profile, range with (1,3).
      * 
@@ -187,10 +187,9 @@ public class SmartPublisherJniV2 {
     
     
     /**
+     * Set software video encoder speed(设置视频软编码编码速度)
      * 
-     * Set software video encoder speed.
-     * 
-     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
      * 
      * @param speed: range with(1, 6), the default speed is 6. 
      * 
@@ -204,7 +203,7 @@ public class SmartPublisherJniV2 {
      /**
      * Set Clipping Mode: 设置裁剪模式(仅用于640*480分辨率, 裁剪主要用于移动端宽高适配)
      *
-     * <pre>please set before SmartPublisherStart while after SmartPublisherInit.</pre>
+     * <pre>please set before SmartPublisherStart while after SmartPublisherOpen.</pre>
      *
      * @param mode: 0: 非裁剪模式 1:裁剪模式(如不设置, 默认裁剪模式)
      *
@@ -213,7 +212,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetClippingMode(long handle, int mode);
 	
     /**
-     * Set audio encoder type
+     * Set audio encoder type(设置音频编码类型)
      * 
      * @param type: if with 1:AAC, if with 2: SPEEX
      * 
@@ -222,7 +221,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetAudioCodecType(long handle, int type);
     
     /**
-     * Set speex encoder quality
+     * Set speex encoder quality(设置speex编码质量)
      * 
      * @param quality: range with (0, 10), default value is 8
      * 
@@ -232,7 +231,7 @@ public class SmartPublisherJniV2 {
     
     
     /**
-     * Set Audio Noise Suppression
+     * Set Audio Noise Suppression(设置音频噪音抑制)
      * 
      * @param isNS: if with 1:suppress, if with 0: does not suppress
      * 
@@ -242,9 +241,9 @@ public class SmartPublisherJniV2 {
     
     
     /**
-     * Set Audio AGC
+     * Set Audio AGC(设置音频自动增益控制)
      * 
-     * @param isNS: if with 1:AGC, if with 0: does not AGC
+     * @param isAGC: if with 1:AGC, if with 0: does not AGC
      * 
      * @return {0} if successful
      */
@@ -252,9 +251,10 @@ public class SmartPublisherJniV2 {
     
     
     /**
-     * Set Audio Echo Cancellation
+     * Set Audio Echo Cancellation(设置音频回音消除)
      * 
      * @param isCancel: if with 1:Echo Cancellation, if with 0: does not cancel
+	 *
      * @param delay: echo delay(ms), if with 0, SDK will automatically estimate the delay.
      * 
      * @return {0} if successful
@@ -263,7 +263,7 @@ public class SmartPublisherJniV2 {
     
     
     /**
-     * Set mute or not during publish stream
+     * Set mute or not during publish stream(设置实时静音)
      * 
      * @param isMute: if with 1:mute, if with 0: does not mute
      * 
@@ -272,7 +272,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetMute(long handle, int isMute);
     
     /**
-     * Set mirror
+     * Set mirror(设置前置摄像头镜像)
      * 
      * @param isMirror: if with 1:mirror mode, if with 0: normal mode
      * 
@@ -283,18 +283,16 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetMirror(long handle, int isMirror);
     
     /**
-     * Set if recorder the stream to local file.
+     * Set if recorder the stream to local file(设置是否启动录像)
      * 
-     * @param isRecorder: (0: do not recorder; 1: recorder)
-     * 
-     * <pre> NOTE: If set isRecorder with 1: Please make sure before call SmartPublisherStartPublish(), set a valid path via SmartPublisherCreateFileDirectory(). </pre> 
+     * @param isRecorder: 0: do not recorder; 1: recorder
      * 
      * @return {0} if successful
      */
     public native int SmartPublisherSetRecorder(long handle, int isRecorder);
     
     /**
-     * Create file directory
+     * Create file directory(创建录像存放目录)
      * 
      * @param path,  E.g: /sdcard/daniulive/rec
      * 
@@ -305,7 +303,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherCreateFileDirectory(String path);
     
     /**
-     * Set recorder directory.
+     * Set recorder directory(设置录像存放目录)
      * 
      * @param path: the directory of recorder file.
      * 
@@ -316,7 +314,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetRecorderDirectory(long handle, String path);
     
     /**
-     * Set the size of every recorded file. 
+     * Set the size of every recorded file(设置单个录像文件大小，如超过最大文件大小，自动切换到下个文件录制)
      * 
      * @param size: (MB), (5M~500M), if not in this range, set default size with 200MB.
      * 
@@ -325,7 +323,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetRecorderFileMaxSize(long handle, int size);
     
 	 /**
-	  * Set if needs to save image during publishing stream
+	  * Set if needs to save image during publishing stream(设置是否启用快照)
 	  *
 	  * @param is_save_image: if with 1, it will save current image via the interface of SmartPlayerSaveImage(), if with 0: does not it
 	  *
@@ -334,7 +332,7 @@ public class SmartPublisherJniV2 {
 	 public native int SmartPublisherSaveImageFlag(long handle,  int is_save_image);
 		  
 	 /**
-	  * Save current image during publishing stream
+	  * Save current image during publishing stream(实时快照)
 	  *
 	  * @param imageName: image name, which including fully path, "/sdcard/daniuliveimage/daniu.png", etc.
 	  *
@@ -343,7 +341,7 @@ public class SmartPublisherJniV2 {
 	 public native int SmartPublisherSaveCurImage(long handle,  String imageName);
     
     /**
-     * Set rtmp PublishingType
+     * Set rtmp publish type(设置RTMP推送类型 live|record)
      * 
      * @param type: 0:live, 1:record. please refer to rtmp specification Page 46
      * 
@@ -352,18 +350,16 @@ public class SmartPublisherJniV2 {
     public native int SetRtmpPublishingType(long handle,  int type);
         
     /**
-	* Set publish stream url.
-	* 
-	* if not set url or url is empty, it will not publish stream
+	* Set rtmp publish stream url(设置推送的RTMP url)
 	*
-	* @param url: publish url.
+	* @param url: rtmp publish url.
 	*
 	* @return {0} if successful
 	*/
     public native int SmartPublisherSetURL(long handle,  String url);
     
 
-		/**
+    /**
 	* Set live video data(no encoded data).
 	*
 	* @param cameraType: CAMERA_FACING_BACK with 0, CAMERA_FACING_FRONT with 1
@@ -436,9 +432,7 @@ public class SmartPublisherJniV2 {
 	 *  @param per_channel_sample_number: 这个请传入的是 sampleRate/100
 	 */
 	public native int SmartPublisherOnPCMData(long handle, ByteBuffer pcmdata, int size, int sampleRate, int channel, int per_channel_sample_number);		
-	
-	
-	
+
 	/**
 	 * Set far end pcm data
 	 * 
@@ -470,7 +464,6 @@ public class SmartPublisherJniV2 {
 	 */
 	public native int SmartPublisherPostVideoEncodedData(long handle, int codec_id, ByteBuffer data, int size, int is_key_frame, long timestamp, long pts);
 
-
 	/**
 	 * 设置编码后视频数据(H.264)
 	 *
@@ -487,7 +480,6 @@ public class SmartPublisherJniV2 {
 	 * @param timestamp video timestamp
 	 *
 	 * @param pts Presentation Time Stamp, 显示时间戳
-	 *
 	 *
 	 * @return {0} if successful
 	 */
@@ -526,7 +518,6 @@ public class SmartPublisherJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPublisherPostAudioEncodedData(long handle, int codec_id, ByteBuffer data, int size, int is_key_frame, long timestamp,ByteBuffer parameter_info, int parameter_info_size);
-
 
 	/**
 	 * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
@@ -697,28 +688,65 @@ public class SmartPublisherJniV2 {
 	public native int SmartPublisherSetVideoEncodedDataCallback(long handle, Object video_encoded_data_callback);
 
     /**
-	* Start publish stream 
-	*
-	* @return {0} if successful
-	*/
+	 * Start publish rtmp stream(启动推送RTMP流)
+	 *
+	 * @return {0} if successful
+	 */
     public native int SmartPublisherStartPublisher(long handle);
     
     /**
-   	* Stop publish stream 
-   	*
-   	* @return {0} if successful
-   	*/
+   	 * Stop publish rtmp stream(停止推送RTMP流)
+   	 *
+   	 * @return {0} if successful
+   	 */
     public native int SmartPublisherStopPublisher(long handle);
-    
+
+    /*+++++++++++++++推送rtsp相关接口+++++++++++++++*/
+    /*
+     * 设置推送rtsp传输方式
+     *
+     * @param transport_protocol: 1表示UDP传输rtp包; 2表示TCP传输rtp包. 默认是1, UDP传输. 传其他值SDK报错。
+     *
+     * @return {0} if successful
+     */
+    public native int SetPushRtspTransportProtocol(long handle, int transport_protocol);
+
+    /*
+     * 设置推送RTSP的URL
+     *
+     * @param url: 推送的RTSP url
+     *
+     * @return {0} if successful
+     */
+    public native int SetPushRtspURL(long handle, String url);
+
+    /*
+     * 启动推送RTSP流
+     *
+     * @param reserve: 保留参数，传0
+     *
+     * @return {0} if successful
+     */
+    public native int StartPushRtsp(long handle, int reserve);
+
+    /*
+     * 停止推送RTSP流
+     *
+     * @return {0} if successful
+     */
+    public native int StopPushRtsp(long handle);
+
+    /*---------------推送rtsp相关接口---------------*/
+
     /**
-	* Start recorder
+	* Start recorder(开始录像)
 	*
 	* @return {0} if successful
 	*/
     public native int SmartPublisherStartRecorder(long handle);
     
     /**
-   	* Stop recorder 
+   	* Stop recorder(停止录像)
    	*
    	* @return {0} if successful
    	*/
@@ -890,12 +918,11 @@ public class SmartPublisherJniV2 {
 	/*---------------SmartRTSPServerSDK供Publisher调用的接口---------------*/
 
 	/*---------------内置轻量级RTSP服务SDK---------------*/
-       
+
     /**
-     * 结束时必须调用close接口释放资源
-     * @param handle
-     * @return
-     */
+     * 关闭推送实例，结束时必须调用close接口释放资源
+	 *
+	 * @return {0} if successful
+	 */
     public native int SmartPublisherClose(long handle);
-    
 }

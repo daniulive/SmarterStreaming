@@ -22,6 +22,7 @@ import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.Image;
@@ -32,6 +33,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
 import java.util.ArrayList;
@@ -730,6 +732,8 @@ public class BackgroudService extends Service implements
 
             //audioRecord_.IsMicSource(true);		//如音频采集声音过小，建议开启
 
+            // audioRecord_.IsRemoteSubmixSource(true);
+
             audioRecord_.AddCallback(audioRecordCallback_);
 
             audioRecord_.Start();
@@ -1067,6 +1071,29 @@ public class BackgroudService extends Service implements
 
          //libPublisher.SmartPublisherSaveImageFlag(publisherHandle, 1);
 
+    }
+
+    public void onConfigurationChanged(Configuration newConfig) {
+        try {
+            super.onConfigurationChanged(newConfig);
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                Log.i(TAG, "onConfigurationChanged cur: LANDSCAPE");
+            } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                Log.i(TAG, "onConfigurationChanged cur: PORTRAIT");
+            }
+
+            if(isPushing || isRecording || isRTSPPublisherRunning)
+            {
+                stopScreenCapture();
+                synchronized(this)
+                {
+                    data_list.clear();
+                }
+                createScreenEnvironment();
+                setupVirtualDisplay();
+            }
+        } catch (Exception ex) {
+        }
     }
 
     public class DataRunnable implements Runnable{

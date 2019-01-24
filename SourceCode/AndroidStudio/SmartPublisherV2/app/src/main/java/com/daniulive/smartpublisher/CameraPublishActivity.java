@@ -141,6 +141,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private Button btnRtspPublisher;    //发布、停止RTSP流按钮
     private Button btnGetRtspSessionNumbers;    //获取RTSP会话数按钮
 
+    private Button btnPushRtsp;    //启动、停止推送RTSP
+
     private SurfaceView mSurfaceView = null;
     private SurfaceHolder mSurfaceHolder = null;
 
@@ -148,10 +150,11 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private AutoFocusCallback myAutoFocusCallback = null;    //自动对焦
 
     private boolean mPreviewRunning = false; //priview状态
-    private boolean isPushing = false;    //RTMP推送状态
+    private boolean isPushingRtmp = false;    //RTMP推送状态
     private boolean isRecording = false;    //录像状态
     private boolean isRTSPServiceRunning = false;    //RTSP服务状态
     private boolean isRTSPPublisherRunning = false; //RTSP流发布状态
+    private boolean isPushingRtsp = false;     //RTSP推送状态
 
     final private String logoPath = "/sdcard/daniulivelogo.png";
     private boolean isWritelogoFileSuccess = false;
@@ -266,7 +269,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                if (isRTSPPublisherRunning || isPushing || isRecording) {
+                if (isRTSPPublisherRunning || isPushingRtmp || isRecording || isPushingRtsp) {
                     Log.e(TAG, "Could not switch push type during publishing..");
                     return;
                 }
@@ -303,7 +306,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                if (isPushing || isRecording || isRTSPPublisherRunning) {
+                if (isPushingRtmp || isRecording || isRTSPPublisherRunning|| isPushingRtsp) {
                     Log.e(TAG, "Could not switch watermark type during publishing..");
                     return;
                 }
@@ -334,7 +337,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                if (isPushing || isRecording || isRTSPPublisherRunning) {
+                if (isPushingRtmp || isRecording || isRTSPPublisherRunning|| isPushingRtsp) {
                     Log.e(TAG, "Could not switch resolution during publishing..");
                     return;
                 }
@@ -366,7 +369,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                if (isRTSPPublisherRunning || isPushing || isRecording) {
+                if (isRTSPPublisherRunning || isPushingRtmp || isRecording|| isPushingRtsp) {
                     Log.e(TAG, "Could not switch video profile during publishing..");
                     return;
                 }
@@ -445,7 +448,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                if (isRTSPPublisherRunning || isPushing || isRecording) {
+                if (isRTSPPublisherRunning || isPushingRtmp || isRecording || isPushingRtsp) {
                     Log.e(TAG, "Could not switch video encoder type during publishing..");
                     return;
                 }
@@ -496,6 +499,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         btnGetRtspSessionNumbers.setOnClickListener(new ButtonGetRtspSessionNumbersListener());
         btnGetRtspSessionNumbers.setEnabled(false);
 
+        btnPushRtsp = (Button) findViewById(R.id.button_push_rtsp);
+        btnPushRtsp.setOnClickListener(new ButtonPushRtspListener());
+
         imgSwitchCamera = (ImageView) findViewById(R.id.button_switchCamera);
         imgSwitchCamera.setOnClickListener(new SwitchCameraListener());
 
@@ -531,9 +537,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 e.printStackTrace();
             }
         }
-    }
-
-    ;
+    };
 
     void SwitchResolution(int position) {
         Log.i(TAG, "Current Resolution position: " + position);
@@ -805,6 +809,12 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 case NTSmartEventID.EVENT_DANIULIVE_ERC_PUBLISHER_RTSP_URL:
                     publisher_event = "RTSP服务URL: " + param3;
                     break;
+                case NTSmartEventID.EVENT_DANIULIVE_ERC_PUSH_RTSP_SERVER_RESPONSE_STATUS_CODE:
+                    publisher_event ="RTSP status code received, codeID: " + param1 + ", RTSP URL: " + param3;
+                    break;
+                case NTSmartEventID.EVENT_DANIULIVE_ERC_PUSH_RTSP_SERVER_NOT_SUPPORT:
+                    publisher_event ="服务器不支持RTSP推送, 推送的RTSP URL: " + param3;
+                    break;
             }
 
             String str = "当前回调状态：" + publisher_event;
@@ -815,7 +825,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             message.what = PUBLISHER_EVENT_MSG;
             message.obj = publisher_event;
             handler.sendMessage(message);
-
         }
     }
 
@@ -831,7 +840,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             return;
         }
 
-        if (!url.startsWith("rtmp://")) {
+        if (!url.startsWith("rtmp://") && !url.startsWith("rtsp://")) {
             Log.e(TAG, "Input publish url error:" + url);
             return;
         }
@@ -871,7 +880,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     class ButtonPushUserDataListener implements OnClickListener {
         public void onClick(View v) {
 
-            if(isPushing || isRTSPPublisherRunning)
+            if(isPushingRtmp || isRTSPPublisherRunning|| isPushingRtsp)
             {
                 String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
                 String utf8_string = "大牛直播SDK: " + timeStamp;    //创建以时间命名的文件名称
@@ -1041,18 +1050,17 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
-
     class ButtonStartPushListener implements OnClickListener {
         public void onClick(View v) {
-            if (isPushing) {
+            if (isPushingRtmp) {
                 stopPush();
 
-                if (!isRecording && !isRTSPPublisherRunning) {
+                if (!isRecording && !isRTSPPublisherRunning&& !isPushingRtsp) {
                     ConfigControlEnable(true);
                 }
 
                 btnStartPush.setText("推送RTMP");
-                isPushing = false;
+                isPushingRtmp = false;
 
                 return;
             }
@@ -1062,7 +1070,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             if (libPublisher == null)
                 return;
 
-            if (!isRecording && !isRTSPPublisherRunning) {
+            if (!isRecording && !isRTSPPublisherRunning && !isPushingRtsp) {
                 InitAndSetConfig();
             }
 
@@ -1084,13 +1092,13 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
             if (startRet != 0) {
-                isPushing = false;
+                isPushingRtmp = false;
 
                 Log.e(TAG, "Failed to start push stream..");
                 return;
             }
 
-            if (!isRecording && !isRTSPPublisherRunning) {
+            if (!isRecording && !isRTSPPublisherRunning && !isPushingRtsp) {
                 if (pushType == 0 || pushType == 1) {
                     CheckInitAudioRecorder();    //enable pure video publisher..
                 }
@@ -1102,18 +1110,16 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             textCurURL.setText(printText);
 
             btnStartPush.setText("停止推送 ");
-            isPushing = true;
+            isPushingRtmp = true;
         }
     }
-
-    ;
 
     class ButtonStartRecorderListener implements OnClickListener {
         public void onClick(View v) {
             if (isRecording) {
                 stopRecorder();
 
-                if (!isPushing && !isRTSPPublisherRunning) {
+                if (!isPushingRtmp && !isRTSPPublisherRunning && !isPushingRtsp) {
                     ConfigControlEnable(true);
                 }
 
@@ -1128,7 +1134,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             if (libPublisher == null)
                 return;
 
-            if (!isPushing && !isRTSPPublisherRunning) {
+            if (!isPushingRtmp && !isRTSPPublisherRunning&& !isPushingRtsp) {
                 InitAndSetConfig();
             }
 
@@ -1142,7 +1148,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 return;
             }
 
-            if (!isPushing && !isRTSPPublisherRunning) {
+            if (!isPushingRtmp && !isRTSPPublisherRunning && !isPushingRtsp) {
                 if (pushType == 0 || pushType == 1) {
                     CheckInitAudioRecorder();    //enable pure video publisher..
                 }
@@ -1155,12 +1161,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
-    ;
-
     class ButtonCaptureImageListener implements OnClickListener {
         @SuppressLint("SimpleDateFormat")
         public void onClick(View v) {
-            if(isPushing || isRecording || isRTSPPublisherRunning)
+            if(isPushingRtmp || isRecording || isRTSPPublisherRunning || isPushingRtsp)
             {
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageFileName = "dn_" + timeStamp;    //创建以时间命名的文件名称
@@ -1177,8 +1181,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             }
         }
     }
-
-    ;
 
     //启动/停止RTSP服务
     class ButtonRtspServiceListener implements OnClickListener {
@@ -1227,15 +1229,13 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
-    ;
-
     //发布/停止RTSP流
     class ButtonRtspPublisherListener implements OnClickListener {
         public void onClick(View v) {
             if (isRTSPPublisherRunning) {
                 stopRtspPublisher();
 
-                if (!isPushing && !isRecording) {
+                if (!isPushingRtmp && !isRecording && !isPushingRtsp) {
                     ConfigControlEnable(true);
                 }
 
@@ -1249,7 +1249,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             Log.i(TAG, "onClick start rtsp publisher..");
 
-            if (!isPushing && !isRecording) {
+            if (!isPushingRtmp && !isRecording && !isPushingRtsp) {
                 InitAndSetConfig();
             }
 
@@ -1269,7 +1269,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 return;
             }
 
-            if (!isPushing && !isRecording) {
+            if (!isPushingRtmp && !isRecording && !isPushingRtsp) {
                 if (pushType == 0 || pushType == 1) {
                     CheckInitAudioRecorder();    //enable pure video publisher..
                 }
@@ -1313,17 +1313,85 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 PopRtspSessionNumberDialog(session_numbers);
             }
         }
-    }
+    };
 
-    ;
+    class ButtonPushRtspListener implements OnClickListener {
+        public void onClick(View v) {
+            if (isPushingRtsp) {
+                stopPushRtsp();
+
+                if (!isRecording && !isRTSPPublisherRunning && !isPushingRtmp) {
+                    ConfigControlEnable(true);
+                }
+
+                btnPushRtsp.setText("推送RTSP");
+                isPushingRtsp = false;
+
+                return;
+            }
+
+            Log.i(TAG, "onClick start push rtsp..");
+
+            if (libPublisher == null)
+                return;
+
+            if (!isRecording && !isRTSPPublisherRunning && !isPushingRtmp) {
+                InitAndSetConfig();
+            }
+
+            if (inputPushURL != null && inputPushURL.length() > 1) {
+                publishURL = inputPushURL;
+                Log.i(TAG, "start, input rtsp publish url:" + publishURL);
+            } else {
+                String baseRtspUrl = "rtsp://player.daniulive.com:554/live";
+                publishURL = baseRtspUrl + String.valueOf((int) (System.currentTimeMillis() % 1000000)) + ".sdp";
+                Log.i(TAG, "start, generate random url:" + publishURL);
+            }
+
+            //publishURL = "rtsp://player.daniulive.com:554/live123.sdp";
+
+            printText = "推流URL:" + publishURL;
+
+            Log.i(TAG, printText);
+
+            if (libPublisher.SetPushRtspURL(publisherHandle, publishURL) != 0) {
+                Log.e(TAG, "Failed to set rtsp publish stream URL..");
+            }
+
+            int transport_protocol = 1;
+            libPublisher.SetPushRtspTransportProtocol(publisherHandle, transport_protocol);
+
+            int startRet = libPublisher.StartPushRtsp(publisherHandle, 0);
+            if (startRet != 0) {
+                isPushingRtsp = false;
+
+                Log.e(TAG, "Failed to start push rtsp stream..");
+                return;
+            }
+
+            if (!isRecording && !isRTSPPublisherRunning && !isPushingRtmp) {
+                if (pushType == 0 || pushType == 1) {
+                    CheckInitAudioRecorder();    //enable pure video publisher..
+                }
+
+                ConfigControlEnable(false);
+            }
+
+            textCurURL = (TextView) findViewById(R.id.txtCurURL);
+            textCurURL.setText(printText);
+
+            btnPushRtsp.setText("停止推送 ");
+            isPushingRtsp = true;
+        }
+    };
 
     //停止rtmp推送
     private void stopPush() {
-        if(!isPushing)
+        if(!isPushingRtmp)
         {
             return;
         }
-        if (!isRecording && !isRTSPPublisherRunning) {
+        if (!isRecording && !isRTSPPublisherRunning && !isPushingRtsp) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopPush, call audioRecord_.StopRecording..");
 
@@ -1342,7 +1410,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             libPublisher.SmartPublisherStopPublisher(publisherHandle);
         }
 
-        if (!isRecording && !isRTSPPublisherRunning) {
+        if (!isRecording && !isRTSPPublisherRunning & !isPushingRtsp) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
@@ -1358,7 +1426,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         {
             return;
         }
-        if (!isPushing && !isRTSPPublisherRunning) {
+        if (!isPushingRtmp && !isRTSPPublisherRunning && !isPushingRtsp) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopRecorder, call audioRecord_.StopRecording..");
 
@@ -1377,7 +1445,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             libPublisher.SmartPublisherStopRecorder(publisherHandle);
         }
 
-        if (!isPushing && !isRTSPPublisherRunning) {
+        if (!isPushingRtmp && !isRTSPPublisherRunning && !isPushingRtsp) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
@@ -1393,7 +1461,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         {
             return;
         }
-        if (!isPushing && !isRecording) {
+        if (!isPushingRtmp && !isRecording && !isPushingRtsp) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopRtspPublisher, call audioRecord_.StopRecording..");
 
@@ -1412,7 +1480,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             libPublisher.StopRtspStream(publisherHandle);
         }
 
-        if (!isPushing && !isRecording) {
+        if (!isPushingRtmp && !isRecording && !isPushingRtsp) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
@@ -1435,11 +1503,46 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
+    //停止rtsp推送
+    private void stopPushRtsp() {
+        if(!isPushingRtsp)
+        {
+            return;
+        }
+        if (!isRecording && !isRTSPPublisherRunning && !isPushingRtmp) {
+            if (audioRecord_ != null) {
+                Log.i(TAG, "stopPushRtsp, call audioRecord_.StopRecording..");
+
+                audioRecord_.Stop();
+
+                if (audioRecordCallback_ != null) {
+                    audioRecord_.RemoveCallback(audioRecordCallback_);
+                    audioRecordCallback_ = null;
+                }
+
+                audioRecord_ = null;
+            }
+        }
+
+        if (libPublisher != null) {
+            libPublisher.StopPushRtsp(publisherHandle);
+        }
+
+        if (!isRecording && !isRTSPPublisherRunning & !isPushingRtmp) {
+            if (publisherHandle != 0) {
+                if (libPublisher != null) {
+                    libPublisher.SmartPublisherClose(publisherHandle);
+                    publisherHandle = 0;
+                }
+            }
+        }
+    }
+
     @Override
     protected void onDestroy() {
         Log.i(TAG, "activity destory!");
 
-        if (isPushing || isRecording || isRTSPPublisherRunning) {
+        if (isPushingRtmp || isRecording || isRTSPPublisherRunning || isPushingRtsp) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "surfaceDestroyed, call StopRecording..");
 
@@ -1454,7 +1557,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             }
 
             stopPush();
-            isPushing = false;
+            isPushingRtmp = false;
 
             stopRecorder();
             isRecording = false;
@@ -1464,6 +1567,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             stopRtspService();
             isRTSPServiceRunning = false;
+
+            stopPushRtsp();
+            isPushingRtsp = false;
 
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
@@ -1622,7 +1728,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             super.onConfigurationChanged(newConfig);
             Log.i(TAG, "onConfigurationChanged");
             if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                if (!isRTSPPublisherRunning && !isPushing && !isRecording) {
+                if (!isRTSPPublisherRunning && !isPushingRtmp && !isRecording && !isPushingRtsp) {
 
                     int rotation = getWindowManager().getDefaultDisplay().getRotation();
                     if (Surface.ROTATION_270 == rotation) {
@@ -1636,7 +1742,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                     }
                 }
             } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                if (!isRTSPPublisherRunning && !isPushing && !isRecording) {
+                if (!isRTSPPublisherRunning && !isPushingRtmp && !isRecording && !isPushingRtsp) {
                     currentOrigentation = PORTRAIT;
                 }
             }
@@ -1659,7 +1765,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             int bufferSize = (((size.width | 0x1f) + 1) * size.height * ImageFormat.getBitsPerPixel(params.getPreviewFormat())) / 8;
             camera.addCallbackBuffer(new byte[bufferSize]);
         } else {
-            if (isRTSPPublisherRunning || isPushing || isRecording) {
+            if (isRTSPPublisherRunning || isPushingRtmp || isRecording || isPushingRtsp) {
                 libPublisher.SmartPublisherOnCaptureVideoData(publisherHandle, data, data.length, currentCameraType, currentOrigentation);
             }
 
