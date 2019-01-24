@@ -67,6 +67,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码);
 
+- [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
+
 - [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
 
 - [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
@@ -138,7 +140,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2018/11/27)](http://daniulive.com/wp-content/uploads/daniulive/WIN-RelaySDK-CSharp-Demo-2018-11-09.zip)
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2018/11/16)**](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2018-11-16.zip)
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/01/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-01-24.zip)
 
 - [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2019/01/16)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-01-16.zip)
 
@@ -266,7 +268,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**RTMP扩展H.265**]Windows/Android/iOS推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android/iOS平台支持H.265硬编码；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；
-- [x] [**Windows推屏**]支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
+- [x] [**Windows推屏**]Windows平台支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
 - [x] [**移动端推屏**]Android平台支持后台service推送摄像头或屏幕(推送屏幕需要5.0+版本)；
 - [x] [**移动端推屏**]iOS平台支持后台推送屏幕(基于ReplayKit，需要iOS 10.0+版本)；
 - [x] [**事件回调**]支持各种状态实时回调；
@@ -281,7 +283,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**纯音频推流**]支持仅采集音频流并发起推流功能；
 - [x] [**纯视频推流**]支持特殊场景下的纯视频推流功能；
 - [x] [**降噪**]Windows/Android平台支持环境音、手机干扰等引起的噪音降噪处理、自动增益、VAD检测；
-- [x] [**回音消除**]android支持实时传递远端PCM数据，方便回音消除处理；
+- [x] [**回音消除**]Android平台支持实时传递远端PCM数据，方便回音消除处理；
 - [x] [**外部编码前视频数据对接**]支持YUV数据对接；
 - [x] [**外部编码前音频数据对接**]支持PCM对接；
 - [x] [**外部编码后视频数据对接**]支持外部H.264数据对接；
@@ -300,7 +302,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPublisherV2。
 ---
 
-**4. RTSP直播推流SDK**
+**4. Windows/Android/iOS RTSP直播推流SDK**
+
+如不单独说明，系Windows、Android、iOS全平台支持。
 
 - [x] [**视频采集处理**]Windows平台涵盖“Windows视频采集处理SDK”功能；
 - [x] [**音频采集处理**]Windows平台涵盖“Windows音频采集处理SDK”功能；
@@ -323,7 +327,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；
-- [x] [**Windows推屏**]支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
+- [x] [**Windows推屏**]Windows平台支持屏幕裁剪、窗口采集、屏幕/摄像头数据合成等多种模式推送；
 - [x] [**事件回调**]支持各种状态实时回调；
 - [x] [**水印**]Windows平台支持文字水印、png水印、实时遮挡，Android平台支持文字水印、png水印；
 - [x] [**复杂网络处理**]支持断网重连等各种网络环境自动适配；
@@ -332,8 +336,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**实时快照**]支持推流过程中，实时快照；
 - [x] [**纯音频推流**]支持仅采集音频流并发起推流功能；
 - [x] [**纯视频推流**]支持特殊场景下的纯视频推流功能；
-- [x] [**降噪**]平台支持降噪处理、自动增益、VAD检测；
-- [x] [**回音消除**]android支持实时传递远端PCM数据，方便回音消除处理；
+- [x] [**降噪**]Windows/Android平台支持降噪处理、自动增益、VAD检测；
+- [x] [**回音消除**]Android平台支持实时传递远端PCM数据，方便回音消除处理；
 - [x] [**外部编码前视频数据对接**]支持YUV数据对接；
 - [x] [**外部编码前音频数据对接**]支持PCM对接；
 - [x] [**外部编码后视频数据对接**]支持外部H.264数据对接；
@@ -344,6 +348,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 对应Demo：
 - [x] Windows测试程序：SmartPublisherDemo.exe；
 - [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；
+- [x] Android工程：SmartPublisherV2；
 - [x] iOS工程：SmartiOSPublisherV2。
 ---
 
