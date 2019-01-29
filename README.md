@@ -43,9 +43,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；
 
-- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持，windows端64位库支持**RTSP H.265**视频输出；
+- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持，windows端64位库支持**RTSP H.265**视频输出，支持**单播**和**组播**模式；
 
-- [x] [**内网RTSP网关SDK**](http://daniulive.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入；
+- [x] [**内网RTSP网关SDK**](http://daniulive.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入，支持**单播**和**组播**模式；
 
 - [x] [**导播SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%AF%BC%E6%92%ADsdk/) 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
 
@@ -122,17 +122,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播SDK相关demo本地下载**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版-2018-12-26.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版-2019-01-29.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版64位-2018-12-26.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版64位-2019-01-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2018-12-26.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2019-01-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-PlayerSDK-CPP-Demo-2018-12-26.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-PlayerSDK-CPP-Demo-2019-01-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-MixStreamSDK-CPP-Demo-2018-12-26.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-MixStreamSDK-CPP-Demo-2019-01-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2018/12/26)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CPP-Demo-2018-12-26.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CPP-Demo-2019-01-29.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2018/11/27)](http://daniulive.com/wp-content/uploads/daniulive/WIN-PublisherSDK-CSharp-Demo-2018-11-09.zip)
 
@@ -406,6 +406,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频格式**]AAC；
 - [x] [**视频格式**]H.264、H.265；
 - [x] [**协议类型**]RTSP；
+- [x] [**传输模式**]支持**单播**和**组播**模式；
 - [x] [**端口设置**]支持RTSP端口设置；
 - [x] [**鉴权设置**]支持RTSP鉴权用户名、密码设置；
 - [x] [**获取session连接数**]支持获取当前RTSP服务会话连接数；
@@ -421,7 +422,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPublisherV2。
 ---
 
-**7. Windows内网RTSP网关SDK**
+**7. 内网RTSP网关SDK**
+
+如不单独说明，系Windows、Android、iOS全平台支持。
 
 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入。
 简单来说：内置轻量级RTSP服务SDK和内置RTSP网关SDK的区别在于**数据来源不同**，内置轻量级RTSP服务SDK数据来源于**终端设备自带摄像头数据/屏幕数据/外部编码前后数据**，内置RTSP网关SDK的数据源是**RTSP/RTMP流**数据。
@@ -430,6 +433,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**视频格式**]H.264、H.265；
 - [x] [**接入协议**]支持内外网RTMP/RTSP流接入；
 - [x] [**输出协议**]RTSP，拉取的RTSP/RTMP流，注入轻量级RTSP服务SDK；
+- [x] [**传输模式**]Windows支持**单播**和**组播**模式，Android/iOS平台支持单播模式；
 - [x] [**音频转码**]支持音频(PCMU/PCMA,Speex等)转AAC后注入；
 - [x] [**端口设置**]支持RTSP端口设置；
 - [x] [**鉴权设置**]支持RTSP鉴权用户名、密码设置；
