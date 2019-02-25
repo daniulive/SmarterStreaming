@@ -483,7 +483,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 采用通用的RTMP和RTSP服务器，如nginx、SRS或 Darwin Stream Server（原生版本），更有利于私有部署；
 - [x] 支持H.264的扩展SEI消息发送机制；
 - [x] 支持H.265编码（Windows 64位库，Android/iOS硬编码）和H.264可变码率设定，换句话说，之前大牛直播SDK推送端支持的功能，都可以同步支持；
-- [x] 支持H.265解码，直播播放器支持的功能，一队一互动模块都可以有选择的支持；
+- [x] 支持H.265解码，直播播放器支持的功能，一对一互动模块都可以有选择的支持；
 - [x] Windows平台支持双流合成大小屏录制；
 - [x] Windows支持摄像头、屏幕合成、水印等各种组合模式，扩展度高；
 - [x] 适用于应急指挥、教育培训等领域。
