@@ -471,7 +471,26 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSRelayDemoV2。
 ---
 
-**9. Windows导播SDK**
+**9. Windows/Android/iOS RTMP/RTSP一对一互动SDK**
+
+如不单独说明，系Windows、Android、iOS全平台支持。
+
+- [x] 基于官方现有RTMP、RTSP推送、或内置RTSP服务、播放SDK，产品稳定度高，行业内首屈一指的超低延迟特性；
+- [x] 加入噪音抑制、回音消除、自动增益控制等特性，确保通话效果；
+- [x] 采用通用的RTMP和RTSP服务器，如nginx、SRS或 Darwin Stream Server（原生版本），更有利于私有部署；
+- [x] 支持H.264的扩展SEI消息发送机制；
+- [x] 支持H.265编码（Windows 64位库，Android/iOS硬编码）和H.264可变码率设定，换句话说，之前大牛直播SDK推送端支持的功能，都可以同步支持；
+- [x] 支持H.265解码，直播播放器支持的功能，一队一互动模块都可以有选择的支持；
+- [x] Windows平台支持双流合成大小屏录制；
+- [x] Windows支持摄像头、屏幕合成、水印等各种组合模式，扩展度高；
+- [x] 适用于应急指挥、教育培训等领域。
+
+对应Demo：
+- [x] Windows C++工程：集成可参考WIN-PublisherSDK-CPP-Demo和WIN-PlayerSDK-CPP-Demo，或相应C# demo；
+- [x] Android工程：SmartEchoCancellationV2；
+- [x] iOS工程：SmartiOSEchoCancellation。
+
+**10. Windows导播SDK**
 
 - [x] [**拉流**]支持拉取RTSP流；
 - [x] [**拉流**]支持拉取RTMP流；
@@ -486,7 +505,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] C++工程：WIN-MixStreamSDK-CPP-Demo；
 ---
 
-**10. Windows/Android/iOS录像SDK**
+**11. Windows/Android/iOS录像SDK**
 
 - [x] [**拉流**]支持拉取RTSP流录像；
 - [x] [**拉流**]支持拉取RTMP流录像；
@@ -512,7 +531,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPublisherV2。
 ---
 
-**11. Windows/Android/iOS SEI扩展数据发送/接收SDK**
+**12. Windows/Android/iOS SEI扩展数据发送/接收SDK**
 
 - [x] [**RTSP SEI**]支持内置RTSP服务SDK携带SEI扩展信息(H.264)；
 - [x] [**RTMP SEI**]支持RTMP推送SDK携带SEI扩展信息(H.264)；
