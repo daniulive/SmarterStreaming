@@ -573,6 +573,7 @@ android播放器：SmartPlayerSDKDemo
 iOS推送端：SmartiOSPublisher
 iOS转发端：SmartiOSRelayDemo
 iOS播放器：SmartiOSPlayer
+iOS一对一互动：SmartiOSEchoCancellation
  ```
 * 集成到自己工程，如何改名字（以推送端为例）：
 
