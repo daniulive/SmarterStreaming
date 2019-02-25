@@ -51,7 +51,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
-- [x] [**互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) Windows一对一互动(可windows与windows/android互动)；
+- [x] [**一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**连麦SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
 
@@ -81,7 +81,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持(支持H.265)；
 
-- [x] [**互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) Android一对一互动(可android与windows/android/iOS互动)；
+- [x] [**一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
@@ -109,6 +109,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持；
 
 - [x] [**内网RTSP网关SDK**](http://daniulive.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入；
+
+- [x] [**一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
@@ -142,13 +144,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/01/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-01-24.zip)
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2019/01/16)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-01-16.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2019/02/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-02-24.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
 ## 大牛直播SDK集成和调用说明 ##
 
-- [x] [**移动端SDK(V2)调用说明**(更新于2018/12/07)](https://gz.bcebos.com/v1/daniulive/视沃科技-大牛直播移动端SDK(V2)调用说明2.12.pdf)
+- [x] [**移动端SDK(V2)调用说明**(更新于2019/02/24)](https://gz.bcebos.com/v1/daniulive/视沃科技-大牛直播移动端SDK(V2)调用说明2.13.pdf)
 
 - [x] [**Windows SDK调用说明(以C#为例)(更新于2019/01/02)**](https://gz.bcebos.com/v1/daniulive/视沃科技-Windows-SDK集成说明2.11.pdf)
 
