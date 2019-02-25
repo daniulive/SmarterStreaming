@@ -40,6 +40,17 @@
 - (NSInteger)SmartPlayerSetVideoDecoderMode:(NSInteger)mode;
 
 /**
+ * 设置音频回音消除模式(如不设置 则用正常播放模式)
+ *
+ * @param mode
+ * if 0: 正常播放模式
+ * if 1: 回音消除模式
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetEchoCancellationMode:(NSInteger)mode;
+
+/**
  * 创建播放view
  *
  * @param x y width height 指定播放位置（CGRect)

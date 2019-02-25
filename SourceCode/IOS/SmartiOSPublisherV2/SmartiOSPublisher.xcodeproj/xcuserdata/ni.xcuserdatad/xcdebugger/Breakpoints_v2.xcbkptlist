@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../source/SmartPublisherSDK/SmartPublisherSDK/publisher/nt_ios_publisher.mm"
-            timestampString = "569235758.3771729"
+            timestampString = "572417508.087553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1388"
-            endingLineNumber = "1388"
+            startingLineNumber = "1402"
+            endingLineNumber = "1402"
             landmarkName = "IOSPublisher::OnCaptureAudioData(unsigned char* audioBuf, int sampleSize, long long time_stamp, int samplerate)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../source/SmartPublisherSDK/SmartPublisherSDK/publisher/nt_ios_publisher.mm"
-            timestampString = "569235758.377246"
+            timestampString = "572417508.0877171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1472"
-            endingLineNumber = "1472"
+            startingLineNumber = "1486"
+            endingLineNumber = "1486"
             landmarkName = "IOSPublisher::postVideoEncodedData(int codec_id, unsigned char* data, int size, int is_key_frame, unsigned long long timestamp, unsigned long long pts)"
             landmarkType = "7">
          </BreakpointContent>

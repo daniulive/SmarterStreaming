@@ -57,14 +57,14 @@ typedef enum DNCameraPosition{
  *
  * audio_opt和video_opt组合推送类型，如 audio_opt为1，video_opt为1，则代表推送音频和视频
  *
- * @param audio_opt:
+ * @param audio_opt
  if with 0: 不推送音频
  if with 1: 推送SDK内部采集的音频
  if with 2: 推送外部编码后音频(目前支持AAC/PCMA/PCMU/SPEEX宽带)
  if with 3: 推送外部编码前音频数据(CMSampleBufferRef类型), 数据传递对应接口: SmartPublisherPostAudioSampleBuffer
  if with 4: 推送外部采集的PCM音频
  *
- * @param video_opt:
+ * @param video_opt
  if with 0: 不推送视频
  if with 1: 推送SDK内部采集的视频
  if with 2: 推送外部编码后视频(目前支持H.264),数据格式: 0000000167....
@@ -93,9 +93,9 @@ typedef enum DNCameraPosition{
  *
  * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
  *
- * @param encoderType: 1: H.264, 2: H.265编码
+ * @param encoderType 1: H.264, 2: H.265编码
  *
- * @param isHwEncoder: YES: 硬编码 NO: 软编码
+ * @param isHwEncoder YES: 硬编码 NO: 软编码
  *
  * @return {0} if successful
  */
@@ -106,13 +106,24 @@ typedef enum DNCameraPosition{
  *
  * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
  *
- * @param encoderType: 1: AAC
+ * @param encoderType 1: AAC
  *
- * @param isHwEncoder: YES: 硬编码 NO: 软编码
+ * @param isHwEncoder YES: 硬编码 NO: 软编码
  *
  * @return {0} if successful
  */
 -(NSInteger)SmartPublisherSetAudioEncoderType:(NSInteger)encoderType isHwEncoder:(Boolean)isHwEncoder;
+
+/**
+ * 设置是否启用回音消除
+ *
+ * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
+ *
+ * @param isEnableEchoCancellation YES: 打开 NO: 关闭
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetEchoCancellation:(Boolean)isEnableEchoCancellation;
 
 /**
  * Set software encode vbr mode(软编码可变码率).
@@ -174,7 +185,7 @@ typedef enum DNCameraPosition{
  *
  * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
  *
- * @param speed: range with(1, 6), the default speed is 6.
+ * @param speed range with(1, 6), the default speed is 6.
  *
  * if with 1, CPU is lowest.
  * if with 6, CPU is highest.
@@ -407,7 +418,7 @@ typedef enum DNCameraPosition{
  *
  * @param data 编码前的audio数据
  *
- * @param inputType: 1: 麦克风 2: 应用程序音频
+ * @param inputType 1: 麦克风 2: 应用程序音频
  *
  * @return {0} if successful
  */
@@ -528,9 +539,9 @@ typedef enum DNCameraPosition{
 /**
  * 设置发送队列大小，为保证实时性，默认大小为3, 必须设置一个大于0的数
  *
- * @param max_size: 队列最大长度
+ * @param max_size 队列最大长度
  *
- * @param reserve: 保留字段
+ * @param reserve 保留字段
  *
  * NOTE: 1. 如果数据超过队列大小，将丢掉队头数据; 2. 这个接口请在 StartPublisher 之前调用
  *
@@ -553,11 +564,11 @@ typedef enum DNCameraPosition{
  * 2. 如果积累的数据超过了设置的队列大小，之前的队头数据将被丢弃
  * 3. 必须再调用StartPublisher之后再发送数据
  *
- * @param data: 二进制数据
+ * @param data 二进制数据
  *
- * @param size: 数据大小
+ * @param size 数据大小
  *
- * @param reserve: 保留字段
+ * @param reserve 保留字段
  *
  * @return {0} if successful
  */
@@ -571,9 +582,9 @@ typedef enum DNCameraPosition{
  * 2. 如果积累的数据超过了设置的队列大小，之前的队头数据将被丢弃
  * 3. 必须再调用StartPublisher之后再发送数据
  *
- * @param utf8_str: utf8字符串
+ * @param utf8_str utf8字符串
  *
- * @param reserve: 保留字段
+ * @param reserve 保留字段
  *
  * @return {0} if successful
  */

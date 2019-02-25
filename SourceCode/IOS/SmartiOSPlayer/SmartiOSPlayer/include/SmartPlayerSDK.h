@@ -3,10 +3,10 @@
 //  SmartPlayerSDK
 //
 //  GitHub: https://github.com/daniulive/SmarterStreaming
-//  website: http://www.daniulive.com
+//  website: https://www.daniulive.com
 //
 //  Created by daniulive on 16/01/03.
-//  Copyright © 2015~2018 daniulive. All rights reserved.
+//  Copyright © 2014~2019 daniulive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -38,6 +38,17 @@
  * @return {0} if successful
  */
 - (NSInteger)SmartPlayerSetVideoDecoderMode:(NSInteger)mode;
+
+/**
+ * 设置音频回音消除模式(如不设置 则用正常播放模式)
+ *
+ * @param mode
+ * if 0: 正常播放模式
+ * if 1: 回音消除模式
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetEchoCancellationMode:(NSInteger)mode;
 
 /**
  * 创建播放view
