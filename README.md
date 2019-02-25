@@ -190,7 +190,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStud
 3. android推流 SmartServiceCameraPublisherV2(后台service推送摄像头)
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartServiceCameraPublisherV2
 
-4. android一对一回音消除 SmartEchoCancellationV2
+4. android一对一互动demo SmartEchoCancellationV2
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartEchoCancellationV2
 
 5. android播放器 SmartPlayerV2:
@@ -210,6 +210,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 10. iOS转发-录像-播放三合一 SmartiOSRelayDemoV2:
 https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2
+
+11. iOS RTSP/RTMP一对一互动Demo SmartiOSEchoCancellation：
+https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSEchoCancellation
 
 
 ## 功能支持 ##
