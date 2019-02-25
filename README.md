@@ -144,7 +144,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/01/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-01-24.zip)
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、录屏SDK(V2)本地下载(更新于2019/02/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-02-24.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/02/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-02-24.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
