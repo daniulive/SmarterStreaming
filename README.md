@@ -4,8 +4,6 @@
 
 适用于**在线教育、无纸化推屏/会议、智慧教室、直播答题、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、微信直播、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
-[大牛直播SDK Demo界面展示](http://daniulive.com/index.php/2018/09/21/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-demo%E5%B1%95%E7%A4%BA/)
-
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
 **大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:**89030985** 或 **517631076** 手机:**130-7210-2209** 或 **135-6452-9354**)；
@@ -51,7 +49,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
-- [x] [**一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
+- [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**连麦SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
 
@@ -81,7 +79,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持(支持H.265)；
 
-- [x] [**一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
+- [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
@@ -110,7 +108,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**内网RTSP网关SDK**](http://daniulive.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入；
 
-- [x] [**一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
+- [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
