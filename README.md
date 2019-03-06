@@ -134,11 +134,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CPP-Demo-2019-03-01.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2019-01-29.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CSharp-Demo-2019-01-29.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-PlayerSDK-CSharp-Demo-2019-01-29.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CPP-Demo-2019-01-29.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CSharp-Demo-2019-01-29.zip)
 
 - [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/01/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-01-24.zip)
 
