@@ -196,7 +196,7 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 
 		if (url.equals("hks")) {
 			btnStartStopPlayback.setEnabled(true);
-			playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+			playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
 
 			Log.i(TAG, "Input url:" + playbackUrl);
 
@@ -615,7 +615,7 @@ public class SmartPlayer extends Activity implements android.view.SurfaceHolder.
 				if (switchUrlFlag) {
 					btnSwitchUrl.setText("切换url2");
 
-					switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks"; //
+					switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks1"; //
 					// 实际以可切换url为准
 					//switchURL = "rtmp://player.daniulive.com:1935/hls/stream2";
 				} else {

@@ -62,6 +62,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class CameraPublishActivity extends Activity implements Callback, PreviewCallback {
@@ -1182,6 +1183,44 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
+    /*
+    private String MakeMulticastAddress()
+    {
+        // 239.0.1.0 ~ 239.255.255.255
+        long begin = 0xEF000100;
+        long end = 0xEFFFFFFF;
+
+        long count = end - begin;
+
+        Random random = new Random();
+        long addr_host = begin + (random.nextInt((int)count));
+
+        return DigitToIpAddr(addr_host);
+    }
+
+    private String MakeSSMMulticastAddress()
+    {
+        // 232.0.1.0 ~ 232.255.255.255
+
+        long begin = 0xE8000100;
+        long end = 0xE8FFFFFF;
+
+        long count = end - begin;
+
+        Random random = new Random();
+        long addr_host = begin + (random.nextInt((int)count));
+
+        return DigitToIpAddr(addr_host);
+    }
+
+    private String DigitToIpAddr(long ip) {
+        return ((ip >> 24) & 0xFF) + "."
+                + ((ip >> 16) & 0xFF) + "."
+                + ((ip >> 8) & 0xFF) + "."
+                + (ip & 0xFF);
+    }
+    */
+
     //启动/停止RTSP服务
     class ButtonRtspServiceListener implements OnClickListener {
         public void onClick(View v) {
@@ -1212,6 +1251,35 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 //String user_name = "admin";
                 //String password = "12345";
                 //libPublisher.SetRtspServerUserNamePassword(rtsp_handle_, user_name, password);
+
+                //一般来说单播网络设备支持的好，wifi组播很多路由器不支持，默认单播模式；如需使用组播模式，确保设备支持后，打开注释代码测试即可
+                /*
+                boolean is_enable_multicast = true;
+
+                if(is_enable_multicast)
+                {
+                    int is_multicast = 1;
+
+                    libPublisher.SetRtspServerMulticast(rtsp_handle_, is_multicast);
+
+                    boolean is_enable_ssm_multicast = true;
+
+                    String multicast_address = "";
+
+                    if(is_enable_ssm_multicast)
+                    {
+                        multicast_address = MakeSSMMulticastAddress();
+                    }
+                    else
+                    {
+                        multicast_address = MakeMulticastAddress();
+                    }
+
+                    Log.i(TAG, "is_enable_ssm_multicast:" + is_enable_ssm_multicast + " multiAddr: " + multicast_address);
+
+                    libPublisher.SetRtspServerMulticastAddress(rtsp_handle_, multicast_address);
+                }
+                */
 
                 if (libPublisher.StartRtspServer(rtsp_handle_, 0) == 0) {
                     Log.i(TAG, "启动rtsp server 成功!");
