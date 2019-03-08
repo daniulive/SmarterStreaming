@@ -370,7 +370,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**支持播放协议**]高稳定、超低延迟（一秒内，行业内几无效果接近的播放端）、业内首屈一指的RTMP/RTSP直播播放器SDK；
 - [x] [**多实例播放**]支持多实例播放（如同时播放多路RTMP/RTSP流）；
 - [x] [**事件回调**]支持网络状态、buffer状态等回调；
-- [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，Windows/Android平台还支持RTSP MJEPG播放；
+- [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，Windows/Android平台还支持**RTSP MJPEG**播放；
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
 - [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
