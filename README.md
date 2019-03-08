@@ -120,11 +120,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 或者直接从私有服务器下载(Windows提供C#/C++ demo, android提供android studio demo，iOS提供xcode demo)：
 
-**大牛直播SDK相关demo本地下载**
+## 大牛直播SDK相关demo本地下载 ##
+
+**1. Windows平台测试EXE：**
 
 - [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版-2019-03-01.zip)
 
 - [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版64位-2019-03-01.zip)
+
+**2.Windows平台集成对接DEMO：**
 
 - [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2019-03-01.zip)
 
@@ -140,7 +144,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/01/29)](https://gz.bcebos.com/v1/daniulive/WIN-RelaySDK-CSharp-Demo-2019-01-29.zip)
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/01/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-01-24.zip)
+**3.Android平台集成对接DEMO：**
+
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/03/08)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-03-08.zip)
+
+**4.iOS平台集成对接DEMO：**
 
 - [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/02/24)**](https://gz.bcebos.com/v1/daniulive/Daniulive-SDK-iOS-2019-02-24.zip)
 
@@ -362,7 +370,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**支持播放协议**]高稳定、超低延迟（一秒内，行业内几无效果接近的播放端）、业内首屈一指的RTMP/RTSP直播播放器SDK；
 - [x] [**多实例播放**]支持多实例播放（如同时播放多路RTMP/RTSP流）；
 - [x] [**事件回调**]支持网络状态、buffer状态等回调；
-- [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，Windows平台还支持RTSP MJEPG播放；
+- [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，Windows/Android平台还支持RTSP MJEPG播放；
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
 - [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
