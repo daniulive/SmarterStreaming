@@ -128,6 +128,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/windows-推送-播放版64位-2019-03-01.zip)
 
+- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/03/22)](https://gz.bcebos.com/v1/daniulive/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-03-22.zip) [点我查看OCX控件使用说明和SDK集成文档](https://blog.csdn.net/renhui1112/article/details/88710476)
+
 **2.Windows平台集成对接DEMO：**
 
 - [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/WIN-PublisherSDK-CPP-Demo-2019-03-01.zip)
