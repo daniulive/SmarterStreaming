@@ -25,7 +25,14 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 模块概览 ## 
 
-<img src="https://gz.bcebos.com/v1/daniulive/daniulive_sdk.png" alt="大牛直播SDK概览" />
+<img src="https://gz.bcebos.com/v1/daniulive/daniulive_sdk_20190326.png" alt="大牛直播SDK概览图" />
+
+## 支持平台架构 ##
+|支持平台|支持架构|
+| ----|-----|
+|Windows平台|x86 debug/release, x64 debug/release |
+|Android平台|armeabi-v7a, arm64-v8a, x86, x86_64|
+|iOS平台|armv7, arm64, i386, x86_64|
 
 **Windows端**
 
@@ -33,9 +40,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
-- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)，支持IE浏览器OCX控件接口调用;
+- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)，支持IE浏览器**OCX控件**接口调用;
 
-- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK，支持IE浏览器OCX控件接口调用;;
+- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK，支持IE浏览器**OCX控件**接口调用;
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
@@ -111,13 +118,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
-
-## 支持平台架构 ##
-|支持平台|支持架构|
-| ----|-----|
-|Windows平台|x86 debug/release, x64 debug/release |
-|Android平台|armeabi-v7a, arm64-v8a, x86, x86_64|
-|iOS平台|armv7, arm64, i386, x86_64|
 
 ## 本地下载 ##
 
