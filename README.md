@@ -112,6 +112,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
+## 支持平台架构 ##
+|支持平台|支持架构|
+| ----|-----|
+|Windows平台|x86 debug/release, x64 debug/release |
+|Android平台|armeabi-v7a, arm64-v8a, x86, x86_64|
+|iOS平台|armv7, arm64, i386, x86_64|
+
 ## 本地下载 ##
 
 很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享：
