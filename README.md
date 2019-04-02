@@ -18,7 +18,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows播放端APP下载(更新于2018/09/04)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Daniulive-Unity3D-Win-SmartPlayer-2018-09-04.zip)**
+**[Unity3D-Windows播放端exe下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/Win-Unity-Player-2019-03-01.zip)**
 
 **[Unity3D-Android播放端APK下载(更新于2018/11/16)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/daniulive/Unity3DSmartPlayer-2018-11-16.apk)**
 
