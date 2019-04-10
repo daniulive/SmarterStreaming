@@ -10,17 +10,29 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
-除此之外，大牛直播SDK播放端，支持**APICloud**和**React Native**二次封装，并且全平台支持**Unity3D**平台，也可能是Unity3D平台下**首款**真正**高稳定、超低延迟**的RTMP/RTSP直播播放器。
+## 平台扩展 ## 
+
+除此之外，大牛直播SDK播放端，支持**Flutter**和**APICloud**和**React Native**二次封装，并且全平台支持**Unity3D**平台，也可能是Flutter和Unity3D平台下**首款**真正**高稳定、超低延迟**的RTMP/RTSP直播播放器。
+
+**Flutter RTSP/RTMP播放SDK相关(支持Android/iOS)**
+
+**[Flutter下实现低延迟的跨平台RTSP/RTMP播放(相关接口说明和调用实例)](https://blog.csdn.net/renhui1112/article/details/89100069)**
+
+**[Flutter-Android RTSP/RTMP播放端APK下载(更新于2019/04/10)](https://gz.bcebos.com/v1/daniulive/Flutter-SmartPlayer-2019-04-10.apk)**
+
+**APICloud RTSP/RTMP播放SDK相关(支持Android/iOS)**
 
 **[android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
 
+**Unity3D RTSP/RTMP播放SDK相关(支持Windows/Android/iOS)**
+
 **[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2018/10/31)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/10/视沃科技-大牛直播SDKV2Unity3D调用说明1.2.pdf)**
 
-**[大牛直播SDK基于unity3d平台的rtmp/rtsp直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
+**[大牛直播SDK基于unity3d平台的RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows播放端exe下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/Win-Unity-Player-2019-03-01.zip)**
+**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/03/01)](https://gz.bcebos.com/v1/daniulive/Win-Unity-Player-2019-03-01.zip)**
 
-**[Unity3D-Android播放端APK下载(更新于2019/03/05)](https://gz.bcebos.com/v1/daniulive/Unity3d-SmartPlayer-2019-03-05.apk)**
+**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/03/05)](https://gz.bcebos.com/v1/daniulive/Unity3d-SmartPlayer-2019-03-05.apk)**
 
 
 ## 模块概览 ## 
