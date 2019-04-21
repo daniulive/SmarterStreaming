@@ -413,6 +413,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**低延迟模式**]支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)；
 - [x] [**复杂网络处理**]支持断网重连等各种网络环境自动适配；
 - [x] [**快速切换URL**]支持播放过程中，快速切换其他URL，内容切换更快；
+- [x] [**音视频多种render机制**]Windows平台支持D3D和GDI绘制模式(如不支持D3D，会自动切换到GDI模式)；
 - [x] [**音视频多种render机制**]Android平台，视频：surfaceview/OpenGL ES，音频：AudioTrack/OpenSL ES；
 - [x] [**实时静音**]支持播放过程中，实时静音/取消静音；
 - [x] [**实时快照**]支持播放过程中截取当前播放画面；
