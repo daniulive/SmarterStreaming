@@ -12,7 +12,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 平台扩展 ## 
 
-除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Flutter**(Android/iOS)和**APICloud**(Windows/Android/iOS)和**React Native**(Android/iOS)二次封装，也可能是Flutter和Unity3D平台下**首款**真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器。
+除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Flutter**(Android/iOS)、**Unity3d**(Windows/Android/iOS)、**APICloud**(Android/iOS)和**React Native**(Android/iOS)二次封装，也可能是**Flutter和Unity3D**平台下**首款**真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器。
 
 **Flutter RTSP/RTMP播放SDK相关(支持Android/iOS)**
 
