@@ -96,6 +96,11 @@ public class BackgroudService extends Service implements
 
     private boolean is_sw_vbr_mode = true;          //默认软编码可变码率
 
+    private int SCALE_RATE_HALF = 0;
+    private int SCALE_RATE_TWO_FIFTHS = 1;
+
+    private int scale_rate = SCALE_RATE_HALF;
+
     /* 推送类型选择
      * 0: 视频软编码(H.264)
      * 1: 视频硬编码(H.264)
@@ -114,6 +119,8 @@ public class BackgroudService extends Service implements
     private int row_stride_ = 0;
 
     private ArrayList<ByteBuffer> data_list = new ArrayList<ByteBuffer>();
+
+    private final Object data_list_lock = new Object();
 
     private int frame_added_interval_setting = 300;    //如果300ms没有数据帧回调下去，补帧，可自行设置补帧间隔
 
@@ -141,7 +148,7 @@ public class BackgroudService extends Service implements
         if (libPublisher == null)
             return;
 
-        synchronized(this)
+        synchronized(data_list_lock)
         {
             data_list.clear();
         }
@@ -438,7 +445,7 @@ public class BackgroudService extends Service implements
 
         stopScreenCapture();
 
-        synchronized(this)
+        synchronized(data_list_lock)
         {
             data_list.clear();
         }
@@ -529,21 +536,31 @@ public class BackgroudService extends Service implements
     @SuppressWarnings("deprecation")
     @SuppressLint("NewApi")
     private void createScreenEnvironment() {
+
         sreenWindowWidth = mWindowManager.getDefaultDisplay().getWidth();
         screenWindowHeight = mWindowManager.getDefaultDisplay().getHeight();
 
+        Log.i(TAG, "sreenWindowWidth : " + sreenWindowWidth + ",screenWindowHeight : "
+                + screenWindowHeight);
+
         if (sreenWindowWidth > 800) {
             if (screenResolution == SCREEN_RESOLUTION_STANDARD) {
+                scale_rate = SCALE_RATE_HALF;
                 sreenWindowWidth = align(sreenWindowWidth / 2, 16);
                 screenWindowHeight = align(screenWindowHeight / 2, 16);
             } else {
+                scale_rate = SCALE_RATE_TWO_FIFTHS;
                 sreenWindowWidth = align(sreenWindowWidth * 2 / 5, 16);
                 screenWindowHeight = align(screenWindowHeight * 2 / 5, 16);
             }
         }
 
-        Log.i(TAG, "mWindowWidth : " + sreenWindowWidth + ",mWindowHeight : "
+        Log.i(TAG, "After adjust mWindowWidth : " + sreenWindowWidth + ",mWindowHeight : "
                 + screenWindowHeight);
+
+        int pf = mWindowManager.getDefaultDisplay().getPixelFormat();
+        Log.i(TAG, "display format:" + pf);
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         mWindowManager.getDefaultDisplay().getMetrics(displayMetrics);
         mScreenDensity = displayMetrics.densityDpi;
@@ -628,7 +645,7 @@ public class BackgroudService extends Service implements
 
         ByteBuffer buf = deepCopy(planes[0].getBuffer());
 
-        synchronized(this)
+        synchronized(data_list_lock)
         {
             data_list.add(buf);
         }
@@ -1085,7 +1102,7 @@ public class BackgroudService extends Service implements
             if(isPushing || isRecording || isRTSPPublisherRunning)
             {
                 stopScreenCapture();
-                synchronized(this)
+                synchronized(data_list_lock)
                 {
                     data_list.clear();
                 }
@@ -1112,7 +1129,7 @@ public class BackgroudService extends Service implements
             {
                 boolean is_skip = false;
 
-                synchronized (this)
+                synchronized (data_list_lock)
                 {
                     if ( data_list.isEmpty())
                     {
@@ -1155,6 +1172,67 @@ public class BackgroudService extends Service implements
                         libPublisher.SmartPublisherOnCaptureVideoRGBAData(publisherHandle, last_buffer, row_stride_,
                                 width_, height_);
 
+                        /*
+                        //实际裁剪比例，可酌情自行调整
+                        int left = 100;
+                        int cliped_left = 0;
+
+                        int top = 0;
+                        int cliped_top = 0;
+
+                        int cliped_width = width_;
+                        int cliped_height = height_;
+
+                        if(scale_rate == SCALE_RATE_HALF)
+                        {
+                            cliped_left = left / 2;
+                            cliped_top = top / 2;
+
+                            //宽度裁剪后，展示3/4比例
+                            cliped_width = (width_ *3)/4;
+                            //高度不做裁剪
+                            cliped_height = height_;
+                        }
+                        else if(scale_rate == SCALE_RATE_TWO_FIFTHS)
+                        {
+                            cliped_left = left * 2 / 5;
+                            cliped_top = top * 2 / 5;
+
+                            //宽度裁剪后，展示3/4比例
+                            cliped_width = (width_ *3)/4;
+                            //高度不做裁剪
+                            cliped_height = height_;
+                        }
+
+                        if(cliped_width % 2 != 0)
+                        {
+                            cliped_width = cliped_width + 1;
+                        }
+
+                        if(cliped_height % 2 != 0)
+                        {
+                            cliped_height = cliped_height + 1;
+                        }
+
+                        if ( (cliped_left + cliped_width) > width_)
+                        {
+                            Log.e(TAG, " invalid cliped region settings, cliped_left: " + cliped_left + " cliped_width:" + cliped_width + " width:" + width_);
+
+                            return;
+                        }
+
+                        if ( (cliped_top + cliped_height) > height_)
+                        {
+                            Log.e(TAG, "invalid cliped region settings, cliped_top: " + cliped_top + " cliped_height:" + cliped_height + " height:" + height_);
+
+                            return;
+                        }
+
+                        //Log.i(TAG, " clipLeft: " + cliped_left + " clipTop: " + cliped_top +  " clipWidth: " + cliped_width + " clipHeight: " + cliped_height);
+
+                        libPublisher.SmartPublisherOnCaptureVideoClipedRGBAData(publisherHandle, last_buffer, row_stride_,
+                                width_, height_, cliped_left, cliped_top, cliped_width, cliped_height );
+                        */
                         last_post_time = System.currentTimeMillis();
 
                         //Log.i(TAG, "post data: " + last_post_time);

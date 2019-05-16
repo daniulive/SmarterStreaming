@@ -72,10 +72,10 @@
                     android:layout_height="wrap_content" />
 
                 <Button
-                    android:id="@+id/button_recorder_mgr"
+                    android:id="@+id/button_input_key"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="录像管理" />
+                    android:text="音视频加密Key" />
             </LinearLayout>
 
             <LinearLayout
@@ -219,6 +219,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="推送RTSP" />
+
+                <Button
+                    android:id="@+id/button_recorder_mgr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="录像管理" />
 
             </LinearLayout>
 

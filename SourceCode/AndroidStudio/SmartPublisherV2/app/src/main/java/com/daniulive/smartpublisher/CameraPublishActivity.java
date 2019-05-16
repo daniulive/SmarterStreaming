@@ -46,6 +46,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.hardware.Camera.AutoFocusCallback;
@@ -54,6 +55,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -112,6 +114,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private Spinner swVideoEncoderProfileSelector;
     private int sw_video_encoder_profile = 1;    //default with baseline profile
 
+    private Button btnInputKey;       //如需音视频加密，可设置加密的Key(16/24/32字节)和IV(16字节)，IV如不输入，用默认值，播放端，需要输入推送端设置的加密Key和IV方可正常播放
     private Button btnRecorderMgr;    //录像管理按钮
     private Button btnNoiseSuppression;    //噪音抑制按钮
     private Button btnAGC; //自动增益补偿按钮
@@ -193,6 +196,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private boolean is_sw_vbr_mode = true;
 
     private String imageSavePath;
+
+    private String encrypt_key = "";
+    private String encrypt_iv = "";
 
     private static final int PUBLISHER_EVENT_MSG = 1;
     private static final int PUBLISHER_USER_DATA_MSG = 2;
@@ -386,6 +392,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
             }
         });
         //video编码profile选择----------
+
+        btnInputKey = (Button) findViewById(R.id.button_input_key);
+        btnInputKey.setOnClickListener(new ButtonInputKeyListener());
 
         btnRecorderMgr = (Button) findViewById(R.id.button_recorder_mgr);
         btnRecorderMgr.setOnClickListener(new ButtonRecorderMangerListener());
@@ -656,6 +665,43 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
+    private void PopInputKeyDialog() {
+        final EditText inputKeyTxt = new EditText(this);
+        inputKeyTxt.setFocusable(true);
+        inputKeyTxt.setHint("请输入RTMP加密Key");
+        inputKeyTxt.setText("");
+
+        final EditText inputIVTxt = new EditText(this);
+        inputIVTxt.setFocusable(true);
+        inputIVTxt.setHint("请输入RTMP IV加密向量(可选，如不输入用默认值)");
+        inputIVTxt.setText("");
+
+        AlertDialog.Builder builderKey = new AlertDialog.Builder(this);
+        builderKey.setTitle("请输入加密Key(16/24/32字节)和IV加密向量(16字节)");
+
+        LinearLayout layout=new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.addView(inputKeyTxt);
+        layout.addView(inputIVTxt);
+        builderKey.setView(layout);
+
+        builderKey.setPositiveButton("确认",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        encrypt_key = inputKeyTxt.getText().toString();
+                        encrypt_iv = inputIVTxt.getText().toString();
+                    }
+                });
+        builderKey.show();
+    }
+
+    class ButtonInputKeyListener implements OnClickListener {
+        public void onClick(View v) {
+            PopInputKeyDialog();
+        }
+    }
+
     class ButtonRecorderMangerListener implements OnClickListener {
         public void onClick(View v) {
             if (mCamera != null) {
@@ -911,6 +957,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     }
 
     private void ConfigControlEnable(boolean isEnable) {
+        btnInputKey.setEnabled(isEnable);
         btnRecorderMgr.setEnabled(isEnable);
         videoEncodeTypeSelector.setEnabled(isEnable);
         btnBitrateControl.setEnabled(isEnable);
@@ -1062,11 +1109,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
                 btnStartPush.setText("推送RTMP");
                 isPushingRtmp = false;
-
                 return;
             }
 
-            Log.i(TAG, "onClick start push..");
+            Log.i(TAG, "onClick start push rtmp..");
 
             if (libPublisher == null)
                 return;
@@ -1089,6 +1135,92 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             if (libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0) {
                 Log.e(TAG, "Failed to set publish stream URL..");
+            }
+
+            if(encrypt_key != null && !encrypt_key.isEmpty()) {
+                Log.i(TAG, "encrypt_key:" + encrypt_key);
+
+                int is_encrypt_video = 1;
+                int is_encrypt_audio = 1;
+
+                if (pushType == 1)
+                {
+                    is_encrypt_video = 0;
+                }
+                else if (pushType == 2)
+                {
+                    is_encrypt_audio = 0;
+                }
+
+                libPublisher.SetRtmpEncryptionOption(publisherHandle, publishURL, is_encrypt_video, is_encrypt_audio);
+
+                //加密算法可自行设置
+                int encryption_algorithm = 1;
+                libPublisher.SetRtmpEncryptionAlgorithm(publisherHandle, publishURL, encryption_algorithm);
+
+                int key_len = 16;
+
+                if (encrypt_key.length() > 16 && encrypt_key.length() <= 24) {
+                    key_len = 24;
+                } else if (encrypt_key.length() > 24) {
+                    key_len = 32;
+                }
+
+                byte[] key = new byte[key_len];
+
+                for (int i = 0; i < key_len; i++) {
+                    key[i] = 0;
+                }
+
+                try {
+                    byte[] key_utf8 = encrypt_key.getBytes("UTF-8");
+
+                    int copy_len = key_utf8.length < key_len ? key_utf8.length : key_len;
+
+                    for (int i = 0; i < copy_len; ++i) {
+                        key[i] = key_utf8[i];
+                    }
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                int ret = libPublisher.SetRtmpEncryptionKey(publisherHandle, publishURL, key, key.length);
+
+                if(ret != 0)
+                {
+                    Log.e(TAG, "Call SmartPublisherSetRtmpEncryptionKey failed, errorID: " + ret);
+                }
+            }
+
+            if(encrypt_iv != null && !encrypt_iv.isEmpty()) {
+                int iv_len = 16;
+
+                byte[] iv = new byte[iv_len];
+
+                for (int i = 0; i < iv_len; i++) {
+                    iv[i] = 0;
+                }
+
+                try {
+                    byte[] iv_utf8 = encrypt_iv.getBytes("UTF-8");
+
+                    int copy_len = iv_utf8.length < iv_len ? iv_utf8.length : iv_len;
+
+                    for (int i = 0; i < copy_len; ++i) {
+                        iv[i] = iv_utf8[i];
+                    }
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                int ret = libPublisher.SetRtmpEncryptionIV(publisherHandle, publishURL, iv, iv.length);
+
+                if(ret != 0)
+                {
+                    Log.e(TAG, "Call SetRtmpEncryptionIV failed, errorID: " + ret);
+                }
             }
 
             int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);

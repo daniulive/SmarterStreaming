@@ -405,6 +405,32 @@ public class SmartPlayerJniV2 {
 	public native int SmartPlayerSetUrl(long handle, String uri);
 
 	/**
+	 * 设置解密key，目前只用来解密rtmp加密流
+	 *
+	 * @param handle: return value from SmartPlayerOpen()
+	 *
+	 * @param key：解密密钥
+	 *
+	 * @param size：密钥长度
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetKey(long handle, byte[] key, int size);
+
+	/**
+	 * 设置解密向量，目前只用来解密rtmp加密流
+	 *
+	 * @param handle: return value from SmartPlayerOpen()
+	 *
+	 * @param iv：解密向量
+	 *
+	 * @param size：向量长度
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetDecryptionIV(long handle, byte[] iv, int size);
+
+	/**
 	 * Start playback stream(开始播放)
 	 *
 	 * @param handle: return value from SmartPlayerOpen()

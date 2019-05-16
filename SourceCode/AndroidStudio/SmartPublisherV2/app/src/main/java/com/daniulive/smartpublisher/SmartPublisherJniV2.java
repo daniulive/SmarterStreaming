@@ -357,7 +357,49 @@ public class SmartPublisherJniV2 {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherSetURL(long handle,  String url);
-    
+
+	/**
+	 * 设置rtmp推送加密选项
+	 *
+	 * @param url: 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+	 * @param is_encrypt_video: 1:表示视频加密, 0:表示视频不加密, 默认不加密, 其他值返回错误
+	 * @param is_encrypt_audio: 1:表示音频加密, 0:表示音频不加密, 默认不加密, 其他值返回错误
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtmpEncryptionOption(long handle,  String url, int is_encrypt_video, int is_encrypt_audio);
+
+	/**
+	 * 设置rtmp加密算法
+	 *
+	 * @param url: 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+	 * @param encryption_algorithm: 加密算法, 当前支持aes和国标sm4. 1为aes, 2为sm4, 默认为aes.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtmpEncryptionAlgorithm(long handle,  String url, int encryption_algorithm);
+
+	/**
+	 * 设置rtmp推送加密密钥
+	 *
+	 * @param url: 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+	 * @param key:加密密钥
+	 * @param key_size: 当前key_size必须是16, 24, 32 这三个值，其他返回错误
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtmpEncryptionKey(long handle, String url, byte[] key, int key_size);
+
+	/**
+	 * 设置rtmp推送加密IV(初始化向量), 这个接口不调用的话, 将使用默认IV
+	 *
+	 * @param url: 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+	 * @param iv:初始化向量
+	 * @param iv_size: 当前必须是16, 其他值返回错误
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SetRtmpEncryptionIV(long handle, String url, byte[] iv, int iv_size);
 
     /**
 	* Set live video data(no encoded data).
@@ -405,7 +447,24 @@ public class SmartPublisherJniV2 {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherOnCaptureVideoRGBAData(long handle,  ByteBuffer data, int rowStride, int width, int height);
-	
+
+	/**
+	 * 投递裁剪过的RGBA数据
+	 *
+	 * @param data: RGBA data
+	 *
+	 * @param rowStride: stride information
+	 *
+	 * @param width: width
+	 *
+	 * @param height: height
+	 *
+	 * @param clipedLeft: 左;  clipedTop: 上; clipedwidth: 裁剪后的宽; clipedHeight: 裁剪后的高; 确保传下去裁剪后的宽、高均为偶数
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherOnCaptureVideoClipedRGBAData(long handle,  ByteBuffer data, int rowStride, int width, int height, int clipedLeft, int clipedTop, int clipedWidth, int clipedHeight);
+
 	/**
 	 * Set live video data(no encoded data).
 	 *
