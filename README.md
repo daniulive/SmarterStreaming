@@ -84,11 +84,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Android端**
 
-- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码);
+- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码)，**支持逐帧数据加密**(加密算法支持AES128、AES192、AES256、SM4(国密))；;
 
 - [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
-- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)，支持RTMP推送端加密数据(AES/SM4)正常播放；
 
 - [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
@@ -173,7 +173,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **3.Android平台集成对接DEMO：**
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/03/08)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-03-08.zip)
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/05/16)**](https://gz.bcebos.com/v1/daniulive/Daniulive-Android-SDK(V2)-AndroidStudio-2019-05-16.zip)
 
 **4.iOS平台集成对接DEMO：**
 
@@ -294,9 +294,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；
 - [x] [**摄像头采集**]除常规YUV格式外，还支持**MJPEG**格式的摄像头采集；
 - [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android/iOS支持RTMP扩展H.265推送）；
-- [x] [**音视频加密**]Windows平台RTMP支持**AES128/AES192/AES256/SM4(国密)逐帧数据加密**；
-- [x] [**音视频加密**]Windows平台支持RTMP **H.264/H.265加密**；
-- [x] [**音视频加密**]Windows平台支持RTMP **AAC/Speex/G711加密**；
+- [x] [**音视频加密**]RTMP支持**AES128/AES192/AES256/SM4(国密)逐帧数据加密**；
+- [x] [**音视频加密**]支持RTMP **H.264/H.265加密**；
+- [x] [**音视频加密**]支持RTMP **AAC/Speex/G711加密**；
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
@@ -401,7 +401,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**多实例播放**]支持多实例播放（如同时播放多路RTMP/RTSP流）；
 - [x] [**事件回调**]支持网络状态、buffer状态等回调；
 - [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，Windows/Android平台还支持**RTSP MJPEG**播放；
-- [x] [**音视频加密**]Windows平台支持RTMP推送端**加密(AES/SM4(国密))音视频数据正常播放**；
+- [x] [**音视频加密**]支持RTMP推送端**加密(AES/SM4(国密))音视频数据正常播放**；
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
 - [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
