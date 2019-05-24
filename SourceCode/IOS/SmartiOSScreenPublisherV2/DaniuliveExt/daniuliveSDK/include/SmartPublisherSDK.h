@@ -528,6 +528,49 @@ typedef enum DNCameraPosition{
  */
 -(NSInteger)SmartPublisherSetRtmpPublishingType:(NSInteger)type;
 
+/**
+ * 设置rtmp推送加密选项
+ *
+ * @param url 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+ * @param is_encrypt_video 1:表示视频加密, 0:表示视频不加密, 默认不加密, 其他值返回错误
+ * @param is_encrypt_audio 1:表示音频加密, 0:表示音频不加密, 默认不加密, 其他值返回错误
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SetRtmpEncryptionOption:(NSString*)url is_encrypt_video:(NSInteger)is_encrypt_video is_encrypt_audio:(NSInteger)is_encrypt_audio;
+
+/**
+ * 设置rtmp加密算法
+ *
+ * @param url 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+ * @param encryption_algorithm 加密算法, 当前支持aes和国标sm4. 1为aes, 2为sm4, 默认为aes.
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SetRtmpEncryptionAlgorithm:(NSString*)url encryption_algorithm:(NSInteger)encryption_algorithm;
+
+/**
+ * 设置rtmp推送加密密钥
+ *
+ * @param url 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+ * @param key 加密密钥
+ * @param key_size 当前key_size必须是16, 24, 32 这三个值，其他返回错误
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SetRtmpEncryptionKey:(NSString*)url key:(unsigned char*)key key_size:(NSInteger)key_size;
+
+/**
+ * 设置rtmp推送加密IV(初始化向量), 这个接口不调用的话, 将使用默认IV
+ *
+ * @param url 考虑到可能推送到多个服务器，可以根据推送url配置不同的加密选项, 请确保url和SetURL一致
+ * @param iv 初始化向量
+ * @param iv_size 当前必须是16, 其他值返回错误
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SetRtmpEncryptionIV:(NSString*)url iv:(unsigned char*)iv iv_size:(NSInteger)iv_size;
+
 /*++++发送用户自定义数据相关接口++++*/
 /*
  * 1. 目前使用sei机制发送用户自定数据到播放端

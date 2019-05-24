@@ -229,6 +229,28 @@
 - (NSInteger)SmartPlayerSetPlayURL:(NSString *)url;
 
 /**
+ * 设置解密key，目前只用来解密rtmp加密流
+ *
+ * @param key 解密密钥
+ *
+ * @param key_size 密钥长度
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetKey:(unsigned char*)key key_size:(NSInteger)key_size;
+
+/**
+ * 设置解密向量，目前只用来解密rtmp加密流
+ *
+ * @param iv 解密向量
+ *
+ * @param iv_size 向量长度
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetDecryptionIV:(unsigned char*)iv iv_size:(NSInteger)iv_size;
+
+/**
  * Set if needs to save image during playback stream(设置是否启用快照功能)
  *
  * @param is_save_image 1 通过SmartPlayerSaveCurImage()保存当前image, 0: 不保存

@@ -22,5 +22,7 @@
                      videoOpt:(NSInteger)videoOpt
                      isBeauty:(Boolean)isBeauty;
 
+-(void)setRTMPKeyIV:(NSString*)key iv:(NSString*)iv;
+
 @end
 

@@ -25,6 +25,8 @@
     NSInteger               audio_opt_;
     NSInteger               video_opt_;
     Boolean                 is_beauty_;
+    NSString        *encrypt_key_;              //RTMP加密Key
+    NSString        *encrypt_iv_;               //RTMP IV加密向量
 }
 
 @property (nonatomic, strong) UINavigationBar *nvgBar;
@@ -43,6 +45,8 @@
 @property (nonatomic, strong) UIButton *beautyBtn;
 @property (nonatomic, strong) UIButton *noBeautyBtn;
 
+//如需音视频加密，可设置加密的Key(16/24/32字节)和IV(16字节)，IV如不输入，用默认值，播放端，需要输入推送端设置的加密Key和IV方可正常播放
+@property (nonatomic, strong) UIButton *inputKeyIvView;
 @property (nonatomic, strong) UIButton *interPublisherView;
 @property (nonatomic, strong) UIButton *interRecorderView;
 
@@ -82,6 +86,7 @@
 @synthesize videoLable;
 @synthesize beautyLable;
 @synthesize noBeautyLable;
+@synthesize inputKeyIvView;
 @synthesize interPublisherView;
 @synthesize interRecorderView;
 
@@ -220,10 +225,19 @@
     self.inputUrlText.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     //[self.inputUrlText setText:[NSString stringWithFormat:@"rtmp://player.daniulive.com:1935/hls/stream0"]];
     
+    //设置RTMP加密Key和IV加密向量
+    self.inputKeyIvView = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.inputKeyIvView.tag = 3;
+    self.inputKeyIvView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+280, buttonWidth, kBtnHeight);
+    [self.inputKeyIvView setTitle:@"设置RTMP加密Key和IV" forState:UIControlStateNormal];
+    [self.inputKeyIvView setBackgroundImage:[UIImage imageNamed:@"back_color"] forState:UIControlStateNormal];
+    self.inputKeyIvView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    [self.inputKeyIvView addTarget:self action:@selector(inputKeyIVViewBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     //进入推流页面
     self.interPublisherView = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.interPublisherView.tag = 3;
-    self.interPublisherView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+80+60, buttonWidth, kBtnHeight);
+    self.interPublisherView.tag = 4;
+    self.interPublisherView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+340, buttonWidth, kBtnHeight);
     [self.interPublisherView setTitle:@"进入推流页面" forState:UIControlStateNormal];
     [self.interPublisherView setBackgroundImage:[UIImage imageNamed:@"back_color"] forState:UIControlStateNormal];
     self.interPublisherView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -231,8 +245,8 @@
     
     //进入回放页面
     self.interRecorderView = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.interRecorderView.tag = 4;
-    self.interRecorderView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+80+80+60, buttonWidth, kBtnHeight);
+    self.interRecorderView.tag = 5;
+    self.interRecorderView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+400, buttonWidth, kBtnHeight);
     [self.interRecorderView setTitle:@"进入回放页面" forState:UIControlStateNormal];
     [self.interRecorderView setBackgroundImage:[UIImage imageNamed:@"back_color"] forState:UIControlStateNormal];
     self.interRecorderView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -253,6 +267,7 @@
     [self.view addSubview:self.beautyBtn];
     [self.view addSubview:self.noBeautyBtn];
     
+    [self.view addSubview:self.inputKeyIvView];
     [self.view addSubview:self.interPublisherView];
     [self.view addSubview:self.interRecorderView];
     [self.view addSubview:self.highQualityLable];
@@ -376,6 +391,34 @@
     [textField resignFirstResponder];
 }
 
+- (void)inputKeyIVViewBtnPressed:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"如RTMP加密流，请输入加密Key和IV" preferredStyle:UIAlertControllerStyleAlert];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UITextField *keyTextField = alertController.textFields.firstObject;
+        encrypt_key_ = keyTextField.text;
+        
+        UITextField *ivTextField = alertController.textFields.lastObject;
+        encrypt_iv_ = ivTextField.text;
+        
+        NSLog(@"key: %@，iv: %@",encrypt_key_, encrypt_iv_);
+        
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入RTMP加密Key(16/24/32字节)";
+    }];
+
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入RTMP IV加密向量(可选，如不输入用默认值)";
+    }];
+    
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
 - (void)interPublisherViewBtnPressed:(id)sender {
     
     NSString* push_url;     //考虑到好多开发者没有自建rtsp服务器 rtsp url可在ViewController单独设置
@@ -404,6 +447,9 @@
    
     ViewController * coreView =[[ViewController alloc] initParameter:push_url
                                                        streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isBeauty:is_beauty_];
+    
+    [coreView setRTMPKeyIV:encrypt_key_ iv:encrypt_iv_];
+    
     [self presentViewController:coreView animated:YES completion:nil];
 }
 

@@ -42,6 +42,31 @@
 -(NSInteger)SetRtspServerUserNamePassword:(void*)rtsp_server_handle user_name:(NSString*)user_name password:(NSString*)password;
 
 /*
+ * 设置rtsp server 组播, 如果server设置成组播就不能单播，组播和单播只能选一个, 一般来说单播网络设备支持的好，wifi组播很多路由器不支持
+ *
+ * @param rtsp_server_handle: rtsp server 句柄
+ *
+ * @param is_multicast: 是否组播, 1为组播, 0为单播, 其他值接口返回错误, 默认是单播
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SetRtspServerMulticast:(void*)rtsp_server_handle is_multicast:(NSInteger)is_multicast;
+
+/*
+ * 设置rtsp server 组播组播地址
+ *
+ * @param rtsp_server_handle: rtsp server 句柄
+ *
+ * @param multicast_address: 组播地址
+ *
+ * 如果设置的不是组播地址, 将返回错误
+ * 组播地址范围说明: [224.0.0.0, 224.0.0.255] 为组播预留地址, 不能设置. 可设置范围为[224.0.1.0, 239.255.255.255], 其中SSM地址范围为[232.0.0.0, 232.255.255.255]
+ *
+ *  @return {0} if successful
+ */
+-(NSInteger)SetRtspServerMulticastAddress:(void*)rtsp_server_handle multicast_address:(NSString*)multicast_address;
+
+/*
  * 获取rtsp server当前的客户会话数, 这个接口必须在StartRtspServer之后再调用
  * rtsp_server_handle: rtsp server 句柄
  * session_numbers: 会话数

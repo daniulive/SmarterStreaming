@@ -56,6 +56,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     UIButton        *muteButton;                //静音 取消静音
     UIButton        *switchUrlButton;           //切换url按钮
+    UIButton        *inputKeyIVButton;          //用于RTMP加密流播放时输入解密Key和IV解密向量信息
     UIButton        *playbackButton;            //播放按钮
     UIButton        *flipVerticalButton;        //垂直反转
     UIButton        *flipHorizontalButton;      //水平反转
@@ -73,6 +74,9 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     Boolean         is_playing_;                //是否播放状态
     Boolean         is_recording_;              //是否录像状态
+    
+    NSString        *encrypt_key_;              //RTMP解密Key
+    NSString        *encrypt_iv_;               //RTMP IV解密向量
 }
 
 - (void)viewDidLoad {
@@ -93,18 +97,16 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     stream_height_ = 288;
     
     //拉流url可以自定义
-    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
+    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks2";
     
     //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";   //公网rtsp流，TCP模式的有audio
-    
-    //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream123";
     
     is_audio_only_ = NO;
     is_half_screen_ = YES;            //半屏播放, 只是为了效果展示
     
     is_fast_startup_ = YES;           //是否快速启动模式
     is_low_latency_mode_ = NO;        //是否开启极速模式
-    buffer_time_ = 100;               //buffer时间
+    buffer_time_ = 0;                 //buffer时间
     is_hardware_decoder_ = NO;        //默认软解码
     is_rtsp_tcp_mode_ = NO;           //仅用于rtsp流 设置TCP传输模式 默认UDP模式
     
@@ -118,6 +120,9 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     is_playing_ = NO;
     is_recording_ = NO;
+    
+    encrypt_key_ = [NSString string];
+    encrypt_iv_ = [NSString string];
     
     //用户可自定义显示view区域
     if ( is_half_screen_ )
@@ -137,10 +142,25 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     CGFloat lineWidth = playbackButton.frame.size.width * 0.12f;
     
+    //输入解密Key和IV向量按钮
+    inputKeyIVButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    inputKeyIVButton.frame = CGRectMake(45, screen_height_/2, 120, 80);
+    inputKeyIVButton.center = CGPointMake(self.view.frame.size.width / 6, inputKeyIVButton.frame.origin.y + inputKeyIVButton.frame.size.height / 2);
+    
+    inputKeyIVButton.layer.cornerRadius = inputKeyIVButton.frame.size.width / 2;
+    inputKeyIVButton.layer.borderColor = [UIColor greenColor].CGColor;
+    inputKeyIVButton.layer.borderWidth = lineWidth;
+    
+    [inputKeyIVButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [inputKeyIVButton setTitle:@"设置解密Key" forState:UIControlStateNormal];
+    
+    [inputKeyIVButton addTarget:self action:@selector(InputKeyIVBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:inputKeyIVButton];
+    
     //播放按钮
     playbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
     playbackButton.frame = CGRectMake(45, screen_height_/2, 120, 80);
-    playbackButton.center = CGPointMake(self.view.frame.size.width / 6, playbackButton.frame.origin.y + playbackButton.frame.size.height / 2);
+    playbackButton.center = CGPointMake(self.view.frame.size.width / 2, playbackButton.frame.origin.y + playbackButton.frame.size.height / 2);
     
     playbackButton.layer.cornerRadius = playbackButton.frame.size.width / 2;
     playbackButton.layer.borderColor = [UIColor greenColor].CGColor;
@@ -151,21 +171,6 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     [playbackButton addTarget:self action:@selector(playBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:playbackButton];
-    
-    //切换url按钮
-    switchUrlButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    switchUrlButton.frame = CGRectMake(45, screen_height_/2, 120, 80);
-    switchUrlButton.center = CGPointMake(self.view.frame.size.width / 2, switchUrlButton.frame.origin.y + switchUrlButton.frame.size.height / 2);
-    
-    switchUrlButton.layer.cornerRadius = switchUrlButton.frame.size.width / 2;
-    switchUrlButton.layer.borderColor = [UIColor greenColor].CGColor;
-    switchUrlButton.layer.borderWidth = lineWidth;
-    
-    [switchUrlButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [switchUrlButton setTitle:@"切换URL2" forState:UIControlStateNormal];
-    
-    [switchUrlButton addTarget:self action:@selector(SwitchUrlBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:switchUrlButton];
     
     //静音按钮
     muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -277,10 +282,25 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     [saveImageButton addTarget:self action:@selector(SaveImageBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveImageButton];
     
+    //切换url按钮
+    switchUrlButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    switchUrlButton.frame = CGRectMake(45, screen_height_/2 + 200, 120, 80);
+    switchUrlButton.center = CGPointMake(self.view.frame.size.width / 6, switchUrlButton.frame.origin.y + switchUrlButton.frame.size.height / 2);
+    
+    switchUrlButton.layer.cornerRadius = switchUrlButton.frame.size.width / 2;
+    switchUrlButton.layer.borderColor = [UIColor greenColor].CGColor;
+    switchUrlButton.layer.borderWidth = lineWidth;
+    
+    [switchUrlButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [switchUrlButton setTitle:@"切换URL2" forState:UIControlStateNormal];
+    
+    [switchUrlButton addTarget:self action:@selector(SwitchUrlBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:switchUrlButton];
+    
     //退出按钮
     quitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     quitButton.frame = CGRectMake(45, screen_height_/2 + 200, 120, 80);
-    quitButton.center = CGPointMake(self.view.frame.size.width / 6, quitButton.frame.origin.y + quitButton.frame.size.height / 2);
+    quitButton.center = CGPointMake(self.view.frame.size.width / 2, quitButton.frame.origin.y + quitButton.frame.size.height / 2);
     
     quitButton.layer.cornerRadius = quitButton.frame.size.width / 2;
     quitButton.layer.borderColor = [UIColor greenColor].CGColor;
@@ -415,6 +435,34 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         
         [_smart_player_sdk SmartPlayerSwitchPlaybackUrl:switchUrl];
     }
+}
+
+- (void)InputKeyIVBtn:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"如RTMP加密流，请输入解密Key和IV" preferredStyle:UIAlertControllerStyleAlert];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UITextField *keyTextField = alertController.textFields.firstObject;
+        encrypt_key_ = keyTextField.text;
+        
+        UITextField *ivTextField = alertController.textFields.lastObject;
+        encrypt_iv_ = ivTextField.text;
+        
+        NSLog(@"key: %@，iv: %@",encrypt_key_, encrypt_iv_);
+        
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入RTMP解密Key(16/24/32字节)";
+    }];
+
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入RTMP IV解密向量(16字节，如推送端未设置，无需输入)";
+    }];
+    
+    [self presentViewController:alertController animated:true completion:nil];
 }
 
 - (void)MuteBtn:(id)sender {
@@ -757,7 +805,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     //如需查看实时流量信息，可打开以下接口
     NSInteger is_report = 1;
-    NSInteger report_interval = 5;
+    NSInteger report_interval = 3;
     [_smart_player_sdk SmartPlayerSetReportDownloadSpeed:is_report report_interval:report_interval];
     
     //录像端音频，是否转AAC后保存
@@ -771,6 +819,58 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     //录制MP4文件 是否录制音频
     NSInteger is_record_audio = 1;
     [_smart_player_sdk SmartPlayerSetRecorderAudio:is_record_audio];
+
+    NSInteger key_length = [encrypt_key_ length];
+    
+    if(key_length > 0)
+    {
+        int key_len = 16;
+        
+        if (key_length > 16 && key_length <= 24) {
+            key_len = 24;
+        } else if (key_length > 24) {
+            key_len = 32;
+        }
+        
+        unsigned char key[32];
+        memset(key, 0, 32);
+        
+        NSData* key_data = [encrypt_key_ dataUsingEncoding:NSUTF8StringEncoding];
+  
+        NSInteger copy_key_len = key_length < key_len ? key_length : key_len;
+        
+        Byte *copy_key_data = (Byte *)[key_data bytes];
+        
+        for(int i=0;i<copy_key_len;i++)
+        {
+            key[i] = copy_key_data[i];
+        }
+        
+        [_smart_player_sdk SmartPlayerSetKey:key key_size:key_len];
+    }
+    
+    NSInteger iv_length = [encrypt_iv_ length];
+    
+    if(iv_length > 0)
+    {
+        int iv_len = 16;
+        
+        unsigned char iv[16];
+        memset(iv, 0, 16);
+        
+        NSData* iv_data = [encrypt_iv_ dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSInteger copy_iv_len = iv_length < iv_len ? iv_length : iv_len;
+        
+        Byte *copy_iv_data = (Byte *)[iv_data bytes];
+        
+        for(int i=0;i<copy_iv_len;i++)
+        {
+            iv[i] = copy_iv_data[i];
+        }
+        
+        [_smart_player_sdk SmartPlayerSetDecryptionIV:iv iv_size:iv_len];
+    }
     
     is_inited_player_ = YES;
     
@@ -1009,6 +1109,14 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
                 [self presentViewController:aleView animated:YES completion:nil];
             });
         });
+    }
+    else if(nID == EVENT_DANIULIVE_ERC_PLAYER_NEED_KEY)
+    {
+        player_event = @"[event]RTMP加密流，请设置播放需要的Key..";
+    }
+    else if(nID == EVENT_DANIULIVE_ERC_PLAYER_KEY_ERROR)
+    {
+        player_event = @"[event]RTMP加密流，Key错误，请重新设置..";
     }
     else
         NSLog(@"[event]nID:%lx", (long)nID);

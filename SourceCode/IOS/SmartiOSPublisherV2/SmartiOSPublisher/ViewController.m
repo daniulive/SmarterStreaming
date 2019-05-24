@@ -62,6 +62,9 @@
     NSString    *tmp_path;
     void        *rtsp_handle_;
     NSInteger   publish_orientation_;       //默认竖屏采集，传1:竖屏，传2:横屏(home键在右侧)
+    
+    NSString *encrypt_key_;                  //RTMP加密Key
+    NSString *encrypt_iv_;                   //RTMP IV加密向量
 }
 
 @synthesize localPreview;
@@ -193,11 +196,21 @@
         is_mirror = false;   //默认镜像模式
         rtsp_handle_ = NULL;
         rtsp_push_url = @"";
+        encrypt_key_ = [NSString string];
+        encrypt_iv_ = [NSString string];
     }
     
     NSLog(@"[initParameter]videoQuality: %u, audio_opt: %ld, video_opt: %ld",videoQuality, (long)audio_opt_, (long)video_opt_);
     
     return self;
+}
+
+-(void)setRTMPKeyIV:(NSString*)key iv:(NSString*)iv
+{
+    encrypt_key_ = key;
+    encrypt_iv_ = iv;
+    
+    NSLog(@"[setRTMPKeyIV] encrypt_key:%@ encrypt_iv:%@", encrypt_key_, encrypt_iv_);
 }
 
 - (void)loadView
@@ -267,6 +280,77 @@
      [_smart_publisher_sdk SmartPublisherSetClippingMode:clip_mode];
      */
     
+    NSInteger key_length = [encrypt_key_ length];
+    
+    if(key_length > 0)
+    {
+        NSInteger is_encrypt_video = 1;
+        NSInteger is_encrypt_audio = 1;
+        
+        if(video_opt_ == 0)
+        {
+            is_encrypt_video = 0;
+        }
+        
+        if(audio_opt_ == 0)
+        {
+            is_encrypt_audio = 0;
+        }
+        
+        [_smart_publisher_sdk SetRtmpEncryptionOption:rtmp_push_url is_encrypt_video:is_encrypt_video is_encrypt_audio:is_encrypt_audio];
+        
+        //默认AES加密，如需SM4加密，参数设置2即可
+        NSInteger encryption_algorithm = 1;
+        [_smart_publisher_sdk SetRtmpEncryptionAlgorithm:rtmp_push_url encryption_algorithm:encryption_algorithm];
+        
+        int key_len = 16;
+        
+        if (key_length > 16 && key_length <= 24) {
+            key_len = 24;
+        } else if (key_length > 24) {
+            key_len = 32;
+        }
+        
+        unsigned char key[32];
+        memset(key, 0, 32);
+        
+        NSData* key_data = [encrypt_key_ dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSInteger copy_key_len = key_length < key_len ? key_length : key_len;
+        
+        Byte *copy_key_data = (Byte *)[key_data bytes];
+        
+        for(int i=0;i<copy_key_len;i++)
+        {
+            key[i] = copy_key_data[i];
+        }
+            
+        [_smart_publisher_sdk SetRtmpEncryptionKey:rtmp_push_url key:key key_size:key_len];
+        
+        NSInteger iv_length = [encrypt_iv_ length];
+        
+        if(iv_length > 0)
+        {
+            int iv_len = 16;
+            
+            unsigned char iv[16];
+            memset(iv, 0, 16);
+            
+            NSData* iv_data = [encrypt_iv_ dataUsingEncoding:NSUTF8StringEncoding];
+            
+            NSInteger copy_iv_len = iv_length < iv_len ? iv_length : iv_len;
+            
+            Byte *copy_iv_data = (Byte *)[iv_data bytes];
+            
+            for(int i=0;i<copy_iv_len;i++)
+            {
+                iv[i] = copy_iv_data[i];
+            }
+            
+            [_smart_publisher_sdk SetRtmpEncryptionIV:rtmp_push_url iv:iv iv_size:iv_len];
+        }
+    }
+
     [_smart_publisher_sdk SmartPublisherSetPostUserDataQueueMaxSize:3 reserve:0];
     
     NSInteger image_flag = 1;
@@ -752,6 +836,51 @@
     }
 }
 
+//++组播相关代码++
+/*
+-(NSString*)MakeMulticastAddress
+ {
+     // 239.0.1.0 ~ 239.255.255.255
+     long begin = 0xEF000100;
+     long end = 0xEFFFFFFF;
+     
+     long count = end - begin;
+ 
+     long addr_host = begin + (arc4random() % count);
+     
+     return [self DigitToIpAddr:addr_host];
+ }
+ 
+-(NSString*)MakeSSMMulticastAddress
+ {
+     // 232.0.1.0 ~ 232.255.255.255
+     
+     long begin = 0xE8000100;
+     long end = 0xE8FFFFFF;
+     
+     long count = end - begin;
+     
+     long addr_host = begin + (arc4random() % count);
+
+     return [self DigitToIpAddr:addr_host];
+ }
+ 
+-(NSString*)DigitToIpAddr:(long)digit
+{
+    NSString* val1 = [[NSNumber numberWithLong:((digit >> 24) & 0xFF)] stringValue];
+    NSString* val2 = [[NSNumber numberWithLong:((digit >> 16) & 0xFF)] stringValue];
+    NSString* val3 = [[NSNumber numberWithLong:((digit >> 8) & 0xFF)] stringValue];
+    NSString* val4 = [[NSNumber numberWithLong:(digit & 0xFF)] stringValue];
+    
+    NSString* strPoint = @".";
+    
+    NSString* ipAddr = [NSString stringWithFormat:@"%@%@%@%@%@%@%@", val1, strPoint,val2,strPoint,val3,strPoint,val4];
+    
+    return ipAddr;
+}
+*/
+//--组播相关代码--
+
 - (void)rtspServiceBtn:(UIButton *)button{
     NSLog(@"rtsp service++");
     
@@ -786,6 +915,29 @@
                 //NSString* password = @"12345";
                 //[_smart_rtsp_server_sdk SetRtspServerUserNamePassword:rtsp_handle_ user_name:user_name password:password];
                 
+                //一般来说单播网络设备支持的好，wifi组播很多路由器不支持，默认单播模式；如需使用组播模式，确保设备支持后，打开注释代码测试即可
+                /*
+                NSInteger is_multicast = 1;
+                [_smart_rtsp_server_sdk SetRtspServerMulticast:rtsp_handle_ is_multicast:is_multicast];
+                
+                NSString* multicast_address = @"";
+                
+                Boolean is_enable_ssm_multicast = YES;
+                
+                if(is_enable_ssm_multicast)
+                {
+                    multicast_address = [self MakeSSMMulticastAddress];
+                }
+                else
+                {
+                    multicast_address = [self MakeMulticastAddress];
+                }
+                
+                NSLog(@"multicast_address: %@", multicast_address);
+                    
+                [_smart_rtsp_server_sdk SetRtspServerMulticastAddress:rtsp_handle_ multicast_address:multicast_address];
+                */
+                 
                 if(DANIULIVE_RETURN_OK == [_smart_rtsp_server_sdk StartRtspServer:rtsp_handle_ reserve:0])
                 {
                     NSLog(@"启动rtsp server 成功!");
