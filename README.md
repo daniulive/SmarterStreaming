@@ -36,6 +36,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/03/05)](https://gz.bcebos.com/v1/daniulive/Unity3d-SmartPlayer-2019-03-05.apk)**
 
+**大牛直播SDK跨平台RTMP加解密(支持AES/SM4)方案调用实例**
+
+**[Windows/Android/iOS平台实现RTMP推送和播放端AES或SM4加解密实例]**(https://blog.csdn.net/renhui1112/article/details/90580497)
 
 ## 模块概览 ## 
 
