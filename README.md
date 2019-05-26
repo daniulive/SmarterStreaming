@@ -10,6 +10,12 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
+## 跨平台RTMP加解密(支持AES/SM4)方案 ##
+
+**[RTMP防盗播整体加解密方案](https://blog.csdn.net/renhui1112/article/details/89086919)**
+
+**[Windows/Android/iOS平台实现RTMP推送和播放端AES或SM4加解密实例](https://blog.csdn.net/renhui1112/article/details/90580497)**
+
 ## 平台扩展 ## 
 
 除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Flutter**(Android/iOS)、**Unity3d**(Windows/Android/iOS)、**APICloud**(Android/iOS)和**React Native**(Android/iOS)二次封装，也可能是**Flutter和Unity3D**平台下**首款**真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器。
@@ -36,12 +42,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/03/05)](https://gz.bcebos.com/v1/daniulive/Unity3d-SmartPlayer-2019-03-05.apk)**
 
-
-## 大牛直播SDK跨平台RTMP加解密(支持AES/SM4)方案 ##
-
-**[RTMP防盗播整体加解密方案](https://blog.csdn.net/renhui1112/article/details/89086919)**
-
-**[Windows/Android/iOS平台实现RTMP推送和播放端AES或SM4加解密实例](https://blog.csdn.net/renhui1112/article/details/90580497)**
 
 ## 模块概览 ## 
 
