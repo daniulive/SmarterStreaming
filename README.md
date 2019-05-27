@@ -360,8 +360,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**摄像头采集**]除常规YUV格式外，还支持**MJPEG**格式的摄像头采集；
 - [x] [**RTSP推流**]超低延时的RTSP协议直播推流SDK；
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
-- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
-- [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
+- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码；
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
 - [x] [**H.265硬编码**]Android平台支持H.265硬编码；
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；
@@ -388,7 +387,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**外部编码前视频数据对接**]支持YUV数据对接；
 - [x] [**外部编码前音频数据对接**]支持PCM对接；
 - [x] [**外部编码后视频数据对接**]支持外部H.264数据对接；
-- [x] [**外部编码后音频数据对接**]外部AAC/PCMA/PCMU/SPEEX数据对接；
+- [x] [**外部编码后音频数据对接**]外部AAC/PCMA/PCMU数据对接；
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；
 - [x] [**服务器兼容**]支持支持自建服务器(如Darin Stream Server)。
 
