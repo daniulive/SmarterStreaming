@@ -333,7 +333,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**外部编码前音频数据对接**]支持PCM对接；
 - [x] [**外部编码后视频数据对接**]支持外部H.264数据对接；
 - [x] [**外部编码后音频数据对接**]外部AAC/PCMA/PCMU/SPEEX数据对接；
-- [x] [**编码后数据输出**]Android平台支持输出编码后的H264/AAC数据到上层，方便对接第三方平台(如GB28181)对接（接口说明和demo请点击以下[链接](https://blog.csdn.net/renhui1112/article/details/83755964)）；
+- [x] [**编码后数据输出**]Android平台支持输出编码后的H264/AAC数据到上层，方便对接第三方平台(如GB28181)对接；
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；
 - [x] [**基础美颜**]iOS平台自带基础美颜功能；
 - [x] [**裁剪模式**]Android/iOS平台支持特定分辨率摄像头裁剪模式设置；
