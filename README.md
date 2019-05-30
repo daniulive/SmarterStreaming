@@ -2,7 +2,7 @@
 
 始于2014年，国内外为数不多致力于极致体验的**超强全自研跨平台**(windows/android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、RTMP推送播放**整体加密(AES/SM4)**方案、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
-适用于**在线教育、无纸化推屏/会议、[RTMP防盗播整体加解密方案](https://blog.csdn.net/renhui1112/article/details/89086919)、智慧教室、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、[超低延迟娃娃机抓取播放方案](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E9%9D%A0%E8%B0%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%8A%93%E5%A8%83%E5%A8%83%E6%96%B9%E6%A1%88/)、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
+适用于**在线教育、无纸化推屏/会议、[RTMP防盗播整体加解密方案](https://www.daniulive.com/index.php/2019/05/30/windows-android-ios%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0rtmp%E6%8E%A8%E9%80%81%E5%92%8C%E6%92%AD%E6%94%BE%E7%AB%AFaes%E6%88%96sm4%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E4%BE%8B/)、智慧教室、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、[超低延迟娃娃机抓取播放方案](https://www.jianshu.com/p/e265663b87d8)、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、监控对接、活动现场直播、游戏直播、秀场直播**等场景。
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
@@ -12,9 +12,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 跨平台RTMP加解密(支持AES/SM4)方案 ##
 
-**[RTMP防盗播整体加解密方案](https://blog.csdn.net/renhui1112/article/details/89086919)**
-
-**[Windows/Android/iOS平台实现RTMP推送和播放端AES或SM4加解密实例](https://blog.csdn.net/renhui1112/article/details/90580497)**
+**[Windows/Android/iOS平台实现RTMP推送和播放端AES或SM4加解密实例](https://www.daniulive.com/index.php/2019/05/30/windows-android-ios%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0rtmp%E6%8E%A8%E9%80%81%E5%92%8C%E6%92%AD%E6%94%BE%E7%AB%AFaes%E6%88%96sm4%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E4%BE%8B/)**
 
 ## 平台扩展 ## 
 
@@ -22,7 +20,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Flutter RTSP/RTMP播放SDK相关(支持Android/iOS)**
 
-**[Flutter下实现低延迟的跨平台RTSP/RTMP播放(相关接口说明和调用实例)](https://blog.csdn.net/renhui1112/article/details/89100069)**
+**[Flutter下实现低延迟的跨平台RTSP/RTMP播放(相关接口说明和调用实例)](https://www.daniulive.com/index.php/2019/05/30/flutter%E4%B8%8B%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9F%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0rtsp-rtmp%E6%92%AD%E6%94%BE/)**
 
 **[Flutter-Android RTSP/RTMP播放端APK下载(更新于2019/04/10)](http://player.daniulive.com:8080/demos/Flutter-SmartPlayer-2019-04-10.apk)**
 
@@ -66,7 +64,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性；
 
-- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；[点击查看多路RTSP/RTMP流转RTMP流深度定制版](https://blog.csdn.net/renhui1112/article/details/88045442)
+- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；[点击查看多路RTSP/RTMP流转RTMP流深度定制版](https://www.daniulive.com/index.php/2019/05/30/windows%E5%B9%B3%E5%8F%B0%E5%A4%9A%E8%B7%AFrtsp-rtmp%E6%B5%81%E8%BD%ACrtmp%E6%B5%81%E6%B7%B1%E5%BA%A6%E5%AE%9A%E5%88%B6%E7%89%88/)
 
 - [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持，windows端64位库支持**RTSP H.265**视频输出，支持**单播**和**组播**模式；
 
