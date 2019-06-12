@@ -305,7 +305,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
-- [x] [**H.265硬编码**]Android平台支持H.265硬编码；
+- [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；
 - [x] [**软硬编码参数配置**]支持gop间隔、帧率、bit-rate设置；
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；
@@ -360,7 +360,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码；
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
-- [x] [**H.265硬编码**]Android平台支持H.265硬编码；
+- [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；
 - [x] [**RTSP鉴权**]支持RTSP鉴权推送；
 - [x] [**TCP/UDP模式**]支持rtp over udp和rtp over tcp两种传输方式；
