@@ -149,25 +149,25 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1. Windows平台测试EXE：**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/windows-推送-播放版-2019-04-24.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8080/demos/windows-推送-播放版-2019-06-11.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/windows-推送-播放版64位-2019-04-24.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8080/demos/windows-推送-播放版64位-2019-06-11.zip)
 
-- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/04/30)](http://player.daniulive.com:8080/demos/windows-四窗口播放demo-32位-20190430.zip)
+- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/windows-四窗口播放demo-32位-20190612.zip)
 
-- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/04/30)](http://player.daniulive.com:8080/demos/windows-四窗口播放demo-64位-20190430.zip)
+- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/windows-四窗口播放demo-64位-20190612.zip)
 
 - [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/03/22)](http://player.daniulive.com:8080/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-03-22.zip) [点我查看OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
 
 **2.Windows平台集成对接DEMO：**
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/WIN-PublisherSDK-CPP-Demo-2019-04-24.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-PublisherSDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/WIN-PlayerSDK-CPP-Demo-2019-04-24.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-PlayerSDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/WIN-MixStreamSDK-CPP-Demo-2019-04-24.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-MixStreamSDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/WIN-RelaySDK-CPP-Demo-2019-04-24.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-RelaySDK-CPP-Demo-2019-06-12.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/04/24)](http://player.daniulive.com:8080/demos/WIN-PublisherSDK-CSharp-Demo-2019-04-24.zip)
 
@@ -407,10 +407,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音视频加密**]支持RTMP推送端**加密(AES/SM4(国密))音视频数据正常播放**；
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
-- [x] [**H.264硬解码**]Android/iOS支持H.264硬解；
-- [x] [**H.265硬解**]Android/iOS支持H.265硬解；
+- [x] [**H.264硬解码**]**Windows**/Android/iOS支持H.264硬解；
+- [x] [**H.265硬解**]**Windows**/Android/iOS支持H.265硬解；
 - [x] [**H.264/H.265硬解码**]Android支持设置Surface模式硬解和普通模式硬解码；
-- [x] [**硬解码自适应**]Android/iOS平台支持硬解码码自适应，如检测到硬解码不支持，自动切换到软解；
+- [x] [**硬解码自适应**]Windows/Android/iOS平台支持硬解码码自适应，如检测到硬解码不支持，自动切换到软解；
 - [x] [**RTSP模式设置**]支持RTSP TCP/UDP模式设置；
 - [x] [**RTSP TCP/UDP自动切换**]支持RTSP TCP、UDP模式自动切换；
 - [x] [**RTSP超时设置**]支持RTSP超时时间设置，单位：秒；
@@ -554,6 +554,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**拉流**]支持拉取RTSP流录像；
 - [x] [**拉流**]支持拉取RTMP流录像；
 - [x] [**推流端录像**]支持推送端同步录像；
+- [x] [**推流端录像实时暂停/恢复**]Windows平台支持推送端录像过程中**实时暂停录像、恢复录像**；
 - [x] [**逻辑分离**]大牛直播录像SDK不同于普通录像接口，更智能，和推送、播放、转发、内置轻量级RTSP服务SDK功能完全分离，支持随时录像；
 - [x] [**url切换**]在录像过程中，支持切换不同URL，如两个URL配置一致，则可以录制到同一个MP4文件，如不一致，可自动分割到下一个文件；
 - [x] [**参数设置**]支持设置单个录像文件大小、录像路径等，并支持纯音频、纯视频、音视频录制模式；
