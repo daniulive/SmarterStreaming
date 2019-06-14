@@ -177,7 +177,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **3.Android平台集成对接DEMO：**
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/05/16)**](http://player.daniulive.com:8080/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-05-16.zip)
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/06/14)**](http://player.daniulive.com:8080/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-06-14.zip)
 
 **4.iOS平台集成对接DEMO：**
 
@@ -554,7 +554,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**拉流**]支持拉取RTSP流录像；
 - [x] [**拉流**]支持拉取RTMP流录像；
 - [x] [**推流端录像**]支持推送端同步录像；
-- [x] [**推流端录像实时暂停/恢复**]Windows平台支持推送端录像过程中**实时暂停录像、恢复录像**；
+- [x] [**推流端录像实时暂停/恢复**]支持推送端录像过程中**实时暂停录像、恢复录像**；
 - [x] [**逻辑分离**]大牛直播录像SDK不同于普通录像接口，更智能，和推送、播放、转发、内置轻量级RTSP服务SDK功能完全分离，支持随时录像；
 - [x] [**url切换**]在录像过程中，支持切换不同URL，如两个URL配置一致，则可以录制到同一个MP4文件，如不一致，可自动分割到下一个文件；
 - [x] [**参数设置**]支持设置单个录像文件大小、录像路径等，并支持纯音频、纯视频、音视频录制模式；
