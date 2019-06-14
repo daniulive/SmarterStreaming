@@ -139,6 +139,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
     private Button btnStartPush;    //RTMP推送按钮
     private Button btnStartRecorder;    //录像按钮
+    private Button btnPauseRecorder;    //暂停/恢复录像
     private Button btnCaptureImage;    //快照按钮
 
     private Button btnRtspService;    //启动、停止RTSP服务按钮
@@ -156,6 +157,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     private boolean mPreviewRunning = false; //priview状态
     private boolean isPushingRtmp = false;    //RTMP推送状态
     private boolean isRecording = false;    //录像状态
+    private boolean isPauseRecording = true;    //录像暂停、恢复录像
     private boolean isRTSPServiceRunning = false;    //RTSP服务状态
     private boolean isRTSPPublisherRunning = false; //RTSP流发布状态
     private boolean isPushingRtsp = false;     //RTSP推送状态
@@ -494,6 +496,9 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
         btnStartRecorder = (Button) findViewById(R.id.button_start_recorder);
         btnStartRecorder.setOnClickListener(new ButtonStartRecorderListener());
+
+        btnPauseRecorder = (Button) findViewById(R.id.button_pause_recorder);
+        btnPauseRecorder.setOnClickListener(new ButtonPauseRecorderListener());
 
         btnCaptureImage = (Button) findViewById(R.id.button_capture_image);
         btnCaptureImage.setOnClickListener(new ButtonCaptureImageListener());
@@ -1259,6 +1264,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 btnStartRecorder.setText("实时录像");
                 isRecording = false;
 
+                btnPauseRecorder.setText("暂停录像");
+                btnPauseRecorder.setEnabled(false);
+                isPauseRecording = true;
+
                 return;
             }
 
@@ -1291,6 +1300,53 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             btnStartRecorder.setText("停止录像");
             isRecording = true;
+
+            btnPauseRecorder.setEnabled(true);
+            isPauseRecording = true;
+        }
+    }
+
+    class ButtonPauseRecorderListener implements OnClickListener {
+        public void onClick(View v) {
+            if (isRecording) {
+
+                if(isPauseRecording)
+                {
+                    int ret = libPublisher.SmartPublisherPauseRecorder(publisherHandle, 1);
+
+                    if (ret == 0)
+                    {
+                        isPauseRecording = false;
+                        btnPauseRecorder.setText("恢复录像");
+                    }
+                    else if(ret == 3)
+                    {
+                        Log.e(TAG, "Pause recorder failed, please re-try again..");
+                    }
+                    else
+                    {
+                        Log.e(TAG, "Pause recorder failed..");
+                    }
+                }
+                else
+                {
+                    int ret = libPublisher.SmartPublisherPauseRecorder(publisherHandle, 0);
+
+                    if (ret == 0)
+                    {
+                        isPauseRecording = true;
+                        btnPauseRecorder.setText("暂停录像");
+                    }
+                    else if(ret == 3)
+                    {
+                        Log.e(TAG, "Resume recorder failed, please re-try again..");
+                    }
+                    else
+                    {
+                        Log.e(TAG, "Resume recorder failed..");
+                    }
+                }
+            }
         }
     }
 

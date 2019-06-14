@@ -94,7 +94,7 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
     private String playbackUrl = null;
     private boolean isMute = false;
     private boolean isHardwareDecoder = false;
-    private boolean is_enable_hardware_render_mode = true;    //设置视频硬解码下Mediacodec自行绘制模式（此种模式下，硬解码兼容性和效率更好，回调YUV/RGB和快照功能将不可用）
+    private boolean is_enable_hardware_render_mode = false;    //设置视频硬解码下Mediacodec自行绘制模式（此种模式下，硬解码兼容性和效率更好，回调YUV/RGB和快照功能将不可用）
     private int playBuffer = 200; // 默认200ms
     private boolean isLowLatency = false; // 超低延时，默认不开启
     private boolean isFastStartup = true; // 是否秒开, 默认true
@@ -198,6 +198,21 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
         Log.i(TAG, "surfaceDestroyed..");
     }
 
+    /**
+     * 隐藏虚拟按键，并全屏
+     */
+    protected void hideBottomUIMenu() {
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) {
+            View v = this.getWindow().getDecorView();
+            v.setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -205,12 +220,7 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+        hideBottomUIMenu();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -1007,7 +1017,7 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
                      * supported, it will choose openGLES. If with false: it will set
                      * with default surfaceView;
                      */
-                    sSurfaceView = NTRenderer.CreateRenderer(this, false);
+                    sSurfaceView = NTRenderer.CreateRenderer(this, true);
                 }
             }
         }

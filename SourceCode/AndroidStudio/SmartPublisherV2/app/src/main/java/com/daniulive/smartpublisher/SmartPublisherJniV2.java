@@ -819,7 +819,16 @@ public class SmartPublisherJniV2 {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherStartRecorder(long handle);
-    
+
+	/**
+	 * Pause recorder(暂停/恢复录像)
+	 *
+	 * is_pause: 1表示暂停, 0表示恢复录像, 输入其他值将调用失败
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPauseRecorder(long handle, int is_pause);
+
     /**
    	* Stop recorder(停止录像)
    	*

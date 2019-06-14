@@ -165,10 +165,10 @@
                     android:text="推送RTMP" />
 
                 <Button
-                    android:id="@+id/button_start_recorder"
+                    android:id="@+id/button_push_rtsp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="实时录像" />
+                    android:text="推送RTSP" />
 
                 <Button
                     android:id="@+id/button_capture_image"
@@ -215,10 +215,16 @@
                 android:orientation="horizontal">"
 
                 <Button
-                    android:id="@+id/button_push_rtsp"
+                    android:id="@+id/button_start_recorder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="推送RTSP" />
+                    android:text="实时录像" />
+
+                <Button
+                    android:id="@+id/button_pause_recorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="暂停录像" />
 
                 <Button
                     android:id="@+id/button_recorder_mgr"
