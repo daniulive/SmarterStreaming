@@ -264,7 +264,7 @@ typedef enum DNCameraPosition{
  *
  * 设置采集分辨率
  *
- * <pre>width: 宽， height: 高)</pre>
+ * <pre>width: 宽， height: 高</pre>
  *
  * @return {0} if successful
  */
@@ -739,6 +739,15 @@ typedef enum DNCameraPosition{
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherStartRecorder;
+
+/**
+ * Pause recorder(暂停/恢复录像)
+ *
+ * is_pause: 1表示暂停, 0表示恢复录像, 输入其他值将调用失败
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherPauseRecorder:(NSInteger)is_pause;
 
 /**
  * Stop recorder(停止录像)

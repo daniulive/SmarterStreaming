@@ -74,7 +74,8 @@ extern "C"{
 	typedef enum DNErrorCode{
 	    DANIULIVE_RETURN_OK = 0,        //!< 返回OK
 	    DANIULIVE_RETURN_ERROR,         //!< 返回错误
-	    DANIULIVE_RETURN_SDK_EXPIRED    //!< SDK过期
+	    DANIULIVE_RETURN_SDK_EXPIRED,   //!< SDK过期
+        DANIULIVE_RETURN_NEED_RETRY     //!< 提示重试
 	}DNErrorCode;
     
 #ifdef __cplusplus

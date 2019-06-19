@@ -41,6 +41,7 @@
     UIButton    *rtmpPusherButton;          //RTMP推送按钮
     UIButton    *rtspPusherButton;          //RTSP推送按钮
     UIButton    *recordStreamButton;        //录像按钮(mp4格式)
+    UIButton    *pauseRecordButton;         //暂停录像、恢复录像
     
     UIButton    *rtspServiceButton;         //内置服务按钮, 启动/停止服务
     UIButton    *rtspPublisherButton;       //内置rtsp服务功能
@@ -65,6 +66,13 @@
     
     NSString *encrypt_key_;                  //RTMP加密Key
     NSString *encrypt_iv_;                   //RTMP IV加密向量
+    
+    Boolean is_pushing_rtmp_;                //RTMP推送状态
+    Boolean is_pushing_rtsp_;                //RTSP推送状态
+    Boolean is_recording_;                   //是否录像
+    Boolean is_pause_recording_;             //是否暂停录像，YES: 暂停录像 NO: 恢复录像
+    Boolean is_rtsp_service_running_;        //RTSP服务状态
+    Boolean is_rtsp_publisher_running_;      //RTSP流发布状态
 }
 
 @synthesize localPreview;
@@ -198,6 +206,12 @@
         rtsp_push_url = @"";
         encrypt_key_ = [NSString string];
         encrypt_iv_ = [NSString string];
+        is_pushing_rtmp_ = NO;
+        is_pushing_rtsp_ = NO;
+        is_recording_ = NO;
+        is_pause_recording_ = YES;
+        is_rtsp_service_running_ = NO;
+        is_rtsp_publisher_running_ = NO;
     }
     
     NSLog(@"[initParameter]videoQuality: %u, audio_opt: %ld, video_opt: %ld",videoQuality, (long)audio_opt_, (long)video_opt_);
@@ -436,26 +450,11 @@
     
     CGFloat lineWidth = swapCamerasButton.frame.size.width * 0.12f;
     
-    //快照按钮
-    saveImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    saveImageButton.frame = CGRectMake(45, self.view.frame.size.height - 480, 120, 60);
-    saveImageButton.center = CGPointMake(self.view.frame.size.width / 6, saveImageButton.frame.origin.y + saveImageButton.frame.size.height / 2);
-    
-    saveImageButton.layer.cornerRadius = saveImageButton.frame.size.width / 2;
-    saveImageButton.layer.borderColor = [UIColor greenColor].CGColor;
-    saveImageButton.layer.borderWidth = lineWidth;
-    
-    [saveImageButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [saveImageButton setTitle:@"实时快照" forState:UIControlStateNormal];
-    
-    [saveImageButton addTarget:self action:@selector(SaveImageBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveImageButton];
-    
     //美颜level设置
     if(is_beauty)
     {
         beautyLevelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 420, 120, 60);
+        beautyLevelButton.frame = CGRectMake(45, self.view.frame.size.height - 480, 120, 60);
         beautyLevelButton.center = CGPointMake(self.view.frame.size.width / 6, beautyLevelButton.frame.origin.y + beautyLevelButton.frame.size.height / 2);
         
         beautyLevelButton.layer.cornerRadius = beautyLevelButton.frame.size.width / 2;
@@ -468,6 +467,36 @@
         [beautyLevelButton addTarget:self action:@selector(beautyLevelBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:beautyLevelButton];
     }
+    
+    //快照按钮
+    saveImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    saveImageButton.frame = CGRectMake(45, self.view.frame.size.height - 420, 120, 60);
+    saveImageButton.center = CGPointMake(self.view.frame.size.width / 6, saveImageButton.frame.origin.y + saveImageButton.frame.size.height / 2);
+    
+    saveImageButton.layer.cornerRadius = saveImageButton.frame.size.width / 2;
+    saveImageButton.layer.borderColor = [UIColor greenColor].CGColor;
+    saveImageButton.layer.borderWidth = lineWidth;
+    
+    [saveImageButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [saveImageButton setTitle:@"实时快照" forState:UIControlStateNormal];
+    
+    [saveImageButton addTarget:self action:@selector(SaveImageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveImageButton];
+    
+    //推送用户数据
+    pushUserDataButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    pushUserDataButton.frame = CGRectMake(45, self.view.frame.size.height - 420, 120, 60);
+    pushUserDataButton.center = CGPointMake(self.view.frame.size.width / 2, pushUserDataButton.frame.origin.y + pushUserDataButton.frame.size.height / 2);
+    
+    pushUserDataButton.layer.cornerRadius = pushUserDataButton.frame.size.width / 2;
+    pushUserDataButton.layer.borderColor = [UIColor greenColor].CGColor;
+    pushUserDataButton.layer.borderWidth = lineWidth;
+    
+    [pushUserDataButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [pushUserDataButton setTitle:@"实时发送文本" forState:UIControlStateNormal];
+    
+    [pushUserDataButton addTarget:self action:@selector(pushUserDataBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pushUserDataButton];
     
     //前后摄像头交换
     swapCamerasButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -554,25 +583,10 @@
     [rtspPusherButton addTarget:self action:@selector(rtspPusherBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rtspPusherButton];
     
-    //推送用户数据
-    pushUserDataButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    pushUserDataButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 120, 60);
-    pushUserDataButton.center = CGPointMake(self.view.frame.size.width / 2, pushUserDataButton.frame.origin.y + pushUserDataButton.frame.size.height / 2);
-    
-    pushUserDataButton.layer.cornerRadius = pushUserDataButton.frame.size.width / 2;
-    pushUserDataButton.layer.borderColor = [UIColor greenColor].CGColor;
-    pushUserDataButton.layer.borderWidth = lineWidth;
-    
-    [pushUserDataButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [pushUserDataButton setTitle:@"实时发送文本" forState:UIControlStateNormal];
-    
-    [pushUserDataButton addTarget:self action:@selector(pushUserDataBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:pushUserDataButton];
-    
     //RTMP推流按钮
     rtmpPusherButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rtmpPusherButton.frame = CGRectMake(45, self.view.frame.size.height - 180, 120, 60);
-    rtmpPusherButton.center = CGPointMake(self.view.frame.size.width / 6, rtmpPusherButton.frame.origin.y + rtmpPusherButton.frame.size.height / 2);
+    rtmpPusherButton.frame = CGRectMake(45, self.view.frame.size.height - 240, 120, 60);
+    rtmpPusherButton.center = CGPointMake(self.view.frame.size.width / 2, rtmpPusherButton.frame.origin.y + rtmpPusherButton.frame.size.height / 2);
     
     rtmpPusherButton.layer.cornerRadius = rtmpPusherButton.frame.size.width / 2;
     rtmpPusherButton.layer.borderColor = [UIColor greenColor].CGColor;
@@ -591,7 +605,7 @@
     //mp4录像按钮
     recordStreamButton = [UIButton buttonWithType:UIButtonTypeCustom];
     recordStreamButton.frame = CGRectMake(45, self.view.frame.size.height - 180, 120, 60);
-    recordStreamButton.center = CGPointMake(self.view.frame.size.width / 2, recordStreamButton.frame.origin.y + recordStreamButton.frame.size.height / 2);
+    recordStreamButton.center = CGPointMake(self.view.frame.size.width / 6, recordStreamButton.frame.origin.y + recordStreamButton.frame.size.height / 2);
     
     recordStreamButton.layer.cornerRadius = recordStreamButton.frame.size.width / 2;
     recordStreamButton.layer.borderColor = [UIColor greenColor].CGColor;
@@ -606,6 +620,25 @@
     
     [recordStreamButton addTarget:self action:@selector(recordStreamBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:recordStreamButton];
+    
+    //暂停/恢复录像
+    pauseRecordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    pauseRecordButton.frame = CGRectMake(45, self.view.frame.size.height - 180, 120, 60);
+    pauseRecordButton.center = CGPointMake(self.view.frame.size.width / 2, pauseRecordButton.frame.origin.y + pauseRecordButton.frame.size.height / 2);
+    
+    pauseRecordButton.layer.cornerRadius = pauseRecordButton.frame.size.width / 2;
+    pauseRecordButton.layer.borderColor = [UIColor greenColor].CGColor;
+    pauseRecordButton.layer.borderWidth = lineWidth;
+    
+    [pauseRecordButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [pauseRecordButton setTitle:@"暂停录像" forState:UIControlStateNormal];
+    
+    pauseRecordButton.selected = NO;
+    [pauseRecordButton setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [pauseRecordButton setTitle:@"恢复录像" forState:UIControlStateSelected];
+    
+    [pauseRecordButton addTarget:self action:@selector(pauseRecordBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pauseRecordButton];
     
     //启动、停止RTSP服务
     rtspServiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -686,7 +719,7 @@
     
     _textPublisherEventLabel.adjustsFontSizeToFitWidth = YES;
     
-    _textPublisherEventLabel.text = @"大牛直播SDK daniulive.com v1.0.18.0731";
+    _textPublisherEventLabel.text = @"大牛直播SDK daniulive.com(C)2014~2019";
     [self.view addSubview:_textPublisherEventLabel];
 }
 
@@ -702,11 +735,18 @@
 }
 
 - (void)rtmpPusherBtn:(UIButton *)button{
-    NSLog(@"rtmpPusherBtn++");
     
-    button.selected = !button.selected;
-    
-    if (button.selected)
+    if (is_pushing_rtmp_)
+    {
+        NSLog(@"Run into rtmpPusher, StopPublisher..");
+        
+        backSettingsButton.enabled = YES;
+        [_smart_publisher_sdk SmartPublisherStopPublisher];
+        [rtmpPusherButton setTitle:@"推送RTMP" forState:UIControlStateNormal];
+        
+        is_pushing_rtmp_ = NO;
+    }
+    else
     {
         NSLog(@"Run into rtmpPusher, StartPublisher..");
         
@@ -733,48 +773,29 @@
             {
                 _textPublisherEventLabel.text = @"推流失败，返回ERROR";
             }
-            
-            return;
         }
         else
         {
-            backSettingsButton.enabled = NO;
             [rtmpPusherButton setTitle:@"停止RTMP" forState:UIControlStateNormal];
+            is_pushing_rtmp_ = YES;
         }
-        
-        //only for decoded audio processing test..
-        /*
-         char aac[] = {0x20, 0x66, 0x00, 0x01, 0x98, 0x00, 0x0e};
-         char aac_config[] = {0x12, 0x10};
-         [_mediaCapture SmartPublisherSetAudioSpecificConfig:aac_config len:2];
-         
-         unsigned long long tttt = 0;
-         for ( int i = 0; i < 1000; ++i )
-         {
-         tttt = i*23;
-         [_mediaCapture SmartPublisherOnReceivingAACData:aac len:7 isKeyFrame:1 timeStamp:tttt];
-         }
-         */
-        //end
-    }
-    else
-    {
-        NSLog(@"Run into rtmpPusher, StopPublisher..");
-        
-        backSettingsButton.enabled = YES;
-        [_smart_publisher_sdk SmartPublisherStopPublisher];
-        [rtmpPusherButton setTitle:@"推送RTMP" forState:UIControlStateNormal];
     }
 }
 
 - (void)rtspPusherBtn:(UIButton *)button{
-    NSLog(@"rtspPusherBtn++");
     
-    button.selected = !button.selected;
-    
-    if (button.selected)
+    if (is_pushing_rtsp_)
     {
-        NSLog(@"Run into rtspPusher, StartPusher..");
+        NSLog(@"Run into rtspPusher, StopPushRtsp..");
+        
+        [_smart_publisher_sdk StopPushRtsp];
+        [rtspPusherButton setTitle:@"推送RTSP" forState:UIControlStateNormal];
+        
+        is_pushing_rtsp_ = NO;
+    }
+    else
+    {
+        NSLog(@"Run into rtspPusher, StartPushRtsp..");
         
         //生成个类似于“rtsp://player.daniulive.com:554/live123.sdp”的rtsp推送url 如自建服务器 可直接用自己的url
         NSString *baseURL = @"rtsp://player.daniulive.com:554/live";
@@ -817,22 +838,12 @@
             {
                 _textPublisherEventLabel.text = @"推流失败，返回ERROR";
             }
-            
-            return;
         }
         else
         {
-            backSettingsButton.enabled = NO;
             [rtspPusherButton setTitle:@"停止RTSP" forState:UIControlStateNormal];
+            is_pushing_rtsp_ = YES;
         }
-    }
-    else
-    {
-        NSLog(@"Run into rtspPusher, StopPushRtsp..");
-        
-        backSettingsButton.enabled = YES;
-        [_smart_publisher_sdk StopPushRtsp];
-        [rtspPusherButton setTitle:@"推送RTSP" forState:UIControlStateNormal];
     }
 }
 
@@ -882,12 +893,27 @@
 //--组播相关代码--
 
 - (void)rtspServiceBtn:(UIButton *)button{
-    NSLog(@"rtsp service++");
     
-    button.selected = !button.selected;
-    
-    if (button.selected)
+    if (is_rtsp_service_running_)
     {
+        NSLog(@"Run into rtspService, StopRTSPService..");
+        
+        [_smart_rtsp_server_sdk StopRtspServer:rtsp_handle_];
+        
+        [_smart_rtsp_server_sdk CloseRtspServer:rtsp_handle_];
+        
+        rtsp_handle_ = NULL;
+        _smart_rtsp_server_sdk = NULL;
+        
+        [rtspServiceButton setTitle:@"启动RTSP服务" forState:UIControlStateNormal];
+        
+        rtspPublisherButton.hidden = YES;
+        is_rtsp_service_running_ = NO;
+    }
+    else
+    {
+        NSLog(@"Run into rtspService, StopRTSPService..");
+        
         if(_smart_rtsp_server_sdk == nil)
         {
             _smart_rtsp_server_sdk = [[SmartRTSPServerSDK alloc] init];
@@ -941,6 +967,9 @@
                 if(DANIULIVE_RETURN_OK == [_smart_rtsp_server_sdk StartRtspServer:rtsp_handle_ reserve:0])
                 {
                     NSLog(@"启动rtsp server 成功!");
+                    [rtspServiceButton setTitle:@"停止RTSP服务" forState:UIControlStateNormal];
+                    rtspPublisherButton.hidden = NO;
+                    is_rtsp_service_running_ = YES;
                 }
                 else
                 {
@@ -950,35 +979,27 @@
                 }
             }
         }
-        
-        [rtspServiceButton setTitle:@"停止RTSP服务" forState:UIControlStateNormal];
-        
-        rtspPublisherButton.hidden = NO;
-    }
-    else
-    {
-        [_smart_rtsp_server_sdk StopRtspServer:rtsp_handle_];
-        
-        [_smart_rtsp_server_sdk CloseRtspServer:rtsp_handle_];
-        
-        rtsp_handle_ = NULL;
-        
-        _smart_rtsp_server_sdk = NULL;
-        
-        [rtspServiceButton setTitle:@"启动RTSP服务" forState:UIControlStateNormal];
-        
-        rtspPublisherButton.hidden = YES;
-        backSettingsButton.enabled = YES;
     }
 }
 
 - (void)rtspPublisherBtn:(UIButton *)button{
-    NSLog(@"rtsp publisher++");
-    
-    button.selected = !button.selected;
-    
-    if (button.selected)
+
+    if (is_rtsp_publisher_running_)
     {
+        NSLog(@"Run into rtspPublisher, StopRtspStream..");
+        
+        [_smart_publisher_sdk StopRtspStream];
+        
+        [rtspPublisherButton setTitle:@"发布RTSP流" forState:UIControlStateNormal];
+        
+        rtspServiceButton.hidden = NO;
+        
+        _textPublisherEventLabel.text = @"";
+    }
+    else
+    {
+        NSLog(@"Run into rtspPublisher, StartRtspStream..");
+        
 	    if(rtsp_handle_ == nil)
 		{
 			NSLog(@"请先启动RTSP服务..");
@@ -994,40 +1015,48 @@
         if(DANIULIVE_RETURN_OK != [_smart_publisher_sdk StartRtspStream:0])
         {
             NSLog(@"调用发布rtsp流接口失败!");
-            return;
         }
-        
-        [rtspPublisherButton setTitle:@"停止RTSP流" forState:UIControlStateNormal];
-        
-        rtspServiceButton.hidden = YES;
-        backSettingsButton.enabled = NO;
-        getRtspSvrSessionNumButton.hidden = NO;
-    }
-    else
-    {
-        [_smart_publisher_sdk StopRtspStream];
-        
-        [rtspPublisherButton setTitle:@"发布RTSP流" forState:UIControlStateNormal];
-        
-        rtspServiceButton.hidden = NO;
-        getRtspSvrSessionNumButton.hidden = YES;
-        backSettingsButton.enabled = YES;
-        
-        _textPublisherEventLabel.text = @"";
+        else
+        {
+            [rtspPublisherButton setTitle:@"停止RTSP流" forState:UIControlStateNormal];
+            
+            rtspServiceButton.hidden = YES;
+            getRtspSvrSessionNumButton.hidden = NO;
+            
+            is_rtsp_publisher_running_ = YES;
+        }
     }
 }
 
 - (void)recordStreamBtn:(UIButton *)button{
-    NSLog(@"record Stream only++");
     
-    button.selected = !button.selected;
-    
-    if (button.selected)
+    if (is_recording_)
     {
+        NSLog(@"Run into recordStream, StopRecorder..");
+        
+        NSInteger ret = [_smart_publisher_sdk SmartPublisherStopRecorder];
+        
+        if(ret == DANIULIVE_RETURN_OK)
+        {
+            [recordStreamButton setTitle:@"实时录像" forState:UIControlStateNormal];
+            [pauseRecordButton setTitle:@"暂停录像" forState:UIControlStateNormal];
+            
+            is_recording_ = NO;
+        }
+        else
+        {
+            NSLog(@"SmartPublisherStopRecorder failed..");
+        }
+    }
+    else
+    {
+        NSLog(@"Run into recordStream, StartRecorder..");
+        
         NSInteger recorder = 1;
         if([_smart_publisher_sdk SmartPublisherSetRecorder:recorder] != DANIULIVE_RETURN_OK)
         {
             NSLog(@"Call SmartPublisherSetRecorder failed..");
+            return;
         }
         
         //设置录像目录
@@ -1036,7 +1065,8 @@
         
         if([_smart_publisher_sdk SmartPublisherSetRecorderDirectory:recorderDir] != DANIULIVE_RETURN_OK)
         {
-            NSLog(@"Call SmartPublisherSetRecorderDirectory failed..");
+            NSLog(@"SmartPublisherSetRecorderDirectory failed..");
+            return;
         }
         
         //每个录像文件大小
@@ -1044,21 +1074,80 @@
         if([_smart_publisher_sdk SmartPublisherSetRecorderFileMaxSize:size] != DANIULIVE_RETURN_OK)
         {
             NSLog(@"Call SmartPublisherSetRecorderFileMaxSize failed..");
+            return;
         }
         
-        [_smart_publisher_sdk SmartPublisherStartRecorder];
-        [recordStreamButton setTitle:@"停止录像" forState:UIControlStateNormal];
-        backSettingsButton.enabled = NO;
+        NSInteger ret = [_smart_publisher_sdk SmartPublisherStartRecorder];
+        
+        if(ret == DANIULIVE_RETURN_OK)
+        {
+            [recordStreamButton setTitle:@"停止录像" forState:UIControlStateNormal];
+            pauseRecordButton.enabled = YES;
+            
+            is_recording_ = YES;
+            is_pause_recording_ = YES;
+        }
+        else
+        {
+            NSLog(@"Call SmartPublisherStartRecorder failed..ret:%ld", (long)ret);
+        }
+    }
+}
+
+- (void)pauseRecordBtn:(UIButton *)button{
+
+    if(is_recording_)
+    {
+        if (is_pause_recording_)
+        {
+            NSInteger ret = [_smart_publisher_sdk SmartPublisherPauseRecorder:1];
+            
+            if (ret == DANIULIVE_RETURN_OK)
+            {
+                [pauseRecordButton setTitle:@"恢复录像" forState:UIControlStateNormal];
+                is_pause_recording_ = NO;
+            }
+            else if(ret == DANIULIVE_RETURN_NEED_RETRY)
+            {
+                NSLog(@"Pause recorder failed, please re-try again..");
+            }
+            else
+            {
+                NSLog(@"Pause recorder failed..");
+            }
+        }
+        else
+        {
+            NSInteger ret = [_smart_publisher_sdk SmartPublisherPauseRecorder:0];
+            
+            if (ret == DANIULIVE_RETURN_OK)
+            {
+                [pauseRecordButton setTitle:@"暂停录像" forState:UIControlStateNormal];
+                is_pause_recording_ = YES;
+            }
+            else if(ret == DANIULIVE_RETURN_NEED_RETRY)
+            {
+                NSLog(@"Resume recorder failed, please re-try again..");
+            }
+            else
+            {
+                NSLog(@"Resume recorder failed..");
+            }
+        }
     }
     else
     {
-        [_smart_publisher_sdk SmartPublisherStopRecorder];
-        [recordStreamButton setTitle:@"实时录像" forState:UIControlStateNormal];
-        backSettingsButton.enabled = YES;
+        NSLog(@"NOT in recording mode, ignore pause recorder..");
     }
 }
 
 - (void)pushUserDataBtn:(id)sender {
+    
+    if(!is_pushing_rtmp_ && !is_pushing_rtsp_ && !is_rtsp_publisher_running_)
+    {
+        NSLog(@"pushUserDataBtn, no rtmpPusher/rtspPusher/rtspPublisher started..");
+        return;
+    }
     
     if ( _smart_publisher_sdk != nil )
     {
@@ -1251,7 +1340,16 @@
 - (void)backSettingsBtn:(UIButton *)button
 {
     NSLog(@"Run into backSettingsBtn..");
-        
+    
+    if(is_pushing_rtmp_ || is_pushing_rtsp_ || is_rtsp_service_running_ || is_recording_)
+    {
+        NSString* msg = @"请先停止RTMP推送/RTSP推送/RTSP服务/录像后再返回..";
+        UIAlertView *mBoxView = [[UIAlertView alloc] initWithTitle:@"提示:" message:msg
+                                                          delegate:nil cancelButtonTitle:@"确定"otherButtonTitles:nil, nil];
+        [mBoxView show];
+        return;
+    }
+    
     if (_smart_publisher_sdk != nil)
     {
         [_smart_publisher_sdk SmartPublisherStopCaputure];
