@@ -407,7 +407,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音视频加密**]支持RTMP推送端**加密(AES/SM4(国密))音视频数据正常播放**；
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；
-- [x] [**H.264硬解码**]**Windows**/Android/iOS支持H.264硬解；
+- [x] [**H.264硬解码**]**Windows**/Android/iOS支持H.264硬解，[Windows平台硬解码播放效果展示(超低CPU占用)](http://www.iqiyi.com/w_19s8qz0f2x.html)；
 - [x] [**H.265硬解**]**Windows**/Android/iOS支持H.265硬解；
 - [x] [**H.264/H.265硬解码**]Android支持设置Surface模式硬解和普通模式硬解码；
 - [x] [**硬解码自适应**]Windows/Android/iOS平台支持硬解码码自适应，如检测到硬解码不支持，自动切换到软解；
