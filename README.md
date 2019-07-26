@@ -38,7 +38,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/Win-Unity-Player-2019-06-12.zip)**
 
-**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/03/05)](http://player.daniulive.com:8080/demos/Unity3d-SmartPlayer-2019-03-05.apk)**
+**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/07/26)](http://player.daniulive.com:8080/demos/Unity3d-SmartPlayer-2019-07-26.apk)**
 
 
 ## 模块概览 ## 
@@ -88,7 +88,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Android端**
 
-- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码)，**支持逐帧数据加密**(加密算法支持AES128、AES192、AES256、SM4(国密))；;
+- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码)，**支持逐帧数据加密**(加密算法支持AES128、AES192、AES256、SM4(国密))；
 
 - [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
