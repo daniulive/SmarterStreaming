@@ -22,7 +22,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Flutter下实现低延迟的跨平台RTSP/RTMP播放(相关接口说明和调用实例)](https://www.daniulive.com/index.php/2019/05/30/flutter%E4%B8%8B%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9F%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0rtsp-rtmp%E6%92%AD%E6%94%BE/)**
 
-**[Flutter-Android RTSP/RTMP播放端APK下载(更新于2019/04/10)](http://player.daniulive.com:8080/demos/Flutter-SmartPlayer-2019-04-10.apk)**
+**[Flutter-Android RTSP/RTMP播放端APK下载(更新于2019/04/10)](http://player.daniulive.com:8082/demos/Flutter-SmartPlayer-2019-04-10.apk)**
 
 **[Flutter RTSP/RTMP直播播放端SDK视频演示](http://www.iqiyi.com/w_19s8dv6yht.html)**
 
@@ -36,9 +36,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/Win-Unity-Player-2019-06-12.zip)**
+**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Win-Unity-Player-2019-06-12.zip)**
 
-**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/07/26)](http://player.daniulive.com:8080/demos/Unity3d-SmartPlayer-2019-07-26.apk)**
+**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/07/26)](http://player.daniulive.com:8082/demos/Unity3d-SmartPlayer-2019-07-26.apk)**
 
 
 ## 模块概览 ## 
@@ -149,47 +149,47 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1. Windows平台测试EXE：**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8080/demos/windows-推送-播放版-2019-06-11.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-06-11.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8080/demos/windows-推送-播放版64位-2019-06-11.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-06-11.zip)
 
-- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/windows-四窗口播放demo-32位-20190612.zip)
+- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20190612.zip)
 
-- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/windows-四窗口播放demo-64位-20190612.zip)
+- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20190612.zip)
 
-- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8080/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-06-12.zip) [点我查看OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
+- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-06-12.zip) [点我查看OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
 
 **2.Windows平台集成对接DEMO：**
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-PublisherSDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-PlayerSDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-MixStreamSDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-RelaySDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2019-06-12.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-PublisherSDK-CSharp-Demo-2019-06-12.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2019-06-12.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-PlayerSDK-CSharp-Demo-2019-06-12.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2019-06-12.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8080/demos/WIN-RelaySDK-CSharp-Demo-2019-06-12.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2019-06-12.zip)
 
 **3.Android平台集成对接DEMO：**
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/06/14)**](http://player.daniulive.com:8080/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-06-14.zip)
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/06/14)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-06-14.zip)
 
 **4.iOS平台集成对接DEMO：**
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/06/19)**](http://player.daniulive.com:8080/demos/Daniulive-SDK-iOS-2019-06-19.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/06/19)**](http://player.daniulive.com:8082/demos/Daniulive-SDK-iOS-2019-06-19.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
 ## 大牛直播SDK集成和调用说明 ##
 
-- [x] [**移动端SDK(V2)调用说明**(更新于2019/05/17)](http://player.daniulive.com:8080/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.14.pdf)
+- [x] [**移动端SDK(V2)调用说明**(更新于2019/05/17)](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.14.pdf)
 
-- [x] [**Windows SDK调用说明(以C#为例)(更新于2019/05/22)**](http://player.daniulive.com:8080/demos/视沃科技-Windows-SDK集成说明2.12.pdf)
+- [x] [**Windows SDK调用说明(以C#为例)(更新于2019/05/22)**](http://player.daniulive.com:8082/demos/视沃科技-Windows-SDK集成说明2.12.pdf)
 
 
 **大牛直播SDK Demo使用说明**
