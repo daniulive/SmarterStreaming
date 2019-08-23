@@ -149,9 +149,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1. Windows平台测试EXE：**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-06-11.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-08-22.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/06/11)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-06-11.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-08-22.zip)
 
 - [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20190612.zip)
 
@@ -161,19 +161,19 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2.Windows平台集成对接DEMO：**
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2019-08-22.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2019-08-22.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2019-08-22.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2019-06-12.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2019-08-22.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2019-06-12.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2019-08-22.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2019-06-12.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2019-08-22.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2019-06-12.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2019-08-22.zip)
 
 **3.Android平台集成对接DEMO：**
 
@@ -386,6 +386,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**外部编码前音频数据对接**]支持PCM对接；
 - [x] [**外部编码后视频数据对接**]支持外部H.264数据对接；
 - [x] [**外部编码后音频数据对接**]外部AAC/PCMA/PCMU数据对接；
+- [x] [**推送端休眠设置**]Windows平台支持休眠接口(设置成休眠模式后CPU会适当降低)；
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；
 - [x] [**服务器兼容**]支持支持自建服务器(如Darin Stream Server)。
 
@@ -427,8 +428,10 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**渲染角度**]支持0°，90°，180°和270°四个视频画面渲染角度设置；
 - [x] [**渲染镜像**]支持水平反转、垂直反转模式设置；
 - [x] [**实时下载速度更新**]支持当前下载速度实时回调(支持设置回调时间间隔)；
+- [x] [**ARGB叠加**]Windows平台支持ARGB图像叠加到显示视频（参看C++的DEMO）；
 - [x] [**解码前视频数据回调**]支持H.264/H.265数据回调；
 - [x] [**解码后视频数据回调**]支持解码后YUV/RGB数据回调；
+- [x] [**解码后视频数据缩放回调**]Windows平台支持指定回调图像大小的接口(可以对原视图像缩放后再回调到上层)；
 - [x] [**解码前音频数据回调**]支持AAC/PCMA/PCMU/SPEEX数据回调；
 - [x] [**音视频自适应**]支持播放过程中，音视频信息改变后自适应；
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能(支持RTSP H.265流录制，支持PCMA/PCMU转AAC后录制，支持设置只录制音频或视频)，可参见"**8. Windows/Android/iOS录像SDK**"；
