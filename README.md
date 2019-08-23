@@ -187,7 +187,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 大牛直播SDK集成和调用说明 ##
 
-- [x] [**移动端SDK(V2)调用说明**(更新于2019/05/17)](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.14.pdf)
+- [x] [**移动端SDK(V2)调用说明**(更新于2019/07/23)](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.15.pdf)
 
 - [x] [**Windows SDK调用说明(以C#为例)(更新于2019/05/22)**](http://player.daniulive.com:8082/demos/视沃科技-Windows-SDK集成说明2.12.pdf)
 
