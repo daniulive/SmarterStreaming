@@ -509,4 +509,15 @@ public class SmartPlayerJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPlayerClose(long handle);
+
+    /**
+     * 设置授权Key
+	 *
+	 * 如需设置授权Key, 请确保在SmartPlayerOpen之前调用!
+     *
+     * reserve1: 请传0
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPlayerSetSDKClientKey(String in_cid, String in_key, int reserve1);
 }

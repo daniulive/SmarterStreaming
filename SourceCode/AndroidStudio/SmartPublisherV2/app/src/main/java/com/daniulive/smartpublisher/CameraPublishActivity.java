@@ -1071,6 +1071,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         if (!is_speex) {
             // set AAC encoder
             libPublisher.SmartPublisherSetAudioCodecType(publisherHandle, 1);
+
+            // set aac bit-rate
+           //libPublisher.SmartPublisherSetAudioBitRate(publisherHandle, 128);
+
         } else {
             // set Speex encoder
             libPublisher.SmartPublisherSetAudioCodecType(publisherHandle, 2);

@@ -219,6 +219,16 @@ public class SmartPublisherJniV2 {
      * @return {0} if successful
      */
     public native int SmartPublisherSetAudioCodecType(long handle, int type);
+
+
+	/**
+	 * Set audio encoder bit-rate(设置音频编码码率), 当前只对AAC编码有效
+	 *
+	 * @param kbit_rate: 码率(单位是kbps), 如果是0的话将使用默认码率, 必须大于等于0
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetAudioBitRate(long handle, int kbit_rate);
     
     /**
      * Set speex encoder quality(设置speex编码质量)
@@ -1034,4 +1044,15 @@ public class SmartPublisherJniV2 {
 	 * @return {0} if successful
 	 */
     public native int SmartPublisherClose(long handle);
+
+	/**
+	 * 设置授权Key
+	 *
+	 * 如需设置授权Key, 请确保在SmartPublisherOpen之前调用!
+	 *
+	 * reserve1: 请传0
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetSDKClientKey(String in_cid, String in_key, int reserve1);
 }
