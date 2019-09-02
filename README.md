@@ -159,7 +159,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-06-12.zip) [点我查看OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
 
-- [x] [Windows平台多路RTSP-RTMP转RTMP官方定制版] [更新于2019/09/02](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20190902.zip) [点我查看使用说明](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.0.pdf)
+- [x] [Windows平台多路RTSP-RTMP转RTMP官方定制版] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2019/09/02)](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20190902.zip) [点我查看使用说明](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.0.pdf)
 
 **2.Windows平台集成对接DEMO：**
 
