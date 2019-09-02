@@ -64,7 +64,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性；
 
-- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；[点击查看多路RTSP/RTMP流转RTMP流深度定制版](https://www.daniulive.com/index.php/2019/05/30/windows%E5%B9%B3%E5%8F%B0%E5%A4%9A%E8%B7%AFrtsp-rtmp%E6%B5%81%E8%BD%ACrtmp%E6%B5%81%E6%B7%B1%E5%BA%A6%E5%AE%9A%E5%88%B6%E7%89%88/)
+- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；[点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://www.daniulive.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)
 
 - [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持，windows端64位库支持**RTSP H.265**视频输出，支持**单播**和**组播**模式；
 
@@ -158,6 +158,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20190612.zip)
 
 - [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-06-12.zip) [点我查看OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
+
+- [x] [Windows平台多路RTSP-RTMP转RTMP官方定制版] [更新于2019/09/02](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20190902.zip) [点我查看使用说明](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.0.pdf)
 
 **2.Windows平台集成对接DEMO：**
 
