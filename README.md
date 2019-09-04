@@ -179,7 +179,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **3.Android平台集成对接DEMO：**
 
-- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/06/14)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-06-14.zip)
+- [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/08/23)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-08-23.zip)
 
 **4.iOS平台集成对接DEMO：**
 
