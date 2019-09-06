@@ -153,13 +153,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-08-22.zip)
 
-- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20190612.zip)
+- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/09/05)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20190905.zip)
 
-- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20190612.zip)
+- [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/09/05)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20190905.zip)
 
-- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-06-12.zip) [点我查看OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
+- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-06-12.zip) 
+   [右键另存为下载OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
 
-- [x] [Windows平台多路RTSP-RTMP转RTMP官方定制版] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2019/09/02)](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20190902.zip) [点我查看使用说明](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.0.pdf)
+- [x] [Windows平台多路RTSP-RTMP转RTMP官方定制版] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2019/09/02)](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20190902.zip) 
+   [右键另存为下载使用说明](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.0.pdf)
 
 **2.Windows平台集成对接DEMO：**
 
@@ -509,7 +511,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**预览**]支持拉取到的RTMP/RTSP随时本地预览、关闭预览；
 - [x] [**拉流音频调节**]支持拉取的RTMP/RTSP流静音；
 - [x] [**音频转码**]支持拉取的RTMP/RTSP的PCMA/PCMU/SPEEX音频格式**转AAC**后再转发到RTMP服务器；
-- [x] [**url切换**]**支持转发过程中，拉取的RTMP/RTSP或本地FLV文件实时内容切换**；
+- [x] [**url切换**]**支持转发过程中，拉取的RTMP/RTSP实时内容切换**；
 - [x] [**转发**]超低延迟转发拉取的rtsp/rtmp流到rtmp server；
 - [x] [**H.265支持**]**业内首家支持RTSP/RTMP H.265转RTMP推送**的SDK(提供配套RTMP扩展H.265服务器)；
 
@@ -519,6 +521,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows C#工程：WIN-RelaySDK-CSharp-Demo；
 - [x] Android工程：SmartRelayDemoV2；
 - [x] iOS工程：SmartiOSRelayDemoV2。
+
+大牛直播SDK Windows平台已发布基于转发SDK的官方定制版系统: [点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://www.daniulive.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)
 ---
 
 **9. Windows/Android/iOS RTMP/RTSP一对一互动SDK**
