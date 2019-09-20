@@ -126,7 +126,7 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //拉流url可以自定义
-    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
+    playback_url_ = @"rtmp://202.69.69.180:443/webcast/bshdlive-pc";
     //playback_url_ = @"rtmp://player.daniulive.com:1935/hls/stream1";
     
     //转发url可以自定义

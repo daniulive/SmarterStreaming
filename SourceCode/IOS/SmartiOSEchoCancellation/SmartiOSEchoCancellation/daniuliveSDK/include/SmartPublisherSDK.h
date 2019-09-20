@@ -115,6 +115,15 @@ typedef enum DNCameraPosition{
 -(NSInteger)SmartPublisherSetAudioEncoderType:(NSInteger)encoderType isHwEncoder:(Boolean)isHwEncoder;
 
 /**
+ * Set audio encoder bit-rate(设置音频编码码率), 当前只对AAC软编码有效
+ *
+ * @param kbit_rate: 码率(单位是kbps), 如果是0的话将使用默认码率, 必须大于等于0
+ *
+ * @return {0} if successful
+ */
+-(NSInteger)SmartPublisherSetAudioBitRate:(NSInteger)kbit_rate;
+
+/**
  * 设置是否启用回音消除
  *
  * <pre>SmartPublisherInit之后，SmartPublisherStartCapture之前调用</pre>
@@ -771,6 +780,19 @@ typedef enum DNCameraPosition{
 - (NSInteger)SmartPublisherUnInit;
 
 /**
+ * 设置publisher授权Key
+ *
+ * 如需设置授权Key, 请确保在SmartPublisherInit之前调用!
+ *
+ * @param reserve1 保留字段，请传0
+ *
+ * @param reserve2 保留字段，请传 nil
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetSDKClientKey:(NSString*)in_cid in_key:(NSString*)in_key reserve1:(NSInteger)reserve1 reserve2:(void*)reserve2;
+
+/**
  *  获取当前sdk的版本号
  */
 -(NSString*) SmartPublisherGetSDKVersionID;
@@ -791,9 +813,9 @@ typedef enum DNCameraPosition{
  *
  * handle: 推送实例句柄
  *
- * rtsp_server_handle：rtsp server句柄
+ * rtsp_server_handle: rtsp server句柄
  *
- * reserve： 保留参数，传0
+ * reserve: 保留参数，传0
  *
  * @return {0} if successful
  */

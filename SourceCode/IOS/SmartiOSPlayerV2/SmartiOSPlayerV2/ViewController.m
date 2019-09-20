@@ -97,7 +97,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     stream_height_ = 288;
     
     //拉流url可以自定义
-    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks2";
+    playback_url_ = @"rtmp://202.69.69.180:443/webcast/bshdlive-pc";
     
     //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";   //公网rtsp流，TCP模式的有audio
     
@@ -765,7 +765,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         _smart_player_sdk.delegate = self;
         NSLog(@"SmartPlayerSDK _player.delegate:%@", _smart_player_sdk);
     }
-    
+        
     NSInteger initRet = [_smart_player_sdk SmartPlayerInitPlayer];
     if ( initRet != DANIULIVE_RETURN_OK )
     {

@@ -267,6 +267,14 @@
     Boolean is_audio_hardware_encoder = NO;
     [_smart_publisher_sdk SmartPublisherSetAudioEncoderType:audio_encoder_type isHwEncoder:is_audio_hardware_encoder];
     
+    /*
+    if(!is_audio_hardware_encoder)
+    {
+        NSInteger audio_kbit_rate_ = 128;
+        [_smart_publisher_sdk SmartPublisherSetAudioBitRate:audio_kbit_rate_];
+    }
+    */
+    
     NSInteger is_enable_vbr = 1;
     NSInteger video_quality = [self CalVideoQuality:videoQuality is_h264:YES];
     NSInteger vbr_max_kbitrate = [self CalVbrMaxKBitRate:videoQuality];

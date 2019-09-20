@@ -65,7 +65,7 @@
     NSString *baseURL = @"rtmp://player.daniulive.com:1935/hls/stream";
     rtmp_push_url_ = [ baseURL stringByAppendingString:strNumber];
 
-    playback_url_ = @"rtmp://live.hkstv.hk.lxdns.com/live/hks1";
+    playback_url_ = @"rtmp://202.69.69.180:443/webcast/bshdlive-pc";
     
     is_pusher_mute_ = NO;
     is_player_mute_ = NO;

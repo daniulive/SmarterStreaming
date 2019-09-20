@@ -401,6 +401,19 @@
 - (NSInteger) SmartPlayerUnInitPlayer;
 
 /**
+ * 设置player授权Key
+ *
+ * 如需设置授权Key, 请确保在SmartPlayerInitPlayer之前调用!
+ *
+ * reserve1 保留字段，请传0
+ *
+ * reserve2 保留字段，请传 nil
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetSDKClientKey:(NSString*)in_cid in_key:(NSString*)in_key reserve1:(NSInteger)reserve1 reserve2:(void*)reserve2;
+
+/**
  *  获取当前sdk的版本号
  */
 -(NSString*) SmartPlayerGetSDKVersionID;
