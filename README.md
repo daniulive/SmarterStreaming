@@ -36,7 +36,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Win-Unity-Player-2019-06-12.zip)**
+**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/10/16)](http://player.daniulive.com:8082/demos/Daniulive-Win-Unity-RTMP-RTSP-Player-2019-10-16.zip)**
 
 **[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/07/26)](http://player.daniulive.com:8082/demos/Unity3d-SmartPlayer-2019-07-26.apk)**
 
@@ -157,7 +157,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2019/09/05)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20190905.zip)
 
-- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/06/12)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-08-22.zip) 
+- [x] [Windows IE浏览器OCX控件测试程序] [Windows OCX控件(更新于2019/8/22)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2019-08-22.zip) 
    [右键另存为下载OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)
 
 - [x] [Windows平台多路RTSP-RTMP转RTMP官方定制版] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2019/09/02)](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20190902.zip) 
