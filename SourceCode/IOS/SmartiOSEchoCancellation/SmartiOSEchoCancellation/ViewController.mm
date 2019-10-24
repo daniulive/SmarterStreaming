@@ -382,8 +382,6 @@
     
     is_pushing_rtmp_ = NO;
     
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
-    
     [btn_publisher_controller_ setTitle:@"开始推流" forState:(UIControlStateNormal)];
     [btn_publisher_mute_ setTitle:@"实时静音" forState:UIControlStateNormal];
 }

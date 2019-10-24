@@ -107,7 +107,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     is_fast_startup_ = YES;           //是否快速启动模式
     is_low_latency_mode_ = NO;        //是否开启极速模式
     buffer_time_ = 0;                 //buffer时间
-    is_hardware_decoder_ = NO;        //默认软解码
+    is_hardware_decoder_ = YES;       //默认硬解码
     is_rtsp_tcp_mode_ = NO;           //仅用于rtsp流 设置TCP传输模式 默认UDP模式
     
     is_flip_vertical_ = NO;           //垂直反转
