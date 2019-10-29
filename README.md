@@ -149,9 +149,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1. Windows平台测试EXE：**
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-08-22.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(32位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-10-29.zip)
 
-- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-08-22.zip)
+- [x] [Windows demo测试程序] [Windows推送、播放、合成、导播、连麦Demo(64位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-10-29.zip)
 
 - [x] [Windows demo测试程序] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/09/05)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20190905.zip)
 
@@ -165,13 +165,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2.Windows平台集成对接DEMO：**
 
-- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2019-08-22.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows推流SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2019-10-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2019-08-22.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows播放器SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2019-10-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2019-08-22.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows混流SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2019-10-29.zip)
 
-- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2019-08-22.zip)
+- [x] [Windows C++ SDK demo工程代码] [Windows多路流媒体转发模块SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2019-10-29.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2019-08-22.zip)
 
@@ -311,7 +311,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；
 - [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；
-- [x] [**软硬编码参数配置**]支持gop间隔、帧率、bit-rate设置；
+- [x] [**软硬编码参数配置**]支持gop间隔、帧率(Windows最高限定120帧)、bit-rate设置；
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；
 - [x] [**RTMP扩展H.265**]Windows/Android/iOS推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android/iOS平台支持H.265硬编码；
