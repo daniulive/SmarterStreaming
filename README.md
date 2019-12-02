@@ -466,7 +466,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**鉴权设置**]支持RTSP鉴权用户名、密码设置；
 - [x] [**获取session连接数**]支持获取当前RTSP服务会话连接数；
 - [x] [**多服务支持**]支持同时创建多个内置RTSP服务；
-- [x] [**H.265支持**]Windows内置rtsp server支持发布H.265视频（64位库）；
+- [x] [**H.265支持**]支持发布H.265视频（Windows平台需64位库）；
 - [x] [**RTSP url回调**]支持设置后的rtsp url通过event回调到上层。
 
 对应Demo：
