@@ -653,6 +653,10 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                             return;
                         }
 
+                        // 更细粒度控制录像的, 一般情况无需调用
+                        //libPublisher.SmartPublisherSetRecorderAudio(publisherHandle, 0);
+                       //libPublisher.SmartPublisherSetRecorderVideo(publisherHandle, 0);
+
                         if (0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(publisherHandle, 200)) {
                             Log.e(TAG, "SmartPublisherSetRecorderFileMaxSize failed.");
                             return;

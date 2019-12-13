@@ -73,6 +73,28 @@ public class SmartPlayerJniV2 {
 	public native int SmartPlayerSetSurface(long handle, Object surface);
 
 	/**
+	 * 设置SurfaceView模式下(NTRenderer.CreateRenderer第二个参数传false的情况)，render类型
+	 *
+	 * @param handle: return value from SmartPlayerOpen()
+	 *
+	 * @param format: 0: RGB565格式，如不设置，默认此模式; 1: ARGB8888格式
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetSurfaceRenderFormat(long handle, int format);
+
+	/**
+	 * 设置SurfaceView模式下(NTRenderer.CreateRenderer第二个参数传false的情况)，抗锯齿效果，注意：抗锯齿模式开启后，可能会影像性能，请慎用
+	 *
+	 * @param handle: return value from SmartPlayerOpen()
+	 *
+	 * @param isEnableAntiAlias: 0: 如不设置，默认不开启抗锯齿模式; 1: 开启抗锯齿模式
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetSurfaceAntiAlias(long handle, int isEnableAntiAlias);
+
+	/**
 	 * 设置视频硬解码下Mediacodec自行绘制模式（此种模式下，硬解码兼容性和效率更好，回调YUV/RGB和快照功能将不可用）
 	 *
 	 * @param handle: return value from SmartPlayerOpen()
@@ -392,6 +414,27 @@ public class SmartPlayerJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPlayerSetRecorderAudioTranscodeAAC(long handle, int is_transcode);
+	
+	
+	/*
+	*设置是否录视频，默认的话，如果视频源有视频就录，没有就没得录, 但有些场景下可能不想录制视频，只想录音频，所以增加个开关
+	*
+	*@param is_record_video: 1 表示录制视频, 0 表示不录制视频, 默认是1
+	*
+	* @return {0} if successful
+	*/
+	public native int SmartPlayerSetRecorderVideo(long handle, int is_record_video);
+	
+	
+	/*
+	*设置是否录音频，默认的话，如果视频源有音频就录，没有就没得录, 但有些场景下可能不想录制音频，只想录视频，所以增加个开关
+	*
+	*@param is_record_audio: 1 表示录制音频, 0 表示不录制音频, 默认是1
+	*
+	* @return {0} if successful
+	*/
+	public native int SmartPlayerSetRecorderAudio(long handle, int is_record_audio);
+	
 
 	/**
 	 * 设置需要播放或录像的RTMP/RTSP url

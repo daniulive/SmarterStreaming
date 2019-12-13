@@ -250,11 +250,6 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
         if (id == null)
             return;
 
-        if (id.equals("hks")) {
-            playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
-            return;
-        }
-
         btnStartStopPlayback.setEnabled(true);
         String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
 
@@ -267,16 +262,6 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
         if (url == null)
             return;
 
-        if (url.equals("hks")) {
-            btnStartStopPlayback.setEnabled(true);
-            playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
-
-            Log.i(TAG, "Input url:" + playbackUrl);
-
-            return;
-        }
-
-        // rtmp:/
         if (url.length() < 8) {
             Log.e(TAG, "Input full url error:" + url);
             return;
@@ -692,10 +677,8 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
 
                 if (switchUrlFlag) {
                     btnSwitchUrl.setText("切换url2");
-
-                    switchURL = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";
                     // 实际以可切换url为准
-                    //switchURL = "rtmp://player.daniulive.com:1935/hls/stream2";
+                    switchURL = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";
                 } else {
                     btnSwitchUrl.setText("切换url1");
 
@@ -930,6 +913,12 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
 
                     // 如果第二个参数设置为null，则播放纯音频
                     libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView);
+
+                    //int render_format = 1;
+                    //libPlayer.SmartPlayerSetSurfaceRenderFormat(playerHandle, render_format);
+
+                    //int is_enable_anti_alias = 1;
+                    //libPlayer.SmartPlayerSetSurfaceAntiAlias(playerHandle, is_enable_anti_alias);
 
                     if (isHardwareDecoder && is_enable_hardware_render_mode) {
                         libPlayer.SmartPlayerSetHWRenderMode(playerHandle, 1);
@@ -1171,9 +1160,12 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
         // It only used when playback RTSP stream..
         // libPlayer.SmartPlayerSetRTSPTcpMode(playerHandle, 1);
 
-        //playbackUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks2";
+        //playbackUrl = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";
 
         //playbackUrl = "rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";
+
+
+        //playbackUrl = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";
         
         if (playbackUrl == null) {
             Log.e(TAG, "playback URL with NULL...");
@@ -1227,7 +1219,7 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
                 try {
                     byte[] iv_utf8 = encrypt_iv.getBytes("UTF-8");
 
-                    int copy_iv_len = iv_utf8.length < key_len ? iv_utf8.length : key_len;
+                    int copy_iv_len = iv_utf8.length < key_len ? iv_utf8.length : iv_len;
 
                     for (int i = 0; i < copy_iv_len; ++i) {
                         iv[i] = iv_utf8[i];

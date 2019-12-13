@@ -300,6 +300,24 @@ public class SmartPublisherJniV2 {
      * @return {0} if successful
      */
     public native int SmartPublisherSetRecorder(long handle, int isRecorder);
+
+	/**
+	 * 音频录制开关, 目的是为了更细粒度的去控制录像, 一般不需要调用这个接口, 这个接口使用场景比如同时推送音视频，但只想录制视频，可以调用这个接口关闭音频录制
+	 *
+	 * @param is_recoder: 0: do not recorder; 1: recorder; sdk默认是1
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetRecorderAudio(long handle, int is_recoder);
+
+	/**
+	 * 视频录制开关, 目的是为了更细粒度的去控制录像, 一般不需要调用这个接口, 这个接口使用场景比如同时推送音视频，但只想录制音频，可以调用这个接口关闭视频录制
+	 *
+	 * @param is_recoder: 0: do not recorder; 1: recorder; sdk默认是1
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetRecorderVideo(long handle, int is_recoder);
     
     /**
      * Create file directory(创建录像存放目录)
@@ -575,6 +593,34 @@ public class SmartPublisherJniV2 {
 														   byte[] pps, int pps_len);
 
 	/**
+	 * 设置编码后视频数据(H.264)，如需录制编码后的数据，用此接口，且设置实际宽高
+	 *
+	 * @param codec_id, H.264对应 1
+	 *
+	 * @param data 编码后的video数据
+	 *
+	 *@param offset data的偏移
+	 *
+	 * @param size data length
+	 *
+	 * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0.
+	 *
+	 * @param timestamp video timestamp
+	 *
+	 * @param pts Presentation Time Stamp, 显示时间戳
+	 *
+	 * @param width, height: 编码后视频宽高
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherPostVideoEncodedDataV3(long handle, int codec_id,
+														   ByteBuffer data, int offset, int size,
+														   int is_key_frame, long timestamp, long pts,
+														   byte[] sps, int sps_len,
+														   byte[] pps, int pps_len,
+														   int width, int height);
+
+	/**
 	 * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
 	 *
 	 * @param codec_id:
@@ -638,6 +684,47 @@ public class SmartPublisherJniV2 {
 														   ByteBuffer data, int offset, int size,
 														   int is_key_frame, long timestamp,
 														   byte[] parameter_info, int parameter_info_size);
+
+
+    /**
+     * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
+     *
+     * @param codec_id:
+     *
+     *  NT_MEDIA_CODEC_ID_AUDIO_BASE = 0x10000,
+     *	NT_MEDIA_CODEC_ID_PCMA = NT_MEDIA_CODEC_ID_AUDIO_BASE,
+     *	NT_MEDIA_CODEC_ID_PCMU,
+     *	NT_MEDIA_CODEC_ID_AAC,
+     *	NT_MEDIA_CODEC_ID_SPEEX,
+     *	NT_MEDIA_CODEC_ID_SPEEX_NB,
+     *	NT_MEDIA_CODEC_ID_SPEEX_WB,
+     *	NT_MEDIA_CODEC_ID_SPEEX_UWB,
+     *
+     * @param data audio数据
+     *
+     * @param offset data的偏移
+     *
+     * @param size data length
+     *
+     * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0, audio忽略
+     *
+     * @param timestamp video timestamp
+     *
+     * @param parameter_info 用于AAC special config信息填充
+     *
+     * @param parameter_info_size parameter info size
+     *
+     * @param sample_rate 采样率,如果需要录像的话必须传正确的值
+     *
+     *@param channels 通道数, 如果需要录像的话必须传正确的值, 一般是1或者2
+     *
+     * @return {0} if successful
+     */
+    public native int SmartPublisherPostAudioEncodedDataV3(long handle, int codec_id,
+                                                           ByteBuffer data, int offset, int size,
+                                                           int is_key_frame, long timestamp,
+                                                           byte[] parameter_info, int parameter_info_size,
+                                                           int sample_rate, int channels);
 
 	/*++++发送用户自定义数据相关接口++++*/
 	/*

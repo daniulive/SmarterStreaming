@@ -33,10 +33,10 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 @SuppressLint({"ClickableViewAccessibility", "NewApi"})
 public class BackgroudService extends Service implements
@@ -74,6 +74,7 @@ public class BackgroudService extends Service implements
 
     private final int SCREEN_RESOLUTION_STANDARD = 0;
     private final int SCREEN_RESOLUTION_LOW = 1;
+    private final int SCREEN_RESOLUTION_ORIGINAL_RESOLUTION = 2;
 
     private int screenResolution = SCREEN_RESOLUTION_STANDARD;
 
@@ -84,10 +85,9 @@ public class BackgroudService extends Service implements
 
     private String recDir = "/sdcard/daniulive/rec"; // for recorder path
 
-    private boolean is_need_local_recorder = false; // do not enable recorder in
-    // default
+    private boolean is_need_local_recorder = false; // do not enable recorder in default
 
-    private boolean isPushing = false;    //RTMP推送状态
+    private boolean isPushingRtmp = false;    //RTMP推送状态
     private boolean isRecording = false;    //录像状态
     private boolean isRTSPServiceRunning = false;    //RTSP服务状态
     private boolean isRTSPPublisherRunning = false;  //RTSP流发布状态
@@ -118,11 +118,17 @@ public class BackgroudService extends Service implements
 
     private int row_stride_ = 0;
 
-    private ArrayList<ByteBuffer> data_list = new ArrayList<ByteBuffer>();
+    // private ArrayList<ByteBuffer> data_list = new ArrayList<ByteBuffer>();
 
-    private final Object data_list_lock = new Object();
+    private final Object image_list_lock = new Object();
 
-    private int frame_added_interval_setting = 300;    //如果300ms没有数据帧回调下去，补帧，可自行设置补帧间隔
+    private LinkedList<Image> image_list = new LinkedList<Image>();
+
+    //private Image new_image_ = null;
+
+    // private final Object data_list_lock = new Object();
+
+    private int frame_added_interval_setting = 200;    //如果300ms没有数据帧回调下去，补帧，可自行设置补帧间隔
 
     static {
         System.loadLibrary("SmartPublisher");
@@ -148,10 +154,7 @@ public class BackgroudService extends Service implements
         if (libPublisher == null)
             return;
 
-        synchronized(data_list_lock)
-        {
-            data_list.clear();
-        }
+        clearAllImages();
 
         screenResolution = intent.getExtras().getInt("SCREENRESOLUTION");
 
@@ -159,7 +162,7 @@ public class BackgroudService extends Service implements
 
         push_type = intent.getExtras().getInt("PUSHTYPE");
 
-        Log.e(TAG, "push_type: " + push_type);
+        Log.i(TAG, "push_type: " + push_type);
 
         mWindowManager = (WindowManager) getSystemService(Service.WINDOW_SERVICE);
 
@@ -217,9 +220,7 @@ public class BackgroudService extends Service implements
             if( startRet != 0 )
             {
                 isRecording = false;
-
-                Log.e(TAG, "Failed to start recorder.");
-                //return;   //注释掉掉话，录像不成功也可以推送
+                Log.e(TAG, "Failed to start recorder..");
             }
             else
             {
@@ -230,40 +231,25 @@ public class BackgroudService extends Service implements
 
         if(push_type == PUSH_TYPE_RTMP)
         {
-            Log.e(TAG, "Push RTMP..");
+            Log.i(TAG, "RTMP Pusher mode..");
             //推流相关++
             int startRet = libPublisher.SmartPublisherStartPublisher(publisherHandle);
 
             if (startRet != 0) {
-                isPushing = false;
+                isPushingRtmp = false;
 
-                Log.e(TAG, "Failed to start push stream..");
+                Log.e(TAG, "Failed to start push rtmp stream..");
                 return;
             }
             else
             {
-                isPushing = true;
+                isPushingRtmp = true;
             }
             //推流相关--
         }
         else if(push_type == PUSH_TYPE_RTSP)
         {
-            Log.e(TAG, "Push RTSP..");
-
-            if (isRTSPPublisherRunning)
-            {
-                stopRtspPublisher();
-                isRTSPPublisherRunning = false;
-                if (isRTSPServiceRunning)
-                {
-                    stopRtspService();
-                    isRTSPServiceRunning = false;
-                    return;
-                }
-                return;
-            }
-
-            Log.i(TAG, "onClick start rtsp service..");
+            Log.i(TAG, "RTSP Internal Server mode..");
 
             rtsp_handle_ = libPublisher.OpenRtspServer(0);
 
@@ -288,6 +274,8 @@ public class BackgroudService extends Service implements
                     libPublisher.CloseRtspServer(rtsp_handle_);
                     rtsp_handle_ = 0;
                     Log.e(TAG, "启动rtsp server失败! 请检查设置的端口是否被占用!");
+
+                    return;
                 }
 
                 isRTSPServiceRunning = true;
@@ -319,7 +307,7 @@ public class BackgroudService extends Service implements
     }
 
     private void stopPush() {
-        if(!isPushing)
+        if(!isPushingRtmp)
         {
             return;
         }
@@ -327,7 +315,6 @@ public class BackgroudService extends Service implements
         if (!isRecording && !isRTSPPublisherRunning) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopPush, call audioRecord_.StopRecording..");
-
 
                 audioRecord_.Stop();
 
@@ -359,7 +346,7 @@ public class BackgroudService extends Service implements
         {
             return;
         }
-        if (!isPushing && !isRTSPPublisherRunning) {
+        if (!isPushingRtmp && !isRTSPPublisherRunning) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopRecorder, call audioRecord_.StopRecording..");
 
@@ -378,7 +365,7 @@ public class BackgroudService extends Service implements
             libPublisher.SmartPublisherStopRecorder(publisherHandle);
         }
 
-        if (!isPushing && !isRTSPPublisherRunning) {
+        if (!isPushingRtmp && !isRTSPPublisherRunning) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
@@ -395,7 +382,7 @@ public class BackgroudService extends Service implements
             return;
         }
 
-        if (!isPushing && !isRecording) {
+        if (!isPushingRtmp && !isRecording) {
             if (audioRecord_ != null) {
                 Log.i(TAG, "stopRtspPublisher, call audioRecord_.StopRecording..");
 
@@ -414,7 +401,7 @@ public class BackgroudService extends Service implements
             libPublisher.StopRtspStream(publisherHandle);
         }
 
-        if (!isPushing && !isRecording) {
+        if (!isPushingRtmp && !isRecording) {
             if (publisherHandle != 0) {
                 if (libPublisher != null) {
                     libPublisher.SmartPublisherClose(publisherHandle);
@@ -445,10 +432,7 @@ public class BackgroudService extends Service implements
 
         stopScreenCapture();
 
-        synchronized(data_list_lock)
-        {
-            data_list.clear();
-        }
+        clearAllImages();
 
         if( is_post_data_thread_alive && post_data_thread != null )
         {
@@ -467,7 +451,7 @@ public class BackgroudService extends Service implements
             Log.i(TAG, "onDestroy post_data_thread closed--");
         }
 
-        if (isPushing || isRecording || isRTSPPublisherRunning)
+        if (isPushingRtmp || isRecording || isRTSPPublisherRunning)
         {
             if (audioRecord_ != null) {
                 Log.i(TAG, "surfaceDestroyed, call StopRecording..");
@@ -483,7 +467,7 @@ public class BackgroudService extends Service implements
             }
 
             stopPush();
-            isPushing = false;
+            isPushingRtmp = false;
 
             stopRecorder();
             isRecording = false;
@@ -540,23 +524,26 @@ public class BackgroudService extends Service implements
         sreenWindowWidth = mWindowManager.getDefaultDisplay().getWidth();
         screenWindowHeight = mWindowManager.getDefaultDisplay().getHeight();
 
-        Log.i(TAG, "sreenWindowWidth : " + sreenWindowWidth + ",screenWindowHeight : "
+        Log.i(TAG, "screenWindowWidth: " + sreenWindowWidth + ",screenWindowHeight: "
                 + screenWindowHeight);
 
-        if (sreenWindowWidth > 800) {
-            if (screenResolution == SCREEN_RESOLUTION_STANDARD) {
+        if (sreenWindowWidth > 800)
+        {
+            if (screenResolution == SCREEN_RESOLUTION_STANDARD)
+            {
                 scale_rate = SCALE_RATE_HALF;
                 sreenWindowWidth = align(sreenWindowWidth / 2, 16);
                 screenWindowHeight = align(screenWindowHeight / 2, 16);
-            } else {
+            }
+            else if(screenResolution == SCREEN_RESOLUTION_LOW)
+            {
                 scale_rate = SCALE_RATE_TWO_FIFTHS;
                 sreenWindowWidth = align(sreenWindowWidth * 2 / 5, 16);
                 screenWindowHeight = align(screenWindowHeight * 2 / 5, 16);
             }
         }
 
-        Log.i(TAG, "After adjust mWindowWidth : " + sreenWindowWidth + ",mWindowHeight : "
-                + screenWindowHeight);
+        Log.i(TAG, "After adjust mWindowWidth: " + sreenWindowWidth + ", mWindowHeight: " + screenWindowHeight);
 
         int pf = mWindowManager.getDefaultDisplay().getPixelFormat();
         Log.i(TAG, "display format:" + pf);
@@ -566,7 +553,7 @@ public class BackgroudService extends Service implements
         mScreenDensity = displayMetrics.densityDpi;
 
         mImageReader = ImageReader.newInstance(sreenWindowWidth,
-                screenWindowHeight, 0x1, 2);
+                screenWindowHeight, 0x1, 6);
 
         mMediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
     }
@@ -592,7 +579,7 @@ public class BackgroudService extends Service implements
                         Image image = mImageReader.acquireLatestImage();
                         if (image != null) {
                             processScreenImage(image);
-                            image.close();
+                            //image.close();
                         }
                     }
                 }, null);
@@ -631,11 +618,14 @@ public class BackgroudService extends Service implements
     @SuppressLint("NewApi")
     private void processScreenImage(Image image) {
 
-        if(!isPushing && !isRecording &&!isRTSPPublisherRunning)
+        if(!isPushingRtmp && !isRecording &&!isRTSPPublisherRunning)
         {
+            image.close();
+
             return;
         }
 
+        /*
         final Image.Plane[] planes = image.getPlanes();
 
         width_ = image.getWidth();
@@ -643,12 +633,12 @@ public class BackgroudService extends Service implements
 
         row_stride_ = planes[0].getRowStride();
 
-        ByteBuffer buf = deepCopy(planes[0].getBuffer());
+       ByteBuffer buf = deepCopy(planes[0].getBuffer());
+       */
 
-        synchronized(data_list_lock)
-        {
-            data_list.add(buf);
-        }
+       // Log.i("OnScreenImage", "new image");
+
+        pushImage(image);
     }
 
     @SuppressLint("NewApi")
@@ -728,7 +718,7 @@ public class BackgroudService extends Service implements
 
     		 */
 
-            if ( publisherHandle != 0 && (isRecording || isPushing || isRTSPPublisherRunning) )
+            if ( publisherHandle != 0 && (isRecording || isPushingRtmp || isRTSPPublisherRunning) )
             {
                 libPublisher.SmartPublisherOnPCMData(publisherHandle, data, size, sampleRate, channel, per_channel_sample_number);
             }
@@ -907,28 +897,26 @@ public class BackgroudService extends Service implements
                     int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
                     if (0 == ret) {
                         if (0 != libPublisher.SmartPublisherSetRecorderDirectory(publisherHandle, recDir)) {
-                            Log.e(TAG, "Set recoder dir failed , path:" + recDir);
+                            Log.e(TAG, "Set recorder dir failed , path:" + recDir);
                             return;
                         }
 
                         if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 1)) {
-                            Log.e(TAG, "SmartPublisherSetRecoder failed.");
+                            Log.e(TAG, "SmartPublisherSetRecorder failed.");
                             return;
                         }
 
                         if (0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(publisherHandle, 200)) {
-                            Log.e(TAG, "SmartPublisherSetRecoderFileMaxSize failed.");
-                            return;
+                            Log.e(TAG, "SmartPublisherSetRecorderFileMaxSize failed.");
                         }
 
                     } else {
-                        Log.e(TAG, "Create recoder dir failed, path:" + recDir);
+                        Log.e(TAG, "Create recorder dir failed, path:" + recDir);
                     }
                 }
             } else {
                 if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0)) {
-                    Log.e(TAG, "SmartPublisherSetRecoder failed.");
-                    return;
+                    Log.e(TAG, "SmartPublisherSetRecorder failed.");
                 }
             }
         }
@@ -1006,50 +994,6 @@ public class BackgroudService extends Service implements
             libPublisher.SmartPublisherSetSwVBRMode(publisherHandle, is_enable_vbr, video_quality, vbr_max_bitrate);
         }
 
-        //水印可以参考SmartPublisher工程
-		/*
-		// 如果想和时间显示在同一行，请去掉'\n'
-		String watermarkText = "大牛直播(daniulive)\n\n";
-
-		String path = logoPath;
-
-		if (watemarkType == 0)
-		{
-			if (isWritelogoFileSuccess)
-				libPublisher.SmartPublisherSetPictureWatermark(publisherHandle, path,
-						WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160,
-						160, 10, 10);
-
-		}
-		else if (watemarkType == 1)
-		{
-			if (isWritelogoFileSuccess)
-				libPublisher.SmartPublisherSetPictureWatermark(publisherHandle, path,
-						WATERMARK.WATERMARK_POSITION_TOPRIGHT, 160,
-						160, 10, 10);
-
-			libPublisher.SmartPublisherSetTextWatermark(publisherHandle, watermarkText, 1,
-					WATERMARK.WATERMARK_FONTSIZE_BIG,
-					WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
-
-			// libPublisher.SmartPublisherSetTextWatermarkFontFileName("/system/fonts/DroidSansFallback.ttf");
-
-			// libPublisher.SmartPublisherSetTextWatermarkFontFileName("/sdcard/DroidSansFallback.ttf");
-		}
-		else if (watemarkType == 2)
-		{
-			libPublisher.SmartPublisherSetTextWatermark(publisherHandle, watermarkText, 1,
-					WATERMARK.WATERMARK_FONTSIZE_BIG,
-					WATERMARK.WATERMARK_POSITION_BOTTOMRIGHT, 10, 10);
-
-			// libPublisher.SmartPublisherSetTextWatermarkFontFileName("/system/fonts/DroidSansFallback.ttf");
-		} else
-		{
-			Log.i(TAG, "no watermark settings..");
-		}
-		// end
-		*/
-
         //音频相关可以参考SmartPublisher工程
 		/*
 		if (!is_speex)
@@ -1082,7 +1026,7 @@ public class BackgroudService extends Service implements
 
          libPublisher.SmartPublisherSetGopInterval(publisherHandle, 18*3);
 
-         libPublisher.SmartPublisherSetSWVideoBitRate(publisherHandle, 1200, 2400); //针对软编码有效，一般最大码率是平均码率的二倍
+         //libPublisher.SmartPublisherSetSWVideoBitRate(publisherHandle, 1200, 2400); //针对软编码有效，一般最大码率是平均码率的二倍
 
          libPublisher.SmartPublisherSetSWVideoEncoderSpeed(publisherHandle, 3);
 
@@ -1099,13 +1043,12 @@ public class BackgroudService extends Service implements
                 Log.i(TAG, "onConfigurationChanged cur: PORTRAIT");
             }
 
-            if(isPushing || isRecording || isRTSPPublisherRunning)
+            if(isPushingRtmp || isRecording || isRTSPPublisherRunning)
             {
                 stopScreenCapture();
-                synchronized(data_list_lock)
-                {
-                    data_list.clear();
-                }
+
+                clearAllImages();
+
                 createScreenEnvironment();
                 setupVirtualDisplay();
             }
@@ -1123,12 +1066,15 @@ public class BackgroudService extends Service implements
 
             ByteBuffer last_buffer = null;
 
+            Image last_image = null;
+
             long last_post_time = System.currentTimeMillis();
 
             while (is_post_data_thread_alive)
             {
                 boolean is_skip = false;
 
+                /*
                 synchronized (data_list_lock)
                 {
                     if ( data_list.isEmpty())
@@ -1156,21 +1102,80 @@ public class BackgroudService extends Service implements
                         data_list.remove(0);
                     }
                 }
+                */
+
+                Image new_image = popImage();
+
+                if ( new_image == null )
+                {
+                    if((System.currentTimeMillis() - last_post_time) > frame_added_interval_setting)
+                    {
+                        if(last_image != null)
+                        {
+                            Log.i(TAG, "补帧中..");
+                        }
+                        else
+                        {
+                            is_skip = true;
+                        }
+                    }
+                    else
+                    {
+                        is_skip = true;
+                    }
+                }
+                else
+                {
+                    if ( last_image != null )
+                    {
+                        last_image.close();
+                    }
+
+                    last_image = new_image;
+                }
 
                 if( is_skip )
                 {
+                    // Log.i("OnScreenImage", "is_skip");
+
                     try {
-                        Thread.sleep(10);   //休眠10ms
+                        Thread.sleep(5);   //休眠5ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
                 else
                 {
-                    if( last_buffer != null && publisherHandle != 0 && (isPushing || isRecording || isRTSPPublisherRunning) )
+                    //if( last_buffer != null && publisherHandle != 0 && (isPushing || isRecording || isRTSPPublisherRunning) )
+                    if( last_image != null && publisherHandle != 0 && (isPushingRtmp || isRecording || isRTSPPublisherRunning) )
                     {
+                        long post_begin_time = System.currentTimeMillis();
+
+                        final Image.Plane[] planes = last_image.getPlanes();
+
+                        if ( planes != null && planes.length > 0 )
+                        {
+                            libPublisher.SmartPublisherOnCaptureVideoRGBAData(publisherHandle, planes[0].getBuffer(), planes[0].getRowStride(),
+                                    last_image.getWidth(), last_image.getHeight());
+                        }
+
+                        last_post_time = System.currentTimeMillis();
+
+                        long post_cost_time = last_post_time - post_begin_time;
+
+                        if ( post_cost_time >=0 && post_cost_time < 10 )
+                        {
+                            try {
+                                Thread.sleep(10-post_cost_time);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        /*
                         libPublisher.SmartPublisherOnCaptureVideoRGBAData(publisherHandle, last_buffer, row_stride_,
                                 width_, height_);
+                                */
 
                         /*
                         //实际裁剪比例，可酌情自行调整
@@ -1233,12 +1238,87 @@ public class BackgroudService extends Service implements
                         libPublisher.SmartPublisherOnCaptureVideoClipedRGBAData(publisherHandle, last_buffer, row_stride_,
                                 width_, height_, cliped_left, cliped_top, cliped_width, cliped_height );
                         */
-                        last_post_time = System.currentTimeMillis();
 
-                        //Log.i(TAG, "post data: " + last_post_time);
+                       // Log.i(TAG, "post data: " + last_post_time + " cost:" + post_cost_time);
                     }
+                    else
+                    {
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            if ( last_image != null)
+            {
+                last_image.close();
+                last_image = null;
+            }
+        }
+    }
+
+    private void  pushImage(Image image)
+    {
+        if ( null ==image )
+            return;
+
+        final int image_list_max_count = 1;
+
+        LinkedList<Image> close_images = null;
+
+        synchronized (image_list_lock)
+        {
+            if (image_list.size() > image_list_max_count )
+            {
+                close_images = new LinkedList();
+
+                while ( image_list.size() > image_list_max_count)
+                {
+                    close_images.add(image_list.poll());
+                }
+            }
+
+            image_list.add(image);
+        }
+
+        if ( close_images != null )
+        {
+            while( !close_images.isEmpty() ) {
+
+                Image i = close_images.poll();
+                if ( i != null )
+                {
+                    i.close();
+
+                    //Log.i("PushImage", "drop image");
                 }
             }
         }
     }
+
+    private Image popImage()
+    {
+        synchronized (image_list_lock)
+        {
+            return  image_list.poll();
+        }
+    }
+
+    private void clearAllImages()
+    {
+        synchronized (image_list_lock)
+        {
+            while ( !image_list.isEmpty() )
+            {
+                Image i = image_list.poll();
+                if ( i != null ) {
+                    i.close();
+                }
+            }
+        }
+    }
+
 }

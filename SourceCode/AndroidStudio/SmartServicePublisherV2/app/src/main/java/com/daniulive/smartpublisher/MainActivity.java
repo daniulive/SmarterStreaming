@@ -29,11 +29,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.os.PowerManager;
+import android.provider.Settings;
+import android.net.Uri;
+
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 public class MainActivity extends Activity {
     MediaProjectionManager mMediaProjectionManager;
 
     private static final int REQUEST_MEDIA_PROJECTION = 1;
+    private static final int REQUEST_IGNORE_BATTERY_CODE = 2;
+    private static final int RESULT_CODE_STARTAUDIO = 3;
 
     private static final String TAG = "DaniuliveActivity";
     static int mResultCode;
@@ -65,8 +74,8 @@ public class MainActivity extends Activity {
 
     private Spinner videoEncodeTypeSelector;
 
-    private boolean isPushing = false;
-    private boolean isRTSPPublisherRunning = false;
+    private static boolean isPushingRtmp = false;
+    private static boolean isRTSPPublisherRunning = false;
 
     final private String baseURL = "rtmp://player.daniulive.com:1935/hls/stream";
     private String inputPushURL = "";
@@ -75,8 +84,9 @@ public class MainActivity extends Activity {
 
     private String publishURL = "rtmp://player.daniulive.com:1935/hls/streamservice";
 
-    private final int SCREEN_RESOLUTION_STANDARD = 0;
-    private final int SCREEN_RESOLUTION_LOW = 1;
+    private final int SCREEN_RESOLUTION_STANDARD = 0;   //标准分辨率，默认宽高均缩放一半
+    private final int SCREEN_RESOLUTION_LOW = 1;        //低分辨率，默认宽高缩放至2/5
+    private final int SCREEN_RESOLUTION_ORIGINAL_RESOLUTION = 2;    //原始分辨率
 
     private int screenResolution = SCREEN_RESOLUTION_STANDARD;
 
@@ -89,15 +99,33 @@ public class MainActivity extends Activity {
 
     private Intent intent_bgd_service = null;
 
+    private static boolean is_has_screen_capture_permission = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //加入省电优化白名单，以免8.0及以上版本设备后台运行超过一分钟被自动停掉
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        if (Build.VERSION.SDK_INT >=26)
+        {
+            if(!isIgnoringBatteryOptimizations())
+            {
+                gotoSettingIgnoringBatteryOptimizations();
+            }
+        }
+
+        //6.0及以上版本，动态获取Audio权限
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            RequestAudioPermission();
+        }
+
         intent_bgd_service = new Intent(MainActivity.this, BackgroudService.class);
 
         screenResolutionSelector = (Spinner) findViewById(R.id.screen_resolution_selctor);
-        final String[] sceenResolutionSel = new String[]{"屏幕标准分辨率", "屏幕低分辨率"};
+        final String[] sceenResolutionSel = new String[]{"屏幕标准分辨率", "屏幕低分辨率", "屏幕原始分辨率"};
         ArrayAdapter<String> adapterScreenResolution = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, sceenResolutionSel);
         adapterScreenResolution
@@ -111,7 +139,7 @@ public class MainActivity extends Activity {
                     public void onItemSelected(AdapterView<?> parent,
                                                View view, int position, long id) {
 
-                        if (isPushing || isRTSPPublisherRunning ) {
+                        if (isPushingRtmp || isRTSPPublisherRunning ) {
                             Log.e(TAG,
                                     "Could not switch screen resolution during publishing..");
                             return;
@@ -133,13 +161,13 @@ public class MainActivity extends Activity {
         // Recorder related settings
         recorderSelector = (Spinner) findViewById(R.id.recoder_selctor);
 
-        final String[] recoderSel = new String[]{"本地不录像", "本地录像"};
-        ArrayAdapter<String> adapterRecoder = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, recoderSel);
+        final String[] recorderSel = new String[]{"本地不录像", "本地录像"};
+        ArrayAdapter<String> adapterRecorder = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, recorderSel);
 
-        adapterRecoder
+        adapterRecorder
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        recorderSelector.setAdapter(adapterRecoder);
+        recorderSelector.setAdapter(adapterRecorder);
 
         recorderSelector
                 .setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -149,7 +177,7 @@ public class MainActivity extends Activity {
                                                View view, int position, long id) {
 
                         Log.i(TAG, "Currently choosing: "
-                                + recoderSel[position]);
+                                + recorderSel[position]);
 
                         if (1 == position) {
                             is_need_local_recorder = true;
@@ -181,7 +209,7 @@ public class MainActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
 
-                if (isRTSPPublisherRunning || isPushing ) {
+                if (isRTSPPublisherRunning || isPushingRtmp ) {
                     Log.e(TAG, "Could not switch video encoder type during publishing..");
                     return;
                 }
@@ -208,7 +236,6 @@ public class MainActivity extends Activity {
             @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     mMediaProjectionManager = (MediaProjectionManager) getApplicationContext()
                             .getSystemService(MEDIA_PROJECTION_SERVICE);
@@ -231,7 +258,7 @@ public class MainActivity extends Activity {
                     Log.e(TAG, "(简单Demo演示)推送RTMP之前，确保RTSP内置服务关闭..");
                     return;
                 }
-                if (!isPushing) {
+                if (!isPushingRtmp) {
                     Log.i(TAG, "Start publish screen++");
 
                     intent_bgd_service.putExtra("SCREENRESOLUTION", screenResolution);
@@ -270,7 +297,7 @@ public class MainActivity extends Activity {
                     videoEncodeTypeSelector.setEnabled(false);
 
                     btnRtspPublisher.setEnabled(false);
-                    isPushing = true;
+                    isPushingRtmp = true;
                     Log.i(TAG, "Start publish screen--");
                 } else {
                     Log.i(TAG, "Stop publisher screen++");
@@ -284,7 +311,8 @@ public class MainActivity extends Activity {
                     videoEncodeTypeSelector.setEnabled(true);
 
                     btnPublisher.setEnabled(false);
-                    isPushing = false;
+                    isPushingRtmp = false;
+                    is_has_screen_capture_permission = false;
                     Log.i(TAG, "Stop publisher screen--");
                 }
             }
@@ -295,10 +323,17 @@ public class MainActivity extends Activity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_MEDIA_PROJECTION) {
             if (resultCode != Activity.RESULT_OK) {
-                Log.e(TAG, "User cancelled");
-                Toast.makeText(this, "User cancelled", Toast.LENGTH_SHORT)
+                Log.e(TAG, "REQUEST_MEDIA_PROJECTION, 用户已取消..");
+                Toast.makeText(this, "用户已取消获取APP采集屏幕权限..", Toast.LENGTH_SHORT)
                         .show();
+
+                is_has_screen_capture_permission = false;
                 return;
+            }
+            else
+            {
+                is_has_screen_capture_permission = true;
+                Log.i(TAG, "APP采集屏幕权限已获取..");
             }
 
             mResultCode = resultCode;
@@ -306,6 +341,18 @@ public class MainActivity extends Activity {
             btnPermissionCheck.setEnabled(false);
             btnPublisher.setEnabled(true);
             btnRtspPublisher.setEnabled(true);
+        }
+        else if(requestCode == REQUEST_IGNORE_BATTERY_CODE)
+        {
+            if (resultCode != Activity.RESULT_OK) {
+                Log.e(TAG, "REQUEST_IGNORE_BATTERY_CODE, 用户已取消..");
+                Toast.makeText(this, "用户已取消开启忽略电池优化..", Toast.LENGTH_SHORT)
+                        .show();
+            }
+            else
+            {
+                Log.i(TAG, "APP已加入省电白名单..");
+            }
         }
     }
 
@@ -318,6 +365,9 @@ public class MainActivity extends Activity {
                 break;
             case 1:
                 screenResolution = SCREEN_RESOLUTION_LOW;
+                break;
+            case 2:
+                screenResolution = SCREEN_RESOLUTION_ORIGINAL_RESOLUTION;
                 break;
             default:
                 screenResolution = SCREEN_RESOLUTION_STANDARD;
@@ -403,7 +453,7 @@ public class MainActivity extends Activity {
     class ButtonRtspPublisherListener implements OnClickListener {
         public void onClick(View v) {
 
-            if(isPushing)
+            if(isPushingRtmp)
             {
                 Log.e(TAG, "(简单Demo演示)启动内置RTSP服务之前，确保RTMP推送关闭..");
                 return;
@@ -444,8 +494,101 @@ public class MainActivity extends Activity {
 
                 btnRtspPublisher.setEnabled(false);
                 isRTSPPublisherRunning = false;
+
+                is_has_screen_capture_permission = false;
                 Log.i(TAG, "Stop RTSP publisher--");
             }
         }
+    }
+
+    //判断是否加入省电白名单弹窗
+    private boolean isIgnoringBatteryOptimizations(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            String packageName = getPackageName();
+            PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
+            return pm.isIgnoringBatteryOptimizations(packageName);
+        }
+        return false;
+    }
+
+    //拉起请求加入省电白名单弹窗
+    private void gotoSettingIgnoringBatteryOptimizations() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            try {
+                Intent intent = new Intent();
+                String packageName = getPackageName();
+                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                intent.setData(Uri.parse("package:" + packageName));
+                startActivityForResult(intent, REQUEST_IGNORE_BATTERY_CODE);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //动态获取Audio权限
+    private void RequestAudioPermission()
+    {
+        if (PackageManager.PERMISSION_GRANTED ==  ContextCompat.checkSelfPermission(this.getApplicationContext(), android.Manifest.permission.RECORD_AUDIO))
+        {
+        }
+        else {
+            //提示用户开户权限音频
+            String[] perms = {"android.permission.RECORD_AUDIO"};
+            ActivityCompat.requestPermissions(this, perms, RESULT_CODE_STARTAUDIO);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults){
+        switch(permsRequestCode){
+            case RESULT_CODE_STARTAUDIO:
+                boolean albumAccepted = grantResults[0]==PackageManager.PERMISSION_GRANTED;
+                if(!albumAccepted){
+                    Toast.makeText(this, "请开启应用录音权限..", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i(TAG, "Run into onResume, isPushingRtmp:" + isPushingRtmp + ", isRTSPPublisherRunning: " + isRTSPPublisherRunning);
+
+        if(is_has_screen_capture_permission)
+        {
+            btnPublisher.setEnabled(true);
+
+            if(isPushingRtmp)
+            {
+                btnPublisher.setText("停止RTMP推送");
+                btnRtspPublisher.setEnabled(false);
+            }
+            else
+            {
+                btnPublisher.setText("开始RTMP推送");
+            }
+
+            btnRtspPublisher.setEnabled(true);
+            if(isRTSPPublisherRunning)
+            {
+                btnRtspPublisher.setText("停止RTSP流");
+                btnPublisher.setEnabled(false);
+            }
+            else
+            {
+                btnRtspPublisher.setText("发布RTSP流");
+            }
+        }
+        else
+        {
+            btnPublisher.setEnabled(false);
+            btnRtspPublisher.setEnabled(false);
+            btnPublisher.setText("开始RTMP推送");
+            btnRtspPublisher.setText("发布RTSP流");
+        }
+
+        super.onResume();
     }
 }
