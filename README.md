@@ -38,7 +38,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/Daniulive-Win-Unity-RTMP-RTSP-Player-2019-10-29.zip)**
 
-**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/07/26)](http://player.daniulive.com:8082/demos/Unity3d-SmartPlayer-2019-07-26.apk)**
+**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2019/12/12)](http://player.daniulive.com:8082/demos/Unity3d-SmartPlayer-2019-12-12.apk)**
 
 
 ## 模块概览 ## 
