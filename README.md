@@ -175,7 +175,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#版本推送SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2019-08-22.zip)
 
-- [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2019-10-29.zip)
+- [x] [Windows C# SDK demo工程代码] [Windows C#版本播放SDK Demo工程本地下载(更新于2019/12/17)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2019-12-17.zip)
 
 - [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2019-08-22.zip)
 
