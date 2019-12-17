@@ -106,7 +106,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     
     is_fast_startup_ = YES;           //是否快速启动模式
     is_low_latency_mode_ = NO;        //是否开启极速模式
-    buffer_time_ = 0;                 //buffer时间
+    buffer_time_ = 100;               //buffer时间
     is_hardware_decoder_ = YES;       //默认硬解码
     is_rtsp_tcp_mode_ = NO;           //仅用于rtsp流 设置TCP传输模式 默认UDP模式
     
@@ -364,54 +364,64 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
 //播放端接口封装
 - (void)orientChange:(NSNotification *)noti
 {
-    
     UIDeviceOrientation  orient = [UIDevice currentDevice].orientation;
     
-    NSLog(@"[orgientChange] orient:%ld" ,(long)orient);
+    NSLog(@"[orgientChange] orient:%ld screen_width: %ld screen_height:%ld stream_width:%ld stream_height:%ld" ,(long)orient, (long)screen_width_, (long)screen_height_, (long)stream_width_, (long)stream_height_);
     
-    Boolean isPortrait = false;
+    CGRect f = _glView.frame;
     
     switch (orient)
     {
         case UIDeviceOrientationPortrait:
-            isPortrait = true;
-            break;
+        {
+            NSLog(@"[orgientChange] UIDeviceOrientationPortrait");
+            f.origin.x = 0;
+            f.origin.y = 100;
+            f.size.width = screen_width_;
+            f.size.height = screen_width_*stream_height_/stream_width_;
+        }
+        break;
         case UIDeviceOrientationLandscapeLeft:
-            isPortrait = false;
-            break;
+        {
+            NSLog(@"[orgientChange] UIDeviceOrientationLandscapeLeft");
+            
+            f.origin.x = 0;
+            f.origin.y = 0;
+            f.size.width = screen_height_;
+            f.size.height = screen_width_;
+        }
+        break;
         case UIDeviceOrientationPortraitUpsideDown:
-            isPortrait = false;
-            break;
+        {
+            NSLog(@"[orgientChange] UIDeviceOrientationPortraitUpsideDown");
+            
+            f.origin.x = 0;
+            f.origin.y = 0;
+            f.size.width = screen_height_;
+            f.size.height = screen_width_;
+        }
+        break;
         case UIDeviceOrientationLandscapeRight:
-            isPortrait = false;
-            break;
+        {
+            NSLog(@"[orgientChange] UIDeviceOrientationLandscapeRight");
+            
+            f.origin.x = 0;
+            f.origin.y = 0;
+            f.size.width = screen_height_;
+            f.size.height = screen_width_;
+        }
+        break;
         case UIDeviceOrientationFaceUp:
-            isPortrait = true;
-            break;
+            NSLog(@"[orgientChange] UIDeviceOrientationFaceUp");
+        break;
         case UIDeviceOrientationFaceDown:
-            isPortrait = true;
-            break;
+            NSLog(@"[orgientChange] UIDeviceOrientationFaceDown");
+        break;
             
         default:
             break;
     }
-    
-    CGRect f = _glView.frame;
-    
-    if (isPortrait) {
-        f.origin.x = 0;
-        f.origin.y = 100;
-        f.size.width = screen_width_;
-        f.size.height = screen_width_*stream_height_/stream_width_;
-    }
-    else
-    {
-        f.origin.x = 0;
-        f.origin.y = 0;
-        f.size.width = screen_height_;
-        f.size.height = screen_width_;
-    }
-    
+
     _glView.frame = f;
 }
 

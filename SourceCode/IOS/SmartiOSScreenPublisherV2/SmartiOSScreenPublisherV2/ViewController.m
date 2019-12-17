@@ -12,22 +12,40 @@
 @property (nonatomic, weak) UIButton *stopPusherBtn;
 @property RPBroadcastController *broadcastController;
 @property NSTimer *timer;
+@property (nonatomic, strong) RPSystemBroadcastPickerView *broadcastPickerView API_AVAILABLE(ios(12.0));
+
 @end
 
 @implementation ViewController
 
+-(void)requireNetwork
+{
+    NSURL *url = [NSURL URLWithString:@"https://daniulive.com"];//此处修改为自己公司的服务器地址
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSLog(@"requireNetwork %@",dict);
+        }
+    }];
+    
+    [dataTask resume];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    /*
-    UIWebView* web = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    web.hidden = YES;
-    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
-    [self.view addSubview:web];
-    */
+    [self requireNetwork];
     
     [self loadUI];
+    
+    if (@available(iOS 12, *)) {
+        CGRect broadcastPickerViewFrame = CGRectMake(0, 0, 100.0f, 100.0f);
+        self.broadcastPickerView = [[RPSystemBroadcastPickerView alloc] initWithFrame:broadcastPickerViewFrame];
+        [self.view addSubview:_broadcastPickerView];
+        self.broadcastPickerView.hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,16 +78,26 @@
 
 - (void)startClicked:(UIButton *)btn
 {
-    [RPBroadcastActivityViewController loadBroadcastActivityViewControllerWithHandler:^(RPBroadcastActivityViewController * _Nullable broadcastActivityViewController, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"start broadcastActivityViewController error - %@",error);
+    if (@available(iOS 12, *)) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        BOOL isNeedSetpreferredExtension = [userDefaults boolForKey:@"ScreenShareFlag"];
+        NSString *mainBundleId = [[NSBundle mainBundle]bundleIdentifier];
+        NSString *extensionId = [mainBundleId stringByAppendingString:@".ScreenShareExtension"];
+        if (isNeedSetpreferredExtension) {
+            self.broadcastPickerView.preferredExtension = extensionId;
         }
-        broadcastActivityViewController.delegate = self;
-        [self presentViewController:broadcastActivityViewController animated:YES completion:^{
-            
-        }];
-        self.startPusherBtn.enabled = NO;
-    }];
+        self.broadcastPickerView.showsMicrophoneButton = NO;
+        
+        for (UIView *view in self.broadcastPickerView.subviews) {
+            if ([view isKindOfClass:[UIButton class]]) {
+                if (@available(iOS 13, *)) {
+                    [(UIButton *)view sendActionsForControlEvents:UIControlEventTouchUpInside];
+                } else {
+                    [(UIButton *)view sendActionsForControlEvents:UIControlEventTouchDown];
+                }
+            }
+        }
+    }
 }
 
 - (void)stopClicked:(UIButton *)btn
@@ -126,7 +154,6 @@
     NSLog(@"broadcastController.paused=%d", broadcastController.paused);
     NSLog(@"broadcastController.broadcastURL=%@", broadcastController.broadcastURL);
     NSLog(@"broadcastController.serviceInfo=%@", broadcastController.serviceInfo);
-    NSLog(@"broadcastController.broadcastExtensionBundleID=%@", broadcastController.broadcastExtensionBundleID);
     
     self.broadcastController = broadcastController;
     broadcastController.delegate = self;
@@ -137,6 +164,28 @@
         if (!error) {
             NSLog(@"直播中....."  );
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if (@available(iOS 12, *)) {
+                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                    BOOL isNeedSetpreferredExtension = [userDefaults boolForKey:@"ScreenShareFlag"];
+                    NSString *mainBundleId = [[NSBundle mainBundle]bundleIdentifier];
+                    NSString *extensionId = [mainBundleId stringByAppendingString:@".ScreenShareExtension"];
+                    if (isNeedSetpreferredExtension) {
+                        self.broadcastPickerView.preferredExtension = extensionId;
+                    }
+                    self.broadcastPickerView.showsMicrophoneButton = NO;
+                    
+                    for (UIView *view in self.broadcastPickerView.subviews) {
+                        if ([view isKindOfClass:[UIButton class]]) {
+                            if (@available(iOS 13, *)) {
+                                [(UIButton *)view sendActionsForControlEvents:UIControlEventTouchUpInside];
+                            } else {
+                                [(UIButton *)view sendActionsForControlEvents:UIControlEventTouchDown];
+                            }
+                        }
+                    }
+                }
+                
                 [self.startPusherBtn setTitle:@"直播ing" forState:UIControlStateNormal];
                 self.stopPusherBtn.enabled = YES;
                 if (self.timer == nil) {
@@ -151,9 +200,8 @@
                     }];
                 }
             });
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[error description] delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
-            [alert show];
+        } else
+        {
             self.startPusherBtn.enabled = YES;
         }
     }];

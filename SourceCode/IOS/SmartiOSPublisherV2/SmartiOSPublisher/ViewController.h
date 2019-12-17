@@ -20,7 +20,8 @@
                 streamQuality:(DNVideoStreamingQuality)streamQuality
                      audioOpt:(NSInteger)audioOpt
                      videoOpt:(NSInteger)videoOpt
-                     isBeauty:(Boolean)isBeauty;
+                     isBeauty:(Boolean)isBeauty
+                     scale_rate:(CGFloat)scale_rate;
 
 -(void)setRTMPKeyIV:(NSString*)key iv:(NSString*)iv;
 

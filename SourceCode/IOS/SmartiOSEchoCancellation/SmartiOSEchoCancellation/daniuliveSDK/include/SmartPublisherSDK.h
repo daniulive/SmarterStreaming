@@ -32,9 +32,10 @@ typedef NS_ENUM(NSInteger, DN_BEAUTY_TYPE) {
  *  此类型仅用于daniulive做视频采集时使用，如视频数据来自美颜或第三方接口，无需使用
  */
 typedef enum DNVideoStreamingQuality{
-    DN_VIDEO_QUALITY_LOW,           //!< 视频分辨率：低清.
-    DN_VIDEO_QUALITY_MEDIUM,        //!< 视频分辨率：标清.
-    DN_VIDEO_QUALITY_HIGH           //!< 视频分辨率：高清.
+    DN_VIDEO_QUALITY_LOW,           //!< 视频分辨率：低清 352*288.
+    DN_VIDEO_QUALITY_MEDIUM,        //!< 视频分辨率：标清 640*480.
+    DN_VIDEO_QUALITY_HIGH,          //!< 视频分辨率：高清 1280*720.
+    DN_VIDEO_QUALITY_1080P          //!< 视频分辨率：1920*1080.
 }DNVideoStreamingQuality;
 
 /**
@@ -117,7 +118,7 @@ typedef enum DNCameraPosition{
 /**
  * Set audio encoder bit-rate(设置音频编码码率), 当前只对AAC软编码有效
  *
- * @param kbit_rate: 码率(单位是kbps), 如果是0的话将使用默认码率, 必须大于等于0
+ * @param kbit_rate 码率(单位是kbps), 如果是0的话将使用默认码率, 必须大于等于0
  *
  * @return {0} if successful
  */
@@ -330,65 +331,8 @@ typedef enum DNCameraPosition{
  * per_channel_sample_number: 这个请传入的是 sampleRate/100， 也就是单个通道的10毫秒的采样数
  */
 -(NSInteger)SmartPublisherPostAudioPCMData:(unsigned char*)data size:(NSInteger)size
-                                 timestamp:(unsigned long long)timestamp sample_rate:(NSInteger)sample_rate
+        timestamp:(unsigned long long)timestamp sample_rate:(NSInteger)sample_rate
                                   channels:(NSInteger)channels per_channel_sample_number:(NSInteger)per_channel_sample_number;
-
-/**
- * 设置编码后视频数据(H.264)
- *
- * !!!NOTE: 最新版(2018年1月release), 可以用 SmartPublisherPostVideoEncodedData 接口代替
- *
- * @param buffer encoded video data
- *
- * @param len data length
- *
- * @param isKeyFrame if with key frame, please set 1, otherwise, set 0.
- *
- * @param timeStamp video timestamp
- *
- * @return {0} if successful
- */
-//-(NSInteger) SmartPublisherOnReceivingVideoEncodedData:(unsigned char*)buffer len:(NSInteger)len isKeyFrame:(NSInteger)isKeyFrame timeStamp:(unsigned long long)timeStamp;
-
-/**
- * 设置 audio specific configure.
- *
- * !!!NOTE: 最新版(2018年1月release), 可以用 SmartPublisherPostAudioEncodedData 接口代替
- *
- * @param buffer audio specific settings.
- *
- * For example:
- *
- * sample rate with 44100, channel: 2, profile: LC
- *
- * audioConfig set as below:
- *
- *    byte[] audioConfig = new byte[2];
- *    audioConfig[0] = 0x12;
- *    audioConfig[1] = 0x10;
- *
- * @param len buffer length
- *
- * @return {0} if successful
- */
-//-(NSInteger) SmartPublisherSetAudioSpecificConfig:(unsigned char*)buffer len:(NSInteger)len;
-
-/**
- * 设置编码后视频数据(AAC)
- *
- * !!!NOTE: 最新版(2018年1月release), 可以用 SmartPublisherPostAudioEncodedData 接口代替
- *
- * @param buffer encoded audio data
- *
- * @param len data length
- *
- * @param isKeyFrame 1
- *
- * @param timeStamp audio timestamp
- *
- * @return {0} if successful
- */
-//-(NSInteger) SmartPublisherOnReceivingAACData:(unsigned char*)buffer len:(NSInteger)len isKeyFrame:(NSInteger)isKeyFrame timeStamp:(unsigned long long)timeStamp;
 
 /**
  * 设置编码前视频宽高比例缩放(用于屏幕采集缩放),数据传输对应SmartPublisherPostVideoSampleBuffer接口
@@ -423,6 +367,17 @@ typedef enum DNCameraPosition{
 -(NSInteger) SmartPublisherPostVideoSampleBuffer:(CMSampleBufferRef)data;
 
 /**
+ * 设置编码前视频CMSampleBufferRef数据, 并根据设定角度旋转, 如需缩放比例, 请使用SmartPublisherSetVideoScaleRate接口
+ *
+ * @param data 编码前的video数据
+ *
+ * @param rotateDegress 设置顺时针旋转, 注意除了0度以外, 其他角度都会额外消耗性能 仅可设定: 0 90 180 270
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherPostVideoSampleBufferV2:(CMSampleBufferRef)data rotateDegress:(NSInteger)rotateDegress;
+
+/**
  * 设置编码前音频CMSampleBufferRef数据
  *
  * @param data 编码前的audio数据
@@ -453,6 +408,29 @@ typedef enum DNCameraPosition{
 -(NSInteger) SmartPublisherPostVideoEncodedData:(NSInteger)codec_id data:(unsigned char*)data size:(NSInteger)size is_key_frame:(NSInteger)is_key_frame timestamp:(unsigned long long)timestamp pts:(unsigned long long)pts;
 
 /**
+ * 设置编码后视频数据(H.264), 如需录制编码后的数据, 用此接口, 且设置实际宽高
+ *
+ * @param codec_id 参见 nt_common_media_define.h, H.264对应 NT_MEDIA_CODEC_ID_H264
+ *
+ * @param data 编码后的video数据
+ *
+ * @param size data length
+ *
+ * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0.
+ *
+ * @param timestamp video timestamp
+ *
+ * @param pts Presentation Time Stamp, 显示时间戳
+ *
+ * @param width 编码后视频宽
+ *
+ * @param height 编码后视频高
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherPostVideoEncodedDataV2:(NSInteger)codec_id data:(unsigned char*)data size:(NSInteger)size is_key_frame:(NSInteger)is_key_frame timestamp:(unsigned long long)timestamp pts:(unsigned long long)pts width:(NSInteger)width height:(NSInteger)height;
+
+/**
  * 设置音频数据(AAC/PCMA/PCMU/SPEEX)
  *
  * @param codec_id 参见 nt_common_media_define.h
@@ -474,6 +452,31 @@ typedef enum DNCameraPosition{
 -(NSInteger) SmartPublisherPostAudioEncodedData:(NSInteger)codec_id data:(unsigned char*)data size:(NSInteger)size is_key_frame:(NSInteger)is_key_frame timestamp:(unsigned long long)timestamp parameter_info:(unsigned char*)parameter_info parameter_info_size:(NSInteger)parameter_info_size;
 
 /**
+ * 设置音频数据(AAC/PCMA/PCMU/SPEEX), 如需录制编码后的数据, 用此接口, 且设置采样率和通道数
+ *
+ * @param codec_id 参见 nt_common_media_define.h
+ *
+ * @param data audio数据
+ *
+ * @param size data length
+ *
+ * @param is_key_frame 是否I帧, if with key frame, please set 1, otherwise, set 0, audio忽略
+ *
+ * @param timestamp video timestamp
+ *
+ * @param parameter_info 用于AAC special config信息填充
+ *
+ * @param parameter_info_size parameter info size
+ *
+ * @param sample_rate 采样率, 如果需要录像的话必须传正确的值
+ *
+ * @param channels 通道数, 如果需要录像的话必须传正确的值, 一般是1或者2
+ *
+ * @return {0} if successful
+ */
+-(NSInteger) SmartPublisherPostAudioEncodedDataV2:(NSInteger)codec_id data:(unsigned char*)data size:(NSInteger)size is_key_frame:(NSInteger)is_key_frame timestamp:(unsigned long long)timestamp parameter_info:(unsigned char*)parameter_info parameter_info_size:(NSInteger)parameter_info_size sample_rate:(NSInteger)sample_rate channels:(NSInteger)channels;
+
+/**
  * 设置是否静音
  *
  * <pre>isMute: (0: 不静音；1: 静音)</pre>
@@ -485,12 +488,35 @@ typedef enum DNCameraPosition{
 /**
  * 录像相关：
  *
- * 是否边推流边本地存储
+ * 是否边推流边本地存储 (V1接口, V2版开始, 录像和播放完全逻辑分离了, 无需调用)
  * <pre>isRecorder: (0: 不录像；1: 录像)</pre>
  *
  * @return {0} if successful
  */
 - (NSInteger)SmartPublisherSetRecorder:(Boolean)isRecorder;
+
+/**
+ * 录像相关：
+ *
+ * 音频录制开关, 目的是为了更细粒度的去控制录像, 一般不需要调用这个接口, 这个接口使用场景比如同时推送音视频，但只想录制视频，可以调用这个接口关闭音频录制
+ *
+ * @param is_recoder 0: do not recorder; 1: recorder; sdk默认是1
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetRecorderAudio:(NSInteger)is_recoder;
+
+/**
+ * 录像相关：
+ *
+ * 视频录制开关, 目的是为了更细粒度的去控制录像, 一般不需要调用这个接口, 这个接口使用场景比如同时推送音视频，但只想录制音频，可以调用这个接口关闭视频
+ *
+ * @param is_recoder 0: do not recorder; 1: recorder; sdk默认是1
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPublisherSetRecorderVideo:(NSInteger)is_recoder;
+
 
 /**
  * 录像相关：
@@ -813,9 +839,9 @@ typedef enum DNCameraPosition{
  *
  * handle: 推送实例句柄
  *
- * rtsp_server_handle: rtsp server句柄
+ * rtsp_server_handle：rtsp server句柄
  *
- * reserve: 保留参数，传0
+ * reserve： 保留参数，传0
  *
  * @return {0} if successful
  */

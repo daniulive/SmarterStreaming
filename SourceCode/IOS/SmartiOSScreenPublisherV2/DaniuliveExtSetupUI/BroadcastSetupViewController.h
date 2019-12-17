@@ -11,7 +11,4 @@
 
 @interface BroadcastSetupViewController : UIViewController
 
-/// rtmp 地址
-@property (weak, nonatomic) IBOutlet UITextField *rtmpUrl;
-
 @end

@@ -6,14 +6,12 @@
 //  Copyright © 2018年 daniulive. All rights reserved.
 //
 
-
 #import "SampleHandler.h"
 #import <VideoToolbox/VideoToolbox.h>
+#import "mach/mach.h"
 
 #import "SmartPublisherSDK.h"
 #import "nt_event_define.h"
-
-//static SampleHandler *s_delegate;   // retain delegate
 
 static BOOL s_headPhoneIn;
 typedef enum : NSUInteger {
@@ -21,10 +19,11 @@ typedef enum : NSUInteger {
     Mic_Enable,
     Mic_Disable,
 } MicState;
-static MicState  s_isMicEnable;
+static MicState s_isMicEnable;
 
-static NSString *publisher_url_;
-static int      is_landscape_;                //1:横屏；
+NSString *publisher_url_;
+
+BOOL is_pushing_rtmp_ = NO;
 
 SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 
@@ -36,7 +35,6 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 //  - NSExtensionPrincipalClass should be set to this class
 
 @implementation SampleHandler{
-    
 }
 
 #pragma mark - RPBroadcastSampleHandler
@@ -82,25 +80,16 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 - (void)broadcastStartedWithSetupInfo:(NSDictionary<NSString *,NSObject *> *)setupInfo {
     // User has requested to start the broadcast. Setup info from the UI extension will be supplied.
     NSLog(@"[SampleHandler]broadcastStartedWithSetupInfo++");
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *url = (NSString *)setupInfo[@"endpointURL"]?:[defaults objectForKey:@"rtmpUrl"];
-    
-    if (!url || ![url isKindOfClass:[NSString class]]) {
-        NSLog(@"broadcastStartedWithSetupInfo 地址非法");
-        return;
-    }
-    NSLog(@"broadcastStartedWithSetupInfo %@, %@", setupInfo, url);
-    publisher_url_ = url;
-    
-    is_landscape_ = [(NSNumber *)setupInfo[@"rotate"] boolValue];
+
+    //默认设定个推送url 也可以通过上述代码读取UI层设定的
+    publisher_url_ = @"rtmp://player.daniulive.com:1935/hls/stream2";;
     
     [self checkHeadphone];
-    [self InitPublisher];
-    [self StartPublisher];
     
-    // Store the data
-    [defaults setObject:publisher_url_ forKey:@"rtmpUrl"];
-    [defaults synchronize];
+    if([self InitPublisher])
+    {
+        [self StartPublisher];
+    }
     
     NSLog(@"[SampleHandler]broadcastStartedWithSetupInfo--");
 }
@@ -115,43 +104,122 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 
 - (void)broadcastFinished {
     NSLog(@"[SampleHandler]broadcastFinished....");
-    [self StopPublisher];
-    [self UnInitPublisher];
+    
+    if([self StopPublisher])
+    {
+        [self UnInitPublisher];
+    }
+}
+
+- (void)finishBroadcastWithError:(NSError *)error
+{
+    NSLog(@"[SampleHandler]finishBroadcastWithError....");
+    
+    if([self StopPublisher])
+    {
+        [self UnInitPublisher];
+    }
+}
+
+- (CGFloat)GetCurUsedMemoryInMB{
+    vm_size_t memory = GetCurUsedMemory();
+    return memory / 1024.0 / 1024.0;
+}
+
+vm_size_t GetCurUsedMemory(void)
+{
+    task_vm_info_data_t vmInfo;
+    mach_msg_type_number_t count = TASK_VM_INFO_COUNT;
+    if(task_info(mach_task_self(), TASK_VM_INFO, (task_info_t) &vmInfo, &count) != KERN_SUCCESS) {
+        return 0;
+    }
+    return (double)vmInfo.phys_footprint;
 }
 
 - (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer
                    withType:(RPSampleBufferType)sampleBufferType {
+    
+    CGFloat cur_memory = [self GetCurUsedMemoryInMB];
+    
+    if( cur_memory > 20.0f)
+    {
+        //NSLog(@"processSampleBuffer cur: %.2fM", cur_memory);
+        return;
+    }
+        
     switch (sampleBufferType) {
         case RPSampleBufferTypeVideo:
-        {
-            NSLog(@"RPSampleBufferTypeVideo");
-            if(_smart_publisher_sdk)
             {
-                [_smart_publisher_sdk SmartPublisherPostVideoSampleBuffer:sampleBuffer];
-            }
-        }
-            break;
-        case RPSampleBufferTypeAudioApp:
-            NSLog(@"RPSampleBufferTypeAudioApp");
-            if (s_headPhoneIn || s_isMicEnable == Mic_Disable)
-            {
-                if (CMSampleBufferDataIsReady(sampleBuffer) != NO)
-                {
-                    if(_smart_publisher_sdk)
+                if (!CMSampleBufferIsValid(sampleBuffer))
+                    return;
+                
+                NSInteger rotation_degress = 0;
+                //11.1以上支持自动旋转
+    #ifdef __IPHONE_11_1
+                if (UIDevice.currentDevice.systemVersion.floatValue > 11.1) {
+                    CGImagePropertyOrientation orientation = ((__bridge NSNumber*)CMGetAttachment(sampleBuffer, (__bridge CFStringRef)RPVideoSampleOrientationKey , NULL)).unsignedIntValue;
+                    
+                    //NSLog(@"cur org: %d", orientation);
+                    
+                    switch (orientation)
                     {
-                        NSInteger type = 2;
-                        [_smart_publisher_sdk SmartPublisherPostAudioSampleBuffer:sampleBuffer inputType:type];
+                        //竖屏
+                        case kCGImagePropertyOrientationUp:{
+                            rotation_degress = 0;
+                        }
+                            break;
+                        case kCGImagePropertyOrientationDown:{
+                            rotation_degress = 180;
+                            break;
+                        }
+                        case kCGImagePropertyOrientationLeft: {
+                            //静音键那边向上 所需转90度
+                            rotation_degress = 90;
+                        }
+                            break;
+                        case kCGImagePropertyOrientationRight:{
+                            //关机键那边向上 所需转270
+                            rotation_degress = 270;
+                        }
+                            break;
+                        default:
+                            break;
                     }
                 }
+    #endif
+                
+                //NSLog(@"RPSampleBufferTypeVideo");
+                if(_smart_publisher_sdk)
+                {
+                    //[_smart_publisher_sdk SmartPublisherPostVideoSampleBuffer:sampleBuffer];
+                    [_smart_publisher_sdk SmartPublisherPostVideoSampleBufferV2:sampleBuffer rotateDegress:rotation_degress];
+                }
+                
+                //NSLog(@"video ts:%.2f", CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)));
             }
             break;
+        case RPSampleBufferTypeAudioApp:
+            //NSLog(@"RPSampleBufferTypeAudioApp");
+            if (CMSampleBufferDataIsReady(sampleBuffer) != NO)
+            {
+                if(_smart_publisher_sdk)
+                {
+                    NSInteger type = 2;
+                    [_smart_publisher_sdk SmartPublisherPostAudioSampleBuffer:sampleBuffer inputType:type];
+                }
+            }
+            //NSLog(@"App ts:%.2f", CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)));
+            
+            break;
         case RPSampleBufferTypeAudioMic:
-            NSLog(@"RPSampleBufferTypeAudioMic");
+            //NSLog(@"RPSampleBufferTypeAudioMic");
             if(_smart_publisher_sdk)
             {
                 NSInteger type = 1;
                 [_smart_publisher_sdk SmartPublisherPostAudioSampleBuffer:sampleBuffer inputType:type];
             }
+            //NSLog(@"Mic ts:%.2f", CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)));
+            
             break;
         default:
             break;
@@ -162,6 +230,12 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 -(bool)InitPublisher
 {
     NSLog(@"InitPublisher++");
+    
+    if(is_pushing_rtmp_)
+    {
+        NSLog(@"InitPublisher, has already started rtmp pusher..");
+        return false;
+    }
     
     if(_smart_publisher_sdk != nil)
     {
@@ -182,7 +256,7 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
         _smart_publisher_sdk.delegate = self;
     }
     
-    NSInteger audio_opt = 3;
+    NSInteger audio_opt = 0;    //默认不推音频
     NSInteger video_opt = 3;
     
     if([_smart_publisher_sdk SmartPublisherInit:audio_opt video_opt:video_opt] != DANIULIVE_RETURN_OK)
@@ -200,6 +274,7 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 -(bool)StartPublisher
 {
     NSLog(@"StartPublisher++");
+    
     if ( _smart_publisher_sdk == nil )
     {
         NSLog(@"StartPublisher, publiher SDK with nil");
@@ -208,17 +283,19 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
     
     [_smart_publisher_sdk SmartPublisherSetFPS:20];
     
-    [_smart_publisher_sdk SmartPublisherSetVideoBitRate:1100 maxBitRate:2200];
+    [_smart_publisher_sdk SmartPublisherSetVideoBitRate:1200 maxBitRate:2400];
     
     [_smart_publisher_sdk SmartPublisherSetGopInterval:60];
     
-    CGFloat scale_rate = 0.5;
+    CGFloat scale_rate = 0.6;
     [_smart_publisher_sdk SmartPublisherSetVideoSizeScaleRate:scale_rate];
+    
+    NSInteger encoderType = 1;
+    Boolean isHwEncoder = YES;
+    [_smart_publisher_sdk SmartPublisherSetVideoEncoderType:encoderType isHwEncoder:isHwEncoder];
     
     NSInteger run_mode = 1;
     [_smart_publisher_sdk SmartPublisherSetSDKRunMode:run_mode];
-    
-    //publisher_url_ = @"rtmp://player.daniulive.com:1935/hls/stream1";
     
     NSInteger ret = [_smart_publisher_sdk SmartPublisherStartPublisher:publisher_url_];
     
@@ -228,6 +305,8 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
         return false;
     }
     
+    is_pushing_rtmp_ = YES;
+    
     NSLog(@"StartPublisher--");
     return true;
 }
@@ -235,6 +314,13 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
 -(bool)StopPublisher
 {
     NSLog(@"StopPublisher++");
+    
+    if(!is_pushing_rtmp_)
+    {
+        NSLog(@"StopPublisher, not started..");
+        return false;
+    }
+    
     if ( _smart_publisher_sdk == nil )
     {
         NSLog(@"StopPublisher, publiher SDK with nil");
@@ -256,6 +342,8 @@ SmartPublisherSDK *_smart_publisher_sdk;      //推流SDK API
         _smart_publisher_sdk.delegate = nil;
         _smart_publisher_sdk = nil;
     }
+    
+    is_pushing_rtmp_ = NO;
     
     NSLog(@"UnInitPublisher--");
     return true;

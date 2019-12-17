@@ -25,7 +25,6 @@
 		0C51DA662068D2AB009F86A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA652068D2AB009F86A9 /* Foundation.framework */; };
 		0C51DA682068D2B3009F86A9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA672068D2B3009F86A9 /* Accelerate.framework */; };
 		0C51DA6A2068D2B9009F86A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA692068D2B8009F86A9 /* AVFoundation.framework */; };
-		0C51DA6C2068D2BF009F86A9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA6B2068D2BF009F86A9 /* AssetsLibrary.framework */; };
 		0C51DA6E2068D2C8009F86A9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA6D2068D2C8009F86A9 /* CoreMedia.framework */; };
 		0C51DA702068D2CE009F86A9 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA6F2068D2CE009F86A9 /* VideoToolbox.framework */; };
 		0C51DA712068D2D6009F86A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA4D2068BE3A009F86A9 /* UIKit.framework */; };
@@ -33,7 +32,6 @@
 		0C51DA752068D2F3009F86A9 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA742068D2F3009F86A9 /* libiconv.tbd */; };
 		0C51DA772068D2FC009F86A9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA762068D2FC009F86A9 /* libc++.tbd */; };
 		0C51DA792068D306009F86A9 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA782068D306009F86A9 /* libbz2.tbd */; };
-		0C51DA7B2068D30D009F86A9 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA7A2068D30D009F86A9 /* libstdc++.tbd */; };
 		0C51DA802068D357009F86A9 /* libSmartPublisherSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C51DA7F2068D357009F86A9 /* libSmartPublisherSDK.a */; };
 /* End PBXBuildFile section */
 
@@ -102,7 +100,6 @@
 		0C51DA742068D2F3009F86A9 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		0C51DA762068D2FC009F86A9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0C51DA782068D306009F86A9 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
-		0C51DA7A2068D30D009F86A9 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		0C51DA7F2068D357009F86A9 /* libSmartPublisherSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSmartPublisherSDK.a; path = daniuliveSDK/libs/libSmartPublisherSDK.a; sourceTree = "<group>"; };
 		0C51DA812068D362009F86A9 /* nt_common_media_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_common_media_define.h; path = daniuliveSDK/include/nt_common_media_define.h; sourceTree = "<group>"; };
 		0C51DA822068D362009F86A9 /* nt_event_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_event_define.h; path = daniuliveSDK/include/nt_event_define.h; sourceTree = "<group>"; };
@@ -121,7 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C51DA7B2068D30D009F86A9 /* libstdc++.tbd in Frameworks */,
 				0C51DA792068D306009F86A9 /* libbz2.tbd in Frameworks */,
 				0C51DA772068D2FC009F86A9 /* libc++.tbd in Frameworks */,
 				0C51DA752068D2F3009F86A9 /* libiconv.tbd in Frameworks */,
@@ -130,7 +126,6 @@
 				0C51DA702068D2CE009F86A9 /* VideoToolbox.framework in Frameworks */,
 				0C51DA802068D357009F86A9 /* libSmartPublisherSDK.a in Frameworks */,
 				0C51DA6E2068D2C8009F86A9 /* CoreMedia.framework in Frameworks */,
-				0C51DA6C2068D2BF009F86A9 /* AssetsLibrary.framework in Frameworks */,
 				0C51DA6A2068D2B9009F86A9 /* AVFoundation.framework in Frameworks */,
 				0C51DA682068D2B3009F86A9 /* Accelerate.framework in Frameworks */,
 				0C51DA662068D2AB009F86A9 /* Foundation.framework in Frameworks */,
@@ -191,7 +186,6 @@
 		0C51DA3F2068BE3A009F86A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0C51DA7A2068D30D009F86A9 /* libstdc++.tbd */,
 				0C51DA782068D306009F86A9 /* libbz2.tbd */,
 				0C51DA762068D2FC009F86A9 /* libc++.tbd */,
 				0C51DA742068D2F3009F86A9 /* libiconv.tbd */,

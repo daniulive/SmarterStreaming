@@ -73,6 +73,7 @@
     Boolean is_pause_recording_;             //是否暂停录像，YES: 暂停录像 NO: 恢复录像
     Boolean is_rtsp_service_running_;        //RTSP服务状态
     Boolean is_rtsp_publisher_running_;      //RTSP流发布状态
+    CGFloat video_scale_rate_;               //视频缩放比例因子
 }
 
 @synthesize localPreview;
@@ -189,6 +190,7 @@
                      audioOpt:(NSInteger)audioOpt
                      videoOpt:(NSInteger)videoOpt
                      isBeauty:(Boolean)isBeauty
+                     scale_rate:(CGFloat)scale_rate
 {
     self = [super init];
     if (!self) {
@@ -200,6 +202,7 @@
         audio_opt_  = audioOpt;
         video_opt_  = videoOpt;
         is_beauty = isBeauty;
+        video_scale_rate_ = scale_rate;
         is_mute = false;
         is_mirror = false;   //默认镜像模式
         rtsp_handle_ = NULL;
@@ -280,11 +283,17 @@
     NSInteger vbr_max_kbitrate = [self CalVbrMaxKBitRate:videoQuality];
     [_smart_publisher_sdk SmartPublisherSetSwVBRMode:is_enable_vbr video_quality:video_quality vbr_max_kbitrate:vbr_max_kbitrate];
     
-    //NSInteger gop_interval = 40;
-    //[_smart_publisher_sdk SmartPublisherSetGopInterval:gop_interval];
+    NSInteger is_rec_audio = 1;
+    [_smart_publisher_sdk SmartPublisherSetRecorderAudio:is_rec_audio];
+    
+    NSInteger is_rec_video = 1;
+    [_smart_publisher_sdk SmartPublisherSetRecorderVideo:is_rec_video];
      
-    //NSInteger fps = 20;
-    //[_smart_publisher_sdk SmartPublisherSetFPS:fps];
+    NSInteger fps = 18;
+    [_smart_publisher_sdk SmartPublisherSetFPS:fps];
+    
+    NSInteger gop_interval = fps*2;
+    [_smart_publisher_sdk SmartPublisherSetGopInterval:gop_interval];
     
     //NSInteger sw_video_encoder_profile = 1;
     //[_smart_publisher_sdk SmartPublisherSetSWVideoEncoderProfile:sw_video_encoder_profile];
@@ -292,16 +301,16 @@
     //NSInteger sw_video_encoder_speed = 2;
     //[_smart_publisher_sdk SmartPublisherSetSWVideoEncoderSpeed:sw_video_encoder_speed];
     
-     /*
-     NSInteger avg_bit_rate = 500;
-     NSInteger max_bit_rate = 1000;
+    /*
+     NSInteger avg_bit_rate = 1000;
+     NSInteger max_bit_rate = 2000;
      
      [_smart_publisher_sdk SmartPublisherSetVideoBitRate:avg_bit_rate maxBitRate:max_bit_rate];
      
      Boolean clip_mode = true;
      [_smart_publisher_sdk SmartPublisherSetClippingMode:clip_mode];
-     */
-    
+    */
+     
     NSInteger key_length = [encrypt_key_ length];
     
     if(key_length > 0)
@@ -442,6 +451,10 @@
     NSString *docDir = [paths objectAtIndex:0];
     
     NSLog(@"docDir: %@", docDir);
+    
+    //videoQuality = DN_VIDEO_QUALITY_1080P;    //如需支持1920*1080分辨率推流, 请先确保设备支持此分辨率采集
+    
+    [_smart_publisher_sdk SmartPublisherSetVideoSizeScaleRate:video_scale_rate_];
     
     if([_smart_publisher_sdk SmartPublisherStartCapture:videoQuality] != DANIULIVE_RETURN_OK)
     {
@@ -1003,6 +1016,8 @@
         rtspServiceButton.hidden = NO;
         
         _textPublisherEventLabel.text = @"";
+        
+        is_rtsp_publisher_running_ = NO;
     }
     else
     {
@@ -1059,13 +1074,6 @@
     else
     {
         NSLog(@"Run into recordStream, StartRecorder..");
-        
-        NSInteger recorder = 1;
-        if([_smart_publisher_sdk SmartPublisherSetRecorder:recorder] != DANIULIVE_RETURN_OK)
-        {
-            NSLog(@"Call SmartPublisherSetRecorder failed..");
-            return;
-        }
         
         //设置录像目录
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -1393,6 +1401,10 @@
     {
         quality = is_h264? 27 : 29;
     }
+    else if ( DN_VIDEO_QUALITY_1080P == video_quality )
+    {
+        quality = is_h264? 29 : 31;
+    }
     
     return quality;
 }
@@ -1413,6 +1425,11 @@
     {
         max_kbit_rate = 1400;
     }
+    else if ( DN_VIDEO_QUALITY_1080P == video_quality  )
+    {
+        max_kbit_rate = 2800;
+    }
+    
     
     return max_kbit_rate;
 }

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1F87002390B11F00CFA31C /* libSmartPublisherSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1F86FF2390B11F00CFA31C /* libSmartPublisherSDK.a */; };
 		0C41CFBC1EB1B5FC005BDF68 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C41CFBB1EB1B5FC005BDF68 /* libiconv.tbd */; };
+		0CA6D5D42399054D0065B856 /* dropdownFlag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CA6D5D02399054C0065B856 /* dropdownFlag@3x.png */; };
+		0CA6D5D52399054D0065B856 /* dropdownFlag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CA6D5D12399054C0065B856 /* dropdownFlag@2x.png */; };
+		0CA6D5D62399054D0065B856 /* DropdownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA6D5D32399054C0065B856 /* DropdownListView.m */; };
 		0CC6E8941ECB22A2007CE1A9 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC6E8931ECB22A2007CE1A9 /* libbz2.1.0.tbd */; };
 		0CC6E8951ECB22B9007CE1A9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C41CFBD1EB1B603005BDF68 /* libz.tbd */; };
 		582605661CC3940A00F9E215 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582605651CC3940A00F9E215 /* VideoToolbox.framework */; };
@@ -37,14 +41,20 @@
 		58BE958F1CA4106E0031FFEE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */; };
 		58BE95911CA410810031FFEE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE95901CA410810031FFEE /* CoreMedia.framework */; };
 		58BE963D1CA6750A0031FFEE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963C1CA6750A0031FFEE /* libc++.tbd */; };
-		58BE96401CA6C1770031FFEE /* libSmartPublisherSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BE963F1CA6C1770031FFEE /* libSmartPublisherSDK.a */; };
 		58D469D71CD48AF60095925A /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D469D61CD48AF60095925A /* SettingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C34E60420F8B9A700D069D9 /* SmartRTSPSeverSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartRTSPSeverSDK.h; sourceTree = "<group>"; };
+		0C1F86FC2390B11700CFA31C /* SmartPublisherSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartPublisherSDK.h; path = daniuliveSDK/include/SmartPublisherSDK.h; sourceTree = "<group>"; };
+		0C1F86FD2390B11700CFA31C /* SmartRTSPSeverSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartRTSPSeverSDK.h; path = daniuliveSDK/include/SmartRTSPSeverSDK.h; sourceTree = "<group>"; };
+		0C1F86FE2390B11700CFA31C /* nt_event_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nt_event_define.h; path = daniuliveSDK/include/nt_event_define.h; sourceTree = "<group>"; };
+		0C1F86FF2390B11F00CFA31C /* libSmartPublisherSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSmartPublisherSDK.a; path = daniuliveSDK/libs/libSmartPublisherSDK.a; sourceTree = "<group>"; };
 		0C41CFBB1EB1B5FC005BDF68 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		0C41CFBD1EB1B603005BDF68 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0CA6D5D02399054C0065B856 /* dropdownFlag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dropdownFlag@3x.png"; path = "DropdownList/dropdownFlag@3x.png"; sourceTree = "<group>"; };
+		0CA6D5D12399054C0065B856 /* dropdownFlag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dropdownFlag@2x.png"; path = "DropdownList/dropdownFlag@2x.png"; sourceTree = "<group>"; };
+		0CA6D5D22399054C0065B856 /* DropdownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropdownListView.h; path = DropdownList/DropdownListView.h; sourceTree = "<group>"; };
+		0CA6D5D32399054C0065B856 /* DropdownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropdownListView.m; path = DropdownList/DropdownListView.m; sourceTree = "<group>"; };
 		0CC6E8931ECB22A2007CE1A9 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
 		582605651CC3940A00F9E215 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		586D8C231D1CDABD004737FF /* back_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_color.png; sourceTree = "<group>"; };
@@ -80,12 +90,9 @@
 		58BE958C1CA4102A0031FFEE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		58BE958E1CA4106E0031FFEE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		58BE95901CA410810031FFEE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		58BE959C1CA412000031FFEE /* SmartPublisherSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartPublisherSDK.h; sourceTree = "<group>"; };
 		58BE963C1CA6750A0031FFEE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		58BE963F1CA6C1770031FFEE /* libSmartPublisherSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSmartPublisherSDK.a; sourceTree = "<group>"; };
 		58D469D51CD48AF60095925A /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
 		58D469D61CD48AF60095925A /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
-		58DE21731D0973B800B15242 /* nt_event_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nt_event_define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +107,7 @@
 				58BE963D1CA6750A0031FFEE /* libc++.tbd in Frameworks */,
 				58BE95911CA410810031FFEE /* CoreMedia.framework in Frameworks */,
 				58BE958F1CA4106E0031FFEE /* AssetsLibrary.framework in Frameworks */,
-				58BE96401CA6C1770031FFEE /* libSmartPublisherSDK.a in Frameworks */,
+				0C1F87002390B11F00CFA31C /* libSmartPublisherSDK.a in Frameworks */,
 				58BE958D1CA4102A0031FFEE /* AVFoundation.framework in Frameworks */,
 				58BE958B1CA4100E0031FFEE /* UIKit.framework in Frameworks */,
 				58BE95891CA40FFF0031FFEE /* Foundation.framework in Frameworks */,
@@ -111,6 +118,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C1F86F92390B0EE00CFA31C /* daniuliveSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F86FA2390B0FA00CFA31C /* include */,
+				0C1F86FB2390B10500CFA31C /* libs */,
+			);
+			name = daniuliveSDK;
+			sourceTree = "<group>";
+		};
+		0C1F86FA2390B0FA00CFA31C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F86FE2390B11700CFA31C /* nt_event_define.h */,
+				0C1F86FC2390B11700CFA31C /* SmartPublisherSDK.h */,
+				0C1F86FD2390B11700CFA31C /* SmartRTSPSeverSDK.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		0C1F86FB2390B10500CFA31C /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F86FF2390B11F00CFA31C /* libSmartPublisherSDK.a */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
 		0C41CFBA1EB1B5FC005BDF68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +162,17 @@
 				58BE95841CA40FE40031FFEE /* Accelerate.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0CA6D5CF239905440065B856 /* DropdownList */ = {
+			isa = PBXGroup;
+			children = (
+				0CA6D5D12399054C0065B856 /* dropdownFlag@2x.png */,
+				0CA6D5D02399054C0065B856 /* dropdownFlag@3x.png */,
+				0CA6D5D22399054C0065B856 /* DropdownListView.h */,
+				0CA6D5D32399054C0065B856 /* DropdownListView.m */,
+			);
+			name = DropdownList;
 			sourceTree = "<group>";
 		};
 		586D8C221D1CDABD004737FF /* images */ = {
@@ -150,6 +195,7 @@
 		58B63DD31D1A7039005C957B /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				0CA6D5CF239905440065B856 /* DropdownList */,
 				58B63DD41D1A7039005C957B /* ConvertTime.h */,
 				58B63DD51D1A7039005C957B /* ConvertTime.m */,
 			);
@@ -187,13 +233,12 @@
 		58BE95691CA40E820031FFEE /* SmartiOSPublisher */ = {
 			isa = PBXGroup;
 			children = (
+				0C1F86F92390B0EE00CFA31C /* daniuliveSDK */,
 				586D8C221D1CDABD004737FF /* images */,
 				58B63DD71D1A71AB005C957B /* playbackRecorder */,
 				58B63DD31D1A7039005C957B /* utility */,
 				58D469D51CD48AF60095925A /* SettingView.h */,
 				58D469D61CD48AF60095925A /* SettingView.m */,
-				58BE959A1CA412000031FFEE /* include */,
-				58BE959D1CA412000031FFEE /* libs */,
 				58BE956D1CA40E820031FFEE /* AppDelegate.h */,
 				58BE956E1CA40E820031FFEE /* AppDelegate.m */,
 				58BE95701CA40E820031FFEE /* ViewController.h */,
@@ -213,24 +258,6 @@
 				58BE956B1CA40E820031FFEE /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		58BE959A1CA412000031FFEE /* include */ = {
-			isa = PBXGroup;
-			children = (
-				0C34E60420F8B9A700D069D9 /* SmartRTSPSeverSDK.h */,
-				58DE21731D0973B800B15242 /* nt_event_define.h */,
-				58BE959C1CA412000031FFEE /* SmartPublisherSDK.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		58BE959D1CA412000031FFEE /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				58BE963F1CA6C1770031FFEE /* libSmartPublisherSDK.a */,
-			);
-			path = libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CA6D5D42399054D0065B856 /* dropdownFlag@3x.png in Resources */,
 				586D8C2E1D1CDABD004737FF /* backIcon@2x.png in Resources */,
 				586D8C341D1CDABD004737FF /* playSmall.png in Resources */,
 				586D8C311D1CDABD004737FF /* btn_unselected@2x.png in Resources */,
@@ -305,6 +333,7 @@
 				586D8C351D1CDABD004737FF /* shareIcon@2x.png in Resources */,
 				58BE957A1CA40E830031FFEE /* LaunchScreen.storyboard in Resources */,
 				58BE95771CA40E830031FFEE /* Assets.xcassets in Resources */,
+				0CA6D5D52399054D0065B856 /* dropdownFlag@2x.png in Resources */,
 				58BE95751CA40E830031FFEE /* Main.storyboard in Resources */,
 				586D8C361D1CDABD004737FF /* stopSmall.png in Resources */,
 				586D8C331D1CDABD004737FF /* fullScreen@2x.png in Resources */,
@@ -321,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B63DDD1D1A71AB005C957B /* RecorderView.m in Sources */,
+				0CA6D5D62399054D0065B856 /* DropdownListView.m in Sources */,
 				58B63DDC1D1A71AB005C957B /* PlayVideoView.m in Sources */,
 				58D469D71CD48AF60095925A /* SettingView.m in Sources */,
 				58B63DD61D1A7039005C957B /* ConvertTime.m in Sources */,
@@ -457,6 +487,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartiOSPublisher/libs",
+					"$(PROJECT_DIR)/SmartiOSPublisher/daniuliveSDK/libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPublisher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -482,6 +513,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartiOSPublisher/libs",
+					"$(PROJECT_DIR)/SmartiOSPublisher/daniuliveSDK/libs",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daniulive.SmartiOSPublisher;

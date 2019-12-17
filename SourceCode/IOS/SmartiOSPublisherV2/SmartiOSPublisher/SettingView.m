@@ -12,7 +12,7 @@
 #import "SettingView.h"
 #import "ViewController.h"
 #import "RecorderView.h"
-
+#import "DropdownListView.h"
 
 #define kBtnHeight     50
 #define kHorMargin     10
@@ -27,6 +27,10 @@
     Boolean                 is_beauty_;
     NSString        *encrypt_key_;              //RTMP加密Key
     NSString        *encrypt_iv_;               //RTMP IV加密向量
+    
+    //设置编码前视频宽高比例缩放(用于屏幕或摄像头采集缩放)
+    //为适配屏幕宽高比, 比如需要推送640*360分辨率, 可设置1280*720的采集, scale rate设置0.5 来实现等比例缩放
+    CGFloat         video_scale_rate_;
 }
 
 @property (nonatomic, strong) UINavigationBar *nvgBar;
@@ -34,34 +38,11 @@
 
 @property (nonatomic, strong) UITextField *inputUrlText; //url输入框，请输入rtmp推送url
 
-@property (nonatomic, strong) UIButton *highQualityBtn;
-@property (nonatomic, strong) UIButton *mediumQualityBtn;
-@property (nonatomic, strong) UIButton *lowQualityBtn;
-
-@property (nonatomic, strong) UIButton *avBtn;
-@property (nonatomic, strong) UIButton *audioBtn;
-@property (nonatomic, strong) UIButton *videoBtn;
-
-@property (nonatomic, strong) UIButton *beautyBtn;
-@property (nonatomic, strong) UIButton *noBeautyBtn;
-
 //如需音视频加密，可设置加密的Key(16/24/32字节)和IV(16字节)，IV如不输入，用默认值，播放端，需要输入推送端设置的加密Key和IV方可正常播放
 @property (nonatomic, strong) UIButton *inputKeyIvView;
 @property (nonatomic, strong) UIButton *interPublisherView;
 @property (nonatomic, strong) UIButton *interRecorderView;
 
-@property (nonatomic, strong) UILabel *highQualityLable;
-@property (nonatomic, strong) UILabel *mediumQualityLable;
-@property (nonatomic, strong) UILabel *lowQualityLable;
-
-@property (nonatomic, strong) UILabel *avLable;
-@property (nonatomic, strong) UILabel *audioLable;
-@property (nonatomic, strong) UILabel *videoLable;
-
-@property (nonatomic, strong) UILabel *beautyLable;
-@property (nonatomic, strong) UILabel *noBeautyLable;
-
-- (void)qualityButtonClicked:(id)sender;
 - (void)interPublisherViewBtnPressed:(id)sender;
 
 @end
@@ -70,22 +51,6 @@
 
 @synthesize nvgBar;
 @synthesize nvgItem;
-@synthesize lowQualityBtn;
-@synthesize mediumQualityBtn;
-@synthesize highQualityBtn;
-@synthesize avBtn;
-@synthesize audioBtn;
-@synthesize videoBtn;
-@synthesize beautyBtn;
-@synthesize noBeautyBtn;
-@synthesize lowQualityLable;
-@synthesize mediumQualityLable;
-@synthesize highQualityLable;
-@synthesize avLable;
-@synthesize audioLable;
-@synthesize videoLable;
-@synthesize beautyLable;
-@synthesize noBeautyLable;
 @synthesize inputKeyIvView;
 @synthesize interPublisherView;
 @synthesize interRecorderView;
@@ -107,7 +72,9 @@
     // If you use Interface Builder to create your views, then you must NOT override this method.
     
     //默认标清分辨率
-    streamQuality = DN_VIDEO_QUALITY_MEDIUM;
+    streamQuality = DN_VIDEO_QUALITY_HIGH;
+    video_scale_rate_ = 0.5;
+    
     //默认采集音视频
     audio_opt_ = 1;
     video_opt_ = 1;
@@ -121,100 +88,150 @@
     CGFloat screenWidth  = CGRectGetWidth([UIScreen mainScreen].bounds);
     
     //导航栏:直播设置
-    
     [self.navigationItem setTitle:@"Daniulive RTMP/RTSP推送SDK"];
-    
     [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
 
     CGFloat buttonWidth = screenWidth - kHorMargin*2;
     
-    CGFloat buttonSpace = (screenWidth - 2*kHorMargin-160)/6;
-    
     //直播视频质量
-    self.lowQualityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.lowQualityBtn.tag = 1;
-    self.lowQualityBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight, 20, 20);
-    [self.lowQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.lowQualityBtn addTarget:self action:@selector(qualityButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    DropdownListItem *resSelItem1 = [[DropdownListItem alloc] initWithItem:@"0" itemName:@"流畅(352*288)"];
+    DropdownListItem *resSelItem2 = [[DropdownListItem alloc] initWithItem:@"1" itemName:@"标清(640*480)"];
+    DropdownListItem *resSelItem3 = [[DropdownListItem alloc] initWithItem:@"2" itemName:@"标清(640*368)"];
+    DropdownListItem *resSelItem4 = [[DropdownListItem alloc] initWithItem:@"3" itemName:@"标清(960*544)"];
+    DropdownListItem *resSelItem5 = [[DropdownListItem alloc] initWithItem:@"4" itemName:@"高清(1280*720)"];
+    DropdownListItem *resSelItem6 = [[DropdownListItem alloc] initWithItem:@"5" itemName:@"超高清(1920*1080)"];
     
-    self.lowQualityLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight, 60, 20)];
-    self.lowQualityLable.text = @"流畅";
-    self.lowQualityLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-   
-    self.mediumQualityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.mediumQualityBtn.tag = 2;
-
-    self.mediumQualityBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight, 20, 20);
-    [self.mediumQualityBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-    [self.mediumQualityBtn addTarget:self action:@selector(qualityButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.mediumQualityLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight, 40, 20)];
-    self.mediumQualityLable.text = @"标清";
-    self.mediumQualityLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    // 弹出框向上
+    DropdownListView *resSelDropdownListView = [[DropdownListView alloc] initWithDataSource:@[resSelItem1, resSelItem2, resSelItem3, resSelItem4, resSelItem5, resSelItem6]];
+    resSelDropdownListView.frame = CGRectMake(kHorMargin, 100, 180, 30);
+    resSelDropdownListView.selectedIndex = 2;
+    [resSelDropdownListView setViewBorder:0.5 borderColor:[UIColor grayColor] cornerRadius:2];
+    [self.view addSubview:resSelDropdownListView];
     
-    self.highQualityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.highQualityBtn.tag = 3;
-    
-    self.highQualityBtn.frame = CGRectMake(screenWidth-kHorMargin-buttonSpace-60,kVerMargin+kBtnHeight,20,20);
-    [self.highQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.highQualityBtn addTarget:self action:@selector(qualityButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.highQualityLable = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-kHorMargin-buttonSpace-40,kVerMargin+kBtnHeight,40,20)];
-    self.highQualityLable.text = @"高清";
-    self.highQualityLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-    
+    [resSelDropdownListView setDropdownListViewSelectedBlock:^(DropdownListView *resSelDropdownListView) {
+        NSString *msgString = [NSString stringWithFormat:
+                               @"resolution selected name:%@  id:%@  index:%lu"
+                               , resSelDropdownListView.selectedItem.itemName
+                               , resSelDropdownListView.selectedItem.itemId
+                               , (unsigned long)resSelDropdownListView.selectedIndex];
+        
+        NSLog(@"%@", msgString);
+        
+        switch (resSelDropdownListView.selectedIndex) {
+            case 0:
+                //流畅(352*288)
+                streamQuality = DN_VIDEO_QUALITY_LOW;
+                video_scale_rate_ = 1.0;
+                break;
+            case 1:
+                //标清(640*480)
+                streamQuality = DN_VIDEO_QUALITY_MEDIUM;
+                video_scale_rate_ = 1.0;
+                break;
+            case 2:
+                //标清(640*368), 1280*720采集分辨率 宽高缩放系数为0.5后得到
+                streamQuality = DN_VIDEO_QUALITY_HIGH;
+                video_scale_rate_ = 0.5;
+                break;
+            case 3:
+                //标清(960*544), 1280*720采集分辨率 宽高缩放系数为0.75后得到
+                streamQuality = DN_VIDEO_QUALITY_HIGH;
+                video_scale_rate_ = 0.75;
+                break;
+            case 4:
+                //高清(1280*720)
+                streamQuality = DN_VIDEO_QUALITY_HIGH;
+                video_scale_rate_ = 1.0;
+                break;
+            case 5:
+                //超高清(1920*1080)
+                streamQuality = DN_VIDEO_QUALITY_1080P;
+                video_scale_rate_ = 1.0;
+                break;
+            default:
+                break;
+        }
+    }];
+     
     //推送音视频还是纯音频
-    self.avBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.avBtn.tag = 1;
-    self.avBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80, 20, 20);
-    [self.avBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-    [self.avBtn addTarget:self action:@selector(pushTypeButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    DropdownListItem *avSelItem1 = [[DropdownListItem alloc] initWithItem:@"0" itemName:@"推送音视频"];
+    DropdownListItem *avSelItem2 = [[DropdownListItem alloc] initWithItem:@"1" itemName:@"推送纯音频"];
+    DropdownListItem *avSelItem3 = [[DropdownListItem alloc] initWithItem:@"2" itemName:@"推送纯视频"];
     
-    self.avLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80, 60, 20)];
-    self.avLable.text = @"音视频";
-    self.avLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    // 弹出框向上
+    DropdownListView *avSelDropdownListView = [[DropdownListView alloc] initWithDataSource:@[avSelItem1, avSelItem2, avSelItem3]];
+    avSelDropdownListView.frame = CGRectMake(kHorMargin, 150, 180, 30);
+    avSelDropdownListView.selectedIndex = 0;
+    [avSelDropdownListView setViewBorder:0.5 borderColor:[UIColor grayColor] cornerRadius:2];
+    [self.view addSubview:avSelDropdownListView];
     
-    self.audioBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.audioBtn.tag = 2;
+    [avSelDropdownListView setDropdownListViewSelectedBlock:^(DropdownListView *avSelDropdownListView) {
+        NSString *msgString = [NSString stringWithFormat:
+                               @"av pusher type selected name:%@  id:%@  index:%lu"
+                               , avSelDropdownListView.selectedItem.itemName
+                               , avSelDropdownListView.selectedItem.itemId
+                               , (unsigned long)avSelDropdownListView.selectedIndex];
+        
+        //msgLabel.text = msgString;
+        NSLog(@"%@", msgString);
+        
+        switch (avSelDropdownListView.selectedIndex) {
+            case 0:
+                //推送音视频
+                audio_opt_ = 1;
+                video_opt_ = 1;
+                break;
+            case 1:
+                //推送纯音频
+                audio_opt_ = 1;
+                video_opt_ = 0;
+                break;
+            case 2:
+                //推送纯视频
+                audio_opt_ = 0;
+                video_opt_ = 1;
+                break;
+            default:
+                break;
+        }
+    }];
     
-    self.audioBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80, 20, 20);
-    [self.audioBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.audioBtn addTarget:self action:@selector(pushTypeButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.audioLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80, 60, 20)];
-    self.audioLable.text = @"纯音频";
-    self.audioLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-    
-    self.videoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.videoBtn.tag = 3;
-    
-    self.videoBtn.frame = CGRectMake(screenWidth-kHorMargin-buttonSpace-60, kVerMargin+kBtnHeight+80, 20, 20);
-    [self.videoBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.videoBtn addTarget:self action:@selector(pushTypeButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.videoLable = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-kHorMargin-buttonSpace-40, kVerMargin+kBtnHeight+80, 60, 20)];
-    self.videoLable.text = @"纯视频";
-    self.videoLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
-
     //是否美颜
-    self.beautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.beautyBtn.tag = 1;
-    self.beautyBtn.frame = CGRectMake(kHorMargin+buttonSpace, kVerMargin+kBtnHeight+80+80, 20, 20);
-    [self.beautyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-    [self.beautyBtn addTarget:self action:@selector(beautyButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    DropdownListItem *beautySelItem1 = [[DropdownListItem alloc] initWithItem:@"0" itemName:@"当前不美颜"];
+    DropdownListItem *beautySelItem2 = [[DropdownListItem alloc] initWithItem:@"1" itemName:@"基础美颜"];
     
-    self.beautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+buttonSpace+20, kVerMargin+kBtnHeight+80+80, 60, 20)];
-    self.beautyLable.text = @"美颜";
-    self.beautyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    // 弹出框向上
+    DropdownListView *beautySelDropdownListView = [[DropdownListView alloc] initWithDataSource:@[beautySelItem1, beautySelItem2]];
+    beautySelDropdownListView.frame = CGRectMake(kHorMargin, 200, 180, 30);
+    beautySelDropdownListView.selectedIndex = 0;
+    [beautySelDropdownListView setViewBorder:0.5 borderColor:[UIColor grayColor] cornerRadius:2];
+    [self.view addSubview:beautySelDropdownListView];
     
-    
-    self.noBeautyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.noBeautyBtn.tag = 2;
-    self.noBeautyBtn.frame = CGRectMake(kHorMargin+3*buttonSpace+60, kVerMargin+kBtnHeight+80+80, 20, 20);
-    [self.noBeautyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-    [self.noBeautyBtn addTarget:self action:@selector(beautyButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    self.noBeautyLable = [[UILabel alloc] initWithFrame:CGRectMake(kHorMargin+3*buttonSpace+80, kVerMargin+kBtnHeight+80+80, 80, 20)];
-    self.noBeautyLable.text = @"不美颜";
-    self.noBeautyLable.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
+    [beautySelDropdownListView setDropdownListViewSelectedBlock:^(DropdownListView *beautySelDropdownListView) {
+        NSString *msgString = [NSString stringWithFormat:
+                               @"beauty mode selected name:%@  id:%@  index:%lu"
+                               , beautySelDropdownListView.selectedItem.itemName
+                               , beautySelDropdownListView.selectedItem.itemId
+                               , (unsigned long)beautySelDropdownListView.selectedIndex];
+        
+        NSLog(@"%@", msgString);
+        
+        switch (beautySelDropdownListView.selectedIndex) {
+            case 0:
+                //推送音视频
+                is_beauty_ = false;
+                break;
+            case 1:
+                //基础美颜
+                is_beauty_ = true;
+                break;
+            default:
+                break;
+        }
+    }];
     
     //设置推流地址
-    self.inputUrlText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, kVerMargin+kBtnHeight+80+80+60, buttonWidth, kBtnHeight)];
+    self.inputUrlText = [[UITextField alloc] initWithFrame:CGRectMake(kHorMargin, 250, buttonWidth, kBtnHeight)];
     [self.inputUrlText setBackgroundColor:[UIColor whiteColor]];
     self.inputUrlText.placeholder = @"输入推流的rtmp url,如不输入用默认url";
     self.inputUrlText.textColor = [[UIColor alloc] initWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0];
@@ -228,7 +245,7 @@
     //设置RTMP加密Key和IV加密向量
     self.inputKeyIvView = [UIButton buttonWithType:UIButtonTypeCustom];
     self.inputKeyIvView.tag = 3;
-    self.inputKeyIvView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+280, buttonWidth, kBtnHeight);
+    self.inputKeyIvView.frame = CGRectMake(kHorMargin, 330, buttonWidth, kBtnHeight);
     [self.inputKeyIvView setTitle:@"设置RTMP加密Key和IV" forState:UIControlStateNormal];
     [self.inputKeyIvView setBackgroundImage:[UIImage imageNamed:@"back_color"] forState:UIControlStateNormal];
     self.inputKeyIvView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -237,17 +254,17 @@
     //进入推流页面
     self.interPublisherView = [UIButton buttonWithType:UIButtonTypeCustom];
     self.interPublisherView.tag = 4;
-    self.interPublisherView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+340, buttonWidth, kBtnHeight);
-    [self.interPublisherView setTitle:@"进入推流页面" forState:UIControlStateNormal];
+    self.interPublisherView.frame = CGRectMake(kHorMargin, 410, buttonWidth, kBtnHeight);
+    [self.interPublisherView setTitle:@"进入推流|录像页面" forState:UIControlStateNormal];
     [self.interPublisherView setBackgroundImage:[UIImage imageNamed:@"back_color"] forState:UIControlStateNormal];
     self.interPublisherView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     [self.interPublisherView addTarget:self action:@selector(interPublisherViewBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //进入回放页面
+    //进入本地录像回放页面
     self.interRecorderView = [UIButton buttonWithType:UIButtonTypeCustom];
     self.interRecorderView.tag = 5;
-    self.interRecorderView.frame = CGRectMake(kHorMargin, kVerMargin+kBtnHeight+400, buttonWidth, kBtnHeight);
-    [self.interRecorderView setTitle:@"进入回放页面" forState:UIControlStateNormal];
+    self.interRecorderView.frame = CGRectMake(kHorMargin, 490, buttonWidth, kBtnHeight);
+    [self.interRecorderView setTitle:@"进入录制MP4回放页面" forState:UIControlStateNormal];
     [self.interRecorderView setBackgroundImage:[UIImage imageNamed:@"back_color"] forState:UIControlStateNormal];
     self.interRecorderView.titleLabel.textColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     [self.interRecorderView addTarget:self action:@selector(interRecorderViewBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -255,31 +272,10 @@
     [self.view addSubview:self.nvgBar];
     
     [self.view addSubview:self.inputUrlText];
-    
-    [self.view addSubview:self.highQualityBtn];
-    [self.view addSubview:self.mediumQualityBtn];
-    [self.view addSubview:self.lowQualityBtn];
-    
-    [self.view addSubview:self.avBtn];
-    [self.view addSubview:self.audioBtn];
-    [self.view addSubview:self.videoBtn];
 
-    [self.view addSubview:self.beautyBtn];
-    [self.view addSubview:self.noBeautyBtn];
-    
     [self.view addSubview:self.inputKeyIvView];
     [self.view addSubview:self.interPublisherView];
     [self.view addSubview:self.interRecorderView];
-    [self.view addSubview:self.highQualityLable];
-    [self.view addSubview:self.mediumQualityLable];
-    [self.view addSubview:self.lowQualityLable];
-    
-    [self.view addSubview:self.avLable];
-    [self.view addSubview:self.audioLable];
-    [self.view addSubview:self.videoLable];
-    
-    [self.view addSubview:self.beautyLable];
-    [self.view addSubview:self.noBeautyLable];
 }
 
 - (void)viewDidLoad
@@ -300,92 +296,6 @@
 }
 
 #pragma mark - Buttons methods
-- (void)qualityButtonClicked:(id)sender {
-    
-    UIButton *qualityBtn = (UIButton *)sender;
-
-    switch (qualityBtn.tag) {
-        case 1: {
-            streamQuality = DN_VIDEO_QUALITY_LOW;
-            [self.mediumQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.highQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.lowQualityBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            break;
-        }
-        case 2: {
-            streamQuality = DN_VIDEO_QUALITY_MEDIUM;
-            [self.mediumQualityBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.highQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.lowQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            break;
-        }
-        case 3: {
-            streamQuality = DN_VIDEO_QUALITY_HIGH;
-            [self.mediumQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.highQualityBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.lowQualityBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            break;
-        }
-        default:
-            break;
-    }
-}
-
-- (void)pushTypeButtonClicked:(id)sender {
-    
-    UIButton *pushTypeBtn = (UIButton *)sender;
-    
-    switch (pushTypeBtn.tag) {
-        case 1: {
-            [self.avBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.audioBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.videoBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            audio_opt_ = 1;
-            video_opt_ = 1;
-            break;
-        }
-        case 2: {
-            [self.avBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.audioBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.videoBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            audio_opt_ = 1;
-            video_opt_ = 0;
-            break;
-        }
-        case 3: {
-            [self.avBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.audioBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.videoBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            audio_opt_ = 0;
-            video_opt_ = 1;
-            break;
-        }
-        default:
-            break;
-    }
-}
-
-- (void)beautyButtonClicked:(id)sender {
-    
-    UIButton *beautyTypeBtn = (UIButton *)sender;
-    
-    switch (beautyTypeBtn.tag) {
-        case 1: {
-            [self.beautyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            [self.noBeautyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            is_beauty_ = true;
-            break;
-        }
-        case 2: {
-            [self.beautyBtn setImage:[UIImage imageNamed:@"btn_unselected"] forState:UIControlStateNormal];
-            [self.noBeautyBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateNormal];
-            is_beauty_ = false;
-            break;
-        }
-        default:
-            break;
-    }
-}
 
 - (void)textFieldDone:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -446,7 +356,7 @@
     NSLog(@"publishURL:%@", push_url);
    
     ViewController * coreView =[[ViewController alloc] initParameter:push_url
-                                                       streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isBeauty:is_beauty_];
+                                                       streamQuality:streamQuality audioOpt:audio_opt_ videoOpt:video_opt_ isBeauty:is_beauty_ scale_rate:video_scale_rate_];
     
     [coreView setRTMPKeyIV:encrypt_key_ iv:encrypt_iv_];
     
