@@ -185,7 +185,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **4.iOS平台集成对接DEMO：**
 
-- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/10/24)**](http://player.daniulive.com:8082/demos/Daniulive-SDK-iOS-2019-10-24.zip)
+- [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/12/17)**](http://player.daniulive.com:8082/demos/Daniulive-SDK-iOS-2019-12-17.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
 
