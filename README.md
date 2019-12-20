@@ -180,11 +180,24 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [Windows C# SDK demo工程代码] [Windows C#多路流媒体转发模块SDK Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2019-08-22.zip)
 
 **3.Android平台集成对接DEMO：**
-
+**对应Android Studio DEMO工程说明：**
+- [x] **SmartPlayerV2**: RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能；
+ SmartPublisherV2: RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SD、实时录像SDK多合一demo；
+- [x] **SmartEchoCancellationV2**: 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)；
+- [x] **SmartServiceCameraPublisherV2**: 后台摄像头RTMP直播推送SDK；
+- [x] **SmartServicePublisherV2**: 智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo；
+- [x] **SmartRelayDemoV2**: RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo。
+ **相关集成DEMO下载：**
 - [x] [Android SDK demo工程代码] [**android推送、播放、转发、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/12/12)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-12-12.zip)
 
 **4.iOS平台集成对接DEMO：**
-
+**对应xcode DEMO工程说明：**
+- [x] **SmartiOSPlayerV2**: RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能；
+- [x] **SmartiOSPublisherV2**: RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SD、实时录像SDK多合一demo；
+- [x] **SmartiOSEchoCancellation**: 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)；
+- [x] **SmartiOSScreenPublisherV2**: 智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo；
+- [x] **SmartiOSRelayDemoV2**: RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo。
+ **相关集成DEMO下载：**
 - [x] [iOS SDK demo工程代码] [**iOS推送、播放、转发、一对一互动、录屏SDK(V2)本地下载(更新于2019/12/17)**](http://player.daniulive.com:8082/demos/Daniulive-SDK-iOS-2019-12-17.zip)
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。
