@@ -149,6 +149,14 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1. Windows平台测试EXE：**
 
+- [x] [**SmartPublisherDemo.exe**] RTMP|RTSP推送、轻量级RTSP服务、扩展SEI发送、采集录像演示程序
+
+- [x] [**SmartPlayer.exe**] RTMP|RTSP播放SDK、扩展SEI接收、拉流录像演示程序
+
+- [x] [**SmartStreamRelayDemo.exe**] 多路RTSP|RTMP转RTMP推送演示程序
+
+- [x] [**SmartMixStreamDemo.exe**] RTMP|RTSP拉流然然后和本地摄像头或屏幕合流演示程序
+
 - [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-10-29.zip)
 
 - [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-10-29.zip)
@@ -178,8 +186,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C#) Demo工程本地下载(更新于2019/12/17)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2019-12-17.zip)
 
 - [x] [**Windows平台C# SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo工程本地下载(更新于2019/08/22)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2019-08-22.zip)
-
-**NOTE:** SmartPublisherDemo.exe: RTMP|RTSP推送、内置RTSP服务SDK接口展示；SmartPlayer.exe：RTMP|RTSP播放SDK接口展示；SmartStreamRelayDemo.exe：RTSP|RTMP转RTMP推送接口展示；SmartMixStreamDemo.exe：合流、连麦接口展示。
 
 **3.Android平台集成对接DEMO：**
 
