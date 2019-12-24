@@ -149,13 +149,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **1. Windows平台测试EXE：**
 
-- [x] [**SmartPublisherDemo.exe**] RTMP|RTSP推送、轻量级RTSP服务、扩展SEI发送、采集录像演示程序
+- [x] [**SmartPublisherDemo.exe**] RTMP|RTSP推送、轻量级RTSP服务、扩展SEI发送、采集录像演示程序；
 
-- [x] [**SmartPlayer.exe**] RTMP|RTSP播放SDK、扩展SEI接收、拉流录像演示程序
+- [x] [**SmartPlayer.exe**] RTMP|RTSP播放SDK、扩展SEI接收、拉流录像演示程序；
 
-- [x] [**SmartStreamRelayDemo.exe**] 多路RTSP|RTMP转RTMP推送演示程序
+- [x] [**SmartStreamRelayDemo.exe**] 多路RTSP|RTMP转RTMP推送演示程序；
 
-- [x] [**SmartMixStreamDemo.exe**] RTMP|RTSP拉流然然后和本地摄像头或屏幕合流演示程序
+- [x] [**SmartMixStreamDemo.exe**] RTMP|RTSP拉流然后和本地摄像头或屏幕**合流**演示程序；
 
 - [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-10-29.zip)
 
