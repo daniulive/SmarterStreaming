@@ -584,6 +584,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Android工程：SmartEchoCancellationV2；
 - [x] iOS工程：SmartiOSEchoCancellation。
 
+---
+
 **10. Windows导播SDK**
 
 - [x] [**拉流**]支持拉取RTSP流；
