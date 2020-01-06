@@ -157,9 +157,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartMixStreamDemo.exe**] RTMP|RTSP拉流然后和本地摄像头或屏幕**合流**演示程序；
 
-- [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2019-10-29.zip)
+- [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2020/01/02)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2020-01-02.zip)
 
-- [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2019-10-29.zip)
+- [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于22020/01/02)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2020-01-02.zip)
 
 - [x] [**Windows平台RTMP|RTSP 4路播放演示程序(32位)**] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20191029.zip)
 
@@ -173,13 +173,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2. Windows平台集成对接DEMO：**
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2019-10-29.zip)
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo工程本地下载(更新于2020/01/02)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2020-01-02.zip)
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2019-10-29.zip)
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C++) Demo工程本地下载(更新于2020/01/02)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2020-01-02.zip)
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2019-10-29.zip)
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo工程本地下载(更新于2020/01/02)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2020-01-02.zip)
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2019-10-29.zip)
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2020/01/02)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2020-01-02.zip)
 
 - [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo工程本地下载(更新于2019/10/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2019-10-29.zip)
 
