@@ -43,6 +43,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 模块概览 ## 
 
+<img src=" http://www.daniulive.com/wp-content/uploads/2020/01/daniulive_chart_20200130.png" alt="大牛直播SDK概览图-1" />
+
 <img src="https://gz.bcebos.com/v1/daniulive/daniulive_sdk_20190326.png" alt="大牛直播SDK概览图" />
 
 ## 支持平台架构 ##
