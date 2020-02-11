@@ -239,6 +239,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)(更新于2019/10/28)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-SDK集成说明2.13.pdf)
 
+- [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP推送SDK调用说明(以C++为例)(更新于2020/02/11)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-转发SDK集成说明1.0.pdf)
+
 - [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP官方定制版使用说明(更新于2019/11/07)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.1.pdf)
 
 **大牛直播SDK Demo使用说明**
