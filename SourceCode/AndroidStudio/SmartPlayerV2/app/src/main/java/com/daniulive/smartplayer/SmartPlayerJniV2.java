@@ -72,6 +72,15 @@ public class SmartPlayerJniV2 {
 	 */
 	public native int SmartPlayerSetSurface(long handle, Object surface);
 
+
+	/**
+	 * 设置视频画面的填充模式，如填充整个view、等比例填充view，如不设置，默认填充整个view
+	 * @param handle: return value from SmartPlayerOpen()
+	 * @param render_scale_mode 0: 填充整个view; 1: 等比例填充view, 默认值是0
+	 * @return {0} if successful
+	 */
+	public native int SmartPlayerSetRenderScaleMode(long handle, int render_scale_mode);
+
 	/**
 	 * 设置SurfaceView模式下(NTRenderer.CreateRenderer第二个参数传false的情况)，render类型
 	 *

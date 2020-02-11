@@ -853,6 +853,9 @@ public class SmartPlayer extends Activity {
 					
 					// 如果第二个参数设置为null，则播放纯音频
 					libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView);
+
+					libPlayer.SmartPlayerSetRenderScaleMode(playerHandle, 1);
+
 					// External Render test
 					// libPlayer.SmartPlayerSetExternalRender(playerHandle, new
 					// RGBAExternalRender());

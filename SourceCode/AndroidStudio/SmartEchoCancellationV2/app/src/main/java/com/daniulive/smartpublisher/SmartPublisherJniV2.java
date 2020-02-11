@@ -524,6 +524,55 @@ public class SmartPublisherJniV2 {
 	 */
 	public native int SmartPublisherOnCaptureVideoRGB565Data(long handle,ByteBuffer data, int row_stride, int width, int height);
 
+
+	/*
+	*  专门为android.media.Image的android.graphics.ImageFormat.YUV_420_888格式提供的接口
+	*
+    * @param  width: 必须是8的倍数
+	*
+    * @param  height: 必须是8的倍数
+	*
+	* @param  crop_left: 剪切左上角水平坐标, 一般根据android.media.Image.getCropRect() 填充
+	*
+	* @param  crop_top: 剪切左上角垂直坐标, 一般根据android.media.Image.getCropRect() 填充
+	*
+    * @param  crop_width: 必须是8的倍数, 填0将忽略这个参数, 一般根据android.media.Image.getCropRect() 填充
+	*
+    * @param  crop_height: 必须是8的倍数, 填0将忽略这个参数，一般根据android.media.Image.getCropRect() 填充
+    *
+    * @param y_plane 对应android.media.Image.Plane[0].getBuffer()
+    *
+    * @param y_row_stride 对应android.media.Image.Plane[0].getRowStride()
+	*
+	* @param u_plane 对应android.media.Image.Plane[1].getBuffer()
+	*
+	* @param v_plane 对应android.media.Image.Plane[2].getBuffer()
+	*
+	* @param uv_row_stride 对应android.media.Image.Plane[1].getRowStride()
+	*
+	* @param uv_pixel_stride 对应android.media.Image.Plane[1].getPixelStride()
+	*
+    * @param  rotation_degree: 顺时针旋转, 必须是0, 90, 180, 270
+	*
+    * @param  is_vertical_flip: 是否垂直翻转, 0不翻转, 1翻转
+	*
+    * @param  is_horizontal_flip：是否水平翻转, 0不翻转, 1翻转
+	*
+    * @param  scale_width: 缩放宽，必须是8的倍数, 0不缩放
+	*
+    * @param  scale_height: 缩放高, 必须是8的倍数, 0不缩放
+	*
+	* @param  scale_filter_mode: 缩放质量, 范围必须是[1,3], 传0使用默认速度
+	*
+	* @return {0} if successful
+    */
+	public native int SmartPublisherOnImageYUV420888(long handle, int width, int height,
+													 int crop_left, int crop_top, int crop_width, int crop_height,
+													 ByteBuffer y_plane, int y_row_stride,
+													 ByteBuffer u_plane, ByteBuffer v_plane, int uv_row_stride, int uv_pixel_stride,
+													 int rotation_degree, int is_vertical_flip, int is_horizontal_flip,
+													 int scale_width, int scale_height, int scale_filter_mode);
+
 	
 	/**
 	 * 传递PCM音频数据给SDK, 每10ms音频数据传入一次

@@ -1006,7 +1006,9 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
             	      libPlayer.SmartPlayerSetSurface(playerHandle, playerSurfaceView); 	//if set the second param with null, it means it will playback audio only..
             		  	
             	      // libPlayer.SmartPlayerSetSurface(playerHandle, null); 
-            	      
+
+					  libPlayer.SmartPlayerSetRenderScaleMode(playerHandle, 1);
+
             	      // External Render test
             	      //libPlayer.SmartPlayerSetExternalRender(playerHandle, new RGBAExternalRender());
             	      //libPlayer.SmartPlayerSetExternalRender(playerHandle, new I420ExternalRender());

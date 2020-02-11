@@ -914,6 +914,8 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
                     // 如果第二个参数设置为null，则播放纯音频
                     libPlayer.SmartPlayerSetSurface(playerHandle, sSurfaceView);
 
+                    libPlayer.SmartPlayerSetRenderScaleMode(playerHandle, 1);
+
                     //int render_format = 1;
                     //libPlayer.SmartPlayerSetSurfaceRenderFormat(playerHandle, render_format);
 
@@ -1061,7 +1063,7 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
             return;
 
         if (!isHardwareDecoder || !is_enable_hardware_render_mode) {
-            libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
+            // libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
         }
 
         Log.i(TAG, "Run out of onConfigurationChanged--");
@@ -1072,7 +1074,7 @@ public class SmartPlayer extends AppCompatActivity implements android.view.Surfa
         Log.i(TAG, "Run into activity onResume++");
 
         if (isPlaying && playerHandle != 0 && (!isHardwareDecoder || !is_enable_hardware_render_mode)) {
-            libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
+            // libPlayer.SmartPlayerSetOrientation(playerHandle, currentOrigentation);
         }
 
         super.onResume();

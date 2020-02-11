@@ -12,7 +12,7 @@ Demo文件说明：
 3. android一对一互动：SmartEchoCancellation
 4. android播放器：SmartPlayerSDKDemo
 
-详细集成说明请参见"视沃科技-大牛直播移动端SDK(V2)调用说明2.13.pdf".
+详细集成说明请参见"视沃科技-大牛直播移动端SDK(V2)调用说明2.16.pdf".
 
 QQ群(大牛直播精英群)：294891451
 QQ群(大牛直播技术交流群)：499687479
