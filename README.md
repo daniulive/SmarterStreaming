@@ -22,7 +22,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Flutter下实现低延迟的跨平台RTSP/RTMP播放(相关接口说明和调用实例)](https://www.daniulive.com/index.php/2019/05/30/flutter%E4%B8%8B%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9F%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0rtsp-rtmp%E6%92%AD%E6%94%BE/)**
 
-**[Flutter-Android RTSP/RTMP播放端APK下载(更新于2019/09/06)](http://player.daniulive.com:8082/demos/Flutter-SmartPlayer-2019-09-06.apk)**
+**[Flutter-Android RTSP/RTMP播放端APK下载(更新于2019/12/12)](http://player.daniulive.com:8082/demos/Flutter-SmartPlayer-2019-12-12.apk)**
 
 **[Flutter RTSP/RTMP直播播放端SDK视频演示](http://www.iqiyi.com/w_19s8dv6yht.html)**
 
