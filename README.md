@@ -211,7 +211,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
  
  **3.2 相关集成DEMO下载：**
 
-- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2019/12/12)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2019-12-12.zip)
+- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/02/11)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-02-11.zip)
 
 **4.iOS平台集成对接DEMO：**
 
@@ -480,6 +480,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**只播关键帧**]Windows平台支持实时设置是否只播放关键帧；
 - [x] [**渲染角度**]支持0°，90°，180°和270°四个视频画面渲染角度设置；
 - [x] [**渲染镜像**]支持水平反转、垂直反转模式设置；
+- [x] [**等比例缩放**]Android平台支持图像比例缩放绘制；
 - [x] [**实时下载速度更新**]支持当前下载速度实时回调(支持设置回调时间间隔)；
 - [x] [**ARGB叠加**]Windows平台支持ARGB图像叠加到显示视频（参看C++的DEMO）；
 - [x] [**解码前视频数据回调**]支持H.264/H.265数据回调；
