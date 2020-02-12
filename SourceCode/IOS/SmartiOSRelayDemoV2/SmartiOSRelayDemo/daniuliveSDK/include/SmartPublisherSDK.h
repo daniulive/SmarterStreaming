@@ -6,7 +6,7 @@
 //  website: https://www.daniulive.com
 //
 //  Created by daniulive on 16/3/24.
-//  Copyright © 2014~2019 daniulive. All rights reserved.
+//  Copyright © 2014~2020 daniulive. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -335,7 +335,7 @@ typedef enum DNCameraPosition{
                                   channels:(NSInteger)channels per_channel_sample_number:(NSInteger)per_channel_sample_number;
 
 /**
- * 设置编码前视频宽高比例缩放(用于屏幕采集缩放),数据传输对应SmartPublisherPostVideoSampleBuffer接口
+ * 设置编码前视频宽高比例缩放(用于屏幕或摄像头采集缩放),屏幕数据传输对应SmartPublisherPostVideoSampleBuffer接口
  *
  * @param scaleRate 范围(0.1~1.0]:
  * 如: 1.0代表不缩放，0.5代表宽、高分别缩放一倍，默认 0.5

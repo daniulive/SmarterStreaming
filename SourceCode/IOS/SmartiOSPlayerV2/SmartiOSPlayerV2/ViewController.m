@@ -6,7 +6,7 @@
 //  website: https://www.daniulive.com
 //
 //  Created by daniulive on 2016/01/03.
-//  Copyright © 2014~2019 daniulive. All rights reserved.
+//  Copyright © 2014~2020 daniulive. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -35,7 +35,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     UIView          * _glView;
     Boolean         is_inited_player_;
     NSString        *playback_url_;             //拉流url
-    Boolean         is_half_screen_;
+    Boolean         is_part_screen_;
     Boolean         is_audio_only_;
     Boolean         is_fast_startup_;           //是否快速启动模式
     Boolean         is_low_latency_mode_;       //是否开启极速模式
@@ -47,8 +47,6 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     NSInteger       screen_height_;
     NSInteger       player_view_width_;
     NSInteger       player_view_height_;
-    NSInteger       stream_width_;              //视频宽
-    NSInteger       stream_height_;             //视频高
     
     Boolean         is_switch_url_;             //切换url flag
     Boolean         is_mute_;                   //静音flag
@@ -90,23 +88,17 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     screen_width_  = CGRectGetWidth([UIScreen mainScreen].bounds);
     screen_height_ = CGRectGetHeight([UIScreen mainScreen].bounds);
     
-    player_view_width_ = screen_width_;
-    player_view_height_ = screen_height_;
-    
-    stream_width_ = 480;
-    stream_height_ = 288;
-    
     //拉流url可以自定义
     playback_url_ = @"rtmp://202.69.69.180:443/webcast/bshdlive-pc";
     
     //playback_url_ = @"rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov";   //公网rtsp流，TCP模式的有audio
     
     is_audio_only_ = NO;
-    is_half_screen_ = YES;            //半屏播放, 只是为了效果展示
+    is_part_screen_ = YES;            //竖屏一部分屏幕播放, 只是为了效果展示
     
     is_fast_startup_ = YES;           //是否快速启动模式
     is_low_latency_mode_ = NO;        //是否开启极速模式
-    buffer_time_ = 100;               //buffer时间
+    buffer_time_ = 100;                 //buffer时间
     is_hardware_decoder_ = YES;       //默认硬解码
     is_rtsp_tcp_mode_ = NO;           //仅用于rtsp流 设置TCP传输模式 默认UDP模式
     
@@ -125,9 +117,11 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     encrypt_iv_ = [NSString string];
     
     //用户可自定义显示view区域
-    if ( is_half_screen_ )
+    player_view_width_ = screen_width_;
+    
+    if ( is_part_screen_ )
     {
-        player_view_height_ = screen_width_*stream_height_/stream_width_;
+        player_view_height_ = screen_height_*2/5;
     }
     else
     {
@@ -366,7 +360,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
 {
     UIDeviceOrientation  orient = [UIDevice currentDevice].orientation;
     
-    NSLog(@"[orgientChange] orient:%ld screen_width: %ld screen_height:%ld stream_width:%ld stream_height:%ld" ,(long)orient, (long)screen_width_, (long)screen_height_, (long)stream_width_, (long)stream_height_);
+    NSLog(@"[orgientChange] orient:%ld screen_width: %ld screen_height:%ld" ,(long)orient, (long)screen_width_, (long)screen_height_);
     
     CGRect f = _glView.frame;
     
@@ -376,9 +370,9 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         {
             NSLog(@"[orgientChange] UIDeviceOrientationPortrait");
             f.origin.x = 0;
-            f.origin.y = 100;
+            f.origin.y = 50;
             f.size.width = screen_width_;
-            f.size.height = screen_width_*stream_height_/stream_width_;
+            f.size.height = screen_height_*2/5;
         }
         break;
         case UIDeviceOrientationLandscapeLeft:
@@ -412,10 +406,14 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         }
         break;
         case UIDeviceOrientationFaceUp:
+        {
             NSLog(@"[orgientChange] UIDeviceOrientationFaceUp");
+        }
         break;
         case UIDeviceOrientationFaceDown:
+        {
             NSLog(@"[orgientChange] UIDeviceOrientationFaceDown");
+        }
         break;
             
         default:
@@ -488,7 +486,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         {
             [muteButton setTitle:@"实时静音" forState:UIControlStateNormal];
         }
-        
+
         [_smart_player_sdk SmartPlayerSetMute:is_mute_];
     }
 }
@@ -683,7 +681,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
 }
 
-- (void)SaveImageBtn:(id)sender {
+- (void)SaveImageBtn:(UIButton *)button {
     if ( _smart_player_sdk != nil )
     {
         //设置快照目录
@@ -766,7 +764,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
     
     if (playback_url_.length == 0) {
-        NSLog(@"_streamUrl with nil..");
+        NSLog(@"playback url is nil..");
         return false;
     }
     
@@ -829,7 +827,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     //录制MP4文件 是否录制音频
     NSInteger is_record_audio = 1;
     [_smart_player_sdk SmartPlayerSetRecorderAudio:is_record_audio];
-
+    
     NSInteger key_length = [encrypt_key_ length];
     
     if(key_length > 0)
@@ -898,6 +896,10 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
         return false;
     }
 
+    //设置视频画面的填充模式，如填充整个view、等比例填充view
+    NSInteger render_scale_mode = 1;
+    [_smart_player_sdk SmartPlayerSetRenderScaleMode:render_scale_mode];
+    
     //设置视频view旋转角度
     [_smart_player_sdk SmartPlayerSetRotation:rotate_degrees_];
     
@@ -910,7 +912,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     else
     {
         //如果只需外部回调YUV数据，自己绘制，无需创建view和设置view到SDK
-        _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:100 width:player_view_width_ height:player_view_height_]);
+        _glView = (__bridge UIView *)([SmartPlayerSDK SmartPlayerCreatePlayView:0 y:50 width:player_view_width_ height:player_view_height_]);
         
         if (_glView == nil ) {
             NSLog(@"CreatePlayView failed..");
@@ -1038,11 +1040,8 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
     else if (nID == EVENT_DANIULIVE_ERC_PLAYER_RESOLUTION_INFO)
     {
-        stream_width_ = (NSInteger)param1;
-        stream_height_ = (NSInteger)param2;
-        
-        NSString *str_w = [NSString stringWithFormat:@"%ld", (long)stream_width_];
-        NSString *str_h = [NSString stringWithFormat:@"%ld", (long)stream_height_];
+        NSString *str_w = [NSString stringWithFormat:@"%ld", (long)param1];
+        NSString *str_h = [NSString stringWithFormat:@"%ld", (long)param2];
         
         lable = @"[event]视频解码分辨率信息: ";
         player_event = [lable stringByAppendingFormat:@"%@*%@", str_w, str_h];
@@ -1087,7 +1086,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
     else if (nID == EVENT_DANIULIVE_ERC_PLAYER_START_BUFFERING)
     {
-        NSLog(@"[event]开始buffer..");
+        //NSLog(@"[event]开始buffer..");
     }
     else if (nID == EVENT_DANIULIVE_ERC_PLAYER_BUFFERING)
     {
@@ -1095,7 +1094,7 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     }
     else if (nID == EVENT_DANIULIVE_ERC_PLAYER_STOP_BUFFERING)
     {
-        NSLog(@"[event]停止buffer..");
+        //NSLog(@"[event]停止buffer..");
     }
     else if (nID == EVENT_DANIULIVE_ERC_PLAYER_DOWNLOAD_SPEED)
     {
@@ -1134,7 +1133,10 @@ typedef enum NT_SDK_E_H264_SEI_USER_DATA_TYPE{
     NSString* player_event_tag = @"当前状态:";
     NSString* event = [player_event_tag stringByAppendingFormat:@"%@", player_event];
     
-    NSLog(@"%@", event);
+    if ( player_event.length != 0)
+    {
+        NSLog(@"%@", event);
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             dispatch_async(dispatch_get_main_queue(), ^{

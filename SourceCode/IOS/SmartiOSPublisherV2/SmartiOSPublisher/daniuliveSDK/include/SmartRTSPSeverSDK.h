@@ -6,7 +6,7 @@
 //  website: https://www.daniulive.com
 //
 //  Created by daniulive on 18/6/20.
-//  Copyright © 2014~2019 daniulive. All rights reserved.
+//  Copyright © 2014~2020 daniulive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

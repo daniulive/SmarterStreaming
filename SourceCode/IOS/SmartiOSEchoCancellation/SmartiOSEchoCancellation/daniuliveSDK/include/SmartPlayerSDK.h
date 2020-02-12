@@ -6,7 +6,7 @@
 //  website: https://www.daniulive.com
 //
 //  Created by daniulive on 16/01/03.
-//  Copyright © 2014~2019 daniulive. All rights reserved.
+//  Copyright © 2014~2020 daniulive. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -49,6 +49,15 @@
  * @return {0} if successful
  */
 - (NSInteger)SmartPlayerSetEchoCancellationMode:(NSInteger)mode;
+
+/**
+ * 设置视频画面的填充模式，如填充整个view、等比例填充view，如不设置，默认填充整个view
+ *
+ * @param renderScaleMode 0: 填充整个view; 1: 等比例填充view，默认值是0
+ *
+ * @return {0} if successful
+ */
+- (NSInteger)SmartPlayerSetRenderScaleMode:(NSInteger)renderScaleMode;
 
 /**
  * 创建播放view
