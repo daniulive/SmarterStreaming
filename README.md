@@ -235,7 +235,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 ## 大牛直播SDK集成和调用说明 ##
 
-- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明(更新于2019/10/27)**](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.16.pdf)
+右键“链接另存为(K)...”下载文档即可。
+
+- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明(更新于2020/02/12)**](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.19.pdf)
 
 - [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)(更新于2019/10/28)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-SDK集成说明2.13.pdf)
 
