@@ -165,6 +165,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartMixStreamDemo.exe**] RTMP|RTSP拉流然后和本地摄像头或屏幕**合流**演示程序；	
 
+- [x] [**SmartEchoCancellation.exe**] 基于标准RTMP服务的一对一互动演示程序（demo源码以C#为例）；	
+
 - [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2020-02-18.zip)	
 
 - [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2020-02-18.zip)	
