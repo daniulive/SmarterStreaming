@@ -195,6 +195,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows平台C# SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2020-02-18.zip)	
 
+- [x] [**Windows平台一对一互动SDK demo工程代码(以C#为例)**](http://player.daniulive.com:8082/demos/WIN-EchoCancellation-CSharp-Demo-2020-03-17.zip): 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)；
+
 **3.Android平台集成对接DEMO：**	
 
 **3.1 对应Android Studio DEMO工程说明：**	
@@ -594,7 +596,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 适用于应急指挥、教育培训等领域。	
 
 对应Demo：	
-- [x] Windows C++工程：集成可参考WIN-PublisherSDK-CPP-Demo和WIN-PlayerSDK-CPP-Demo，或相应C# demo；	
+- [x] 以C#为例，对应SmartEchoCancellation.exe(WIN-EchoCancellation-CSharp-Demo)；	
 - [x] Android工程：SmartEchoCancellationV2；	
 - [x] iOS工程：SmartiOSEchoCancellation。	
 
