@@ -96,24 +96,14 @@
 	        android:id="@+id/push_sw_video_encoder_profile_selector"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content" />
-            
-            <Spinner
-	        android:id="@+id/push_recoder_selctor"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content" />
+
              </LinearLayout>
             
              <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >"
-                          
-            <Button
-            android:id="@+id/btn_push_recoder_manage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 录像管理 " />
-            
+
             <Button
             android:id="@+id/btn_push_mute"
             android:layout_width="wrap_content"
@@ -138,6 +128,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >"
+
+                <Button
+                    android:id="@+id/btn_audio_mix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前不混音" />
 
             <Button
             android:id="@+id/btn_push_noise_suppression"

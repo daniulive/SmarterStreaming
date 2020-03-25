@@ -259,17 +259,27 @@ public class SmartPublisherJniV2 {
      */
     public native int SmartPublisherSetAGC(long handle, int isAGC);
     
-    
-    /**
-     * Set Audio Echo Cancellation(设置音频回音消除)
-     * 
-     * @param isCancel: if with 1:Echo Cancellation, if with 0: does not cancel
+
+	/**
+	 * Set Audio Echo Cancellation(设置音频回音消除)
 	 *
-     * @param delay: echo delay(ms), if with 0, SDK will automatically estimate the delay.
-     * 
-     * @return {0} if successful
-     */
-    public native int SmartPublisherSetEchoCancellation(long handle, int isCancel, int delay);
+	 * @param isCancel: if with 1:Echo Cancellation, if with 0: does not cancel
+	 *
+	 * @param delay: echo delay(ms), if with 0, SDK will automatically estimate the delay.
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetEchoCancellation(long handle, int isCancel, int delay);
+
+
+	/**
+	 * 设置混音,目前支持两路音频混音
+	 *
+	 * @param is_mix: 1混音, 0不混音, 默认不混音
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetAudioMix(long handle, int is_mix);
     
     
     /**
@@ -293,6 +303,7 @@ public class SmartPublisherJniV2 {
     public native int SmartPublisherSetMirror(long handle, int isMirror);
     
     /**
+	 * 这个接口已废弃, 录像时无需再调用
      * Set if recorder the stream to local file(设置是否启动录像)
      * 
      * @param isRecorder: 0: do not recorder; 1: recorder
@@ -577,13 +588,39 @@ public class SmartPublisherJniV2 {
 	/**
 	 * 传递PCM音频数据给SDK, 每10ms音频数据传入一次
 	 * 
-	 *  @param pcmdata: pcm数据
+	 *  @param pcmdata: pcm数据, 需要使用ByteBuffer.allocateDirect分配, ByteBuffer.isDirect()是true的才行.
 	 *  @param size: pcm数据大小
-	 *  @param sampleRate: 采样率，当前只支持44100
-	 *  @param channel: 通道, 当前通道只支持1
-	 *  @param per_channel_sample_number: 这个请传入的是 sampleRate/100
+	 *  @param sample_rate: 采样率，当前只支持{44100, 8000, 16000, 24000, 32000, 48000}, 推荐44100
+	 *  @param channel: 通道, 当前通道支持单通道(1)和双通道(2)，推荐单通道(1)
+	 *  @param per_channel_sample_number: 这个请传入的是 sample_rate/100
 	 */
-	public native int SmartPublisherOnPCMData(long handle, ByteBuffer pcmdata, int size, int sampleRate, int channel, int per_channel_sample_number);		
+	public native int SmartPublisherOnPCMData(long handle, ByteBuffer pcmdata, int size, int sample_rate, int channel, int per_channel_sample_number);
+
+
+	/**
+	 * 传递PCM音频数据给SDK, 每10ms音频数据传入一次
+	 *
+	 *  @param pcmdata: pcm数据, 需要使用ByteBuffer.allocateDirect分配, ByteBuffer.isDirect()是true的才行.
+	 *  @param offset: pcmdata的偏移
+	 *  @param size: pcm数据大小
+	 *  @param sample_rate: 采样率，当前只支持{44100, 8000, 16000, 24000, 32000, 48000}, 推荐44100
+	 *  @param channel: 通道, 当前通道支持单通道(1)和双通道(2)，推荐单通道(1)
+	 *  @param per_channel_sample_number: 这个请传入的是 sample_rate/100
+	 */
+	public native int SmartPublisherOnPCMDataV2(long handle, ByteBuffer pcmdata, int offset, int size, int sample_rate, int channel, int per_channel_sample_number);
+
+
+	/**
+	 * 传递PCM音频数据给SDK, 每10ms音频数据传入一次
+	 *
+	 *  @param pcm_short_array: pcm数据, short是native endian order
+	 *  @param offset: 数组偏移
+	 *  @param len: 数组项数
+	 *  @param sample_rate: 采样率，当前只支持{44100, 8000, 16000, 24000, 32000, 48000}, 推荐44100
+	 *  @param channel: 通道, 当前通道支持单通道(1)和双通道(2)，推荐单通道(1)
+	 *  @param per_channel_sample_number: 这个请传入的是 sample_rate/100
+	 */
+	public native int SmartPublisherOnPCMShortArray(long handle, short[] pcm_short_array, int offset, int len, int sample_rate, int channel, int per_channel_sample_number);
 
 	/**
 	 * Set far end pcm data
@@ -596,6 +633,34 @@ public class SmartPublisherJniV2 {
 	 * @return {0} if successful
 	 */
 	public native int SmartPublisherOnFarEndPCMData(long handle,  ByteBuffer pcmdata, int sampleRate, int channel, int per_channel_sample_number, int is_low_latency);
+
+
+	/**
+	 * 传递PCM混音音频数据给SDK, 每10ms音频数据传入一次
+	 *
+	 *  @param stream_index: 当前只能传1, 传其他返回错误
+	 *  @param pcm_data: pcm数据, 需要使用ByteBuffer.allocateDirect分配, ByteBuffer.isDirect()是true的才行.
+	 *  @param offset: pcmdata的偏移
+	 *  @param size: pcm数据大小
+	 *  @param sample_rate: 采样率，当前只支持{44100, 8000, 16000, 24000, 32000, 48000}
+	 *  @param channels: 通道, 当前通道支持单通道(1)和双通道(2)
+	 *  @param per_channel_sample_number: 这个请传入的是 sample_rate/100
+	 */
+	public native int SmartPublisherOnMixPCMData(long handle, int stream_index, ByteBuffer pcm_data, int offset, int size, int sample_rate, int channels, int per_channel_sample_number);
+
+
+	/**
+	 * 传递PCM混音音频数据给SDK, 每10ms音频数据传入一次
+	 *
+	 *  @param stream_index: 当前只能传1, 传其他返回错误
+	 *  @param pcm_short_array: pcm数据, short是native endian order
+	 *  @param offset: 数组偏移
+	 *  @param len: 数组项数
+	 *  @param sample_rate: 采样率，当前只支持{44100, 8000, 16000, 24000, 32000, 48000}
+	 *  @param channels: 通道, 当前通道支持单通道(1)和双通道(2)
+	 *  @param per_channel_sample_number: 这个请传入的是 sample_rate/100
+	 */
+	public native int SmartPublisherOnMixPCMShortArray(long handle, int stream_index, short[] pcm_short_array, int offset, int len, int sample_rate, int channels, int per_channel_sample_number);
 
 	/**
 	 * 设置编码后视频数据(H.264)

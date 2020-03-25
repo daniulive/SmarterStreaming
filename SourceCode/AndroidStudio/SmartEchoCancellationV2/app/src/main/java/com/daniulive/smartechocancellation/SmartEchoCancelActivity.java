@@ -72,7 +72,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		private int            currentOrigentation = PORTRAIT;
 		private int            currentPushOrigentation = PORTRAIT;
 		
-		private String         playbackUrl = null;
+		private String          playbackUrl = null;
 		private boolean        isPlaybackViewStarted = false;
 		private boolean        isPlaybackMute = false;
 		private boolean        isPlaybackHardwareDecoder = false;
@@ -139,9 +139,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		
 		private int  push_sw_video_encoder_profile = 1;	//default with baseline profile
 
-		private Spinner pushRecorderSelector;
-		
-		private Button  btnPushRecoderMgr;
+		private Button  btn_audio_mix_;
 		private Button  btnPushNoiseSuppression;
 		private Button  btnPushAGC;
 		private Button  btnPushSpeex;
@@ -189,14 +187,12 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 
 		private int pushCurCameraIndex = -1;
 		private int pushVideoWidth     = 640;
-		private int pushVideoHeight = 480;
+		private int pushVideoHeight    = 480;
 		private int pushFrameCount     = 0;
 		
 		private int echoCancelDelay    = 0; //100ms
-		
-		private String pushRecDir = "/sdcard/daniulive/rec";	//for recorder path
-		
-		private boolean is_push_need_local_recorder = false;		// do not enable recorder in default
+
+		private boolean is_audio_mix_ = false;		// do not enable recorder in default
 		private boolean is_push_noise_suppression = true; 
 		private boolean is_push_agc = false;
 		private boolean is_push_speex = false;
@@ -421,45 +417,9 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 					
 				}
 			});
-	        
-	        
-	        //Recorder related settings
-	        pushRecorderSelector = (Spinner)findViewById(R.id.push_recoder_selctor);
-	        
-	        final String []recoderSel = new String[]{"本地不录像", "本地录像"};
-	        ArrayAdapter<String> adapterRecoder = new ArrayAdapter<String>(this,
-	                android.R.layout.simple_spinner_item, recoderSel);
-	        
-	        adapterRecoder.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	        pushRecorderSelector.setAdapter(adapterRecoder);
-	        
-	        pushRecorderSelector.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-				@Override
-				public void onItemSelected(AdapterView<?> parent, View view,
-						int position, long id) {
-							
-					Log.i(PUSH_TAG, "Currently choosing: " + recoderSel[position]);
-					
-					if ( 1 == position )
-					{
-						is_push_need_local_recorder = true;
-					}
-					else
-					{
-						is_push_need_local_recorder = false;
-					}
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> parent) {
-					
-				}
-			});
-	        
-	        btnPushRecoderMgr = (Button)findViewById(R.id.btn_push_recoder_manage);
-	        btnPushRecoderMgr.setOnClickListener(new ButtonPushRecorderMangerListener()); 
-	        //end
+		    btn_audio_mix_ = (Button)findViewById(R.id.btn_audio_mix);
+		    btn_audio_mix_.setOnClickListener(new ButtonAudioMixListener());
 	        
 	        btnPushNoiseSuppression = (Button)findViewById(R.id.btn_push_noise_suppression);
 	        btnPushNoiseSuppression.setOnClickListener(new ButtonPushNoiseSuppressionListener()); 
@@ -1135,12 +1095,6 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			}
 		}
 
-		if (isPlaybackViewStarted)
-		{
-			libPlayer.SmartPlayerSetOrientation(playerHandle,
-					currentOrigentation);
-		}
-
 		Log.i(TAG, "Run out of onConfigurationChanged--");
 
 	}
@@ -1216,8 +1170,6 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 	{
 		if ( audioRecord_ == null )
 		{
-			//audioRecord_ = new NTAudioRecord(this, 1);
-
 			audioRecord_ = new NTAudioRecordV2(this);
 		}
 
@@ -1232,83 +1184,22 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			audioRecord_.Start();
 
 			Log.i(TAG, "CheckInitAudioRecorder call audioRecord_.start()---...");
-
-
-			//Log.i(TAG, "onCreate, call executeAudioRecordMethod..");
-			// auido_ret: 0 ok, other failed
-			//int auido_ret= audioRecord_.executeAudioRecordMethod();
-			//Log.i(TAG, "onCreate, call executeAudioRecordMethod.. auido_ret=" + auido_ret);
 		}
 	}
-    
-    //Configure recorder related function.
-    void ConfigPushRecorderFuntion()
-    {
-    	if ( libPublisher != null && publisherHandle != 0  )
-    	{
-    		if ( is_push_need_local_recorder)
-    		{
-    			if ( pushRecDir != null && !pushRecDir.isEmpty() )
-        		{
-        			int ret = libPublisher.SmartPublisherCreateFileDirectory(pushRecDir);
-            		if ( 0 == ret )
-            		{
-            			if ( 0 != libPublisher.SmartPublisherSetRecorderDirectory(publisherHandle, pushRecDir) )
-            			{
-            				Log.e(PUSH_TAG, "Set recoder dir failed , path:" + pushRecDir);
-            				return;
-            			}
-            			
-            			if ( 0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 1) )
-            			{
-            				Log.e(PUSH_TAG, "SmartPublisherSetRecoder failed.");
-            				return;
-            			}
-            			
-            			if ( 0 != libPublisher.SmartPublisherSetRecorderFileMaxSize(publisherHandle, 200) )
-            			{
-            				Log.e(PUSH_TAG, "SmartPublisherSetRecoderFileMaxSize failed.");
-            				return;
-            			}
-            		
-            		}
-            		else
-            		{
-            			Log.e(PUSH_TAG, "Create recoder dir failed, path:" + pushRecDir);
-            		}
-        		}
-    		}
-    		else
-    		{
-    			if ( 0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0) )
-    			{
-    				Log.e(PUSH_TAG, "SmartPublisherSetRecoder failed.");
-    				return;
-    			}
-    		}
-    	}
-    }
-    
-    class ButtonPushRecorderMangerListener implements OnClickListener
-    {
-    	public  void onClick(View v)
-    	{
-    		/*
-    		if (mCamera != null )
-    		{
-    			mCamera.stopPreview();
-    			mCamera.release();
-    			mCamera = null;
-    		}
-    		
-    	      Intent intent = new Intent();
-              intent.setClass(CameraPublishActivity.this, RecorderManager.class);
-              intent.putExtra("RecoderDir", recDir);
-              startActivity(intent);
-              */
-    	}
-    }
-    
+
+	class ButtonAudioMixListener implements OnClickListener
+	{
+		public void onClick(View v)
+		{
+			is_audio_mix_ = !is_audio_mix_;
+
+			if ( is_audio_mix_ )
+				btn_audio_mix_.setText("当前混音");
+			else
+				btn_audio_mix_.setText("当前不混音");
+		}
+	}
+
     class ButtonPushNoiseSuppressionListener implements OnClickListener
     {
     	public void onClick(View v)
@@ -1321,8 +1212,7 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     			btnPushNoiseSuppression.setText("启用噪音抑制");
     	}
     }
-    
-    
+
     class ButtonPushAGCListener  implements OnClickListener
     {
     	public void onClick(View v)
@@ -1570,9 +1460,9 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
         	{
         		stopPubliser();
         		btnPushStartStop.setText(" 开始推流 ");
-        		btnPushRecoderMgr.setEnabled(true);
 				videoEncodeTypeSelector.setEnabled(true);
-        		
+
+				btn_audio_mix_.setEnabled(true);
         		btnPushNoiseSuppression.setEnabled(true);
         		btnPushAGC.setEnabled(true);
         		btnPushSpeex.setEnabled(true);
@@ -1624,8 +1514,6 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 				{
 					return;
 				}
-
-				ConfigPushRecorderFuntion();
 
 				if(videoEncodeType == 1)
 				{
@@ -1720,6 +1608,8 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			    libPublisher.SmartPublisherSetAGC(publisherHandle, is_push_agc?1:0);
 			    
 			    libPublisher.SmartPublisherSetEchoCancellation(publisherHandle, 1, echoCancelDelay);
+
+				libPublisher.SmartPublisherSetAudioMix(publisherHandle, is_audio_mix_?1:0);
 			    
 			    //libPublisher.SmartPublisherSetClippingMode(0);
 			    
@@ -1734,8 +1624,8 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			    libPublisher.SmartPublisherSetSWVideoEncoderSpeed(publisherHandle, sw_video_encoder_speed);
 			    			        
 			    //libPublisher.SmartPublisherSetSWVideoBitRate(600, 1200);
-			    
-			    
+
+
 			    // IF not set url or url is empty, it will not publish stream
 			   // if ( libPublisher.SmartPublisherSetURL("") != 0 )
 			    if ( libPublisher.SmartPublisherSetURL(publisherHandle, publishURL) != 0 )
@@ -1752,9 +1642,9 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
             	}
             	else
             	{
-            		btnPushRecoderMgr.setEnabled(false);
 					videoEncodeTypeSelector.setEnabled(false);
-            		
+
+					btn_audio_mix_.setEnabled(false);
             		btnPushNoiseSuppression.setEnabled(false);
             		btnPushAGC.setEnabled(false);
             		btnPushSpeex.setEnabled(false);
@@ -1801,8 +1691,8 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     	 if ( libPublisher != null && publisherHandle != 0 )
 		 {
 			libPublisher.SmartPublisherStopPublisher(publisherHandle);
-			 libPublisher.SmartPublisherClose(publisherHandle);
-			 publisherHandle = 0;
+			libPublisher.SmartPublisherClose(publisherHandle);
+			publisherHandle = 0;
 		 }
     	
     	 isPushStart = false;
@@ -2263,10 +2153,9 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 
     	public void onGetPcmFrame(int ret, int sampleRate, int channel, int sampleSize, int is_low_latency)
     	{
-    		/*
-    		Log.i("onGetPcmFrame", "ret: " + ret + ", sampleRate: " + sampleRate + ", channel: " + channel + ", sampleSize: " + sampleSize +
-    				",is_low_latency:" + is_low_latency);
-    		*/
+    		/*Log.i("onGetPcmFrame", "ret: " + ret + ", sampleRate: " + sampleRate + ", channel: " + channel + ", sampleSize: " + sampleSize +
+    				",is_low_latency:" + is_low_latency + " buffer_size：" + buffer_size);*/
+
     		
     		if ( pcm_buffer_ == null)
     			return;
@@ -2276,6 +2165,24 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
     		if ( ret == 0 && isPushStart )
     		{
     			libPublisher.SmartPublisherOnFarEndPCMData(publisherHandle, pcm_buffer_, sampleRate, channel, sampleSize, is_low_latency);
+
+    			if (is_audio_mix_)
+    			{
+    				libPublisher.SmartPublisherOnMixPCMData(publisherHandle, 1, pcm_buffer_, 0, buffer_size, sampleRate, channel, sampleSize);
+    			}
+
+
+					/*
+					java.nio.ByteOrder old_order = pcm_buffer_.order();
+					pcm_buffer_.order(java.nio.ByteOrder.nativeOrder());
+					java.nio.ShortBuffer short_buffer = pcm_buffer_.asShortBuffer();
+					pcm_buffer_.order(old_order);
+
+					short[] short_array =  new short[short_buffer.remaining()];
+					short_buffer.get(short_array);
+
+					libPublisher.SmartPublisherOnMixPCMShortArray(publisherHandle, 1, short_array, 0, short_array.length, sampleRate, channel, sampleSize);
+					*/
     		}
     		
 

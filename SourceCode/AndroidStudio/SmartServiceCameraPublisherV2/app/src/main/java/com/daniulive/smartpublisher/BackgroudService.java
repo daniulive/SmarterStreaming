@@ -184,10 +184,10 @@ public class BackgroudService extends Service implements
         //录像相关++
         is_need_local_recorder = intent.getExtras().getBoolean("RECORDER");
 
-        ConfigRecorderFuntion(is_need_local_recorder);
-
         if(is_need_local_recorder)
         {
+            ConfigRecorderParam();
+
             int startRet = libPublisher.SmartPublisherStartRecorder(publisherHandle);
             if( startRet != 0 )
             {
@@ -467,19 +467,13 @@ public class BackgroudService extends Service implements
     }
 
     // Configure recorder related function.
-    void ConfigRecorderFuntion(boolean isNeedLocalRecorder) {
+    void ConfigRecorderParam() {
         if (libPublisher != null) {
-            if (isNeedLocalRecorder) {
                 if (recDir != null && !recDir.isEmpty()) {
                     int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
                     if (0 == ret) {
                         if (0 != libPublisher.SmartPublisherSetRecorderDirectory(publisherHandle, recDir)) {
                             Log.e(TAG, "Set recoder dir failed , path:" + recDir);
-                            return;
-                        }
-
-                        if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 1)) {
-                            Log.e(TAG, "SmartPublisherSetRecoder failed.");
                             return;
                         }
 
@@ -492,12 +486,6 @@ public class BackgroudService extends Service implements
                         Log.e(TAG, "Create recoder dir failed, path:" + recDir);
                     }
                 }
-            } else {
-                if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0)) {
-                    Log.e(TAG, "SmartPublisherSetRecoder failed.");
-                    return;
-                }
-            }
         }
     }
 

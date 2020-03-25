@@ -594,14 +594,29 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
     class NTAudioRecordV2CallbackImpl implements NTAudioRecordV2Callback {
         @Override
         public void onNTAudioRecordV2Frame(ByteBuffer data, int size, int sampleRate, int channel, int per_channel_sample_number) {
-    		 /*
-    		 Log.i(TAG, "onNTAudioRecordV2Frame size=" + size + " sampleRate=" + sampleRate + " channel=" + channel
+
+    		 /*Log.i(TAG, "onNTAudioRecordV2Frame size=" + size + " sampleRate=" + sampleRate + " channel=" + channel
     				 + " per_channel_sample_number=" + per_channel_sample_number);
-    		 
     		 */
 
+
             if (publisherHandle != 0) {
-                libPublisher.SmartPublisherOnPCMData(publisherHandle, data, size, sampleRate, channel, per_channel_sample_number);
+               libPublisher.SmartPublisherOnPCMData(publisherHandle, data, size, sampleRate, channel, per_channel_sample_number);
+
+               //libPublisher.SmartPublisherOnPCMDataV2(publisherHandle, data, 0, size, sampleRate, channel, per_channel_sample_number);
+
+               /* data.rewind();
+               java.nio.ByteOrder old_order = data.order();
+               data.order(java.nio.ByteOrder.nativeOrder());
+               java.nio.ShortBuffer short_buffer = data.asShortBuffer();
+               data.order(old_order);
+
+               short[] short_array =  new short[short_buffer.remaining()];
+               short_buffer.get(short_array);
+
+               libPublisher.SmartPublisherOnPCMShortArray(publisherHandle, short_array, 0, short_array.length, sampleRate, channel, per_channel_sample_number);
+               */
+
             }
         }
     }
@@ -624,6 +639,8 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
 
             audioRecord_.AddCallback(audioRecordCallback_);
 
+            //audioRecord_.Start(44100,  1);
+
             audioRecord_.Start();
 
             Log.i(TAG, "CheckInitAudioRecorder call audioRecord_.start()---...");
@@ -636,20 +653,14 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
         }
     }
 
-    //Configure recorder related function.
-    void ConfigRecorderFuntion(boolean isNeedLocalRecorder) {
+    void ConfigRecorderParam() {
         if (libPublisher != null && publisherHandle != 0) {
-            if (isNeedLocalRecorder) {
                 if (recDir != null && !recDir.isEmpty()) {
+
                     int ret = libPublisher.SmartPublisherCreateFileDirectory(recDir);
                     if (0 == ret) {
                         if (0 != libPublisher.SmartPublisherSetRecorderDirectory(publisherHandle, recDir)) {
                             Log.e(TAG, "Set record dir failed , path:" + recDir);
-                            return;
-                        }
-
-                        if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 1)) {
-                            Log.e(TAG, "SmartPublisherSetRecorder failed.");
                             return;
                         }
 
@@ -666,11 +677,6 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                         Log.e(TAG, "Create record dir failed, path:" + recDir);
                     }
                 }
-            } else {
-                if (0 != libPublisher.SmartPublisherSetRecorder(publisherHandle, 0)) {
-                    Log.e(TAG, "SmartPublisherSetRecorder failed.");
-                }
-            }
         }
     }
 
@@ -1288,7 +1294,7 @@ public class CameraPublishActivity extends Activity implements Callback, Preview
                 InitAndSetConfig();
             }
 
-            ConfigRecorderFuntion(true);
+            ConfigRecorderParam();
 
             int startRet = libPublisher.SmartPublisherStartRecorder(publisherHandle);
             if (startRet != 0) {
