@@ -217,7 +217,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
  **3.2 相关集成DEMO下载：**	
 
-- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/02/11)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-02-11.zip)	
+- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/03/25)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-03-25.zip)	
 
 **4.iOS平台集成对接DEMO：**	
 
