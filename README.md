@@ -45,7 +45,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **RTSP/RTMP推拉流SDK概览图**
 
-<img src="https://www.daniulive.com/wp-content/uploads/2020/01/daniulive_chart_20200130.png" alt="RTSP/RTMP推拉流SDK概览图" />
+<img src="https://img-blog.csdnimg.cn/2020020612174317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Jlbmh1aTExMTI=,size_16,color_FFFFFF,t_70" alt="RTSP/RTMP推拉流SDK概览图" />
 
 **多路RTSP/RTMP转RTMP推送SDK概览图**
 
