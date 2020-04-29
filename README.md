@@ -169,9 +169,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartEchoCancellation.exe**] 基于标准RTMP服务的一对一互动演示程序（demo源码以C#为例）；	
 
-- [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2020-02-18.zip)	
+- [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2020-04-29.zip)	
 
-- [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2020-02-18.zip)	
+- [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2020-04-29.zip)	
 
 - [x] [**Windows平台RTMP|RTSP 4路播放演示程序(32位)**] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2020/02/25)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20200225.zip)	
 
@@ -185,13 +185,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **2. Windows平台集成对接DEMO：**	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C++) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2020-04-29.zip)	
 
 - [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2020-02-18.zip)	
 
@@ -364,7 +364,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**音视频加密**]支持RTMP **AAC/Speex/G711加密**；	
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；	
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；	
-- [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；	
+- [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
+- [x] [**音量调节**]Windows平台采集端支持实时音量调节(混音模式下支持单独控制麦克风、扬声器音量)；
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；	
 - [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；	
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
@@ -420,7 +421,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**摄像头采集**]除常规YUV格式外，Windows平台还支持**MJPEG**格式的摄像头采集；	
 - [x] [**RTSP推流**]超低延时的RTSP协议直播推流SDK；	
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；	
-- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码；	
+- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码；
+- [x] [**音量调节**]Windows平台采集端支持实时音量调节(混音模式下支持单独控制麦克风、扬声器音量)；
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；	
 - [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；	
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
