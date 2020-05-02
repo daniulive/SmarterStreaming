@@ -36,7 +36,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2020/01/09)](http://player.daniulive.com:8082/demos/Daniulive-Win-Unity-RTMP-RTSP-Player-2020-01-09.zip)**
+**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2020/01/09)](http://player.daniulive.com:8082/demos/Daniulive-Win-Unity-RTMP-RTSP-Player-2020-04-29.zip)**
 
 **[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2020/02/11)](http://player.daniulive.com:8082/demos/Unity3d-SmartPlayer-2020-02-11.apk)**
 
@@ -177,7 +177,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows平台RTMP|RTSP 4路播放演示程序(64位)**] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20200429.zip)	
 
-- [x] [**Windows平台IE浏览器OCX控件RTMP|RTSP播放测试程序**] [Windows平台RTMP|RTSP播放SDK OCX控件(更新于2020/01/09)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2020-01-09.zip) 	
+- [x] [**Windows平台IE浏览器OCX控件RTMP|RTSP播放测试程序**] [Windows平台RTMP|RTSP播放SDK OCX控件(更新于2020/04/29)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2020-04-29.zip) 	
    [右键另存为下载OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)	
 
 - [x] [**Windows平台多路RTSP|RTMP转RTMP推送官方定制版**] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2020-04-29)](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20200429.zip) 	
@@ -193,13 +193,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C#) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C#) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo工程本地下载(更新于2020/02/18)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2020-02-18.zip)	
+- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台一对一互动SDK demo工程代码(以C#为例)**] [基于标准RTMP服务的一对一互动demo，可扩展RTSP一对一互动(更新于2020/03/17)](http://player.daniulive.com:8082/demos/WIN-EchoCancellation-CSharp-Demo-2020-03-17.zip)；
+- [x] [**Windows平台一对一互动SDK demo工程代码(以C#为例)**] [基于标准RTMP服务的一对一互动demo，可扩展RTSP一对一互动(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-EchoCancellation-CSharp-Demo-2020-04-29.zip)；
 
 **3.Android平台集成对接DEMO：**	
 
@@ -247,7 +247,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明(更新于2020/02/12)**](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.19.pdf)	
 
-- [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)(更新于2019/10/28)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-SDK集成说明2.13.pdf)	
+- [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)(更新于2020/04/02)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-SDK集成说明2.13.pdf)	
 
 - [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP推送SDK调用说明(以C++为例)(更新于2020/02/11)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-转发SDK集成说明1.0.pdf)	
 
