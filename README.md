@@ -32,7 +32,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Unity3D RTSP/RTMP播放SDK相关(支持Windows/Android/iOS)**
 
-**[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2018/10/31)](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/10/视沃科技-大牛直播SDKV2Unity3D调用说明1.2.pdf)**
+**[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2020/03/25)](http://player.daniulive.com:8082/demos/视沃科技-大牛直播SDK(V2)Unity3D调用说明1.3.pdf)**
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
