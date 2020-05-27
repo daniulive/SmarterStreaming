@@ -203,7 +203,11 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **3.Android平台集成对接DEMO：**	
 
-**3.1 对应Android Studio DEMO工程说明：**	
+ **3.1 相关集成DEMO下载：**	
+
+- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/05/27)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-05-27.zip)	
+
+**3.2 对应Android Studio DEMO工程说明：**	
 
 - [x] [**SmartPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能；	
 
@@ -217,13 +221,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo。	
 
- **3.2 相关集成DEMO下载：**	
-
-- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/03/25)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-03-25.zip)	
-
 **4.iOS平台集成对接DEMO：**	
 
-**4.1 对应xcode DEMO工程说明：**	
+**4.1 相关集成DEMO下载：**	
+
+- [x] [iOS SDK demo工程代码] [**iOS平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、录屏SDK(V2)本地下载(更新于2020/02/12)**](http://player.daniulive.com:8082/demos/Daniulive-SDK-iOS-2020-02-12.zip)	
+
+**4.2 对应xcode DEMO工程说明：**	
 
 - [x] [**SmartiOSPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能；	
 
@@ -234,10 +238,6 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 - [x] [**SmartiOSScreenPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2): 基于ReplayKit采集的智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo；	
 
 - [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo。	
-
-**4.2 相关集成DEMO下载：**	
-
-- [x] [iOS SDK demo工程代码] [**iOS平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、录屏SDK(V2)本地下载(更新于2020/02/12)**](http://player.daniulive.com:8082/demos/Daniulive-SDK-iOS-2020-02-12.zip)	
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。	
 
@@ -365,7 +365,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；	
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；	
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
-- [x] [**音量调节**]Windows平台采集端支持实时音量调节(混音模式下支持单独控制麦克风、扬声器音量)；
+- [x] [**音量调节**]Windows/Android平台采集端支持实时音量调节(其中，Windows平台混音模式下支持单独控制麦克风、扬声器音量)；
 - [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；	
 - [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；	
 - [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
