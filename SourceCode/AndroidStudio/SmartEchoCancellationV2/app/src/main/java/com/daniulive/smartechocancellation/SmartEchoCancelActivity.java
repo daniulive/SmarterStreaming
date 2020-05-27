@@ -144,6 +144,10 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		private Button  btnPushAGC;
 		private Button  btnPushSpeex;
 		private Button  btnPushMute;
+
+	    private Spinner mic_audio_volume_selector_;
+	    private Spinner mix_audio_volume_selector_;
+
 		private Button  btnPushMirror;
 		private Button  btnPushEchoCancelDelay;
 
@@ -197,6 +201,10 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 		private boolean is_push_agc = false;
 		private boolean is_push_speex = false;
 		private boolean is_push_mute = false;
+
+		private float mic_audio_volume_ = 1.0f;
+		private float mix_audio_volume_ = 1.0f;
+
 		private boolean is_push_mirror = false;
 		private int sw_video_encoder_speed = 3;	//软编码编码速度
 		private boolean is_sw_vbr_mode = true;
@@ -432,6 +440,74 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 	        
 	        btnPushMute = (Button)findViewById(R.id.btn_push_mute);
 	        btnPushMute.setOnClickListener(new ButtonPushMuteListener());
+
+	        final String[] audio_volume_sel = new String[]{ "0", "0.2", "0.5", "0.8","1", "1.5",  "2",  "2.5",  "3",  "3.5",  "4",  "4.5",  "5"};
+
+		    mic_audio_volume_selector_ = (Spinner) findViewById(R.id.mic_audio_volume_selector);
+
+		    ArrayAdapter<String> adapter_mic_audio_volume = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, audio_volume_sel);
+
+		    adapter_mic_audio_volume.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		    mic_audio_volume_selector_.setAdapter(adapter_mic_audio_volume);
+
+		    mic_audio_volume_selector_.setSelection(4, true);
+
+		    mic_audio_volume_selector_.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+									   int position, long id) {
+				Log.i(TAG, "Currently mic audio volume choosing: " + audio_volume_sel[position]);
+
+				mic_audio_volume_ = Float.parseFloat(audio_volume_sel[position]);
+
+				Log.i(TAG, "Choose mic audio volume=" + mic_audio_volume_);
+
+				if (libPublisher != null && publisherHandle != 0 && isPushStart ) {
+						libPublisher.SmartPublisherSetInputAudioVolume(publisherHandle, 0 , mic_audio_volume_);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		    });
+
+
+		    mix_audio_volume_selector_ = (Spinner) findViewById(R.id.mix_audio_volume_selector);
+
+		    ArrayAdapter<String> adapter_mix_audio_volume = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, audio_volume_sel);
+
+		    adapter_mix_audio_volume.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		    mix_audio_volume_selector_.setAdapter(adapter_mix_audio_volume);
+
+		    mix_audio_volume_selector_.setSelection(4, true);
+
+		    mix_audio_volume_selector_.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+									   int position, long id) {
+				Log.i(TAG, "Currently mix audio volume choosing: " + audio_volume_sel[position]);
+
+				mix_audio_volume_ = Float.parseFloat(audio_volume_sel[position]);
+
+				Log.i(TAG, "Choose mix audio volume=" + mix_audio_volume_);
+
+				if (libPublisher != null && publisherHandle != 0 && isPushStart && is_audio_mix_) {
+					libPublisher.SmartPublisherSetInputAudioVolume(publisherHandle, 1 , mix_audio_volume_);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		    });
+
 	        
 	        btnPushMirror = (Button)findViewById(R.id.btn_push_mirror);
 	        btnPushMirror.setOnClickListener(new ButtonPushMirrorListener());
@@ -1610,6 +1686,13 @@ public class SmartEchoCancelActivity extends Activity implements Callback, Previ
 			    libPublisher.SmartPublisherSetEchoCancellation(publisherHandle, 1, echoCancelDelay);
 
 				libPublisher.SmartPublisherSetAudioMix(publisherHandle, is_audio_mix_?1:0);
+
+				libPublisher.SmartPublisherSetInputAudioVolume(publisherHandle, 0 , mic_audio_volume_);
+
+				if ( is_audio_mix_ )
+				{
+					libPublisher.SmartPublisherSetInputAudioVolume(publisherHandle, 1 , mix_audio_volume_);
+				}
 			    
 			    //libPublisher.SmartPublisherSetClippingMode(0);
 			    

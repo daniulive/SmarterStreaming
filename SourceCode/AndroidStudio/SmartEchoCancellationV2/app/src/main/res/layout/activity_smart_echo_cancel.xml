@@ -191,6 +191,26 @@
                     android:layout_height="wrap_content"
                     android:text=" 开始推流 " />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="麦克风音量" />
+
+                <Spinner
+                    android:id="@+id/mic_audio_volume_selector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="混音音量" />
+
+                <Spinner
+                    android:id="@+id/mix_audio_volume_selector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
            
            <TextView

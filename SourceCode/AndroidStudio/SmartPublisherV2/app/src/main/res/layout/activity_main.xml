@@ -54,6 +54,7 @@
                     android:id="@+id/watermarkSelctor"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -89,11 +90,15 @@
                     android:layout_height="wrap_content"
                     android:text="实时静音" />
 
-                <Button
-                    android:id="@+id/button_mirror"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已关闭镜像" />
+                    android:text="音量" />
+
+                <Spinner
+                    android:id="@+id/in_audio_volume_selector"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,7 +108,8 @@
                 <Spinner
                     android:id="@+id/sw_video_encoder_speed_selector"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -231,6 +237,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="录像管理" />
+
+                <Button
+                    android:id="@+id/button_mirror"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已关闭镜像" />
 
             </LinearLayout>
 

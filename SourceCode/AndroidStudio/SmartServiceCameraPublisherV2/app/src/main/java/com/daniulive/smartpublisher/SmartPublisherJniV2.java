@@ -290,7 +290,20 @@ public class SmartPublisherJniV2 {
      * @return {0} if successful
      */
     public native int SmartPublisherSetMute(long handle, int isMute);
-    
+
+
+	/**
+	 * 设置输入音量, 这个接口一般不建议调用, 在一些特殊情况下可能会用, 一般不建议放大音量
+	 *
+	 * @param index: 一般是0和1, 如果没有混音的只用0, 有混音的话, 0,1分别设置音量
+	 *
+	 * @param volume: 音量，默认是1.0，范围是[0.0, 5.0], 设置成0静音, 1音量不变
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherSetInputAudioVolume(long handle, int index, float volume);
+
+
     /**
      * Set mirror(设置前置摄像头镜像)
      * 
@@ -453,7 +466,30 @@ public class SmartPublisherJniV2 {
 	* @return {0} if successful
 	*/
     public native int SmartPublisherOnCaptureVideoData(long handle, byte[] data, int len, int cameraType, int curOrg);
-    
+
+
+	/**
+	 * NV21数据接口
+	 *
+	 * @param data: nv21 data
+	 *
+	 * @param len: data length
+	 *
+	 * @param width: 图像宽
+	 *
+	 * @param height: 图像高
+	 *
+	 * @param y_stride:  y面步长
+	 *
+	 * @param uv_stride:  uv面步长
+	 *
+	 * rotation_degree: 顺时针旋转, 必须是0, 90, 180, 270
+	 *
+	 * @return {0} if successful
+	 */
+	public native int SmartPublisherOnNV21Data(long handle, byte[] data, int len, int width, int height, int y_stride,  int uv_stride, int rotation_degree);
+
+
     /**
 	* Set live video data(no encoded data).
 	*
