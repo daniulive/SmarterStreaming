@@ -1,3 +1,4 @@
+最新版本SDK版本请在我们网站或者QQ群下载.
 Demo文件说明：
 1. SmartiOSPlayerV2: 大牛直播SDK RTMP/RTSP直播播放端demo，V2版，涵盖实时录像功能，播放端SDK集成，建议参考此Demo；
 2. SmartiOSPublisherV2: 大牛直播SDK RTMP/RTSP推送端demo，涵盖实时录像、内置RTSP服务功能模块演示；
