@@ -205,7 +205,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
  **3.1 相关集成DEMO下载：**	
 
-- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/05/27)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-05-27.zip)	
+- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/07/06)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-07-06.zip)	
 
 **3.2 对应Android Studio DEMO工程说明：**	
 
@@ -235,7 +235,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSRelayDemoV2-20200618.zip)。	
 
-**NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。	
+**NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo，**移动端官方测试版DEMO，默认未开启RTMP整体加解密功能模块，如需测试RTMP整体加解密，请直接联系我们**。	
 
 ## 大牛直播SDK集成和调用说明 ##	
 
