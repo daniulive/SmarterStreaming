@@ -223,17 +223,17 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **4.iOS平台集成对接DEMO：**	
 
-**4.1 相关测试、集成DEMO下载(更新于2020/06/18)：**	
+**4.1 相关测试、集成DEMO下载(更新于2020/07/07)：**	
 
-- [x] [**SmartiOSPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSPlayerV2-20200618.zip)；	
+- [x] [**SmartiOSPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSPlayerV2-2020707.zip)；	
 
-- [x] [**SmartiOSPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisherV2): RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SDK、实时录像SDK多合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSPublisherV2-20200618.zip)；	
+- [x] [**SmartiOSPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisherV2): RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SDK、实时录像SDK多合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSPublisherV2-2020707.zip)；	
 
-- [x] [**SmartiOSEchoCancellation**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSEchoCancellation): 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSEchoCancellation-20200618.zip)；	
+- [x] [**SmartiOSEchoCancellation**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSEchoCancellation): 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSEchoCancellation-2020707.zip)；	
 
-- [x] [**SmartiOSScreenPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2): 基于ReplayKit采集的智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSScreenPublisherV2-20200618.zip)；	
+- [x] [**SmartiOSScreenPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2): 基于ReplayKit采集的智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSScreenPublisherV2-2020707.zip)；	
 
-- [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSRelayDemoV2-20200618.zip)。	
+- [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSRelayDemoV2-2020707.zip)。	
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo，**移动端官方测试版DEMO，默认未开启RTMP整体加解密功能模块，如需测试RTMP整体加解密，请直接联系我们**。	
 
