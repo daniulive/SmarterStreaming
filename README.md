@@ -8,6 +8,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **大牛直播SDK可供个人学习之用，企业及商用需要经过授权**(授权请联系 QQ:**89030985** 或 **517631076** 手机:**130-7210-2209** 或 **135-6452-9354**)；
 
+**[视沃科技关于“大牛直播SDK”产品通告](https://img-blog.csdnimg.cn/20200831130239851.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhbml1bGl2ZXNkaw==,size_16,color_FFFFFF,t_70)**
+
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
 ## 跨平台RTMP加解密(支持AES/SM4)方案 ##
