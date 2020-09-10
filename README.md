@@ -10,6 +10,8 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[视沃科技关于“大牛直播SDK”产品通告](https://img-blog.csdnimg.cn/20200831130239851.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhbml1bGl2ZXNkaw==,size_16,color_FFFFFF,t_70)**
 
+**[视沃科技(大牛直播SDK)官方测试版获取流程](https://www.daniulive.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
+
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
 ## 跨平台RTMP加解密(支持AES/SM4)方案 ##
