@@ -2,7 +2,7 @@
 
 始于2014年，国内外为数不多致力于极致体验的**超强全自研跨平台**(windows/android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、业内首家RTMP推送播放**整体加密(AES/SM4)**方案、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
-适用于**在线教育、[智慧教室|无纸化推屏|会议](https://www.daniulive.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、[RTMP防盗播整体加解密方案](https://www.daniulive.com/index.php/2019/05/30/windows-android-ios%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0rtmp%E6%8E%A8%E9%80%81%E5%92%8C%E6%92%AD%E6%94%BE%E7%AB%AFaes%E6%88%96sm4%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E4%BE%8B/)、运营商视频云平台、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、超低延迟娃娃机抓取播放方案、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、监控对接、活动现场直播、游戏直播**等场景。
+适用于**在线教育、[智慧教室|无纸化推屏|会议](https://www.daniulive.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、超低延迟娃娃机抓取播放方案、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、金融在线直播室、监控对接、活动现场直播、游戏直播**等场景。
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
@@ -14,25 +14,9 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **[latest release note](http://daniulive.com/index.php/tag/release-note/)**
 
-## 跨平台RTMP加解密(支持AES/SM4)方案 ##
-
-**[Windows/Android/iOS平台实现RTMP推送和播放端AES或SM4加解密实例](https://www.daniulive.com/index.php/2019/05/30/windows-android-ios%E5%B9%B3%E5%8F%B0%E5%AE%9E%E7%8E%B0rtmp%E6%8E%A8%E9%80%81%E5%92%8C%E6%92%AD%E6%94%BE%E7%AB%AFaes%E6%88%96sm4%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AE%9E%E4%BE%8B/)**
-
 ## 平台扩展 ## 
 
-除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Flutter**(Android/iOS)、**Unity3d**(Windows/Android/iOS)、**APICloud**(Android/iOS)和**React Native**(Android/iOS)二次封装，也可能是**Flutter和Unity3D**平台下**首款**真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器。
-
-**Flutter RTSP/RTMP播放SDK相关(支持Android/iOS)**
-
-**[Flutter下实现低延迟的跨平台RTSP/RTMP播放(相关接口说明和调用实例)](https://www.daniulive.com/index.php/2019/05/30/flutter%E4%B8%8B%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9F%E7%9A%84%E8%B7%A8%E5%B9%B3%E5%8F%B0rtsp-rtmp%E6%92%AD%E6%94%BE/)**
-
-**[Flutter-Android RTSP/RTMP播放端APK下载(更新于2020/02/11)](http://player.daniulive.com:8082/demos/Flutter-SmartPlayer-2020-02-11.apk)**
-
-**[Flutter RTSP/RTMP直播播放端SDK视频演示](http://www.iqiyi.com/w_19s8dv6yht.html)**
-
-**APICloud RTSP/RTMP播放SDK相关(支持Android/iOS)**
-
-**[Android/iOS播放器SDK(V2)APICloud调用说明](http://daniulive.com/index.php/2018/04/02/apicloud%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk/)**
+除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Unity3d**(Windows/Android/iOS)二次封装，也可能是**Unity3D**平台下**首款**真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器。
 
 **Unity3D RTSP/RTMP播放SDK相关(支持Windows/Android/iOS)**
 
@@ -239,7 +223,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSRelayDemoV2-20200707.zip)。	
 
-**NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo，**移动端官方测试版DEMO，默认未开启RTMP整体加解密功能模块，如需测试RTMP整体加解密，请直接联系我们**。	
+**NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。	
 
 ## 大牛直播SDK集成和调用说明 ##	
 
