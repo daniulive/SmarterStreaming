@@ -1,16 +1,16 @@
-**视沃科技-大牛直播SDK <a href="https://www.daniulive.com" target="_blank">daniulive.com</a>**
+**视沃科技-大牛直播SDK <a href="https://www.daniusdk.com" target="_blank">daniusdk.com</a>**
 
 业内为数不多致力于极致体验的**超强全自研跨平台**(windows/android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
-适用于**在线教育、[智慧教室|无纸化推屏|会议](https://www.daniulive.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接、活动现场直播**等场景。
+适用于**在线教育、[智慧教室|无纸化推屏|会议](https://www.daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接、活动现场直播**等场景。
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
 **[视沃科技关于“大牛直播SDK”产品通告](https://img-blog.csdnimg.cn/20200831130239851.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhbml1bGl2ZXNkaw==,size_16,color_FFFFFF,t_70)**
 
-**[视沃科技(大牛直播SDK)官方测试版获取流程](https://www.daniulive.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
+**[视沃科技(大牛直播SDK)官方测试版获取流程](https://www.daniusdk.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
 
-**[latest release note](http://daniulive.com/index.php/tag/release-note/)**
+**[latest release note](https://daniusdk.com/index.php/tag/release-note/)**
 
 ## 平台扩展 ## 
 
@@ -18,13 +18,13 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Unity3D RTSP/RTMP播放SDK相关(支持Windows/Android/iOS)**
 
-**[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2020/03/25)](http://player.daniulive.com:8082/demos/视沃科技-大牛直播SDK(V2)Unity3D调用说明1.3.pdf)**
+**[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2020/03/25)](http://player.daniusdk.com:8082/demos/视沃科技-大牛直播SDK(V2)Unity3D调用说明1.3.pdf)**
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
-**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/Daniulive-Win-Unity-RTMP-RTSP-Player-2020-04-29.zip)**
+**[Unity3D-Windows RTSP/RTMP播放端exe下载(更新于2020/04/29)](http://player.daniusdk.com:8082/demos/Daniulive-Win-Unity-RTMP-RTSP-Player-2020-04-29.zip)**
 
-**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2020/05/27)](http://player.daniulive.com:8082/demos/Unity3d-SmartPlayer-2020-05-27.apk)**
+**[Unity3D-Android RTSP/RTMP播放端APK下载(更新于2020/05/27)](http://player.daniusdk.com:8082/demos/Unity3d-SmartPlayer-2020-05-27.apk)**
 
 
 ## 模块概览 ## 
@@ -35,7 +35,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **多路RTSP/RTMP转RTMP推送SDK概览图**
 
-<img src="https://www.daniulive.com/wp-content/uploads/2020/01/daniulive_relaysdk_20200130.png" alt="多路RTSP/RTMP转RTMP推送SDK概览图" />
+<img src="https://www.daniusdk.com/wp-content/uploads/2020/01/daniulive_relaysdk_20200130.png" alt="多路RTSP/RTMP转RTMP推送SDK概览图" />
 
 ## 支持平台架构 ##
 |支持平台|支持架构|
@@ -46,88 +46,86 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **Windows端**
 
-- [x] [**RTMP直播推流SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) RTMP推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**(64位库)))；
+- [x] [**RTMP直播推流SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) RTMP推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**(64位库)))；
 
-- [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
+- [x] [**RTSP直播推流SDK**](https://daniusdk.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
-- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)；
+- [x] [**RTMP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)；
 
-- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK，支持IE浏览器**OCX控件**接口调用；
+- [x] [**RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK，支持IE浏览器**OCX控件**接口调用；
 
-- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性；
+- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Windows支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性；
 
-- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；[点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://www.daniulive.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)
+- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持同时**多路拉取rtmp/rtsp流/本地flv文件，并分别转发到服务器**，支持转发过程中，拉取的rtsp/rtmp或本地flv文件实时内容切换，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK(提供配套RTMP扩展H.265服务器)；[点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://www.daniulive.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)
 
-- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持，windows端64位库支持**RTSP H.265**视频输出，支持**单播**和**组播**模式；
+- [x] [**轻量级RTSP服务SDK**](https://daniusdk.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持，windows端64位库支持**RTSP H.265**视频输出，支持**单播**和**组播**模式；
 
-- [x] [**内网RTSP网关SDK**](http://daniulive.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入，支持**单播**和**组播**模式；
+- [x] [**内网RTSP网关SDK**](https://daniusdk.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入，支持**单播**和**组播**模式；
 
-- [x] [**导播SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%AF%BC%E6%92%ADsdk/) 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
+- [x] [**导播SDK**](https://daniusdk.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%AF%BC%E6%92%ADsdk/) 数据源：1. rtmp/rtsp音视频流；2. 本地屏幕/摄像头/音频数据；3.本地flv文件；**多路流合成一路**实时导播推送；
 
-- [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
+- [x] [**录像SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
-- [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
+- [x] [**RTMP/RTSP一对一互动SDK**](https://daniusdk.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
-- [x] [**连麦SDK**](http://daniulive.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
+- [x] [**连麦SDK**](https://daniusdk.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
 
-- [x] [**本地FLV播放SDK**](http://daniulive.com/index.php/2018/11/28/%E6%9C%AC%E5%9C%B0flv%E6%92%AD%E6%94%BEsdk/) 支持本地flv文件播放(支持获取flv文件的duration(时长)；支持显示当前播放位置；支持开始播放或播放过程中seek(跳转播放位置)，**也许是行业内seek最快的flv点播播放器**)；
+- [x] [**SEI扩展数据发送/接收SDK**](https://daniusdk.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
-- [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
+- [x] [**视频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
 
-- [x] [**视频处理SDK**](http://daniulive.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
-
-- [x] [**音频处理SDK**](http://daniulive.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [**音频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
 
 **Android端**
 
-- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码)；
+- [x] [**RTMP直播推流端SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码)；
 
-- [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
+- [x] [**RTSP直播推流SDK**](https://daniusdk.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
-- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)；
+- [x] [**RTMP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)；
 
-- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
+- [x] [**RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
-- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Android支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
+- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**Android支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
-- [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
+- [x] [**录像SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
-- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
+- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
 
-- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持(支持H.265)；
+- [x] [**轻量级RTSP服务SDK**](https://daniusdk.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持(支持H.265)；
 
-- [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
+- [x] [**RTMP/RTSP一对一互动SDK**](https://daniusdk.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
-- [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
+- [x] [**SEI扩展数据发送/接收SDK**](https://daniusdk.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
-- [x] [**视频处理SDK**](http://daniulive.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/)Android文字水印、png图片水印；
+- [x] [**视频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/)Android文字水印、png图片水印；
 
-- [x] [**音频处理SDK**](http://daniulive.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/)Android回音消除、噪音抑制、自动增益、VAD检测模块；
+- [x] [**音频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/)Android回音消除、噪音抑制、自动增益、VAD检测模块；
 
 
 **iOS端**
 
-- [x] [**RTMP直播推流端SDK**](http://daniulive.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
+- [x] [**RTMP直播推流端SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
 
-- [x] [**RTSP直播推流SDK**](https://www.daniulive.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
+- [x] [**RTSP直播推流SDK**](https://daniusdk.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
-- [x] [**RTMP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
+- [x] [**RTMP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtmp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**);
 
-- [x] [**RTSP直播播放器SDK**](https://www.daniulive.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
+- [x] [**RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
-- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](http://daniulive.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**iOS支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
+- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) **业内首家**iOS支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
 
-- [x] [**录像SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
+- [x] [**录像SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
-- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
+- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/) 支持实时拉取的rtmp/rtsp流转发到指定rtmp url;
 
-- [x] [**轻量级RTSP服务SDK**](http://daniulive.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持；
+- [x] [**轻量级RTSP服务SDK**](https://daniusdk.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持；
 
-- [x] [**内网RTSP网关SDK**](http://daniulive.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入；
+- [x] [**内网RTSP网关SDK**](https://daniusdk.com/index.php/2018/11/10/%E5%86%85%E7%BD%91rtsp%E7%BD%91%E5%85%B3sdk/) 内网RTSP网关SDK，系内置轻量级RTSP服务SDK扩展，完成**外部RTSP/RTMP数据拉取并注入到轻量级RTSP服务SDK工作**，多个内网客户端直接访问内网轻量级RTSP服务获取公网数据，无需部署单独的服务器，支持RTSP/RTMP H.265数据接入；
 
-- [x] [**RTMP/RTSP一对一互动SDK**](https://www.daniulive.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
+- [x] [**RTMP/RTSP一对一互动SDK**](https://daniusdk.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
 
-- [x] [**SEI扩展数据发送/接收SDK**](http://daniulive.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
+- [x] [**SEI扩展数据发送/接收SDK**](https://daniusdk.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
 ## 本地下载 ##
 
@@ -155,43 +153,43 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 - [x] [**SmartEchoCancellation.exe**] 基于标准RTMP服务的一对一互动演示程序（demo源码以C#为例）；	
 
-- [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版-2020-04-29.zip)	
+- [x] [**Windows平台RTMP|RTSP推送、播放程序(32位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(32位)本地下载(更新于2020/04/29)](http://player.daniusdk.com:8082/demos/windows-推送-播放版-2020-04-29.zip)	
 
-- [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-推送-播放版64位-2020-04-29.zip)	
+- [x] [**Windows平台RTMP|RTSP推送、播放程序(64位)**] [Windows平台RTMP|RTSP推送、RTMP|RTSP播放、轻量级RTSP服务、扩展SEI发送|接收SDK、合成、导播、连麦Demo(64位)本地下载(更新于2020/04/29)](http://player.daniusdk.com:8082/demos/windows-推送-播放版64位-2020-04-29.zip)	
 
-- [x] [**Windows平台RTMP|RTSP 4路播放演示程序(32位)**] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-32位-20200429.zip)	
+- [x] [**Windows平台RTMP|RTSP 4路播放演示程序(32位)**] [Windows 4路RTSP/RTMP播放Demo(32位)本地下载(更新于2020/04/29)](http://player.daniusdk.com:8082/demos/windows-四窗口播放demo-32位-20200429.zip)	
 
-- [x] [**Windows平台RTMP|RTSP 4路播放演示程序(64位)**] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/windows-四窗口播放demo-64位-20200429.zip)	
+- [x] [**Windows平台RTMP|RTSP 4路播放演示程序(64位)**] [Windows 4路RTSP/RTMP播放Demo(64位)本地下载(更新于2020/04/29)](http://player.daniusdk.com:8082/demos/windows-四窗口播放demo-64位-20200429.zip)	
 
-- [x] [**Windows平台IE浏览器OCX控件RTMP|RTSP播放测试程序**] [Windows平台RTMP|RTSP播放SDK OCX控件(更新于2020/05/26)](http://player.daniulive.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2020-05-26.zip) 	
-   [右键另存为下载OCX控件使用说明和SDK集成文档](https://www.daniulive.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)	
+- [x] [**Windows平台IE浏览器OCX控件RTMP|RTSP播放测试程序**] [Windows平台RTMP|RTSP播放SDK OCX控件(更新于2020/05/26)](http://player.daniusdk.com:8082/demos/Daniulive-Win-OCX-RTMP-RTSP-Player-2020-05-26.zip) 	
+   [右键另存为下载OCX控件使用说明和SDK集成文档](https://daniusdk.com/index.php/2019/03/22/%E5%A6%82%E4%BD%95%E5%9C%A8ie%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BErtsp%E6%88%96rtmp%E6%B5%81rtsp-rtmp-ocx%E6%92%AD%E6%94%BE%E6%8E%A7%E4%BB%B6/)	
 
-- [x] [**Windows平台多路RTSP|RTMP转RTMP推送官方定制版**] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2020-04-29)](http://player.daniulive.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20200429.zip) 	
-   [右键另存为下载使用说明](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.1.pdf)	
+- [x] [**Windows平台多路RTSP|RTMP转RTMP推送官方定制版**] [Windows多路RTSP-RTMP转RTMP官方定制版 (更新于2020-04-29)](http://player.daniusdk.com:8082/demos/windows-多路rtsp-rtmp转rtmp官方定制版64位-20200429.zip) 	
+   [右键另存为下载使用说明](https://player.daniusdk.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.1.pdf)	
 
 **2. Windows平台集成对接DEMO：**	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniusdk.com:8082/demos/WIN-PublisherSDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C++) Demo工程本地下载(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-PlayerSDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CPP-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo工程本地下载(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-RelaySDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C++ SDK demo工程代码**] [Windows平台混流SDK(C++) Demo工程本地下载(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-MixStreamSDK-CPP-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo工程本地下载(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-PublisherSDK-CSharp-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C#) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台RTMP|RTSP播放SDK(C#) Demo工程本地下载(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-PlayerSDK-CSharp-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo工程本地下载(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2020-04-29.zip)	
+- [x] [**Windows平台C# SDK demo工程代码**] [Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo工程本地下载(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-RelaySDK-CSharp-Demo-2020-04-29.zip)	
 
-- [x] [**Windows平台一对一互动SDK demo工程代码(以C#为例)**] [基于标准RTMP服务的一对一互动demo，可扩展RTSP一对一互动(更新于2020/04/29)](http://player.daniulive.com:8082/demos/WIN-EchoCancellation-CSharp-Demo-2020-04-29.zip)；
+- [x] [**Windows平台一对一互动SDK demo工程代码(以C#为例)**] [基于标准RTMP服务的一对一互动demo，可扩展RTSP一对一互动(更新于2020/04/29)](https://player.daniusdk.com:8082/demos/WIN-EchoCancellation-CSharp-Demo-2020-04-29.zip)；
 
 **3.Android平台集成对接DEMO：**	
 
  **3.1 相关集成DEMO下载：**	
 
-- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/07/06)**](http://player.daniulive.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-07-06.zip)	
+- [x] [**Android SDK demo工程代码**] [**Android平台RTMP|RTSP推送、RTMP|RTSP播放、RTMP|RTSP转RTMP推送、轻量级RTSP服务、一对一互动、后台推摄像头/屏幕Demo(V2接口，建议采用)(Android Studio工程)(更新于2020/07/06)**](https://player.daniusdk.com:8082/demos/Daniulive-Android-SDK(V2)-AndroidStudio-2020-07-06.zip)	
 
 **3.2 对应Android Studio DEMO工程说明：**	
 
@@ -211,15 +209,15 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **4.1 相关测试、集成DEMO下载(更新于2020/07/07)：**	
 
-- [x] [**SmartiOSPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSPlayerV2-20200707.zip)；	
+- [x] [**SmartiOSPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能，[本地下载](https://player.daniusdk.com:8082/demos/SmartiOSPlayerV2-20200707.zip)；	
 
-- [x] [**SmartiOSPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisherV2): RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SDK、实时录像SDK多合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSPublisherV2-20200707.zip)；	
+- [x] [**SmartiOSPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSPublisherV2): RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SDK、实时录像SDK多合一demo，[本地下载](https://player.daniusdk.com:8082/demos/SmartiOSPublisherV2-20200707.zip)；	
 
-- [x] [**SmartiOSEchoCancellation**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSEchoCancellation): 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSEchoCancellation-20200707.zip)；	
+- [x] [**SmartiOSEchoCancellation**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSEchoCancellation): 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)，[本地下载](https://player.daniusdk.com:8082/demos/SmartiOSEchoCancellation-20200707.zip)；	
 
-- [x] [**SmartiOSScreenPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2): 基于ReplayKit采集的智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSScreenPublisherV2-20200707.zip)；	
+- [x] [**SmartiOSScreenPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSScreenPublisherV2): 基于ReplayKit采集的智慧教室|无纸化会议等屏幕采集(推屏) 、RTMP直播推送demo，[本地下载](https://player.daniusdk.com:8082/demos/SmartiOSScreenPublisherV2-20200707.zip)；	
 
-- [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo，[本地下载](http://player.daniulive.com:8082/demos/SmartiOSRelayDemoV2-20200707.zip)。	
+- [x] [**SmartiOSRelayDemoV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiOSRelayDemoV2): RTMP|RTSP直播播放SDK、RTMP|RTSP转RTMP推送SDK、RTMP|RTSP实时录像、轻量级RTSP服务四合一demo，[本地下载](https://player.daniusdk.com:8082/demos/SmartiOSRelayDemoV2-20200707.zip)。	
 
 **NOTE:** Windows平台，以C++ SDK Demo为最新，C# Demo更新速度稍滞于C++ Demo。	
 
@@ -227,21 +225,21 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 右键“链接另存为(K)...”下载文档即可。	
 
-- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明(更新于2020/02/12)**](http://player.daniulive.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.19.pdf)	
+- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明(更新于2020/02/12)**](https://player.daniusdk.com:8082/demos/视沃科技-大牛直播移动端SDK(V2)调用说明2.19.pdf)	
 
-- [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)(更新于2020/04/02)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-SDK集成说明2.13.pdf)	
+- [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)(更新于2020/04/02)**](https://player.daniusdk.com:8082/demos/视沃科技-Windows平台-SDK集成说明2.13.pdf)	
 
-- [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP推送SDK调用说明(以C++为例)(更新于2020/02/11)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-转发SDK集成说明1.0.pdf)	
+- [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP推送SDK调用说明(以C++为例)(更新于2020/02/11)**](https://player.daniusdk.com:8082/demos/视沃科技-Windows平台-转发SDK集成说明1.0.pdf)	
 
-- [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP官方定制版使用说明(更新于2019/11/07)**](http://player.daniulive.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.1.pdf)	
+- [x] [**Windows平台多路RTMP/RTSP流媒体转RTMP官方定制版使用说明(更新于2019/11/07)**](https://player.daniusdk.com:8082/demos/视沃科技-Windows平台-多路RTSP-RTMP转RTMP官方定制软件-使用说明1.1.pdf)	
 
 **大牛直播SDK Demo使用说明**	
 
-- [x] [大牛直播Windows RTMP推流端使用说明](http://daniulive.com/index.php/2018/04/15/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-windows%E6%8E%A8%E9%80%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)	
+- [x] [大牛直播Windows RTMP推流端使用说明](https://daniusdk.com/index.php/2018/04/15/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-windows%E6%8E%A8%E9%80%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)	
 
-- [x] [大牛直播SDK-Windows RTMP/RTSP/本地FLV播放器使用说明](http://daniulive.com/index.php/2018/04/16/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-windows-rtmp-rtsp-%E6%9C%AC%E5%9C%B0flv%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)	
+- [x] [大牛直播SDK-Windows RTMP/RTSP/本地FLV播放器使用说明](https://daniusdk.com/index.php/2018/04/16/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-windows-rtmp-rtsp-%E6%9C%AC%E5%9C%B0flv%E6%92%AD%E6%94%BE%E5%99%A8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/)	
 
-- [x] [大牛直播跨平台多路RTSP/RTMP转RTMP推送SDK](http://daniulive.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/)	
+- [x] [大牛直播跨平台多路RTSP/RTMP转RTMP推送SDK](https://daniusdk.com/index.php/2018/04/04/%E5%A4%9A%E8%B7%AF%E6%B5%81%E5%AA%92%E4%BD%93%E8%BD%AC%E5%8F%91sdk/)	
 
 - [x] [大牛直播Android推流端使用说明](https://github.com/daniulive/SmarterStreaming/wiki/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADAndroid%E6%8E%A8%E6%B5%81%E7%AB%AF%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)	
 
@@ -561,7 +559,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Android工程：SmartRelayDemoV2；	
 - [x] iOS工程：SmartiOSRelayDemoV2。	
 
-大牛直播SDK Windows平台已发布基于转发SDK的官方定制版系统: [点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://www.daniulive.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)	
+大牛直播SDK Windows平台已发布基于转发SDK的官方定制版系统: [点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://daniusdk.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)	
 
 ---	
 
@@ -686,7 +684,7 @@ android：strings.xml：
 
 ## 联系我们 ##	
 
-[点击查看联系方式](http://daniulive.com/index.php/%E8%81%94%E7%B3%BB/)	
+[点击查看联系方式](https://daniusdk.com/index.php/%E8%81%94%E7%B3%BB/)	
 
 **QQ交流群：**	
 
