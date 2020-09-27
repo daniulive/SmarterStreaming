@@ -1,14 +1,14 @@
-**视沃科技-大牛直播SDK <a href="https://www.daniusdk.com" target="_blank">daniusdk.com</a>**
+**视沃科技-大牛直播SDK <a href="https://daniusdk.com" target="_blank">daniusdk.com</a>**
 
 业内为数不多致力于极致体验的**超强全自研跨平台**(windows/android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
-适用于**在线教育、[智慧教室|无纸化推屏|会议](https://www.daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接、活动现场直播**等场景。
+适用于**在线教育、[智慧教室|无纸化推屏|会议](https://daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、直播答题、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、可视化购物、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接、活动现场直播**等场景。
 
 For English introduction, please [click here](https://github.com/daniulive/SmarterStreaming/wiki/English-version);
 
 **[视沃科技关于“大牛直播SDK”产品通告](https://img-blog.csdnimg.cn/20200831130239851.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhbml1bGl2ZXNkaw==,size_16,color_FFFFFF,t_70)**
 
-**[视沃科技(大牛直播SDK)官方测试版获取流程](https://www.daniusdk.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
+**[视沃科技(大牛直播SDK)官方测试版获取流程](https://daniusdk.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
 
 **[latest release note](https://daniusdk.com/index.php/tag/release-note/)**
 
@@ -105,7 +105,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **iOS端**
 
-- [x] [**RTMP直播推流端SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](http://daniulive.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
+- [x] [**RTMP直播推流端SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) iOS屏幕(基于[ReplayKit](https://daniusdk.com/index.php/2018/04/02/%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8Ereplaykit%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9Frtmp%E6%8E%A8%E5%B1%8F/))、摄像头RTMP推流SDK;
 
 - [x] [**RTSP直播推流SDK**](https://daniusdk.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
