@@ -35,7 +35,7 @@ For English introduction, please [click here](https://github.com/daniulive/Smart
 
 **多路RTSP/RTMP转RTMP推送SDK概览图**
 
-<img src="https://www.daniusdk.com/wp-content/uploads/2020/01/daniulive_relaysdk_20200130.png" alt="多路RTSP/RTMP转RTMP推送SDK概览图" />
+<img src="https://daniusdk.com/wp-content/uploads/2020/01/daniulive_relaysdk_20200130.png" alt="多路RTSP/RTMP转RTMP推送SDK概览图" />
 
 ## 支持平台架构 ##
 |支持平台|支持架构|
