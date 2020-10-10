@@ -458,7 +458,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**RTSP 401认证处理**]支持上报RTSP 401事件，如URL携带鉴权信息，会自动处理；	
 - [x] [**缓冲时间设置**]支持buffer time设置；	
 - [x] [**首屏秒开**]支持首屏秒开模式；	
-- [x] [**低延迟模式**]支持类似于线上娃娃机等直播方案的超低延迟模式设置(公网200~400ms)；	
+- [x] [**低延迟模式**]支持超低延迟模式设置；	
 - [x] [**复杂网络处理**]支持断网重连等各种网络环境自动适配；	
 - [x] [**快速切换URL**]支持播放过程中，快速切换其他URL，内容切换更快；	
 - [x] [**音视频多种render机制**]Windows平台支持D3D和GDI绘制模式(如不支持D3D，会自动切换到GDI模式)；	
