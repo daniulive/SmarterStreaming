@@ -131,7 +131,7 @@
 
 - [x] 大牛直播技术交流群3(推荐加入): [182979815](http://shang.qq.com/wpa/qunwpa?idkey=69308e344e276f43ecf27b4bd59dc61eb475a9b8b59134d036079b92154e0962)	
 
-- [x] 大牛直播技术交流群2(即将满员): [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)	
+- [x] 大牛直播技术交流群2(已满): [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)	
 
 - [x] 大牛直播技术交流群1(已满): [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)	
 
@@ -689,6 +689,6 @@ android：strings.xml：
 
 - [x] 大牛直播技术交流群3(推荐加入): [182979815](http://shang.qq.com/wpa/qunwpa?idkey=69308e344e276f43ecf27b4bd59dc61eb475a9b8b59134d036079b92154e0962)	
 
-- [x] 大牛直播技术交流群2(即将满员): [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)	
+- [x] 大牛直播技术交流群2(已满): [294891451](http://shang.qq.com/wpa/qunwpa?idkey=476a9cc05db0b2924530ccbbf4fae78fa485d39418ef79c8ab71b24a8fee8a48)	
 
 - [x] 大牛直播技术交流群1(已满): [499687479](http:////shang.qq.com/wpa/qunwpa?idkey=e7686f68a39bf1b95dc2ac3b775867efc7d3cbaf3596daf6e12bc1df21e1dc59)	
