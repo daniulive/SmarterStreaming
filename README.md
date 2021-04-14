@@ -12,7 +12,7 @@
 
 除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Unity3d**(Windows/Android/iOS)二次封装，**Unity3D**下为数不多真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器，此外Windows平台RTMP推送端，也支持Unity3D基础对接([参考链接](https://blog.csdn.net/renhui1112/article/details/106668930))。
 
-**[windows/android/iOS播放器SDK(V2)Unity3D调用说明(更新于2020/03/25)](http://daniusdk.com/wp-content/uploads/2021/04/视沃科技-大牛直播SDKV2Unity3D调用说明1.4.pdf)**
+**[windows/android/iOS播放器SDK(V2)Unity3D调用说明](http://daniusdk.com/wp-content/uploads/2021/04/视沃科技-大牛直播SDKV2Unity3D调用说明1.4.pdf)**
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
@@ -117,9 +117,9 @@
 
 - [x] [**SEI扩展数据发送/接收SDK**](https://daniusdk.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
-## 本地下载 ##
+## QQ技术对接交流 ##
 
-很多开发者反应，由于项目庞大，github下载整个工程很慢，我们已经把相关demo文件和使用说明，全部上传到QQ群共享（**加群请简要描述使用场景/需求，否则不予通过**）：
+**加群请简要描述使用场景/需求，否则不予通过**：
 
 - [x] 大牛直播技术交流群3(推荐加入): [182979815](http://shang.qq.com/wpa/qunwpa?idkey=69308e344e276f43ecf27b4bd59dc61eb475a9b8b59134d036079b92154e0962)	
 
@@ -283,17 +283,17 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；	
 - [x] [**摄像头采集**]除常规YUV格式外，Windows平台还支持**MJPEG**格式的摄像头采集；	
 - [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android/iOS支持RTMP扩展H.265推送）；		
-- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；	
+- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码；	
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；	
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
 - [x] [**音量调节**]Windows/Android平台采集端支持实时音量调节(其中，Windows平台混音模式下支持单独控制麦克风、扬声器音量)；
-- [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；	
-- [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；	
-- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
+- [x] [**H.264硬编码**]Android/iOS平台支持H.264特定机型硬编码；	
+- [x] [**H.265硬编码**]Android/iOS平台支持H.265特定机型硬编码；	
+- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，可切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
 - [x] [**软硬编码参数配置**]支持gop间隔、帧率(Windows最高限定120帧)、bit-rate设置；	
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；	
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；	
-- [x] [**RTMP扩展H.265**]Windows/Android/iOS推送SDK支持**RTMP扩展H.265推送**，Windows针对摄像头采集软编码，使用H.265可变码率，带宽大幅节省，效果直逼传统H.265编码摄像头，Android/iOS平台支持H.265硬编码；	
+- [x] [**RTMP扩展H.265**]Windows/Android/iOS推送SDK支持**RTMP扩展H.265推送**；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；	
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；	
 - [x] [**Windows推屏**]Windows平台支持**屏幕裁剪、窗口采集、屏幕/摄像头数据合成**等多种模式推送；	
@@ -319,7 +319,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**推送端休眠设置**]Windows平台支持休眠接口(设置成休眠模式后CPU会适当降低)；	
 - [x] [**编码后数据输出**]Android平台支持输出编码后的H264/AAC数据到上层，方便对接第三方平台(如GB28181)对接；	
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；	
-- [x] [**基础美颜**]iOS平台自带基础美颜功能；	
 - [x] [**裁剪模式**]Android/iOS平台支持特定分辨率摄像头裁剪模式设置；	
 - [x] [**服务器兼容**]支持自建标准RTMP服务器(如Nginx、SRS)或CDN。	
 
@@ -341,12 +340,12 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；	
 - [x] [**摄像头采集**]除常规YUV格式外，Windows平台还支持**MJPEG**格式的摄像头采集；	
 - [x] [**RTSP推流**]超低延时的RTSP协议直播推流SDK；	
-- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码(Android H.265硬编码)，iOS平台支持H.264编码；	
+- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码；	
 - [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码；
 - [x] [**音量调节**]Windows平台采集端支持实时音量调节(混音模式下支持单独控制麦克风、扬声器音量)；
-- [x] [**H.264硬编码**]Android/iOS平台支持H.264硬编码；	
-- [x] [**H.265硬编码**]Android/iOS平台支持H.265硬编码；	
-- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，自动切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
+- [x] [**H.264硬编码**]Android/iOS平台支持H.264特定机型硬编码；	
+- [x] [**H.265硬编码**]Android/iOS平台支持H.265特定机型硬编码；	
+- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，可切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
 - [x] [**RTSP鉴权**]支持RTSP鉴权推送；	
 - [x] [**TCP/UDP模式**]支持rtp over udp和rtp over tcp两种传输方式；	
 - [x] [**401事件处理**]RTSP推送支持401事件上报；	
@@ -392,10 +391,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，还支持**RTSP MJPEG**播放；	
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；	
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；	
-- [x] [**H.264硬解码**]**Windows**/Android/iOS支持H.264硬解，[Windows平台硬解码播放效果展示(超低CPU占用)](http://www.iqiyi.com/w_19s8qz0f2x.html)；	
-- [x] [**H.265硬解**]**Windows**/Android/iOS支持H.265硬解；	
+- [x] [**H.264硬解码**]**Windows**/Android/iOS支持H.264特定机型硬解码，[Windows平台硬解码播放效果展示(超低CPU占用)](http://www.iqiyi.com/w_19s8qz0f2x.html)；	
+- [x] [**H.265硬解**]**Windows**/Android/iOS支持H.265特定机型硬解码；	
 - [x] [**H.264/H.265硬解码**]Android支持设置Surface模式硬解和普通模式硬解码；	
-- [x] [**硬解码自适应**]Windows/Android/iOS平台支持硬解码码自适应，如检测到硬解码不支持，自动切换到软解；	
 - [x] [**RTSP模式设置**]支持RTSP TCP/UDP模式设置；	
 - [x] [**RTSP TCP/UDP自动切换**]支持RTSP TCP、UDP模式自动切换；	
 - [x] [**RTSP超时设置**]支持RTSP超时时间设置，单位：秒；	
@@ -405,14 +403,15 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**低延迟模式**]支持超低延迟模式设置；	
 - [x] [**复杂网络处理**]支持断网重连等各种网络环境自动适配；	
 - [x] [**快速切换URL**]支持播放过程中，快速切换其他URL，内容切换更快；	
-- [x] [**音视频多种render机制**]Windows平台支持D3D和GDI绘制模式(如不支持D3D，会自动切换到GDI模式)；	
-- [x] [**音视频多种render机制**]Android平台，视频：surfaceview/OpenGL ES，音频：AudioTrack/OpenSL ES；	
+- [x] [**音视频多种render机制**]Windows平台支持D3D和GDI绘制模式(如不支持D3D，可用GDI模式)；	
+- [x] [**音视频多种render机制**]Android平台，视频：surfaceview/OpenGL ES，音频：AudioTrack/OpenSL ES（一般建议AudioTrack）；	
 - [x] [**实时静音**]支持播放过程中，实时静音/取消静音；	
+- [x] [**实时音量调节**]支持播放过程中，实时调节播放音量，范围[0,100]；	
 - [x] [**实时快照**]支持播放过程中截取当前播放画面；	
 - [x] [**只播关键帧**]Windows平台支持实时设置是否只播放关键帧；	
 - [x] [**渲染角度**]支持0°，90°，180°和270°四个视频画面渲染角度设置；	
 - [x] [**渲染镜像**]支持水平反转、垂直反转模式设置；	
-- [x] [**等比例缩放**]支持图像等比例缩放绘制；	
+- [x] [**等比例缩放**]支持图像等比例缩放绘制（Android硬解码设置surface模式下不支持）；	
 - [x] [**实时下载速度更新**]支持当前下载速度实时回调(支持设置回调时间间隔)；	
 - [x] [**ARGB叠加**]Windows平台支持ARGB图像叠加到显示视频（参看C++的DEMO）；	
 - [x] [**解码前视频数据回调**]支持H.264/H.265数据回调；	
@@ -421,9 +420,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**解码前音频数据回调**]支持AAC/PCMA/PCMU/SPEEX数据回调；	
 - [x] [**音视频自适应**]支持播放过程中，音视频信息改变后自适应；	
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能(支持RTSP H.265流录制，支持PCMA/PCMU转AAC后录制，支持设置只录制音频或视频)，可参见"**8. Windows/Android/iOS录像SDK**"；	
-- [x] [**全屏**]Windows平台双击画面进入全屏模式；	
-- [x] [**Windows本地FLV播放器**]支持本地FLV文件播放(支持获取FLV文件的duration(时长)；支持显示当前播放位置；	
-- [x] [**Windows本地FLV播放器**]支持开始播放或播放过程中seek(跳转播放位置)，也许是行业内seek最快的flv点播播放器)。	
 
 对应Demo：	
 - [x] Windows测试程序：SmartPlayer.exe；	
@@ -446,7 +442,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**鉴权设置**]支持RTSP鉴权用户名、密码设置；	
 - [x] [**获取session连接数**]支持获取当前RTSP服务会话连接数；	
 - [x] [**多服务支持**]支持同时创建多个内置RTSP服务；	
-- [x] [**H.265支持**]支持发布H.265视频（Windows平台需64位库）；	
+- [x] [**H.265支持**]支持发布H.265视频；	
 - [x] [**RTSP url回调**]支持设置后的rtsp url通过event回调到上层。	
 
 对应Demo：	
@@ -474,7 +470,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**鉴权设置**]支持RTSP鉴权用户名、密码设置；	
 - [x] [**获取session连接数**]支持获取当前RTSP服务会话连接数；	
 - [x] [**多服务支持**]支持同时创建多个内置RTSP服务；	
-- [x] [**H.265支持**]Windows内置rtsp server支持发布H.265视频（64位库）；	
+- [x] [**H.265支持**]Windows内置rtsp server支持发布H.265视频；	
 - [x] [**RTSP url回调**]支持设置后的rtsp url通过event回调到上层；	
 
 对应Demo：	
@@ -502,8 +498,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows C#工程：WIN-RelaySDK-CSharp-Demo；	
 - [x] Android工程：SmartRelayDemoV2；	
 - [x] iOS工程：SmartiOSRelayDemoV2。	
-
-大牛直播SDK Windows平台已发布基于转发SDK的官方定制版系统: [点击查看多路RTSP/RTMP流转RTMP流官方定制版](https://daniusdk.com/index.php/2019/09/02/%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%a4%9a%e8%b7%afrtsp-rtmp%e8%bd%acrtmp%e5%ae%98%e6%96%b9%e5%ae%9a%e5%88%b6%e7%89%88/)	
 
 ---	
 
