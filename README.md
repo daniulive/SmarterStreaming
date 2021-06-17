@@ -10,9 +10,17 @@
 
 ## 平台扩展 ## 
 
-除了Windows/Android/iOS Native SDK，大牛直播SDK播放端还支持**Unity3d**(Windows/Android/iOS)二次封装，**Unity3D**下为数不多真正功能强大的**高稳定、超低延迟**的RTMP/RTSP直播播放器，此外Windows平台RTMP推送端，也支持Unity3D基础对接([参考链接](https://blog.csdn.net/renhui1112/article/details/106668930))。
+除了Windows/Android/iOS Native SDK，大牛直播SDK发布了Unity环境下的RTMP推流（Windows平台+Android平台）和RTMP|RTSP拉流（Windows平台+Android平台+iOS平台）低延迟的解决方案。
 
-**[windows/android/iOS播放器SDK(V2)Unity3D调用说明](http://daniusdk.com/wp-content/uploads/2021/04/视沃科技-大牛直播SDKV2Unity3D调用说明1.4.pdf)**
+目前，大牛直播SDK的Unity3D环境下，已覆盖以下SDK：
+
+- [x] Windows平台RTMP直播推送SDK（采集Unity窗体、摄像头或屏幕）;
+- [x] Windows平台RTMP|RTSP直播播放SDK；
+- [x] Android平台RTMP直播推送SDK（采集Unity窗体）；
+- [x] Android平台RTMP|RTSP直播播放SDK；
+- [x] iOS平台RTMP|RTSP直播播放SDK。
+
+**[windows/android/iOS播放器SDK(V2)Unity3D调用说明](http://daniusdk.com/wp-content/uploads/2021/06/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDKV2Unity3D%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.5.pdf)**
 
 **[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
 
