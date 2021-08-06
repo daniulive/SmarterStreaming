@@ -45,12 +45,13 @@
 |支持平台|支持架构|
 | ----|-----|
 |Windows平台|x86 debug/release, x64 debug/release |
+|Linux|麒麟操作系统|x86_64 |
 |Android平台|armeabi-v7a, arm64-v8a, x86, x86_64|
 |iOS平台|armv7, arm64|
 
 **Windows端**
 
-- [x] [**RTMP直播推流SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) RTMP推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**(64位库)))；
+- [x] [**RTMP直播推流SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) RTMP推送SDK(支持同时推多路url，支持**RTMP扩展H.265推送**))；
 
 - [x] [**RTSP直播推流SDK**](https://daniusdk.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
@@ -79,6 +80,18 @@
 - [x] [**视频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
 
 - [x] [**音频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
+
+**Linux|麒麟操作系统**
+
+- [x] [**RTMP直播推流SDK**](https://blog.csdn.net/renhui1112/article/details/118996220)RTMP推送SDK(支持推送屏幕、摄像头数据，支持**RTMP扩展H.265推送**)；
+
+- [x] [**RTMP直播播放器SDK**](https://blog.csdn.net/renhui1112/article/details/118969624)业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)；
+
+- [x] [**RTSP直播播放器SDK**](https://blog.csdn.net/renhui1112/article/details/118969624)支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK；
+
+- [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**]支持同时**多路拉取rtmp/rtsp流，并分别转发到服务器**，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK；
+
+- [x] [**录像SDK**]支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
 **Android端**
 
@@ -287,7 +300,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] C#工程：WIN-PublisherSDK-CSharp-Demo。	
 ---	
 
-**3. Windows/Android/iOS RTMP直播推流SDK**	
+**3. Windows/Linux/Android/iOS RTMP直播推流SDK**	
 
 如不单独说明，系Windows、Android、iOS全平台支持。	
 
@@ -296,18 +309,18 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**本地预览**]Windows平台支持摄像头/屏幕/合成数据**实时预览**功能，Android/iOS平台支持本地前后置摄像头预览；	
 - [x] [**摄像头反转/旋转**]Windows平台支持摄像头水平反转、垂直反转、0°/90°/180°/270°旋转；	
 - [x] [**摄像头采集**]除常规YUV格式外，Windows平台还支持**MJPEG**格式的摄像头采集；	
-- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（Windows/Android/iOS支持RTMP扩展H.265推送）；		
-- [x] [**视频格式**]Windows/Android平台支持H.264/H.265编码；	
-- [x] [**音频格式**]Windows/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；	
+- [x] [**RTMP推流**]超低延时的RTMP协议直播推流SDK（支持RTMP扩展H.265推送）；		
+- [x] [**视频格式**]支持H.264/H.265编码；	
+- [x] [**音频格式**]Windows/Linux/Android/iOS平台支持AAC编码，Windows/Android平台支持Speex编码；	
 - [x] [**音频编码**]Windows/Android平台支持Speex推送、Speex编码质量设置；
 - [x] [**音量调节**]Windows/Android平台采集端支持实时音量调节(其中，Windows平台混音模式下支持单独控制麦克风、扬声器音量)；
-- [x] [**H.264硬编码**]Android/iOS平台支持H.264特定机型硬编码；	
-- [x] [**H.265硬编码**]Android/iOS平台支持H.265特定机型硬编码；	
-- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，可切换到软编（iOS如H.265硬编，先切换到H.264硬编码，如不支持再尝试H.264软编）；	
-- [x] [**软硬编码参数配置**]支持gop间隔、帧率(Windows最高限定120帧)、bit-rate设置；	
+- [x] [**H.264硬编码**]Windows/Android/iOS平台支持H.264特定机型硬编码；	
+- [x] [**H.265硬编码**]Windows/Android/iOS平台支持H.265特定机型硬编码；	
+- [x] [**硬编码自适应**]Android/iOS平台支持硬编码自适应，如检测到硬编码不支持，可切换到软编；	
+- [x] [**软硬编码参数配置**]支持关键帧间隔、帧率(Windows最高限定120帧)、码率设置；	
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；	
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；	
-- [x] [**RTMP扩展H.265**]Windows/Android/iOS推送SDK支持**RTMP扩展H.265推送**；
+- [x] [**RTMP扩展H.265**]支持**RTMP扩展H.265推送**；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；	
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；	
 - [x] [**Windows推屏**]Windows平台支持**屏幕裁剪、窗口采集、屏幕/摄像头数据合成**等多种模式推送；	
@@ -333,13 +346,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**推送端休眠设置**]Windows平台支持休眠接口(设置成休眠模式后CPU会适当降低)；	
 - [x] [**编码后数据输出**]Android平台支持输出编码后的H264/AAC数据到上层，方便对接第三方平台(如GB28181)对接；	
 - [x] [**扩展录像功能**]完美支持和录像SDK组合使用，录像相关功能，可参见"**8. Windows/Android/iOS录像SDK**"；	
-- [x] [**裁剪模式**]Android/iOS平台支持特定分辨率摄像头裁剪模式设置；	
 - [x] [**服务器兼容**]支持自建标准RTMP服务器(如Nginx、SRS)或CDN。	
 
 对应Demo：	
 - [x] Windows测试程序：SmartPublisherDemo.exe；	
 - [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；	
 - [x] Windows C#工程：WIN-PublisherSDK-CSharp-Demo；	
+- [x] Linux工程：publisherdemo；
 - [x] Android工程：SmartPublisherV2；	
 - [x] iOS工程：SmartiOSPublisherV2。	
 ---	
@@ -395,7 +408,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPublisherV2。	
 ---	
 
-**5. Windows/Android/iOS RTMP、RTSP直播播放器SDK**	
+**5. Windows/Linux/Android/iOS RTMP、RTSP直播播放器SDK**	
 
 如不单独说明，系Windows、Android、iOS全平台支持。	
 
@@ -439,6 +452,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows测试程序：SmartPlayer.exe；	
 - [x] Windows C++工程：WIN-PlayerSDK-CPP-Demo；	
 - [x] Windows C#工程：WIN-PlayerSDK-CSharp-Demo；	
+- [x] Linux工程：linux-simple-playerdemo；
 - [x] Android工程：SmartPlayerV2；	
 - [x] iOS工程：SmartiOSPlayerV2。	
 ---	
@@ -493,13 +507,13 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] Windows C#工程：WIN-RelaySDK-CSharp-Demo。	
 ---	
 
-**8. Windows/Android/iOS RTMP/RTSP多路流媒体转RTMP推送SDK**	
+**8. Windows/Linux/Android/iOS RTMP/RTSP多路流媒体转RTMP推送SDK**	
 
-如不单独说明，系Windows、Android、iOS全平台支持。	
+如不单独说明，系Windows、Linux、Android、iOS全平台支持。	
 
 - [x] [**拉流**]支持拉取RTSP流；	
 - [x] [**拉流**]支持拉取RTMP流；	
-- [x] [**预览**]支持拉取到的RTMP/RTSP随时本地预览、关闭预览；	
+- [x] [**预览**]Windows/Android/iOS支持拉取到的RTMP/RTSP随时本地预览、关闭预览；	
 - [x] [**拉流音频调节**]支持拉取的RTMP/RTSP流静音；	
 - [x] [**音频转码**]支持拉取的RTMP/RTSP的PCMA/PCMU/SPEEX音频格式**转AAC**后再转发到RTMP服务器；	
 - [x] [**url切换**]**支持转发过程中，拉取的RTMP/RTSP实时内容切换**；	
@@ -551,7 +565,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] C++工程：WIN-MixStreamSDK-CPP-Demo；	
 ---	
 
-**11. Windows/Android/iOS录像SDK**	
+**11. Windows/Linux/Android/iOS录像SDK**	
 
 - [x] [**拉流**]支持拉取RTSP流录像；	
 - [x] [**拉流**]支持拉取RTMP流录像；	
