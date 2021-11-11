@@ -77,10 +77,6 @@
 
 - [x] [**SEI扩展数据发送/接收SDK**](https://daniusdk.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
-- [x] [**视频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 屏幕/多摄像头/水印/遮挡区域多层自由合成模块；
-
-- [x] [**音频处理SDK**](https://daniusdk.com/index.php/2018/09/21/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%E5%A4%84%E7%90%86sdk/) 多路混音、回音消除、噪音抑制、自动增益、VAD检测模块；
-
 **Linux|麒麟操作系统**
 
 - [x] [**RTMP直播推流SDK**](https://blog.csdn.net/renhui1112/article/details/118996220)RTMP推送SDK(支持推送屏幕、摄像头数据，支持**RTMP扩展H.265推送**)；
