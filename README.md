@@ -2,7 +2,7 @@
 
 业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
-适用于**在线教育、[智慧教室|无纸化推屏|会议](https://daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、远程医疗、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
+适用于**在线教育、[智慧教室|无纸化推屏|会议](https://daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、远程医疗、虚拟仿真实训教学、VR教育、云展会、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
 
 **[视沃科技(大牛直播SDK)官方测试版获取流程](https://daniusdk.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
 
@@ -152,7 +152,7 @@
 
 或者直接从私有服务器下载(Windows提供C#/C++ demo, android提供android studio demo，iOS提供xcode demo)：	
 
-## 大牛直播SDK相关demo本地下载 ##	
+## 大牛直播SDK相关demo介绍 ##	
 
 **1. Windows平台测试EXE：**	
 
@@ -172,21 +172,21 @@
 
 **2. Windows平台集成对接DEMO：**	
 
-- [x] [**Windows平台C++ SDK demo工程代码**] Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo
+- [x] [**Windows平台C++ SDK demo工程**] Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C++) Demo
 
-- [x] [**Windows平台C++ SDK demo工程代码**] Windows平台RTMP|RTSP播放SDK(C++) Demo
+- [x] [**Windows平台C++ SDK demo工程**] Windows平台RTMP|RTSP播放SDK(C++) Demo
 
-- [x] [**Windows平台C++ SDK demo工程代码**] Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo
+- [x] [**Windows平台C++ SDK demo工程**] Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C++) Demo
 
-- [x] [**Windows平台C++ SDK demo工程代码**] Windows平台混流SDK(C++) Demo
+- [x] [**Windows平台C++ SDK demo工程**] Windows平台混流SDK(C++) Demo
 
-- [x] [**Windows平台C# SDK demo工程代码**] Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo
+- [x] [**Windows平台C# SDK demo工程**] Windows平台RTMP|RTSP推送SDK、内置RTSP服务SDK、录像SDK(C#) Demo
 
-- [x] [**Windows平台C# SDK demo工程代码**] Windows平台RTMP|RTSP播放SDK(C#) Demo
+- [x] [**Windows平台C# SDK demo工程**] Windows平台RTMP|RTSP播放SDK(C#) Demo
 
-- [x] [**Windows平台C# SDK demo工程代码**] Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo
+- [x] [**Windows平台C# SDK demo工程**] Windows平台多路RTSP|RTMP转RTMP推送模块SDK(C#) Demo
 
-- [x] [**Windows平台一对一互动SDK demo工程代码(以C#为例)**] 基于标准RTMP服务的一对一互动demo，可扩展RTSP一对一互动
+- [x] [**Windows平台一对一互动SDK demo工程(以C#为例)**] 基于标准RTMP服务的一对一互动demo，可扩展RTSP一对一互动
 
 **3.Android平台集成对接DEMO：**	
 
@@ -613,7 +613,6 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 ## 编译注意事项 ##	
 
-* iOS平台支持真机和模拟器编译运行.	
 * iOS播放端编译时找不到 libSmartPlayerSDK.a 时，请先到 SmartiOSPlayer/SmartiOSPlayer/libs 目录, 解压libSmartPlayerSDK.zip.	
 * iOS推送端编译时找不到 libSmartPublisherSDK.a 时，请先到 SmartiOSPublisher/SmartiOSPublisher/libs 目录, 解压libSmartPublisherSDK.zip.	
 * 未授权版本，限制app-name，如果需要集成到自己工程里面调试，可以用以下名字：	
