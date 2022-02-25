@@ -1,6 +1,6 @@
 **视沃科技-大牛直播SDK <a href="https://daniusdk.com" target="_blank">daniusdk.com</a>**
 
-业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
+业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、GB28181接入、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
 适用于**在线教育、[智慧教室|无纸化推屏|会议](https://daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、远程医疗、虚拟仿真实训教学、VR教育、云展会、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
 
@@ -92,6 +92,8 @@
 **Android端**
 
 - [x] [**RTMP直播推流端SDK**](https://daniusdk.com/index.php/2018/04/02/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) Android屏幕、摄像头RTMP推流SDK，支持**RTMP扩展H.265推送**(H.265硬编码)；
+
+- [x] [**GB28181接入SDK**](https://daniusdk.com/index.php/2022/02/25/android%e5%b9%b3%e5%8f%b0gb28181%e6%8e%a5%e5%85%a5sdk/) Android屏幕、摄像头编码注册接入到GB28181服务平台；
 
 - [x] [**RTSP直播推流SDK**](https://daniusdk.com/index.php/2018/12/14/rtsp%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81sdk/) 支持RTSP H.264/H.265推送，音频支持AAC格式，支持TCP/UDP模式推送，支持RTSP鉴权，支持重连和异常网络处理，超低延迟；
 
@@ -192,7 +194,7 @@
 
 - [x] [**SmartPlayerV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPlayerV2): RTMP|RTSP直播播放SDK demo，涵盖实时录像、快照、扩展SEI数据接收等功能；	
 
-- [x] [**SmartPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPublisherV2): RTMP直播推送SDK、RTSP直播推送SDK、轻量级RTSP服务SDK、扩展SEI发送SDK、实时录像SDK多合一demo；	
+- [x] [**SmartPublisherV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartPublisherV2): RTMP直播推送SDK、RTSP直播推送SDK、GB28181接入SDK、轻量级RTSP服务SDK、扩展SEI发送SDK、实时录像SDK多合一demo；	
 
 - [x] [**SmartEchoCancellationV2**](https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/AndroidStudio/SmartEchoCancellationV2): 基于RTMP的一对一互动demo(可扩展RTSP一对一互动)；	
 
@@ -609,6 +611,41 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPlayerV2；	
 - [x] Android工程：SmartPublisherV2；	
 - [x] iOS工程：SmartiOSPublisherV2。	
+---	
+
+**13. Android平台GB28181接入SDK**	
+
+- [x] [本地预览]支持本地前后置摄像头预览；
+- [x] [视频格式]H.264/H.265(Android H.265硬编码)；
+- [x] [音频格式]AAC；
+- [x] [音量调节]Android平台采集端支持实时音量调节；
+- [x] [H.264硬编码]支持H.264特定机型硬编码；
+- [x] [H.265硬编码]支持H.265特定机型硬编码；
+- [x] [软硬编码参数配置]支持gop间隔、帧率、bit-rate设置；
+- [x] [软编码参数配置]支持软编码profile、软编码速度、可变码率设置；
+- [x] [横竖屏推流]Android平台支持支持横屏、竖屏推流；
+- [x] [多分辨率支持]支持摄像头或屏幕多种分辨率设置；
+- [x] [移动端推屏]Android平台支持后台service推送屏幕(推送屏幕需要5.0+版本)；
+- [x] [模式支持]媒体流支持最新GB28181-2016的UDP和TCP被动模式；
+- [x] [参数设置]支持注册有效期、心跳间隔、心跳间隔次数、TCP/UDP信令设置；
+- [x] [参数设置]支持RTP Sender IP地址类型、RTP Socket本地端口、SSRC、RTP socket 发送Buffer大小、RTP时间戳时钟频率设置；
+- [x] [状态回调]支持注册成功、注册超时、INVIT、ACK、BYE状态回调；
+- [x] [水印]支持文字水印、png水印；
+- [x] [镜像]Android平台支持前置摄像头实时镜像功能；
+- [x] [前后摄像头实时切换]Android平台支持采集过程中，前后摄像头切换；
+- [x] [动态码率]支持根据网络情况自动调整推流码率；
+- [x] [实时静音]支持推送过程中，实时静音/取消静音；
+- [x] [实时快照]支持推流过程中，实时快照；
+- [x] [降噪]支持环境音、手机干扰等引起的噪音降噪处理、自动增益、VAD检测；
+- [x] [外部编码前视频数据对接]支持YUV数据对接；
+- [x] [外部编码前音频数据对接]支持PCM对接；
+- [x] [外部编码后视频数据对接]支持外部H.264数据对接；
+- [x] [外部编码后音频数据对接]外部AAC数据对接；
+- [x] [扩展录像功能]完美支持和录像SDK组合使用，录像相关功能；
+- [x] [服务器兼容]支持标准GB28181服务。
+
+对应Demo：	
+- [x] Android工程：SmartPublisherV2；	
 ---	
 
 ## 编译注意事项 ##	
