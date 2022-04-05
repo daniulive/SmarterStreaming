@@ -10,19 +10,22 @@
 
 ## 平台扩展 ## 
 
-除了Windows/Linux/Android/iOS Native SDK，大牛直播SDK发布了Unity环境下的RTMP推流（Windows平台+Android平台）和RTMP|RTSP拉流（Windows平台+Android平台+iOS平台）低延迟的解决方案。
+除了Windows/Linux/Android/iOS Native SDK，大牛直播SDK发布了Unity环境下的RTMP推流（Windows平台+Android平台）和RTMP|RTSP拉流（Windows、Linux、Android和iOS平台全覆盖）低延迟的解决方案。
 
 目前，大牛直播SDK的Unity3D环境下，已覆盖以下SDK：
 
 - [x] Windows平台RTMP直播推送SDK（采集Unity窗体、摄像头或屏幕）;
 - [x] Windows平台RTMP|RTSP直播播放SDK；
+- [x] Linux平台RTMP|RTSP直播播放SDK；
 - [x] Android平台RTMP直播推送SDK（采集Unity窗体）；
 - [x] Android平台RTMP|RTSP直播播放SDK；
 - [x] iOS平台RTMP|RTSP直播播放SDK。
 
-**[大牛直播SDK Unity3D接口调用SDK说明](http://daniusdk.com/wp-content/uploads/2021/06/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDKV2Unity3D%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.5.pdf)**
+**[大牛直播SDK Unity3D接口调用SDK说明](http://daniusdk.com/wp-content/uploads/2022/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADSDKV2Unity3D%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E1.7.pdf)**
 
-**[Unity3d RTSP/RTMP直播播放端SDK视频演示](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
+**[Unity3d RTSP/RTMP直播播放端SDK视频演示1](http://web1712221406366.gz01.bdysite.com/wp-content/uploads/2018/05/unity3d-android-iOS.mp4)**
+
+**[Unity3d RTSP/RTMP直播播放端SDK视频演示2](http://daniusdk.com/wp-content/uploads/2018/06/unity3d-linux.mp4)**
 
 相关博客：
 
@@ -30,6 +33,8 @@
 - [x] [Android平台实现Unity3D下RTMP推送](https://blog.csdn.net/renhui1112/article/details/117669587)
 - [x] [Windows平台Unity3d下如何同时播放多路RTSP或RTMP流](https://blog.csdn.net/renhui1112/article/details/114674572)
 - [x] [如何在Unity3d平台下低延迟播放RTMP或RTSP流](https://blog.csdn.net/renhui1112/article/details/104154788)
+- [x] [Unity3D平台实现全景实时RTMP|RTSP流渲染](https://blog.csdn.net/renhui1112/article/details/123963786)
+- [x] [Unity3D下Linux平台播放RTSP或RTMP流](https://blog.csdn.net/renhui1112/article/details/123891897)
 
 ## 模块概览 ## 
 
@@ -72,8 +77,6 @@
 - [x] [**录像SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
 - [x] [**RTMP/RTSP一对一互动SDK**](https://daniusdk.com/index.php/2018/12/01/%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%92%E5%8A%A8sdk/) 基于标准协议(RTMP或RTSP)的跨平台(Windows/Andriod/iOS)一对一互动SDK，支持回音消除，完美支持一对一互动场景；
-
-- [x] [**连麦SDK**](https://daniusdk.com/index.php/2018/06/23/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E8%BF%9E%E9%BA%A6sdk/) 以标准协议为基础，完美支持Windows连麦；
 
 - [x] [**SEI扩展数据发送/接收SDK**](https://daniusdk.com/index.php/2018/07/10/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsei%E6%89%A9%E5%B1%95%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81-%E6%8E%A5%E6%94%B6sdk/) 支持推送端通过H.264 SEI信息扩展，实时传输文本/二进制数据信息(如实时字幕/时间戳/题目分发/公告广播等)，播放端做相应解析和回显；
 
@@ -222,7 +225,7 @@
 
 右键“链接另存为(K)...”下载文档即可。	
 
-- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明**](http://daniusdk.com/wp-content/uploads/2021/04/视沃科技-大牛直播移动端SDKV2调用说明2.17.pdf)	
+- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明**](http://daniusdk.com/wp-content/uploads/2022/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.18.pdf)	
 
 - [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)**](http://daniusdk.com/wp-content/uploads/2021/04/视沃科技-Windows平台-SDK集成说明2.16.pdf)	
 
