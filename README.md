@@ -10,14 +10,15 @@
 
 ## 平台扩展 ## 
 
-除了Windows/Linux/Android/iOS Native SDK，大牛直播SDK发布了Unity环境下的RTMP推流（Windows平台+Android平台）和RTMP|RTSP拉流（Windows、Linux、Android和iOS平台全覆盖）低延迟的解决方案。
+除了Windows/Linux/Android/iOS原生音视频技术方案，大牛直播SDK发布了Unity环境下的RTMP推流（Windows、Linux、Android平台）和RTMP|RTSP拉流（Windows、Linux、Android和iOS平台）低延迟的解决方案。
 
 目前，大牛直播SDK的Unity3D环境下，已覆盖以下SDK：
 
 - [x] Windows平台RTMP直播推送SDK（采集Unity窗体、摄像头或屏幕）;
 - [x] Windows平台RTMP|RTSP直播播放SDK；
+- [x] Linux平台RTMP直播推送SDK（采集Unity窗体、Unity声音）;
 - [x] Linux平台RTMP|RTSP直播播放SDK；
-- [x] Android平台RTMP直播推送SDK（采集Unity窗体）；
+- [x] Android平台RTMP直播推送SDK（采集Unity窗体、麦克风或Unity声音）；
 - [x] Android平台RTMP|RTSP直播播放SDK；
 - [x] iOS平台RTMP|RTSP直播播放SDK。
 
@@ -87,6 +88,8 @@
 - [x] [**RTMP直播播放器SDK**](https://blog.csdn.net/renhui1112/article/details/118969624)业内首屈一指的RTMP超低延迟直播播放器SDK(**支持RTMP H.265扩展播放**)；
 
 - [x] [**RTSP直播播放器SDK**](https://blog.csdn.net/renhui1112/article/details/118969624)支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK；
+
+- [x] [**Unity3D RTMP/RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内为数不多的Linux支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK;
 
 - [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**]支持同时**多路拉取rtmp/rtsp流，并分别转发到服务器**，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK；
 
