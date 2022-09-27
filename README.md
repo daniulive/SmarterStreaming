@@ -1,4 +1,4 @@
-**视沃科技-大牛直播SDK <a href="https://daniusdk.com" target="_blank">daniusdk.com</a>**
+**视沃科技-大牛直播SDK <a href="https://www.daniusdk.com" target="_blank">daniusdk.com</a>**
 
 业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、GB28181接入、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
