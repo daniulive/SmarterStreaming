@@ -96,6 +96,8 @@
 
 - [x] [**RTMP/RTSP多路流媒体转RTMP推送SDK**]支持同时**多路拉取rtmp/rtsp流，并分别转发到服务器**，业内为数不多**支持RTSP/RTMP H.265拉流转发**的SDK；
 
+- [x] [**轻量级RTSP服务SDK**](https://daniusdk.com/index.php/2018/06/22/%E8%BD%BB%E9%87%8F%E7%BA%A7rtsp%E6%9C%8D%E5%8A%A1sdk/) 为满足内网无纸化/电子教室等内网超低延迟需求，避免让用户配置单独的服务器，大牛直播SDK在推送端支持轻量级RTSP服务SDK，推送端SDK支持的功能，内置轻量级RTSP服务SDK后，功能继续支持；
+
 - [x] [**录像SDK**]支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
 **Android端**
@@ -563,6 +565,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 
 对应Demo：	
 - [x] Android工程：SmartPublisherV2；	
+
+GB28181模块集成说明：
+- [x]  [Android平台GB28181接入模块技术接入说明](https://blog.csdn.net/renhui1112/article/details/128377797)
 ---	
 
 ## 编译注意事项 ##	
