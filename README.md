@@ -46,7 +46,7 @@
 
 **RTSP/RTMP推拉流SDK概览图**
 
-<img src="https://img-blog.csdnimg.cn/2020020612174317.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Jlbmh1aTExMTI=,size_16,color_FFFFFF,t_70" alt="RTSP/RTMP推拉流SDK概览图" />
+<img src="http://daniusdk.com/wp-content/uploads/2023/05/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="RTSP/RTMP推拉流SDK概览图" />
 
 **多路RTSP/RTMP转RTMP推送SDK概览图**
 
