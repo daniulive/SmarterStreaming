@@ -1,6 +1,6 @@
 **视沃科技-大牛直播SDK <a href="https://www.daniusdk.com" target="_blank">daniusdk.com</a>**
 
-业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、GB28181接入、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
+业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、GB28181接入、外部编码数据实时预览播放、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
 
 适用于**在线教育、[智慧教室|无纸化推屏|会议](https://daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、执法记录仪、远程医疗、虚拟仿真实训教学、VR教育、云展会、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
 
@@ -111,6 +111,8 @@
 - [x] [**RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/12/12/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADrtsp%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 支持RTSP H.265播放及扩展录像、业内为数不多真正好用的RTSP播放器SDK;
 
 - [x] [**Unity3D RTMP/RTSP直播播放器SDK**](https://daniusdk.com/index.php/2018/06/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%ADsdk-unity3d%E7%9B%B4%E6%92%AD%E6%92%AD%E6%94%BE%E5%99%A8sdk/) 业内为数不多的Android支持Unity3D的超低延迟RTMP/RTSP直播播放器SDK，支持快照、录像、实时静音、view旋转、快速切换URL等特性;
+     
+- [x] [**Android平台外部编码数据实时预览SDK**](https://daniusdk.com/index.php/2023/05/17/android%e5%b9%b3%e5%8f%b0%e5%a4%96%e9%83%a8%e7%bc%96%e7%a0%81%e6%95%b0%e6%8d%ae%e5%ae%9e%e6%97%b6%e9%a2%84%e8%a7%88%e6%a8%a1%e5%9d%97/) 第三方平台编码后数据(如H.264/H.265/PCMA/PCMU/AAC)预览播放模块；
 
 - [x] [**录像SDK**](https://daniusdk.com/index.php/2018/04/04/%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E5%BD%95%E5%83%8Fsdk/) 支持拉取rtmp/rtsp流实时**录像**模块/实时**快照**功能，支持纯音频、纯视频、音视频录制模式，支持音频(PCMU/PCMA,Speex等)**转AAC**后再录像，业内为数不多的支持**RTSP/RTMP H.265录制到MP4文件**的录像SDK；
 
