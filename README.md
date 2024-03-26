@@ -1,8 +1,10 @@
 **视沃科技-大牛直播SDK <a href="https://www.daniusdk.com" target="_blank">daniusdk.com</a>**
 
-业内为数不多致力于极致体验的**超强全自研跨平台**(Windows/Linux/Android/iOS)**流媒体内核**，通过模块化自由组合，支持实时RTMP推流、RTSP推流、GB28181接入、外部编码数据实时预览播放、RTMP/RTSP直播播放(**支持RTSP/RTMP H.265**)、实时**录像**、多路流媒体**转发**(RTSP转RTMP，RTMP转RTMP)、音视频导播、动态视频合成、音频混音、**一对一互动**直播、内置轻量级RTSP服务、RTSP网关服务等，**比快更快**，业界**真正靠谱**的超低延迟直播SDK(1秒内，低延迟模式下200~400ms)。
+始于2015年，致力于传统行业极致体验的音视频直播技术解决方案，产品涵盖跨平台的实时RTMP推流、RTMP/RTSP直播播放(支持RTSP/RTMP H.265)、GB28181设备接入、实时录像、多路流媒体转发(RTSP转RTMP，RTMP转RTMP，RTSP|RTMP转GB28181)、音视频导播、动态视频合成、音频混音、一对一互动直播、内置轻量级RTSP服务、RTSP网关服务等，比快更快，业界真正稳定可靠的超低延迟直播SDK(毫秒级延迟，低延迟模式下200~400ms)。
 
-适用于**在线教育、[智慧教室|无纸化推屏|会议](https://daniusdk.com/index.php/2020/01/09/%e5%9f%ba%e4%ba%8e%e6%99%ba%e6%85%a7%e6%95%99%e5%ae%a4%e6%97%a0%e7%ba%b8%e5%8c%96%e4%bc%9a%e8%ae%ae%e7%9a%84%e6%96%b0%e9%80%89%e6%8b%a9%ef%bc%9artmp%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/)、运营商视频云平台、执法记录仪、远程医疗、虚拟仿真实训教学、VR教育、云展会、金融双录、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
+视沃科技旗下”大牛直播SDK”，始于2015年，致力于传统行业极致体验的音视频直播技术解决方案，产品涵盖跨平台的实时RTMP推流、RTMP/RTSP直播播放(支持RTSP/RTMP H.265)、GB28181设备接入、实时录像、多路流媒体转发(RTSP转RTMP，RTMP转RTMP，RTSP|RTMP转GB28181)、音视频导播、动态视频合成、音频混音、一对一互动直播、内置轻量级RTSP服务、RTSP网关服务等，比快更快，业界真正稳定可靠的超低延迟直播SDK(毫秒级延迟，低延迟模式下200~400ms)。
+
+适用于**在线教育、智慧教室|无纸化推屏|会议、运营商视频云平台、执法记录、电力巡检、智慧水利、智慧煤矿、管廊隧道、平衡操控、虚拟仿真实训教学、VR教育、云展会、金融双录、远程医疗、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
 
 **[视沃科技(大牛直播SDK)官方测试版获取流程](https://daniusdk.com/index.php/2020/09/10/%e8%a7%86%e6%b2%83%e7%a7%91%e6%8a%80%e5%a4%a7%e7%89%9b%e7%9b%b4%e6%92%adsdk%e5%ae%98%e6%96%b9%e6%b5%8b%e8%af%95%e7%89%88%e8%8e%b7%e5%8f%96%e6%b5%81%e7%a8%8b/)**
 
@@ -15,11 +17,12 @@
 目前，大牛直播SDK的Unity3D环境下，已覆盖以下SDK：
 
 - [x] Windows平台RTMP直播推送SDK（采集Unity窗体、摄像头或屏幕）;
+- [x] Windows平台轻量级RTSP服务SDK（采集Unity窗体、摄像头或屏幕）;
 - [x] Windows平台RTMP|RTSP直播播放SDK；
 - [x] Linux平台RTMP直播推送SDK（采集Unity窗体、Unity声音）；
 - [x] Linux平台RTMP|RTSP直播播放SDK；
-- [x] Android平台RTMP直播推送SDK（采集Unity窗体、麦克风或Unity声音）；
-- [x] Android平台轻量级RTSP服务SDK（采集Unity窗体、麦克风或Unity声音）；
+- [x] Android平台RTMP直播推送SDK（采集Unity窗体、摄像头、麦克风或Unity声音）；
+- [x] Android平台轻量级RTSP服务SDK（采集Unity窗体、摄像头、麦克风或Unity声音）；
 - [x] Android平台RTMP|RTSP直播播放SDK；
 - [x] iOS平台RTMP|RTSP直播播放SDK。
 
@@ -40,6 +43,7 @@
 - [x] [Unity实现Camera和Audio数据的低延迟RTMP推送技术探讨](https://blog.csdn.net/renhui1112/article/details/126683565)
 - [x] [Unity环境下实现Camera高帧率RTMP推送](https://blog.csdn.net/renhui1112/article/details/126446441)
 - [x] [如何在Unity下采集音视频实现轻量级RTSP服务(类似于IPC)](https://blog.csdn.net/renhui1112/article/details/126950138)
+- [x] [Android平台Unity下如何通过WebCamTexture采集摄像头数据并推送至RTMP服务器或轻量级RTSP服务](https://blog.csdn.net/renhui1112/article/details/135653199)
 
 
 ## 模块概览 ## 
@@ -552,8 +556,14 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持设备目录查询应答；
 - [x] 支持心跳机制，支持心跳间隔、心跳检测次数设置；
 - [x] 支持移动设备位置(MobilePosition)订阅和通知；
-- [x] 支持国标GB/T28181—2016平台接入；
-- [x] 支持语音广播及语音对讲；
+- [x] 适用国家标准：GB/T 28181—2016；
+- [x] 支持语音广播；
+- [ ] 支持语音对讲；
+- [ ] 支持图像抓拍；
+- [ ] 支持历史视音频文件检索；
+- [ ] 支持历史视音频文件下载；
+- [ ] 支持历史视音频文件回放；
+- [ ] 支持云台控制和预置位查询；
 - [x] [实时水印]支持动态文字水印、png水印；
 - [x] [镜像]Android平台支持前置摄像头实时镜像功能；
 - [x] [实时静音]支持实时静音/取消静音；
