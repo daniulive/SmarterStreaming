@@ -1,8 +1,6 @@
 **视沃科技-大牛直播SDK <a href="https://www.daniusdk.com" target="_blank">daniusdk.com</a>**
 
-始于2015年，致力于传统行业极致体验的音视频直播技术解决方案，产品涵盖跨平台的实时RTMP推流、RTMP/RTSP直播播放(支持RTSP/RTMP H.265)、GB28181设备接入、实时录像、多路流媒体转发(RTSP转RTMP，RTMP转RTMP，RTSP|RTMP转GB28181)、音视频导播、动态视频合成、音频混音、一对一互动直播、内置轻量级RTSP服务、RTSP网关服务等，比快更快，业界真正稳定可靠的超低延迟直播SDK(毫秒级延迟，低延迟模式下200~400ms)。
-
-视沃科技旗下”大牛直播SDK”，始于2015年，致力于传统行业极致体验的音视频直播技术解决方案，产品涵盖跨平台的实时RTMP推流、RTMP/RTSP直播播放(支持RTSP/RTMP H.265)、GB28181设备接入、实时录像、多路流媒体转发(RTSP转RTMP，RTMP转RTMP，RTSP|RTMP转GB28181)、音视频导播、动态视频合成、音频混音、一对一互动直播、内置轻量级RTSP服务、RTSP网关服务等，比快更快，业界真正稳定可靠的超低延迟直播SDK(毫秒级延迟，低延迟模式下200~400ms)。
+始于2015年，致力于传统行业极致体验的音视频直播技术解决方案，产品涵盖跨平台的实时**RTMP推流**、**RTMP/RTSP直播播放**(支持RTSP/RTMP H.265)、**GB28181设备接入**、**实时录像**、**多路流媒体转发**(RTSP转RTMP，RTMP转RTMP，RTSP|RTMP转GB28181)、音视频导播、动态视频合成、音频混音、一对一互动直播、**内置轻量级RTSP服务**、**RTSP网关服务**等，比快更快，业界真正稳定可靠的超低延迟直播SDK(毫秒级延迟，低延迟模式下200~400ms)。
 
 适用于**在线教育、智慧教室|无纸化推屏|会议、运营商视频云平台、执法记录、电力巡检、智慧水利、智慧煤矿、管廊隧道、平衡操控、虚拟仿真实训教学、VR教育、云展会、金融双录、远程医疗、智能可视门禁对讲、智慧安防、智能家居、物联网、智能车载、传统硬件领域、媒体移动直播、应急指挥调度(针对保险、城管、交警、消防、公安等职能管理部门的单兵应急执法系统)、远程专家诊断、可视化巡检、(如电信/电力线路/铁路沿线/水利设施/油田/消防设施巡检)、移动视频安防监控，企业内训、监控对接**等场景。
 
@@ -14,7 +12,7 @@
 
 除了Windows/Linux/Android/iOS原生音视频技术方案，大牛直播SDK发布了Unity环境下的RTMP推流（Windows、Linux、Android平台）和RTMP|RTSP拉流（Windows、Linux、Android和iOS平台）低延迟的解决方案。
 
-目前，大牛直播SDK的Unity3D环境下，已覆盖以下SDK：
+目前，大牛直播SDK的Unity3D环境下已覆盖以下SDK：
 
 - [x] Windows平台RTMP直播推送SDK（采集Unity窗体、摄像头或屏幕）;
 - [x] Windows平台轻量级RTSP服务SDK（采集Unity窗体、摄像头或屏幕）;
@@ -294,7 +292,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**软硬编码参数配置**]支持关键帧间隔、帧率(Windows最高限定120帧)、码率设置；	
 - [x] [**软编码参数配置**]支持软编码profile、软编码速度、可变码率设置；	
 - [x] [**多实例推送**]支持多实例推送(如同时推送屏幕/摄像头和外部数据)；	
-- [x] [**RTMP扩展H.265**]支持**RTMP扩展H.265推送**；
+- [x] [**RTMP H.265**]支持**RTMP扩展H.265推送和Enhanced RTMP**；
 - [x] [**横竖屏推流**]Android/iOS平台支持支持横屏、竖屏推流；	
 - [x] [**多分辨率支持**]支持摄像头或屏幕多种分辨率设置；	
 - [x] [**Windows推屏**]Windows平台支持**屏幕裁剪、窗口采集、屏幕/摄像头数据合成**等多种模式推送；	
@@ -338,7 +336,7 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] [**支持播放协议**]高稳定、超低延迟（一秒内，行业内几无效果接近的播放端）、业内首屈一指的RTMP/RTSP直播播放器SDK；	
 - [x] [**多实例播放**]支持多实例播放（如同时播放多路RTMP/RTSP流）；	
 - [x] [**事件回调**]支持网络状态、buffer状态等回调；	
-- [x] [**视频格式**]支持RTSP H.265、RTMP扩展H.265，RTSP/RTMP H.264，此外，还支持**RTSP MJPEG**播放；	
+- [x] [**视频格式**]支持RTSP H.265、**RTMP扩展H.265推送和Enhanced RTMP**，RTSP/RTMP H.264，此外，还支持**RTSP MJPEG**播放；	
 - [x] [**音频格式**]RTMP/RTSP支持AAC/PCMA/PCMU，此外RTMP还支持Speex；	
 - [x] [**H.264/H.265软解码**]支持H.264/H.265软解；	
 - [x] [**H.264硬解码**]**Windows**/Android/iOS支持H.264特定机型硬解码，[Windows平台硬解码播放效果展示(超低CPU占用)](http://www.iqiyi.com/w_19s8qz0f2x.html)；	
@@ -380,9 +378,9 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] iOS工程：SmartiOSPlayerV2。	
 ---	
 
-**3. Windows/Android/iOS内置轻量级RTSP服务SDK**	
+**3. Windows/Linux/Android/iOS内置轻量级RTSP服务SDK**	
 
-如不单独说明，系Windows、Android、iOS全平台支持。	
+如不单独说明，系Windows、LinuxAndroid、iOS全平台支持。	
 
 - [x] [**基础功能**]支持Windows/Android/iOS平台RTMP直播SDK除推送RTMP外的所有常规功能；	
 - [x] [**音频格式**]AAC；	
@@ -399,7 +397,8 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 对应Demo：	
 - [x] Windows测试程序：SmartPublisherDemo.exe；	
 - [x] Windows C++工程：WIN-PublisherSDK-CPP-Demo；	
-- [x] Windows C#工程：WIN-PublisherSDK-CSharp-Demo；	
+- [x] Windows C#工程：WIN-PublisherSDK-CSharp-Demo；
+- [x] Linux工程：publisherdemo；
 - [x] Android工程：SmartPublisherV2；	
 - [x] iOS工程：SmartiOSPublisherV2。	
 ---	
@@ -558,12 +557,12 @@ https://github.com/daniulive/SmarterStreaming/tree/master/SourceCode/IOS/SmartiO
 - [x] 支持移动设备位置(MobilePosition)订阅和通知；
 - [x] 适用国家标准：GB/T 28181—2016；
 - [x] 支持语音广播；
-- [ ] 支持语音对讲；
-- [ ] 支持图像抓拍；
-- [ ] 支持历史视音频文件检索；
-- [ ] 支持历史视音频文件下载；
-- [ ] 支持历史视音频文件回放；
-- [ ] 支持云台控制和预置位查询；
+- [x] 支持语音对讲；
+- [x] 支持图像抓拍；
+- [x] 支持历史视音频文件检索；
+- [x] 支持历史视音频文件下载；
+- [x] 支持历史视音频文件回放；
+- [x] 支持云台控制和预置位查询；
 - [x] [实时水印]支持动态文字水印、png水印；
 - [x] [镜像]Android平台支持前置摄像头实时镜像功能；
 - [x] [实时静音]支持实时静音/取消静音；
