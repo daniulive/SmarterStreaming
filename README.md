@@ -58,9 +58,9 @@
 |支持平台|支持架构|
 | ----|-----|
 |Windows平台|x86 debug/release, x64 debug/release |
-|Linux(含麒麟操作系统)|x86_64 |
+|Linux(含麒麟操作系统)|x86_64, aarch64 |
 |Android平台|armeabi-v7a, arm64-v8a, x86, x86_64|
-|iOS平台|armv7, arm64|
+|iOS平台|arm64|
 
 **Windows端**
 
@@ -229,7 +229,7 @@
 
 右键“链接另存为(K)...”下载文档即可。	
 
-- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明**](http://daniusdk.com/wp-content/uploads/2022/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.18.pdf)	
+- [x] [**Android、iOS平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK(V2)调用说明**]([http://daniusdk.com/wp-content/uploads/2022/04/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.18.pdf](http://daniusdk.com/wp-content/uploads/2024/08/%E8%A7%86%E6%B2%83%E7%A7%91%E6%8A%80-%E5%A4%A7%E7%89%9B%E7%9B%B4%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%AB%AFSDKV2%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E2.20.pdf))
 
 - [x] [**Windows平台RTMP/RTSP直播推送、RTMP/RTSP播放、内置RTSP服务、转发SDK调用说明(以C#为例)**](http://daniusdk.com/wp-content/uploads/2021/04/视沃科技-Windows平台-SDK集成说明2.16.pdf)	
 
